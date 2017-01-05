@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="短信来电," />
+  <meta name="keywords" content="Hexo," />
 
 
 
@@ -84,18 +84,40 @@
 
 
 
-<meta name="description" content="获取电话状态在我想要了解iOS获取来电状态时，经常被这是不是允许的，是不是要调用私有库等问题困扰。费了好大劲终于解决了上面问题，你可以获取系统提供的电话相关状态，而且它不属于私有库。为了需要这方面资料的人查阅时少走弯路，我把这些东西写下来，废话少说，上代码。">
+<meta name="description" content="现在越来越多的人悬着使用githubpage搭建自己的个人博客，但是github提供的默认的域名是这种形式：username.github.io，是个二级域名，这对于很多人来说可能感觉不是很酷。那么我们今天就来做一件比较酷的事情，为站点自定义一个域名。
+目录
+0、准备工作1、域名申请2、为站点添加CNAME3、在DNSPOD配置域名解析4、修改DNS5、验证结果
+
+准备工作
+一个完整的github">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS获取来电和短信发送状态">
-<meta property="og:url" content="http://zhangferry.github.io/2016/12/12/iOS获取来电和短信发送状态/index.html">
+<meta property="og:title" content="为博客设一个自定义域名">
+<meta property="og:url" content="http://zhangferry.github.io/2017/01/05/为博客设一个自定义域名/index.html">
 <meta property="og:site_name" content="zhangferry`s blog">
-<meta property="og:description" content="获取电话状态在我想要了解iOS获取来电状态时，经常被这是不是允许的，是不是要调用私有库等问题困扰。费了好大劲终于解决了上面问题，你可以获取系统提供的电话相关状态，而且它不属于私有库。为了需要这方面资料的人查阅时少走弯路，我把这些东西写下来，废话少说，上代码。">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-3d7bb9f8ff9ce3d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-12-29T10:06:46.000Z">
+<meta property="og:description" content="现在越来越多的人悬着使用githubpage搭建自己的个人博客，但是github提供的默认的域名是这种形式：username.github.io，是个二级域名，这对于很多人来说可能感觉不是很酷。那么我们今天就来做一件比较酷的事情，为站点自定义一个域名。
+目录
+0、准备工作1、域名申请2、为站点添加CNAME3、在DNSPOD配置域名解析4、修改DNS5、验证结果
+
+准备工作
+一个完整的github">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-fbce92549a18f65a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-7e7cb240f4d62f4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-c8c19312012904eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-fb90966d0b49e5db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-6ad9908219780e11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-d709c85c43e6b271.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-0cbbb7a554af3145.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-de44f6a9d62989c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-01-05T10:14:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS获取来电和短信发送状态">
-<meta name="twitter:description" content="获取电话状态在我想要了解iOS获取来电状态时，经常被这是不是允许的，是不是要调用私有库等问题困扰。费了好大劲终于解决了上面问题，你可以获取系统提供的电话相关状态，而且它不属于私有库。为了需要这方面资料的人查阅时少走弯路，我把这些东西写下来，废话少说，上代码。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-3d7bb9f8ff9ce3d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="为博客设一个自定义域名">
+<meta name="twitter:description" content="现在越来越多的人悬着使用githubpage搭建自己的个人博客，但是github提供的默认的域名是这种形式：username.github.io，是个二级域名，这对于很多人来说可能感觉不是很酷。那么我们今天就来做一件比较酷的事情，为站点自定义一个域名。
+目录
+0、准备工作1、域名申请2、为站点添加CNAME3、在DNSPOD配置域名解析4、修改DNS5、验证结果
+
+准备工作
+一个完整的github">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-fbce92549a18f65a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -123,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="http://zhangferry.github.io/2016/12/12/iOS获取来电和短信发送状态/"/>
+  <link rel="canonical" href="http://zhangferry.github.io/2017/01/05/为博客设一个自定义域名/"/>
 
 
 
 
 
-  <title> iOS获取来电和短信发送状态 | zhangferry`s blog </title>
+  <title> 为博客设一个自定义域名 | zhangferry`s blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -270,7 +292,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/12/12/iOS获取来电和短信发送状态/">
+  <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2017/01/05/为博客设一个自定义域名/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="zhangferry">
@@ -294,7 +316,7 @@
             
             
               
-                iOS获取来电和短信发送状态
+                为博客设一个自定义域名
               
             
           </h1>
@@ -307,8 +329,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T15:35:51+08:00">
-                2016-12-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-05T18:11:02+08:00">
+                2017-01-05
               </time>
             
 
@@ -326,8 +348,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS知识点/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS知识点</span>
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
                   </a>
                 </span>
 
@@ -341,8 +363,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/12/iOS获取来电和短信发送状态/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/12/iOS获取来电和短信发送状态/" itemprop="commentCount"></span>
+                <a href="/2017/01/05/为博客设一个自定义域名/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/05/为博客设一个自定义域名/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -352,7 +374,7 @@
 
           
           
-             <span id="/2016/12/12/iOS获取来电和短信发送状态/" class="leancloud_visitors" data-flag-title="iOS获取来电和短信发送状态">
+             <span id="/2017/01/05/为博客设一个自定义域名/" class="leancloud_visitors" data-flag-title="为博客设一个自定义域名">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -377,118 +399,44 @@
       
 
       
-        <h2 id="获取电话状态"><a href="#获取电话状态" class="headerlink" title="获取电话状态"></a>获取电话状态</h2><p>在我想要了解iOS获取来电状态时，经常被这是不是允许的，是不是要调用私有库等问题困扰。费了好大劲终于解决了上面问题，你可以获取系统提供的电话相关状态，而且它不属于私有库。为了需要这方面资料的人查阅时少走弯路，我把这些东西写下来，废话少说，上代码。<br><a id="more"></a></p>
-<h3 id="如何获取电话状态"><a href="#如何获取电话状态" class="headerlink" title="如何获取电话状态"></a>如何获取电话状态</h3><p>首先要导入CoreTelephony框架：<br><code>@import CoreTelephony;</code></p>
-<p>然后声明一个CTCallCenter变量：</p>
-<pre><code>@interface ViewController () {  
-CTCallCenter *center_;   //为了避免形成retain cycle而声明的一个变量，指向接收通话中心对象
-}  
-</code></pre><p>@end<br>然后监听电话状态：</p>
-<pre><code>- (void) aboutCall{   
-//获取电话接入信息
-callCenter.callEventHandler = ^(CTCall *call){
-if ([call.callState isEqualToString:CTCallStateDisconnected]){
-NSLog(@&quot;Call has been disconnected&quot;);
-
-}else if ([call.callState isEqualToString:CTCallStateConnected]){
-NSLog(@&quot;Call has just been connected&quot;);
-
-}else if([call.callState isEqualToString:CTCallStateIncoming]){
-NSLog(@&quot;Call is incoming&quot;);
-
-}else if ([call.callState isEqualToString:CTCallStateDialing]){
-NSLog(@&quot;call is dialing&quot;);
-
-}else{
-NSLog(@&quot;Nothing is done&quot;);
-}
-};
-}
-</code></pre><p>还可以获取运营商信息：</p>
-<pre><code>- (void)getCarrierInfo{
-// 获取运营商信息
-CTTelephonyNetworkInfo *info = [[CTTelephonyNetworkInfo alloc] init];
-CTCarrier *carrier = info.subscriberCellularProvider;
-NSLog(@&quot;carrier:%@&quot;, [carrier description]);
-
-// 如果运营商变化将更新运营商输出
-info.subscriberCellularProviderDidUpdateNotifier = ^(CTCarrier *carrier) {
-NSLog(@&quot;carrier:%@&quot;, [carrier description]);
-};
-
-// 输出手机的数据业务信息
-NSLog(@&quot;Radio Access Technology:%@&quot;, info.currentRadioAccessTechnology);
-}    
-</code></pre><p>当然这样在真机进行测试，以下为输出信息：</p>
-<pre><code>2015-12-29 16:34:14.525 RWBLEManagerDemo[1489:543655] carrier:CTCarrier (0x134e065c0) {
-Carrier name: [中国移动]
-Mobile Country Code: [460]
-Mobile Network Code:[07]
-ISO Country Code:[cn]
-Allows VOIP? [YES]
-}
-2015-12-29 16:34:14.526 RWBLEManagerDemo[1489:543655] Radio Access Technology:CTRadioAccessTechnologyHSDPA    
-</code></pre><h3 id="CoreTelephony框架是不是私有库"><a href="#CoreTelephony框架是不是私有库" class="headerlink" title="CoreTelephony框架是不是私有库"></a>CoreTelephony框架是不是私有库</h3><p>私有框架的目录为：<br><code>/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/PrivateFrameworks/</code></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1059465-3d7bb9f8ff9ce3d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="FDC2B801-0F1C-41FD-A9A4-399592DF4BEF.png"></p>
-<p>可以看出CoreTelephony框架是在frameworks内而不是PrivateFrameworks，所以它是可以放心使用的。网上之所以有说CoreTelephony是私有库，是因为在iOS6的时候是私有框架，后来苹果又给公开了。</p>
-<h2 id="获取短信状态"><a href="#获取短信状态" class="headerlink" title="获取短信状态"></a>获取短信状态</h2><p>关于短信的状态获取，我直接看了<br><code>#import &lt;MessageUI/MessageUI.h&gt;</code><br>里面就两个头文件：</p>
-<p><code>#import &lt;MessageUI/MFMailComposeViewController.h&gt;</code><br><code>#import &lt;MessageUI/MFMessageComposeViewController.h&gt;</code><br>一个是邮件相关的方法，一个短信相关的方法。进到MFMessageComposeViewController.h有一个枚举值：</p>
-<pre><code>enum MessageComposeResult {
-MessageComposeResultCancelled,
-MessageComposeResultSent,
-MessageComposeResultFailed
-};
-</code></pre><p>typedef enum MessageComposeResult MessageComposeResult;   // available in iPhone 4.0<br>这是表示短信发送状态的值。要使用这个框架发送自己编辑的内容还需要添加代理：<code>MFMessageComposeViewControllerDelegate</code></p>
-<p>代码如下：</p>
-<pre><code>- (void)showMessageView
-{
-if( [MFMessageComposeViewController canSendText] )// 判断设备能不能发送短信
-    {
-    MFMessageComposeViewController*picker = [[MFMessageComposeViewControlleralloc] init];
-    // 设置委托
-    picker.messageComposeDelegate= self;
-    // 默认信息内容
-    picker.body = @&quot;nihao&quot;;
-    // 默认收件人(可多个)
-    picker.recipients = [NSArray arrayWithObject:@&quot;12345678901&quot;, nil];
-    [self presentModalViewController:picker animated:YES];
-    [picker release];
-    }
-    else
-    {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;提示信息&quot;
-    message:@&quot;该设备不支持短信功能&quot;
-    delegate:self
-    cancelButtonTitle:nil
-    otherButtonTitles:@&quot;确定&quot;, nil];
-    [alert show];
-    [alert release];
-    }
-}
-
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
-{
-    switch (result){
-    case MessageComposeResultCancelled:
-    NSLog(@&quot;取消发送&quot;);
-    break;
-    case MessageComposeResultFailed:
-    NSLog(@&quot;发送失败&quot;);
-    break;
-    case MessageComposeResultSent:
-    NSLog(@&quot;发送成功&quot;);
-    break;
-
-    default:
-    break;
-    }
-}
-</code></pre><p>对于来短信的通知没有找到，应该是不能获取的。</p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
-<li>private framework使用<br><a href="http://chenjohney.blog.51cto.com/4132124/1288551" target="_blank" rel="external">http://chenjohney.blog.51cto.com/4132124/1288551</a> </li>
-<li>CoreTelephony框架的简单使用<br><a href="http://blog.csdn.net/jymn_chen/article/details/19240903" target="_blank" rel="external">http://blog.csdn.net/jymn_chen/article/details/19240903</a>  </li>
-<li>iOS关于系统短信和电话的调用<br><a href="http://blog.csdn.net/frank_jb/article/details/49815883" target="_blank" rel="external">http://blog.csdn.net/frank_jb/article/details/49815883</a></li>
+        <p>现在越来越多的人悬着使用githubpage搭建自己的个人博客，但是github提供的默认的域名是这种形式：<code>username.github.io</code>，是个二级域名，这对于很多人来说可能感觉不是很酷。那么我们今天就来做一件比较酷的事情，为站点自定义一个域名。</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><blockquote>
+<p>0、准备工作<br>1、域名申请<br>2、为站点添加CNAME<br>3、在DNSPOD配置域名解析<br>4、修改DNS<br>5、验证结果</p>
+</blockquote>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>一个完整的github page博客项目。</li>
+<li>名词解释：<br>DNS：网域名称系统。你可以把它想象成一张域名和IP地址映射的数据表。<br>DNS解析：就是通过我们输入的网址（域名）查找到对应的主机（IP地址）<br>CNAME重定向：username.github.io和username.tk是两个域名，添加CNAME文件选择首选域，使其指向同一主机。<br><a href="http://www.ruanyifeng.com/blog/2016/06/dns.html" target="_blank" rel="external">DNS原理&gt;&gt;</a></li>
 </ul>
+<h2 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h2><p>有很多网站都有域名购买服务，我使用的是<a href="https://my.freenom.com/domains.php" target="_blank" rel="external">Freenom</a>。常见的域名注册网站还有<a href="https://wanwang.aliyun.com" target="_blank" rel="external">万网</a>、<a href="https://www.qcloud.com/product/dm?utm_source=pcsem&amp;utm_medium=kwd-328922380&amp;utm_campaign=google&amp;gclid=CLTEuaHvpNECFUYKKgodhYQAFw" target="_blank" rel="external">腾讯云</a>、<a href="https://sg.godaddy.com/zh/" target="_blank" rel="external">GoDaady</a>（狗爹）。<br>我选择Freenom的最主要原因就是：免费+顶级域名。对，你没有听错就是免费的顶级域名，一开始就认为注册域名肯定要花费不少moneyd的人是不是感觉赚到了😉。进入该网站注册成功之后，选择Register a New Domain进行域名申请检验。它可以提供免费的顶级域名有：tk，ml，ga，cf，gq</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-fbce92549a18f65a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="01.png"></p>
+<p>选择你喜欢的域名，进入选购界面</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-7e7cb240f4d62f4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="02.png"></p>
+<p>在Period里面可以选择使用时间，最多是一年的免费使用，顶级域名耶，已经很大的优惠了。当然如果你是土豪这都无所谓了。</p>
+<h2 id="为站点添加CNAME文件"><a href="#为站点添加CNAME文件" class="headerlink" title="为站点添加CNAME文件"></a>为站点添加CNAME文件</h2><p>在Hexo的本地站点里，进入source文件，新建文件<code>CNAME</code>，注意没有后缀，打开文件填入刚申请的域名</p>
+<p>zhangferry.tk</p>
+<p>保存。然后发布站点，这时<code>CNAME</code>文件就被发布到了github上对应的站点仓库中</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-c8c19312012904eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="03.png"></p>
+<p>CNAME文件的作用：<br>CNAME是一个别名记录，它允许你将多个名字映射到同一台计算机。比如刚才添加的CNAME文件，会被github自动识别，当我们输入<code>zhangferry.github.io</code>和输入<code>zhangferry.tk</code>时，它将指向同一个ip地址，展示同样的内容。</p>
+<h2 id="在DNSPOD中配置域名解析"><a href="#在DNSPOD中配置域名解析" class="headerlink" title="在DNSPOD中配置域名解析"></a>在DNSPOD中配置域名解析</h2><p>注册<a href="https://www.dnspod.cn/" target="_blank" rel="external">DNSPOS</a>账号，进入管理控制台</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-fb90966d0b49e5db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="04.png"></p>
+<p>点击添加域名，输入我们刚刚申请的域名。确定之后就是进行添加记录</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-6ad9908219780e11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="05.png"></p>
+<p>添加记录的每一项，系统都会提示代表意思，这里主要解释记录类型</p>
+<ul>
+<li>A记录：地址记录，用来指定域名的IP地址</li>
+<li>CNAME记录：如果需要将域名指向另一个域名，再由另一个域名提供IP地址，就需要添加CNAME记录</li>
+<li>NS记录：域名服务器记录，如果需要把子域名交给其他DNS服务商解析，就需要添加NS记录</li>
+</ul>
+<p>上面的NS记录是系统默认添加的。</p>
+<p>A记录就是指向对应IP地址，这里的<code>192.30.252.153</code>和<code>192.30.252.154</code>是github的服务器IP地址。<br>CNAME记录这里可填可不填，因为A记录已经将zhangferry.tk和<code>zhangferry.github.io</code>的域名统一为一个IP地址了。有一种情况就是为了提高访问速度，要区分国内国外不同用户使用不同的网站进行重定向需要添加对应的CNAME记录。</p>
+<h2 id="修改域名DNS"><a href="#修改域名DNS" class="headerlink" title="修改域名DNS"></a>修改域名DNS</h2><p>再回到刚才的域名申请网站，点Services-&gt;My Domains-&gt;Manage Domain-&gt;Management Tools-&gt;Nameservers</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-d709c85c43e6b271.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="06.png"></p>
+<p>将<code>f1g1ns1.dnspod.net</code>和<code>f1g1ns2.dnspod.net</code>填入到Nameserver1和Nameserver中，点击Change Nameservers保存操作。注意到刚填的域名服务就是对应NS记录的记录值。完成之后稍等片刻，DNSPod会有如下提示，否则就按照提示进行检验哪一步出了问题。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-0cbbb7a554af3145.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="07.png"></p>
+<h2 id="验证结果"><a href="#验证结果" class="headerlink" title="验证结果"></a>验证结果</h2><p>之后需要等待全球递归DNS服务器刷新（最多72小时）<br>在命令行执行：<code>$ dig zhangferry.tk</code>，出现以下结果说明配置成功，主要IP地址的对应。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-de44f6a9d62989c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="08.png"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.isetsuna.com/hexo/domain-dns/" target="_blank" rel="external">Hexo博客系列：域名和DNS</a><br><a href="http://itcoding.tk/2016/06/26/set-up-custom-domain-for-github-pages/" target="_blank" rel="external">为你的Github Pages博客绑定一个免费顶级域名吧
+ </a></p>
 
       
     </div>
@@ -528,7 +476,7 @@ if( [MFMessageComposeViewController canSendText] )// 判断设备能不能发送
       
         <div class="post-tags">
           
-            <a href="/tags/短信来电/" rel="tag"># 短信来电</a>
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
           
         </div>
       
@@ -537,15 +485,15 @@ if( [MFMessageComposeViewController canSendText] )// 判断设备能不能发送
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/12/28/nRF设备DFU升级/" rel="next" title="nRF设备DFU升级">
+                <i class="fa fa-chevron-left"></i> nRF设备DFU升级
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/12/iOS蓝牙中的进制转换/" rel="prev" title="iOS蓝牙中的进制转换">
-                iOS蓝牙中的进制转换 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -571,8 +519,8 @@ if( [MFMessageComposeViewController canSendText] )// 判断设备能不能发送
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/12/iOS获取来电和短信发送状态/"
-           data-title="iOS获取来电和短信发送状态" data-url="http://zhangferry.github.io/2016/12/12/iOS获取来电和短信发送状态/">
+      <div class="ds-thread" data-thread-key="2017/01/05/为博客设一个自定义域名/"
+           data-title="为博客设一个自定义域名" data-url="http://zhangferry.github.io/2017/01/05/为博客设一个自定义域名/">
       </div>
     
   </div>
@@ -698,7 +646,7 @@ if( [MFMessageComposeViewController canSendText] )// 判断设备能不能发送
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取电话状态"><span class="nav-number">1.</span> <span class="nav-text">获取电话状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何获取电话状态"><span class="nav-number">1.1.</span> <span class="nav-text">如何获取电话状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CoreTelephony框架是不是私有库"><span class="nav-number">1.2.</span> <span class="nav-text">CoreTelephony框架是不是私有库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取短信状态"><span class="nav-number">2.</span> <span class="nav-text">获取短信状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">2.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#申请域名"><span class="nav-number">3.</span> <span class="nav-text">申请域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为站点添加CNAME文件"><span class="nav-number">4.</span> <span class="nav-text">为站点添加CNAME文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在DNSPOD中配置域名解析"><span class="nav-number">5.</span> <span class="nav-text">在DNSPOD中配置域名解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改域名DNS"><span class="nav-number">6.</span> <span class="nav-text">修改域名DNS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证结果"><span class="nav-number">7.</span> <span class="nav-text">验证结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
