@@ -1,0 +1,1033 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="-蓝牙," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="以前写过几篇蓝牙相关的文章，但是没有涉及扫描、收发指令这些基础功能的实现。所以打算写一篇尽可能详尽的蓝牙知识汇总，一方面给有需要的同学看，一方面是对自己学习蓝牙的一个总结。
+这篇文章的目的：教你实现设备的扫描，连接，数据收发，蓝牙数据解析。如果在实现上面任一功能遇到问题时，欢迎留下你的问题，我将进行补充，对于说法有误的地方也请老司机予以指正。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS蓝牙知识快速入门（详尽版）">
+<meta property="og:url" content="http://zhangferry.github.io/2017/01/13/iOS蓝牙知识快速入门（详尽版）/index.html">
+<meta property="og:site_name" content="zhangferry`s blog">
+<meta property="og:description" content="以前写过几篇蓝牙相关的文章，但是没有涉及扫描、收发指令这些基础功能的实现。所以打算写一篇尽可能详尽的蓝牙知识汇总，一方面给有需要的同学看，一方面是对自己学习蓝牙的一个总结。
+这篇文章的目的：教你实现设备的扫描，连接，数据收发，蓝牙数据解析。如果在实现上面任一功能遇到问题时，欢迎留下你的问题，我将进行补充，对于说法有误的地方也请老司机予以指正。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-d8149efe4c37d452.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-46a0e68cfd9c4c9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-18ebcb6eb1790121.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-d4c7cabd9f2ca98a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-bbcf073456d1f3be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-1ab902ebe252094e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-141b274b7ed8e976.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-01-13T14:42:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS蓝牙知识快速入门（详尽版）">
+<meta name="twitter:description" content="以前写过几篇蓝牙相关的文章，但是没有涉及扫描、收发指令这些基础功能的实现。所以打算写一篇尽可能详尽的蓝牙知识汇总，一方面给有需要的同学看，一方面是对自己学习蓝牙的一个总结。
+这篇文章的目的：教你实现设备的扫描，连接，数据收发，蓝牙数据解析。如果在实现上面任一功能遇到问题时，欢迎留下你的问题，我将进行补充，对于说法有误的地方也请老司机予以指正。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-d8149efe4c37d452.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主大人'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangferry.github.io/2017/01/13/iOS蓝牙知识快速入门（详尽版）/"/>
+
+
+
+
+
+  <title> iOS蓝牙知识快速入门（详尽版） | zhangferry`s blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?afe60f79e35ee3c65b92d9a2ff459653";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">zhangferry`s blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2017/01/13/iOS蓝牙知识快速入门（详尽版）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="zhangferry">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/zhangferry.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="zhangferry`s blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="zhangferry`s blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS蓝牙知识快速入门（详尽版）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-13T22:36:41+08:00">
+                2017-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/蓝牙总结/" itemprop="url" rel="index">
+                    <span itemprop="name">蓝牙总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/13/iOS蓝牙知识快速入门（详尽版）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/13/iOS蓝牙知识快速入门（详尽版）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/13/iOS蓝牙知识快速入门（详尽版）/" class="leancloud_visitors" data-flag-title="iOS蓝牙知识快速入门（详尽版）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/1059465-d8149efe4c37d452.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-bluetooth"><br>以前写过几篇蓝牙相关的文章，但是没有涉及扫描、收发指令这些基础功能的实现。所以打算写一篇尽可能详尽的蓝牙知识汇总，一方面给有需要的同学看，一方面是对自己学习蓝牙的一个总结。</p>
+<p>这篇文章的目的：教你实现设备的扫描，连接，数据收发，蓝牙数据解析。如果在实现上面任一功能遇到问题时，欢迎留下你的问题，我将进行补充，对于说法有误的地方也请老司机予以指正。<br><a id="more"></a></p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><blockquote>
+<p><a href="#thought">0、思维导图</a><br><a href="#1">1、苹果对蓝牙设备有什么要求</a><br><a href="#2">2、操作蓝牙设备使用什么库</a><br><a href="#3">3、如何扫描</a><br><a href="#4">4、如何连接</a><br><a href="#5">5、如何发送数据和接收数据</a><br><a href="#6">6、如何解析数据</a><br><a href="#7">7、扩展</a></p>
+</blockquote>
+<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1059465-46a0e68cfd9c4c9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="思维导图"><br>第一次做图，大家凑合着看哈。这张是我总结的蓝牙知识的结构图，下面的内容将围绕这些东西展开进行。<br><img src="http://upload-images.jianshu.io/upload_images/1059465-18ebcb6eb1790121.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="连接设备流程"><br>这张是蓝牙连接发送数据的流程图，下文进入coding阶段的讲解顺序，大家先有个大概印象，等阅读完本文再回来看这张图将理解的更深一些。</p>
+<h2 id="苹果对蓝牙设备有什么要求"><a href="#苹果对蓝牙设备有什么要求" class="headerlink" title="苹果对蓝牙设备有什么要求"></a>苹果对蓝牙设备有什么要求</h2><p>BLE：bluetouch low energy，蓝牙4.0设备因为低功耗，所有也叫作BLE。苹果在iphone4s及之后的手机型号开始支持蓝牙4.0，这也是最常见的蓝牙设备。低于蓝牙4.0协议的设备需要进行MFI认证，关于MFI认证的申请工作可以看这里：<a href="http://www.jianshu.com/p/b90b0c45398d" target="_blank" rel="external">关于MFI认证你所必须要知道的事情</a></p>
+<p>在进行操作蓝牙设备前，我们先下载一个蓝牙工具<code>LightBlue</code>，它可以辅助我们的开发，在进行蓝牙开发之前建议先熟悉一下<a href="https://itunes.apple.com/us/app/lightblue-explorer-bluetooth/id557428110?mt=8" target="_blank" rel="external">LightBlue</a>这个工具。</p>
+<h2 id="操作蓝牙设备使用什么库"><a href="#操作蓝牙设备使用什么库" class="headerlink" title="操作蓝牙设备使用什么库"></a>操作蓝牙设备使用什么库</h2><p>苹果自身有一个操作蓝牙的库<code>CoreBluetooth.framework</code>，这个是大多数人员进行蓝牙开发的首选框架，除此之外目前github还有一个比较流行的对原生框架进行封装的三方库<a href="https://github.com/coolnameismy/BabyBluetooth" target="_blank" rel="external">BabyBluetooth</a>，它的机制是将CoreBluetooth中众多的delegate写成了block方法，有兴趣的同学可以了解下。下面主要介绍的是原生蓝牙库的知识。</p>
+<h4 id="中心和外围设备"><a href="#中心和外围设备" class="headerlink" title="中心和外围设备"></a>中心和外围设备</h4><p><img src="http://upload-images.jianshu.io/upload_images/1059465-d4c7cabd9f2ca98a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="central-peripheral"></p>
+<p>如图所示，电脑、Pad、手机作为中心，心跳监听器作为外设，这种中心外设模式是最常见的。简单理解就是，发起连接的是中心设备（Central），被连接的是外围设备（Peripheral），对应传统的客户机-服务器体系结构。Central能够扫描侦听到，正在播放广告包的外设。</p>
+<h4 id="服务与特征"><a href="#服务与特征" class="headerlink" title="服务与特征"></a>服务与特征</h4><p>外设可以包含一个或多个服务（CBService），服务是用于实现装置的功能或特征数据相关联的行为集合。<br>而每个服务又对应多个特征（CBCharacteristic）,特征提供外设服务进一步的细节，外设，服务，特征对应的数据结构如下所示</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-bbcf073456d1f3be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CBService-CBCharacteristic"></p>
+<h2 id="如何扫描蓝牙"><a href="#如何扫描蓝牙" class="headerlink" title="如何扫描蓝牙"></a>如何扫描蓝牙</h2><p>在进行扫描之前我们需要，首先新建一个类作为蓝牙类，例如<code>FYBleManager</code>，写成单例，作为处理蓝牙操作的管理类。引入头文件<code>#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</code><br><code>CBCentralManager</code>是蓝牙中心的管理类，控制着蓝牙的扫描，连接，蓝牙状态的改变。</p>
+<h4 id="1、初始化"><a href="#1、初始化" class="headerlink" title="1、初始化"></a>1、初始化</h4><pre><code>dispatch_queue_t centralQueue = dispatch_queue_create(“centralQueue&quot;,DISPATCH_QUEUE_SERIAL);
+    NSDictionary *dic = @{CBCentralManagerOptionShowPowerAlertKey : YES,
+</code></pre><p>CBCentralManagerOptionRestoreIdentifierKey : @”unique identifier”<br>};<br>        self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:centralQueue options:dic];</p>
+<p><code>CBCentralManagerOptionShowPowerAlertKey</code>对应的BOOL值，当设为YES时，表示CentralManager初始化时，如果蓝牙没有打开，将弹出Alert提示框<br><code>CBCentralManagerOptionRestoreIdentifierKey</code>对应的是一个唯一标识的字符串，用于蓝牙进程被杀掉恢复连接时用的。</p>
+<h4 id="2、扫描"><a href="#2、扫描" class="headerlink" title="2、扫描"></a>2、扫描</h4><pre><code>//不重复扫描已发现设备        
+NSDictionary *option = @{CBCentralManagerScanOptionAllowDuplicatesKey : [NSNumber numberWithBool:NO],CBCentralManagerOptionShowPowerAlertKey:YES};        
+[self.centralManager scanForPeripheralsWithServices:nil options:option];
+- (void)scanForPeripheralsWithServices:(nullable NSArray&lt;CBUUID *&gt; *)serviceUUIDs options:(nullable NSDictionary&lt;NSString *, id&gt; *)options;
+</code></pre><p>扫面方法，<code>serviceUUIDs</code>用于第一步的筛选，扫描此UUID的设备<br>options有两个常用参数：<code>CBCentralManagerScanOptionAllowDuplicatesKey</code>设置为NO表示不重复扫瞄已发现设备，为YES就是允许。<code>CBCentralManagerOptionShowPowerAlertKey</code>设置为YES就是在蓝牙未打开的时候显示弹框</p>
+<h4 id="3、CBCentralManagerDelegate代理方法"><a href="#3、CBCentralManagerDelegate代理方法" class="headerlink" title="3、CBCentralManagerDelegate代理方法"></a>3、CBCentralManagerDelegate代理方法</h4><p>在初始化的时候我们调用了代理，在CoreBluetooth中有两个代理，</p>
+<ul>
+<li>CBCentralManagerDelegate</li>
+<li>CBPeripheralDelegate</li>
+</ul>
+<p>iOS的命名很友好，我们通过名字就能看出，上面那个是关于中心设备的代理方法，下面是关于外设的代理方法。我们这里先研究<code>CBCentralManagerDelegate</code>中的代理方法</p>
+<pre><code>- (void)centralManagerDidUpdateState:(CBCentralManager *)central;
+</code></pre><p>这个方法标了<code>@required</code>是必须添加的，我们在self.centralManager初始换之后会调用这个方法，回调蓝牙的状态。状态有以下几种：</p>
+<pre><code>typedef NS_ENUM(NSInteger, CBCentralManagerState{
+    CBCentralManagerStateUnknown = CBManagerStateUnknown,//未知状态
+    CBCentralManagerStateResetting = CBManagerStateResetting,//重启状态
+    CBCentralManagerStateUnsupported = CBManagerStateUnsupported,//不支持
+    CBCentralManagerStateUnauthorized = CBManagerStateUnauthorized,//未授权
+    CBCentralManagerStatePoweredOff = CBManagerStatePoweredOff,//蓝牙未开启
+    CBCentralManagerStatePoweredOn = CBManagerStatePoweredOn,//蓝牙启
+} NS_DEPRECATED(NA, NA, 5_0, 10_0, &quot;Use CBManagerState instead”);
+</code></pre><p>该枚举在iOS10之后已经废除了，系统推荐使用<code>CBManagerState</code>，类型都是对应的</p>
+<pre><code>typedef NS_ENUM(NSInteger, CBManagerState{
+    CBManagerStateUnknown = 0,
+    CBManagerStateResetting,
+    CBManagerStateUnsupported,
+    CBManagerStateUnauthorized,
+    CBManagerStatePoweredOff,
+    CBManagerStatePoweredOn,
+} NS_ENUM_AVAILABLE(NA, 10_0);
+
+- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary&lt;NSString *, id&gt; *)advertisementData RSSI:(NSNumber *)RSSI;
+</code></pre><p>peripheral是外设类<br><code>advertisementData</code>是广播的值，一般携带设备名，<code>serviceUUIDs</code>等信息<br>RSSI绝对值越大，表示信号越差，设备离的越远。如果想装换成百分比强度，（RSSI+100）/100，（这是一个约数，蓝牙信号值并不一定是-100 - 0的值，但近似可以如此表示）</p>
+<pre><code>- (void)centralManager:(CBCentralManager *)central willRestoreState:(NSDictionary&lt;NSString *, id&gt; *)dict;
+</code></pre><p>在蓝牙于后台被杀掉时，重连之后会首先调用此方法，可以获取蓝牙恢复时的各种状态</p>
+<h2 id="4">如何连接</h2>
+
+<p>在扫面的代理方法中，我们连接外设名是MI的蓝牙设备</p>
+<pre><code>- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{    
+    NSLog(@&quot;advertisementData:%@，RSSI:%@&quot;,advertisementData,RSSI);      
+    if([peripheral.name isEqualToString:@&quot;MI&quot;]){        
+    [self.centralManager connectPeripheral:peripheral options:nil];//发起连接的命令       
+          self.peripheral = peripheral;     
+    }
+}
+</code></pre><p><strong>连接的状态</strong><br>对应另外的<code>CBCentralManagerDelegate</code>代理方法<br>连接成功的回调</p>
+<pre><code>- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral;
+</code></pre><p>连接失败的回调</p>
+<pre><code>- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error;
+</code></pre><p>连接断开的回调</p>
+<pre><code>- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error;
+</code></pre><p>连接成功之后并没有结束，还记得<code>CBPeripheral</code>中的<code>CBService</code>和<code>CBService</code>中的<code>CBCharacteristic</code>吗，对数据的读写是由<code>CBCharacteristic</code>控制的。我们先用lightblue连接小米手环为例，来看一下，手环内部的数据是不是我们说的那样。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-1ab902ebe252094e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="lightblue"></p>
+<p>其中<code>ADVERTISEMENT DATA</code>显示的就是广播信息。</p>
+<blockquote>
+<p><strong>iOS蓝牙无法直接获取设备蓝牙MAC地址，可以将MAC地址放到这里广播出来</strong></p>
+</blockquote>
+<p><code>FEEO</code>是<code>ServiceUUIDs</code>,里面的<code>FF01</code>、<code>FF02</code>是<code>CBCharacteristic的UUID</code></p>
+<p><code>Properties</code>是特征的属性，可以看出<code>FF01</code>具有读的权限，<code>FF02</code>具有读写的权限。特征拥有的权限类别有如下几种：</p>
+<pre><code>typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties{
+    CBCharacteristicPropertyBroadcast = 0x01,
+    CBCharacteristicPropertyRead = 0x02,
+    CBCharacteristicPropertyWriteWithoutResponse = 0x04,
+    CBCharacteristicPropertyWrite = 0x08,
+    CBCharacteristicPropertyNotify = 0x10,
+    CBCharacteristicPropertyIndicate = 0x20,
+    CBCharacteristicPropertyAuthenticatedSignedWrites = 0x40,
+    CBCharacteristicPropertyExtendedProperties = 0x80,
+    CBCharacteristicPropertyNotifyEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0) = 0x100,
+    CBCharacteristicPropertyIndicateEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0) = 0x200};
+</code></pre><h2 id="5">如何发送并接收数据</h2>
+
+<p>通过上面的步骤我们发现<code>CBCentralManagerDelegate</code>提供了蓝牙状态监测、扫描、连接的代理方法，但是<code>CBPeripheralDelegate</code>的代理方法却还没使用。别急，马上就要用到了，通过名称判断这个代理的作用，肯定是跟<code>Peripheral</code>有关，我们进入系统API，看它的代理方法都有什么，因为这里的代理方法较多，我就挑选几个常用的拿出来说明一下。</p>
+<h4 id="1、代理方法"><a href="#1、代理方法" class="headerlink" title="1、代理方法"></a>1、<strong>代理方法</strong></h4><pre><code>//发现服务的回调
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(nullable NSError *)error;
+//发现特征的回调
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(nullable NSError *)error;
+//读数据的回调
+- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error;
+//是否写入成功的回调
+ - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error;
+</code></pre><h4 id="2、步骤"><a href="#2、步骤" class="headerlink" title="2、步骤"></a>2、<strong>步骤</strong></h4><p>通过这几个方法我们构建一个流程：连接成功-&gt;获取指定的服务-&gt;获取指定的特征-&gt;订阅指定特征值-&gt;通过具有写权限的特征值写数据-&gt;在<code>didUpdateValueForCharacteristic</code>回调中读取蓝牙反馈值</p>
+<p>解释一下订阅特征值：特征值具有Notify权限才可以进行订阅，订阅之后该特征值的value发生变化才会回调<code>didUpdateValueForCharacteristic</code></p>
+<h4 id="3、实现上面流程的实例代码"><a href="#3、实现上面流程的实例代码" class="headerlink" title="3、实现上面流程的实例代码"></a>3、<strong>实现上面流程的实例代码</strong></h4><pre><code>//连接成功
+- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral{
+        //连接成功之后寻找服务，传nil会寻找所有服务
+        [peripheral discoverServices:nil];
+}
+
+//发现服务的回调
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{   
+if (!error) {        
+for (CBService *service in peripheral.services) {                
+NSLog(@&quot;serviceUUID:%@&quot;, service.UUID.UUIDString);            
+if ([service.UUID.UUIDString isEqualToString:ST_SERVICE_UUID]) {
+                    //发现特定服务的特征值               
+[service.peripheral discoverCharacteristics:nil forService:service];            
+}        
+}    
+}
+}
+
+//发现characteristics，由发现服务调用（上一步），获取读和写的characteristics
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {    
+for (CBCharacteristic *characteristic in service.characteristics) {        
+//有时读写的操作是由一个characteristic完成        
+if ([characteristic.UUID.UUIDString isEqualToString:ST_CHARACTERISTIC_UUID_READ]) {   
+         self.read = characteristic;           
+[self.peripheral setNotifyValue:YES forCharacteristic:self.read];        
+} else if ([characteristic.UUID.UUIDString isEqualToString:ST_CHARACTERISTIC_UUID_WRITE]) {  
+          self.write = characteristic;        }    
+}
+}
+
+//是否写入成功的代理
+- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{   
+if (error) {        
+NSLog(@&quot;===写入错误：%@&quot;,error);    
+}else{        
+NSLog(@&quot;===写入成功&quot;);    
+}
+}
+
+//数据接收
+- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {    
+        if([characteristic.UUID.UUIDString isEqualToString:ST_CHARACTERISTIC_UUID_READ]){
+        //获取订阅特征回复的数据
+        NSData *value = characteristic.value;        
+NSLog(@&quot;蓝牙回复：%@&quot;,value);
+        }
+}
+</code></pre><p>比如我们要获取蓝牙电量，由硬件文档查询得知该指令是<code>**0x1B9901**</code>,那么获取电量的方法就可以写成</p>
+<pre><code>- (void)getBattery{
+    Byte value[3]={0};
+    value[0]=x1B;
+    value[1]=x99;
+    value[2]=x01;
+    NSData * data = [NSData dataWithBytes:&amp;value length:sizeof(value)];
+    //发送数据
+    [self.peripheral writeValue:data forCharacteristic:self.write type:CBCharacteristicWriteWithoutResponse];
+}
+</code></pre><p>如果写入成功，我们将会在<code>didUpdateValueForCharacteristic</code>方法中获取蓝牙回复的信息。</p>
+<h2 id="如何解析蓝牙数据"><a href="#如何解析蓝牙数据" class="headerlink" title="如何解析蓝牙数据"></a>如何解析蓝牙数据</h2><p>如果你顺利完成了上一步的操作，并且看到了蓝牙返回的数据，那么恭喜你，蓝牙的常用操作你已经了解大半了。因为蓝牙的任务大部分就是围绕发送指令，获取指令，将蓝牙数据呈现给用户。上一步我们已经获取了蓝牙指令，但是获取的却是<code>0x567b0629</code>这样的数据，这是什么意思呢。这时我们参考硬件文档，看到这样一段:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-141b274b7ed8e976.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="device-document"><br>那么我们就可以得出设备电量是 60%。</p>
+<p>对数据解析的流程就是：判断校验和是否正确，是不是一条正确的数据-&gt;该条数据是不是我们需要的电量数据，即首字节为<code>0x567b</code>-&gt;根据定义规则解析电量，传给view显示。其中第一步校验数据，视情况而定，也有不需要的情况。</p>
+<h2 id="7">扩展</h2>
+
+<p><a href="http://www.jianshu.com/p/a5e25206df39" target="_blank" rel="external">iOS蓝牙中的进制转换</a><br><a href="http://www.jianshu.com/p/0d956862ffa1" target="_blank" rel="external">蓝牙固件升级</a><br><a href="http://www.jianshu.com/p/eb5b1e26adf7" target="_blank" rel="external">nRF芯片设备DFU升级</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/wechat-reward-image.jpg" alt="zhangferry WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/蓝牙/" rel="tag"># -蓝牙</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/05/为博客设一个自定义域名/" rel="next" title="为博客设一个自定义域名">
+                <i class="fa fa-chevron-left"></i> 为博客设一个自定义域名
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/13/iOS蓝牙知识快速入门（详尽版）/"
+           data-title="iOS蓝牙知识快速入门（详尽版）" data-url="http://zhangferry.github.io/2017/01/13/iOS蓝牙知识快速入门（详尽版）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zhangferry.png"
+               alt="zhangferry" />
+          <p class="site-author-name" itemprop="name">zhangferry</p>
+          <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangferry" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/5a644cf7cd17/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2947186387/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思维导图"><span class="nav-number">2.</span> <span class="nav-text">思维导图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#苹果对蓝牙设备有什么要求"><span class="nav-number">3.</span> <span class="nav-text">苹果对蓝牙设备有什么要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作蓝牙设备使用什么库"><span class="nav-number">4.</span> <span class="nav-text">操作蓝牙设备使用什么库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中心和外围设备"><span class="nav-number">4.0.1.</span> <span class="nav-text">中心和外围设备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务与特征"><span class="nav-number">4.0.2.</span> <span class="nav-text">服务与特征</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何扫描蓝牙"><span class="nav-number">5.</span> <span class="nav-text">如何扫描蓝牙</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、初始化"><span class="nav-number">5.0.1.</span> <span class="nav-text">1、初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、扫描"><span class="nav-number">5.0.2.</span> <span class="nav-text">2、扫描</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、CBCentralManagerDelegate代理方法"><span class="nav-number">5.0.3.</span> <span class="nav-text">3、CBCentralManagerDelegate代理方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4"><span class="nav-number">6.</span> <span class="nav-text">如何连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5"><span class="nav-number">7.</span> <span class="nav-text">如何发送并接收数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、代理方法"><span class="nav-number">7.0.1.</span> <span class="nav-text">1、代理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、步骤"><span class="nav-number">7.0.2.</span> <span class="nav-text">2、步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、实现上面流程的实例代码"><span class="nav-number">7.0.3.</span> <span class="nav-text">3、实现上面流程的实例代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解析蓝牙数据"><span class="nav-number">8.</span> <span class="nav-text">如何解析蓝牙数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7"><span class="nav-number">9.</span> <span class="nav-text">扩展</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangferry</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhangferry"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("DuOwsJ3GAgOVpEsgoXwPefXF-gzGzoHsz", "e7aUnrStHzmE0hGJXLsLxHpk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
