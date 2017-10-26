@@ -92,7 +92,7 @@
 <meta property="og:description" content="前一段时间看了J_Knight的2017年5月iOS找人心得（附面试题）。作为一个在编程前线奋斗了将近两年的iOS从业人员，面对这些题目时，有些竟感觉生疏，甚至答不上来，很是惭愧。个人感觉，像runtime、线程、信号量相关的偏底层知识虽然平时基本用不到。特别是很多人可能都没参与过稍复杂项目的开发，优化，这些内容对于很多新手iOS开发来说只存在于理论。但并不是说这些知识不重要，相反，它是我们进阶">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-47afdfd1950a72c6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-b8314aaf33c5dd27.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-30T03:42:07.000Z">
+<meta property="og:updated_time" content="2017-07-03T08:05:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试题总结（From J_Knight）">
 <meta name="twitter:description" content="前一段时间看了J_Knight的2017年5月iOS找人心得（附面试题）。作为一个在编程前线奋斗了将近两年的iOS从业人员，面对这些题目时，有些竟感觉生疏，甚至答不上来，很是惭愧。个人感觉，像runtime、线程、信号量相关的偏底层知识虽然平时基本用不到。特别是很多人可能都没参与过稍复杂项目的开发，优化，这些内容对于很多新手iOS开发来说只存在于理论。但并不是说这些知识不重要，相反，它是我们进阶">
@@ -401,11 +401,8 @@
 <h2 id="NSString为什么要用copy关键字，如果用strong会有什么问题？"><a href="#NSString为什么要用copy关键字，如果用strong会有什么问题？" class="headerlink" title="NSString为什么要用copy关键字，如果用strong会有什么问题？"></a>NSString为什么要用copy关键字，如果用strong会有什么问题？</h2><p>因为父类指针可以指向子类对象,使用 copy 的目的是为了让本对象的属性不受外界影响,使用 copy 无论给我传入是一个可变对象还是不可对象,我本身持有的就是一个不可变的副本。</p>
 <p>如果我们使用是 strong ,那么这个属性就有可能指向一个可变对象,如果这个可变对象在外部被修改了,那么会影响该属性.</p>
 <h2 id="如何令自己所写的对象具有拷贝功能"><a href="#如何令自己所写的对象具有拷贝功能" class="headerlink" title="如何令自己所写的对象具有拷贝功能?"></a>如何令自己所写的对象具有拷贝功能?</h2><p>若想令自己所写的对象具有拷贝功能，则需实现 <code>NSCopying</code> 协议。如果自定义的对象分为可变版本与不可变版本，那么就要同时实现 <code>NSCopying</code> 与 <code>NSMutableCopying</code> 协议。</p>
-<h2 id="可变集合类-和-不可变集合类的-copy-和-mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？"><a href="#可变集合类-和-不可变集合类的-copy-和-mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？" class="headerlink" title="可变集合类 和 不可变集合类的 copy 和 mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？"></a>可变集合类 和 不可变集合类的 copy 和 mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？</h2><pre><code>[immutableObject copy] // 浅复制
-[immutableObject mutableCopy] //深复制
-[mutableObject copy] //深复制
-[mutableObject mutableCopy] //深复制
-</code></pre><p>但是：集合对象的内容复制仅限于对象本身，对象元素仍然是指针复制</p>
+<h2 id="可变集合类-和-不可变集合类的-copy-和-mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？"><a href="#可变集合类-和-不可变集合类的-copy-和-mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？" class="headerlink" title="可变集合类 和 不可变集合类的 copy 和 mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？"></a>可变集合类 和 不可变集合类的 copy 和 mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？</h2><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-attr">[immutableObject copy]</span> <span class="comment">// 浅复制</span></div><div class="line"><span class="selector-attr">[immutableObject mutableCopy]</span> <span class="comment">//深复制</span></div><div class="line"><span class="selector-attr">[mutableObject copy]</span> <span class="comment">//深复制</span></div><div class="line"><span class="selector-attr">[mutableObject mutableCopy]</span> <span class="comment">//深复制</span></div></pre></td></tr></table></figure>
+<p>但是：集合对象的内容复制仅限于对象本身，对象元素仍然是指针复制</p>
 <h2 id="为什么IBOutlet修饰的UIView也适用weak关键字？"><a href="#为什么IBOutlet修饰的UIView也适用weak关键字？" class="headerlink" title="为什么IBOutlet修饰的UIView也适用weak关键字？"></a>为什么IBOutlet修饰的UIView也适用weak关键字？</h2><p>因为既然有外链那么视图在xib或者storyboard中肯定存在，视图已经对它有一个强引用了。<br>不过这个回答漏了个重要知识，使用storyboard（xib不行）创建的vc，会有一个叫<code>_topLevelObjectsToKeepAliveFromStoryboard</code>的私有数组强引用所有top level的对象，所以这时即便outlet声明成weak也没关系</p>
 <h2 id="nonatomic和atomic的区别？atomic是绝对的线程安全么？为什么？如果不是，那应该如何实现？"><a href="#nonatomic和atomic的区别？atomic是绝对的线程安全么？为什么？如果不是，那应该如何实现？" class="headerlink" title="nonatomic和atomic的区别？atomic是绝对的线程安全么？为什么？如果不是，那应该如何实现？"></a>nonatomic和atomic的区别？atomic是绝对的线程安全么？为什么？如果不是，那应该如何实现？</h2><p><code>atomic</code>会在创建时生成一些额外的代码用于帮助编写多线程程序，这会带来性能问题，通过声明 <code>nonatomic</code> 可以节省这些虽然很小但是不必要额外开销。</p>
 <p>一般情况下并不要求属性必须是“原子的”，因为这并不能保证“线程安全” ( thread safety)，若要实现“线程安全”的操作，还需采用更为深层的锁定机制才行。例如，一个线程在连续多次读取某属性值的过程中有别的线程在同时改写该值，那么即便将属性声明为 <code>atomic</code>，也还是会读到不同的属性值。</p>
@@ -440,15 +437,7 @@
 <li>CoreData </li>
 <li>FMDB</li>
 </ul>
-<h2 id="说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？"><a href="#说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？" class="headerlink" title="说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？"></a>说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？</h2><pre><code>//第一次启动：
-didFinishLaunchingWithOptions:
-applicationDidBecomeActive:
-//前台到后台：
-applicationWillResignActive:
-applicationDidEnterBackground:
-//后台到前台：
-applicationWillEnterForeground:
-applicationDidBecomeActive:
+<h2 id="说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？"><a href="#说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？" class="headerlink" title="说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？"></a>说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">didFinishLaunchingWithOptions:</div><div class="line">applicationDidBecomeActive:</div><div class="line">//前台到后台：</div><div class="line">applicationWillResignActive:</div><div class="line">applicationDidEnterBackground:</div><div class="line">//后台到前台：</div><div class="line">applicationWillEnterForeground:</div><div class="line">applicationDidBecomeActive:</div></pre></td></tr></table></figure>
 </code></pre><h2 id="NSCache优于NSDictionary的几点？"><a href="#NSCache优于NSDictionary的几点？" class="headerlink" title="NSCache优于NSDictionary的几点？"></a>NSCache优于NSDictionary的几点？</h2><ul>
 <li>当系统资源将要耗尽时，NSCache具备自动删减缓冲的功能。并且还会先删减“最久未使用”的对象。</li>
 <li>NSCache不拷贝键，而是保留键。因为并不是所有的键都遵从拷贝协议（字典的键是必须要支持拷贝协议的，有局限性）。</li>
@@ -543,23 +532,7 @@ NSTimer *timer = [NSTimer timerWithTimeInterval:1.0
 </ol>
 <h1 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h1><h2 id="UITableview的优化方法（缓存高度，异步绘制，减少层级，hide，避免离屏渲染）"><a href="#UITableview的优化方法（缓存高度，异步绘制，减少层级，hide，避免离屏渲染）" class="headerlink" title="UITableview的优化方法（缓存高度，异步绘制，减少层级，hide，避免离屏渲染）"></a>UITableview的优化方法（缓存高度，异步绘制，减少层级，hide，避免离屏渲染）</h2><p>一般在网络请求结束后，在更新界面之前就把每个 cell 的高度算好，缓存到相对应的 model 中。</p>
 <p>另外绘制 cell 不建议使用 UIView，建议使用 CALayer。<br>简单的形式参考：</p>
-<pre><code>//异步绘制
-dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-    CGRect rect = CGRectMake(0, 0, 100, 100);
-    UIGraphicsBeginImageContextWithOptions(rect.size, YES, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [[UIColor lightGrayColor] set];
-    CGContextFillRect(context, rect);
-
-    //将绘制的内容以图片的形式返回，并调主线程显示
-    UIImage *temp = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-
-    // 回到主线程
-    dispatch_async(dispatch_get_main_queue(), ^{
-        //code
-    });
-});
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</div><div class="line">    CGRect rect = CGRectMake(0, 0, 100, 100);</div><div class="line">    UIGraphicsBeginImageContextWithOptions(rect.size, YES, 0);</div><div class="line">    CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line">    [[UIColor lightGrayColor] set];</div><div class="line">    CGContextFillRect(context, rect);</div><div class="line"></div><div class="line">    //将绘制的内容以图片的形式返回，并调主线程显示</div><div class="line">    UIImage *temp = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line"></div><div class="line">    // 回到主线程</div><div class="line">    dispatch_async(dispatch_get_main_queue(), ^&#123;</div><div class="line">        //code</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </code></pre><p>CALayer 的 border、圆角、阴影、遮罩（mask），<code>CASharpLayer</code> 的矢量图形显示，通常会触发离屏渲染（offscreen rendering），而离屏渲染通常发生在 GPU 中。当一个列表视图中出现大量圆角的 <code>CALayer</code>，并且快速滑动时，可以观察到 GPU 资源已经占满，而 CPU 资源消耗很少。这时界面仍然能正常滑动，但平均帧数会降到很低。为了避免这种情况，可以尝试开启 <code>CALayer.shouldRasterize</code> 属性，但这会把原本离屏渲染的操作转嫁到 CPU 上去。对于只需要圆角的某些场合，也可以用一张已经绘制好的圆角图片覆盖到原本视图上面来模拟相同的视觉效果。最彻底的解决办法，就是把需要显示的图形在后台线程绘制为图片，避免使用圆角、阴影、遮罩等属性。</p>
 
       
