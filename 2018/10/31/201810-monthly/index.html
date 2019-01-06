@@ -1,0 +1,888 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="月报," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="记录本月开发遇到的知识点，小tips，和bug总结。
+大事件
+新版iPad Pro、MacBook Air、Mac mini发布，全线涨价，但是真香。。。
+Tips
+适配swift4.21、利用xcode快速迁移升级到Xcode10之后，我们打开项目会出现如下提示，
+点击会有一个版本升级窗口，如果你的的项目包含一些第三方库的话，第三方库的选型也会出现在上面：
+默认勾选第三方库，但是我们适配的时候不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发月报#4|201810">
+<meta property="og:url" content="http://zhangferry.github.io/2018/10/31/201810-monthly/index.html">
+<meta property="og:site_name" content="zhangferry`s blog">
+<meta property="og:description" content="记录本月开发遇到的知识点，小tips，和bug总结。
+大事件
+新版iPad Pro、MacBook Air、Mac mini发布，全线涨价，但是真香。。。
+Tips
+适配swift4.21、利用xcode快速迁移升级到Xcode10之后，我们打开项目会出现如下提示，
+点击会有一个版本升级窗口，如果你的的项目包含一些第三方库的话，第三方库的选型也会出现在上面：
+默认勾选第三方库，但是我们适配的时候不">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-d64ed4ef11a3ee86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-ac05882ccd098391.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-8041b545d62a3095.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-6e113852a3fb4b35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-02T13:37:23.127Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发月报#4|201810">
+<meta name="twitter:description" content="记录本月开发遇到的知识点，小tips，和bug总结。
+大事件
+新版iPad Pro、MacBook Air、Mac mini发布，全线涨价，但是真香。。。
+Tips
+适配swift4.21、利用xcode快速迁移升级到Xcode10之后，我们打开项目会出现如下提示，
+点击会有一个版本升级窗口，如果你的的项目包含一些第三方库的话，第三方库的选型也会出现在上面：
+默认勾选第三方库，但是我们适配的时候不">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1059465-d64ed4ef11a3ee86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主大人'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangferry.github.io/2018/10/31/201810-monthly/"/>
+
+
+
+
+
+  <title> iOS开发月报#4|201810 | zhangferry`s blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?afe60f79e35ee3c65b92d9a2ff459653";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">zhangferry`s blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2018/10/31/201810-monthly/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="zhangferry">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/zhangferry.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="zhangferry`s blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="zhangferry`s blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS开发月报#4|201810
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-31T16:00:50+08:00">
+                2018-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2018/10/31/201810-monthly/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/10/31/201810-monthly/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/10/31/201810-monthly/" class="leancloud_visitors" data-flag-title="iOS开发月报#4|201810">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>记录本月开发遇到的知识点，小tips，和bug总结。</p>
+<h2 id="大事件"><a href="#大事件" class="headerlink" title="大事件"></a>大事件</h2><hr>
+<p>新版iPad Pro、MacBook Air、Mac mini发布，全线涨价，但是真香。。。<br><img src="https://upload-images.jianshu.io/upload_images/1059465-d64ed4ef11a3ee86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><hr>
+<h3 id="适配swift4-2"><a href="#适配swift4-2" class="headerlink" title="适配swift4.2"></a>适配swift4.2</h3><p>1、利用xcode快速迁移<br>升级到Xcode10之后，我们打开项目会出现如下提示，<br><img src="https://upload-images.jianshu.io/upload_images/1059465-ac05882ccd098391.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>点击会有一个版本升级窗口，如果你的的项目包含一些第三方库的话，第三方库的选型也会出现在上面：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-8041b545d62a3095.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>默认勾选第三方库，但是我们适配的时候不应该让Xcode去自动检索第三方库代码。只对我们的app进行代码迁移就够了。<br>适配完后可以在这里查看我们当前的swift版本：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-6e113852a3fb4b35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>对于第三方库，如果都适配了swift4.2，那么更新到对应版本就行了。如果有没适配的，可以通过制定版本的方式解决冲突，在Podfile文件末尾添加如下代码：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">post_install <span class="keyword">do</span> <span class="params">|installer|</span></div><div class="line">installer.pods_project.targets.each <span class="keyword">do</span> <span class="params">|target|</span></div><div class="line">target.build_configurations.each <span class="keyword">do</span> <span class="params">|config|</span></div><div class="line">config.build_settings[<span class="string">'SWIFT_VERSION'</span>] = <span class="string">'4.0'</span></div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<h3 id="属性访问权限"><a href="#属性访问权限" class="headerlink" title="属性访问权限"></a>属性访问权限</h3><p>swift中提供的访问权限关键词由低到高有以下五种：<br>private &lt; fileprivate &lt; internal &lt; public &lt; open<br>其中internal是Swift中的默认控制级，一下介绍了这几种关键字的区别：</p>
+<ul>
+<li>private：当前作用域或者当前类中访问。</li>
+<li>fileprivate：表示代码可以在当前文件中访问。</li>
+<li>internal：在当前target中访问</li>
+<li>public：可跨target使用，但不能被集成或者重写。</li>
+<li>open：可跨target使用，允许被集成或者重写。</li>
+</ul>
+<p>对于一个严格的项目来说，精确的最小化访问控制级别对于代码的维护来说是很重要的。能用public的就别用open。</p>
+<h3 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h3><p>当我们执行某些命令行操作，收到如下提示时：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Linking /usr/local/Cellar/the_silver_searcher/2.1.0... </div><div class="line">Error: Could not symlink etc/bash_completion.d/ag.bashcomp.sh</div><div class="line">/usr/local/etc/bash_completion.d is not writable.</div></pre></td></tr></table></figure></p>
+<p>就表明我们对需要修改的文件权限不够，我们可以给文件加上修改的权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown -R $(whoami) /usr/local/etc/bash_completion.d</div></pre></td></tr></table></figure></p>
+<p>其中<code>-R</code>表示对目前目录下的所有文件与子目录进行相同的拥有者变更(即以递回的方式逐个变更)</p>
+<h3 id="默认关键字"><a href="#默认关键字" class="headerlink" title="默认关键字"></a>默认关键字</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static let `default` = ImageCache(name: &quot;default&quot;)</div></pre></td></tr></table></figure>
+<p>default是默认关键字，如果使用要加单斜号。</p>
+<h3 id="tabbar手动跳转"><a href="#tabbar手动跳转" class="headerlink" title="tabbar手动跳转"></a>tabbar手动跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">func tabBarController(UITabBarController, didSelect: UIViewController)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>In iOS v3.0 and later, the tab bar controller calls this method regardless of whether the selected view controller changed. In addition, it is called only in response to user taps in the tab bar and is not called when your code changes the tab bar contents programmatically.<br>In versions of iOS prior to version 3.0, this method is called only when the selected view controller actually changes. In other words, it is not called when the same view controller is selected. In addition, the method was called for both programmatic and user-initiated changes to the selected view controller.</p>
+</blockquote>
+<p>tabbar的didSelect代理方法，只有在手动点击的时候才会触发。通过代码跳转是不会触发的。</p>
+<h3 id="自定义tabbar动画"><a href="#自定义tabbar动画" class="headerlink" title="自定义tabbar动画"></a>自定义tabbar动画</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 当点击tabBar的时候,自动执行该代理方法(不需要手动设置代理)  </span></div><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tabBar</span><span class="params">(<span class="number">_</span> tabBar: UITabBar, didSelect item: UITabBarItem)</span></span> &#123;  </div><div class="line"><span class="keyword">for</span> view <span class="keyword">in</span> tabBar.subviews &#123;</div><div class="line"><span class="comment">//控制view实现各种动画效果</span></div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="NS-ASSUME-NONNULL-BEGIN-和-NS-ASSUME-NONNULL-END"><a href="#NS-ASSUME-NONNULL-BEGIN-和-NS-ASSUME-NONNULL-END" class="headerlink" title="NS_ASSUME_NONNULL_BEGIN 和 NS_ASSUME_NONNULL_END"></a>NS_ASSUME_NONNULL_BEGIN 和 NS_ASSUME_NONNULL_END</h3><p>从xcode6.3开始，为了能让OC也能表示swift的?(optional)和!功能，增加了对对象的可选指定。指定属性是否可选，可以：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, copy, nonnull) NSString * tickets;</div><div class="line">//或者</div><div class="line">@property (nonatomic, copy) NSString * __nonnull tickets;</div></pre></td></tr></table></figure></p>
+<p>如果属性多了，每一个都这么写会很麻烦，苹果增加了一对新的宏命令，就是<code>NS_ASSUME_NONNULL_BEGIN</code>和<code>NS_ASSUME_NONNULL_END</code>。放在里面的对象就相当于都增加了<code>nonnull</code>命令，<code>nonull</code>为默认值。</p>
+<h3 id="一个自定义collectionView布局的bug"><a href="#一个自定义collectionView布局的bug" class="headerlink" title="一个自定义collectionView布局的bug"></a>一个自定义collectionView布局的bug</h3><p><strong>bug描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSInternalInconsistencyException</div><div class="line"></div><div class="line">UICollectionView received layout attributes for a cell with an index path that does not exist: &lt;NSIndexPath: 0x280d2b200&gt; &#123;length = 2, path = 1 - 5&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>原因：</strong><br><code>layoutAttributesForElementsInRect</code>返回的<code>UICollectionViewLayoutAttributes</code>数组有<code>indexPath</code>没有被 <code>[NSIndexPath indexPathForRow:numberOfSection]</code>覆盖。<br>当数据量增加时不会出问题，当数量减少时出现。有人反映这是iOS10的bug，但实际上，我拿iOS10模拟器跑并没有问题，反而是在崩溃后台看到是iOS12的用户上报的。那究竟什么原因不详，附stackoverflow(<a href="https://stackoverflow.com/questions/39867325/ios-10-bug-uicollectionview-received-layout-attributes-for-a-cell-with-an-index" target="_blank" rel="external">iOS 10 bug: UICollectionView received layout attributes for a cell with an index path that does not exist - Stack Overflow</a>]地址。<br><strong>解决方案：</strong><br>当我们自定义layout时，需要清除UICollectionViewLayoutAttributes的缓存<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方案一： 在自定义layout的类里</span></div><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prepare</span><span class="params">()</span></span> &#123;</div><div class="line"><span class="keyword">super</span>.prepare()</div><div class="line">attributesArr.removeAll()</div><div class="line">&#125;</div><div class="line"><span class="comment">//方案二：在collectionview刷新出</span></div><div class="line">collectionView.reloaData()</div><div class="line">collectionView.collectionViewLayout.invalidateLayout()</div></pre></td></tr></table></figure></p>
+<h3 id="配置git-SSH"><a href="#配置git-SSH" class="headerlink" title="配置git SSH"></a>配置git SSH</h3><p>1、设置git的user name和email<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name &quot;username&quot;</div><div class="line">$ git config --global user.email &quot;username@gmail.com&quot;</div></pre></td></tr></table></figure></p>
+<p>2、生成秘钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &quot;username@gmail.com&quot;</div></pre></td></tr></table></figure></p>
+<p>如果不需要设置密码，连按三个回车。最后得到了两个文件：<code>id_rsa</code>和<code>id_rsa.pub</code>。<br>3、添加秘钥到ssh-agent中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-add ~/.ssh/id_rsa</div></pre></td></tr></table></figure></p>
+<p>4、登录git仓库（github或者bitbucket），添加ssh<br>将<code>id_rsa.pub</code>文件的内容复制到对应的地方。</p>
+<h3 id="Apple-Watch开发注意事项"><a href="#Apple-Watch开发注意事项" class="headerlink" title="Apple Watch开发注意事项"></a>Apple Watch开发注意事项</h3><p>1、watch没有UIKit，对于UI的操作只能通过<code>storyboard</code>进行<br>2、watch只支持帧动画，我们只能通过png序列来实现动画效果。<code>WKInterfaceGroup</code> 和 <code>WKInterfaceImage</code>均可以实现帧动画。<br>3、开发的watch应用内存被限定为80M，太多帧的动画会不支持<br>4、提交应用watch也需要配置市场截图。<br>5、watch分为两个target。当新建一个Target为WatchDemo，xcode会自动生成一个WatchDemo Extension。前者负责UI，后者负责逻辑。引用cocoapods可以这么写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">target &apos;WatchDemo Extension&apos; do</div><div class="line">platform :watchos, &apos;3.0&apos;</div><div class="line">use_frameworks!</div><div class="line">pod &apos;Alamofire&apos;</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>6、Always Embed Swift Standard Libraries<br>在Build Settings里面，这两个target，需要将WatchDemo Extension中设置为Yes，另一个设置为No</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><hr>
+<p><a href="https://github.com/marcosgriselli/Sizes" target="_blank" rel="external">Sizes</a><br>可以在一个界面，显示各个屏幕尺寸。这样我们就不用每个模拟器跑一遍看效果了。方便调试。</p>
+<p><a href="https://github.com/iGhibli/iOS-DeviceSupport" target="_blank" rel="external">iOS-DeviceSupport</a><br>当手机升级，而xcode未升级时，我们会遇到Device Support的弹框，此时要么升级xcode，要么需要导入对应的Device Support文件。这个库就是提供这种文件的。</p>
+<p><a href="https://github.com/johnno1962/InjectionIII" target="_blank" rel="external">InjectionIII</a><br>用于解决烦人的UI调试问题。当修改了一些UI属性之后，在xcode中我们只能运行程序才能看到效果，如果是处理大量的UI问题，这个过程是很烦人的。好在InjectionIII帮我们解决了这个问题，一起了解一下吧！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/wechat-reward-image.jpg" alt="zhangferry WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/月报/" rel="tag"># 月报</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/30/monthly-201809/" rel="next" title="iOS开发月报#3|201809">
+                <i class="fa fa-chevron-left"></i> iOS开发月报#3|201809
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/01/ios-monthly-11/" rel="prev" title="iOS开发月报#5|201811">
+                iOS开发月报#5|201811 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/10/31/201810-monthly/"
+           data-title="iOS开发月报#4|201810" data-url="http://zhangferry.github.io/2018/10/31/201810-monthly/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zhangferry.png"
+               alt="zhangferry" />
+          <p class="site-author-name" itemprop="name">zhangferry</p>
+          <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangferry" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2947186387/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#大事件"><span class="nav-number">1.</span> <span class="nav-text">大事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">2.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#适配swift4-2"><span class="nav-number">2.1.</span> <span class="nav-text">适配swift4.2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性访问权限"><span class="nav-number">2.2.</span> <span class="nav-text">属性访问权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文件权限"><span class="nav-number">2.3.</span> <span class="nav-text">修改文件权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认关键字"><span class="nav-number">2.4.</span> <span class="nav-text">默认关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tabbar手动跳转"><span class="nav-number">2.5.</span> <span class="nav-text">tabbar手动跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义tabbar动画"><span class="nav-number">2.6.</span> <span class="nav-text">自定义tabbar动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NS-ASSUME-NONNULL-BEGIN-和-NS-ASSUME-NONNULL-END"><span class="nav-number">2.7.</span> <span class="nav-text">NS_ASSUME_NONNULL_BEGIN 和 NS_ASSUME_NONNULL_END</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个自定义collectionView布局的bug"><span class="nav-number">2.8.</span> <span class="nav-text">一个自定义collectionView布局的bug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置git-SSH"><span class="nav-number">2.9.</span> <span class="nav-text">配置git SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apple-Watch开发注意事项"><span class="nav-number">2.10.</span> <span class="nav-text">Apple Watch开发注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github"><span class="nav-number">3.</span> <span class="nav-text">Github</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangferry</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhangferry"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("DuOwsJ3GAgOVpEsgoXwPefXF-gzGzoHsz", "e7aUnrStHzmE0hGJXLsLxHpk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

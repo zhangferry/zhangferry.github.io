@@ -1,0 +1,907 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="月报," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="大事件
+这个月的大事件是高通与苹果之间的专利大战。高通分别在中国和德国对苹果公司提起专利诉讼，结果均胜。苹果将在中国禁售iPhoneX及之前的机型。在德国则是全面禁售。加上新品手机的创新力度不够，导致苹果股票持续走低，四个月前，苹果还是首个突破万亿美元市值的上市公司，到现在股价已经下跌了 36%，市值只有 7160 亿美元，几个月内市值损失接近 3000 亿美元。
+Tips
+更换启动图不生效现象：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发月报#6|201812">
+<meta property="og:url" content="http://zhangferry.github.io/2019/01/02/ios-monthly-report-12/index.html">
+<meta property="og:site_name" content="zhangferry`s blog">
+<meta property="og:description" content="大事件
+这个月的大事件是高通与苹果之间的专利大战。高通分别在中国和德国对苹果公司提起专利诉讼，结果均胜。苹果将在中国禁售iPhoneX及之前的机型。在德国则是全面禁售。加上新品手机的创新力度不够，导致苹果股票持续走低，四个月前，苹果还是首个突破万亿美元市值的上市公司，到现在股价已经下跌了 36%，市值只有 7160 亿美元，几个月内市值损失接近 3000 亿美元。
+Tips
+更换启动图不生效现象：">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-4e4811eeba166496.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-078779097f1aa66f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-4dc9ec91be8167f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-941fcf791ca2dc28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-e0dc16cd94be1833.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-f0ddd03518d37a5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-4ada69de8b235846.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-06T15:21:16.296Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发月报#6|201812">
+<meta name="twitter:description" content="大事件
+这个月的大事件是高通与苹果之间的专利大战。高通分别在中国和德国对苹果公司提起专利诉讼，结果均胜。苹果将在中国禁售iPhoneX及之前的机型。在德国则是全面禁售。加上新品手机的创新力度不够，导致苹果股票持续走低，四个月前，苹果还是首个突破万亿美元市值的上市公司，到现在股价已经下跌了 36%，市值只有 7160 亿美元，几个月内市值损失接近 3000 亿美元。
+Tips
+更换启动图不生效现象：">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1059465-4e4811eeba166496.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主大人'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangferry.github.io/2019/01/02/ios-monthly-report-12/"/>
+
+
+
+
+
+  <title> iOS开发月报#6|201812 | zhangferry`s blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?afe60f79e35ee3c65b92d9a2ff459653";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">zhangferry`s blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/01/02/ios-monthly-report-12/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="zhangferry">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/zhangferry.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="zhangferry`s blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="zhangferry`s blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS开发月报#6|201812
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-02T10:54:57+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2019/01/02/ios-monthly-report-12/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/02/ios-monthly-report-12/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2019/01/02/ios-monthly-report-12/" class="leancloud_visitors" data-flag-title="iOS开发月报#6|201812">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="大事件"><a href="#大事件" class="headerlink" title="大事件"></a>大事件</h2><hr>
+<p>这个月的大事件是高通与苹果之间的专利大战。高通分别在中国和德国对苹果公司提起专利诉讼，结果均胜。苹果将在中国禁售iPhoneX及之前的机型。在德国则是全面禁售。<br>加上新品手机的创新力度不够，导致苹果股票持续走低，四个月前，苹果还是首个突破万亿美元市值的上市公司，到现在股价已经下跌了 36%，市值只有 7160 亿美元，几个月内市值损失接近 3000 亿美元。<br><img src="https://upload-images.jianshu.io/upload_images/1059465-4e4811eeba166496.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="news.png"></p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><hr>
+<h3 id="更换启动图不生效"><a href="#更换启动图不生效" class="headerlink" title="更换启动图不生效"></a>更换启动图不生效</h3><p><strong>现象</strong>：更换启动图，不生效，即使删除旧图，运行程序启动图仍然是之前的版本。<br>尝试了删除app重装，clean、重启Xcode，删除DriverData，还试过挪图片位置，改名字，均无效。最后尝试了重启手机-&gt;再安装才正常。</p>
+<p><strong>问题分析</strong>：这个是系统问题，为了加快程序启动的速度系统会把启动图做个缓存，之后每次启动是加载缓存启动图，所以才会出现修改不生效问题。但我们也并不知道系统会什么时候更新启动图，这个就有点尴尬😓<br>stackoverflow上有关于这个问题的讨论：<br><a href="https://stackoverflow.com/questions/33002829/ios-keeping-old-launch-screen-and-app-icon-after-update" target="_blank" rel="external">iOS Keeping old launch screen and app icon after update</a></p>
+<p>有人说这个不影响线上版本，从上线之后的测试来看，大部分用户没有受到影响，但还是出现了部分手机升级却未更换启动图的问题。<br>因为是系统层面控制，没有太好的解决方案，如果有人遇到这个情况，需要注意一下。</p>
+<h3 id="赋值权限"><a href="#赋值权限" class="headerlink" title="赋值权限"></a>赋值权限</h3><p>在Mac 系统的终端上修改文件权限使用的是 Linux 中的 chmod 命令：<br>r：可读，表示可以读取内容<br>w:可写，表示可以编辑内容，但是不可以删除文件<br>x: 可执行，表示可以执行文件。</p>
+<p>r:4<br>w:2<br>x:1<br>rwx=4+2+1=7</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1059465-078779097f1aa66f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="rwx.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod 777 file</div></pre></td></tr></table></figure>
+<p>这行命令的意思就是：文件所有者权限是7，同用户组的权限是7，其他非本地用户组的权限是7。同理可以出现这样的命令 chmod740.barshrc</p>
+<p>再讲两个：<br>chmod u=rwx, go=rx .barshrc 这个命令中u表示拥有者，g表示group中的用户，o表示others，和上面的想对应。注意go=rx，这里go是拼接起来的，表示g和o的用户有读和执行的权限。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod a+w .barshrc</div></pre></td></tr></table></figure></p>
+<p>表示所有的用户（a表示all）增加写的权限。</p>
+<h3 id="App图片瘦身"><a href="#App图片瘦身" class="headerlink" title="App图片瘦身"></a>App图片瘦身</h3><p>随着项目版本的不断迭代，会很容易积累越来越多的图片，对这些图片我们有两个主要方面可以优化：</p>
+<h4 id="1、删除不用的图片"><a href="#1、删除不用的图片" class="headerlink" title="1、删除不用的图片"></a>1、删除不用的图片</h4><p>我们需要借助一个工具<a href="https://github.com/tinymind/LSUnusedResources" target="_blank" rel="external">LSUnusedResources</a><br>它可以检索项目中未使用的图片资源，我们可以指定检索图片的路径，后缀进行过滤。<br><strong>注意</strong>：无法区分png序列的引用。最好手动删除</p>
+<h4 id="2、图片压缩"><a href="#2、图片压缩" class="headerlink" title="2、图片压缩"></a>2、图片压缩</h4><p>可以通过<a href="https://imageoptim.com/mac" target="_blank" rel="external">ImageOptim</a>，对图片进行无损压缩。使用时只需将要压缩的文件拖到程序中即可。<br>如果图片较多时，可以借助其命令行工具：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/ImageOptim.app/Contents/MacOS/ImageOptim $file_name</div></pre></td></tr></table></figure></p>
+<p>对应的shell脚本:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 处理文件名出现空格问题</div><div class="line">MY_IFS=$IFS</div><div class="line">IFS=$&apos;\n&apos;</div><div class="line">for file_name in $(find &quot;$1&quot; -name &quot;*.png&quot; -type f); do</div><div class="line">echo $file_name</div><div class="line">/Applications/ImageOptim.app/Contents/MacOS/ImageOptim $file_name</div><div class="line">done</div><div class="line">IFS=$MY_IFS</div></pre></td></tr></table></figure></p>
+<p>该工具还有一个Sketch插件：<a href="https://imageoptim.com/sketch" target="_blank" rel="external">Plugin for Sketch
+</a>，可以在输出icon的时候直接进行压缩优化。</p>
+<h3 id="后台音频耗电问题"><a href="#后台音频耗电问题" class="headerlink" title="后台音频耗电问题"></a>后台音频耗电问题</h3><p><strong>功能：</strong>一段助眠音频可以后台播放，播放完成后如果返回app，会跳到对应的完成界面。<br><strong>问题：</strong>有用户反馈，听音频睡着了，早上醒来，电量掉了很多（40%）。<br><strong>调研：</strong><br>使用Xcode中 <code>Debug Navigator</code>栏的<code>Energy Debug Gauge</code>（需真机）测试。播放完成4分钟左右的后台耗电状态如下：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-4dc9ec91be8167f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Energy Debug Gauge.png"><br>分析可知虽然此时app停止了所有行为，但是生命周期仍处于<code>Background</code>状态，耗电量也还是存在的。暂时认为问题是客户端一直处于<code>Background</code>模式，并未被<code>Suspend</code>，导致一直被系统维护着，所以一直有耗电情况。</p>
+<p>再一次查看苹果关于后台模式的文档：</p>
+<blockquote>
+<p>When the UIBackgroundModes key contains the audio value, the system’s media frameworks automatically prevent the corresponding app from being suspended when it moves to the background. As long as it is playing audio or video content or recording audio content, the app continues to run in the background. However, if recording or playback stops, the system suspends the app.</p>
+</blockquote>
+<p>可知，只要播放器未被销毁，就会一直占用后台模式！<br><strong>解决方案：</strong><br>在播放完成时销毁播放器。</p>
+<p><strong>检验：</strong><br>再次观察播放音频完成一段时间之后的后台耗电情况：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-941fcf791ca2dc28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>此时app被挂起，耗电量基本为0，唤醒app，仍能正常工作。问题解决。</p>
+<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><hr>
+<p>尝试分模块整理推荐阅读的内容</p>
+<h3 id="iOS开发过程中的设计模式"><a href="#iOS开发过程中的设计模式" class="headerlink" title="iOS开发过程中的设计模式"></a>iOS开发过程中的设计模式</h3><p><img src="https://upload-images.jianshu.io/upload_images/1059465-e0dc16cd94be1833.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="design pattern.jpeg"></p>
+<blockquote>
+<p>设计模式是一套被反复使用的、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的，设计模式使代码编制真正工程化，设计模式是软件工程的基石，如同大厦的一块块砖石一样。项目中合理地运用设计模式可以完美地解决很多问题，每种模式在现实中都有相应的原理来与之对应，每种模式都描述了一个在我们周围不断重复发生的问题，以及该问题的核心解决方案，这也是设计模式能被广泛应用的原因。</p>
+</blockquote>
+<p>以上摘自<a href="http://www.runoob.com/design-pattern/design-pattern-intro.html" target="_blank" rel="external">菜鸟教程</a></p>
+<p><a href="https://medium.com/flawless-app-stories/strategy-pattern-in-swift-1462dbddd9fe" target="_blank" rel="external">Swift中的策略模式</a><br>从一个小例子入手，讲解策略模式在swift中的使用。</p>
+<p><a href="https://swift.gg/2018/09/10/design-pattern-creational/" target="_blank" rel="external">Swift 中的设计模式 #1 工厂方法与单例方法</a><br><a href="https://swift.gg/2018/11/26/design-pattern-behavorial/" target="_blank" rel="external">Swift 中的设计模式 #2 观察者模式与备忘录模式</a><br><a href="https://swift.gg/2018/11/29/design-pattern-structural/" target="_blank" rel="external">Swift 中的设计模式 #3 外观模式与适配器模式</a><br>SwiftGG翻译组翻译的设计模式系列文章。</p>
+<p><a href="https://github.com/skyming/Trip-to-iOS-Design-Patterns" target="_blank" rel="external">设计模式资料整理</a><br>应该是目前总结最全的适合iOS开发的设计模式资料汇总。</p>
+<h3 id="iOS逆向"><a href="#iOS逆向" class="headerlink" title="iOS逆向"></a>iOS逆向</h3><p><img src="https://upload-images.jianshu.io/upload_images/1059465-f0ddd03518d37a5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="apple-hook.png"></p>
+<blockquote>
+<p>iOS应用逆向工程，是指从目标应用的界面及功能表现入手，使用不同的工具和理论知识去分析其实现原理，得出应用的代码结构、整体设计、功能实现、执行流程等，然后利用iOS的系统知识和语言特性，借鉴或修改原有实现流程的技术。</p>
+</blockquote>
+<p>推荐两篇掘金上关于iOS逆向的文章：<br><a href="https://juejin.im/post/5c19a38ae51d453e0a209256" target="_blank" rel="external">TikTok(抖音国际版)逆向，全球的小姐姐们，我来啦！</a><br><a href="https://juejin.im/post/5bc425495188255c9d564044" target="_blank" rel="external">逆向 Mac 应用 Bartender</a><br>这两篇都是通过具体实例入手，讲解逆向常用的工具和一些逆向的思路，非常适合新手。最好跟着介绍实际操作一番，第一次成功逆向一个项目之后，那种爽歪歪的感觉，你懂的！</p>
+<p>另外推荐一位逆向领域的牛人刘培庆（<a href="https://www.alonemonkey.com/" target="_blank" rel="external">博客</a>，<a href="https://github.com/AloneMonkey" target="_blank" rel="external">github</a>），了解逆向的同学大多应该都不陌生，iOS方面的逆向优先参照 <strong><a href="https://github.com/AloneMonkey/MonkeyDev" target="_blank" rel="external">MonkeyDev</a></strong>。<br>刘总今年出了新书《iOS应用逆向与安全》，非常适合对逆向有兴趣的同学。</p>
+<h3 id="利用脚本提高工作效率"><a href="#利用脚本提高工作效率" class="headerlink" title="利用脚本提高工作效率"></a>利用脚本提高工作效率</h3><blockquote>
+<p>脚本语言（英语：Scripting language）是为了缩短传统的“编写、编译、链接、运行”（edit-compile-link-run）过程而创建的计算机编程语言。早期的脚本语言经常被称为批处理语言或工作控制语言。一个脚本通常是解释运行而非编译。脚本语言通常都有简单、易学、易用的特性，目的就是希望能让程序员快速完成程序的编写工作</p>
+</blockquote>
+<p><a href="https://sspai.com/post/46912" target="_blank" rel="external">AppleScript入门：探索macOS自动化</a></p>
+<p>文章选自少数派，讲述了：</p>
+<ul>
+<li>什么是 AppleScript？</li>
+<li>我使用 AppleScript 的情境</li>
+<li>AppleScript 基础语法</li>
+<li>AppleScript suite 之外的解法：模拟键鼠</li>
+</ul>
+<p>非常清晰详细的AppleScript入门文章。<br><a href="https://juejin.im/post/5bfac61ee51d454af013a900" target="_blank" rel="external">如何提高工作效率 - 自动化篇</a><br>文章选自掘金，串联Shell Script, Apple Script, Automator, Alfred &amp; WorkFlows，告诉你如果灵活应用，达到利用脚本提高工作效率的目的。</p>
+<p>我写了一个利用AppleScript和Alfred的WorkFlows在命令行打开指定路径的工具。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1059465-4ada69de8b235846.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="workflow.png"></p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">on</span> <span class="built_in">run</span> argv</div><div class="line"><span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"Finder"</span></div><div class="line"><span class="comment">-- get selection path</span></div><div class="line"><span class="keyword">set</span> pathFile <span class="keyword">to</span> selection <span class="keyword">as</span> <span class="built_in">text</span></div><div class="line"><span class="keyword">set</span> pathFile <span class="keyword">to</span> <span class="keyword">get</span> <span class="keyword">POSIX path</span> <span class="keyword">of</span> pathFile</div><div class="line"><span class="comment">-- fix space problem in the directory</span></div><div class="line"><span class="keyword">set</span> pathFile <span class="keyword">to</span> <span class="keyword">quoted form</span> <span class="keyword">of</span> pathFile</div><div class="line"><span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"Terminal"</span></div><div class="line"><span class="built_in">activate</span></div><div class="line"><span class="keyword">tell</span> window <span class="number">1</span></div><div class="line">do <span class="keyword">script</span> <span class="string">"cd "</span> &amp; pathFile</div><div class="line"><span class="keyword">end</span> <span class="keyword">tell</span></div><div class="line"><span class="keyword">end</span> <span class="keyword">tell</span></div><div class="line"><span class="keyword">end</span> <span class="keyword">tell</span></div><div class="line"><span class="keyword">end</span> <span class="built_in">run</span></div></pre></td></tr></table></figure>
+<p>使用方法是：点击选中文件夹，按下热键<code>CMD + T</code>。</p>
+<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><p><strong><a href="https://talk.swift.gg/9" target="_blank" rel="external">创业那点事：听莲叔和羊叔回忆峥嵘岁月</a></strong><br>莲叔和羊叔是 SwiftGG 翻译组的真·大佬。成绩好，学历高，思维缜密，能力很强。听过《升职加薪》那期节目的朋友应该都有印象。作为标准的技术人才，在创业大潮中自然也想试试身手，打拼一番。</p>
+<p><strong><a href="https://talk.swift.gg/8" target="_blank" rel="external">和 Cee 聊聊如何拿 Google Offer</a></strong><br>翻译组里真是人才辈出啊，前几天 Cee 在群里说了个好消息，他拿到了美国 Google 的 Offer。群友们纷纷表示祝贺并进行了隆重的认哥仪式，将 SwiftGG 诞生以来第一个 GG（哥哥） 称号颁发给我们公认的大哥 Cee。</p>
+<p>以上两个音频来自于(ggtalk)[<a href="https://talk.swift.gg/]，也是我最近上下班路上用来消遣的音频节目，墙裂推荐！" target="_blank" rel="external">https://talk.swift.gg/]，也是我最近上下班路上用来消遣的音频节目，墙裂推荐！</a></p>
+<p><strong><a href="https://www.bilibili.com/video/av21376839" target="_blank" rel="external">计算机科学速成课</a></strong><br>由<a href="https://twitter.com/missphilbin" target="_blank" rel="external">Carrie Anne Philbin</a>主讲，Carrie Anne Philbin是一名计算机科学教师和作家。她是树莓派基金会的教育主管，也是学校(CAS)多样性和包容组的主席。她为青少年写了电脑书《树莓派历险记》。特意介绍是因为我感觉这个课程因为这个主讲人的个人魅力而趣味十足😄。不管你是不是计算机专业的学生，看过之后应该都能有所收获。</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="12306ForMac"><a href="#12306ForMac" class="headerlink" title="12306ForMac"></a><a href="https://github.com/fancymax/12306ForMac" target="_blank" rel="external">12306ForMac</a></h3><p>以前要么开Windows虚拟机，要么使用官方Web，现在可以使用12306ForMac订票助手啦。希望对大家有所帮助！</p>
+<h3 id="LongestCocoa"><a href="#LongestCocoa" class="headerlink" title="LongestCocoa"></a><a href="https://github.com/Quotation/LongestCocoa" target="_blank" rel="external">LongestCocoa</a></h3><p>SoWhatIsTheLongestMethodOrConstantNamesInCocoaFramework? （那么，Cocoa框架中最长的方法名或常量名是什么？）答案是：</p>
+<ul>
+<li><p>outputImageProviderFromBufferWithPixelFormat:pixelsWide:pixelsHigh:baseAddress:bytesPerRow:releaseCallback:releaseContext:colorSpace:shouldColorMatch:</p>
+</li>
+<li><p>kCMSampleBufferConduitNotificationParameter_UpcomingOutputPTSRangeMayOverlapQueuedOutputPTSRange</p>
+</li>
+</ul>
+<p>这个项目有一定的调侃意味，so what? 我选择swift🤣</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/wechat-reward-image.jpg" alt="zhangferry WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/月报/" rel="tag"># 月报</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/01/2018-summary/" rel="next" title="2018年总结">
+                <i class="fa fa-chevron-left"></i> 2018年总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2019/01/02/ios-monthly-report-12/"
+           data-title="iOS开发月报#6|201812" data-url="http://zhangferry.github.io/2019/01/02/ios-monthly-report-12/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zhangferry.png"
+               alt="zhangferry" />
+          <p class="site-author-name" itemprop="name">zhangferry</p>
+          <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangferry" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2947186387/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#大事件"><span class="nav-number">1.</span> <span class="nav-text">大事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">2.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更换启动图不生效"><span class="nav-number">2.1.</span> <span class="nav-text">更换启动图不生效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值权限"><span class="nav-number">2.2.</span> <span class="nav-text">赋值权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#App图片瘦身"><span class="nav-number">2.3.</span> <span class="nav-text">App图片瘦身</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、删除不用的图片"><span class="nav-number">2.3.1.</span> <span class="nav-text">1、删除不用的图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、图片压缩"><span class="nav-number">2.3.2.</span> <span class="nav-text">2、图片压缩</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后台音频耗电问题"><span class="nav-number">2.4.</span> <span class="nav-text">后台音频耗电问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐阅读"><span class="nav-number">3.</span> <span class="nav-text">推荐阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS开发过程中的设计模式"><span class="nav-number">3.1.</span> <span class="nav-text">iOS开发过程中的设计模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS逆向"><span class="nav-number">3.2.</span> <span class="nav-text">iOS逆向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用脚本提高工作效率"><span class="nav-number">3.3.</span> <span class="nav-text">利用脚本提高工作效率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音视频"><span class="nav-number">4.</span> <span class="nav-text">音视频</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github"><span class="nav-number">5.</span> <span class="nav-text">Github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#12306ForMac"><span class="nav-number">5.1.</span> <span class="nav-text">12306ForMac</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LongestCocoa"><span class="nav-number">5.2.</span> <span class="nav-text">LongestCocoa</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangferry</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhangferry"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("DuOwsJ3GAgOVpEsgoXwPefXF-gzGzoHsz", "e7aUnrStHzmE0hGJXLsLxHpk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
