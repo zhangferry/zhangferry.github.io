@@ -1,4 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6,15 +15,11 @@
 
 
 <html class="theme-next mist use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
 
 
 
@@ -27,48 +32,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="cocoapods," />
 
 
 
@@ -77,49 +40,46 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
 
 
 
-<meta name="description" content="CocoaPods是OS X和iOS下的一个第三方开源类库管理工具，通过CocoaPods工具我们可以为项目添加依赖库（这些类库必须是CocoaPods本身所支持的），并且可以轻松管理其版本。它是目前iOS开发中使用最广泛的开源库管理工具，如果我们内部协作的组件化能够使用这种方式管理的话，那将是很便利的。在通过Cocoapods建立内部私有库之前，我们需要再熟悉下Cocoapods的工作流程，我">
-<meta property="og:type" content="article">
-<meta property="og:title" content="使用Cocoapods管理私有库组件">
-<meta property="og:url" content="http://zhangferry.github.io/2018/08/30/private-Cocoapods/index.html">
-<meta property="og:site_name" content="zhangferry`s blog">
-<meta property="og:description" content="CocoaPods是OS X和iOS下的一个第三方开源类库管理工具，通过CocoaPods工具我们可以为项目添加依赖库（这些类库必须是CocoaPods本身所支持的），并且可以轻松管理其版本。它是目前iOS开发中使用最广泛的开源库管理工具，如果我们内部协作的组件化能够使用这种方式管理的话，那将是很便利的。在通过Cocoapods建立内部私有库之前，我们需要再熟悉下Cocoapods的工作流程，我">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-ab8debcc283dcc57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-4799e6f105e76e18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-de2a30d6996c2107.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-bc4880496ed40db6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-a2e182ab582670fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-273e8e64bfbb617d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-312ee35e4b2f5ab9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-22fe03c83eebed9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-8df2158ae8033cfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-749a69f468b86656.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-01T03:20:27.731Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Cocoapods管理私有库组件">
-<meta name="twitter:description" content="CocoaPods是OS X和iOS下的一个第三方开源类库管理工具，通过CocoaPods工具我们可以为项目添加依赖库（这些类库必须是CocoaPods本身所支持的），并且可以轻松管理其版本。它是目前iOS开发中使用最广泛的开源库管理工具，如果我们内部协作的组件化能够使用这种方式管理的话，那将是很便利的。在通过Cocoapods建立内部私有库之前，我们需要再熟悉下Cocoapods的工作流程，我">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1059465-ab8debcc283dcc57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
+
+
+
+
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主大人'
-    },
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -131,23 +91,59 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://zhangferry.github.io/2018/08/30/private-Cocoapods/"/>
-
-
-
-
-
-  <title> 使用Cocoapods管理私有库组件 | zhangferry`s blog </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
-
   
 
 
 
-  <script type="text/javascript">
+
+  <meta name="description" content="CocoaPods是OS X和iOS下的一个第三方开源类库管理工具，通过CocoaPods工具我们可以为项目添加依赖库（这些类库必须是CocoaPods本身所支持的），并且可以轻松管理其版本。它是目前iOS开发中使用最广泛的开源库管理工具，如果我们内部协作的组件化能够使用这种方式管理的话，那将是很便利的。在通过Cocoapods建立内部私有库之前，我们需要再熟悉下Cocoapods的工作流程，我">
+<meta name="keywords" content="cocoapods">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Cocoapods管理私有库组件">
+<meta property="og:url" content="http://zhangferry.github.io/2018/08/30/private-Cocoapods/index.html">
+<meta property="og:site_name" content="zhangferry`s blog">
+<meta property="og:description" content="CocoaPods是OS X和iOS下的一个第三方开源类库管理工具，通过CocoaPods工具我们可以为项目添加依赖库（这些类库必须是CocoaPods本身所支持的），并且可以轻松管理其版本。它是目前iOS开发中使用最广泛的开源库管理工具，如果我们内部协作的组件化能够使用这种方式管理的话，那将是很便利的。在通过Cocoapods建立内部私有库之前，我们需要再熟悉下Cocoapods的工作流程，我">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-ab8debcc283dcc57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-4799e6f105e76e18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-de2a30d6996c2107.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-bc4880496ed40db6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-a2e182ab582670fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-273e8e64bfbb617d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-312ee35e4b2f5ab9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-22fe03c83eebed9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-8df2158ae8033cfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-749a69f468b86656.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-16T15:12:40.498Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Cocoapods管理私有库组件">
+<meta name="twitter:description" content="CocoaPods是OS X和iOS下的一个第三方开源类库管理工具，通过CocoaPods工具我们可以为项目添加依赖库（这些类库必须是CocoaPods本身所支持的），并且可以轻松管理其版本。它是目前iOS开发中使用最广泛的开源库管理工具，如果我们内部协作的组件化能够使用这种方式管理的话，那将是很便利的。在通过Cocoapods建立内部私有库之前，我们需要再熟悉下Cocoapods的工作流程，我">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1059465-ab8debcc283dcc57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="http://zhangferry.github.io/2018/08/30/private-Cocoapods/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>使用Cocoapods管理私有库组件 | zhangferry`s blog</title>
+  
+
+
+
+
+
+
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -163,86 +159,151 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">zhangferry`s blog</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhangferry`s blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
   </div>
-  <p class="site-subtitle"></p>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
+
 
 <nav class="site-nav">
-  
-
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -250,12 +311,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -268,32 +337,32 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2018/08/30/private-Cocoapods/">
+  
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="zhangferry">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/zhangferry.png">
-  </span>
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2018/08/30/private-Cocoapods/">
 
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="zhangferry`s blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="zhangferry`s blog" src="">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry`s blog">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                使用Cocoapods管理私有库组件
+          <h1 class="post-title" itemprop="name headline">使用Cocoapods管理私有库组件
+
               
             
           </h1>
@@ -301,18 +370,42 @@
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-30T14:47:34+08:00">
-                2018-08-30
-              </time>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-30 14:47:34" itemprop="dateCreated datePublished" datetime="2018-08-30T14:47:34+08:00">2018-08-30</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-16 23:12:40" itemprop="dateModified" datetime="2019-01-16T23:12:40+08:00">2019-01-16</time>
+              
             
           </span>
 
@@ -320,27 +413,12 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2018/08/30/private-Cocoapods/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/30/private-Cocoapods/" itemprop="commentCount"></span>
-                </a>
-              </span>
             
           
 
           
+          
 
-          
-          
-             <span id="/2018/08/30/private-Cocoapods/" class="leancloud_visitors" data-flag-title="使用Cocoapods管理私有库组件">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">Visitors </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
           
 
           
@@ -351,7 +429,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -359,24 +439,24 @@
 
       
         <p><img src="https://upload-images.jianshu.io/upload_images/1059465-ab8debcc283dcc57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="cocoapods.png"></p>
-<p>CocoaPods是OS X和iOS下的一个第三方开源类库管理工具，通过CocoaPods工具我们可以为项目添加依赖库（这些类库必须是CocoaPods本身所支持的），并且可以轻松管理其版本。它是目前iOS开发中使用最广泛的开源库管理工具，如果我们内部协作的组件化能够使用这种方式管理的话，那将是很便利的。<br>在通过Cocoapods建立内部私有库之前，我们需要再熟悉下Cocoapods的工作流程，我们创建内部私有库时也会依照这个流程来。</p>
+<p>CocoaPods是OS X和iOS下的一个第三方开源类库管理工具，通过CocoaPods工具我们可以为项目添加依赖库（这些类库必须是CocoaPods本身所支持的），并且可以轻松管理其版本。它是目前iOS开发中使用最广泛的开源库管理工具，如果我们内部协作的组件化能够使用这种方式管理的话，那将是很便利的。<br>在通过Cocoapods建立内部私有库之前，我们需要再熟悉下Cocoapods的工作流程，我们创建内部私有库时也会依照这个流程来。<br><a id="more"></a></p>
 <blockquote>
 <p>本文目录<br>一、Cocoapods的工作流程<br>二、建立Cocoapods私有库<br>三、使用私有库<br>四、问题总结</p>
 </blockquote>
 <h2 id="Cocoapods工作流程"><a href="#Cocoapods工作流程" class="headerlink" title="Cocoapods工作流程"></a>Cocoapods工作流程</h2><p>工作流程如图所示：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-4799e6f105e76e18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="cocoapods_work_flows"></p>
-<h3 id="远程索引库："><a href="#远程索引库：" class="headerlink" title="远程索引库："></a>远程索引库：</h3><p>这里存放了各个框架的描述文件，托管在github上：<br><a href="https://github.com/CocoaPods/Specs" target="_blank" rel="external">CocoaPods/Specs</a></p>
-<h3 id="本地索引库："><a href="#本地索引库：" class="headerlink" title="本地索引库："></a>本地索引库：</h3><p>在安装cocoapods时，执行的<code>pod setup</code>就是讲远程索引克隆到本地，本地索引的目录为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~/.cocoapods/repos/master</div></pre></td></tr></table></figure></p>
+<h3 id="远程索引库："><a href="#远程索引库：" class="headerlink" title="远程索引库："></a>远程索引库：</h3><p>这里存放了各个框架的描述文件，托管在github上：<br><a href="https://github.com/CocoaPods/Specs" target="_blank" rel="noopener">CocoaPods/Specs</a></p>
+<h3 id="本地索引库："><a href="#本地索引库：" class="headerlink" title="本地索引库："></a>本地索引库：</h3><p>在安装cocoapods时，执行的<code>pod setup</code>就是讲远程索引克隆到本地，本地索引的目录为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.cocoapods/repos/master</span><br></pre></td></tr></table></figure></p>
 <p>本地索引和远程索引的目录一致，结构如下：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-de2a30d6996c2107.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="localRepo.png"></p>
-<p>每个库的每个版本都对应一个json格式的描述文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">&quot;name&quot;: &quot;YYImage&quot;,</div><div class="line">&quot;summary&quot;: &quot;Image framework for iOS to display/encode/decode animated WebP, APNG, GIF, and more.&quot;,</div><div class="line">&quot;version&quot;: &quot;1.0&quot;,</div><div class="line">&quot;license&quot;: &#123;</div><div class="line">&quot;type&quot;: &quot;MIT&quot;,</div><div class="line">&quot;file&quot;: &quot;LICENSE&quot;</div><div class="line">&#125;,</div><div class="line">&quot;authors&quot;: &#123;</div><div class="line">&quot;ibireme&quot;: &quot;ibireme@gmail.com&quot;</div><div class="line">&#125;,</div><div class="line">&quot;social_media_url&quot;: &quot;http://blog.ibireme.com&quot;,</div><div class="line">&quot;homepage&quot;: &quot;https://github.com/ibireme/YYImage&quot;,</div><div class="line">&quot;platforms&quot;: &#123;</div><div class="line">&quot;ios&quot;: &quot;6.0&quot;</div><div class="line">&#125;,</div><div class="line">&quot;source&quot;: &#123;</div><div class="line">&quot;git&quot;: &quot;https://github.com/ibireme/YYImage.git&quot;,</div><div class="line">&quot;tag&quot;: &quot;1.0&quot;</div><div class="line">&#125;,</div><div class="line">&quot;requires_arc&quot;: true,</div><div class="line">&quot;default_subspecs&quot;: &quot;Core&quot;,</div><div class="line">&quot;subspecs&quot;: [</div><div class="line">&#123;</div><div class="line">&quot;name&quot;: &quot;Core&quot;,</div><div class="line">&quot;source_files&quot;: &quot;YYImage/*.&#123;h,m&#125;&quot;,</div><div class="line">&quot;public_header_files&quot;: &quot;YYImage/*.&#123;h&#125;&quot;,</div><div class="line">&quot;libraries&quot;: &quot;z&quot;,</div><div class="line">&quot;frameworks&quot;: [</div><div class="line">&quot;UIKit&quot;,</div><div class="line">&quot;CoreFoundation&quot;,</div><div class="line">&quot;QuartzCore&quot;,</div><div class="line">&quot;AssetsLibrary&quot;,</div><div class="line">&quot;ImageIO&quot;,</div><div class="line">&quot;Accelerate&quot;,</div><div class="line">&quot;MobileCoreServices&quot;</div><div class="line">]</div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line">&quot;name&quot;: &quot;WebP&quot;,</div><div class="line">&quot;dependencies&quot;: &#123;</div><div class="line">&quot;YYImage/Core&quot;: [</div><div class="line"></div><div class="line">]</div><div class="line">&#125;,</div><div class="line">&quot;ios&quot;: &#123;</div><div class="line">&quot;vendored_frameworks&quot;: &quot;Vendor/WebP.framework&quot;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="本地索引文件"><a href="#本地索引文件" class="headerlink" title="本地索引文件"></a>本地索引文件</h3><p>当执行pod search命令时，如果本地索引不存在，就会创建出来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ pod search afn</div><div class="line">Creating search index for spec repo &apos;master&apos;..</div></pre></td></tr></table></figure></p>
-<p>本地索引文件路径为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~/Library/Cache/Cocoapods/Pods</div></pre></td></tr></table></figure></p>
-<h3 id="远程框架库"><a href="#远程框架库" class="headerlink" title="远程框架库"></a>远程框架库</h3><p>以YYImage为例，它的远程框架库就是json文件中的source：<br><a href="https://github.com/ibireme/YYImage.git" target="_blank" rel="external">https://github.com/ibireme/YYImage.git</a></p>
+<p>每个库的每个版本都对应一个json格式的描述文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;name&quot;: &quot;YYImage&quot;,</span><br><span class="line">&quot;summary&quot;: &quot;Image framework for iOS to display/encode/decode animated WebP, APNG, GIF, and more.&quot;,</span><br><span class="line">&quot;version&quot;: &quot;1.0&quot;,</span><br><span class="line">&quot;license&quot;: &#123;</span><br><span class="line">&quot;type&quot;: &quot;MIT&quot;,</span><br><span class="line">&quot;file&quot;: &quot;LICENSE&quot;</span><br><span class="line">&#125;,</span><br><span class="line">&quot;authors&quot;: &#123;</span><br><span class="line">&quot;ibireme&quot;: &quot;ibireme@gmail.com&quot;</span><br><span class="line">&#125;,</span><br><span class="line">&quot;social_media_url&quot;: &quot;http://blog.ibireme.com&quot;,</span><br><span class="line">&quot;homepage&quot;: &quot;https://github.com/ibireme/YYImage&quot;,</span><br><span class="line">&quot;platforms&quot;: &#123;</span><br><span class="line">&quot;ios&quot;: &quot;6.0&quot;</span><br><span class="line">&#125;,</span><br><span class="line">&quot;source&quot;: &#123;</span><br><span class="line">&quot;git&quot;: &quot;https://github.com/ibireme/YYImage.git&quot;,</span><br><span class="line">&quot;tag&quot;: &quot;1.0&quot;</span><br><span class="line">&#125;,</span><br><span class="line">&quot;requires_arc&quot;: true,</span><br><span class="line">&quot;default_subspecs&quot;: &quot;Core&quot;,</span><br><span class="line">&quot;subspecs&quot;: [</span><br><span class="line">&#123;</span><br><span class="line">&quot;name&quot;: &quot;Core&quot;,</span><br><span class="line">&quot;source_files&quot;: &quot;YYImage/*.&#123;h,m&#125;&quot;,</span><br><span class="line">&quot;public_header_files&quot;: &quot;YYImage/*.&#123;h&#125;&quot;,</span><br><span class="line">&quot;libraries&quot;: &quot;z&quot;,</span><br><span class="line">&quot;frameworks&quot;: [</span><br><span class="line">&quot;UIKit&quot;,</span><br><span class="line">&quot;CoreFoundation&quot;,</span><br><span class="line">&quot;QuartzCore&quot;,</span><br><span class="line">&quot;AssetsLibrary&quot;,</span><br><span class="line">&quot;ImageIO&quot;,</span><br><span class="line">&quot;Accelerate&quot;,</span><br><span class="line">&quot;MobileCoreServices&quot;</span><br><span class="line">]</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">&quot;name&quot;: &quot;WebP&quot;,</span><br><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">&quot;YYImage/Core&quot;: [</span><br><span class="line"></span><br><span class="line">]</span><br><span class="line">&#125;,</span><br><span class="line">&quot;ios&quot;: &#123;</span><br><span class="line">&quot;vendored_frameworks&quot;: &quot;Vendor/WebP.framework&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="本地索引文件"><a href="#本地索引文件" class="headerlink" title="本地索引文件"></a>本地索引文件</h3><p>当执行pod search命令时，如果本地索引不存在，就会创建出来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pod search afn</span><br><span class="line">Creating search index for spec repo &apos;master&apos;..</span><br></pre></td></tr></table></figure></p>
+<p>本地索引文件路径为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Library/Cache/Cocoapods/Pods</span><br></pre></td></tr></table></figure></p>
+<h3 id="远程框架库"><a href="#远程框架库" class="headerlink" title="远程框架库"></a>远程框架库</h3><p>以YYImage为例，它的远程框架库就是json文件中的source：<br><a href="https://github.com/ibireme/YYImage.git" target="_blank" rel="noopener">https://github.com/ibireme/YYImage.git</a></p>
 <p>所以再用文字总结下Cocoapods工作流程大概就是<br>1、本地安装cocoapods，建立本地索引库和远程索引库的映射<br>2、本地项目pod install<br>3、查找本地索引文件，然后找到各个库对应版本的json文件<br>4、通过json文件source字段找到引用库的git地址<br>5、把库文件拉到本地项目</p>
 <h2 id="建立Cocoapods私有库（framework）"><a href="#建立Cocoapods私有库（framework）" class="headerlink" title="建立Cocoapods私有库（framework）"></a>建立Cocoapods私有库（framework）</h2><p>建议采用framework的形式创建私有库，这可以很好的在开发阶段检查出库的不兼容或者文件权限出现的问题，Swift编写的代码通过Cocoapods生成的都是framework。</p>
-<h3 id="0、准备工作："><a href="#0、准备工作：" class="headerlink" title="0、准备工作："></a>0、准备工作：</h3><p><strong>如何建立远程索引库</strong><br>首先我们需要建立一个内部的远程索引库，类似<code>Cocoapods/Spec</code>的功能，之后添加的库文件索引文件都会存放到这里：<a href="https://zhangferry@bitbucket.org/sealcn/sealrepo.git" target="_blank" rel="external">https://zhangferry@bitbucket.org/sealcn/sealrepo.git</a><br>建立本地和远程索引仓库的关联：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod repo add SealRepo https://zhangferry@bitbucket.org/sealcn/sealrepo.git</div></pre></td></tr></table></figure></p>
+<h3 id="0、准备工作："><a href="#0、准备工作：" class="headerlink" title="0、准备工作："></a>0、准备工作：</h3><p><strong>如何建立远程索引库</strong><br>首先我们需要建立一个内部的远程索引库，类似<code>Cocoapods/Spec</code>的功能，之后添加的库文件索引文件都会存放到这里：<a href="https://zhangferry@bitbucket.org/sealcn/sealrepo.git" target="_blank" rel="noopener">https://zhangferry@bitbucket.org/sealcn/sealrepo.git</a><br>建立本地和远程索引仓库的关联：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo add SealRepo https://zhangferry@bitbucket.org/sealcn/sealrepo.git</span><br></pre></td></tr></table></figure></p>
 <p>执行<code>pod repo</code><br><img src="https://upload-images.jianshu.io/upload_images/1059465-bc4880496ed40db6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="91bd1bf2.png"></p>
 <p>可以看到我们有了两个索引仓库，可以去在这个目录<code>~/.cocoapods/repos</code>看到我们刚建立的SealRepo。</p>
-<p><strong>如何组织文件结构</strong><br>我们可以看下<a href="https://github.com/Alamofire/Alamofire" target="_blank" rel="external">Alamofire</a>的文件组织结构：</p>
+<p><strong>如何组织文件结构</strong><br>我们可以看下<a href="https://github.com/Alamofire/Alamofire" target="_blank" rel="noopener">Alamofire</a>的文件组织结构：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1059465-a2e182ab582670fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p>我们看到这几个文件：</p>
 <ul>
@@ -386,76 +466,60 @@
 <li><code>Tests</code>测试文件也是可选。<br>我们制作私有库时会仿照这个格式。<h3 id="一、制作framework"><a href="#一、制作framework" class="headerlink" title="一、制作framework"></a>一、制作framework</h3><img src="https://upload-images.jianshu.io/upload_images/1059465-273e8e64bfbb617d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3f2a44c9.png"></li>
 </ul>
 <p>因为是Swift的工程，接口的开放直接通过open、public等关键字指定，所以工程中的ABTest.h头文件可以删除，加入我们自己的库文件。<br><img src="https://upload-images.jianshu.io/upload_images/1059465-312ee35e4b2f5ab9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5f8d2d4d.png"><br>注意：在写公有库文件时，对外界开放的属性，方法需要带上<code>public</code>或者<code>open</code>关键字。</p>
-<h3 id="二、添加Example工程"><a href="#二、添加Example工程" class="headerlink" title="二、添加Example工程"></a>二、添加Example工程</h3><p>通过Xcode菜单栏<code>File-&gt;New-&gt;Target...</code>添加一个Example工程。<br><strong>引入第三方库</strong><br>如果无第三库引用可以跳过这一步。<br>注意：引入Podfile文件，需要framework和Example两个target都添加上。<br><strong>测试项目</strong><br>需要先编译framework，没有问题之后，导入到Demo项目里<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import ABTest</div></pre></td></tr></table></figure></p>
+<h3 id="二、添加Example工程"><a href="#二、添加Example工程" class="headerlink" title="二、添加Example工程"></a>二、添加Example工程</h3><p>通过Xcode菜单栏<code>File-&gt;New-&gt;Target...</code>添加一个Example工程。<br><strong>引入第三方库</strong><br>如果无第三库引用可以跳过这一步。<br>注意：引入Podfile文件，需要framework和Example两个target都添加上。<br><strong>测试项目</strong><br>需要先编译framework，没有问题之后，导入到Demo项目里<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import ABTest</span><br></pre></td></tr></table></figure></p>
 <p>运行Dome，测试开发功能有没有问题。</p>
-<p><strong>push项目到远程库</strong><br>如果已经关联过远程私有仓库，这一步可以跳过。<br>在远程配置一个git地址，然后将本地项目关联到远程私有仓库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin 仓库地址</div></pre></td></tr></table></figure></p>
-<p>如过是首次关联远程仓库，在push之前我们一般需要先拉去远程分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull origin master</div></pre></td></tr></table></figure></p>
-<p>如果提示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">There is no tracking information for the current branch.</div></pre></td></tr></table></figure></p>
-<p>那是因为本地库和远程库没有建立联系，git认为这两个仓库可能不是同一个，如果我们确认对应库没问题，可以使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull origin master --allow-unrelated-histories</div></pre></td></tr></table></figure></p>
-<p>将远程库文件强制拉到本地仓库。<br>之后再执行push命令将项目推到远程仓库。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -u origin master</div></pre></td></tr></table></figure></p>
-<h3 id="三、Cocoapods配置文件"><a href="#三、Cocoapods配置文件" class="headerlink" title="三、Cocoapods配置文件"></a>三、Cocoapods配置文件</h3><p><strong>1、添加.swift-version</strong><br>.swift-version文件用来告诉cocoapods当前文件swift的版本，用命令行建立：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ echo &quot;3.0&quot; &gt; .swift-version</div></pre></td></tr></table></figure></p>
-<p><strong>2、添加LICENSE</strong><br>每个使用cocoapods添加的库都需要准守开源协议，一般是<code>MIT</code>协议，因为bitbucket没法自动生成，我们可以手动生成这个同名文件，然后把协议内容复制进去：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">MIT License</div><div class="line"></div><div class="line">Copyright (c) [year] [fullname]</div><div class="line"></div><div class="line">Permission is hereby granted, free of charge, to any person obtaining a copy</div><div class="line">of this software and associated documentation files (the &quot;Software&quot;), to deal</div><div class="line">in the Software without restriction, including without limitation the rights</div><div class="line">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</div><div class="line">copies of the Software, and to permit persons to whom the Software is</div><div class="line">furnished to do so, subject to the following conditions:</div><div class="line"></div><div class="line">The above copyright notice and this permission notice shall be included in all</div><div class="line">copies or substantial portions of the Software.</div><div class="line"></div><div class="line">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</div><div class="line">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</div><div class="line">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</div><div class="line">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</div><div class="line">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</div><div class="line">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</div><div class="line">SOFTWARE.</div></pre></td></tr></table></figure></p>
-<p><strong>3、创建库描述文件</strong><br>可以通过命令行生成描述文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod spec create ABTest</div></pre></td></tr></table></figure></p>
-<p>然后我们编辑ABTest.podspec文件，可以仿照下面的写法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new do |s|</div><div class="line"></div><div class="line">s.name         = &quot;ABTest&quot;</div><div class="line">s.version      = &quot;0.0.1&quot;</div><div class="line">s.summary      = &quot;ABTest with Firebase&quot;</div><div class="line">s.description  = &quot;This is a ABTest Framworks on swift&quot;</div><div class="line">s.homepage     = &quot;https://bitbucket.org/sealcn/remoteabtest/src/master/&quot;</div><div class="line">s.license      = &#123; :type =&gt; &quot;MIT&quot;, :file =&gt; &quot;LICENSE&quot; &#125;</div><div class="line">s.author             = &#123; &quot;zhangferry&quot; =&gt; &quot;zhangfei@dailyinnovation.biz&quot; &#125;</div><div class="line"></div><div class="line"># ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #</div><div class="line">s.platform     = :ios, &quot;8.0&quot;</div><div class="line"># ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #</div><div class="line">s.source       = &#123; :git =&gt; &quot;https://zhangferry@bitbucket.org/sealcn/remoteabtest.git&quot;, :tag =&gt; s.version &#125;</div><div class="line">s.source_files  = &quot;Source&quot;, &quot;Source/*.swift&quot;</div><div class="line"></div><div class="line"># ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #</div><div class="line"># s.resource  = &quot;icon.png&quot;</div><div class="line"># s.resources = &quot;Resources/*.png&quot;</div><div class="line"></div><div class="line"># ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #</div><div class="line">s.requires_arc = true</div><div class="line">s.static_framework = true</div><div class="line">s.dependency &quot;Firebase/Core&quot;</div><div class="line">s.dependency &quot;Firebase/RemoteConfig&quot;</div><div class="line">#s.ios.vendored_frameworks = &quot;ABTest.framework&quot;</div><div class="line">s.xcconfig = &#123; &apos;SWIFT_INCLUDE_PATHS&apos; =&gt; &apos;$(PODS_ROOT)/Firebase/CoreOnly/Sources&apos; &#125;</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p><strong>push项目到远程库</strong><br>如果已经关联过远程私有仓库，这一步可以跳过。<br>在远程配置一个git地址，然后将本地项目关联到远程私有仓库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 仓库地址</span><br></pre></td></tr></table></figure></p>
+<p>如过是首次关联远程仓库，在push之前我们一般需要先拉去远程分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
+<p>如果提示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">There is no tracking information for the current branch.</span><br></pre></td></tr></table></figure></p>
+<p>那是因为本地库和远程库没有建立联系，git认为这两个仓库可能不是同一个，如果我们确认对应库没问题，可以使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure></p>
+<p>将远程库文件强制拉到本地仓库。<br>之后再执行push命令将项目推到远程仓库。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure></p>
+<h3 id="三、Cocoapods配置文件"><a href="#三、Cocoapods配置文件" class="headerlink" title="三、Cocoapods配置文件"></a>三、Cocoapods配置文件</h3><p><strong>1、添加.swift-version</strong><br>.swift-version文件用来告诉cocoapods当前文件swift的版本，用命令行建立：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo &quot;3.0&quot; &gt; .swift-version</span><br></pre></td></tr></table></figure></p>
+<p><strong>2、添加LICENSE</strong><br>每个使用cocoapods添加的库都需要准守开源协议，一般是<code>MIT</code>协议，因为bitbucket没法自动生成，我们可以手动生成这个同名文件，然后把协议内容复制进去：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">MIT License</span><br><span class="line"></span><br><span class="line">Copyright (c) [year] [fullname]</span><br><span class="line"></span><br><span class="line">Permission is hereby granted, free of charge, to any person obtaining a copy</span><br><span class="line">of this software and associated documentation files (the &quot;Software&quot;), to deal</span><br><span class="line">in the Software without restriction, including without limitation the rights</span><br><span class="line">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span><br><span class="line">copies of the Software, and to permit persons to whom the Software is</span><br><span class="line">furnished to do so, subject to the following conditions:</span><br><span class="line"></span><br><span class="line">The above copyright notice and this permission notice shall be included in all</span><br><span class="line">copies or substantial portions of the Software.</span><br><span class="line"></span><br><span class="line">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span><br><span class="line">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span><br><span class="line">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span><br><span class="line">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span><br><span class="line">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span><br><span class="line">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span><br><span class="line">SOFTWARE.</span><br></pre></td></tr></table></figure></p>
+<p><strong>3、创建库描述文件</strong><br>可以通过命令行生成描述文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod spec create ABTest</span><br></pre></td></tr></table></figure></p>
+<p>然后我们编辑ABTest.podspec文件，可以仿照下面的写法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Pod::Spec.new do |s|</span><br><span class="line"></span><br><span class="line">s.name         = &quot;ABTest&quot;</span><br><span class="line">s.version      = &quot;0.0.1&quot;</span><br><span class="line">s.summary      = &quot;ABTest with Firebase&quot;</span><br><span class="line">s.description  = &quot;This is a ABTest Framworks on swift&quot;</span><br><span class="line">s.homepage     = &quot;https://bitbucket.org/sealcn/remoteabtest/src/master/&quot;</span><br><span class="line">s.license      = &#123; :type =&gt; &quot;MIT&quot;, :file =&gt; &quot;LICENSE&quot; &#125;</span><br><span class="line">s.author             = &#123; &quot;zhangferry&quot; =&gt; &quot;zhangfei@dailyinnovation.biz&quot; &#125;</span><br><span class="line"></span><br><span class="line"># ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #</span><br><span class="line">s.platform     = :ios, &quot;8.0&quot;</span><br><span class="line"># ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #</span><br><span class="line">s.source       = &#123; :git =&gt; &quot;https://zhangferry@bitbucket.org/sealcn/remoteabtest.git&quot;, :tag =&gt; s.version &#125;</span><br><span class="line">s.source_files  = &quot;Source&quot;, &quot;Source/*.swift&quot;</span><br><span class="line"></span><br><span class="line"># ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #</span><br><span class="line"># s.resource  = &quot;icon.png&quot;</span><br><span class="line"># s.resources = &quot;Resources/*.png&quot;</span><br><span class="line"></span><br><span class="line"># ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #</span><br><span class="line">s.requires_arc = true</span><br><span class="line">s.static_framework = true</span><br><span class="line">s.dependency &quot;Firebase/Core&quot;</span><br><span class="line">s.dependency &quot;Firebase/RemoteConfig&quot;</span><br><span class="line">#s.ios.vendored_frameworks = &quot;ABTest.framework&quot;</span><br><span class="line">s.xcconfig = &#123; &apos;SWIFT_INCLUDE_PATHS&apos; =&gt; &apos;$(PODS_ROOT)/Firebase/CoreOnly/Sources&apos; &#125;</span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
 <p>此时我们的文件目录看起来应该大概是这个样子：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-22fe03c83eebed9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="framework_catalog.png"></p>
-<p><strong>4、验证本地<code>podspec</code>文件</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod lib lint</div></pre></td></tr></table></figure></p>
-<p>该命令用于检查podspec文件书写是否正确，如果有error需要解决，warning可以不用管（可能会遇到较多问题，需耐心解决0。0）。解决之后再次运行检查命令，当命令行显示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-&gt; ABTest (0.0.1)</div><div class="line">ABTest passed validation.</div></pre></td></tr></table></figure></p>
-<p>说明我们本地配置成功了，到这里本地的第一个版本就算完成了！<br>然后我们需要将本次修改提交打上tag，提交到远程仓库。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &quot;build v0.0.1&quot;</div><div class="line">git push origin master</div><div class="line">git tag 0.0.1</div><div class="line">git push --tags</div></pre></td></tr></table></figure></p>
-<p><strong>5、验证远程索引文件</strong><br>上传代码成功之后，我们需要再次验证它跟远程仓库（ABTest远程库和.podspec）是否匹配正确，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod spec lint</div></pre></td></tr></table></figure></p>
-<p>当出现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ABTest.podspec passed validation</div></pre></td></tr></table></figure></p>
+<p><strong>4、验证本地<code>podspec</code>文件</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod lib lint</span><br></pre></td></tr></table></figure></p>
+<p>该命令用于检查podspec文件书写是否正确，如果有error需要解决，warning可以不用管（可能会遇到较多问题，需耐心解决0。0）。解决之后再次运行检查命令，当命令行显示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-&gt; ABTest (0.0.1)</span><br><span class="line">ABTest passed validation.</span><br></pre></td></tr></table></figure></p>
+<p>说明我们本地配置成功了，到这里本地的第一个版本就算完成了！<br>然后我们需要将本次修改提交打上tag，提交到远程仓库。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;build v0.0.1&quot;</span><br><span class="line">git push origin master</span><br><span class="line">git tag 0.0.1</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure></p>
+<p><strong>5、验证远程索引文件</strong><br>上传代码成功之后，我们需要再次验证它跟远程仓库（ABTest远程库和.podspec）是否匹配正确，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod spec lint</span><br></pre></td></tr></table></figure></p>
+<p>当出现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ABTest.podspec passed validation</span><br></pre></td></tr></table></figure></p>
 <p>时，说明我们远程仓库匹配正确。</p>
-<p><strong>6、提交podspec文件到SpecsRepo</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod repo push SealRepo ABTest.podspec</div></pre></td></tr></table></figure></p>
+<p><strong>6、提交podspec文件到SpecsRepo</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod repo push SealRepo ABTest.podspec</span><br></pre></td></tr></table></figure></p>
 <p>这个命令会包含<code>pod spec lint</code>命令，验证通过之后，会添加.podspec文件到本地索引库：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1059465-8df2158ae8033cfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7dffd809.png"></p>
 <p>和远程索引库：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-749a69f468b86656.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7e052503.png"></p>
 <h2 id="使用私有库"><a href="#使用私有库" class="headerlink" title="使用私有库"></a>使用私有库</h2><h3 id="引用私有库"><a href="#引用私有库" class="headerlink" title="引用私有库"></a>引用私有库</h3><p>我们可以像使用其他库文件一样在Podfile文件中添加使用私有库了，引入方法有两种：</p>
-<p><strong>1、全局添加</strong><br>在Podfile文件最上面添加一行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source &apos;https://zhangferry@bitbucket.org/sealcn/sealrepo.git&apos;</div></pre></td></tr></table></figure></p>
+<p><strong>1、全局添加</strong><br>在Podfile文件最上面添加一行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source &apos;https://zhangferry@bitbucket.org/sealcn/sealrepo.git&apos;</span><br></pre></td></tr></table></figure></p>
 <p>注意：如果私有仓库和cocoapods仓库出现同名库，会出现不可预期的情况（随机拉下来公有库或者私有库文件）。这时我们需要使用单独添加的方式。</p>
-<p><strong>2、单独添加</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod &apos;ABTest&apos;, :git =&gt; &apos;https://zhangferry@bitbucket.org/sealcn/remoteabtest.git&apos;</div></pre></td></tr></table></figure></p>
+<p><strong>2、单独添加</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod &apos;ABTest&apos;, :git =&gt; &apos;https://zhangferry@bitbucket.org/sealcn/remoteabtest.git&apos;</span><br></pre></td></tr></table></figure></p>
 <p>使用时通过import方法导入库就可以了。</p>
 <h3 id="更新私有库"><a href="#更新私有库" class="headerlink" title="更新私有库"></a>更新私有库</h3><p>当我们需要升级私有库，添加或者修改方法时，只需要：</p>
 <p>1、修改<code>.podspec</code>文件中<code>s.version</code>的版本号</p>
 <p>2、提交本地修改至远程，打上对应tag</p>
 <p>3、使用项目的工程执行<code>pod update</code></p>
 <h2 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h2><p>1、pod search 查不到本地库<br>这个可能是cocoadpods本身问题，pod install安装没有问题</p>
-<p>2、更新了版本，但是pod update没有找到<br>我们可以采用如下形式，手动指定版本号：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod &apos;ABTest&apos;, :git =&gt; &apos;https://zhangferry@bitbucket.org/sealcn/remoteabtest.git&apos;, :tag =&gt; &apos;0.0.4&apos;</div></pre></td></tr></table></figure></p>
-<p>3、提示<code>The &#39;Pods-App&#39; target has transitive dependencies that include static binaries</code><br>这是因为引入的库被编译成了静态库，我们可以在<code>.podspec</code>文件中加入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.static_framework = true</div></pre></td></tr></table></figure></p>
-<p>4、引入的第三方库，在<code>pod lint</code>时提示找不到<br>可以手动指定pod目录，将firsebase替换成你的库文件路径:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.xcconfig = &#123; &apos;SWIFT_INCLUDE_PATHS&apos; =&gt; &apos;$(PODS_ROOT)/Firebase/CoreOnly/Sources&apos; &#125;</div></pre></td></tr></table></figure></p>
+<p>2、更新了版本，但是pod update没有找到<br>我们可以采用如下形式，手动指定版本号：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod &apos;ABTest&apos;, :git =&gt; &apos;https://zhangferry@bitbucket.org/sealcn/remoteabtest.git&apos;, :tag =&gt; &apos;0.0.4&apos;</span><br></pre></td></tr></table></figure></p>
+<p>3、提示<code>The &#39;Pods-App&#39; target has transitive dependencies that include static binaries</code><br>这是因为引入的库被编译成了静态库，我们可以在<code>.podspec</code>文件中加入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.static_framework = true</span><br></pre></td></tr></table></figure></p>
+<p>4、引入的第三方库，在<code>pod lint</code>时提示找不到<br>可以手动指定pod目录，将firsebase替换成你的库文件路径:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.xcconfig = &#123; &apos;SWIFT_INCLUDE_PATHS&apos; =&gt; &apos;$(PODS_ROOT)/Firebase/CoreOnly/Sources&apos; &#125;</span><br></pre></td></tr></table></figure></p>
 <p>5、提示source_files对应文件为空<br>每次<code>pod lint</code>时都是根据版本号进行查找的，可以检查下当前修改跟版本号是否对应。</p>
 
       
     </div>
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-        
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div></div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-      <span>赏</span>
-    </button>
-    <div id="QR" style="display: none;">
-      
-        <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/wechat-reward-image.jpg" alt="zhangferry WeChat Pay"/>
-          <p>微信打赏</p>
-        </div>
-      
-      
-    </div>
-  </div>
+    
 
-
+    
       
-    </div>
+    
+    
 
+    
 
     <footer class="post-footer">
       
@@ -464,6 +528,10 @@
             <a href="/tags/cocoapods/" rel="tag"># cocoapods</a>
           
         </div>
+      
+
+      
+      
       
 
       
@@ -491,28 +559,21 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
           </div>
           
 
+  
 
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2018/08/30/private-Cocoapods/"
-           data-title="使用Cocoapods管理私有库组件" data-url="http://zhangferry.github.io/2018/08/30/private-Cocoapods/">
-      </div>
-    
-  </div>
 
 
         </div>
@@ -528,101 +589,154 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             Table of Contents
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             Overview
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/zhangferry.png"
-               alt="zhangferry" />
-          <p class="site-author-name" itemprop="name">zhangferry</p>
-          <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">21</span>
-              <span class="site-state-item-name">posts</span>
-            </a>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zhangferry">
+            
+              <p class="site-author-name" itemprop="name">zhangferry</p>
+              <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
           </div>
 
           
-            <div class="site-state-item site-state-categories">
+            <nav class="site-state motion-element">
               
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">categories</span>
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zhangferry" title="GitHub &rarr; https://github.com/zhangferry" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/2947186387/profile" title="Weibo &rarr; https://weibo.com/2947186387/profile" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
               
             </div>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">tags</span>
-              </a>
-            </div>
+
+          
           
 
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
           
             
-              <span class="links-of-author-item">
-                <a href="https://github.com/zhangferry" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/2947186387/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  微博
-                </a>
-              </span>
-            
           
+          
+
         </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -630,8 +744,10 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
+      
+
       
 
     </div>
@@ -644,43 +760,61 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">zhangferry</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
-</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.7.0</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -694,79 +828,15 @@
 
 
 
-  
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"zhangferry"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
 
@@ -776,6 +846,58 @@
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
   
 
   
@@ -783,116 +905,24 @@
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("DuOwsJ3GAgOVpEsgoXwPefXF-gzGzoHsz", "e7aUnrStHzmE0hGJXLsLxHpk");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>

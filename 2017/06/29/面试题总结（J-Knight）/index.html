@@ -1,4 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6,15 +15,11 @@
 
 
 <html class="theme-next mist use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
 
 
 
@@ -27,48 +32,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="iOS知识点," />
 
 
 
@@ -77,41 +40,46 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
 
 
 
-<meta name="description" content="前一段时间看了J_Knight的2017年5月iOS找人心得（附面试题）。作为一个在编程前线奋斗了将近两年的iOS从业人员，面对这些题目时，有些竟感觉生疏，甚至答不上来，很是惭愧。个人感觉，像runtime、线程、信号量相关的偏底层知识虽然平时基本用不到。特别是很多人可能都没参与过稍复杂项目的开发，优化，这些内容对于很多新手iOS开发来说只存在于理论。但并不是说这些知识不重要，相反，它是我们进阶">
-<meta property="og:type" content="article">
-<meta property="og:title" content="面试题总结（From J_Knight）">
-<meta property="og:url" content="http://zhangferry.github.io/2017/06/29/面试题总结（J-Knight）/index.html">
-<meta property="og:site_name" content="zhangferry`s blog">
-<meta property="og:description" content="前一段时间看了J_Knight的2017年5月iOS找人心得（附面试题）。作为一个在编程前线奋斗了将近两年的iOS从业人员，面对这些题目时，有些竟感觉生疏，甚至答不上来，很是惭愧。个人感觉，像runtime、线程、信号量相关的偏底层知识虽然平时基本用不到。特别是很多人可能都没参与过稍复杂项目的开发，优化，这些内容对于很多新手iOS开发来说只存在于理论。但并不是说这些知识不重要，相反，它是我们进阶">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-47afdfd1950a72c6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-b8314aaf33c5dd27.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-01T03:24:44.200Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面试题总结（From J_Knight）">
-<meta name="twitter:description" content="前一段时间看了J_Knight的2017年5月iOS找人心得（附面试题）。作为一个在编程前线奋斗了将近两年的iOS从业人员，面对这些题目时，有些竟感觉生疏，甚至答不上来，很是惭愧。个人感觉，像runtime、线程、信号量相关的偏底层知识虽然平时基本用不到。特别是很多人可能都没参与过稍复杂项目的开发，优化，这些内容对于很多新手iOS开发来说只存在于理论。但并不是说这些知识不重要，相反，它是我们进阶">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-47afdfd1950a72c6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
+
+
+
+
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主大人'
-    },
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -123,23 +91,51 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://zhangferry.github.io/2017/06/29/面试题总结（J-Knight）/"/>
-
-
-
-
-
-  <title> 面试题总结（From J_Knight） | zhangferry`s blog </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
-
   
 
 
 
-  <script type="text/javascript">
+
+  <meta name="description" content="前一段时间看了J_Knight的2017年5月iOS找人心得（附面试题）。作为一个在编程前线奋斗了将近两年的iOS从业人员，面对这些题目时，有些竟感觉生疏，甚至答不上来，很是惭愧。个人感觉，像runtime、线程、信号量相关的偏底层知识虽然平时基本用不到。特别是很多人可能都没参与过稍复杂项目的开发，优化，这些内容对于很多新手iOS开发来说只存在于理论。但并不是说这些知识不重要，相反，它是我们进阶">
+<meta name="keywords" content="iOS知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试题总结（From J_Knight）">
+<meta property="og:url" content="http://zhangferry.github.io/2017/06/29/面试题总结（J-Knight）/index.html">
+<meta property="og:site_name" content="zhangferry`s blog">
+<meta property="og:description" content="前一段时间看了J_Knight的2017年5月iOS找人心得（附面试题）。作为一个在编程前线奋斗了将近两年的iOS从业人员，面对这些题目时，有些竟感觉生疏，甚至答不上来，很是惭愧。个人感觉，像runtime、线程、信号量相关的偏底层知识虽然平时基本用不到。特别是很多人可能都没参与过稍复杂项目的开发，优化，这些内容对于很多新手iOS开发来说只存在于理论。但并不是说这些知识不重要，相反，它是我们进阶">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-47afdfd1950a72c6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-b8314aaf33c5dd27.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-16T15:12:40.503Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试题总结（From J_Knight）">
+<meta name="twitter:description" content="前一段时间看了J_Knight的2017年5月iOS找人心得（附面试题）。作为一个在编程前线奋斗了将近两年的iOS从业人员，面对这些题目时，有些竟感觉生疏，甚至答不上来，很是惭愧。个人感觉，像runtime、线程、信号量相关的偏底层知识虽然平时基本用不到。特别是很多人可能都没参与过稍复杂项目的开发，优化，这些内容对于很多新手iOS开发来说只存在于理论。但并不是说这些知识不重要，相反，它是我们进阶">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-47afdfd1950a72c6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="http://zhangferry.github.io/2017/06/29/面试题总结（J-Knight）/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>面试题总结（From J_Knight） | zhangferry`s blog</title>
+  
+
+
+
+
+
+
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -155,86 +151,151 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">zhangferry`s blog</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhangferry`s blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
   </div>
-  <p class="site-subtitle"></p>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
+
 
 <nav class="site-nav">
-  
-
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -242,12 +303,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -260,32 +329,32 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2017/06/29/面试题总结（J-Knight）/">
+  
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="zhangferry">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/zhangferry.png">
-  </span>
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2017/06/29/面试题总结（J-Knight）/">
 
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="zhangferry`s blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="zhangferry`s blog" src="">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry`s blog">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                面试题总结（From J_Knight）
+          <h1 class="post-title" itemprop="name headline">面试题总结（From J_Knight）
+
               
             
           </h1>
@@ -293,34 +362,58 @@
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-29T17:22:27+08:00">
-                2017-06-29
-              </time>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-06-29 17:22:27" itemprop="dateCreated datePublished" datetime="2017-06-29T17:22:27+08:00">2017-06-29</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-16 23:12:40" itemprop="dateModified" datetime="2019-01-16T23:12:40+08:00">2019-01-16</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
 
                 
                 
@@ -330,27 +423,12 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2017/06/29/面试题总结（J-Knight）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/29/面试题总结（J-Knight）/" itemprop="commentCount"></span>
-                </a>
-              </span>
             
           
 
           
+          
 
-          
-          
-             <span id="/2017/06/29/面试题总结（J-Knight）/" class="leancloud_visitors" data-flag-title="面试题总结（From J_Knight）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">Visitors </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
           
 
           
@@ -361,7 +439,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -369,14 +449,14 @@
 
       
         <blockquote>
-<p>前一段时间看了<a href="https://knightsj.github.io/" target="_blank" rel="external">J_Knight</a>的<a href="http://www.jianshu.com/p/56e40ea56813" target="_blank" rel="external">2017年5月iOS找人心得（附面试题）</a>。作为一个在编程前线奋斗了将近两年的iOS从业人员，面对这些题目时，有些竟感觉生疏，甚至答不上来，很是惭愧。个人感觉，像runtime、线程、信号量相关的偏底层知识虽然平时基本用不到。特别是很多人可能都没参与过稍复杂项目的开发，优化，这些内容对于很多新手iOS开发来说只存在于理论。但并不是说这些知识不重要，相反，它是我们进阶的必经之路。此篇文章的目的一方面自己整理，一方面希望和大家共同学习进步。以下内容多数为整理，时间仓促可能有不准确的地方，如果缺漏，欢迎指正。</p>
+<p>前一段时间看了<a href="https://knightsj.github.io/" target="_blank" rel="noopener">J_Knight</a>的<a href="http://www.jianshu.com/p/56e40ea56813" target="_blank" rel="noopener">2017年5月iOS找人心得（附面试题）</a>。作为一个在编程前线奋斗了将近两年的iOS从业人员，面对这些题目时，有些竟感觉生疏，甚至答不上来，很是惭愧。个人感觉，像runtime、线程、信号量相关的偏底层知识虽然平时基本用不到。特别是很多人可能都没参与过稍复杂项目的开发，优化，这些内容对于很多新手iOS开发来说只存在于理论。但并不是说这些知识不重要，相反，它是我们进阶的必经之路。此篇文章的目的一方面自己整理，一方面希望和大家共同学习进步。以下内容多数为整理，时间仓促可能有不准确的地方，如果缺漏，欢迎指正。</p>
 </blockquote>
-<p>部分答案出处：<a href="https://github.com/ChenYilong/iOSInterviewQuestions" target="_blank" rel="external">iOSInterviewQuestions</a><br><a id="more"></a></p>
+<p>部分答案出处：<a href="https://github.com/ChenYilong/iOSInterviewQuestions" target="_blank" rel="noopener">iOSInterviewQuestions</a><br><a id="more"></a></p>
 <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="为什么说Objective-C是一门动态语言？"><a href="#为什么说Objective-C是一门动态语言？" class="headerlink" title="为什么说Objective-C是一门动态语言？"></a>为什么说Objective-C是一门动态语言？</h2><p>动态语言，是指程序在运行时可以改变其结构：新的函数可以被引进，已有的函数可以被删除等在结构上的变化。比如Ruby、Python等就是动态语言，而C、C++等语言则不属于动态语言。<br>所谓的动态类型语言，意思就是类型的检查是在运行时做的。</p>
 <p>1、动态类型。 如id类型。实际上静态类型因为其固定性和可预知性而使用得更加广泛。静态类型是强类型，而动态类型属于弱类型。运行时决定接收者。</p>
 <p>2、动态绑定。让代码在运行时判断需要调用什么方法，而不是在编译时。与其他面向对象语言一样，方法调用和代码并没有在编译时连接在一起，而是在消息发送时才进行连接。运行时决定调用哪个方法。</p>
 <p>3、动态载入。让程序在运行时添加代码模块以及其他资源。用户可以根据需要加载一些可执行代码和资源，而不是在启动时就加载所有组件。可执行代码中可以含有和程序运行时整合的新类。</p>
-<h2 id="讲一下MVC和MVVM-MVP"><a href="#讲一下MVC和MVVM-MVP" class="headerlink" title="讲一下MVC和MVVM,MVP"></a>讲一下MVC和MVVM,MVP</h2><p><a href="http://www.cocoachina.com/ios/20160108/14916.html" target="_blank" rel="external">iOS 架构模式–解密 MVC，MVP，MVVM以及VIPER架构</a></p>
+<h2 id="讲一下MVC和MVVM-MVP"><a href="#讲一下MVC和MVVM-MVP" class="headerlink" title="讲一下MVC和MVVM,MVP"></a>讲一下MVC和MVVM,MVP</h2><p><a href="http://www.cocoachina.com/ios/20160108/14916.html" target="_blank" rel="noopener">iOS 架构模式–解密 MVC，MVP，MVVM以及VIPER架构</a></p>
 <h2 id="为什么代理要用weak？代理的delegate和dataSource有什么区别？block和代理的区别"><a href="#为什么代理要用weak？代理的delegate和dataSource有什么区别？block和代理的区别" class="headerlink" title="为什么代理要用weak？代理的delegate和dataSource有什么区别？block和代理的区别?"></a>为什么代理要用weak？代理的delegate和dataSource有什么区别？block和代理的区别?</h2><p>防止循环引用。</p>
 <p>另外，不建议使用assign<br>weak 当计数器为0 时对象被释放，地址指针就置为了nil 了。<br>assign 当计数器为0 时 对象被释放，地址指针还是指向那个地址，就会产生野指针</p>
 <p>datasource协议里面东西是跟内容有关的，主要是cell的构造函数，各种属性<br>delegate协议里面的方法主要是操作相关的，移动编辑之类的，你都写上要用什么方法自己去翻就是了<br>delegate控制的是UI，是上层的东西；而datasource控制的是数据。他们本质都是回调，只是回调的对象不同。</p>
@@ -391,7 +471,7 @@
 <h2 id="NSString为什么要用copy关键字，如果用strong会有什么问题？"><a href="#NSString为什么要用copy关键字，如果用strong会有什么问题？" class="headerlink" title="NSString为什么要用copy关键字，如果用strong会有什么问题？"></a>NSString为什么要用copy关键字，如果用strong会有什么问题？</h2><p>因为父类指针可以指向子类对象,使用 copy 的目的是为了让本对象的属性不受外界影响,使用 copy 无论给我传入是一个可变对象还是不可对象,我本身持有的就是一个不可变的副本。</p>
 <p>如果我们使用是 strong ,那么这个属性就有可能指向一个可变对象,如果这个可变对象在外部被修改了,那么会影响该属性.</p>
 <h2 id="如何令自己所写的对象具有拷贝功能"><a href="#如何令自己所写的对象具有拷贝功能" class="headerlink" title="如何令自己所写的对象具有拷贝功能?"></a>如何令自己所写的对象具有拷贝功能?</h2><p>若想令自己所写的对象具有拷贝功能，则需实现 <code>NSCopying</code> 协议。如果自定义的对象分为可变版本与不可变版本，那么就要同时实现 <code>NSCopying</code> 与 <code>NSMutableCopying</code> 协议。</p>
-<h2 id="可变集合类-和-不可变集合类的-copy-和-mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？"><a href="#可变集合类-和-不可变集合类的-copy-和-mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？" class="headerlink" title="可变集合类 和 不可变集合类的 copy 和 mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？"></a>可变集合类 和 不可变集合类的 copy 和 mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[immutableObject copy] // 浅复制</div><div class="line">[immutableObject mutableCopy] //深复制</div><div class="line">[mutableObject copy] //深复制</div><div class="line">[mutableObject mutableCopy] //深复制</div></pre></td></tr></table></figure>
+<h2 id="可变集合类-和-不可变集合类的-copy-和-mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？"><a href="#可变集合类-和-不可变集合类的-copy-和-mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？" class="headerlink" title="可变集合类 和 不可变集合类的 copy 和 mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？"></a>可变集合类 和 不可变集合类的 copy 和 mutablecopy有什么区别？如果是集合是内容复制的话，集合里面的元素也是内容复制么？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[immutableObject copy] // 浅复制</span><br><span class="line">[immutableObject mutableCopy] //深复制</span><br><span class="line">[mutableObject copy] //深复制</span><br><span class="line">[mutableObject mutableCopy] //深复制</span><br></pre></td></tr></table></figure>
 <p>但是：集合对象的内容复制仅限于对象本身，对象元素仍然是指针复制</p>
 <h2 id="为什么IBOutlet修饰的UIView也适用weak关键字？"><a href="#为什么IBOutlet修饰的UIView也适用weak关键字？" class="headerlink" title="为什么IBOutlet修饰的UIView也适用weak关键字？"></a>为什么IBOutlet修饰的UIView也适用weak关键字？</h2><p>因为既然有外链那么视图在xib或者storyboard中肯定存在，视图已经对它有一个强引用了。<br>不过这个回答漏了个重要知识，使用storyboard（xib不行）创建的vc，会有一个叫<code>_topLevelObjectsToKeepAliveFromStoryboard</code>的私有数组强引用所有top level的对象，所以这时即便outlet声明成weak也没关系</p>
 <h2 id="nonatomic和atomic的区别？atomic是绝对的线程安全么？为什么？如果不是，那应该如何实现？"><a href="#nonatomic和atomic的区别？atomic是绝对的线程安全么？为什么？如果不是，那应该如何实现？" class="headerlink" title="nonatomic和atomic的区别？atomic是绝对的线程安全么？为什么？如果不是，那应该如何实现？"></a>nonatomic和atomic的区别？atomic是绝对的线程安全么？为什么？如果不是，那应该如何实现？</h2><p><code>atomic</code>会在创建时生成一些额外的代码用于帮助编写多线程程序，这会带来性能问题，通过声明 <code>nonatomic</code> 可以节省这些虽然很小但是不必要额外开销。</p>
@@ -414,7 +494,7 @@
 <h2 id="GCD的一些常用的函数？（group，barrier，信号量，线程同步）"><a href="#GCD的一些常用的函数？（group，barrier，信号量，线程同步）" class="headerlink" title="GCD的一些常用的函数？（group，barrier，信号量，线程同步）"></a>GCD的一些常用的函数？（group，barrier，信号量，线程同步）</h2><ul>
 <li><p>group<br>队列组通知监听函数(异步函数)dispatch_group_notify<br>队列组等待函数(同步函数)dispatch_group_wait<br>应用场景:下载两张图片，拼接图片后到主线程中刷新</p>
 </li>
-<li><p>barrier<br>栅栏函数执行顺序：栅栏函数之前的任务(执行完毕)–&gt; 栅栏函数的任务(执行完毕)–&gt; 栅栏函数之后的任务<br>栅栏函数前面和后面追加的操作执行顺序都不固定，但是前面的三个输出操作必然先执行，然后再执行栅栏函数中的操作，最后执行后面的三个输出操作。<br><a href="http://www.jianshu.com/p/d63c3100dd63" target="_blank" rel="external">栅栏函数</a></p>
+<li><p>barrier<br>栅栏函数执行顺序：栅栏函数之前的任务(执行完毕)–&gt; 栅栏函数的任务(执行完毕)–&gt; 栅栏函数之后的任务<br>栅栏函数前面和后面追加的操作执行顺序都不固定，但是前面的三个输出操作必然先执行，然后再执行栅栏函数中的操作，最后执行后面的三个输出操作。<br><a href="http://www.jianshu.com/p/d63c3100dd63" target="_blank" rel="noopener">栅栏函数</a></p>
 </li>
 <li><p>信号量<br>信号量大小是用于控制并发数量的<br>信号量就是一个资源计数器，对信号量有两个操作来达到互斥，分别是P和V操作。 一般情况是这样进行临界访问或互斥访问的：<br>设信号量值为1， 当一个进程1运行是，使用资源，进行P操作，即对信号量值减1，也就是资源数少了1个。这是信号量值为0。系统中规定当信号量值为0是，必须等待，知道信号量值不为零才能继续操作。 这时如果进程2想要运行，那么也必须进行P操作，但是此时信号量为0，所以无法减1，即不能P操作，也就阻塞。这样就到到了进程1排他访问。 当进程1运行结束后，释放资源，进行V操作。资源数重新加1，这是信号量的值变为1. 这时进程2发现资源数不为0，信号量能进行P操作了，立即执行P操作。信号量值又变为0.次数进程2咱有资源，排他访问资源。 这就是信号量来控制互斥的原理</p>
 </li>
@@ -427,13 +507,13 @@
 <li>CoreData </li>
 <li>FMDB</li>
 </ul>
-<h2 id="说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？"><a href="#说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？" class="headerlink" title="说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？"></a>说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">didFinishLaunchingWithOptions:</div><div class="line">applicationDidBecomeActive:</div><div class="line">//前台到后台：</div><div class="line">applicationWillResignActive:</div><div class="line">applicationDidEnterBackground:</div><div class="line">//后台到前台：</div><div class="line">applicationWillEnterForeground:</div><div class="line">applicationDidBecomeActive:</div></pre></td></tr></table></figure>
+<h2 id="说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？"><a href="#说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？" class="headerlink" title="说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？"></a>说一下AppDelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">didFinishLaunchingWithOptions:</span><br><span class="line">applicationDidBecomeActive:</span><br><span class="line">//前台到后台：</span><br><span class="line">applicationWillResignActive:</span><br><span class="line">applicationDidEnterBackground:</span><br><span class="line">//后台到前台：</span><br><span class="line">applicationWillEnterForeground:</span><br><span class="line">applicationDidBecomeActive:</span><br></pre></td></tr></table></figure>
 </code></pre><h2 id="NSCache优于NSDictionary的几点？"><a href="#NSCache优于NSDictionary的几点？" class="headerlink" title="NSCache优于NSDictionary的几点？"></a>NSCache优于NSDictionary的几点？</h2><ul>
 <li>当系统资源将要耗尽时，NSCache具备自动删减缓冲的功能。并且还会先删减“最久未使用”的对象。</li>
 <li>NSCache不拷贝键，而是保留键。因为并不是所有的键都遵从拷贝协议（字典的键是必须要支持拷贝协议的，有局限性）。</li>
 <li>NSCache是线程安全的：不编写加锁代码的前提下，多个线程可以同时访问NSCache。</li>
 </ul>
-<h2 id="知不知道Designated-Initializer？使用它的时候有什么需要注意的问题？"><a href="#知不知道Designated-Initializer？使用它的时候有什么需要注意的问题？" class="headerlink" title="知不知道Designated Initializer？使用它的时候有什么需要注意的问题？"></a>知不知道Designated Initializer？使用它的时候有什么需要注意的问题？</h2><p>便利初始化函数只能调用自己类中的其他初始化方法<br>指定初始化函数才有资格调用父类的指定初始化函数<br><a href="http://www.cnblogs.com/smileEvday/p/designated_initializer.html" target="_blank" rel="external">构造便利函数</a></p>
+<h2 id="知不知道Designated-Initializer？使用它的时候有什么需要注意的问题？"><a href="#知不知道Designated-Initializer？使用它的时候有什么需要注意的问题？" class="headerlink" title="知不知道Designated Initializer？使用它的时候有什么需要注意的问题？"></a>知不知道Designated Initializer？使用它的时候有什么需要注意的问题？</h2><p>便利初始化函数只能调用自己类中的其他初始化方法<br>指定初始化函数才有资格调用父类的指定初始化函数<br><a href="http://www.cnblogs.com/smileEvday/p/designated_initializer.html" target="_blank" rel="noopener">构造便利函数</a></p>
 <h2 id="实现description方法能取到什么效果？"><a href="#实现description方法能取到什么效果？" class="headerlink" title="实现description方法能取到什么效果？"></a>实现description方法能取到什么效果？</h2><p><code>description</code>方法默认返回对象的描述信息(默认实现是返回类名和对象的内存地址)，可定义输出自己想要的内容。</p>
 <h2 id="objc使用什么机制管理对象内存？"><a href="#objc使用什么机制管理对象内存？" class="headerlink" title="objc使用什么机制管理对象内存？"></a>objc使用什么机制管理对象内存？</h2><p>1.Objective-C中所有对象都在堆区建立，由程序员负责释放对象所占用的内存。内存管理机制由3种：垃圾回收、引用计数、C语言方式。</p>
 <p>2.垃圾回收是Mac OS10.5提供的新方案，在系统存在一个垃圾收集器。如果发现某个对象没有被任何对象使用，该对象被自动释放。</p>
@@ -497,7 +577,7 @@ NSTimer *timer = [NSTimer timerWithTimeInterval:1.0
 [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 </code></pre><h3 id="苹果是如何实现Autorelease-Pool的？"><a href="#苹果是如何实现Autorelease-Pool的？" class="headerlink" title="苹果是如何实现Autorelease Pool的？"></a>苹果是如何实现Autorelease Pool的？</h3><p>autoreleasepool 以一个队列数组的形式实现,主要通过下列三个函数完成.</p>
 <p><code>objc_autoreleasepoolPush</code><br><code>objc_autoreleasepoolPop</code><br><code>objc_autorelease</code><br>看函数名就可以知道，对 autorelease 分别执行 push，和 pop 操作。销毁对象时执行release操作。</p>
-<p>举例说明：我们都知道用类方法创建的对象都是 Autorelease 的，那么一旦 Person 出了作用域，当在 Person 的 dealloc 方法中打上断点，我们就可以看到这样的调用堆栈信息：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-b8314aaf33c5dd27.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="autorealease pool.jpg"><br>备注：<a href="http://blog.leichunfeng.com/blog/2015/05/31/objective-c-autorelease-pool-implementation-principle/" target="_blank" rel="external">Objective-C Autorelease Pool 的实现原理</a> 可能苹果在ARC的处理上又优化了，或者变更了。我自己测试的结果跟以上分析不一致，但原理可以参考。</p>
+<p>举例说明：我们都知道用类方法创建的对象都是 Autorelease 的，那么一旦 Person 出了作用域，当在 Person 的 dealloc 方法中打上断点，我们就可以看到这样的调用堆栈信息：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-b8314aaf33c5dd27.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="autorealease pool.jpg"><br>备注：<a href="http://blog.leichunfeng.com/blog/2015/05/31/objective-c-autorelease-pool-implementation-principle/" target="_blank" rel="noopener">Objective-C Autorelease Pool 的实现原理</a> 可能苹果在ARC的处理上又优化了，或者变更了。我自己测试的结果跟以上分析不一致，但原理可以参考。</p>
 <h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><h3 id="isa指针？（对象的isa，类对象的isa，元类的isa都要说）"><a href="#isa指针？（对象的isa，类对象的isa，元类的isa都要说）" class="headerlink" title="isa指针？（对象的isa，类对象的isa，元类的isa都要说）"></a>isa指针？（对象的isa，类对象的isa，元类的isa都要说）</h3><p>每一个对象内部都有一个isa指针,指向他的类对象,类对象中存放着本对象的</p>
 <ul>
 <li>对象方法列表（对象能够接收的消息列表，保存在它所对应的类对象中）</li>
@@ -510,8 +590,8 @@ NSTimer *timer = [NSTimer timerWithTimeInterval:1.0
 <li><p>实例方法：<br>实例方法是属于实例对象的<br>实例方法只能通过实例对象调用<br>实例方法中的self是实例对象<br>实例方法中可以访问成员变量<br>实例方法中直接调用实例方法<br>实例方法中也可以调用类方法(通过类名)</p>
 </li>
 </ul>
-<h3 id="介绍一下分类，能用分类做什么？内部是如何实现的？它为什么会覆盖掉原来的方法？"><a href="#介绍一下分类，能用分类做什么？内部是如何实现的？它为什么会覆盖掉原来的方法？" class="headerlink" title="介绍一下分类，能用分类做什么？内部是如何实现的？它为什么会覆盖掉原来的方法？"></a>介绍一下分类，能用分类做什么？内部是如何实现的？它为什么会覆盖掉原来的方法？</h3><p>分类可以在不知道系统类源代码的情况下，为这个类添加新的方法。分类只能用来添加方法，不能添加成员变量。通过分类增加的方法，系统会认为是该类类型的一部分<br><a href="http://blog.leichunfeng.com/blog/2015/05/18/objective-c-category-implementation-principle/" target="_blank" rel="external">Category实现原理</a></p>
-<h3 id="运行时能增加成员变量么？能增加属性么？如果能，如何增加？如果不能，为什么？"><a href="#运行时能增加成员变量么？能增加属性么？如果能，如何增加？如果不能，为什么？" class="headerlink" title="运行时能增加成员变量么？能增加属性么？如果能，如何增加？如果不能，为什么？"></a>运行时能增加成员变量么？能增加属性么？如果能，如何增加？如果不能，为什么？</h3><p>可以添加属性，不可以添加成员变量。<br><a href="http://www.cocoachina.com/ios/20150526/11918.html" target="_blank" rel="external">OC类成员变量深度剖析</a></p>
+<h3 id="介绍一下分类，能用分类做什么？内部是如何实现的？它为什么会覆盖掉原来的方法？"><a href="#介绍一下分类，能用分类做什么？内部是如何实现的？它为什么会覆盖掉原来的方法？" class="headerlink" title="介绍一下分类，能用分类做什么？内部是如何实现的？它为什么会覆盖掉原来的方法？"></a>介绍一下分类，能用分类做什么？内部是如何实现的？它为什么会覆盖掉原来的方法？</h3><p>分类可以在不知道系统类源代码的情况下，为这个类添加新的方法。分类只能用来添加方法，不能添加成员变量。通过分类增加的方法，系统会认为是该类类型的一部分<br><a href="http://blog.leichunfeng.com/blog/2015/05/18/objective-c-category-implementation-principle/" target="_blank" rel="noopener">Category实现原理</a></p>
+<h3 id="运行时能增加成员变量么？能增加属性么？如果能，如何增加？如果不能，为什么？"><a href="#运行时能增加成员变量么？能增加属性么？如果能，如何增加？如果不能，为什么？" class="headerlink" title="运行时能增加成员变量么？能增加属性么？如果能，如何增加？如果不能，为什么？"></a>运行时能增加成员变量么？能增加属性么？如果能，如何增加？如果不能，为什么？</h3><p>可以添加属性，不可以添加成员变量。<br><a href="http://www.cocoachina.com/ios/20150526/11918.html" target="_blank" rel="noopener">OC类成员变量深度剖析</a></p>
 <h3 id="objc中向一个nil对象发送消息将会发生什么？（返回值是对象，是标量，结构体）"><a href="#objc中向一个nil对象发送消息将会发生什么？（返回值是对象，是标量，结构体）" class="headerlink" title="objc中向一个nil对象发送消息将会发生什么？（返回值是对象，是标量，结构体）"></a>objc中向一个nil对象发送消息将会发生什么？（返回值是对象，是标量，结构体）</h3><p>如果一个方法返回值是一个对象，那么发送给nil的消息将返回0(nil)。例如：</p>
 <pre><code>Person *motherInlaw = [[aPerson spouse] mother];
 </code></pre><ol>
@@ -522,42 +602,26 @@ NSTimer *timer = [NSTimer timerWithTimeInterval:1.0
 </ol>
 <h1 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h1><h2 id="UITableview的优化方法（缓存高度，异步绘制，减少层级，hide，避免离屏渲染）"><a href="#UITableview的优化方法（缓存高度，异步绘制，减少层级，hide，避免离屏渲染）" class="headerlink" title="UITableview的优化方法（缓存高度，异步绘制，减少层级，hide，避免离屏渲染）"></a>UITableview的优化方法（缓存高度，异步绘制，减少层级，hide，避免离屏渲染）</h2><p>一般在网络请求结束后，在更新界面之前就把每个 cell 的高度算好，缓存到相对应的 model 中。</p>
 <p>另外绘制 cell 不建议使用 UIView，建议使用 CALayer。<br>简单的形式参考：</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</div><div class="line">    CGRect rect = CGRectMake(0, 0, 100, 100);</div><div class="line">    UIGraphicsBeginImageContextWithOptions(rect.size, YES, 0);</div><div class="line">    CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line">    [[UIColor lightGrayColor] set];</div><div class="line">    CGContextFillRect(context, rect);</div><div class="line"></div><div class="line">    //将绘制的内容以图片的形式返回，并调主线程显示</div><div class="line">    UIImage *temp = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line"></div><div class="line">    // 回到主线程</div><div class="line">    dispatch_async(dispatch_get_main_queue(), ^&#123;</div><div class="line">        //code</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">    CGRect rect = CGRectMake(0, 0, 100, 100);</span><br><span class="line">    UIGraphicsBeginImageContextWithOptions(rect.size, YES, 0);</span><br><span class="line">    CGContextRef context = UIGraphicsGetCurrentContext();</span><br><span class="line">    [[UIColor lightGrayColor] set];</span><br><span class="line">    CGContextFillRect(context, rect);</span><br><span class="line"></span><br><span class="line">    //将绘制的内容以图片的形式返回，并调主线程显示</span><br><span class="line">    UIImage *temp = UIGraphicsGetImageFromCurrentImageContext();</span><br><span class="line">    UIGraphicsEndImageContext();</span><br><span class="line"></span><br><span class="line">    // 回到主线程</span><br><span class="line">    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">        //code</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </code></pre><p>CALayer 的 border、圆角、阴影、遮罩（mask），<code>CASharpLayer</code> 的矢量图形显示，通常会触发离屏渲染（offscreen rendering），而离屏渲染通常发生在 GPU 中。当一个列表视图中出现大量圆角的 <code>CALayer</code>，并且快速滑动时，可以观察到 GPU 资源已经占满，而 CPU 资源消耗很少。这时界面仍然能正常滑动，但平均帧数会降到很低。为了避免这种情况，可以尝试开启 <code>CALayer.shouldRasterize</code> 属性，但这会把原本离屏渲染的操作转嫁到 CPU 上去。对于只需要圆角的某些场合，也可以用一张已经绘制好的圆角图片覆盖到原本视图上面来模拟相同的视觉效果。最彻底的解决办法，就是把需要显示的图形在后台线程绘制为图片，避免使用圆角、阴影、遮罩等属性。</p>
 
       
     </div>
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-        
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div></div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-      <span>赏</span>
-    </button>
-    <div id="QR" style="display: none;">
-      
-        <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/wechat-reward-image.jpg" alt="zhangferry WeChat Pay"/>
-          <p>微信打赏</p>
-        </div>
-      
-      
-    </div>
-  </div>
+    
 
-
+    
       
-    </div>
+    
+    
 
+    
 
     <footer class="post-footer">
       
@@ -566,6 +630,10 @@ NSTimer *timer = [NSTimer timerWithTimeInterval:1.0
             <a href="/tags/iOS知识点/" rel="tag"># iOS知识点</a>
           
         </div>
+      
+
+      
+      
       
 
       
@@ -593,28 +661,21 @@ NSTimer *timer = [NSTimer timerWithTimeInterval:1.0
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
           </div>
           
 
+  
 
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2017/06/29/面试题总结（J-Knight）/"
-           data-title="面试题总结（From J_Knight）" data-url="http://zhangferry.github.io/2017/06/29/面试题总结（J-Knight）/">
-      </div>
-    
-  </div>
 
 
         </div>
@@ -630,101 +691,154 @@ NSTimer *timer = [NSTimer timerWithTimeInterval:1.0
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             Table of Contents
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             Overview
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/zhangferry.png"
-               alt="zhangferry" />
-          <p class="site-author-name" itemprop="name">zhangferry</p>
-          <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">21</span>
-              <span class="site-state-item-name">posts</span>
-            </a>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zhangferry">
+            
+              <p class="site-author-name" itemprop="name">zhangferry</p>
+              <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
           </div>
 
           
-            <div class="site-state-item site-state-categories">
+            <nav class="site-state motion-element">
               
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">categories</span>
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zhangferry" title="GitHub &rarr; https://github.com/zhangferry" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/2947186387/profile" title="Weibo &rarr; https://weibo.com/2947186387/profile" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
               
             </div>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">tags</span>
-              </a>
-            </div>
+
+          
           
 
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
           
             
-              <span class="links-of-author-item">
-                <a href="https://github.com/zhangferry" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/2947186387/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  微博
-                </a>
-              </span>
-            
           
+          
+
         </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -732,8 +846,10 @@ NSTimer *timer = [NSTimer timerWithTimeInterval:1.0
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
+      
+
       
 
     </div>
@@ -746,43 +862,61 @@ NSTimer *timer = [NSTimer timerWithTimeInterval:1.0
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">zhangferry</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
-</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.7.0</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -796,79 +930,15 @@ NSTimer *timer = [NSTimer timerWithTimeInterval:1.0
 
 
 
-  
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"zhangferry"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
 
@@ -878,6 +948,58 @@ NSTimer *timer = [NSTimer timerWithTimeInterval:1.0
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
   
 
   
@@ -885,116 +1007,24 @@ NSTimer *timer = [NSTimer timerWithTimeInterval:1.0
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("DuOwsJ3GAgOVpEsgoXwPefXF-gzGzoHsz", "e7aUnrStHzmE0hGJXLsLxHpk");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>

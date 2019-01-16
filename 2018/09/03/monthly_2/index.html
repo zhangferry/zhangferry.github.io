@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="数据库用完要close当我们向下面这样执行完一次数据可查询时，要记得将数据库关闭，否则，如果此时想往同一数据库写东西的话会因为数据正在锁定收到这样的提示database is locked。12345678910111213141516171819//获取下载完成的文件信息func isExistdWith(_ id: String) -&amp;gt; Bool&amp;#123;guard db.open()">
+<meta name="keywords" content="月报">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发月报#2|201808">
+<meta property="og:url" content="http://zhangferry.github.io/2018/09/03/monthly_2/index.html">
+<meta property="og:site_name" content="zhangferry`s blog">
+<meta property="og:description" content="数据库用完要close当我们向下面这样执行完一次数据可查询时，要记得将数据库关闭，否则，如果此时想往同一数据库写东西的话会因为数据正在锁定收到这样的提示database is locked。12345678910111213141516171819//获取下载完成的文件信息func isExistdWith(_ id: String) -&amp;gt; Bool&amp;#123;guard db.open()">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-3576096c29667cf8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-16T15:12:40.495Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发月报#2|201808">
+<meta name="twitter:description" content="数据库用完要close当我们向下面这样执行完一次数据可查询时，要记得将数据库关闭，否则，如果此时想往同一数据库写东西的话会因为数据正在锁定收到这样的提示database is locked。12345678910111213141516171819//获取下载完成的文件信息func isExistdWith(_ id: String) -&amp;gt; Bool&amp;#123;guard db.open()">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-3576096c29667cf8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="http://zhangferry.github.io/2018/09/03/monthly_2/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>iOS开发月报#2|201808 | zhangferry`s blog</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?afe60f79e35ee3c65b92d9a2ff459653";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhangferry`s blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2018/09/03/monthly_2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry`s blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS开发月报#2|201808
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-03 11:39:34" itemprop="dateCreated datePublished" datetime="2018-09-03T11:39:34+08:00">2018-09-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-16 23:12:40" itemprop="dateModified" datetime="2019-01-16T23:12:40+08:00">2019-01-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="数据库用完要close"><a href="#数据库用完要close" class="headerlink" title="数据库用完要close"></a>数据库用完要close</h2><p>当我们向下面这样执行完一次数据可查询时，要记得将数据库关闭，否则，如果此时想往同一数据库写东西的话会因为数据正在锁定收到这样的提示<code>database is locked</code>。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取下载完成的文件信息</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isExistdWith</span><span class="params">(<span class="number">_</span> id: String)</span></span> -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line"><span class="keyword">guard</span> db.<span class="keyword">open</span>() <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line"><span class="keyword">let</span> resultSet = <span class="keyword">try</span> db.executeQuery(<span class="string">"select * from tableName where id = ?"</span>, values: [id])</span><br><span class="line"><span class="keyword">if</span> resultSet.next() &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> isCompleted = resultSet.bool(forColumn: <span class="keyword">self</span>.isCompleted)</span><br><span class="line">db.close()<span class="comment">//return之前要close数据库</span></span><br><span class="line"><span class="keyword">return</span> isCompleted</span><br><span class="line">&#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">db.close()<span class="comment">//return之前要close数据库</span></span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h2 id="UIDatePicker的时间格式"><a href="#UIDatePicker的时间格式" class="headerlink" title="UIDatePicker的时间格式"></a>UIDatePicker的时间格式</h2><p>当我们用UIDatePicker做选择时间的控件时，DatePicker会根据手机时间的设置自动选择是12小时制还是24小时制，如果我们需要强制控制DatePicker是显示12小时制还是24小时制可以这么做：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">datePicker.datePickerMode = .time</span><br><span class="line">datePicker.locale = <span class="type">Locale</span>.<span class="keyword">init</span>(identifier: <span class="string">"en_GB"</span>)<span class="comment">//for 24 Hrs</span></span><br><span class="line">datePicker.locale = <span class="type">Locale</span>.<span class="keyword">init</span>(identifier: <span class="string">"en_US"</span>)<span class="comment">//for 12 Hrs</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="iOS-skill-map"><a href="#iOS-skill-map" class="headerlink" title="iOS skill map"></a>iOS skill map</h2><p><img src="http://upload-images.jianshu.io/upload_images/1059465-3576096c29667cf8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS技能图谱"></p>
+<h2 id="变量对外只读，对内可读写"><a href="#变量对外只读，对内可读写" class="headerlink" title="变量对外只读，对内可读写"></a>变量对外只读，对内可读写</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> name : <span class="type">String</span>!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="设置UITableViewCell分割线对齐"><a href="#设置UITableViewCell分割线对齐" class="headerlink" title="设置UITableViewCell分割线对齐"></a>设置UITableViewCell分割线对齐</h2><p>默认的cell分割线都是偏向右边多一些的，如果我们想让分割线对齐的话，正确的做法是：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tableView.separatorInset = <span class="type">UIEdgeInsets</span>.<span class="keyword">init</span>(top: <span class="number">0</span>, <span class="keyword">left</span>: <span class="number">40</span>, bottom: <span class="number">0</span>, <span class="keyword">right</span>: <span class="number">40</span>)</span><br></pre></td></tr></table></figure></p>
+<p>设置左右边距都是40<br>但是使用这种方法会带来一个问题就是默认的textLabel会跟着右移。为了保持label的居中我们可以再加一句：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tableView.separatorInset = <span class="type">UIEdgeInsets</span>.<span class="keyword">init</span>(top: <span class="number">0</span>, <span class="keyword">left</span>: <span class="number">40</span>, bottom: <span class="number">0</span>, <span class="keyword">right</span>: <span class="number">40</span>)</span><br><span class="line">tableView.layoutMargins = <span class="type">UIEdgeInsets</span>.<span class="keyword">init</span>(top: <span class="number">0</span>, <span class="keyword">left</span>: <span class="number">40</span>, bottom: <span class="number">0</span>, <span class="keyword">right</span>: <span class="number">40</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="富文本显示图片元素"><a href="#富文本显示图片元素" class="headerlink" title="富文本显示图片元素"></a>富文本显示图片元素</h2><p>如果我们需要文字中插入图片元素时，可以使用富文本处理：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> attch = <span class="type">NSTextAttachment</span>()</span><br><span class="line">attch.image = <span class="type">UIImage</span>.(named:<span class="string">"logo"</span>)</span><br><span class="line">attch.bounds = <span class="type">CGRect</span>.<span class="keyword">init</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">18</span>, height: <span class="number">18</span>)</span><br><span class="line"><span class="keyword">let</span> imageAttribute = <span class="type">NSAttributedString</span>(attachment: attch)</span><br><span class="line">titleLabel.attributedText = attributed</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加spotlight搜索索引"><a href="#添加spotlight搜索索引" class="headerlink" title="添加spotlight搜索索引"></a>添加spotlight搜索索引</h2><p>首先导入<code>CoreSpotlight</code>和<code>MobileCoreServices</code>框架，然后加入以下代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> searchableItems = [<span class="type">CSSearchableItem</span>]()</span><br><span class="line"><span class="comment">//索引项</span></span><br><span class="line"><span class="keyword">let</span> attributeSet = <span class="type">CSSearchableItemAttributeSet</span>(itemContentType: kUTTypeData <span class="keyword">as</span> <span class="type">String</span>)</span><br><span class="line"><span class="comment">//title</span></span><br><span class="line">attributeSet.title = <span class="string">"Item Title"</span></span><br><span class="line"><span class="comment">//desription</span></span><br><span class="line">attributeSet.contentDescription = <span class="string">"match.description"</span></span><br><span class="line"><span class="comment">//thumb</span></span><br><span class="line">attributeSet.thumbnailData = <span class="keyword">try</span>? <span class="type">Data</span>.<span class="keyword">init</span>(contentsOf: <span class="type">URL</span>(string: url)!)</span><br><span class="line"><span class="comment">//keywords</span></span><br><span class="line">attributeSet.keywords = [<span class="string">"Love"</span>, <span class="string">"Peace"</span>]</span><br><span class="line"><span class="keyword">let</span> searchableItem = <span class="type">CSSearchableItem</span>(uniqueIdentifier: <span class="string">"app_keywords"</span>, domainIdentifier: <span class="string">"com.company.app"</span>, attributeSet: attributeSet)</span><br><span class="line">searchableItems.append(searchableItem)</span><br><span class="line"><span class="comment">//建立索引            </span></span><br><span class="line"><span class="type">CSSearchableIndex</span>.<span class="keyword">default</span>().indexSearchableItems(searchableItems) &#123; (error) -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line"><span class="keyword">if</span> error != <span class="literal">nil</span> &#123;</span><br><span class="line"><span class="built_in">print</span>(error?.localizedDescription ?? <span class="string">"Error"</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Hexo编译问题"><a href="#Hexo编译问题" class="headerlink" title="Hexo编译问题"></a>Hexo编译问题</h2><p>在执行<code>hexo g</code>编译markdown文件时莫名报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: Cannot set property &apos;lastIndex&apos; of undefined</span><br></pre></td></tr></table></figure></p>
+<p>解决方案是在_config.yml中将<code>auto_detect</code>设为<code>false</code></p>
+<h2 id="Podfile用法"><a href="#Podfile用法" class="headerlink" title="Podfile用法"></a>Podfile用法</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面两行是指明依赖库的来源地址</span></span><br><span class="line">source <span class="string">'https://github.com/CocoaPods/Specs.git'</span></span><br><span class="line">source <span class="string">'https://github.com/Artsy/Specs.git'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 说明平台是ios，版本是8.0</span></span><br><span class="line">platform <span class="symbol">:ios</span>, <span class="string">'8.0'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 忽略引入库的所有警告（强迫症者的福音啊）</span></span><br><span class="line">inhibit_all_warnings!</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成的是framework而不是静态库</span></span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line"><span class="comment"># 针对MyApp target引入AFNetworking</span></span><br><span class="line"><span class="comment"># 针对MyAppTests target引入OCMock，</span></span><br><span class="line">target <span class="string">'MyApp'</span> <span class="keyword">do</span> </span><br><span class="line">pod <span class="string">'AFNetworking'</span>, <span class="string">'~&gt; 3.0'</span> </span><br><span class="line">target <span class="string">'MyAppTests'</span> <span class="keyword">do</span></span><br><span class="line">inherit! <span class="symbol">:search_paths</span> </span><br><span class="line">pod <span class="string">'OCMock'</span>, <span class="string">'~&gt; 2.0.1'</span> </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">pod <span class="string">'JSONKit'</span>, <span class="symbol">:podspec</span> =&gt; <span class="string">'https://example.com/JSONKit.podspec'</span></span><br><span class="line"><span class="comment"># 引入内部库</span></span><br><span class="line">pod <span class="string">'ABTest'</span>, <span class="symbol">:git</span> =&gt; <span class="string">'https://bitbucket.org/sealcn/remoteabtest.git'</span></span><br><span class="line">pod <span class="string">'ABTest'</span>, <span class="symbol">:git</span> =&gt; <span class="string">'https://bitbucket.org/sealcn/remoteabtest.git'</span>, <span class="symbol">:tag=&gt;</span> <span class="string">'0.0.6'</span></span><br><span class="line">pod <span class="string">'ABTest'</span>, <span class="symbol">:git</span> =&gt; <span class="string">'https://bitbucket.org/sealcn/remoteabtest.git'</span>, <span class="symbol">:commit=&gt;</span> <span class="string">'082f8319af'</span></span><br><span class="line"><span class="comment"># 编译配置，指定仅在Debug模式下启用</span></span><br><span class="line">pod <span class="string">'Reveal-SDK'</span>, <span class="symbol">:configurations</span> =&gt; [<span class="string">'Debug'</span>]</span><br><span class="line"><span class="comment"># 使用本地文件</span></span><br><span class="line">pod <span class="string">'AFNetworking'</span>, <span class="symbol">:path</span> =&gt; <span class="string">'~/Documents/AFNetworking'</span></span><br><span class="line"><span class="comment"># 指定版本号0.1.3到0.2，不包括0.2</span></span><br><span class="line">pod <span class="string">'CHIPageControl'</span>, <span class="string">'~&gt; 0.1.3'</span></span><br><span class="line"><span class="comment"># 仅安装QueryKit下的Attribute和QuerySet模块</span></span><br><span class="line">pod <span class="string">'QueryKit'</span>, <span class="symbol">:subspecs</span> =&gt; [<span class="string">'Attribute'</span>, <span class="string">'QuerySet'</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment"># 这个是cocoapods的一些配置,官网并没有太详细的说明,一般采取默认就好了,也就是不写.</span></span><br><span class="line">post_install <span class="keyword">do</span> <span class="params">|installer|</span>       </span><br><span class="line">installer.pods_project.targets.each <span class="keyword">do</span> <span class="params">|target|</span> </span><br><span class="line">puts target.name </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/月报/" rel="tag"># 月报</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/02/《精进》阅后总结/" rel="next" title="《精进》阅后总结">
+                <i class="fa fa-chevron-left"></i> 《精进》阅后总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/04/git_stash/" rel="prev" title="使用git stash储存和恢复进度">
+                使用git stash储存和恢复进度 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zhangferry">
+            
+              <p class="site-author-name" itemprop="name">zhangferry</p>
+              <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zhangferry" title="GitHub &rarr; https://github.com/zhangferry" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/2947186387/profile" title="Weibo &rarr; https://weibo.com/2947186387/profile" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库用完要close"><span class="nav-number">1.</span> <span class="nav-text">数据库用完要close</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIDatePicker的时间格式"><span class="nav-number">2.</span> <span class="nav-text">UIDatePicker的时间格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS-skill-map"><span class="nav-number">3.</span> <span class="nav-text">iOS skill map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量对外只读，对内可读写"><span class="nav-number">4.</span> <span class="nav-text">变量对外只读，对内可读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置UITableViewCell分割线对齐"><span class="nav-number">5.</span> <span class="nav-text">设置UITableViewCell分割线对齐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#富文本显示图片元素"><span class="nav-number">6.</span> <span class="nav-text">富文本显示图片元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加spotlight搜索索引"><span class="nav-number">7.</span> <span class="nav-text">添加spotlight搜索索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo编译问题"><span class="nav-number">8.</span> <span class="nav-text">Hexo编译问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Podfile用法"><span class="nav-number">9.</span> <span class="nav-text">Podfile用法</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangferry</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

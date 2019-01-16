@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="新机发布，你中意XS Max还是XR？">
+<meta name="keywords" content="月报">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发月报#3|201809">
+<meta property="og:url" content="http://zhangferry.github.io/2018/09/30/monthly_3/index.html">
+<meta property="og:site_name" content="zhangferry`s blog">
+<meta property="og:description" content="新机发布，你中意XS Max还是XR？">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-2711b521a2b371fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-5bf477719013367f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-16T15:12:40.495Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发月报#3|201809">
+<meta name="twitter:description" content="新机发布，你中意XS Max还是XR？">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1059465-2711b521a2b371fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="http://zhangferry.github.io/2018/09/30/monthly_3/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>iOS开发月报#3|201809 | zhangferry`s blog</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?afe60f79e35ee3c65b92d9a2ff459653";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhangferry`s blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2018/09/30/monthly_3/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry`s blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS开发月报#3|201809
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-30 18:48:02" itemprop="dateCreated datePublished" datetime="2018-09-30T18:48:02+08:00">2018-09-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-16 23:12:40" itemprop="dateModified" datetime="2019-01-16T23:12:40+08:00">2019-01-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/1059465-2711b521a2b371fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iPhoneX R"><br>新机发布，你中意XS Max还是XR？<br><a id="more"></a></p>
+<h2 id="iOS-Tips"><a href="#iOS-Tips" class="headerlink" title="iOS Tips"></a>iOS Tips</h2><h3 id="在label中插入图片"><a href="#在label中插入图片" class="headerlink" title="在label中插入图片"></a>在label中插入图片</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> label = <span class="type">UILabel</span>()</span><br><span class="line"><span class="keyword">let</span> attribute = <span class="type">NSMutableAttributedString</span>(string: <span class="string">"Title"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> imgAttch = <span class="type">NSTextAttachment</span>()</span><br><span class="line">imgAttch.image = image</span><br><span class="line"><span class="comment">//设置图片大小</span></span><br><span class="line">imgAttch.bounds = <span class="type">CGRect</span>.<span class="keyword">init</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">18</span>, height: <span class="number">15</span>)</span><br><span class="line"><span class="keyword">let</span> imageAttribute = <span class="type">NSAttributedString</span>(attachment: imgAttch)</span><br><span class="line"><span class="comment">//图片插入位置</span></span><br><span class="line">attribute.insert(imageAttribute, at: <span class="number">0</span>)</span><br><span class="line">label.attributedText = attribute</span><br></pre></td></tr></table></figure>
+<h3 id="CollectionCell阴影-圆角的优雅处理方式"><a href="#CollectionCell阴影-圆角的优雅处理方式" class="headerlink" title="CollectionCell阴影+圆角的优雅处理方式"></a>CollectionCell阴影+圆角的优雅处理方式</h3><p>只针对类似App Store的整体圆角阴影的效果。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置父视图阴影效果</span></span><br><span class="line"><span class="comment">//CollectionView.swift</span></span><br><span class="line"><span class="keyword">self</span>.layer.shadowOffset = offset</span><br><span class="line"><span class="keyword">self</span>.layer.shadowColor = color.cgColor</span><br><span class="line"><span class="keyword">self</span>.layer.shadowRadius = radius</span><br><span class="line"><span class="keyword">self</span>.layer.shadowOpacity = opacity</span><br><span class="line">contentView.layer.cornerRadius = radius</span><br><span class="line"><span class="comment">//如果切割圆角带imageView才需要添加下面</span></span><br><span class="line">contentView.layer.masksToBounds = <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="处理tableView点击时label背景色消失问题"><a href="#处理tableView点击时label背景色消失问题" class="headerlink" title="处理tableView点击时label背景色消失问题"></a>处理tableView点击时label背景色消失问题</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一种方式，UITableViewCell.swift</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">setHighlighted</span><span class="params">(<span class="number">_</span> highlighted: Bool, animated: Bool)</span></span> &#123;</span><br><span class="line"><span class="keyword">let</span> color = <span class="keyword">self</span>.indexLabel.backgroundColor</span><br><span class="line"><span class="keyword">super</span>.setHighlighted(highlighted, animated: animated)</span><br><span class="line"><span class="keyword">self</span>.indexLabel.backgroundColor = color</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//第二种方式</span></span><br><span class="line">cell.textLabel.backgroundColor = <span class="type">UIColor</span>.clear</span><br><span class="line">cell.textLabel.layer.backgroundColor = <span class="type">UIColor</span>.red</span><br></pre></td></tr></table></figure>
+<h3 id="调整UILabel文字的内边距"><a href="#调整UILabel文字的内边距" class="headerlink" title="调整UILabel文字的内边距"></a>调整UILabel文字的内边距</h3><p>自定义<code>UILabel</code>，然后重写<code>drawText:</code>方法<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">drawText</span><span class="params">(<span class="keyword">in</span> rect: CGRect)</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> insets = <span class="type">UIEdgeInsets</span>.<span class="keyword">init</span>(top: <span class="number">20</span>, <span class="keyword">left</span>: <span class="number">20</span>, bottom: <span class="number">20</span>, <span class="keyword">right</span>: <span class="number">20</span>)</span><br><span class="line">    <span class="keyword">super</span>.drawText(<span class="keyword">in</span>: <span class="type">UIEdgeInsetsInsetRect</span>(rect, insets))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="swift-浮点数取整"><a href="#swift-浮点数取整" class="headerlink" title="swift 浮点数取整"></a>swift 浮点数取整</h3><p>ceil(x)返回不小于x的最小整数值。<br>floor(x)返回不大于x的最大整数值。<br>round(x)返回x的四舍五入整数值。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> number1 = <span class="number">12.456</span></span><br><span class="line"><span class="comment">// ceil(number1) = 13.0, floor(number1) = 12.0, round(number1) = 12.0</span></span><br><span class="line"><span class="keyword">let</span> number2 = <span class="number">12.756</span></span><br><span class="line"><span class="comment">// ceil(number2) = 13.0, floor(number2) = 12.0, round(number2) = 13.0</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="跳过非store下载的应用检查"><a href="#跳过非store下载的应用检查" class="headerlink" title="跳过非store下载的应用检查"></a>跳过非store下载的应用检查</h3><p>xattr -d com.apple.quarantine app所在路径</p>
+<h3 id="加载大图导致内存暴涨"><a href="#加载大图导致内存暴涨" class="headerlink" title="加载大图导致内存暴涨"></a>加载大图导致内存暴涨</h3><p><code>large_leaves_70mp.jpg</code>图片是7033x10110(占用磁盘大小8.3MB)，分辨率 = 7033 x 10110 x 4（ARGB）,对应位图占用大小 = 分辨率 x 1024 x 1024 ( = 271MB)，解压会把图片转成位图，也就意味着会占用271MB内存，所以解压过程内存会瞬间消耗很大,等转成NSData后位图的内存就会被回收掉，内存就降下来，这时候NSData占用的大小即是图片的实际大小，该过程中由于会转成位图，而位图的大小是比图片的实际的大小大很多的，内存暴增的点就在位图。位图的内存大小计算是根据图片的分辨率而来（分辨率(width x heigth) x 1024 x 1024  x 4 (ARGB)），所以一般来说图片分辨率越高转成的位图占用的内存空间越大。</p>
+<h3 id="新版iphone尺寸"><a href="#新版iphone尺寸" class="headerlink" title="新版iphone尺寸"></a>新版iphone尺寸</h3><table>
+<thead>
+<tr>
+<th>设备</th>
+<th>逻辑分辨率</th>
+<th style="text-align:center">比例因子</th>
+<th>对角线</th>
+<th style="text-align:center">分辨率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iPhone XS Max</td>
+<td>414×896</td>
+<td style="text-align:center">@3x</td>
+<td>6.5inch</td>
+<td style="text-align:center">1242px × 2688px</td>
+</tr>
+<tr>
+<td>iPhone XS</td>
+<td>375×812</td>
+<td style="text-align:center">@3x</td>
+<td>5.8inch</td>
+<td style="text-align:center">1125px × 2436px</td>
+</tr>
+<tr>
+<td>iPhone XR</td>
+<td>414×896</td>
+<td style="text-align:center">@2x</td>
+<td>6.1inch</td>
+<td style="text-align:center">828px × 1792px</td>
+</tr>
+<tr>
+<td>iPhone X</td>
+<td>375×812</td>
+<td style="text-align:center">@3x</td>
+<td>5.8inch</td>
+<td style="text-align:center">1125px × 2436px</td>
+</tr>
+<tr>
+<td>iPhone 8 Plus</td>
+<td>414×736</td>
+<td style="text-align:center">@3x</td>
+<td>5.5inch</td>
+<td style="text-align:center">1242px × 2208px</td>
+</tr>
+<tr>
+<td>iPhone 8</td>
+<td>375×667</td>
+<td style="text-align:center">@3x</td>
+<td>4.7inch</td>
+<td style="text-align:center">750px × 1334px</td>
+</tr>
+<tr>
+<td>iPhone SE</td>
+<td>320×568</td>
+<td style="text-align:center">@2x</td>
+<td>4inch</td>
+<td style="text-align:center">640px × 1136px</td>
+</tr>
+<tr>
+<td>iPhone 4</td>
+<td>320×480</td>
+<td style="text-align:center">@2x</td>
+<td>3.5inch</td>
+<td style="text-align:center">640px × 960px</td>
+</tr>
+</tbody>
+</table>
+<h3 id="带透明度的渐变"><a href="#带透明度的渐变" class="headerlink" title="带透明度的渐变"></a>带透明度的渐变</h3><p>使用CAGradientLayer进行渐变的时候，如果我们需要由一个颜色渐变至透明，当我们将透明色写成<code>UIColor.clear</code>或者其他通过<code>RGBA</code>设置的颜色，改变透明度为0时，会发现实际效果跟预期有出入，会带点黑色：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-5bf477719013367f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Transparent gradient.png"></p>
+<p>这是因为clearColor会有一个透明度为0的黑色通道。所以应该这样设置透明色：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIColor(white: 1, alpha: 0).cgColor</span><br></pre></td></tr></table></figure></p>
+<h3 id="指定tableView，collectionView的header高度0"><a href="#指定tableView，collectionView的header高度0" class="headerlink" title="指定tableView，collectionView的header高度0"></a>指定tableView，collectionView的header高度0</h3><p>如果我们想隐藏<code>headerView</code>可能会直接在其高度的代理方法，做如下设置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -&gt; CGFloat &#123;</span><br><span class="line">return 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当实际上这并不会生效，会返回一个默认高度。也就是说这个高度只有设置成一个非0的正数才是有效的。<br>有些人会写成0.01，表面上看是解决问题了，但0.01的偏移会造成像素不对齐（Color Misaligned Images），加重CPU计算负荷。完美的解决方案是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -&gt; CGFloat &#123;</span><br><span class="line">return CGFloat.leastNonzeroMagnitude</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>CGFloat.leastNonzeroMagnitude</code>表示CGFloat支持的最小正数值，不会引起像素偏移。</p>
+<h3 id="保持屏幕常亮"><a href="#保持屏幕常亮" class="headerlink" title="保持屏幕常亮"></a>保持屏幕常亮</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//保持屏幕常亮</span></span><br><span class="line"><span class="type">UIApplication</span>.shared.isIdleTimerDisabled = <span class="literal">true</span></span><br><span class="line"><span class="comment">//关闭屏幕常亮</span></span><br><span class="line"><span class="type">UIApplication</span>.shared.isIdleTimerDisabled = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>注意：不要滥用屏幕常亮属性（苹果会因为这打回你的app），如果只在某些特殊场合需要屏幕常亮，应该在之后将该值恢复成默认值<code>false</code>。</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="MMKV"><a href="#MMKV" class="headerlink" title="MMKV"></a><a href="https://github.com/Tencent/MMKV" target="_blank" rel="noopener">MMKV</a></h3><p>MMKV 是基于 mmap 内存映射的 key-value 组件，底层序列化/反序列化使用 protobuf 实现，性能高，稳定性强。从 2015 年中至今，在 iOS 微信上使用已有近 3 年，其性能和稳定性经过了时间的验证。近期也已移植到 Android 平台，一并开源。<br>替代<code>UserDefaults</code>的绝佳方案。</p>
+<h3 id="Lottie"><a href="#Lottie" class="headerlink" title="Lottie"></a><a href="https://github.com/airbnb/lottie-ios" target="_blank" rel="noopener">Lottie</a></h3><p>Lottie是一个面向Android和iOS的移动库，它能够解析由AE在bodymovin导出为json的效果动画，并在移动端渲染矢量动画!<br>一些复杂的UI可以完全交给设计师了，哈哈哈。</p>
+<h3 id="RSSHud"><a href="#RSSHud" class="headerlink" title="RSSHud"></a><a href="https://github.com/DIYgod/RSSHub" target="_blank" rel="noopener">RSSHud</a></h3><p>RSSHub 是一个轻量、易于扩展的 RSS 生成器，可以给任何奇奇怪怪的内容生成 RSS 订阅源。<br>结合<a href="https://itunes.apple.com/us/app/reeder-3/id697846300?mt=8" target="_blank" rel="noopener">Reeder</a>不要太爽哦。😆</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/月报/" rel="tag"># 月报</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/19/git_command/" rel="next" title="Git基本操作回顾">
+                <i class="fa fa-chevron-left"></i> Git基本操作回顾
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/31/monthly_4/" rel="prev" title="iOS开发月报#4|201810">
+                iOS开发月报#4|201810 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zhangferry">
+            
+              <p class="site-author-name" itemprop="name">zhangferry</p>
+              <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zhangferry" title="GitHub &rarr; https://github.com/zhangferry" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/2947186387/profile" title="Weibo &rarr; https://weibo.com/2947186387/profile" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS-Tips"><span class="nav-number">1.</span> <span class="nav-text">iOS Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在label中插入图片"><span class="nav-number">1.1.</span> <span class="nav-text">在label中插入图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CollectionCell阴影-圆角的优雅处理方式"><span class="nav-number">1.2.</span> <span class="nav-text">CollectionCell阴影+圆角的优雅处理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理tableView点击时label背景色消失问题"><span class="nav-number">1.3.</span> <span class="nav-text">处理tableView点击时label背景色消失问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调整UILabel文字的内边距"><span class="nav-number">1.4.</span> <span class="nav-text">调整UILabel文字的内边距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#swift-浮点数取整"><span class="nav-number">1.5.</span> <span class="nav-text">swift 浮点数取整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跳过非store下载的应用检查"><span class="nav-number">1.6.</span> <span class="nav-text">跳过非store下载的应用检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载大图导致内存暴涨"><span class="nav-number">1.7.</span> <span class="nav-text">加载大图导致内存暴涨</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新版iphone尺寸"><span class="nav-number">1.8.</span> <span class="nav-text">新版iphone尺寸</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带透明度的渐变"><span class="nav-number">1.9.</span> <span class="nav-text">带透明度的渐变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指定tableView，collectionView的header高度0"><span class="nav-number">1.10.</span> <span class="nav-text">指定tableView，collectionView的header高度0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保持屏幕常亮"><span class="nav-number">1.11.</span> <span class="nav-text">保持屏幕常亮</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github"><span class="nav-number">2.</span> <span class="nav-text">Github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MMKV"><span class="nav-number">2.1.</span> <span class="nav-text">MMKV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lottie"><span class="nav-number">2.2.</span> <span class="nav-text">Lottie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RSSHud"><span class="nav-number">2.3.</span> <span class="nav-text">RSSHud</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangferry</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
