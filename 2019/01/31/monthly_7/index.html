@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 另外，马上就要过年了，提前祝大家新年快乐！ 新闻一览Github宣布私有库免费Github宣布提供免费且不限量的私有仓库服务，如果协作者超过3个仍需购买付费服务。喜大普奔啊，得知消息之后，我赶紧就建立一个私有仓库，放">
+<meta name="keywords" content="月报">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发月报#7|201901">
+<meta property="og:url" content="http://zhangferry.github.io/2019/01/31/monthly_7/index.html">
+<meta property="og:site_name" content="zhangferry`s blog">
+<meta property="og:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 另外，马上就要过年了，提前祝大家新年快乐！ 新闻一览Github宣布私有库免费Github宣布提供免费且不限量的私有仓库服务，如果协作者超过3个仍需购买付费服务。喜大普奔啊，得知消息之后，我赶紧就建立一个私有仓库，放">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pl59smtjg.bkt.clouddn.com/freestocks-org-506237-unsplash.jpg">
+<meta property="og:updated_time" content="2019-01-30T13:54:05.868Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发月报#7|201901">
+<meta name="twitter:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 另外，马上就要过年了，提前祝大家新年快乐！ 新闻一览Github宣布私有库免费Github宣布提供免费且不限量的私有仓库服务，如果协作者超过3个仍需购买付费服务。喜大普奔啊，得知消息之后，我赶紧就建立一个私有仓库，放">
+<meta name="twitter:image" content="http://pl59smtjg.bkt.clouddn.com/freestocks-org-506237-unsplash.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="zhangferry`s blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://zhangferry.github.io/2019/01/31/monthly_7/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>iOS开发月报#7|201901 | zhangferry`s blog</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?afe60f79e35ee3c65b92d9a2ff459653";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhangferry`s blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">11</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">22</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/01/31/monthly_7/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry`s blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">iOS开发月报#7|201901
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-31 10:54:57" itemprop="dateCreated datePublished" datetime="2019-01-31T10:54:57+08:00">2019-01-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-30 21:54:05" itemprop="dateModified" datetime="2019-01-30T21:54:05+08:00">2019-01-30</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">4.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">4 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。</p>
+<p>另外，马上就要过年了，提前祝大家新年快乐！<br><img src="http://pl59smtjg.bkt.clouddn.com/freestocks-org-506237-unsplash.jpg" alt="201901_cover"></p>
+<h2 id="新闻一览"><a href="#新闻一览" class="headerlink" title="新闻一览"></a>新闻一览</h2><h3 id="Github宣布私有库免费"><a href="#Github宣布私有库免费" class="headerlink" title="Github宣布私有库免费"></a><a href="https://github.blog/2019-01-07-new-year-new-github/" target="_blank" rel="noopener">Github宣布私有库免费</a></h3><p>Github宣布提供免费且不限量的私有仓库服务，如果协作者超过3个仍需购买付费服务。<br>喜大普奔啊，得知消息之后，我赶紧就建立一个私有仓库，放一些不想让你们看到的东西🙃</p>
+<h3 id="Swift-5-Release-Notes-for-Xcode-10-2-beta"><a href="#Swift-5-Release-Notes-for-Xcode-10-2-beta" class="headerlink" title="Swift 5 Release Notes for Xcode 10.2 beta"></a><a href="https://developer.apple.com/documentation/xcode_release_notes/xcode_10_2_beta_release_notes/swift_5_release_notes_for_xcode_10_2_beta?language=objc" target="_blank" rel="noopener">Swift 5 Release Notes for Xcode 10.2 beta</a></h3><p>Swift5 版本终于发布了，最低可以使用Xcode10.2beta 查看。Swift5 带来了ABI稳定，届时系统将自带Swift动态库，由Swift编译的项目将不会自动把运行库打到包里。</p>
+<p>Swift5 具体还有哪些特性，可以参考知识小集团队的<a href="https://juejin.im/post/5c4b3e91e51d452c8e6d6bcc" target="_blank" rel="noopener">翻译版本</a></p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="Dictionary的merge操作"><a href="#Dictionary的merge操作" class="headerlink" title="Dictionary的merge操作"></a>Dictionary的merge操作</h3><p><code>Dictionary</code>的merge可能平常用的不多，我是在一次bug排查的过程中，发现自己对merge操作理解也有些偏差。这里做个简单梳理。<br>看其中一种情况：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dictionary = [<span class="string">"a"</span>: <span class="number">1</span>, <span class="string">"b"</span>: <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// Keeping existing value for key "a":</span></span><br><span class="line">dictionary.merge([<span class="string">"a"</span>: <span class="number">3</span>, <span class="string">"c"</span>: <span class="number">4</span>]) &#123; (current, <span class="number">_</span>) <span class="keyword">in</span> current &#125;</span><br><span class="line"><span class="comment">// ["b": 2, "a": 1, "c": 4]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Taking the new value for key "a":</span></span><br><span class="line">dictionary.merge([<span class="string">"a"</span>: <span class="number">5</span>, <span class="string">"d"</span>: <span class="number">6</span>]) &#123; (<span class="number">_</span>, new) <span class="keyword">in</span> new &#125;</span><br><span class="line"><span class="comment">// ["b": 2, "a": 5, "c": 4, "d": 6]</span></span><br></pre></td></tr></table></figure></p>
+<p>注意尾随闭包中有两个参数，返回第一个参数，表示如果merge操作有重复key值，将保留merge前的value不变。如果闭包返回第二个参数，如果merge有重复key，将更新至最新值。<br><code>Dictionary</code>向关的merge函数一共有四个，使用类似：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">merge</span>&lt;S&gt;<span class="params">(<span class="number">_</span> other: S, uniquingKeysWith combine: <span class="params">([Key : Value].Value, [Key : Value].Value)</span></span></span> <span class="keyword">throws</span> -&gt; [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>) <span class="keyword">rethrows</span> <span class="keyword">where</span> <span class="type">S</span> : <span class="type">Sequence</span>, <span class="type">S</span>.<span class="type">Element</span> == (<span class="type">Key</span>, <span class="type">Value</span>)</span><br><span class="line"><span class="comment">//上面示例对应方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">merge</span><span class="params">(<span class="number">_</span> other: [[Key : Value].Key : [Key : Value].Value], uniquingKeysWith combine: <span class="params">([Key : Value].Value, [Key : Value].Value)</span></span></span> <span class="keyword">throws</span> -&gt; [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>) <span class="keyword">rethrows</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">merging</span>&lt;S&gt;<span class="params">(<span class="number">_</span> other: S, uniquingKeysWith combine: <span class="params">([Key : Value].Value, [Key : Value].Value)</span></span></span> <span class="keyword">throws</span> -&gt; [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>) <span class="keyword">rethrows</span> -&gt; [[<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Key</span> : [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>] <span class="keyword">where</span> <span class="type">S</span> : <span class="type">Sequence</span>, <span class="type">S</span>.<span class="type">Element</span> == (<span class="type">Key</span>, <span class="type">Value</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">merging</span><span class="params">(<span class="number">_</span> other: [[Key : Value].Key : [Key : Value].Value], uniquingKeysWith combine: <span class="params">([Key : Value].Value, [Key : Value].Value)</span></span></span> <span class="keyword">throws</span> -&gt; [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>) <span class="keyword">rethrows</span> -&gt; [[<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Key</span> : [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>]</span><br></pre></td></tr></table></figure></p>
+<h3 id="一些Git操作"><a href="#一些Git操作" class="headerlink" title="一些Git操作"></a>一些Git操作</h3><p><strong>删除子目录git</strong><br>当一个含git的目录包含了其他含git目录时，外部git是不能将内部git纳入版本管理的。有一种解决方案是，移除内部的git仓库。<br>1、删除内部git<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd 需要移除的git目录</span><br><span class="line">rm -rf .git  # 或者显示隐藏目录手动删除.git文件夹</span><br></pre></td></tr></table></figure></p>
+<p>此时虽然已经删除了<code>.git</code>但是原目录还存在缓存，无法添加到外部git中。<br>2、删除缓存内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached next</span><br></pre></td></tr></table></figure></p>
+<p><strong>git pull强制覆盖本地文件</strong><br>当我们需要将某一分支，跟远程对应分支保持一致时，可以做如下操作：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch</span><br><span class="line">git reset --hard origin/branch_name</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure></p>
+<p><strong>fatal:refusing to merge unrelated histories</strong><br>当我们为一个项目关联了一个远程仓库，执行pull的操作时出现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br><span class="line"> * [new branch]      master     -&gt; origin/master</span><br><span class="line">fatal: refusing to merge unrelated histories</span><br></pre></td></tr></table></figure></p>
+<p>这是因为git从2.9.0版本开始，预设行为不允许合并没有共同祖先的分支。如果你非要合并，需要加上<code>--allow-unrelated-histories</code>参数才行：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure></p>
+<h3 id="几个提高效率的快捷键"><a href="#几个提高效率的快捷键" class="headerlink" title="几个提高效率的快捷键"></a>几个提高效率的快捷键</h3><p>最近在熟练使用了几个快捷键后，明显感觉开发效率提高了不少，这里总结了几个常用但不是非常常用的快捷键（Command + C 和 Command V等）。另外</p>
+<ul>
+<li>Command（或 Cmd）⌘</li>
+<li>Shift ⇧</li>
+<li>Option（或 Alt）⌥</li>
+<li>Control（或 Ctrl）⌃</li>
+<li>Power 电源键</li>
+</ul>
+<p><strong>Xcode</strong><br>Command + Shift + J 文件目录指向当前文件<br>Command + Shift + O 文件、对象搜索<br>Command + Shift + F 全局搜索<br>Command + shift + , 编辑 scheme<br>Command + Control + Left/Right 浏览历史切换<br>Command + Option + Left/Right 折叠、展开当前代码段<br>Command + Option + C 显示Commit界面<br><strong>系统操作</strong><br>Command + Option + Power 睡眠状态<br>Power 1.5s睡眠状态<br>Command + Control + Power 强制Mac重启</p>
+<p><strong>适用其他程序</strong><br>Command + , 打开偏好设置<br>Command + W 关闭最前面的窗口<br>Command + Option + W 关闭应用所有窗口<br>Command + Q 推出应用<br>Command + M 最小化<br>Command + Shift + [/] 左右切换应用tab</p>
+<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><h3 id="未来世界的幸存者"><a href="#未来世界的幸存者" class="headerlink" title="未来世界的幸存者"></a><a href="http://survivor.ruanyifeng.com/index.html" target="_blank" rel="noopener">未来世界的幸存者</a></h3><p>今年市场经济不景气，很多互联网公司经历“裁员潮”，其实不光是换联网行业，其他行业也面临同样的问题。那怎么提高自己的核心竞争力，是每一个从事互联网行业的人都应该考虑的。我们不应该只满足于日常开发，要找准自己的定位，提早做职业规划。另外不断尝试拓展自己的知识面，增加自己的影响力，这样才能让自己在不断变化的市场中立于不败之地。</p>
+<p>除了阮老师的这本书，还推荐<br>卓同学的<a href="https://juejin.im/post/5c45c999e51d4551cd71f4e2" target="_blank" rel="noopener">iOS 2019 隆中对</a><br>ggtalk的<a href="https://talk.swift.gg/13" target="_blank" rel="noopener">广义跳槽论：简洁明了的方法论</a><br>希望对大家的职业发展有所启发。</p>
+<h3 id="什么是真正的程序员"><a href="#什么是真正的程序员" class="headerlink" title="什么是真正的程序员"></a><a href="https://www.cnblogs.com/xueweihan/p/5220513.html" target="_blank" rel="noopener">什么是真正的程序员</a></h3><p>作者仿照《小王子》中的情节，通过小printf遇见的不同类型的程序员，最后悟出什么才是真正的程序员！<br>有两个论点比较有意思：</p>
+<ul>
+<li>达克效应：能力强的人总是低估自己，能力弱的人总是高估自己。</li>
+<li>能够为人们解决真正需要解决的问题的程序员，才是真正的程序员</li>
+</ul>
+<h3 id="Language-Server-Protocol"><a href="#Language-Server-Protocol" class="headerlink" title="Language Server Protocol"></a><a href="https://swift.gg/2019/01/15/nshipster-language-server-protocol/" target="_blank" rel="noopener">Language Server Protocol</a></h3><p>来自SwiftGG翻译组的一篇文章。<br>苹果公司 在 <a href="https://forums.swift.org/t/new-lsp-language-service-supporting-swift-and-c-family-languages-for-any-editor-and-platform/17024" target="_blank" rel="noopener">Swift.org</a> 论坛上宣布，正在着手为 Swift 和 C 语言支持 <a href="https://microsoft.github.io/language-server-protocol/" target="_blank" rel="noopener">Language Server Protocol</a>（语言服务器协议，LSP）。<br>那这意味着什么呢？这可能是苹果自 2014 年将 Swift 作为开源软件发布以来，为 Swift 做出的最重要的决定。它意味着我们可以不必使用Xcode去开发Swift项目，而是可以选择像是Visual Studio, Atom这些IDE。Swift将变成一种更加通用的变成语言。</p>
+<h3 id="Hashable-Hasher"><a href="#Hashable-Hasher" class="headerlink" title="Hashable / Hasher"></a><a href="https://nshipster.cn/hashable/" target="_blank" rel="noopener">Hashable / Hasher</a></h3><p>Hash是程序开发过程中很重要的一个概念，它可以让我们查找集合特定元素的时间复杂度由O(n)降低到O(1)。<br>这篇文章介绍了Swift中关于哈希的实现，哈希冲突的改变，以及Swift4.1之后关于自动化实现<code>Equatable</code>的相关介绍。</p>
+<h3 id="Table-View-太複雜？利用-MVVM-和-Protocol-就可以為它重構瘦身！"><a href="#Table-View-太複雜？利用-MVVM-和-Protocol-就可以為它重構瘦身！" class="headerlink" title="Table View 太複雜？利用 MVVM 和 Protocol 就可以為它重構瘦身！"></a><a href="https://www.appcoda.com.tw/tableview-mvvm/" target="_blank" rel="noopener">Table View 太複雜？利用 MVVM 和 Protocol 就可以為它重構瘦身！</a></h3><p>TableView是我们常用的系统部件，随着业务逻辑的不断迭代它内部的逻辑可能会越来越复杂，代码量也越来越多，如果不能很好的组织逻辑架构，这里会变得非常臃肿。<br>作者利用<code>MVVM pattern</code>，加上一点<code>Protocol</code>技巧，来简化dataSource的工作，把UI和逻辑解耦合，并且最大化这个tableView模组的扩展性。</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><p>本篇GitHub模块，介绍几个Git和GitHub相关的项目。</p>
+<h3 id="Git中文教程"><a href="#Git中文教程" class="headerlink" title="Git中文教程"></a><a href="https://github.com/geeeeeeeeek/git-recipes" target="_blank" rel="noopener">Git中文教程</a></h3><p>来自<a href="https://github.com/geeeeeeeeek" target="_blank" rel="noopener">geeeeeeeeek</a>的高质量Git中文教程，在GitHub已经获得了1w+的start。对git操作还有疑问的同学可以借助这份教程，完整的梳理一下git相关的知识，或者扫一下git盲区。 </p>
+<h3 id="Git的奇技淫巧"><a href="#Git的奇技淫巧" class="headerlink" title="Git的奇技淫巧"></a><a href="https://github.com/521xueweihan/git-tips" target="_blank" rel="noopener">Git的奇技淫巧</a></h3><p>我们在使用git的时候，有时候会被一些具体的问题难住，这篇文章从具体操作入手，介绍一些我们知道但不一定都用过的git指令。<br>等等，我也想写一份我自己的Git奇淫技巧了，因为git这个东西是真的庞大。</p>
+<h3 id="HelloGitHub"><a href="#HelloGitHub" class="headerlink" title="HelloGitHub"></a><a href="https://github.com/521xueweihan/HelloGitHub" target="_blank" rel="noopener">HelloGitHub</a></h3><p>这是一个面向编程新手、热爱编程、对开源社区感兴趣人群的项目，内容以月刊的形式更新发布。内容包括：流行项目、入门级项目、让生活变得更美好的工具、书籍、学习心得笔记、企业级项目等，这些开源项目大多都是非常容易上手、很 Cool，能够让你用很短时间感受到编程的魅力和便捷。从而让大家感受到编程的乐趣，动手开始编程。</p>
+<h3 id="GitHub漫游指南"><a href="#GitHub漫游指南" class="headerlink" title="GitHub漫游指南"></a><a href="https://github.com/phodal/github" target="_blank" rel="noopener">GitHub漫游指南</a></h3><p>介绍你可能在Github上遇到的所有问题，从如何起一个好名字到如何推广项目，GitHub用户分析，每一个环节都非常详细。无论你处于编程的哪个阶段，我认为你都能从这份指南中获取到灵感和帮助。</p>
+<h3 id="README"><a href="#README" class="headerlink" title="README"></a><a href="https://github.com/guodongxiaren/README" target="_blank" rel="noopener">README</a></h3><p>该文件用来测试和展示书写README的各种markdown语法。GitHub的markdown语法在标准的markdown语法基础上做了扩充，称之为GitHub Flavored Markdown。简称GFM，GFM在GitHub上有广泛应用，除了README文件外，issues和wiki均支持markdown语法。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/月报/" rel="tag"># 月报</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/02/monthly_6/" rel="next" title="iOS开发月报#6|201812">
+                <i class="fa fa-chevron-left"></i> iOS开发月报#6|201812
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zhangferry">
+            
+              <p class="site-author-name" itemprop="name">zhangferry</p>
+              <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zhangferry" title="GitHub &rarr; https://github.com/zhangferry" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/2947186387/profile" title="Weibo &rarr; https://weibo.com/2947186387/profile" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新闻一览"><span class="nav-number">1.</span> <span class="nav-text">新闻一览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github宣布私有库免费"><span class="nav-number">1.1.</span> <span class="nav-text">Github宣布私有库免费</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swift-5-Release-Notes-for-Xcode-10-2-beta"><span class="nav-number">1.2.</span> <span class="nav-text">Swift 5 Release Notes for Xcode 10.2 beta</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">2.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dictionary的merge操作"><span class="nav-number">2.1.</span> <span class="nav-text">Dictionary的merge操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些Git操作"><span class="nav-number">2.2.</span> <span class="nav-text">一些Git操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几个提高效率的快捷键"><span class="nav-number">2.3.</span> <span class="nav-text">几个提高效率的快捷键</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐阅读"><span class="nav-number">3.</span> <span class="nav-text">推荐阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#未来世界的幸存者"><span class="nav-number">3.1.</span> <span class="nav-text">未来世界的幸存者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是真正的程序员"><span class="nav-number">3.2.</span> <span class="nav-text">什么是真正的程序员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Language-Server-Protocol"><span class="nav-number">3.3.</span> <span class="nav-text">Language Server Protocol</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hashable-Hasher"><span class="nav-number">3.4.</span> <span class="nav-text">Hashable / Hasher</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Table-View-太複雜？利用-MVVM-和-Protocol-就可以為它重構瘦身！"><span class="nav-number">3.5.</span> <span class="nav-text">Table View 太複雜？利用 MVVM 和 Protocol 就可以為它重構瘦身！</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github"><span class="nav-number">4.</span> <span class="nav-text">Github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git中文教程"><span class="nav-number">4.1.</span> <span class="nav-text">Git中文教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的奇技淫巧"><span class="nav-number">4.2.</span> <span class="nav-text">Git的奇技淫巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HelloGitHub"><span class="nav-number">4.3.</span> <span class="nav-text">HelloGitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub漫游指南"><span class="nav-number">4.4.</span> <span class="nav-text">GitHub漫游指南</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#README"><span class="nav-number">4.5.</span> <span class="nav-text">README</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangferry</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">91k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">1:23</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
