@@ -45,7 +45,7 @@
     <link href="http://zhangferry.github.io/2019/01/02/monthly_6/"/>
     <id>http://zhangferry.github.io/2019/01/02/monthly_6/</id>
     <published>2019-01-02T02:54:57.000Z</published>
-    <updated>2019-01-16T15:12:40.496Z</updated>
+    <updated>2019-02-08T13:12:15.673Z</updated>
     
     <summary type="html">
     
@@ -63,7 +63,7 @@
     <link href="http://zhangferry.github.io/2019/01/01/2018-summary/"/>
     <id>http://zhangferry.github.io/2019/01/01/2018-summary/</id>
     <published>2019-01-01T15:22:25.000Z</published>
-    <updated>2019-01-16T15:12:40.492Z</updated>
+    <updated>2019-02-08T13:12:57.153Z</updated>
     
     <summary type="html">
     
@@ -85,7 +85,7 @@
     <link href="http://zhangferry.github.io/2018/12/01/monthly_5/"/>
     <id>http://zhangferry.github.io/2018/12/01/monthly_5/</id>
     <published>2018-12-01T13:28:47.000Z</published>
-    <updated>2019-01-16T15:12:40.496Z</updated>
+    <updated>2019-02-08T13:12:18.799Z</updated>
     
     <summary type="html">
     
@@ -99,11 +99,36 @@
   </entry>
   
   <entry>
+    <title>AVPlayer支持的视频格式</title>
+    <link href="http://zhangferry.github.io/2018/11/26/avplayer-supported-format/"/>
+    <id>http://zhangferry.github.io/2018/11/26/avplayer-supported-format/</id>
+    <published>2018-11-26T08:27:50.000Z</published>
+    <updated>2019-02-08T13:23:01.193Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。&lt;/p&gt;
+&lt;h2 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="avplayer" scheme="http://zhangferry.github.io/tags/avplayer/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS开发月报#4|201810</title>
     <link href="http://zhangferry.github.io/2018/10/31/monthly_4/"/>
     <id>http://zhangferry.github.io/2018/10/31/monthly_4/</id>
     <published>2018-10-31T08:00:50.000Z</published>
-    <updated>2019-01-16T15:12:40.495Z</updated>
+    <updated>2019-02-08T13:13:10.338Z</updated>
     
     <summary type="html">
     
@@ -122,7 +147,7 @@
     <link href="http://zhangferry.github.io/2018/09/30/monthly_3/"/>
     <id>http://zhangferry.github.io/2018/09/30/monthly_3/</id>
     <published>2018-09-30T10:48:02.000Z</published>
-    <updated>2019-01-16T15:12:40.495Z</updated>
+    <updated>2019-02-08T13:12:24.385Z</updated>
     
     <summary type="html">
     
@@ -140,7 +165,7 @@
     <link href="http://zhangferry.github.io/2018/09/19/git_command/"/>
     <id>http://zhangferry.github.io/2018/09/19/git_command/</id>
     <published>2018-09-19T09:14:55.000Z</published>
-    <updated>2019-01-16T15:12:40.493Z</updated>
+    <updated>2019-02-08T13:12:42.908Z</updated>
     
     <summary type="html">
     
@@ -160,7 +185,7 @@
     <link href="http://zhangferry.github.io/2018/09/04/git_stash/"/>
     <id>http://zhangferry.github.io/2018/09/04/git_stash/</id>
     <published>2018-09-04T06:53:34.000Z</published>
-    <updated>2019-01-16T15:12:40.493Z</updated>
+    <updated>2019-02-08T13:12:40.740Z</updated>
     
     <summary type="html">
     
@@ -179,7 +204,7 @@
     <link href="http://zhangferry.github.io/2018/09/03/monthly_2/"/>
     <id>http://zhangferry.github.io/2018/09/03/monthly_2/</id>
     <published>2018-09-03T03:39:34.000Z</published>
-    <updated>2019-01-16T15:12:40.495Z</updated>
+    <updated>2019-02-08T13:12:26.868Z</updated>
     
     <summary type="html">
     
@@ -197,7 +222,7 @@
     <link href="http://zhangferry.github.io/2018/09/02/%E3%80%8A%E7%B2%BE%E8%BF%9B%E3%80%8B%E9%98%85%E5%90%8E%E6%80%BB%E7%BB%93/"/>
     <id>http://zhangferry.github.io/2018/09/02/《精进》阅后总结/</id>
     <published>2018-09-02T15:20:33.000Z</published>
-    <updated>2019-01-16T15:12:40.501Z</updated>
+    <updated>2019-02-08T13:12:03.703Z</updated>
     
     <summary type="html">
     
@@ -217,7 +242,7 @@
     <link href="http://zhangferry.github.io/2018/08/30/private-Cocoapods/"/>
     <id>http://zhangferry.github.io/2018/08/30/private-Cocoapods/</id>
     <published>2018-08-30T06:47:34.000Z</published>
-    <updated>2019-01-16T15:12:40.498Z</updated>
+    <updated>2019-02-08T13:30:10.915Z</updated>
     
     <summary type="html">
     
@@ -227,7 +252,7 @@
     </summary>
     
     
-      <category term="cocoapods" scheme="http://zhangferry.github.io/tags/cocoapods/"/>
+      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
     
   </entry>
   
@@ -236,7 +261,7 @@
     <link href="http://zhangferry.github.io/2018/08/09/skill-map/"/>
     <id>http://zhangferry.github.io/2018/08/09/skill-map/</id>
     <published>2018-08-09T06:47:34.000Z</published>
-    <updated>2019-01-16T15:12:40.501Z</updated>
+    <updated>2019-02-08T13:30:05.429Z</updated>
     
     <summary type="html">
     
@@ -260,7 +285,7 @@
     <link href="http://zhangferry.github.io/2018/08/06/201807summary/"/>
     <id>http://zhangferry.github.io/2018/08/06/201807summary/</id>
     <published>2018-08-06T03:28:09.000Z</published>
-    <updated>2019-01-16T15:12:40.492Z</updated>
+    <updated>2019-02-08T13:12:49.403Z</updated>
     
     <summary type="html">
     
@@ -279,7 +304,7 @@
     <link href="http://zhangferry.github.io/2018/08/02/monthly_1/"/>
     <id>http://zhangferry.github.io/2018/08/02/monthly_1/</id>
     <published>2018-08-02T06:22:32.000Z</published>
-    <updated>2019-01-16T15:12:40.495Z</updated>
+    <updated>2019-02-08T13:12:29.679Z</updated>
     
     <summary type="html">
     
@@ -297,7 +322,7 @@
     <link href="http://zhangferry.github.io/2018/07/17/UIButton-detail/"/>
     <id>http://zhangferry.github.io/2018/07/17/UIButton-detail/</id>
     <published>2018-07-17T02:55:35.000Z</published>
-    <updated>2019-01-16T15:12:40.493Z</updated>
+    <updated>2019-02-08T13:12:46.405Z</updated>
     
     <summary type="html">
     
@@ -314,11 +339,36 @@
   </entry>
   
   <entry>
+    <title>AVPlayer详解系列（一）参数设置</title>
+    <link href="http://zhangferry.github.io/2017/08/25/avplayer-config-detail-1/"/>
+    <id>http://zhangferry.github.io/2017/08/25/avplayer-config-detail-1/</id>
+    <published>2017-08-25T08:27:50.000Z</published>
+    <updated>2019-02-08T13:25:21.729Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;最近工作内容基本都是围绕视频播放展开的，从AVPlayer到IJKPlayer，期间遇到挺多问题，趟了很多bug，也总结了一些心得。对AVPlayer了解的更多一些，因为涉及点比较多，所以打算做一个系列详尽的写一下这部分内容。希望大家多多支持，有问
+        
+      
+    
+    </summary>
+    
+    
+      <category term="avplayer" scheme="http://zhangferry.github.io/tags/avplayer/"/>
+    
+  </entry>
+  
+  <entry>
     <title>面试题总结（From J_Knight）</title>
     <link href="http://zhangferry.github.io/2017/06/29/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93%EF%BC%88J-Knight%EF%BC%89/"/>
     <id>http://zhangferry.github.io/2017/06/29/面试题总结（J-Knight）/</id>
     <published>2017-06-29T09:22:27.000Z</published>
-    <updated>2019-01-16T15:12:40.503Z</updated>
+    <updated>2019-02-08T13:29:37.790Z</updated>
     
     <summary type="html">
     
@@ -332,7 +382,7 @@
       <category term="iOS" scheme="http://zhangferry.github.io/categories/iOS/"/>
     
     
-      <category term="iOS知识点" scheme="http://zhangferry.github.io/tags/iOS%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+      <category term="面试" scheme="http://zhangferry.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
@@ -341,7 +391,7 @@
     <link href="http://zhangferry.github.io/2017/01/13/iOS%E8%93%9D%E7%89%99%E7%9F%A5%E8%AF%86%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%EF%BC%88%E8%AF%A6%E5%B0%BD%E7%89%88%EF%BC%89/"/>
     <id>http://zhangferry.github.io/2017/01/13/iOS蓝牙知识快速入门（详尽版）/</id>
     <published>2017-01-13T14:36:41.000Z</published>
-    <updated>2019-01-16T15:12:40.494Z</updated>
+    <updated>2019-02-08T13:30:59.829Z</updated>
     
     <summary type="html">
     
@@ -353,65 +403,20 @@
       <category term="蓝牙总结" scheme="http://zhangferry.github.io/categories/%E8%93%9D%E7%89%99%E6%80%BB%E7%BB%93/"/>
     
     
-      <category term="-蓝牙" scheme="http://zhangferry.github.io/tags/%E8%93%9D%E7%89%99/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>为博客设一个自定义域名</title>
-    <link href="http://zhangferry.github.io/2017/01/05/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E8%AE%BE%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/"/>
-    <id>http://zhangferry.github.io/2017/01/05/为博客设一个自定义域名/</id>
-    <published>2017-01-05T10:11:02.000Z</published>
-    <updated>2019-01-16T15:12:40.502Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;现在越来越多的人悬着使用githubpage搭建自己的个人博客，但是github提供的默认的域名是这种形式：&lt;code&gt;username.github.io&lt;/code&gt;，是个二级域名，这对于很多人来说可能感觉不是很酷。那么我们今天就来做一件比较酷的事情，为站点自定义一个域名。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Hexo" scheme="http://zhangferry.github.io/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="http://zhangferry.github.io/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nRF设备DFU升级</title>
-    <link href="http://zhangferry.github.io/2016/12/28/nRF%E8%AE%BE%E5%A4%87DFU%E5%8D%87%E7%BA%A7/"/>
-    <id>http://zhangferry.github.io/2016/12/28/nRF设备DFU升级/</id>
-    <published>2016-12-28T14:17:59.000Z</published>
-    <updated>2019-01-16T15:12:40.497Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1059465-1afdc502de9bec75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Nordic.png&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;这里主要参考这个项目：&lt;a href=&quot;https://github.com/NordicSemiconductor/IOS-nRF-Toolbox&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;iOS-nRF-Toolbox&lt;/a&gt;，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;项目是用Swift写的，不过之前还是有OC版本的，但是后来由于一些**（不可描述的问题），才变成了现在的纯Swift版本。对于使用Swift开发的人员，直接仿照Demo操作即可。如果你是用Swift开发的，那下面的内容你可以不用看了。接下来我就讲一下针对OC引用DFU升级的操作步骤和我遇到的问题。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="蓝牙总结" scheme="http://zhangferry.github.io/categories/%E8%93%9D%E7%89%99%E6%80%BB%E7%BB%93/"/>
-    
-    
       <category term="蓝牙" scheme="http://zhangferry.github.io/tags/%E8%93%9D%E7%89%99/"/>
     
   </entry>
   
   <entry>
-    <title>基于Hexo搭建自己的博客小屋</title>
-    <link href="http://zhangferry.github.io/2016/12/20/%E5%9F%BA%E4%BA%8EHexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%B0%8F%E5%B1%8B/"/>
-    <id>http://zhangferry.github.io/2016/12/20/基于Hexo搭建自己的博客小屋/</id>
-    <published>2016-12-20T10:50:55.000Z</published>
-    <updated>2019-01-16T15:20:26.794Z</updated>
+    <title>为博客设一个自定义域名</title>
+    <link href="http://zhangferry.github.io/2017/01/05/custom-domain-blog/"/>
+    <id>http://zhangferry.github.io/2017/01/05/custom-domain-blog/</id>
+    <published>2017-01-05T10:11:02.000Z</published>
+    <updated>2019-02-08T13:12:00.474Z</updated>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;作为一名技术人员没有属于自己的博客，就像是喜欢LOL的玩家却没有一款炫酷的皮肤一样，这不叫真爱。虽然现在是微博的时代，讲究方便阅读，易传播，但是对于博客来说，特别是技术博客，专业性永远都是第一位的。我们需要用大大的篇幅去阐述自己对技术的理解并将其分享给其他人，所以无论社交软件如何发展，我们都需要博客。下面就跟着我一块搭建属于自己的博客小屋吧。&lt;br&gt;
+      &lt;p&gt;现在越来越多的人悬着使用githubpage搭建自己的个人博客，但是github提供的默认的域名是这种形式：&lt;code&gt;username.github.io&lt;/code&gt;，是个二级域名，这对于很多人来说可能感觉不是很酷。那么我们今天就来做一件比较酷的事情，为站点自定义一个域名。&lt;br&gt;
     
     </summary>
     

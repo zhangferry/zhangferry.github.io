@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。 以下的用语，如无特别表述，通知就代表本地通知，推送就代表远程服务器的推送。 ##快速添加一个通知我们先举个完整的代码例子，大家了解下这个流程，然后分步介绍这几项：">
+<meta name="keywords" content="ios">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS10本地通知UserNotifications快速入门">
+<meta property="og:url" content="http://zhangferry.github.io/2016/09/30/usernotifications-introduction/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。 以下的用语，如无特别表述，通知就代表本地通知，推送就代表远程服务器的推送。 ##快速添加一个通知我们先举个完整的代码例子，大家了解下这个流程，然后分步介绍这几项：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-24a743794b38b19c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-6d61819c9bfd09dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-f41c6386d613fbd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-a459ae47a216b686.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-6572c5180d447cbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-b7497931a422eb7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-98dad809d88ab0e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-ea496e4072fdc52f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-5881abd4c65e5d73.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-296bf320ce219e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-46dfa08e664a7a3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-b1dd1a73d6c21873.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-08T13:28:06.291Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS10本地通知UserNotifications快速入门">
+<meta name="twitter:description" content="iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。 以下的用语，如无特别表述，通知就代表本地通知，推送就代表远程服务器的推送。 ##快速添加一个通知我们先举个完整的代码例子，大家了解下这个流程，然后分步介绍这几项：">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-24a743794b38b19c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://zhangferry.github.io/2016/09/30/usernotifications-introduction/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>iOS10本地通知UserNotifications快速入门 | zhangferry</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?afe60f79e35ee3c65b92d9a2ff459653";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhangferry</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">10</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">28</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/09/30/usernotifications-introduction/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">iOS10本地通知UserNotifications快速入门
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-09-30 18:07:50" itemprop="dateCreated datePublished" datetime="2016-09-30T18:07:50+08:00">2016-09-30</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">6.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/1059465-24a743794b38b19c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification.png"></p>
+<p>iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。</p>
+<p>以下的用语，如无特别表述，<code>通知</code>就代表本地通知，<code>推送</code>就代表远程服务器的推送。</p>
+<p>##快速添加一个通知<br>我们先举个完整的代码例子，大家了解下这个流程，然后分步介绍这几项：</p>
+<pre><code>//第一步：注册通知
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+// Override point for customization after application launch.
+UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+//请求获取通知权限（角标，声音，弹框）
+[center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+    if (granted) {
+        //获取用户是否同意开启通知
+        NSLog(@&quot;request authorization successed!&quot;);
+    }
+}];
+}
+//第二步：新建通知内容对象
+UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init]
+content.title = @&quot;iOS10通知&quot;;
+content.subtitle = @&quot;新通知学习笔记&quot;;
+content.body = @&quot;新通知变化很大，之前本地通知和远程推送是两个类，现在合成一个了。这是一条测试通知，&quot;;
+content.badge = @1;
+UNNotificationSound *sound = [UNNotificationSound soundNamed:@&quot;caodi.m4a&quot;];
+content.sound = sound;
+
+//第三步：通知触发机制。（重复提醒，时间间隔要大于60s）
+UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:NO];
+
+//第四步：创建UNNotificationRequest通知请求对象
+NSString *requertIdentifier = @&quot;RequestIdentifier&quot;;
+UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requertIdentifier content:content trigger:trigger1];
+
+//第五步：将通知加到通知中心
+[[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+    NSLog(@&quot;Error:%@&quot;,error);
+
+}];
+</code></pre><p>最终效果如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-6d61819c9bfd09dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification01.png"></p>
+<blockquote>
+<p>通知内容UNMutableNotificationContent</p>
+</blockquote>
+<p>通知内容就是设定通知的一些展示信息，iOS10之后可以设置subtitle。<br>声音的设置需要借助一个新类<code>UNNotificationSound</code>，通知文件要放到bundle里面。另外在实际的测试过程中发现，添加通知的声音有时候会无效。这应该是iOS10存在的一个bug，删除掉程序，再安装运行就好了。</p>
+<blockquote>
+<p>触发机制UNNotificationTrigger</p>
+</blockquote>
+<p>Trigger是新加入的一个功能，通过此类可设置本地通知触发条件。它一共有一下几种类型：<br>1、UNPushNotificaitonTrigger<br>推送服务的Trigger，由系统创建<br>2、UNTimeIntervalNotificaitonTrigger<br>时间触发器，可以设置多长时间以后触发，是否重复。如果设置重复，重复时长要大于60s<br>3、UNCalendarNotificaitonTrigger<br>日期触发器，可以设置某一日期触发。例如，提醒我每天早上七点起床：</p>
+<pre><code>NSDateComponents *components = [[NSDateComponents alloc] init];
+components.hour = 7;
+components.minute = 0; // components 日期            
+UNCalendarNotificationTrigger *calendarTrigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components repeats:YES];
+</code></pre><p> 4、UNLocationNotificaitonTrigger<br>位置触发器，用于到某一范围之后，触发通知。通过CLRegion设定具体范围。</p>
+<blockquote>
+<p>通知请求UNNotificationRequest</p>
+</blockquote>
+<p>通知请求的构造<br><code>+ (instancetype)requestWithIdentifier:(NSString *)identifier 
+content:(UNNotificationContent *)content 
+trigger:(nullable UNNotificationTrigger *)trigger;</code><br>就是把上面三项连接起来。它有一个参数identifier，这相当于通知的一个身份。iOS10通知支持更新，就是基于此identifier再发一条通知。</p>
+<blockquote>
+<p>通知中心UNUserNotificationCenter</p>
+</blockquote>
+<p>获取通知<code>[UNUserNotificationCenter currentNotificationCenter]</code>然后通过<code>addNotificaitonRequest:</code>就完成了一个通知的添加。</p>
+<p>##扩展通知的内容<br>通知我们已经添加上了，现在我们需要扩展一下通知的内容，给它加一些内容。扩展的内容需要支持3D-touch的手机（6s以上），重压之后全面显示</p>
+<blockquote>
+<p>添加附件</p>
+</blockquote>
+<p>iOS10之前通知的样式不能更改，在iOS10之后引入了UNNotificationationAttachment，可以在通知中添加图片，音频，视频。苹果对这些附件的大小和类型有一个限制：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-f41c6386d613fbd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="attachment_type.png"><br>如果我想在通知里加一个图片，可以这样处理：</p>
+<pre><code>NSString *imageFile = [[NSBundle mainBundle] pathForResource:@&quot;sport&quot; ofType:@&quot;png&quot;];
+UNNotificationAttachment *imageAttachment = [UNNotificationAttachment attachmentWithIdentifier:@&quot;iamgeAttachment&quot; URL:[NSURL fileURLWithPath:imageFile] options:nil error:nil];
+content.attachments = @[imageAttachment];//虽然是数组，但是添加多个只能显示第一个
+/* add request and notificaiton code ... */
+</code></pre><p>效果如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-a459ae47a216b686.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification02.png"><br>重压之后：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-6572c5180d447cbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notificaiton03.png"></p>
+<blockquote>
+<p>添加交互</p>
+</blockquote>
+<pre><code>//点击可以显示文本输入框
+UNTextInputNotificationAction *action1 = [UNTextInputNotificationAction actionWithIdentifier:@&quot;replyAction&quot; title:@&quot;文字回复&quot; options:UNNotificationActionOptionNone];
+//点击进入应用
+UNNotificationAction *action2 = [UNNotificationAction actionWithIdentifier:@&quot;enterAction&quot; title:@&quot;进入应用&quot; options:UNNotificationActionOptionForeground];
+//点击取消，没有任何操作
+UNNotificationAction *action3 = [UNNotificationAction actionWithIdentifier:@&quot;cancelAction&quot; title:@&quot;取消&quot; options:UNNotificationActionOptionDestructive];
+//通过UNNotificationCategory对象将这几个action行为添加到通知里去
+UNNotificationCategory *categroy = [UNNotificationCategory categoryWithIdentifier:@&quot;Categroy&quot; actions:@[action1,action2,action3] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
+//将categroy赋值到通知内容上
+content.categoryIdentifier = @&quot;Categroy&quot;;
+//设置通知代理，用于检测点击方法
+[[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
+/* add request and notificaiton code ... */
+</code></pre><p>效果如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-b7497931a422eb7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notificaiotn04.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-98dad809d88ab0e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification05.png"></p>
+<p>获取通知交互内容：</p>
+<pre><code>//识别通知交互处理的代理方法
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
+
+NSString *categoryIdentifier = response.notification.request.content.categoryIdentifier;
+
+if ([categoryIdentifier isEqualToString:@&quot;Categroy&quot;]) {
+    //识别需要被处理的拓展
+    if ([response.actionIdentifier isEqualToString:@&quot;replyAction&quot;]){
+        //识别用户点击的是哪个 action
+        UNTextInputNotificationResponse *textResponse = (UNTextInputNotificationResponse*)response;
+        //获取输入内容
+        NSString *userText = textResponse.userText;
+        //发送 userText 给需要接收的方法
+        NSLog(@&quot;要发送的内容是：%@&quot;,userText);
+        //[ClassName handleUserText: userText];
+    }else if([response.actionIdentifier isEqualToString:@&quot;enterAction&quot;]){
+        NSLog(@&quot;点击了进入应用按钮&quot;);
+    }else{
+        NSLog(@&quot;点击了取消&quot;);
+    }
+}
+completionHandler();
+}
+</code></pre><p>由此我们可以知道action，categroy，request这些东西都是通过各自的identifier获取的。这样可以很方便的定位到某一个通知或者action上，为交互的处理提供了很大的便利。</p>
+<p>##自定义通知样式<br>在Xcode中File-&gt;New-&gt;Targe会出现下面的视图</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-ea496e4072fdc52f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification06.png"><br>Notification Content对应的是通知，Notification Service Extension对应的是推送。我们这里要实现通知的自定义，选择左边那个。创建成功之后会在工程里多一个文件件<br><img src="http://upload-images.jianshu.io/upload_images/1059465-5881abd4c65e5d73.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification07.png"><br>NotificationViewController文件是自动生成的，里面有一个<br><code>- (void)didReceiveNotification:(UNNotification *)notification</code><br>可以在这里定义一些通知的显示。</p>
+<p>MainInterface.storyboard文件是控制通知的storyboard文件，可以编辑需要的通知样式。我们设计一下文字的颜色和显示位置</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-296bf320ce219e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notificaiton08.png"></p>
+<p>接下来你可能会问，怎么把这个自定义的通知样式应用到当前通知里呢？先别急，我们看下一个文件Info.flist里面的内容</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-46dfa08e664a7a3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification09.png"></p>
+<p>第一项<code>UNNotificationExtensionCategory</code>就是UNNotificationCategory的标示，我们把他换成我们通知里使用的标示<code>&quot;Category&quot;</code>，系统就会自动匹配通知显示的样式。<br>第二项<code>UNNotificationExtensionIntialContentSizeRation</code>初始内容 Size 的比例。也可以在 viewDidLoad 中使用 self.preferredContentSize 直接设置 Size。<br>第三项<code>UNNotificationExtensionDefaultContentHidden</code>是否隐藏默认内容，如果设为YES，默认内容会被隐藏。<br>显示的效果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-b1dd1a73d6c21873.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification10.png"></p>
+<p>##总结<br>至此，iOS通知部分的内容就学完了，参考代码：<a href="https://github.com/zhangferry/UserNotificaitonDemo" target="_blank" rel="noopener">Demo</a>。<br>参考文档：<br><a href="http://maquannene.github.io/2016/06/27/iOS10%20UserNotifications%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">iOS10 User Notificaitons学习笔记</a><br><a href="https://onevcat.com/2016/08/notification/" target="_blank" rel="noopener">活久见的重构-iOS10 UserNotificaiotns框架解析</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="zhangferry 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ios/" rel="tag"># ios</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/18/ios-hybrid-app/" rel="next" title="iOS中实现JS和OC的交互(Hybrid App)">
+                <i class="fa fa-chevron-left"></i> iOS中实现JS和OC的交互(Hybrid App)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/14/ancs-bind/" rel="prev" title="处理ANCS设备连接绑定问题">
+                处理ANCS设备连接绑定问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zhangferry">
+            
+              <p class="site-author-name" itemprop="name">zhangferry</p>
+              <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zhangferry" title="GitHub &rarr; https://github.com/zhangferry" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/2947186387/profile" title="Weibo &rarr; https://weibo.com/2947186387/profile" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangferry</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">123k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">1:52</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '012999c912503aff4cac',
+    clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
+    repo: 'zhangferry.github.io',
+    owner: 'zhangferry',
+    admin: ['zhangferry'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
