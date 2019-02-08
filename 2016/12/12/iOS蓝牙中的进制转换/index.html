@@ -101,7 +101,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS蓝牙中的进制转换">
 <meta property="og:url" content="http://zhangferry.github.io/2016/12/12/iOS蓝牙中的进制转换/index.html">
-<meta property="og:site_name" content="zhangferry`s blog">
+<meta property="og:site_name" content="zhangferry">
 <meta property="og:description" content="最近在忙一个蓝牙项目，在处理蓝牙数据的时候，经常遇到进制之间的转换，蓝牙处理的是16进制（NSData），而我们习惯的计数方式是10进制，为了节省空间，蓝牙也会把16进制（NSData）拆成2进制记录。这里我们研究下如何在他们之间进行转换。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-e8b76e6d8dcb9416.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -113,7 +113,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="zhangferry`s blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
 
 
 
@@ -128,7 +128,7 @@
   };
 </script>
 
-  <title>iOS蓝牙中的进制转换 | zhangferry`s blog</title>
+  <title>iOS蓝牙中的进制转换 | zhangferry</title>
   
 
 
@@ -197,7 +197,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">zhangferry`s blog</span>
+        <span class="site-title">zhangferry</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -354,7 +354,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry`s blog">
+      <meta itemprop="name" content="zhangferry">
     </span>
 
     
@@ -422,6 +422,13 @@
           
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
           
 
           
@@ -732,6 +739,30 @@ char *bs = (unsigned char *)[[data subdataWithRange:NSMakeRange(5, 1) ] bytes];
       
     
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="zhangferry 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
@@ -1011,20 +1042,40 @@ char *bs = (unsigned char *)[[data subdataWithRange:NSMakeRange(5, 1) ] bytes];
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.7.0</div>
 
 
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
 
 
 
