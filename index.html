@@ -1143,7 +1143,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.1k</span>
+                <span title="本文字数">4.9k</span>
               
 
               
@@ -1157,7 +1157,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -1182,16 +1182,216 @@
             <p>发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。</p>
 <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>一个在线视频能够播放，大致是经过了如下步骤：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-d573ac8a2e21fb3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="video_play_progress.png"></p>
 <p>可以总结为：拉数据-&gt;解协议-&gt;解封装-&gt;音视频解码-&gt;音视频同步-&gt;播放。<br>下面就针对这几个概念一一做下解释：</p>
-<h3 id="播放协议"><a href="#播放协议" class="headerlink" title="播放协议"></a>播放协议</h3><p>一般点播采用HTTP，而直播的话，大部分还是采用RTMP或者私有协议，原因是延时会比较小，RTMP本身也是为了直播设计的。常见的流媒体协议：<br>| 简写 | 全称 | 推出机构  | 目前使用领域 |<br>| —— | —– | —— | :——: |<br>| HLS | HTTP Live Streaming |  苹果 | 多应用于苹果|<br>| RTP | 实时传输协议|IETF | 范围较广|<br>| RTCP | 实时传输控制协议 |IETF | 范围较广|<br>| RTSP | 实时串流协议 |RealNetworks等 | 范围较广|<br>| RTMP | 实时消息协议 |Adobe | 较流行|<br>| MMS | 串流媒体协议|Microsoft | 范围较广|</p>
+<h3 id="播放协议"><a href="#播放协议" class="headerlink" title="播放协议"></a>播放协议</h3><p>一般点播采用HTTP，而直播的话，大部分还是采用RTMP或者私有协议，原因是延时会比较小，RTMP本身也是为了直播设计的。常见的流媒体协议：</p>
+<table>
+<thead>
+<tr>
+<th>简写</th>
+<th style="text-align:center">全称</th>
+<th style="text-align:center">推出机构</th>
+<th>目前使用领域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HLS</td>
+<td style="text-align:center">HTTP Live Streaming</td>
+<td style="text-align:center">苹果</td>
+<td>多应用于苹果</td>
+</tr>
+<tr>
+<td>RTP</td>
+<td style="text-align:center">实时传输协议</td>
+<td style="text-align:center">IETF</td>
+<td>范围较广</td>
+</tr>
+<tr>
+<td>RTCP</td>
+<td style="text-align:center">实时传输控制协议</td>
+<td style="text-align:center">IETF</td>
+<td>范围较广</td>
+</tr>
+<tr>
+<td>RTSP</td>
+<td style="text-align:center">实时串流协议</td>
+<td style="text-align:center">RealNetworks等</td>
+<td>范围较广</td>
+</tr>
+<tr>
+<td>RTMP</td>
+<td style="text-align:center">实时消息协议</td>
+<td style="text-align:center">Adobe</td>
+<td>较流行</td>
+</tr>
+<tr>
+<td>MMS</td>
+<td style="text-align:center">串流媒体协议</td>
+<td style="text-align:center">Microsoft</td>
+<td>范围较广</td>
+</tr>
+</tbody>
+</table>
 <p><strong>RTP/RTSP/RTCP的区别</strong></p>
 <blockquote>
 <p>RTSP发起/终结流媒体、RTP传输流媒体数据 、RTCP对RTP进行控制，同步。</p>
 </blockquote>
 <p><strong>HLS(Http Live Streaming)</strong><br>HLS是苹果推出，实现的基于HTTP的流媒体传输协议:<br>优点：<br>1、通过m3u8索引文件可实现针对当前浏览设备的智能选择播放源，<br>2、通过m3u8索引文件可实现添加备份索引文件，防止服务器崩溃视频播放失败<br>3、和http视频一样 不需要太多服务器额外配置<br>缺点：<br>1、并非真正实时视频，30s左右时间差<br>2、需要视频处理<br>3、因为需要请求索引文件（ts视频文件）请求次数相对较多，对服务器负载较大</p>
-<h3 id="视频编码"><a href="#视频编码" class="headerlink" title="视频编码"></a>视频编码</h3><p>所谓视频编码方式就是指通过特定的压缩技术，将某个视频格式的文件转换成另一种视频格式文件的方式。它是一种为了减少视频体积，同时保证画面质量的压缩技术，常见的视频编码有：<br>| 名称 | 推出机构 | 推出时间 | 目前使用领域 |<br>| —— | —— | :——: | :——: |<br>| HEVC(H.265) | MPEG/ITU-T | 2013 |研发中|<br>| H.264 | MPEG/ITU-T | 2003 |各个领域|<br>| MPEG4 | MPEG | 2001|不温不火|<br>| MPEG2 | MPEG | 1994 |数字电视|<br>| XviD | OpenDivX | 2002 |流行|<br>| VP9 | Google | 2013 |研发中|<br>| VP8 | Google | 2008 |不普及|<br>| VC-1 | Microsoft Inc. | 2006 |微软|<br><strong>H.264</strong></p>
+<h3 id="视频编码"><a href="#视频编码" class="headerlink" title="视频编码"></a>视频编码</h3><p>所谓视频编码方式就是指通过特定的压缩技术，将某个视频格式的文件转换成另一种视频格式文件的方式。它是一种为了减少视频体积，同时保证画面质量的压缩技术，常见的视频编码有：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>推出机构</th>
+<th>推出时间</th>
+<th>目前使用领域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HEVC(H.265)</td>
+<td>MPEG/ITU-T</td>
+<td>2013</td>
+<td>研发中</td>
+</tr>
+<tr>
+<td>H.264</td>
+<td>MPEG/ITU-T</td>
+<td>2003</td>
+<td>各个领域</td>
+</tr>
+<tr>
+<td>MPEG4</td>
+<td>MPEG</td>
+<td>2001</td>
+<td>不温不火</td>
+</tr>
+<tr>
+<td>MPEG2</td>
+<td>MPEG</td>
+<td>1994</td>
+<td>数字电视</td>
+</tr>
+<tr>
+<td>XviD</td>
+<td>OpenDivX</td>
+<td>2002</td>
+<td>流行</td>
+</tr>
+<tr>
+<td>VP9</td>
+<td>Google</td>
+<td>2013</td>
+<td>研发中</td>
+</tr>
+<tr>
+<td>VP8</td>
+<td>Google</td>
+<td>2008</td>
+<td>不普及</td>
+</tr>
+<tr>
+<td>VC-1</td>
+<td>Microsoft Inc.</td>
+<td>2006</td>
+<td>微软</td>
+</tr>
+</tbody>
+</table>
+<p><strong>H.264</strong></p>
 <p>H.264又叫AVC，是国际标准化组织（ISO）和国际电信联盟（ITU）共同提出的继MPEG4之后的新一代数字视频压缩格式，它集合了H.263和MPEG4的优点，拥有更高的数据压缩比。在同等的图像质量条件下，H.264的数据压缩比能比H.263高2倍，比MPEG-4高1.5倍。<br>也是目前苹果支持最好的编码格式。</p>
-<h3 id="音频编码"><a href="#音频编码" class="headerlink" title="音频编码"></a>音频编码</h3><p>和视频编码类似，音频编码的作用是减少音频中的冗余，同时在保证一定音频质量的条件下作的压缩处理。<br>| 名称 | 推出机构 | 推出时间 | 目前使用领域 |<br>| —— | —— | :——: | :——: |<br>| AAC | MPEG | 1997 |流媒体|<br>| AC-3 | Dolby Inc. | 1992 |DVD, 数字电视|<br>| MP3 | MPEG | 1993|各个领域（旧）|<br>| WMA | Microsoft Inc. | 1999 |Windows|<br><strong>AAC</strong><br>AAC（高级音频编码技术 Advanced Audio Coding)，出现于1997年，是基于MPEG-2的音频编码技术。由Fraunhofer IIS、杜比、苹果、AT&amp;T、索尼等公司共同开发，以取代mp3格式。2000年，MPEG-4标准出台，AAC从新整合了其特性，故现又称MPEG-4 AAC，即m4a。<br>苹果的CoreAudio对AAC有较好的支持。</p>
-<h3 id="封装格式"><a href="#封装格式" class="headerlink" title="封装格式"></a>封装格式</h3><p>我们常见的视频格式MP4, AVI, RMVB, 3GP, MKV都是指视频的封装格式,大部分情况就是视频文件的后缀。常见的组合方式有：<br>| 名称 | 简介 | 常用编码格式 | 扩展名 |<br>| —— | —— | :——: | :——: |<br>| Flash Video | 由Adobe Flash延伸出来的的一种流行网络视频封装格式。随着视频网站的丰富，这个格式已经非常普及。 | H.264+MP3 |flv|<br>| AVI（Audio Video Interleave） | 比较早的AVI是微软开发的。其含义是Audio Video Interactive，就是把视频和音频编码混合在一起存储。AVI也是最长寿的格式，已经存在10余年了，虽然发布过改版（V2.0于1996年发布），但已显老态。AVI格式上限制比较多，只能有一个视频轨道和一个音频轨道（现在有非标准插件可加入最多两个音频轨道），还可以有一些附加轨道，如文字等。AVI格式不提供任何控制功能。 | Xvid+MP3 |avi|<br>| WMV（Windows Media Video） | 同样是微软开发的一组数字视频编解码格式的通称，ASF（Advanced Systems Format）是其封装格式。ASF封装的WMV档具有“数字版权保护”功能。 | VC-1+WMA|wmv/asf|<br>| MPEG（Moving Picture Experts Group） | 是一个国际标准化组织（ISO）认可的媒体封装形式，受到大部分机器的支持。其存储方式多样，可以适应不同的应用环境。MPEG-4档的档容器格式在Part 1（mux）、14（asp）、15（avc）等中规定。MPEG的控制功能丰富，可以有多个视频（即角度）、音轨、字幕（位图字幕）等等。MPEG的一个简化版本3GP还广泛的用于准3G手机上。 | H.264+AAC,H263+AAC |dat(VCD),vob(DVD), mp4, 3gp|<br>| Matroska | 是一种新的多媒体封装格式，这个封装格式可把多种不同编码的视频及16条或以上不同格式的音频和语言不同的字幕封装到一个Matroska Media档内。它也是其中一种开放源代码的多媒体封装格式。Matroska同时还可以提供非常好的交互功能，而且比MPEG更方便、强大。 | 各种编码格式的组合 |mkv|<br>| Real Video Real Media（RM） | 是由RealNetworks开发的一种档容器。它通常只能容纳Real Video和Real Audio编码的媒体。该档带有一定的交互功能，允许编写脚本以控制播放。RM，尤其是可变比特率的RMVB格式，没有复杂的Profile/Level，制作起来较H.264视频格式简单，非常受到网络上传者的欢迎。此外很多人仍有RMVB体积小高质量的错误认知，这个不太正确的观念也导致很多人倾向使用rmvb，事实上在相同码率下，rmvb编码和H.264这个高度压缩的视频编码相比，体积会较大。 | RealVideo+RealAudio|rm/rmvb|<br>| QuickTime File Format | 是由苹果公司开发的容器。1998年2月11日，国际标准化组织（ISO）认可QuickTime文件格式作为MPEG-4标准的基础。QuickTime可存储的内容相当丰富，除了视频、音频以外还可支持图片、文字（文本字幕）等。 | H.264+AAC |mov, qt|</p>
+<h3 id="音频编码"><a href="#音频编码" class="headerlink" title="音频编码"></a>音频编码</h3><p>和视频编码类似，音频编码的作用是减少音频中的冗余，同时在保证一定音频质量的条件下作的压缩处理。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>推出机构</th>
+<th style="text-align:center">推出时间</th>
+<th style="text-align:center">目前使用领域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AAC</td>
+<td>MPEG</td>
+<td style="text-align:center">1997</td>
+<td style="text-align:center">流媒体</td>
+</tr>
+<tr>
+<td>AC-3</td>
+<td>Dolby Inc.</td>
+<td style="text-align:center">1992</td>
+<td style="text-align:center">DVD, 数字电视</td>
+</tr>
+<tr>
+<td>MP3</td>
+<td>MPEG</td>
+<td style="text-align:center">1993</td>
+<td style="text-align:center">各个领域（旧）</td>
+</tr>
+<tr>
+<td>WMA</td>
+<td>Microsoft Inc.</td>
+<td style="text-align:center">1999</td>
+<td style="text-align:center">Windows</td>
+</tr>
+</tbody>
+</table>
+<p><strong>AAC</strong><br>AAC（高级音频编码技术 Advanced Audio Coding)，出现于1997年，是基于MPEG-2的音频编码技术。由Fraunhofer IIS、杜比、苹果、AT&amp;T、索尼等公司共同开发，以取代mp3格式。2000年，MPEG-4标准出台，AAC从新整合了其特性，故现又称MPEG-4 AAC，即m4a。<br>苹果的CoreAudio对AAC有较好的支持。</p>
+<h3 id="封装格式"><a href="#封装格式" class="headerlink" title="封装格式"></a>封装格式</h3><p>我们常见的视频格式MP4, AVI, RMVB, 3GP, MKV都是指视频的封装格式,大部分情况就是视频文件的后缀。常见的组合方式有：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+<th style="text-align:center">常用编码格式</th>
+<th style="text-align:center">扩展名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flash Video</td>
+<td>由Adobe Flash延伸出来的的一种流行网络视频封装格式。随着视频网站的丰富，这个格式已经非常普及。</td>
+<td style="text-align:center">H.264+MP3</td>
+<td style="text-align:center">flv</td>
+</tr>
+<tr>
+<td>AVI（Audio Video Interleave）</td>
+<td>比较早的AVI是微软开发的。其含义是Audio Video Interactive，就是把视频和音频编码混合在一起存储。AVI也是最长寿的格式，已经存在10余年了，虽然发布过改版（V2.0于1996年发布），但已显老态。AVI格式上限制比较多，只能有一个视频轨道和一个音频轨道（现在有非标准插件可加入最多两个音频轨道），还可以有一些附加轨道，如文字等。AVI格式不提供任何控制功能。</td>
+<td style="text-align:center">Xvid+MP3</td>
+<td style="text-align:center">avi</td>
+</tr>
+<tr>
+<td>WMV（Windows Media Video）</td>
+<td>同样是微软开发的一组数字视频编解码格式的通称，ASF（Advanced Systems Format）是其封装格式。ASF封装的WMV档具有“数字版权保护”功能。</td>
+<td style="text-align:center">VC-1+WMA</td>
+<td style="text-align:center">wmv/asf</td>
+</tr>
+<tr>
+<td>MPEG（Moving Picture Experts Group）</td>
+<td>是一个国际标准化组织（ISO）认可的媒体封装形式，受到大部分机器的支持。其存储方式多样，可以适应不同的应用环境。MPEG-4档的档容器格式在Part 1（mux）、14（asp）、15（avc）等中规定。MPEG的控制功能丰富，可以有多个视频（即角度）、音轨、字幕（位图字幕）等等。MPEG的一个简化版本3GP还广泛的用于准3G手机上。</td>
+<td style="text-align:center">H.264+AAC,H263+AAC</td>
+<td style="text-align:center">dat(VCD),vob(DVD), mp4, 3gp</td>
+</tr>
+<tr>
+<td>Matroska</td>
+<td>是一种新的多媒体封装格式，这个封装格式可把多种不同编码的视频及16条或以上不同格式的音频和语言不同的字幕封装到一个Matroska Media档内。它也是其中一种开放源代码的多媒体封装格式。Matroska同时还可以提供非常好的交互功能，而且比MPEG更方便、强大。</td>
+<td style="text-align:center">各种编码格式的组合</td>
+<td style="text-align:center">mkv</td>
+</tr>
+<tr>
+<td>Real Video Real Media（RM）</td>
+<td>是由RealNetworks开发的一种档容器。它通常只能容纳Real Video和Real Audio编码的媒体。该档带有一定的交互功能，允许编写脚本以控制播放。RM，尤其是可变比特率的RMVB格式，没有复杂的Profile/Level，制作起来较H.264视频格式简单，非常受到网络上传者的欢迎。此外很多人仍有RMVB体积小高质量的错误认知，这个不太正确的观念也导致很多人倾向使用rmvb，事实上在相同码率下，rmvb编码和H.264这个高度压缩的视频编码相比，体积会较大。</td>
+<td style="text-align:center">RealVideo+RealAudio</td>
+<td style="text-align:center">rm/rmvb</td>
+</tr>
+<tr>
+<td>QuickTime File Format</td>
+<td>是由苹果公司开发的容器。1998年2月11日，国际标准化组织（ISO）认可QuickTime文件格式作为MPEG-4标准的基础。QuickTime可存储的内容相当丰富，除了视频、音频以外还可支持图片、文字（文本字幕）等。</td>
+<td style="text-align:center">H.264+AAC</td>
+<td style="text-align:center">mov, qt</td>
+</tr>
+</tbody>
+</table>
 <p><strong>MP4</strong><br>mp4格式是H.264编码指定使用的标准封装格式，3GP是MP4格式的一种简化版本，减少了储存空间和较低的频宽需求，让手机上有限的储存空间可以使用。</p>
 <p>实际上这些封装格式对应的音频视频编码格式也不是固定的，就拿MP4来说，常见的MP4是由H.264+AAC封装，但是也由Xvid+AAC编码的可能。如果解码器不支持Xvid，则可能会出现无法播放，或者播放播放过程有声音无画面的情况。</p>
 <h2 id="苹果支持哪些音视频编码格式"><a href="#苹果支持哪些音视频编码格式" class="headerlink" title="苹果支持哪些音视频编码格式"></a>苹果支持哪些音视频编码格式</h2><p>我们可以在手机介绍界面，找到手机支持的视频格式<a href="https://www.apple.com/iphone/compare/" target="_blank" rel="noopener">iPhone - Compare Models - Apple</a></p>
@@ -1200,10 +1400,12 @@
 <p>Video formats supported: HEVC, H.264, MPEG-4 Part 2, and Motion JPEG</p>
 </blockquote>
 <p><strong>HEVC</strong><br>又叫H.265，iOS11+A9芯片才开始对HEVC的支持，iPhone6s及以前的设备不支持HEVC解码。<br>音频格式用红框标出来了，内容较多，可自行对比。</p>
-<h2 id="AVPlayer支持哪些视频格式"><a href="#AVPlayer支持哪些视频格式" class="headerlink" title="AVPlayer支持哪些视频格式"></a>AVPlayer支持哪些视频格式</h2><p>苹果设备支持音视频格式并不是就代表<code>AVPlayer</code>也支持那么多格式，确定<code>AVPlayer</code>的支持格式，我们可以查看<code>AVKit</code>中的一个API:<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//展示当前支持的音视频格式</span></span><br><span class="line"><span class="keyword">let</span> asset = <span class="type">AVURLAsset</span>.audiovisualTypes()</span><br><span class="line"><span class="comment">//打印asset可以得到（已经转过展示格式）</span></span><br><span class="line">asset type (</span><br><span class="line">    <span class="string">"audio/aacp"</span>,</span><br><span class="line">    <span class="string">"video/3gpp2"</span>,</span><br><span class="line">    <span class="string">"audio/mpeg3"</span>,</span><br><span class="line">    <span class="string">"audio/mp3"</span>,</span><br><span class="line">    <span class="string">"audio/x-caf"</span>,</span><br><span class="line">    <span class="string">"audio/mpeg"</span>,</span><br><span class="line">    <span class="string">"video/quicktime"</span>,</span><br><span class="line">    <span class="string">"audio/x-mpeg3"</span>,</span><br><span class="line">    <span class="string">"video/mp4"</span>,</span><br><span class="line">    <span class="string">"audio/wav"</span>,</span><br><span class="line">    <span class="string">"video/avi"</span>,</span><br><span class="line">    <span class="string">"audio/scpls"</span>,</span><br><span class="line">    <span class="string">"audio/mp4"</span>,</span><br><span class="line">    <span class="string">"audio/x-mpg"</span>,</span><br><span class="line">    <span class="string">"video/x-m4v"</span>,</span><br><span class="line">    <span class="string">"audio/x-wav"</span>,</span><br><span class="line">    <span class="string">"audio/x-aiff"</span>,</span><br><span class="line">    <span class="string">"application/vnd.apple.mpegurl"</span>,</span><br><span class="line">    <span class="string">"video/3gpp"</span>,</span><br><span class="line">    <span class="string">"text/vtt"</span>,</span><br><span class="line">    <span class="string">"audio/x-mpeg"</span>,</span><br><span class="line">    <span class="string">"audio/wave"</span>,</span><br><span class="line">    <span class="string">"audio/x-m4r"</span>,</span><br><span class="line">    <span class="string">"audio/x-mp3"</span>,</span><br><span class="line">    <span class="string">"audio/AMR"</span>,</span><br><span class="line">    <span class="string">"audio/aiff"</span>,</span><br><span class="line">    <span class="string">"audio/3gpp2"</span>,</span><br><span class="line">    <span class="string">"audio/aac"</span>,</span><br><span class="line">    <span class="string">"audio/mpg"</span>,</span><br><span class="line">    <span class="string">"audio/mpegurl"</span>,</span><br><span class="line">    <span class="string">"audio/x-m4b"</span>,</span><br><span class="line">    <span class="string">"application/mp4"</span>,</span><br><span class="line">    <span class="string">"audio/x-m4p"</span>,</span><br><span class="line">    <span class="string">"audio/x-scpls"</span>,</span><br><span class="line">    <span class="string">"audio/x-mpegurl"</span>,</span><br><span class="line">    <span class="string">"audio/x-aac"</span>,</span><br><span class="line">    <span class="string">"audio/3gpp"</span>,</span><br><span class="line">    <span class="string">"audio/basic"</span>,</span><br><span class="line">    <span class="string">"audio/x-m4a"</span>,</span><br><span class="line">    <span class="string">"application/x-mpegurl"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
-<p>还有一个方式用来判断当前格式是否可播：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//An extended MIME type string such as video/3gpp2; codecs="mp4v.20.9, mp4a.E1" or audio/aac; codecs="mp4a.E1".</span></span><br><span class="line"><span class="keyword">let</span> playable: <span class="type">Bool</span> = <span class="type">AVURLAsset</span>.isPlayableExtendedMIMEType(<span class="string">"video/3gpp2; codecs=\"mp4v.20.9, mp4a.E1\""</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="AVPlayer支持哪些视频格式"><a href="#AVPlayer支持哪些视频格式" class="headerlink" title="AVPlayer支持哪些视频格式"></a>AVPlayer支持哪些视频格式</h2><p>苹果设备支持音视频格式并不是就代表<code>AVPlayer</code>也支持那么多格式，确定<code>AVPlayer</code>的支持格式，我们可以查看<code>AVKit</code>中的一个API:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//展示当前支持的音视频格式</span></span><br><span class="line"><span class="keyword">let</span> asset = <span class="type">AVURLAsset</span>.audiovisualTypes()</span><br><span class="line"><span class="comment">//打印asset可以得到（已经转过展示格式）</span></span><br><span class="line">asset type (</span><br><span class="line">    <span class="string">"audio/aacp"</span>,</span><br><span class="line">    <span class="string">"video/3gpp2"</span>,</span><br><span class="line">    <span class="string">"audio/mpeg3"</span>,</span><br><span class="line">    <span class="string">"audio/mp3"</span>,</span><br><span class="line">    <span class="string">"audio/x-caf"</span>,</span><br><span class="line">    <span class="string">"audio/mpeg"</span>,</span><br><span class="line">    <span class="string">"video/quicktime"</span>,</span><br><span class="line">    <span class="string">"audio/x-mpeg3"</span>,</span><br><span class="line">    <span class="string">"video/mp4"</span>,</span><br><span class="line">    <span class="string">"audio/wav"</span>,</span><br><span class="line">    <span class="string">"video/avi"</span>,</span><br><span class="line">    <span class="string">"audio/scpls"</span>,</span><br><span class="line">    <span class="string">"audio/mp4"</span>,</span><br><span class="line">    <span class="string">"audio/x-mpg"</span>,</span><br><span class="line">    <span class="string">"video/x-m4v"</span>,</span><br><span class="line">    <span class="string">"audio/x-wav"</span>,</span><br><span class="line">    <span class="string">"audio/x-aiff"</span>,</span><br><span class="line">    <span class="string">"application/vnd.apple.mpegurl"</span>,</span><br><span class="line">    <span class="string">"video/3gpp"</span>,</span><br><span class="line">    <span class="string">"text/vtt"</span>,</span><br><span class="line">    <span class="string">"audio/x-mpeg"</span>,</span><br><span class="line">    <span class="string">"audio/wave"</span>,</span><br><span class="line">    <span class="string">"audio/x-m4r"</span>,</span><br><span class="line">    <span class="string">"audio/x-mp3"</span>,</span><br><span class="line">    <span class="string">"audio/AMR"</span>,</span><br><span class="line">    <span class="string">"audio/aiff"</span>,</span><br><span class="line">    <span class="string">"audio/3gpp2"</span>,</span><br><span class="line">    <span class="string">"audio/aac"</span>,</span><br><span class="line">    <span class="string">"audio/mpg"</span>,</span><br><span class="line">    <span class="string">"audio/mpegurl"</span>,</span><br><span class="line">    <span class="string">"audio/x-m4b"</span>,</span><br><span class="line">    <span class="string">"application/mp4"</span>,</span><br><span class="line">    <span class="string">"audio/x-m4p"</span>,</span><br><span class="line">    <span class="string">"audio/x-scpls"</span>,</span><br><span class="line">    <span class="string">"audio/x-mpegurl"</span>,</span><br><span class="line">    <span class="string">"audio/x-aac"</span>,</span><br><span class="line">    <span class="string">"audio/3gpp"</span>,</span><br><span class="line">    <span class="string">"audio/basic"</span>,</span><br><span class="line">    <span class="string">"audio/x-m4a"</span>,</span><br><span class="line">    <span class="string">"application/x-mpegurl"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>还有一个方式用来判断当前格式是否可播：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//An extended MIME type string such as video/3gpp2; codecs="mp4v.20.9, mp4a.E1" or audio/aac; codecs="mp4a.E1".</span></span><br><span class="line"><span class="keyword">let</span> playable: <span class="type">Bool</span> = <span class="type">AVURLAsset</span>.isPlayableExtendedMIMEType(<span class="string">"video/3gpp2; codecs=\"mp4v.20.9, mp4a.E1\""</span>)</span><br></pre></td></tr></table></figure>
 <p>这里的MIMEType可以在这里找到<br><a href="https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html" target="_blank" rel="noopener">System-Declared Uniform Type Identifiers</a></p>
-<p><strong>总结</strong><br>由此我们可以下一个总结，AVPlayer支持的：<br>视频编码格式：H.264、HEVC(iPhone7及以后设备)、MPEG-4。<br>视频格式（封装格式）：.mp4、.mov、.m4v、.3gp、.avi等。<br>如果想支持更多的视频格式，可以使用使用第三方的框架，常用的视频编码和解码框架有<a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener">VLC</a>和<a href="https://github.com/FFmpeg/FFmpeg" target="_blank" rel="noopener">ffmpeg</a>。</p>
+<p><strong>总结</strong><br>由此我们可以下一个总结，AVPlayer支持的：<br>视频编码格式：<code>H.264</code>、<code>HEVC</code>(iPhone7及以后设备)、<code>MPEG-4</code>。<br>视频格式（封装格式）：.mp4、.mov、.m4v、.3gp、.avi等。<br>如果想支持更多的视频格式，可以使用使用第三方的框架，常用的视频编码和解码框架有<a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener">VLC</a>和<a href="https://github.com/FFmpeg/FFmpeg" target="_blank" rel="noopener">ffmpeg</a>。</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://zh.wikipedia.org/wiki/%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F" target="_blank" rel="noopener">视频文件格式 - 维基百科，自由的百科全书</a><br><a href="https://zh.wikipedia.org/wiki/%E9%9F%B3%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%AF%94%E8%BE%83" target="_blank" rel="noopener">音频编码格式的比较 - 维基百科，自由的百科全书</a></p>
 
           

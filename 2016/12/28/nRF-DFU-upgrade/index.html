@@ -110,7 +110,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-914a66ffc635ced8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-7b4336365cd8afc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-9a9dbc9595473841.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-08T13:38:16.686Z">
+<meta property="og:updated_time" content="2019-02-09T05:44:00.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nRF芯片设备DFU升级（适配Xcode10.1）">
 <meta name="twitter:description" content="这里主要参考这个项目：iOS-nRF-Toolbox，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。  项目是用Swift写的，不过之前还是有OC版本的，但是后来由于一些**（不可描述的问题），才变成了现在的纯Swift版本。对于使用Swift开发的人员，直接仿照Demo操作即可。如果你是用Swift开发的，那下面的内容你可以不用看了。接下来我就讲一下针对OC引用DF">
@@ -594,7 +594,8 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
 <pre><code>carthage update --platform iOS /**编译出iOS版本*/
 </code></pre><p>6、更新framework</p>
 <pre><code>cd Carthage/Build/iOS  /**framework输出位置，将老的framework替换掉*/
-</code></pre><p><strong>注意</strong><br>nRF Toolbox项目方法变更<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[initiator withFirmwareFile:selectedFirmware];/** 旧版本方法 */</span><br><span class="line">initiator = [initiator withFirmware:selectedFirmware];/** 新版本方法 */</span><br></pre></td></tr></table></figure></p>
+</code></pre><p><strong>注意</strong><br>nRF Toolbox项目方法变更</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[initiator withFirmwareFile:selectedFirmware];<span class="comment">/** 旧版本方法 */</span></span><br><span class="line">initiator = [initiator withFirmware:selectedFirmware];<span class="comment">/** 新版本方法 */</span></span><br></pre></td></tr></table></figure>
 <hr>
 <p>DFU v4.2版本API变更兼容旧版，但标为<code>DEPRECATED</code>，<a href="https://github.com/zhangferry/nRF-Toolbox" target="_blank" rel="noopener">github</a>项目已经更新。</p>
 

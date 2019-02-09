@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-f45041c3c8cf024b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-ee5970ce54abaaed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-08T13:37:32.109Z">
+<meta property="og:updated_time" content="2019-02-09T05:46:07.586Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="处理ANCS设备连接绑定问题">
 <meta name="twitter:description" content="ANCS（Apple Notification Center Service，苹果通知中心）的目的是提供给蓝牙外设一种简单、方便的获取iOS设备通知信息的方式。使得蓝牙手环，手表可以接收到来自iPhone的来电、短信及QQ、微信等应用的通知消息。 如果你已经能够连接普通蓝牙，初次面对ANCS设备可能会有以下问题：  问题一：遵循ANCS协议的的设备会直接和系统相连，即使杀掉应用，连接还是存在的。">
@@ -504,30 +504,11 @@ if (peripherals.count &gt; 0) {
 <p>问题二：有绑定和解除功能，如何处理两者的关系</p>
 </blockquote>
 <p>首先我们要知道，不能通过代码，断开ANCS设备与系统之间的连接，那么如果我们想解除设备的绑定，只能控制设备与APP之间的断开。</p>
-<p>###绑定<br>再回看上面提到的苹果提供的两个获取已连接设备的方法，一个是通过serviceUUID，它可以返回同一类型的设备列表；一个是通过设备UUID，它在一定情况下就是唯一的（如果设备名唯一，这里可以使用设备名），返回的是唯一设备。那么我们就可以利用UUID的唯一性，作为绑定的标示，存到NSUserDefault里面，对于未绑定的设备通过serviceUUID去获取设备列表。参考代码：</p>
-<pre><code>NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-NSString *uuidString = [userDefault objectForKey:RWBLE_BANDIDENTIFI_ID];
-
-NSArray *peripherals;
-if (uuidString) {
-    //通过uuid获取连接设备
-    NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:uuidString];
-    peripherals = [self.centralManager retrievePeripheralsWithIdentifiers:@[uuid]];
-}else{
-    //通过serviceUUID获取连接设备
-    peripherals = [self.centralManager retrieveConnectedPeripheralsWithServices:@[[CBUUID UUIDWithString:ST_SERVICE_UUID]]];
-}
-/* peripherals connect code */
-</code></pre><p>###解绑<br>不能使ANCS设备与系统连接断开，那么我们就在程序里销毁这个外设对象，这样APP与蓝牙设备的连接通讯就不存在了，造成了一种断开的感觉。参考代码：</p>
-<pre><code>//解绑设备
-- (void)unbindDevice{
-    [self disconnect];//通知app，设备已经断开
-
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault removeObjectForKey:RWBLE_BANDIDENTIFI_ID];//销毁uuid
-    self.peripheral = nil;
-}
-</code></pre><p>这么写看似已经解决问题了，但是会出现一种情况：解绑了设备，杀掉应用，再次进入设备还是能连上。why?因为虽然没有了UUID，但进入程序会通过serviceUUID再次获取连接。</p>
+<p>###绑定<br>再回看上面提到的苹果提供的两个获取已连接设备的方法，一个是通过<code>serviceUUID</code>，它可以返回同一类型的设备列表；一个是通过设备UUID，它在一定情况下就是唯一的（如果设备名唯一，这里可以使用设备名），返回的是唯一设备。那么我们就可以利用UUID的唯一性，作为绑定的标示，存到<code>NSUserDefault</code>里面，对于未绑定的设备通过<code>serviceUUID</code>去获取设备列表。参考代码：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSUserDefaults</span> *userDefault = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line"><span class="built_in">NSString</span> *uuidString = [userDefault objectForKey:RWBLE_BANDIDENTIFI_ID];</span><br><span class="line">    </span><br><span class="line"><span class="built_in">NSArray</span> *peripherals;</span><br><span class="line"><span class="keyword">if</span> (uuidString) &#123;</span><br><span class="line">        <span class="comment">//通过uuid获取连接设备</span></span><br><span class="line">    <span class="built_in">NSUUID</span> *uuid = [[<span class="built_in">NSUUID</span> alloc] initWithUUIDString:uuidString];</span><br><span class="line">        peripherals = [<span class="keyword">self</span>.centralManager retrievePeripheralsWithIdentifiers:@[uuid]];</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//通过serviceUUID获取连接设备</span></span><br><span class="line">        peripherals = [<span class="keyword">self</span>.centralManager retrieveConnectedPeripheralsWithServices:@[[CBUUID UUIDWithString:ST_SERVICE_UUID]]];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* peripherals connect code */</span></span><br></pre></td></tr></table></figure>
+<p>###解绑<br>不能使ANCS设备与系统连接断开，那么我们就在程序里销毁这个外设对象，这样APP与蓝牙设备的连接通讯就不存在了，造成了一种断开的感觉。参考代码：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//解绑设备</span></span><br><span class="line">- (<span class="keyword">void</span>)unbindDevice&#123;</span><br><span class="line">    [<span class="keyword">self</span> disconnect];<span class="comment">//通知app，设备已经断开</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSUserDefaults</span> *userDefault = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line">    [userDefault removeObjectForKey:RWBLE_BANDIDENTIFI_ID];<span class="comment">//销毁uuid</span></span><br><span class="line">    <span class="keyword">self</span>.peripheral = <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这么写看似已经解决问题了，但是会出现一种情况：解绑了设备，杀掉应用，再次进入设备还是能连上。why?因为虽然没有了UUID，但进入程序会通过<code>serviceUUID</code>再次获取连接。</p>
 <p>这时可以在扫面做一个判断，是否刚解绑过设备。可以是个BOOL值，绑定和初始绑定为NO，解绑操作改为YES。如果刚解绑过设备，就直接返回不做后面的扫描操作，这样就解决了上面的问题。这个比较简单，就不列具体代码了。</p>
 <p>参考文档：<br><a href="https://developer.apple.com/library/content/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/BestPracticesForInteractingWithARemotePeripheralDevice/BestPracticesForInteractingWithARemotePeripheralDevice.html#//apple_ref/doc/uid/TP40013257-CH6-SW11" target="_blank" rel="noopener">Best Practices for Interacting with a Remote Peripheral Device</a></p>
 

@@ -116,7 +116,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-296bf320ce219e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-46dfa08e664a7a3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-b1dd1a73d6c21873.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-08T13:39:24.541Z">
+<meta property="og:updated_time" content="2019-02-09T05:43:08.735Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS10本地通知UserNotifications快速入门">
 <meta name="twitter:description" content="iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。 以下的用语，如无特别表述，通知就代表本地通知，推送就代表远程服务器的推送。 ##快速添加一个通知我们先举个完整的代码例子，大家了解下这个流程，然后分步介绍这几项：">
@@ -435,7 +435,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.5k</span>
+                <span title="本文字数">6.6k</span>
               
 
               
@@ -473,40 +473,8 @@
 <p>iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。</p>
 <p>以下的用语，如无特别表述，<code>通知</code>就代表本地通知，<code>推送</code>就代表远程服务器的推送。</p>
 <p>##快速添加一个通知<br>我们先举个完整的代码例子，大家了解下这个流程，然后分步介绍这几项：</p>
-<pre><code>//第一步：注册通知
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-// Override point for customization after application launch.
-UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-//请求获取通知权限（角标，声音，弹框）
-[center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
-    if (granted) {
-        //获取用户是否同意开启通知
-        NSLog(@&quot;request authorization successed!&quot;);
-    }
-}];
-}
-//第二步：新建通知内容对象
-UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init]
-content.title = @&quot;iOS10通知&quot;;
-content.subtitle = @&quot;新通知学习笔记&quot;;
-content.body = @&quot;新通知变化很大，之前本地通知和远程推送是两个类，现在合成一个了。这是一条测试通知，&quot;;
-content.badge = @1;
-UNNotificationSound *sound = [UNNotificationSound soundNamed:@&quot;caodi.m4a&quot;];
-content.sound = sound;
-
-//第三步：通知触发机制。（重复提醒，时间间隔要大于60s）
-UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:NO];
-
-//第四步：创建UNNotificationRequest通知请求对象
-NSString *requertIdentifier = @&quot;RequestIdentifier&quot;;
-UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requertIdentifier content:content trigger:trigger1];
-
-//第五步：将通知加到通知中心
-[[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-    NSLog(@&quot;Error:%@&quot;,error);
-
-}];
-</code></pre><p>最终效果如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一步：注册通知</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</span><br><span class="line">    <span class="comment">// Override point for customization after application launch.</span></span><br><span class="line">    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];</span><br><span class="line">    <span class="comment">//请求获取通知权限（角标，声音，弹框）</span></span><br><span class="line">    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(<span class="built_in">BOOL</span> granted, <span class="built_in">NSError</span> * _Nullable error) &#123;</span><br><span class="line">        <span class="keyword">if</span> (granted) &#123;</span><br><span class="line">            <span class="comment">//获取用户是否同意开启通知</span></span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"request authorization successed!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//第二步：新建通知内容对象</span></span><br><span class="line">    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init]</span><br><span class="line">    content.title = <span class="string">@"iOS10通知"</span>;</span><br><span class="line">    content.subtitle = <span class="string">@"新通知学习笔记"</span>;</span><br><span class="line">    content.body = <span class="string">@"新通知变化很大，之前本地通知和远程推送是两个类，现在合成一个了。这是一条测试通知，"</span>;</span><br><span class="line">    content.badge = @<span class="number">1</span>;</span><br><span class="line">    UNNotificationSound *sound = [UNNotificationSound soundNamed:<span class="string">@"caodi.m4a"</span>];</span><br><span class="line">    content.sound = sound;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第三步：通知触发机制。（重复提醒，时间间隔要大于60s）</span></span><br><span class="line">    UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:<span class="number">5</span> repeats:<span class="literal">NO</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第四步：创建UNNotificationRequest通知请求对象</span></span><br><span class="line">    <span class="built_in">NSString</span> *requertIdentifier = <span class="string">@"RequestIdentifier"</span>;</span><br><span class="line">    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requertIdentifier content:content trigger:trigger1];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第五步：将通知加到通知中心</span></span><br><span class="line">    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(<span class="built_in">NSError</span> * _Nullable error) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Error:%@"</span>,error);</span><br><span class="line"></span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最终效果如下：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-6d61819c9bfd09dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification01.png"></p>
 <blockquote>
 <p>通知内容UNMutableNotificationContent</p>
@@ -516,11 +484,8 @@ UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:re
 <p>触发机制UNNotificationTrigger</p>
 </blockquote>
 <p>Trigger是新加入的一个功能，通过此类可设置本地通知触发条件。它一共有一下几种类型：<br>1、UNPushNotificaitonTrigger<br>推送服务的Trigger，由系统创建<br>2、UNTimeIntervalNotificaitonTrigger<br>时间触发器，可以设置多长时间以后触发，是否重复。如果设置重复，重复时长要大于60s<br>3、UNCalendarNotificaitonTrigger<br>日期触发器，可以设置某一日期触发。例如，提醒我每天早上七点起床：</p>
-<pre><code>NSDateComponents *components = [[NSDateComponents alloc] init];
-components.hour = 7;
-components.minute = 0; // components 日期            
-UNCalendarNotificationTrigger *calendarTrigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components repeats:YES];
-</code></pre><p> 4、UNLocationNotificaitonTrigger<br>位置触发器，用于到某一范围之后，触发通知。通过CLRegion设定具体范围。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSDateComponents</span> *components = [[<span class="built_in">NSDateComponents</span> alloc] init];</span><br><span class="line">components.hour = <span class="number">7</span>;</span><br><span class="line">components.minute = <span class="number">0</span>; <span class="comment">// components 日期         UNCalendarNotificationTrigger *calendarTrigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components repeats:YES];</span></span><br></pre></td></tr></table></figure>
+<p> 4、UNLocationNotificaitonTrigger<br>位置触发器，用于到某一范围之后，触发通知。通过CLRegion设定具体范围。</p>
 <blockquote>
 <p>通知请求UNNotificationRequest</p>
 </blockquote>
@@ -536,56 +501,19 @@ trigger:(nullable UNNotificationTrigger *)trigger;</code><br>就是把上面三�
 <p>添加附件</p>
 </blockquote>
 <p>iOS10之前通知的样式不能更改，在iOS10之后引入了UNNotificationationAttachment，可以在通知中添加图片，音频，视频。苹果对这些附件的大小和类型有一个限制：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-f41c6386d613fbd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="attachment_type.png"><br>如果我想在通知里加一个图片，可以这样处理：</p>
-<pre><code>NSString *imageFile = [[NSBundle mainBundle] pathForResource:@&quot;sport&quot; ofType:@&quot;png&quot;];
-UNNotificationAttachment *imageAttachment = [UNNotificationAttachment attachmentWithIdentifier:@&quot;iamgeAttachment&quot; URL:[NSURL fileURLWithPath:imageFile] options:nil error:nil];
-content.attachments = @[imageAttachment];//虽然是数组，但是添加多个只能显示第一个
-/* add request and notificaiton code ... */
-</code></pre><p>效果如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *imageFile = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"sport"</span> ofType:<span class="string">@"png"</span>];</span><br><span class="line">UNNotificationAttachment *imageAttachment = [UNNotificationAttachment attachmentWithIdentifier:<span class="string">@"iamgeAttachment"</span> URL:[<span class="built_in">NSURL</span> fileURLWithPath:imageFile] options:<span class="literal">nil</span> error:<span class="literal">nil</span>];</span><br><span class="line">content.attachments = @[imageAttachment];<span class="comment">//虽然是数组，但是添加多个只能显示第一个</span></span><br><span class="line"><span class="comment">/* add request and notificaiton code ... */</span></span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-a459ae47a216b686.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification02.png"><br>重压之后：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-6572c5180d447cbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notificaiton03.png"></p>
 <blockquote>
 <p>添加交互</p>
 </blockquote>
-<pre><code>//点击可以显示文本输入框
-UNTextInputNotificationAction *action1 = [UNTextInputNotificationAction actionWithIdentifier:@&quot;replyAction&quot; title:@&quot;文字回复&quot; options:UNNotificationActionOptionNone];
-//点击进入应用
-UNNotificationAction *action2 = [UNNotificationAction actionWithIdentifier:@&quot;enterAction&quot; title:@&quot;进入应用&quot; options:UNNotificationActionOptionForeground];
-//点击取消，没有任何操作
-UNNotificationAction *action3 = [UNNotificationAction actionWithIdentifier:@&quot;cancelAction&quot; title:@&quot;取消&quot; options:UNNotificationActionOptionDestructive];
-//通过UNNotificationCategory对象将这几个action行为添加到通知里去
-UNNotificationCategory *categroy = [UNNotificationCategory categoryWithIdentifier:@&quot;Categroy&quot; actions:@[action1,action2,action3] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
-//将categroy赋值到通知内容上
-content.categoryIdentifier = @&quot;Categroy&quot;;
-//设置通知代理，用于检测点击方法
-[[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
-/* add request and notificaiton code ... */
-</code></pre><p>效果如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击可以显示文本输入框</span></span><br><span class="line">UNTextInputNotificationAction *action1 = [UNTextInputNotificationAction actionWithIdentifier:<span class="string">@"replyAction"</span> title:<span class="string">@"文字回复"</span> options:UNNotificationActionOptionNone];</span><br><span class="line">    <span class="comment">//点击进入应用</span></span><br><span class="line">UNNotificationAction *action2 = [UNNotificationAction actionWithIdentifier:<span class="string">@"enterAction"</span> title:<span class="string">@"进入应用"</span> options:UNNotificationActionOptionForeground];</span><br><span class="line">    <span class="comment">//点击取消，没有任何操作</span></span><br><span class="line">UNNotificationAction *action3 = [UNNotificationAction actionWithIdentifier:<span class="string">@"cancelAction"</span> title:<span class="string">@"取消"</span> options:UNNotificationActionOptionDestructive];</span><br><span class="line">    <span class="comment">//通过UNNotificationCategory对象将这几个action行为添加到通知里去</span></span><br><span class="line">UNNotificationCategory *categroy = [UNNotificationCategory categoryWithIdentifier:<span class="string">@"Categroy"</span> actions:@[action1,action2,action3] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];</span><br><span class="line">    <span class="comment">//将categroy赋值到通知内容上</span></span><br><span class="line">    content.categoryIdentifier = <span class="string">@"Categroy"</span>;</span><br><span class="line">    <span class="comment">//设置通知代理，用于检测点击方法</span></span><br><span class="line">[[UNUserNotificationCenter currentNotificationCenter] setDelegate:<span class="keyword">self</span>];</span><br><span class="line"><span class="comment">/* add request and notificaiton code ... */</span></span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-b7497931a422eb7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notificaiotn04.png"></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-98dad809d88ab0e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification05.png"></p>
 <p>获取通知交互内容：</p>
-<pre><code>//识别通知交互处理的代理方法
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
-
-NSString *categoryIdentifier = response.notification.request.content.categoryIdentifier;
-
-if ([categoryIdentifier isEqualToString:@&quot;Categroy&quot;]) {
-    //识别需要被处理的拓展
-    if ([response.actionIdentifier isEqualToString:@&quot;replyAction&quot;]){
-        //识别用户点击的是哪个 action
-        UNTextInputNotificationResponse *textResponse = (UNTextInputNotificationResponse*)response;
-        //获取输入内容
-        NSString *userText = textResponse.userText;
-        //发送 userText 给需要接收的方法
-        NSLog(@&quot;要发送的内容是：%@&quot;,userText);
-        //[ClassName handleUserText: userText];
-    }else if([response.actionIdentifier isEqualToString:@&quot;enterAction&quot;]){
-        NSLog(@&quot;点击了进入应用按钮&quot;);
-    }else{
-        NSLog(@&quot;点击了取消&quot;);
-    }
-}
-completionHandler();
-}
-</code></pre><p>由此我们可以知道action，categroy，request这些东西都是通过各自的identifier获取的。这样可以很方便的定位到某一个通知或者action上，为交互的处理提供了很大的便利。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//识别通知交互处理的代理方法</span></span><br><span class="line">- (<span class="keyword">void</span>)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(<span class="keyword">void</span> (^)())completionHandler&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSString</span> *categoryIdentifier = response.notification.request.content.categoryIdentifier;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([categoryIdentifier isEqualToString:<span class="string">@"Categroy"</span>]) &#123;</span><br><span class="line">        <span class="comment">//识别需要被处理的拓展</span></span><br><span class="line">        <span class="keyword">if</span> ([response.actionIdentifier isEqualToString:<span class="string">@"replyAction"</span>])&#123;</span><br><span class="line">            <span class="comment">//识别用户点击的是哪个 action</span></span><br><span class="line">            UNTextInputNotificationResponse *textResponse = (UNTextInputNotificationResponse*)response;</span><br><span class="line">            <span class="comment">//获取输入内容</span></span><br><span class="line">            <span class="built_in">NSString</span> *userText = textResponse.userText;</span><br><span class="line">            <span class="comment">//发送 userText 给需要接收的方法</span></span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"要发送的内容是：%@"</span>,userText);</span><br><span class="line">            <span class="comment">//[ClassName handleUserText: userText];</span></span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>([response.actionIdentifier isEqualToString:<span class="string">@"enterAction"</span>])&#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"点击了进入应用按钮"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"点击了取消"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    completionHandler();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由此我们可以知道action，categroy，request这些东西都是通过各自的identifier获取的。这样可以很方便的定位到某一个通知或者action上，为交互的处理提供了很大的便利。</p>
 <p>##自定义通知样式<br>在Xcode中File-&gt;New-&gt;Targe会出现下面的视图</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-ea496e4072fdc52f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification06.png"><br>Notification Content对应的是通知，Notification Service Extension对应的是推送。我们这里要实现通知的自定义，选择左边那个。创建成功之后会在工程里多一个文件件<br><img src="http://upload-images.jianshu.io/upload_images/1059465-5881abd4c65e5d73.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification07.png"><br>NotificationViewController文件是自动生成的，里面有一个<br><code>- (void)didReceiveNotification:(UNNotification *)notification</code><br>可以在这里定义一些通知的显示。</p>
 <p>MainInterface.storyboard文件是控制通知的storyboard文件，可以编辑需要的通知样式。我们设计一下文字的颜色和显示位置</p>

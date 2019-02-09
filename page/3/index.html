@@ -15,7 +15,7 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -109,12 +109,12 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml"/>
+  <link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
 
 
 
 
-  <link rel="canonical" href="http://zhangferry.github.io/page/3/"/>
+  <link rel="canonical" href="http://zhangferry.github.io/page/3/">
 
 
 
@@ -175,7 +175,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -186,7 +186,7 @@
   page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
     
@@ -233,7 +233,7 @@
       
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
         
@@ -252,7 +252,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">9</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">9</span></a>
 
   </li>
         
@@ -271,7 +271,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">28</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">28</span></a>
 
   </li>
         
@@ -290,7 +290,7 @@
       
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
 
@@ -337,21 +337,21 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/12/28/nRF-DFU-upgrade/"/>
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/12/28/nRF-DFU-upgrade/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangferry"/>
-      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry"/>
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
     </span>
 
     
@@ -405,7 +405,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/蓝牙总结/" itemprop="url" rel="index"><span itemprop="name">蓝牙总结</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/蓝牙总结/" itemprop="url" rel="index"><span itemprop="name">蓝牙总结</span></a></span>
 
                 
                 
@@ -583,7 +583,8 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
 <pre><code>carthage update --platform iOS /**编译出iOS版本*/
 </code></pre><p>6、更新framework</p>
 <pre><code>cd Carthage/Build/iOS  /**framework输出位置，将老的framework替换掉*/
-</code></pre><p><strong>注意</strong><br>nRF Toolbox项目方法变更<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[initiator withFirmwareFile:selectedFirmware];/** 旧版本方法 */</span><br><span class="line">initiator = [initiator withFirmware:selectedFirmware];/** 新版本方法 */</span><br></pre></td></tr></table></figure></p>
+</code></pre><p><strong>注意</strong><br>nRF Toolbox项目方法变更</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[initiator withFirmwareFile:selectedFirmware];<span class="comment">/** 旧版本方法 */</span></span><br><span class="line">initiator = [initiator withFirmware:selectedFirmware];<span class="comment">/** 新版本方法 */</span></span><br></pre></td></tr></table></figure>
 <hr>
 <p>DFU v4.2版本API变更兼容旧版，但标为<code>DEPRECATED</code>，<a href="https://github.com/zhangferry/nRF-Toolbox" target="_blank" rel="noopener">github</a>项目已经更新。</p>
 
@@ -637,21 +638,21 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/12/20/基于Hexo搭建自己的博客小屋/"/>
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/12/20/基于Hexo搭建自己的博客小屋/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangferry"/>
-      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry"/>
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
     </span>
 
     
@@ -705,7 +706,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span>
 
                 
                 
@@ -782,7 +783,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
           <!--/noindex-->
         
       
-    </div>
+    </p></blockquote></div>
 
     
 
@@ -829,21 +830,21 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/12/12/iOS蓝牙中的进制转换/"/>
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/12/12/iOS蓝牙中的进制转换/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangferry"/>
-      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry"/>
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
     </span>
 
     
@@ -897,7 +898,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/蓝牙总结/" itemprop="url" rel="index"><span itemprop="name">蓝牙总结</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/蓝牙总结/" itemprop="url" rel="index"><span itemprop="name">蓝牙总结</span></a></span>
 
                 
                 
@@ -973,7 +974,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
           <!--/noindex-->
         
       
-    </div>
+    </p></div>
 
     
 
@@ -1020,21 +1021,21 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/12/12/iOS获取来电和短信发送状态/"/>
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/12/12/iOS获取来电和短信发送状态/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangferry"/>
-      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry"/>
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
     </span>
 
     
@@ -1088,7 +1089,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS知识点/" itemprop="url" rel="index"><span itemprop="name">iOS知识点</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/iOS知识点/" itemprop="url" rel="index"><span itemprop="name">iOS知识点</span></a></span>
 
                 
                 
@@ -1164,7 +1165,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
           <!--/noindex-->
         
       
-    </div>
+    </p></div>
 
     
 
@@ -1211,21 +1212,21 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/10/14/ancs-bind/"/>
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/10/14/ancs-bind/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangferry"/>
-      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry"/>
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
     </span>
 
     
@@ -1279,7 +1280,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/蓝牙总结/" itemprop="url" rel="index"><span itemprop="name">蓝牙总结</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/蓝牙总结/" itemprop="url" rel="index"><span itemprop="name">蓝牙总结</span></a></span>
 
                 
                 
@@ -1371,30 +1372,11 @@ if (peripherals.count &gt; 0) {
 <p>问题二：有绑定和解除功能，如何处理两者的关系</p>
 </blockquote>
 <p>首先我们要知道，不能通过代码，断开ANCS设备与系统之间的连接，那么如果我们想解除设备的绑定，只能控制设备与APP之间的断开。</p>
-<p>###绑定<br>再回看上面提到的苹果提供的两个获取已连接设备的方法，一个是通过serviceUUID，它可以返回同一类型的设备列表；一个是通过设备UUID，它在一定情况下就是唯一的（如果设备名唯一，这里可以使用设备名），返回的是唯一设备。那么我们就可以利用UUID的唯一性，作为绑定的标示，存到NSUserDefault里面，对于未绑定的设备通过serviceUUID去获取设备列表。参考代码：</p>
-<pre><code>NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-NSString *uuidString = [userDefault objectForKey:RWBLE_BANDIDENTIFI_ID];
-
-NSArray *peripherals;
-if (uuidString) {
-    //通过uuid获取连接设备
-    NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:uuidString];
-    peripherals = [self.centralManager retrievePeripheralsWithIdentifiers:@[uuid]];
-}else{
-    //通过serviceUUID获取连接设备
-    peripherals = [self.centralManager retrieveConnectedPeripheralsWithServices:@[[CBUUID UUIDWithString:ST_SERVICE_UUID]]];
-}
-/* peripherals connect code */
-</code></pre><p>###解绑<br>不能使ANCS设备与系统连接断开，那么我们就在程序里销毁这个外设对象，这样APP与蓝牙设备的连接通讯就不存在了，造成了一种断开的感觉。参考代码：</p>
-<pre><code>//解绑设备
-- (void)unbindDevice{
-    [self disconnect];//通知app，设备已经断开
-
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault removeObjectForKey:RWBLE_BANDIDENTIFI_ID];//销毁uuid
-    self.peripheral = nil;
-}
-</code></pre><p>这么写看似已经解决问题了，但是会出现一种情况：解绑了设备，杀掉应用，再次进入设备还是能连上。why?因为虽然没有了UUID，但进入程序会通过serviceUUID再次获取连接。</p>
+<p>###绑定<br>再回看上面提到的苹果提供的两个获取已连接设备的方法，一个是通过<code>serviceUUID</code>，它可以返回同一类型的设备列表；一个是通过设备UUID，它在一定情况下就是唯一的（如果设备名唯一，这里可以使用设备名），返回的是唯一设备。那么我们就可以利用UUID的唯一性，作为绑定的标示，存到<code>NSUserDefault</code>里面，对于未绑定的设备通过<code>serviceUUID</code>去获取设备列表。参考代码：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSUserDefaults</span> *userDefault = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line"><span class="built_in">NSString</span> *uuidString = [userDefault objectForKey:RWBLE_BANDIDENTIFI_ID];</span><br><span class="line">    </span><br><span class="line"><span class="built_in">NSArray</span> *peripherals;</span><br><span class="line"><span class="keyword">if</span> (uuidString) &#123;</span><br><span class="line">        <span class="comment">//通过uuid获取连接设备</span></span><br><span class="line">    <span class="built_in">NSUUID</span> *uuid = [[<span class="built_in">NSUUID</span> alloc] initWithUUIDString:uuidString];</span><br><span class="line">        peripherals = [<span class="keyword">self</span>.centralManager retrievePeripheralsWithIdentifiers:@[uuid]];</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//通过serviceUUID获取连接设备</span></span><br><span class="line">        peripherals = [<span class="keyword">self</span>.centralManager retrieveConnectedPeripheralsWithServices:@[[CBUUID UUIDWithString:ST_SERVICE_UUID]]];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* peripherals connect code */</span></span><br></pre></td></tr></table></figure>
+<p>###解绑<br>不能使ANCS设备与系统连接断开，那么我们就在程序里销毁这个外设对象，这样APP与蓝牙设备的连接通讯就不存在了，造成了一种断开的感觉。参考代码：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//解绑设备</span></span><br><span class="line">- (<span class="keyword">void</span>)unbindDevice&#123;</span><br><span class="line">    [<span class="keyword">self</span> disconnect];<span class="comment">//通知app，设备已经断开</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSUserDefaults</span> *userDefault = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line">    [userDefault removeObjectForKey:RWBLE_BANDIDENTIFI_ID];<span class="comment">//销毁uuid</span></span><br><span class="line">    <span class="keyword">self</span>.peripheral = <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这么写看似已经解决问题了，但是会出现一种情况：解绑了设备，杀掉应用，再次进入设备还是能连上。why?因为虽然没有了UUID，但进入程序会通过<code>serviceUUID</code>再次获取连接。</p>
 <p>这时可以在扫面做一个判断，是否刚解绑过设备。可以是个BOOL值，绑定和初始绑定为NO，解绑操作改为YES。如果刚解绑过设备，就直接返回不做后面的扫描操作，这样就解决了上面的问题。这个比较简单，就不列具体代码了。</p>
 <p>参考文档：<br><a href="https://developer.apple.com/library/content/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/BestPracticesForInteractingWithARemotePeripheralDevice/BestPracticesForInteractingWithARemotePeripheralDevice.html#//apple_ref/doc/uid/TP40013257-CH6-SW11" target="_blank" rel="noopener">Best Practices for Interacting with a Remote Peripheral Device</a></p>
 
@@ -1448,21 +1430,21 @@ if (uuidString) {
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/09/30/usernotifications-introduction/"/>
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/09/30/usernotifications-introduction/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangferry"/>
-      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry"/>
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
     </span>
 
     
@@ -1527,7 +1509,7 @@ if (uuidString) {
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.5k</span>
+                <span title="本文字数">6.6k</span>
               
 
               
@@ -1567,40 +1549,8 @@ if (uuidString) {
 <p>iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。</p>
 <p>以下的用语，如无特别表述，<code>通知</code>就代表本地通知，<code>推送</code>就代表远程服务器的推送。</p>
 <p>##快速添加一个通知<br>我们先举个完整的代码例子，大家了解下这个流程，然后分步介绍这几项：</p>
-<pre><code>//第一步：注册通知
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-// Override point for customization after application launch.
-UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-//请求获取通知权限（角标，声音，弹框）
-[center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
-    if (granted) {
-        //获取用户是否同意开启通知
-        NSLog(@&quot;request authorization successed!&quot;);
-    }
-}];
-}
-//第二步：新建通知内容对象
-UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init]
-content.title = @&quot;iOS10通知&quot;;
-content.subtitle = @&quot;新通知学习笔记&quot;;
-content.body = @&quot;新通知变化很大，之前本地通知和远程推送是两个类，现在合成一个了。这是一条测试通知，&quot;;
-content.badge = @1;
-UNNotificationSound *sound = [UNNotificationSound soundNamed:@&quot;caodi.m4a&quot;];
-content.sound = sound;
-
-//第三步：通知触发机制。（重复提醒，时间间隔要大于60s）
-UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:NO];
-
-//第四步：创建UNNotificationRequest通知请求对象
-NSString *requertIdentifier = @&quot;RequestIdentifier&quot;;
-UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requertIdentifier content:content trigger:trigger1];
-
-//第五步：将通知加到通知中心
-[[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-    NSLog(@&quot;Error:%@&quot;,error);
-
-}];
-</code></pre><p>最终效果如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一步：注册通知</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</span><br><span class="line">    <span class="comment">// Override point for customization after application launch.</span></span><br><span class="line">    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];</span><br><span class="line">    <span class="comment">//请求获取通知权限（角标，声音，弹框）</span></span><br><span class="line">    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(<span class="built_in">BOOL</span> granted, <span class="built_in">NSError</span> * _Nullable error) &#123;</span><br><span class="line">        <span class="keyword">if</span> (granted) &#123;</span><br><span class="line">            <span class="comment">//获取用户是否同意开启通知</span></span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"request authorization successed!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//第二步：新建通知内容对象</span></span><br><span class="line">    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init]</span><br><span class="line">    content.title = <span class="string">@"iOS10通知"</span>;</span><br><span class="line">    content.subtitle = <span class="string">@"新通知学习笔记"</span>;</span><br><span class="line">    content.body = <span class="string">@"新通知变化很大，之前本地通知和远程推送是两个类，现在合成一个了。这是一条测试通知，"</span>;</span><br><span class="line">    content.badge = @<span class="number">1</span>;</span><br><span class="line">    UNNotificationSound *sound = [UNNotificationSound soundNamed:<span class="string">@"caodi.m4a"</span>];</span><br><span class="line">    content.sound = sound;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第三步：通知触发机制。（重复提醒，时间间隔要大于60s）</span></span><br><span class="line">    UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:<span class="number">5</span> repeats:<span class="literal">NO</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第四步：创建UNNotificationRequest通知请求对象</span></span><br><span class="line">    <span class="built_in">NSString</span> *requertIdentifier = <span class="string">@"RequestIdentifier"</span>;</span><br><span class="line">    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requertIdentifier content:content trigger:trigger1];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第五步：将通知加到通知中心</span></span><br><span class="line">    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(<span class="built_in">NSError</span> * _Nullable error) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Error:%@"</span>,error);</span><br><span class="line"></span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最终效果如下：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-6d61819c9bfd09dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification01.png"></p>
 <blockquote>
 <p>通知内容UNMutableNotificationContent</p>
@@ -1610,11 +1560,8 @@ UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:re
 <p>触发机制UNNotificationTrigger</p>
 </blockquote>
 <p>Trigger是新加入的一个功能，通过此类可设置本地通知触发条件。它一共有一下几种类型：<br>1、UNPushNotificaitonTrigger<br>推送服务的Trigger，由系统创建<br>2、UNTimeIntervalNotificaitonTrigger<br>时间触发器，可以设置多长时间以后触发，是否重复。如果设置重复，重复时长要大于60s<br>3、UNCalendarNotificaitonTrigger<br>日期触发器，可以设置某一日期触发。例如，提醒我每天早上七点起床：</p>
-<pre><code>NSDateComponents *components = [[NSDateComponents alloc] init];
-components.hour = 7;
-components.minute = 0; // components 日期            
-UNCalendarNotificationTrigger *calendarTrigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components repeats:YES];
-</code></pre><p> 4、UNLocationNotificaitonTrigger<br>位置触发器，用于到某一范围之后，触发通知。通过CLRegion设定具体范围。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSDateComponents</span> *components = [[<span class="built_in">NSDateComponents</span> alloc] init];</span><br><span class="line">components.hour = <span class="number">7</span>;</span><br><span class="line">components.minute = <span class="number">0</span>; <span class="comment">// components 日期         UNCalendarNotificationTrigger *calendarTrigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components repeats:YES];</span></span><br></pre></td></tr></table></figure>
+<p> 4、UNLocationNotificaitonTrigger<br>位置触发器，用于到某一范围之后，触发通知。通过CLRegion设定具体范围。</p>
 <blockquote>
 <p>通知请求UNNotificationRequest</p>
 </blockquote>
@@ -1630,56 +1577,19 @@ trigger:(nullable UNNotificationTrigger *)trigger;</code><br>就是把上面三�
 <p>添加附件</p>
 </blockquote>
 <p>iOS10之前通知的样式不能更改，在iOS10之后引入了UNNotificationationAttachment，可以在通知中添加图片，音频，视频。苹果对这些附件的大小和类型有一个限制：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-f41c6386d613fbd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="attachment_type.png"><br>如果我想在通知里加一个图片，可以这样处理：</p>
-<pre><code>NSString *imageFile = [[NSBundle mainBundle] pathForResource:@&quot;sport&quot; ofType:@&quot;png&quot;];
-UNNotificationAttachment *imageAttachment = [UNNotificationAttachment attachmentWithIdentifier:@&quot;iamgeAttachment&quot; URL:[NSURL fileURLWithPath:imageFile] options:nil error:nil];
-content.attachments = @[imageAttachment];//虽然是数组，但是添加多个只能显示第一个
-/* add request and notificaiton code ... */
-</code></pre><p>效果如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *imageFile = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"sport"</span> ofType:<span class="string">@"png"</span>];</span><br><span class="line">UNNotificationAttachment *imageAttachment = [UNNotificationAttachment attachmentWithIdentifier:<span class="string">@"iamgeAttachment"</span> URL:[<span class="built_in">NSURL</span> fileURLWithPath:imageFile] options:<span class="literal">nil</span> error:<span class="literal">nil</span>];</span><br><span class="line">content.attachments = @[imageAttachment];<span class="comment">//虽然是数组，但是添加多个只能显示第一个</span></span><br><span class="line"><span class="comment">/* add request and notificaiton code ... */</span></span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-a459ae47a216b686.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification02.png"><br>重压之后：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-6572c5180d447cbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notificaiton03.png"></p>
 <blockquote>
 <p>添加交互</p>
 </blockquote>
-<pre><code>//点击可以显示文本输入框
-UNTextInputNotificationAction *action1 = [UNTextInputNotificationAction actionWithIdentifier:@&quot;replyAction&quot; title:@&quot;文字回复&quot; options:UNNotificationActionOptionNone];
-//点击进入应用
-UNNotificationAction *action2 = [UNNotificationAction actionWithIdentifier:@&quot;enterAction&quot; title:@&quot;进入应用&quot; options:UNNotificationActionOptionForeground];
-//点击取消，没有任何操作
-UNNotificationAction *action3 = [UNNotificationAction actionWithIdentifier:@&quot;cancelAction&quot; title:@&quot;取消&quot; options:UNNotificationActionOptionDestructive];
-//通过UNNotificationCategory对象将这几个action行为添加到通知里去
-UNNotificationCategory *categroy = [UNNotificationCategory categoryWithIdentifier:@&quot;Categroy&quot; actions:@[action1,action2,action3] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
-//将categroy赋值到通知内容上
-content.categoryIdentifier = @&quot;Categroy&quot;;
-//设置通知代理，用于检测点击方法
-[[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
-/* add request and notificaiton code ... */
-</code></pre><p>效果如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击可以显示文本输入框</span></span><br><span class="line">UNTextInputNotificationAction *action1 = [UNTextInputNotificationAction actionWithIdentifier:<span class="string">@"replyAction"</span> title:<span class="string">@"文字回复"</span> options:UNNotificationActionOptionNone];</span><br><span class="line">    <span class="comment">//点击进入应用</span></span><br><span class="line">UNNotificationAction *action2 = [UNNotificationAction actionWithIdentifier:<span class="string">@"enterAction"</span> title:<span class="string">@"进入应用"</span> options:UNNotificationActionOptionForeground];</span><br><span class="line">    <span class="comment">//点击取消，没有任何操作</span></span><br><span class="line">UNNotificationAction *action3 = [UNNotificationAction actionWithIdentifier:<span class="string">@"cancelAction"</span> title:<span class="string">@"取消"</span> options:UNNotificationActionOptionDestructive];</span><br><span class="line">    <span class="comment">//通过UNNotificationCategory对象将这几个action行为添加到通知里去</span></span><br><span class="line">UNNotificationCategory *categroy = [UNNotificationCategory categoryWithIdentifier:<span class="string">@"Categroy"</span> actions:@[action1,action2,action3] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];</span><br><span class="line">    <span class="comment">//将categroy赋值到通知内容上</span></span><br><span class="line">    content.categoryIdentifier = <span class="string">@"Categroy"</span>;</span><br><span class="line">    <span class="comment">//设置通知代理，用于检测点击方法</span></span><br><span class="line">[[UNUserNotificationCenter currentNotificationCenter] setDelegate:<span class="keyword">self</span>];</span><br><span class="line"><span class="comment">/* add request and notificaiton code ... */</span></span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-b7497931a422eb7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notificaiotn04.png"></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-98dad809d88ab0e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification05.png"></p>
 <p>获取通知交互内容：</p>
-<pre><code>//识别通知交互处理的代理方法
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
-
-NSString *categoryIdentifier = response.notification.request.content.categoryIdentifier;
-
-if ([categoryIdentifier isEqualToString:@&quot;Categroy&quot;]) {
-    //识别需要被处理的拓展
-    if ([response.actionIdentifier isEqualToString:@&quot;replyAction&quot;]){
-        //识别用户点击的是哪个 action
-        UNTextInputNotificationResponse *textResponse = (UNTextInputNotificationResponse*)response;
-        //获取输入内容
-        NSString *userText = textResponse.userText;
-        //发送 userText 给需要接收的方法
-        NSLog(@&quot;要发送的内容是：%@&quot;,userText);
-        //[ClassName handleUserText: userText];
-    }else if([response.actionIdentifier isEqualToString:@&quot;enterAction&quot;]){
-        NSLog(@&quot;点击了进入应用按钮&quot;);
-    }else{
-        NSLog(@&quot;点击了取消&quot;);
-    }
-}
-completionHandler();
-}
-</code></pre><p>由此我们可以知道action，categroy，request这些东西都是通过各自的identifier获取的。这样可以很方便的定位到某一个通知或者action上，为交互的处理提供了很大的便利。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//识别通知交互处理的代理方法</span></span><br><span class="line">- (<span class="keyword">void</span>)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(<span class="keyword">void</span> (^)())completionHandler&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSString</span> *categoryIdentifier = response.notification.request.content.categoryIdentifier;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([categoryIdentifier isEqualToString:<span class="string">@"Categroy"</span>]) &#123;</span><br><span class="line">        <span class="comment">//识别需要被处理的拓展</span></span><br><span class="line">        <span class="keyword">if</span> ([response.actionIdentifier isEqualToString:<span class="string">@"replyAction"</span>])&#123;</span><br><span class="line">            <span class="comment">//识别用户点击的是哪个 action</span></span><br><span class="line">            UNTextInputNotificationResponse *textResponse = (UNTextInputNotificationResponse*)response;</span><br><span class="line">            <span class="comment">//获取输入内容</span></span><br><span class="line">            <span class="built_in">NSString</span> *userText = textResponse.userText;</span><br><span class="line">            <span class="comment">//发送 userText 给需要接收的方法</span></span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"要发送的内容是：%@"</span>,userText);</span><br><span class="line">            <span class="comment">//[ClassName handleUserText: userText];</span></span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>([response.actionIdentifier isEqualToString:<span class="string">@"enterAction"</span>])&#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"点击了进入应用按钮"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"点击了取消"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    completionHandler();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由此我们可以知道action，categroy，request这些东西都是通过各自的identifier获取的。这样可以很方便的定位到某一个通知或者action上，为交互的处理提供了很大的便利。</p>
 <p>##自定义通知样式<br>在Xcode中File-&gt;New-&gt;Targe会出现下面的视图</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-ea496e4072fdc52f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification06.png"><br>Notification Content对应的是通知，Notification Service Extension对应的是推送。我们这里要实现通知的自定义，选择左边那个。创建成功之后会在工程里多一个文件件<br><img src="http://upload-images.jianshu.io/upload_images/1059465-5881abd4c65e5d73.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification07.png"><br>NotificationViewController文件是自动生成的，里面有一个<br><code>- (void)didReceiveNotification:(UNNotification *)notification</code><br>可以在这里定义一些通知的显示。</p>
 <p>MainInterface.storyboard文件是控制通知的storyboard文件，可以编辑需要的通知样式。我们设计一下文字的颜色和显示位置</p>
@@ -1740,21 +1650,21 @@ completionHandler();
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/08/18/ios-hybrid-app/"/>
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/08/18/ios-hybrid-app/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangferry"/>
-      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry"/>
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
     </span>
 
     
@@ -1819,7 +1729,7 @@ completionHandler();
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.6k</span>
+                <span title="本文字数">5k</span>
               
 
               
@@ -1833,7 +1743,7 @@ completionHandler();
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -1881,7 +1791,9 @@ completionHandler();
 <li>JSContext: 代表JavaScript的运行环境，你需要用JSContext来执行JavaScript代码。所有的JSValue都是捆绑在一个JSContext上的。</li>
 <li>JSExport: 这是一个协议，可以用这个协议来将原生对象导出给JavaScript，这样原生对象的属性或方法就成为了JavaScript的属性或方法，非常神奇。<br><a href="http://nshipster.cn/javascriptcore" target="_blank" rel="noopener">JavaScriptCore了解</a></li>
 </ul>
-<p>###网页内容<br>    &lt;!DOCTYPE html&gt;<br>    <html><br>    <head><meta name="generator" content="Hexo 3.8.0"><br>    <meta charset="UTF-8"><br>    </head><br>    <body><br>    <div style="margin-top: 20px"><br>    <h2>JavaSript与OC交互</h2><br>    <input type="button" value="Native传值" onclick="Native.call('Native调用')"><br>    </div><br>    <div><br>    <input type="button" value="传值测试" onclick="passValue('test')"><br>    </div><br>    <script><br>    var alertShow = function(str)<br>    {<br>        alert(str);<br>    }<br>    </script><br>    </body><br>    </html><br>HTML运行结果：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-cc53a2d8dd514f16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen shot.png"></p>
+<p>###网页内容</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"margin-top: 20px"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>JavaSript与OC交互<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Native传值"</span> <span class="attr">onclick</span>=<span class="string">"Native.call('Native调用')"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"传值测试"</span> <span class="attr">onclick</span>=<span class="string">"passValue('test')"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        var alertShow = function(str)</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="undefined">        alert(str);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>HTML运行结果：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-cc53a2d8dd514f16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen shot.png"></p>
 <p>###获取JS点击事件</p>
 <p>我们目的是获取点击方法</p>
 <p><strong>第一步</strong><br>导入JavaScriptCore</p>
@@ -1902,82 +1814,42 @@ self.jsContext.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue)
 }
 </code></pre><p><strong>第四步</strong><br>获取点击事件<br> 有两种添加点击事件的方式</p>
 <ul>
-<li><p>直接调用的函数</p>
-<pre><code>&lt;input type=&quot;button&quot; value=&quot;传值测试&quot; onclick=&quot;passValue(&apos;test&apos;)&quot;&gt;
-</code></pre></li>
+<li>直接调用的函数</li>
 </ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"传值测试"</span> <span class="attr">onclick</span>=<span class="string">"passValue('test')"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>如果是第一种情况，比较简单。在代理<code>- (void)webViewDidFinishLoad:(UIWebView *)webView</code> 中加上</p>
-<pre><code>self.context[@&quot;passValue&quot;] = ^(NSString *str){
-    NSLog(@&quot;%@&quot;,str);
-};
-</code></pre><p>如果点击传值按钮，就会调用此block，输出<code>test</code></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.context[<span class="string">@"passValue"</span>] = ^(<span class="built_in">NSString</span> *str)&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,str);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>如果点击传值按钮，就会调用此block，输出<code>test</code></p>
 <ul>
-<li><p>第二种：通过native调用的方式</p>
-<pre><code>&lt;input type=&quot;button&quot; value=&quot;Native传值&quot; onclick=&quot;Native.call(&apos;Native调用&apos;)&quot;&gt; 
-</code></pre><p>这种方式需要声明一个JSExport的协议，协议中声明供JS使用的方法：</p>
-<pre><code>#import &lt;UIKit/UIKit.h&gt;
-#import &lt;JavaScriptCore/JavaScriptCore.h&gt;
-
-@protocol JSObjcDelegate &lt;JSExport&gt;
- - (void)call:(NSString *)str;
-
-@end
-</code></pre><p>然后还要以JSExport协议关联Native方法，</p>
-<pre><code>self.content[@&quot;Native&quot;] = self;
-</code></pre><p>在实现文件中实现这个方法</p>
-<pre><code>- (void)call:(NSString *)str{
-    NSLog(@&quot;call&quot;);
-}
-</code></pre><p>此时点击一下Native传值，就会输出<code>Native调用</code><br>还有一个需要注意的地方是，在JS调用的方法里实现页面跳转时，要回到主线程执行。可以使用GCD方法</p>
-</li>
+<li>第二种：通过native调用的方式</li>
 </ul>
-<pre><code> dispatch_async(dispatch_get_main_queue(), ^{
-    [self.navigationController pushViewController:vc animated:YES];
-});
-</code></pre><p>至此，获取JS点击事件的功能就完成了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Native传值"</span> <span class="attr">onclick</span>=<span class="string">"Native.call('Native调用')"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>  这种方式需要声明一个JSExport的协议，协议中声明供JS使用的方法：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;JavaScriptCore/JavaScriptCore.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">JSObjcDelegate</span> &lt;<span class="title">JSExport</span>&gt;</span></span><br><span class="line">- (<span class="keyword">void</span>)call:(<span class="built_in">NSString</span> *)str;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>然后还要以JSExport协议关联Native方法，</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.content[<span class="string">@"Native"</span>] = <span class="keyword">self</span>;</span><br></pre></td></tr></table></figure>
+<p>在实现文件中实现这个方法</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)call:(<span class="built_in">NSString</span> *)str&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"call"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时点击一下Native传值，就会输出<code>Native调用</code><br>还有一个需要注意的地方是，在JS调用的方法里实现页面跳转时，要回到主线程执行。可以使用GCD方法</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">    [<span class="keyword">self</span>.navigationController pushViewController:vc animated:<span class="literal">YES</span>];</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>至此，获取JS点击事件的功能就完成了。</p>
 <p>###OC调用JS方法<br>在上面那段HTML里有一个函数<code>alertShow()</code>，是调用弹框并将<code>str</code>值显示出来。那么我们如何调用这个方法呢？<br>第一步、获取这个函数，有两种方法</p>
 <pre><code>JSValue *Callback = self.context[@&quot;alertShow&quot;];//第一种方式
 JSValue *Callback = [self.context objectForKeyedSubscript:@&quot;alertShow&quot;];//第二种方式
 </code></pre><p>第二步、向JS传参</p>
-<pre><code>[Callback callWithArguments:@[@&quot;OC调用JS方法&quot;]];//出现一个弹框，`OC调用JS方法`
-</code></pre><p>如果想直接使用JS的方法可以</p>
-<pre><code>NSString *str = @&quot;alert(&apos;OC添加JS提示成功&apos;)&quot;;
-[self.context evaluateScript:str];
-</code></pre><p>###加载新的URL<br>WebView有一个代理方法，每当需要去加载一个request，就会回调这个方法，让上层决定是否加载。常常一个H5页面会进行不同url之间的跳转，这里截获，进行本地处理。</p>
-<pre><code>- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-
-NSString *url = request.URL.absoluteString;
-NSLog(@&quot;____%@&quot;,url);
-
-if(![self isNetwork]){
- //无网情况的一个处理
-}else if([url hasSuffix:@&quot;ios/test&quot;]){
-
-    //do something you want return NO;
-}
-return YES;
-}
-</code></pre><p>##使用WebViewJavascriptBridge与JS交互<br><a href="https://github.com/marcuswestin/WebViewJavascriptBridge" target="_blank" rel="noopener">WebViewJavascriptBridge</a>是一个轻量的用于OC与JS交互的第三方库，使用它可以用CocoaPods导入：<br><code>pod &#39;WebViewJavascriptBridge&#39;, &#39;~&gt; 5.0&#39;</code><br>也可以在Github上下载示例工程，将工程文件WebViewJavascriptBridge拖入自己项目中。本节主要介绍使用方法，关于实现原理网上介绍也比较多，感兴趣的同学可以自行了解。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Callback callWithArguments:@[<span class="string">@"OC调用JS方法"</span>]];<span class="comment">//出现一个弹框，`OC调用JS方法`</span></span><br></pre></td></tr></table></figure>
+<p>如果想直接使用JS的方法可以</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *str = <span class="string">@"alert('OC添加JS提示成功')"</span>;</span><br><span class="line">[<span class="keyword">self</span>.context evaluateScript:str];</span><br></pre></td></tr></table></figure>
+<p>###加载新的URL<br>WebView有一个代理方法，每当需要去加载一个request，就会回调这个方法，让上层决定是否加载。常常一个H5页面会进行不同url之间的跳转，这里截获，进行本地处理。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)webView:(<span class="built_in">UIWebView</span> *)webView shouldStartLoadWithRequest:(<span class="built_in">NSURLRequest</span> *)request navigationType:(<span class="built_in">UIWebViewNavigationType</span>)navigationType&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSString</span> *url = request.URL.absoluteString;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"____%@"</span>,url);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(![<span class="keyword">self</span> isNetwork])&#123;</span><br><span class="line">     <span class="comment">//无网情况的一个处理</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>([url hasSuffix:<span class="string">@"ios/test"</span>])&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//do something you want return NO;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##使用WebViewJavascriptBridge与JS交互<br><a href="https://github.com/marcuswestin/WebViewJavascriptBridge" target="_blank" rel="noopener">WebViewJavascriptBridge</a>是一个轻量的用于OC与JS交互的第三方库，使用它可以用CocoaPods导入：<br><code>pod &#39;WebViewJavascriptBridge&#39;, &#39;~&gt; 5.0&#39;</code><br>也可以在Github上下载示例工程，将工程文件<code>WebViewJavascriptBridge</code>拖入自己项目中。本节主要介绍使用方法，关于实现原理网上介绍也比较多，感兴趣的同学可以自行了解。</p>
 <p><strong>引入WebViewJavascriptBridge</strong></p>
-<pre><code> //设置能够进行桥接
-[WebViewJavascriptBridge enableLogging];
-//注册handler在Object-C，如果有self.webView.delegate = self。应注释掉，否则注册方法不执行
-self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];
-
-//如果想执行UIWebView的代理方法，需设置
-[self.bridge setWebViewDelegate:self];
-</code></pre><p><strong>JS调用OC</strong><br>JS调用原生方法<code>getUsername</code>，可以使用如下方式注册。JS需要返回值的可以用responseCallback将返回值传过去</p>
-<pre><code>[self.bridge registerHandler:@&quot;getUsername&quot; handler:^(id data, WVJBResponseCallback responseCallback) {
-    NSLog(@&quot;%@&quot;,data);
-    responseCallback([self getUsername]);
-}];
-</code></pre><p><strong>OC调用JS</strong><br>OC调用JS可以使用如下方法实现，如果需要传参，可以写到参数<code>data:</code>里，如果没有参数就传<code>nil</code></p>
-<pre><code>//OC调JS的方法
-[self.bridge callHandler:@&quot;testJavascriptHandler&quot; data:nil responseCallback:^(id responseData) {
-
-    NSLog(@&quot;ObjC received response: %@&quot;, responseData);
-}];
-</code></pre><hr>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置能够进行桥接</span></span><br><span class="line">[WebViewJavascriptBridge enableLogging];</span><br><span class="line"><span class="comment">//注册handler在Object-C，如果有self.webView.delegate = self。应注释掉，否则注册方法不执行</span></span><br><span class="line"><span class="keyword">self</span>.bridge = [WebViewJavascriptBridge bridgeForWebView:<span class="keyword">self</span>.webView];</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果想执行UIWebView的代理方法，需设置</span></span><br><span class="line">[<span class="keyword">self</span>.bridge setWebViewDelegate:<span class="keyword">self</span>];</span><br></pre></td></tr></table></figure>
+<p><strong>JS调用OC</strong><br>JS调用原生方法<code>getUsername</code>，可以使用如下方式注册。JS需要返回值的可以用responseCallback将返回值传过去</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.bridge registerHandler:<span class="string">@"getUsername"</span> handler:^(<span class="keyword">id</span> data, WVJBResponseCallback responseCallback) &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,data);</span><br><span class="line">    responseCallback([<span class="keyword">self</span> getUsername]);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p><strong>OC调用JS</strong><br>OC调用JS可以使用如下方法实现，如果需要传参，可以写到参数<code>data:</code>里，如果没有参数就传<code>nil</code></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//OC调JS的方法</span></span><br><span class="line">[<span class="keyword">self</span>.bridge callHandler:<span class="string">@"testJavascriptHandler"</span> data:<span class="literal">nil</span> responseCallback:^(<span class="keyword">id</span> responseData) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"ObjC received response: %@"</span>, responseData);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<hr>
 <p>常见的处理JS与OC之间交互的问题，基本就这些了。希望对大家有所帮助，Demo在这里<a href="https://github.com/zhangferry/JavaScript-OC" target="_blank" rel="noopener">传送门</a></p>
 
           
@@ -2030,21 +1902,21 @@ self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/03/10/bluetooth-ota-upgrade/"/>
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/03/10/bluetooth-ota-upgrade/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangferry"/>
-      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。"/>
-      <meta itemprop="image" content="/images/avatar.png"/>
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry"/>
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
     </span>
 
     
@@ -2098,7 +1970,7 @@ self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/蓝牙总结/" itemprop="url" rel="index"><span itemprop="name">蓝牙总结</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/蓝牙总结/" itemprop="url" rel="index"><span itemprop="name">蓝牙总结</span></a></span>
 
                 
                 
@@ -2262,11 +2134,9 @@ self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];
 
       <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.png"
-                alt="zhangferry"/>
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zhangferry">
             
               <p class="site-author-name" itemprop="name">zhangferry</p>
               <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
