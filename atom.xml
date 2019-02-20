@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2019-02-08T11:15:53.702Z</updated>
+  <updated>2019-02-20T14:22:17.606Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>艰难的图床优化方案(MWeb+PicGo+Github)</title>
+    <link href="http://zhangferry.github.io/2019/03/03/figure_bed_github/"/>
+    <id>http://zhangferry.github.io/2019/03/03/figure_bed_github/</id>
+    <published>2019-03-03T02:54:57.000Z</published>
+    <updated>2019-02-20T14:22:17.606Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;博客写作优化&quot;&gt;&lt;a href=&quot;#博客写作优化&quot; class=&quot;headerlink&quot; title=&quot;博客写作优化&quot;&gt;&lt;/a&gt;博客写作优化&lt;/h2&gt;&lt;p&gt;写博客就肯定会遇到插入图片的情况，我之前的做法是先在&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="杂项" scheme="http://zhangferry.github.io/tags/%E6%9D%82%E9%A1%B9/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS开发月报#7|201901</title>
     <link href="http://zhangferry.github.io/2019/01/31/monthly_7/"/>
     <id>http://zhangferry.github.io/2019/01/31/monthly_7/</id>
     <published>2019-01-31T02:54:57.000Z</published>
-    <updated>2019-02-08T11:15:53.702Z</updated>
+    <updated>2019-02-20T14:22:17.614Z</updated>
     
     <summary type="html">
     
@@ -404,26 +428,6 @@
     
     
       <category term="蓝牙" scheme="http://zhangferry.github.io/tags/%E8%93%9D%E7%89%99/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>为博客设一个自定义域名</title>
-    <link href="http://zhangferry.github.io/2017/01/05/custom-domain-blog/"/>
-    <id>http://zhangferry.github.io/2017/01/05/custom-domain-blog/</id>
-    <published>2017-01-05T10:11:02.000Z</published>
-    <updated>2019-02-08T13:12:00.474Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;现在越来越多的人悬着使用githubpage搭建自己的个人博客，但是github提供的默认的域名是这种形式：&lt;code&gt;username.github.io&lt;/code&gt;，是个二级域名，这对于很多人来说可能感觉不是很酷。那么我们今天就来做一件比较酷的事情，为站点自定义一个域名。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Hexo" scheme="http://zhangferry.github.io/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="http://zhangferry.github.io/tags/Hexo/"/>
     
   </entry>
   
