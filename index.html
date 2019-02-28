@@ -342,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/02/27/monthly_8/">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/02/28/monthly_8/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangferry">
@@ -362,7 +362,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/02/27/monthly_8/" class="post-title-link" itemprop="url">iOS开发月报#8|201902</a>
+                <a href="/2019/02/28/monthly_8/" class="post-title-link" itemprop="url">iOS开发月报#8|201902</a>
               
             
           </h2>
@@ -387,7 +387,7 @@
                 
               
 
-              <time title="创建时间：2019-02-27 10:54:57" itemprop="dateCreated datePublished" datetime="2019-02-27T10:54:57+08:00">2019-02-27</time>
+              <time title="创建时间：2019-02-28 10:30:57" itemprop="dateCreated datePublished" datetime="2019-02-28T10:30:57+08:00">2019-02-28</time>
             
 
             
@@ -416,7 +416,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.1k</span>
+                <span title="本文字数">3.8k</span>
               
 
               
@@ -452,10 +452,12 @@
       
         
           
-            <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。</p>
+            <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190228110103.jpg" alt=""></p>
+<h2 id="新闻一览"><a href="#新闻一览" class="headerlink" title="新闻一览"></a>新闻一览</h2><p><a href="https://research.hackerrank.com/developer-skills/2019" target="_blank" rel="noopener">2019年开发人员技能报告</a></p>
+<p>这是<a href="https://www.hackerrank.com/" target="_blank" rel="noopener">HackerRank</a>平台通过对7万多名开发人员做的一项调查，问题从他们认为最有前途的技术到他们在工作中和面试过程中想要的是什么，甚至还有coding过程中听什么音乐最有帮助！一起看下吧。</p>
 <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="presentedviewcontroller和presentingViewController"><a href="#presentedviewcontroller和presentingViewController" class="headerlink" title="presentedviewcontroller和presentingViewController"></a>presentedviewcontroller和presentingViewController</h3><p>假设从A控制器通过present的方式跳转到了B控制器，那么 <code>A.presentedViewController</code> 就是B控制器；<br><code>B.presentingViewController</code> 就是A控制器。如果没有对应关系会返回<code>nil</code></p>
 <h3 id="获取类名"><a href="#获取类名" class="headerlink" title="获取类名"></a>获取类名</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//传入实例对象object</span></span><br><span class="line"><span class="keyword">let</span> typeName = <span class="type">String</span>(describing: type(of: object))</span><br></pre></td></tr></table></figure>
-<h3 id="隐藏NavigationBar导致手势返回失效"><a href="#隐藏NavigationBar导致手势返回失效" class="headerlink" title="隐藏NavigationBar导致手势返回失效"></a>隐藏NavigationBar导致手势返回失效</h3><p>当我们从一个A(NavigationController)界面通过push进入B界面，如果要隐藏B的NavigationBar，那么从B到A的返回手势也会被屏蔽掉。<br>如果需要加回来我们可以这么做：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.给需要添加返回手势的ViewController增加UIGestureRecognizerDelegate</span></span><br><span class="line"><span class="comment">//2.由当前ViewController接管pop手势</span></span><br><span class="line"><span class="keyword">self</span>.navigationController?.interactivePopGestureRecognizer?.delegate = <span class="keyword">self</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="隐藏NavigationBar导致手势返回失效"><a href="#隐藏NavigationBar导致手势返回失效" class="headerlink" title="隐藏NavigationBar导致手势返回失效"></a>隐藏NavigationBar导致手势返回失效</h3><p>当我们从一个A(NavigationController)界面通过push进入B界面，如果要隐藏B的NavigationBar，那么从B到A的返回手势也会被屏蔽掉。<br>如果需要加回来我们可以这么做：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.给需要添加返回手势的ViewController增加UIGestureRecognizerDelegate</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.由当前ViewController接管pop手势</span></span><br><span class="line"><span class="keyword">self</span>.navigationController?.interactivePopGestureRecognizer?.delegate = <span class="keyword">self</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="关于-Decimal"><a href="#关于-Decimal" class="headerlink" title="关于 Decimal"></a>关于 Decimal</h3><p>官方对<code>Decimal</code>介绍就一句话</p>
 <blockquote>
 <p>A structure representing a base-10 number.</p>
@@ -474,15 +476,29 @@
 <h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><h3 id="Swift-ABI-稳定对我们到底意味着什么"><a href="#Swift-ABI-稳定对我们到底意味着什么" class="headerlink" title="Swift ABI 稳定对我们到底意味着什么"></a><a href="https://onevcat.com/2019/02/swift-abi/" target="_blank" rel="noopener">Swift ABI 稳定对我们到底意味着什么</a></h3><p>Swift 社区最近最重大的新闻应该就是 ABI 稳定了。这个话题虽然已经讨论了有一阵子了，但随着 Xcode 10.2 beta 的迭代和 Swift 5 的 release 被提上日程，最终 Swift ABI 稳定能做到什么程度，我们开发者能做些什么，需要做些什么，就变成了一个重要的话题。</p>
 <p>一起来看下使用 Swift 5 会对我们的项目有什么影响以及怎么处理。</p>
 <h3 id="Void"><a href="#Void" class="headerlink" title="Void"></a><a href="https://juejin.im/post/5c73af896fb9a049cb1963d4" target="_blank" rel="noopener">Void</a></h3><p>SwiftGG翻译组翻译的Mattt一篇介绍Void的文章。<br><code>Void</code>是什么，它和<code>nil</code>有什么区别，这个我们经常用但不一定真的理解的东西，一起通过这篇文章看下吧。</p>
-<h3 id="love2-io"><a href="#love2-io" class="headerlink" title="love2.io"></a><a href="https://love2.io/@tzivanmoe/doc/a-programmer-prepares/README.md" target="_blank" rel="noopener">love2.io</a></h3><p>程序员的自我修养，作为一个合格的程序员需要具备哪些知识呢？<br>数据结构、算法、代码架构、项目管理工具、网络知识等？这还不够，不能只有计算机相关的知识；我们还需要懂点设计、尝试当一个合格的PM、学会团队合作、学会学习、提升效率等等；但是不能只有工作，没有生活啊？你还需要了解保护个人隐私、创业流程、关注身体健康。。。<br>太多了，不列举了，这里都有。</p>
-<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><p><a href="https://www.gcores.com/radios/106545" target="_blank" rel="noopener">苏俄科幻简史：直指星海的冒险时代</a><br>假期最火的电影莫过于《流浪地球》了，接着这个科幻题材的电影同时也掀起了一股科幻风。</p>
-<p>最近在机核（gamecores）上听到的一段讲述苏俄科幻简史的音频，可以当故事听，也可以当历史去听，非常有意思，推荐给大家。</p>
+<h3 id="love2-io"><a href="#love2-io" class="headerlink" title="love2.io"></a><a href="https://love2.io/@tzivanmoe/doc/a-programmer-prepares/README.md" target="_blank" rel="noopener">love2.io</a></h3><p>程序员的自我修养，作为一个合格的程序员需要具备哪些知识呢？</p>
+<p>数据结构、算法、代码架构、项目管理工具、网络知识等？可能还不够，还需要懂点设计、学着当一个合格的PM、学会团队合作、学会学习、提升效率等等；够了吗？你还需要了解一下创业流程、关注自己的身体健康。。。</p>
+<p>太多了，不列举了，因为这里都有。</p>
+<h3 id="为什么数字下标要从-0-开始而不是-1？"><a href="#为什么数字下标要从-0-开始而不是-1？" class="headerlink" title="为什么数字下标要从 0 开始而不是 1？"></a><a href="http://czheo.github.io/2019/02/24/why-numbering-should-start-at-zero/" target="_blank" rel="noopener">为什么数字下标要从 0 开始而不是 1？</a></h3><p>大家都知道数字下标是从0开始的，那为什么是0而不是1呢？说实话在看这篇文章之前我也不能很清楚的说明白，如果你也有这种疑惑就看看这个文章吧。</p>
+<h3 id="什么叫有知识"><a href="#什么叫有知识" class="headerlink" title="什么叫有知识"></a><a href="https://mp.weixin.qq.com/s/P87aDQ5h5qfy27bc77fOUg" target="_blank" rel="noopener">什么叫有知识</a></h3><p>选自罗胖60秒：<br>1、话说什么叫做有知识？最近我看万维钢老师有一个有趣的定义。他说，考试得了高分，不叫有知识。茶余饭后能高谈阔论，这也不叫有知识。</p>
+<p>你发现没有，这些场合下，知识虽然有用，但是这些知识都不太牵扯到具体的得失，所以只是智力游戏。</p>
+<p>2、那什么才叫有知识呢？万维钢老师说，只有当局势不明朗，没有人告诉你该怎么办，而错误的判断又会导致一些不良后果，这个时候，如果你因为有知识而敢于拿一个主意，你才算是真有知识。</p>
+<p>3、请注意，这不是在说，实用的知识才是知识，而是在说，只有当知识能够帮助你做实际决策的时候，它才是你的知识。</p>
+<p>4、这种决策当然可大可小，大到你选择什么样的职业，选择听医生的哪个建议；小到帮你选择看哪一部电影，或者是为孩子挑选买哪一本书。这都是具体的决策。</p>
+<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><p><a href="https://www.gcores.com/radios/106545" target="_blank" rel="noopener">苏俄科幻简史：直指星海的冒险时代</a></p>
+<p>最近在机核（gamecores）上听到的一段讲述苏俄科幻的音频，可以当故事听，也可以当一段历史去听，非常有意思。</p>
+<p>对于很多人而言，苏俄的科幻文学、电影乃至游戏都是一个比较陌生的概念。事实上从沙俄末期到苏联再到今天的俄罗斯，来自极北之地的斯拉夫人民也曾在科幻这个领域上走了很远很远，取得了惊人的成绩。</p>
 <h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="DoraemonKit"><a href="#DoraemonKit" class="headerlink" title="DoraemonKit"></a><a href="https://github.com/didi/DoraemonKit" target="_blank" rel="noopener">DoraemonKit</a></h3><p>由滴滴团队开源，中文名“哆啦A梦”。</p>
 <p>DoraemonKit 是一个功能集合面板，能够让每一个 App 快速接入一些常用的或者你没有实现的一些辅助开发工具、测试效率工具、视觉辅助工具，而且能够完美在 Doraemon 面板中接入你已经实现的与业务紧密耦合的一些非通有的辅助工具，功能强大，接入方便，便于扩展。</p>
+<h3 id="git-history"><a href="#git-history" class="headerlink" title="git-history"></a><a href="https://github.com/pomber/git-history" target="_blank" rel="noopener">git-history</a></h3><p>这个项目可以让你在浏览器动态地查看Github库上代码的变动历史。</p>
+<p>使用方法非常简单：<br>1、在对应的文件url中把<code>github.com</code>替换成<code>github.githistory.xyz</code><br>2、没有第二步</p>
 <h3 id="resume-github-com"><a href="#resume-github-com" class="headerlink" title="resume.github.com"></a><a href="https://github.com/resume/resume.github.com" target="_blank" rel="noopener">resume.github.com</a></h3><p>这个库可以通过你仓库的活跃事件来生成一份在线简历。使用很简单，直接访问以下网址：<a href="https://resume.github.io/?yourusername" target="_blank" rel="noopener">https://resume.github.io/?yourusername</a></p>
 <p>需要将<code>yourusername</code>替换成你的用户名，别忘了那个<code>?</code></p>
-<h3 id="iOS-Developer-Roadmap"><a href="#iOS-Developer-Roadmap" class="headerlink" title="iOS-Developer-Roadmap"></a><a href="https://github.com/BohdanOrlov/iOS-Developer-Roadmap" target="_blank" rel="noopener">iOS-Developer-Roadmap</a></h3><p>“金三银四”是招聘的旺季，很多人会有换工作的需求，最近很多社区也都在推这一类的文章。但作为开发人员来说本身技能是否过硬才是最重要的，作为一名iOS开发应该具备哪些技能呢？</p>
-<p>我们可以参照这个库总结的roadmap来检查自己缺失哪些知识，以及当前处于哪个阶段，然后去努力点亮整个iOS技能树。</p>
+<h3 id="iOS-Developer-Roadmap"><a href="#iOS-Developer-Roadmap" class="headerlink" title="iOS-Developer-Roadmap"></a><a href="https://github.com/BohdanOrlov/iOS-Developer-Roadmap" target="_blank" rel="noopener">iOS-Developer-Roadmap</a></h3><p>一名iOS开发人员需要具备哪些知识呢？这个库做了比较详尽的总结，以技能树的形式对iOS开发所需知识点，知识面做了整理，我们可以作为参照，查看自己有哪些缺失。</p>
+<ul>
+<li><a href="https://github.com/BohdanOrlov/iOS-Developer-Roadmap/blob/master/RoadmapProject/Script/Generated/ROADMAP.md" target="_blank" rel="noopener">文本版本</a></li>
+<li>图片版本(<a href="https://github.com/BohdanOrlov/iOS-Developer-Roadmap/blob/master/RoadmapProject/Script/Generated/ESSENTIALROADMAP.png" target="_blank" rel="noopener">基础版本</a>, <a href="https://github.com/BohdanOrlov/iOS-Developer-Roadmap/blob/master/RoadmapProject/Script/Generated/ROADMAP.png" target="_blank" rel="noopener">完整版本</a>)</li>
+</ul>
 
           
         
