@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="最近在忙一个蓝牙项目，在处理蓝牙数据的时候，经常遇到进制之间的转换，蓝牙处理的是16进制（NSData），而我们习惯的计数方式是10进制，为了节省空间，蓝牙也会把16进制（NSData）拆成2进制记录。这里我们研究下如何在他们之间进行转换。">
-<meta name="keywords" content="蓝牙">
+  <meta name="description" content="最近工作内容基本都是围绕视频播放展开的，从AVPlayer到IJKPlayer，期间遇到挺多问题，趟了很多bug，也总结了一些心得。对AVPlayer了解的更多一些，因为涉及点比较多，所以打算做一个系列详尽的写一下这部分内容。希望大家多多支持，有问题的地方欢迎指正。  ##思维导图先来一张思维导图，作为这篇文章的目录索引： 为什么使用AVPlayer：首先在iOS平台使用播放视频，可用的选项一般">
+<meta name="keywords" content="iOS,AVPlayer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS蓝牙中的进制转换">
-<meta property="og:url" content="http://zhangferry.github.io/2016/12/12/iOS蓝牙中的进制转换/index.html">
+<meta property="og:title" content="AVPlayer详解系列（一）参数设置">
+<meta property="og:url" content="http://zhangferry.github.io/2017/08/25/avplayer-detail-1/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="最近在忙一个蓝牙项目，在处理蓝牙数据的时候，经常遇到进制之间的转换，蓝牙处理的是16进制（NSData），而我们习惯的计数方式是10进制，为了节省空间，蓝牙也会把16进制（NSData）拆成2进制记录。这里我们研究下如何在他们之间进行转换。">
+<meta property="og:description" content="最近工作内容基本都是围绕视频播放展开的，从AVPlayer到IJKPlayer，期间遇到挺多问题，趟了很多bug，也总结了一些心得。对AVPlayer了解的更多一些，因为涉及点比较多，所以打算做一个系列详尽的写一下这部分内容。希望大家多多支持，有问题的地方欢迎指正。  ##思维导图先来一张思维导图，作为这篇文章的目录索引： 为什么使用AVPlayer：首先在iOS平台使用播放视频，可用的选项一般">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-e8b76e6d8dcb9416.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-08T13:12:35.279Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-d8f55f8bd9368182.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-28T14:48:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS蓝牙中的进制转换">
-<meta name="twitter:description" content="最近在忙一个蓝牙项目，在处理蓝牙数据的时候，经常遇到进制之间的转换，蓝牙处理的是16进制（NSData），而我们习惯的计数方式是10进制，为了节省空间，蓝牙也会把16进制（NSData）拆成2进制记录。这里我们研究下如何在他们之间进行转换。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-e8b76e6d8dcb9416.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="AVPlayer详解系列（一）参数设置">
+<meta name="twitter:description" content="最近工作内容基本都是围绕视频播放展开的，从AVPlayer到IJKPlayer，期间遇到挺多问题，趟了很多bug，也总结了一些心得。对AVPlayer了解的更多一些，因为涉及点比较多，所以打算做一个系列详尽的写一下这部分内容。希望大家多多支持，有问题的地方欢迎指正。  ##思维导图先来一张思维导图，作为这篇文章的目录索引： 为什么使用AVPlayer：首先在iOS平台使用播放视频，可用的选项一般">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-d8f55f8bd9368182.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -118,7 +118,7 @@
 
 
 
-  <link rel="canonical" href="http://zhangferry.github.io/2016/12/12/iOS蓝牙中的进制转换/">
+  <link rel="canonical" href="http://zhangferry.github.io/2017/08/25/avplayer-detail-1/">
 
 
 
@@ -128,7 +128,7 @@
   };
 </script>
 
-  <title>iOS蓝牙中的进制转换 | zhangferry</title>
+  <title>AVPlayer详解系列（一）参数设置 | zhangferry</title>
   
 
 
@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/12/12/iOS蓝牙中的进制转换/">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2017/08/25/avplayer-detail-1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangferry">
@@ -362,7 +362,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">iOS蓝牙中的进制转换
+          <h2 class="post-title" itemprop="name headline">AVPlayer详解系列（一）参数设置
 
               
             
@@ -388,30 +388,12 @@
                 
               
 
-              <time title="创建时间：2016-12-12 16:07:54" itemprop="dateCreated datePublished" datetime="2016-12-12T16:07:54+08:00">2016-12-12</time>
+              <time title="创建时间：2017-08-25 16:27:50" itemprop="dateCreated datePublished" datetime="2017-08-25T16:27:50+08:00">2017-08-25</time>
             
 
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/蓝牙总结/" itemprop="url" rel="index"><span itemprop="name">蓝牙总结</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -442,7 +424,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">8.2k</span>
+                <span title="本文字数">7.8k</span>
               
 
               
@@ -476,253 +458,198 @@
       
 
       
-        <p><img src="http://upload-images.jianshu.io/upload_images/1059465-e8b76e6d8dcb9416.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Bluetooth4.0.jpg"><br>最近在忙一个蓝牙项目，在处理蓝牙数据的时候，经常遇到进制之间的转换，蓝牙处理的是16进制（NSData），而我们习惯的计数方式是10进制，为了节省空间，蓝牙也会把16进制（NSData）拆成2进制记录。这里我们研究下如何在他们之间进行转换。<br><a id="more"></a><br><strong>假设我们要向蓝牙发送0x1B9901这条数据</strong></p>
-<h2 id="Byte转NSData"><a href="#Byte转NSData" class="headerlink" title="Byte转NSData"></a>Byte转NSData</h2><pre><code>Byte value[3]={0};
-value[0]=0x1B;
-value[1]=0x99;
-value[2]=0x01;
-NSData * data = [NSData dataWithBytes:&amp;value length:sizeof(value)];
-//发送数据
-[self.peripheral writeValue:data forCharacteristic:self.write type:CBCharacteristicWriteWithoutResponse];
-</code></pre><ul>
-<li><p>优点：这种方法比较简单，没有进行转换，直接一个字节一个字节的拼装好发送出去。</p>
-</li>
-<li><p>缺点：当发送数据比较长时会很麻烦，而且不易更改。</p>
-</li>
-</ul>
-<h2 id="NSString转NSData"><a href="#NSString转NSData" class="headerlink" title="NSString转NSData"></a>NSString转NSData</h2><pre><code>- (NSData *)hexToBytes:(NSString *)str
-{
-    NSMutableData* data = [NSMutableData data];
-    int idx;
-    for (idx = 0; idx+2 &lt;= str.length; idx+=2) {
-        NSRange range = NSMakeRange(idx, 2);
-        NSString* hexStr = [str substringWithRange:range];
-        NSScanner* scanner = [NSScanner scannerWithString:hexStr];
-        unsigned int intValue;
-        [scanner scanHexInt:&amp;intValue];
-        [data appendBytes:&amp;intValue length:1];
-    }
-    return data;
-}
-//发送数据
-[self.peripheral writeValue:[self hexToBytes:@&quot;1B9901&quot;] forCharacteristic:self.write type:CBCharacteristicWriteWithoutResponse];
-</code></pre><ul>
-<li>优点：比较直观，可以一次转换一长条数据，对于一些功能简单的蓝牙程序，这种转换能处理大部分情况。</li>
-<li>缺点：只能发送一些固定的指令，不能参与计算。</li>
-</ul>
-<hr>
-<h2 id="求校验和"><a href="#求校验和" class="headerlink" title="求校验和"></a>求校验和</h2><p>接下来探讨下发送的数据需要计算的情况。<br>最常用的发送数据需要计算的场景是求<strong>校验和（CHECKSUM）</strong>。这个根据硬件厂商来定，常见的求校验和的规则有：</p>
+        <blockquote>
+<p>最近工作内容基本都是围绕视频播放展开的，从AVPlayer到IJKPlayer，期间遇到挺多问题，趟了很多bug，也总结了一些心得。对AVPlayer了解的更多一些，因为涉及点比较多，所以打算做一个系列详尽的写一下这部分内容。希望大家多多支持，有问题的地方欢迎指正。</p>
+</blockquote>
+<p>##思维导图<br>先来一张思维导图，作为这篇文章的目录索引：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-d8f55f8bd9368182.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="AVPlayer.png"></p>
+<h2 id="为什么使用AVPlayer："><a href="#为什么使用AVPlayer：" class="headerlink" title="为什么使用AVPlayer："></a>为什么使用AVPlayer：</h2><p>首先在iOS平台使用播放视频，可用的选项一般有这四个，他们各自的作用和功能如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>使用环境</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MPMoviePlayerController</td>
+<td>MediaPlayer</td>
+<td>简单易用</td>
+<td>不可定制</td>
+</tr>
+<tr>
+<td>AVPlayerViewController</td>
+<td>AVKit</td>
+<td>简单易用</td>
+<td>不可定制</td>
+</tr>
+<tr>
+<td>AVPlayer</td>
+<td>AVFoundation</td>
+<td>可定制度高，功能强大</td>
+<td>不支持流媒体</td>
+</tr>
+<tr>
+<td>IJKPlayer</td>
+<td>IJKMediaFramework</td>
+<td>定制度高，支持流媒体播放</td>
+<td>使用稍复杂</td>
+</tr>
+</tbody>
+</table>
+<p>由此可以看出，如果我们不做直播功能<a href="https://developer.apple.com/documentation/avfoundation/avplayer" target="_blank" rel="noopener">AVPlayer</a>就是一个最优的选择。</p>
+<p>另外AVPlayer是一个可以播放任何格式的全功能影音播放器<br><del>支持视频格式： WMV，AVI，MKV，RMVB，RM，XVID，MP4，3GP，MPG等。</del><br><del>支持音频格式：MP3，WMA，RM，ACC，OGG，APE，FLAC，FLV等。</del><br>支持视频格式： MP4，MOV，M4V，3GP，AVI等。<br>支持音频格式：MP3，AAC，WAV，AMR，M4A等。<br>详见<a href="https://www.jianshu.com/p/7373f07f1cbf" target="_blank" rel="noopener">AVPlayer支持的视频格式</a></p>
+<p>##如何使用<br>AVPlayer存在于AVFoundation框架，我们使用时需要导入：<br><code>#import &lt;AVFoundation/AVFoundation.h&gt;</code></p>
+<p>###几个播放相关的参数<br>在创建一个播放器之前我们需要先了解一些播放器相关的类</p>
 <ul>
-<li>如果发送数据长度为n字节，则CHECKSUM为前n-1字节之和的低字节</li>
-<li>CHECKSUM=0x100-CHECKSUM（上一步的校验和）</li>
+<li>AVPlayer：控制播放器的播放，暂停，播放速度</li>
+<li>AVURLAsset : AVAsset 的一个子类，使用 URL 进行实例化，实例化对象包换 URL 对应视频资源的所有信息。</li>
+<li>AVPlayerItem：管理资源对象，提供播放数据源</li>
+<li>AVPlayerLayer：负责显示视频，如果没有添加该类，只有声音没有画面</li>
 </ul>
-<p>如果我要发送带上校验和的0x1B9901，方法就是：</p>
-<pre><code>- (NSData *)getCheckSum:(NSString *)byteStr{
-    int length = (int)byteStr.length/2;
-    NSData *data = [self hexToBytes:byteStr];
-    Byte *bytes = (unsigned char *)[data bytes];
-    Byte sum = 0;
-    for (int i = 0; i&lt;length; i++) {
-        sum += bytes[i];
-    }
-    int sumT = sum;
-    int at = 256 -  sumT;
+<p>我们这片文章就围绕这几个参数展开，光说这些你可能还有点不明白，那我们就围绕一个最简单的播放器做起，一点点扩展功能，在具体讲解这几个参数的作用。</p>
+<p>###最简单的播放器<br>根据上面描述，我们知道<code>AVPlayer</code>是播放的必要条件，所以我们可以构建的极简播放器就是：</p>
+<pre><code>NSURL *playUrl = [NSURL URLWithString:@&quot;http://baobab.wdjcdn.com/14573563182394.mp4&quot;];
+self.player = [[AVPlayer alloc] initWithURL:playUrl];
+[self.player play];
+</code></pre><p>是不是很简单，只有三行代码！<br>但是它太简单了，仅可以完成音频的播放，连画面都没有。回看上面播放相关类的介绍，是因为缺少<code>AVPlayerLayer</code>；作为一个播放器，我不能只播放一条视频啊，我还想根据需要切换视频，那我们就得把<code>AVPlayerItem</code>也加上。<br>加上这两个属性之后的播放器是这样的：</p>
+<pre><code>NSURL *playUrl = [NSURL URLWithString:@&quot;http://baobab.wdjcdn.com/14573563182394.mp4&quot;];
+self.playerItem = [AVPlayerItem playerItemWithURL:playUrl];
+//如果要切换视频需要调AVPlayer的replaceCurrentItemWithPlayerItem:方法
+self.player = [AVPlayer playerWithPlayerItem:_playerItem];
+self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+self.playerLayer.frame = _videoView.bounds;
+//放置播放器的视图
+[self.videoView.layer addSublayer:self.playerLayer];
+[_player play];
+</code></pre><p>现在的播放器稍微完整了一些，我们在自己创建的容器里可以看到画面了！</p>
+<p>##更多功能<br>但是它作为一个视频播放器，还是有很多不能让人满意的地方。例如：没有暂停、快进快退、倍速播放等，另外如果遇到url错误是不是还要有播放失败的提示，还有播放完成的相关提示。<br>为完成这些，我们需要对<code>AVPlayerItem</code>和<code>AVPlayerLayer</code>进一步了解一下。</p>
+<p>###一、AVPlayer的控制<br>前面讲过该类是控制视频播放行为的，他的使用比较简单。<br>播放视频：</p>
+<pre><code>[self.player play];
+</code></pre><p>暂停视频：</p>
+<pre><code>[self.player pause];
+</code></pre><p>更改速度：</p>
+<pre><code>self.player.rate = 1.5;//注意更改播放速度要在视频开始播放之后才会生效
+</code></pre><p>还有一下其他的控制，我们可以调转到系统API进行查看</p>
+<p>###二、AVPlayerItem的控制<br>AVPlayerItem作为资源管理对象，它控制着视频从创建到销毁的诸多状态。</p>
+<h4 id="1、播放状态-status"><a href="#1、播放状态-status" class="headerlink" title="1、播放状态 status"></a>1、播放状态 status</h4><pre><code>typedef NS_ENUM(NSInteger, AVPlayerItemStatus) {
+    AVPlayerItemStatusUnknown,//未知
+    AVPlayerItemStatusReadyToPlay,//准备播放
+    AVPlayerItemStatusFailed//播放失败
+};
+</code></pre><p>我们使用KVO监测playItem.status，可以获取播放状态的变化</p>
+<pre><code>[self.playerItem addObserver:self forKeyPath:@&quot;status&quot; options:NSKeyValueObservingOptionNew context:nil];
+</code></pre><p>在监听回调中：</p>
+<pre><code>- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSKeyValueChangeKey,id&gt; *)change context:(void *)context{
 
-    printf(&quot;校验和：%d\n&quot;,at);
-    if (at == 256) {
-        at = 0;
-    }
-    NSString *str = [NSString stringWithFormat:@&quot;%@%@&quot;,byteStr,[self ToHex:at]];
-    return [self hexToBytes:str];
-}
+if ([object isKindOfClass:[AVPlayerItem class]]) {
+    if ([keyPath isEqualToString:@&quot;status&quot;]) {
+        switch (_playerItem.status) {
+            case AVPlayerItemStatusReadyToPlay:
+                //推荐将视频播放放在这里
+                [self play];
+                break;
 
-//将十进制转化为十六进制
-- (NSString *)ToHex:(int)tmpid
-{
-    NSString *nLetterValue;
-    NSString *str =@&quot;&quot;;
-    int ttmpig;
-    for (int i = 0; i&lt;9; i++) {
-        ttmpig=tmpid%16;
-        tmpid=tmpid/16;
-        switch (ttmpig)
-        {
-            case 10:
-                nLetterValue =@&quot;A&quot;;break;
-            case 11:
-                nLetterValue =@&quot;B&quot;;break;
-            case 12:
-                nLetterValue =@&quot;C&quot;;break;
-            case 13:
-                nLetterValue =@&quot;D&quot;;break;
-            case 14:
-                nLetterValue =@&quot;E&quot;;break;
-            case 15:
-                nLetterValue =@&quot;F&quot;;break;
+            case AVPlayerItemStatusUnknown:
+                NSLog(@&quot;AVPlayerItemStatusUnknown&quot;);
+                break;
+
+            case AVPlayerItemStatusFailed:
+                NSLog(@&quot;AVPlayerItemStatusFailed&quot;)
+                break;
+
             default:
-                nLetterValue = [NSString stringWithFormat:@&quot;%u&quot;,ttmpig];
-
-        }
-        str = [nLetterValue stringByAppendingString:str];
-        if (tmpid == 0) {
-            break;
-        }
-    }
-//不够一个字节凑0
-    if(str.length == 1){
-        return [NSString stringWithFormat:@&quot;0%@&quot;,str];
-    }else{
-        return str;
-    }
-}
-//发送数据
-NSData *data = [self getCheckSum:@&quot;1B9901&quot;];//data=&lt;1b99014b&gt;
-[self.peripheral writeValue:data forCharacteristic:self.write type:CBCharacteristicWriteWithoutResponse];
-</code></pre><h2 id="拆分数据"><a href="#拆分数据" class="headerlink" title="拆分数据"></a>拆分数据</h2><p>这种是比较麻烦的，举个栗子：在传输某条信息时，我想把时间放进去，不能用时间戳，还要节省空间，这样就出现了一种新的方式存储时间。<br>这里再补充一些C语言知识：</p>
-<ul>
-<li>一个字节8位（bit）</li>
-<li>char 1字节 int 4字节 unsigned 2字节 float 4字节</li>
-</ul>
-<p>存储时间的条件是：</p>
-<ul>
-<li>只用四个字节（32位）</li>
-<li>前5位表示年（从2000年算起），接着4位表示月，接着5位表示日，接着5位表示时，接着6位表示分，接着3位表示星期，剩余4位保留。</li>
-</ul>
-<p>这样直观的解决办法就是分别取出现在时间的年月日时分星期，先转成2进制，再转成16进制发出去。当然你这么写进去，读的时候就要把16进制数据先转成2进制再转成10进制显示。我们就按这个简单粗暴的思路来，准备工作如下：</p>
-<h3 id="10进制转2进制"><a href="#10进制转2进制" class="headerlink" title="10进制转2进制"></a>10进制转2进制</h3><pre><code>//  十进制转二进制
-- (NSString *)toBinarySystemWithDecimalSystem:(int)num length:(int)length
-{
-    int remainder = 0;      //余数
-    int divisor = 0;        //除数
-
-    NSString * prepare = @&quot;&quot;;
-
-    while (true)
-    {
-        remainder = num%2;
-        divisor = num/2;
-        num = divisor;
-        prepare = [prepare stringByAppendingFormat:@&quot;%d&quot;,remainder];
-
-        if (divisor == 0)
-        {
-            break;
-        }
-    }
-    //倒序输出
-    NSString * result = @&quot;&quot;;
-    for (int i = length -1; i &gt;= 0; i --)
-    {
-        if (i &lt;= prepare.length - 1) {
-            result = [result stringByAppendingFormat:@&quot;%@&quot;,
-                      [prepare substringWithRange:NSMakeRange(i , 1)]];
-
-        }else{
-            result = [result stringByAppendingString:@&quot;0&quot;];
-
-        }
-    }
-    return result;
-}
-### 2进制转10进制
-//  二进制转十进制
-- (NSString *)toDecimalWithBinary:(NSString *)binary
-{
-    int ll = 0 ;
-    int  temp = 0 ;
-    for (int i = 0; i &lt; binary.length; i ++)
-    {
-        temp = [[binary substringWithRange:NSMakeRange(i, 1)] intValue];
-        temp = temp * powf(2, binary.length - i - 1);
-        ll += temp;
-    }
-
-    NSString * result = [NSString stringWithFormat:@&quot;%d&quot;,ll];
-
-    return result;
-}
-### 16进制和2进制互转
-- (NSString *)getBinaryByhex:(NSString *)hex binary:(NSString *)binary
-{
-    NSMutableDictionary  *hexDic = [[NSMutableDictionary alloc] init];
-    hexDic = [[NSMutableDictionary alloc] initWithCapacity:16];
-    [hexDic setObject:@&quot;0000&quot; forKey:@&quot;0&quot;];
-    [hexDic setObject:@&quot;0001&quot; forKey:@&quot;1&quot;];
-    [hexDic setObject:@&quot;0010&quot; forKey:@&quot;2&quot;];
-    [hexDic setObject:@&quot;0011&quot; forKey:@&quot;3&quot;];
-    [hexDic setObject:@&quot;0100&quot; forKey:@&quot;4&quot;];
-    [hexDic setObject:@&quot;0101&quot; forKey:@&quot;5&quot;];
-    [hexDic setObject:@&quot;0110&quot; forKey:@&quot;6&quot;];
-    [hexDic setObject:@&quot;0111&quot; forKey:@&quot;7&quot;];
-    [hexDic setObject:@&quot;1000&quot; forKey:@&quot;8&quot;];
-    [hexDic setObject:@&quot;1001&quot; forKey:@&quot;9&quot;];
-    [hexDic setObject:@&quot;1010&quot; forKey:@&quot;a&quot;];
-    [hexDic setObject:@&quot;1011&quot; forKey:@&quot;b&quot;];
-    [hexDic setObject:@&quot;1100&quot; forKey:@&quot;c&quot;];
-    [hexDic setObject:@&quot;1101&quot; forKey:@&quot;d&quot;];
-    [hexDic setObject:@&quot;1110&quot; forKey:@&quot;e&quot;];
-    [hexDic setObject:@&quot;1111&quot; forKey:@&quot;f&quot;];
-
-    NSMutableString *binaryString=[[NSMutableString alloc] init];
-    if (hex.length) {
-        for (int i=0; i&lt;[hex length]; i++) {
-            NSRange rage;
-            rage.length = 1;
-            rage.location = i;
-            NSString *key = [hex substringWithRange:rage];
-            [binaryString appendString:hexDic[key]];
+                break;
         }
 
-    }else{
-        for (int i=0; i&lt;binary.length; i+=4) {
-            NSString *subStr = [binary substringWithRange:NSMakeRange(i, 4)];
-            int index = 0;
-            for (NSString *str in hexDic.allValues) {
-                index ++;
-                if ([subStr isEqualToString:str]) {
-                    [binaryString appendString:hexDic.allKeys[index-1]];
-                    break;
-                }
-            }
-        }
     }
-    return binaryString;
 }
-</code></pre><p>有了这几种转换函数，完成上面的功能就容易多了，具体怎么操作这里就不写一一出来了。但总感觉怪怪的，这么一个小功能怎么要写这么一大堆代码，当然还可以用C语言的方法去解决。这里主要是为了展示iOS中数据如何转换，C语言的实现方法这里就不写了，有兴趣的同学可以研究下。</p>
-<h2 id="附带两个函数"><a href="#附带两个函数" class="headerlink" title="附带两个函数"></a>附带两个函数</h2><p><strong>int转NSData</strong></p>
-<pre><code>- (NSData *) setId:(int)Id {
-//用4个字节接收
-    Byte bytes[4];
-    bytes[0] = (Byte)(Id&gt;&gt;24);
-    bytes[1] = (Byte)(Id&gt;&gt;16);
-    bytes[2] = (Byte)(Id&gt;&gt;8);
-    bytes[3] = (Byte)(Id);
-    NSData *data = [NSData dataWithBytes:bytes length:4];
-}
-</code></pre><p><strong>NSData转int</strong><br>接受到的数据<code>0x00000a0122</code></p>
-<pre><code>//4字节表示的int
-NSData *intData = [data subdataWithRange:NSMakeRange(2, 4)];
-    int value = CFSwapInt32BigToHost(*(int*)([intData bytes]));//655650
-//2字节表示的int
-NSData *intData = [data subdataWithRange:NSMakeRange(4, 2)];
-    int value = CFSwapInt16BigToHost(*(int*)([intData bytes]));//290
-//1字节表示的int
-char *bs = (unsigned char *)[[data subdataWithRange:NSMakeRange(5, 1) ] bytes];
-    int value = *bs;//34
-------------------------
-//补充内容，因为没有三个字节转int的方法，这里补充一个通用方法
-- (unsigned)parseIntFromData:(NSData *)data{
+</code></pre><p>虽然设置完播放配置我们可以直接调用<code>[self.player play];</code>进行播放，但是更稳妥的方法是在回调收到<code>AVPlayerItemStatusReadyToPlay</code>时进行播放</p>
+<p>####2、视频的时间信息<br>在AVPlayer中时间的表示有一个专门的结构体CMTime</p>
+<pre><code>typedef struct{
+    CMTimeValue    value;     // 帧数
+    CMTimeScale    timescale;  // 帧率（影片每秒有几帧）
+    CMTimeFlags    flags;        
+    CMTimeEpoch    epoch;    
+} CMTime;
+</code></pre><p>CMTime是以分数的形式表示时间，value表示分子，timescale表示分母，flags是位掩码，表示时间的指定状态。</p>
+<p>获取当前播放时间，可以用value/timescale的方式：</p>
+<pre><code>float currentTime = self.playItem.currentTime.value/item.currentTime.timescale;
+</code></pre><p>还有一种利用系统提供的方法，我们用它获取视频总时间：</p>
+<pre><code>float totalTime   = CMTimeGetSeconds(item.duration);
+</code></pre><p>如果我们想要添加一个计时的标签不断更新当前的播放进度，有一个系统的方法：</p>
+<pre><code>- (id)addPeriodicTimeObserverForInterval:(CMTime)interval queue:(nullable dispatch_queue_t)queue usingBlock:(void (^)(CMTime time))block;
+</code></pre><p>方法名如其意， “添加周期时间观察者” ，参数1 interal 为CMTime 类型的，参数2 queue为串行队列，如果传入NULL就是默认主线程，参数3 为CMTime 的block类型。<br>简而言之就是，每隔一段时间后执行 block。<br>比如：我们把interval设置成CMTimeMake(1, 10)，在block里面刷新label，就是一秒钟刷新10次。</p>
+<p>正常观察播放进度一秒钟一次就行了，所以可以这么写：</p>
+<pre><code>[self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:nil usingBlock:^(CMTime time) {
 
-       NSString *dataDescription = [data description];
-       NSString *dataAsString = [dataDescription substringWithRange:NSMakeRange(1, [dataDescription length]-2)];
-
-       unsigned intData = 0;
-       NSScanner *scanner = [NSScanner scannerWithString:dataAsString];
-       [scanner scanHexInt:&amp;intData];
-    return intData;
+    AVPlayerItem *item = WeakSelf.playerItem;
+    NSInteger currentTime = item.currentTime.value/item.currentTime.timescale;
+    NSLog(@&quot;当前播放时间：%ld&quot;,currentTime);
+}];
+</code></pre><p>####3、loadedTimeRange  缓存时间<br>获取视频的缓存情况我们需要监听playerItem的loadedTimeRanges属性</p>
+<pre><code>[self.playerItem addObserver:self forKeyPath:@&quot;loadedTimeRanges&quot; options:NSKeyValueObservingOptionNew context:nil];
+</code></pre><p>在KVO的回调里:</p>
+<pre><code>if ([keyPath isEqualToString:@&quot;loadedTimeRanges&quot;]){
+    NSArray *array = _playerItem.loadedTimeRanges;
+    CMTimeRange timeRange = [array.firstObject CMTimeRangeValue];//本次缓冲时间范围
+    float startSeconds = CMTimeGetSeconds(timeRange.start);
+    float durationSeconds = CMTimeGetSeconds(timeRange.duration);
+    NSTimeInterval totalBuffer = startSeconds + durationSeconds;//缓冲总长度
+    NSLog(@&quot;当前缓冲时间：%f&quot;,totalBuffer);
 }
-</code></pre><p>这两个转换在某些场景下使用频率也是挺高的，蓝牙里面的数据转换基本也就这么多了，希望能够帮助大家。<br>更多关于字节编码的问题，大家可以点这里：<a href="http://www.doc88.com/p-2905571595364.html" target="_blank" rel="noopener">传送门</a></p>
-<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>基于CoreBluetooth4.0框架的连接BLE4.0的Demo：<a href="https://github.com/zhangferry/FYBluetooth" target="_blank" rel="noopener">你不点一下吗</a></p>
+</code></pre><p>####4、playbackBufferEmpty<br>监听<code>playbackBufferEmpty</code>我们可以获取当缓存不够，视频加载不出来的情况：</p>
+<pre><code>[self.playerItem addObserver:self forKeyPath:@&quot;playbackBufferEmpty&quot; options:NSKeyValueObservingOptionNew context:nil]; 
+</code></pre><p>在KVO回调里：</p>
+<pre><code>if ([keyPath isEqualToString:@&quot;playbackBufferEmpty&quot;]) {
+
+    //some code show loading   
+}
+</code></pre><p>####5、playbackLikelyToKeepUp<br><code>playbackLikelyToKeepUp</code>和<code>playbackBufferEmpty</code>是一对，用于监听缓存足够播放的状态</p>
+<pre><code>[self.playerItem addObserver:self forKeyPath:@&quot;playbackLikelyToKeepUp&quot; options:NSKeyValueObservingOptionNew context:nil];
+/* ... */
+if([keyPath isEqualToString:@&quot;playbackLikelyToKeepUp&quot;]) {    
+    //由于 AVPlayer 缓存不足就会自动暂停，所以缓存充足了需要手动播放，才能继续播放  
+    [_player play];      
+}
+</code></pre><p>###AVURLAsset<br>播放视频只需一个url就能进行这样太不安全了，别人可以轻易的抓包盗链，为此我们需要为视频链接做一个请求头的认证，这个功能可以借助AVURLAsset完成。</p>
+<p><code>AVPlayerItem</code>除了可以用URL初始化，还可以用<code>AVAsset</code>初始化，而<code>AVAsset</code>不能直接使用，我们看下<code>AVURLAsset</code>的一个初始化方法：</p>
+<pre><code>/*!
+@param        URL
+            An instance of NSURL that references a media resource.
+@param        options
+            An instance of NSDictionary that contains keys for specifying options for the initialization of the AVURLAsset. See AVURLAssetPreferPreciseDurationAndTimingKey and AVURLAssetReferenceRestrictionsKey above.
+*/
++ (instancetype)URLAssetWithURL:(NSURL *)URL options:(nullable NSDictionary&lt;NSString *, id&gt; *)options;
+</code></pre><p><code>AVURLAssetPreferPreciseDurationAndTimingKey.</code>这个key对应的value是一个布尔值, 用来表明资源是否需要为时长的精确展示,以及随机时间内容的读取进行提前准备。</p>
+<p>除了这个苹果官方介绍的功能外，他还可以设置请求头，这个算是隐藏功能了，因为苹果并没有明说这个功能，我是费了很大劲找到的。</p>
+<pre><code>NSMutableDictionary * headers = [NSMutableDictionary dictionary];
+[headers setObject:@&quot;yourHeader&quot;forKey:@&quot;User-Agent&quot;];
+self.urlAsset = [AVURLAsset   URLAssetWithURL:self.videoURL options:@{@&quot;AVURLAssetHTTPHeaderFieldsKey&quot; : headers}];
+// 初始化playerItem
+self.playerItem = [AVPlayerItem playerItemWithAsset:self.urlAsset];
+</code></pre><p>补充：后来得知这个参数是非公开的API，但是经多人测试项目上线不受影响。</p>
+<p>###播放相关通知</p>
+<p>####1、声音类：</p>
+<pre><code>//声音被打断的通知（电话打来）
+AVAudioSessionInterruptionNotification
+//耳机插入和拔出的通知
+AVAudioSessionRouteChangeNotification
+</code></pre><p>根据userInfo判断具体状态</p>
+<p>####2、播放类</p>
+<pre><code>//播放完成
+AVPlayerItemDidPlayToEndTimeNotification
+//播放失败
+AVPlayerItemFailedToPlayToEndTimeNotification
+//异常中断
+AVPlayerItemPlaybackStalledNotification
+</code></pre><p>对于播放完成的通知我们可以这么写：</p>
+<pre><code>[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerMovieFinish:) name:AVPlayerItemDidPlayToEndTimeNotification object:[self.player currentItem]];
+</code></pre><p>####3、系统状态<br>    //进入后台<br>    UIApplicationWillResignActiveNotification<br>    //返回前台<br>    UIApplicationDidBecomeActiveNotification<br><strong>提示：所有通知和KVO的使用我们都要记得在不用时remove掉。</strong></p>
+<p>##小结</p>
+<p>视频播放相关的知识比较多，细节的方面需要一点一点去扣。暂且写这么多吧，以后有需要会及时补充。<br><strong>参考：</strong><br><a href="https://github.com/renzifeng/ZFPlayer" target="_blank" rel="noopener">ZFPlayer</a><br><a href="http://liunan.me/2017/01/30/avplayer" target="_blank" rel="noopener">AVPlayer那些坑</a><br>如果还有什么不理解的可以简书私信问我，或者查看我写的<a href="https://github.com/zhangferry/FYPlayer" target="_blank" rel="noopener">Demo</a>，欢迎star- ( ゜- ゜)つロ乾杯~</p>
 
       
     </div>
@@ -770,7 +697,9 @@ char *bs = (unsigned char *)[[data subdataWithRange:NSMakeRange(5, 1) ] bytes];
       
         <div class="post-tags">
           
-            <a href="/tags/蓝牙/" rel="tag"># 蓝牙</a>
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/AVPlayer/" rel="tag"># AVPlayer</a>
           
         </div>
       
@@ -783,8 +712,8 @@ char *bs = (unsigned char *)[[data subdataWithRange:NSMakeRange(5, 1) ] bytes];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/12/iOS获取来电和短信发送状态/" rel="next" title="iOS获取来电和短信发送状态">
-                <i class="fa fa-chevron-left"></i> iOS获取来电和短信发送状态
+              <a href="/2017/06/29/interview-question/" rel="next" title="面试题总结（From J_Knight）">
+                <i class="fa fa-chevron-left"></i> 面试题总结（From J_Knight）
               </a>
             
           </div>
@@ -793,8 +722,8 @@ char *bs = (unsigned char *)[[data subdataWithRange:NSMakeRange(5, 1) ] bytes];
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/20/基于Hexo搭建自己的博客小屋/" rel="prev" title="基于Hexo搭建自己的博客小屋">
-                基于Hexo搭建自己的博客小屋 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/17/UIButton-detail/" rel="prev" title="可能被忽略的UIButton细节">
+                可能被忽略的UIButton细节 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -996,7 +925,7 @@ char *bs = (unsigned char *)[[data subdataWithRange:NSMakeRange(5, 1) ] bytes];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Byte转NSData"><span class="nav-number">1.</span> <span class="nav-text">Byte转NSData</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSString转NSData"><span class="nav-number">2.</span> <span class="nav-text">NSString转NSData</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求校验和"><span class="nav-number">3.</span> <span class="nav-text">求校验和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拆分数据"><span class="nav-number">4.</span> <span class="nav-text">拆分数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10进制转2进制"><span class="nav-number">4.1.</span> <span class="nav-text">10进制转2进制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附带两个函数"><span class="nav-number">5.</span> <span class="nav-text">附带两个函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展"><span class="nav-number">6.</span> <span class="nav-text">扩展</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么使用AVPlayer："><span class="nav-number">1.</span> <span class="nav-text">为什么使用AVPlayer：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、播放状态-status"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、播放状态 status</span></a></li></ol></li></ol></div>
             
 
           </div>

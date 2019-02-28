@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="最近工作内容基本都是围绕视频播放展开的，从AVPlayer到IJKPlayer，期间遇到挺多问题，趟了很多bug，也总结了一些心得。对AVPlayer了解的更多一些，因为涉及点比较多，所以打算做一个系列详尽的写一下这部分内容。希望大家多多支持，有问题的地方欢迎指正。  ##思维导图先来一张思维导图，作为这篇文章的目录索引： 为什么使用AVPlayer：首先在iOS平台使用播放视频，可用的选项一般">
-<meta name="keywords" content="AVPlayer">
+  <meta name="description" content="获取电话状态在我想要了解iOS获取来电状态时，经常被这是不是允许的，是不是要调用私有库等问题困扰。费了好大劲终于解决了上面问题，你可以获取系统提供的电话相关状态，而且它不属于私有库。为了需要这方面资料的人查阅时少走弯路，我把这些东西写下来，废话少说，上代码。">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AVPlayer详解系列（一）参数设置">
-<meta property="og:url" content="http://zhangferry.github.io/2017/08/25/avplayer-config-detail-1/index.html">
+<meta property="og:title" content="iOS获取来电和短信发送状态">
+<meta property="og:url" content="http://zhangferry.github.io/2016/12/12/calling-and-sms-state/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="最近工作内容基本都是围绕视频播放展开的，从AVPlayer到IJKPlayer，期间遇到挺多问题，趟了很多bug，也总结了一些心得。对AVPlayer了解的更多一些，因为涉及点比较多，所以打算做一个系列详尽的写一下这部分内容。希望大家多多支持，有问题的地方欢迎指正。  ##思维导图先来一张思维导图，作为这篇文章的目录索引： 为什么使用AVPlayer：首先在iOS平台使用播放视频，可用的选项一般">
+<meta property="og:description" content="获取电话状态在我想要了解iOS获取来电状态时，经常被这是不是允许的，是不是要调用私有库等问题困扰。费了好大劲终于解决了上面问题，你可以获取系统提供的电话相关状态，而且它不属于私有库。为了需要这方面资料的人查阅时少走弯路，我把这些东西写下来，废话少说，上代码。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-d8f55f8bd9368182.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-08T13:40:04.631Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-3d7bb9f8ff9ce3d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-08T13:31:09.310Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AVPlayer详解系列（一）参数设置">
-<meta name="twitter:description" content="最近工作内容基本都是围绕视频播放展开的，从AVPlayer到IJKPlayer，期间遇到挺多问题，趟了很多bug，也总结了一些心得。对AVPlayer了解的更多一些，因为涉及点比较多，所以打算做一个系列详尽的写一下这部分内容。希望大家多多支持，有问题的地方欢迎指正。  ##思维导图先来一张思维导图，作为这篇文章的目录索引： 为什么使用AVPlayer：首先在iOS平台使用播放视频，可用的选项一般">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-d8f55f8bd9368182.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="iOS获取来电和短信发送状态">
+<meta name="twitter:description" content="获取电话状态在我想要了解iOS获取来电状态时，经常被这是不是允许的，是不是要调用私有库等问题困扰。费了好大劲终于解决了上面问题，你可以获取系统提供的电话相关状态，而且它不属于私有库。为了需要这方面资料的人查阅时少走弯路，我把这些东西写下来，废话少说，上代码。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-3d7bb9f8ff9ce3d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -118,7 +118,7 @@
 
 
 
-  <link rel="canonical" href="http://zhangferry.github.io/2017/08/25/avplayer-config-detail-1/">
+  <link rel="canonical" href="http://zhangferry.github.io/2016/12/12/calling-and-sms-state/">
 
 
 
@@ -128,7 +128,7 @@
   };
 </script>
 
-  <title>AVPlayer详解系列（一）参数设置 | zhangferry</title>
+  <title>iOS获取来电和短信发送状态 | zhangferry</title>
   
 
 
@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2017/08/25/avplayer-config-detail-1/">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/12/12/calling-and-sms-state/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangferry">
@@ -362,7 +362,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">AVPlayer详解系列（一）参数设置
+          <h2 class="post-title" itemprop="name headline">iOS获取来电和短信发送状态
 
               
             
@@ -388,12 +388,30 @@
                 
               
 
-              <time title="创建时间：2017-08-25 16:27:50" itemprop="dateCreated datePublished" datetime="2017-08-25T16:27:50+08:00">2017-08-25</time>
+              <time title="创建时间：2016-12-12 15:35:51" itemprop="dateCreated datePublished" datetime="2016-12-12T15:35:51+08:00">2016-12-12</time>
             
 
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/iOS知识点/" itemprop="url" rel="index"><span itemprop="name">iOS知识点</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -424,7 +442,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">7.8k</span>
+                <span title="本文字数">3.9k</span>
               
 
               
@@ -438,7 +456,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">7 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -458,198 +476,118 @@
       
 
       
-        <blockquote>
-<p>最近工作内容基本都是围绕视频播放展开的，从AVPlayer到IJKPlayer，期间遇到挺多问题，趟了很多bug，也总结了一些心得。对AVPlayer了解的更多一些，因为涉及点比较多，所以打算做一个系列详尽的写一下这部分内容。希望大家多多支持，有问题的地方欢迎指正。</p>
-</blockquote>
-<p>##思维导图<br>先来一张思维导图，作为这篇文章的目录索引：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-d8f55f8bd9368182.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="AVPlayer.png"></p>
-<h2 id="为什么使用AVPlayer："><a href="#为什么使用AVPlayer：" class="headerlink" title="为什么使用AVPlayer："></a>为什么使用AVPlayer：</h2><p>首先在iOS平台使用播放视频，可用的选项一般有这四个，他们各自的作用和功能如下：</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>使用环境</th>
-<th>优点</th>
-<th>缺点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MPMoviePlayerController</td>
-<td>MediaPlayer</td>
-<td>简单易用</td>
-<td>不可定制</td>
-</tr>
-<tr>
-<td>AVPlayerViewController</td>
-<td>AVKit</td>
-<td>简单易用</td>
-<td>不可定制</td>
-</tr>
-<tr>
-<td>AVPlayer</td>
-<td>AVFoundation</td>
-<td>可定制度高，功能强大</td>
-<td>不支持流媒体</td>
-</tr>
-<tr>
-<td>IJKPlayer</td>
-<td>IJKMediaFramework</td>
-<td>定制度高，支持流媒体播放</td>
-<td>使用稍复杂</td>
-</tr>
-</tbody>
-</table>
-<p>由此可以看出，如果我们不做直播功能<a href="https://developer.apple.com/documentation/avfoundation/avplayer" target="_blank" rel="noopener">AVPlayer</a>就是一个最优的选择。</p>
-<p>另外AVPlayer是一个可以播放任何格式的全功能影音播放器<br><del>支持视频格式： WMV，AVI，MKV，RMVB，RM，XVID，MP4，3GP，MPG等。</del><br><del>支持音频格式：MP3，WMA，RM，ACC，OGG，APE，FLAC，FLV等。</del><br>支持视频格式： MP4，MOV，M4V，3GP，AVI等。<br>支持音频格式：MP3，AAC，WAV，AMR，M4A等。<br>详见<a href="https://www.jianshu.com/p/7373f07f1cbf" target="_blank" rel="noopener">AVPlayer支持的视频格式</a></p>
-<p>##如何使用<br>AVPlayer存在于AVFoundation框架，我们使用时需要导入：<br><code>#import &lt;AVFoundation/AVFoundation.h&gt;</code></p>
-<p>###几个播放相关的参数<br>在创建一个播放器之前我们需要先了解一些播放器相关的类</p>
-<ul>
-<li>AVPlayer：控制播放器的播放，暂停，播放速度</li>
-<li>AVURLAsset : AVAsset 的一个子类，使用 URL 进行实例化，实例化对象包换 URL 对应视频资源的所有信息。</li>
-<li>AVPlayerItem：管理资源对象，提供播放数据源</li>
-<li>AVPlayerLayer：负责显示视频，如果没有添加该类，只有声音没有画面</li>
-</ul>
-<p>我们这片文章就围绕这几个参数展开，光说这些你可能还有点不明白，那我们就围绕一个最简单的播放器做起，一点点扩展功能，在具体讲解这几个参数的作用。</p>
-<p>###最简单的播放器<br>根据上面描述，我们知道<code>AVPlayer</code>是播放的必要条件，所以我们可以构建的极简播放器就是：</p>
-<pre><code>NSURL *playUrl = [NSURL URLWithString:@&quot;http://baobab.wdjcdn.com/14573563182394.mp4&quot;];
-self.player = [[AVPlayer alloc] initWithURL:playUrl];
-[self.player play];
-</code></pre><p>是不是很简单，只有三行代码！<br>但是它太简单了，仅可以完成音频的播放，连画面都没有。回看上面播放相关类的介绍，是因为缺少<code>AVPlayerLayer</code>；作为一个播放器，我不能只播放一条视频啊，我还想根据需要切换视频，那我们就得把<code>AVPlayerItem</code>也加上。<br>加上这两个属性之后的播放器是这样的：</p>
-<pre><code>NSURL *playUrl = [NSURL URLWithString:@&quot;http://baobab.wdjcdn.com/14573563182394.mp4&quot;];
-self.playerItem = [AVPlayerItem playerItemWithURL:playUrl];
-//如果要切换视频需要调AVPlayer的replaceCurrentItemWithPlayerItem:方法
-self.player = [AVPlayer playerWithPlayerItem:_playerItem];
-self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-self.playerLayer.frame = _videoView.bounds;
-//放置播放器的视图
-[self.videoView.layer addSublayer:self.playerLayer];
-[_player play];
-</code></pre><p>现在的播放器稍微完整了一些，我们在自己创建的容器里可以看到画面了！</p>
-<p>##更多功能<br>但是它作为一个视频播放器，还是有很多不能让人满意的地方。例如：没有暂停、快进快退、倍速播放等，另外如果遇到url错误是不是还要有播放失败的提示，还有播放完成的相关提示。<br>为完成这些，我们需要对<code>AVPlayerItem</code>和<code>AVPlayerLayer</code>进一步了解一下。</p>
-<p>###一、AVPlayer的控制<br>前面讲过该类是控制视频播放行为的，他的使用比较简单。<br>播放视频：</p>
-<pre><code>[self.player play];
-</code></pre><p>暂停视频：</p>
-<pre><code>[self.player pause];
-</code></pre><p>更改速度：</p>
-<pre><code>self.player.rate = 1.5;//注意更改播放速度要在视频开始播放之后才会生效
-</code></pre><p>还有一下其他的控制，我们可以调转到系统API进行查看</p>
-<p>###二、AVPlayerItem的控制<br>AVPlayerItem作为资源管理对象，它控制着视频从创建到销毁的诸多状态。</p>
-<h4 id="1、播放状态-status"><a href="#1、播放状态-status" class="headerlink" title="1、播放状态 status"></a>1、播放状态 status</h4><pre><code>typedef NS_ENUM(NSInteger, AVPlayerItemStatus) {
-    AVPlayerItemStatusUnknown,//未知
-    AVPlayerItemStatusReadyToPlay,//准备播放
-    AVPlayerItemStatusFailed//播放失败
+        <h2 id="获取电话状态"><a href="#获取电话状态" class="headerlink" title="获取电话状态"></a>获取电话状态</h2><p>在我想要了解iOS获取来电状态时，经常被这是不是允许的，是不是要调用私有库等问题困扰。费了好大劲终于解决了上面问题，你可以获取系统提供的电话相关状态，而且它不属于私有库。为了需要这方面资料的人查阅时少走弯路，我把这些东西写下来，废话少说，上代码。<br><a id="more"></a></p>
+<h3 id="如何获取电话状态"><a href="#如何获取电话状态" class="headerlink" title="如何获取电话状态"></a>如何获取电话状态</h3><p>首先要导入CoreTelephony框架：<br><code>@import CoreTelephony;</code></p>
+<p>然后声明一个CTCallCenter变量：</p>
+<pre><code>@interface ViewController () {  
+CTCallCenter *center_;   //为了避免形成retain cycle而声明的一个变量，指向接收通话中心对象
+}  
+</code></pre><p>@end<br>然后监听电话状态：</p>
+<pre><code>- (void) aboutCall{   
+//获取电话接入信息
+callCenter.callEventHandler = ^(CTCall *call){
+if ([call.callState isEqualToString:CTCallStateDisconnected]){
+NSLog(@&quot;Call has been disconnected&quot;);
+
+}else if ([call.callState isEqualToString:CTCallStateConnected]){
+NSLog(@&quot;Call has just been connected&quot;);
+
+}else if([call.callState isEqualToString:CTCallStateIncoming]){
+NSLog(@&quot;Call is incoming&quot;);
+
+}else if ([call.callState isEqualToString:CTCallStateDialing]){
+NSLog(@&quot;call is dialing&quot;);
+
+}else{
+NSLog(@&quot;Nothing is done&quot;);
+}
 };
-</code></pre><p>我们使用KVO监测playItem.status，可以获取播放状态的变化</p>
-<pre><code>[self.playerItem addObserver:self forKeyPath:@&quot;status&quot; options:NSKeyValueObservingOptionNew context:nil];
-</code></pre><p>在监听回调中：</p>
-<pre><code>- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSKeyValueChangeKey,id&gt; *)change context:(void *)context{
+}
+</code></pre><p>还可以获取运营商信息：</p>
+<pre><code>- (void)getCarrierInfo{
+// 获取运营商信息
+CTTelephonyNetworkInfo *info = [[CTTelephonyNetworkInfo alloc] init];
+CTCarrier *carrier = info.subscriberCellularProvider;
+NSLog(@&quot;carrier:%@&quot;, [carrier description]);
 
-if ([object isKindOfClass:[AVPlayerItem class]]) {
-    if ([keyPath isEqualToString:@&quot;status&quot;]) {
-        switch (_playerItem.status) {
-            case AVPlayerItemStatusReadyToPlay:
-                //推荐将视频播放放在这里
-                [self play];
-                break;
+// 如果运营商变化将更新运营商输出
+info.subscriberCellularProviderDidUpdateNotifier = ^(CTCarrier *carrier) {
+NSLog(@&quot;carrier:%@&quot;, [carrier description]);
+};
 
-            case AVPlayerItemStatusUnknown:
-                NSLog(@&quot;AVPlayerItemStatusUnknown&quot;);
-                break;
-
-            case AVPlayerItemStatusFailed:
-                NSLog(@&quot;AVPlayerItemStatusFailed&quot;)
-                break;
-
-            default:
-                break;
-        }
-
+// 输出手机的数据业务信息
+NSLog(@&quot;Radio Access Technology:%@&quot;, info.currentRadioAccessTechnology);
+}    
+</code></pre><p>当然这样在真机进行测试，以下为输出信息：</p>
+<pre><code>2015-12-29 16:34:14.525 RWBLEManagerDemo[1489:543655] carrier:CTCarrier (0x134e065c0) {
+Carrier name: [中国移动]
+Mobile Country Code: [460]
+Mobile Network Code:[07]
+ISO Country Code:[cn]
+Allows VOIP? [YES]
+}
+2015-12-29 16:34:14.526 RWBLEManagerDemo[1489:543655] Radio Access Technology:CTRadioAccessTechnologyHSDPA    
+</code></pre><h3 id="CoreTelephony框架是不是私有库"><a href="#CoreTelephony框架是不是私有库" class="headerlink" title="CoreTelephony框架是不是私有库"></a>CoreTelephony框架是不是私有库</h3><p>私有框架的目录为：<br><code>/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/PrivateFrameworks/</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1059465-3d7bb9f8ff9ce3d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="FDC2B801-0F1C-41FD-A9A4-399592DF4BEF.png"></p>
+<p>可以看出CoreTelephony框架是在frameworks内而不是PrivateFrameworks，所以它是可以放心使用的。网上之所以有说CoreTelephony是私有库，是因为在iOS6的时候是私有框架，后来苹果又给公开了。</p>
+<h2 id="获取短信状态"><a href="#获取短信状态" class="headerlink" title="获取短信状态"></a>获取短信状态</h2><p>关于短信的状态获取，我直接看了<br><code>#import &lt;MessageUI/MessageUI.h&gt;</code><br>里面就两个头文件：</p>
+<p><code>#import &lt;MessageUI/MFMailComposeViewController.h&gt;</code><br><code>#import &lt;MessageUI/MFMessageComposeViewController.h&gt;</code><br>一个是邮件相关的方法，一个短信相关的方法。进到MFMessageComposeViewController.h有一个枚举值：</p>
+<pre><code>enum MessageComposeResult {
+MessageComposeResultCancelled,
+MessageComposeResultSent,
+MessageComposeResultFailed
+};
+</code></pre><p>typedef enum MessageComposeResult MessageComposeResult;   // available in iPhone 4.0<br>这是表示短信发送状态的值。要使用这个框架发送自己编辑的内容还需要添加代理：<code>MFMessageComposeViewControllerDelegate</code></p>
+<p>代码如下：</p>
+<pre><code>- (void)showMessageView
+{
+if( [MFMessageComposeViewController canSendText] )// 判断设备能不能发送短信
+    {
+    MFMessageComposeViewController*picker = [[MFMessageComposeViewControlleralloc] init];
+    // 设置委托
+    picker.messageComposeDelegate= self;
+    // 默认信息内容
+    picker.body = @&quot;nihao&quot;;
+    // 默认收件人(可多个)
+    picker.recipients = [NSArray arrayWithObject:@&quot;12345678901&quot;, nil];
+    [self presentModalViewController:picker animated:YES];
+    [picker release];
+    }
+    else
+    {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;提示信息&quot;
+    message:@&quot;该设备不支持短信功能&quot;
+    delegate:self
+    cancelButtonTitle:nil
+    otherButtonTitles:@&quot;确定&quot;, nil];
+    [alert show];
+    [alert release];
     }
 }
-</code></pre><p>虽然设置完播放配置我们可以直接调用<code>[self.player play];</code>进行播放，但是更稳妥的方法是在回调收到<code>AVPlayerItemStatusReadyToPlay</code>时进行播放</p>
-<p>####2、视频的时间信息<br>在AVPlayer中时间的表示有一个专门的结构体CMTime</p>
-<pre><code>typedef struct{
-    CMTimeValue    value;     // 帧数
-    CMTimeScale    timescale;  // 帧率（影片每秒有几帧）
-    CMTimeFlags    flags;        
-    CMTimeEpoch    epoch;    
-} CMTime;
-</code></pre><p>CMTime是以分数的形式表示时间，value表示分子，timescale表示分母，flags是位掩码，表示时间的指定状态。</p>
-<p>获取当前播放时间，可以用value/timescale的方式：</p>
-<pre><code>float currentTime = self.playItem.currentTime.value/item.currentTime.timescale;
-</code></pre><p>还有一种利用系统提供的方法，我们用它获取视频总时间：</p>
-<pre><code>float totalTime   = CMTimeGetSeconds(item.duration);
-</code></pre><p>如果我们想要添加一个计时的标签不断更新当前的播放进度，有一个系统的方法：</p>
-<pre><code>- (id)addPeriodicTimeObserverForInterval:(CMTime)interval queue:(nullable dispatch_queue_t)queue usingBlock:(void (^)(CMTime time))block;
-</code></pre><p>方法名如其意， “添加周期时间观察者” ，参数1 interal 为CMTime 类型的，参数2 queue为串行队列，如果传入NULL就是默认主线程，参数3 为CMTime 的block类型。<br>简而言之就是，每隔一段时间后执行 block。<br>比如：我们把interval设置成CMTimeMake(1, 10)，在block里面刷新label，就是一秒钟刷新10次。</p>
-<p>正常观察播放进度一秒钟一次就行了，所以可以这么写：</p>
-<pre><code>[self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:nil usingBlock:^(CMTime time) {
 
-    AVPlayerItem *item = WeakSelf.playerItem;
-    NSInteger currentTime = item.currentTime.value/item.currentTime.timescale;
-    NSLog(@&quot;当前播放时间：%ld&quot;,currentTime);
-}];
-</code></pre><p>####3、loadedTimeRange  缓存时间<br>获取视频的缓存情况我们需要监听playerItem的loadedTimeRanges属性</p>
-<pre><code>[self.playerItem addObserver:self forKeyPath:@&quot;loadedTimeRanges&quot; options:NSKeyValueObservingOptionNew context:nil];
-</code></pre><p>在KVO的回调里:</p>
-<pre><code>if ([keyPath isEqualToString:@&quot;loadedTimeRanges&quot;]){
-    NSArray *array = _playerItem.loadedTimeRanges;
-    CMTimeRange timeRange = [array.firstObject CMTimeRangeValue];//本次缓冲时间范围
-    float startSeconds = CMTimeGetSeconds(timeRange.start);
-    float durationSeconds = CMTimeGetSeconds(timeRange.duration);
-    NSTimeInterval totalBuffer = startSeconds + durationSeconds;//缓冲总长度
-    NSLog(@&quot;当前缓冲时间：%f&quot;,totalBuffer);
-}
-</code></pre><p>####4、playbackBufferEmpty<br>监听<code>playbackBufferEmpty</code>我们可以获取当缓存不够，视频加载不出来的情况：</p>
-<pre><code>[self.playerItem addObserver:self forKeyPath:@&quot;playbackBufferEmpty&quot; options:NSKeyValueObservingOptionNew context:nil]; 
-</code></pre><p>在KVO回调里：</p>
-<pre><code>if ([keyPath isEqualToString:@&quot;playbackBufferEmpty&quot;]) {
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    switch (result){
+    case MessageComposeResultCancelled:
+    NSLog(@&quot;取消发送&quot;);
+    break;
+    case MessageComposeResultFailed:
+    NSLog(@&quot;发送失败&quot;);
+    break;
+    case MessageComposeResultSent:
+    NSLog(@&quot;发送成功&quot;);
+    break;
 
-    //some code show loading   
+    default:
+    break;
+    }
 }
-</code></pre><p>####5、playbackLikelyToKeepUp<br><code>playbackLikelyToKeepUp</code>和<code>playbackBufferEmpty</code>是一对，用于监听缓存足够播放的状态</p>
-<pre><code>[self.playerItem addObserver:self forKeyPath:@&quot;playbackLikelyToKeepUp&quot; options:NSKeyValueObservingOptionNew context:nil];
-/* ... */
-if([keyPath isEqualToString:@&quot;playbackLikelyToKeepUp&quot;]) {    
-    //由于 AVPlayer 缓存不足就会自动暂停，所以缓存充足了需要手动播放，才能继续播放  
-    [_player play];      
-}
-</code></pre><p>###AVURLAsset<br>播放视频只需一个url就能进行这样太不安全了，别人可以轻易的抓包盗链，为此我们需要为视频链接做一个请求头的认证，这个功能可以借助AVURLAsset完成。</p>
-<p><code>AVPlayerItem</code>除了可以用URL初始化，还可以用<code>AVAsset</code>初始化，而<code>AVAsset</code>不能直接使用，我们看下<code>AVURLAsset</code>的一个初始化方法：</p>
-<pre><code>/*!
-@param        URL
-            An instance of NSURL that references a media resource.
-@param        options
-            An instance of NSDictionary that contains keys for specifying options for the initialization of the AVURLAsset. See AVURLAssetPreferPreciseDurationAndTimingKey and AVURLAssetReferenceRestrictionsKey above.
-*/
-+ (instancetype)URLAssetWithURL:(NSURL *)URL options:(nullable NSDictionary&lt;NSString *, id&gt; *)options;
-</code></pre><p><code>AVURLAssetPreferPreciseDurationAndTimingKey.</code>这个key对应的value是一个布尔值, 用来表明资源是否需要为时长的精确展示,以及随机时间内容的读取进行提前准备。</p>
-<p>除了这个苹果官方介绍的功能外，他还可以设置请求头，这个算是隐藏功能了，因为苹果并没有明说这个功能，我是费了很大劲找到的。</p>
-<pre><code>NSMutableDictionary * headers = [NSMutableDictionary dictionary];
-[headers setObject:@&quot;yourHeader&quot;forKey:@&quot;User-Agent&quot;];
-self.urlAsset = [AVURLAsset   URLAssetWithURL:self.videoURL options:@{@&quot;AVURLAssetHTTPHeaderFieldsKey&quot; : headers}];
-// 初始化playerItem
-self.playerItem = [AVPlayerItem playerItemWithAsset:self.urlAsset];
-</code></pre><p>补充：后来得知这个参数是非公开的API，但是经多人测试项目上线不受影响。</p>
-<p>###播放相关通知</p>
-<p>####1、声音类：</p>
-<pre><code>//声音被打断的通知（电话打来）
-AVAudioSessionInterruptionNotification
-//耳机插入和拔出的通知
-AVAudioSessionRouteChangeNotification
-</code></pre><p>根据userInfo判断具体状态</p>
-<p>####2、播放类</p>
-<pre><code>//播放完成
-AVPlayerItemDidPlayToEndTimeNotification
-//播放失败
-AVPlayerItemFailedToPlayToEndTimeNotification
-//异常中断
-AVPlayerItemPlaybackStalledNotification
-</code></pre><p>对于播放完成的通知我们可以这么写：</p>
-<pre><code>[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerMovieFinish:) name:AVPlayerItemDidPlayToEndTimeNotification object:[self.player currentItem]];
-</code></pre><p>####3、系统状态<br>    //进入后台<br>    UIApplicationWillResignActiveNotification<br>    //返回前台<br>    UIApplicationDidBecomeActiveNotification<br><strong>提示：所有通知和KVO的使用我们都要记得在不用时remove掉。</strong></p>
-<p>##小结</p>
-<p>视频播放相关的知识比较多，细节的方面需要一点一点去扣。暂且写这么多吧，以后有需要会及时补充。<br><strong>参考：</strong><br><a href="https://github.com/renzifeng/ZFPlayer" target="_blank" rel="noopener">ZFPlayer</a><br><a href="http://liunan.me/2017/01/30/avplayer" target="_blank" rel="noopener">AVPlayer那些坑</a><br>如果还有什么不理解的可以简书私信问我，或者查看我写的<a href="https://github.com/zhangferry/FYPlayer" target="_blank" rel="noopener">Demo</a>，欢迎star- ( ゜- ゜)つロ乾杯~</p>
+</code></pre><p>对于来短信的通知没有找到，应该是不能获取的。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li>private framework使用<br><a href="http://chenjohney.blog.51cto.com/4132124/1288551" target="_blank" rel="noopener">http://chenjohney.blog.51cto.com/4132124/1288551</a> </li>
+<li>CoreTelephony框架的简单使用<br><a href="http://blog.csdn.net/jymn_chen/article/details/19240903" target="_blank" rel="noopener">http://blog.csdn.net/jymn_chen/article/details/19240903</a>  </li>
+<li>iOS关于系统短信和电话的调用<br><a href="http://blog.csdn.net/frank_jb/article/details/49815883" target="_blank" rel="noopener">http://blog.csdn.net/frank_jb/article/details/49815883</a></li>
+</ul>
 
       
     </div>
@@ -697,7 +635,7 @@ AVPlayerItemPlaybackStalledNotification
       
         <div class="post-tags">
           
-            <a href="/tags/AVPlayer/" rel="tag"># AVPlayer</a>
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
           
         </div>
       
@@ -710,8 +648,8 @@ AVPlayerItemPlaybackStalledNotification
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/29/面试题总结（J-Knight）/" rel="next" title="面试题总结（From J_Knight）">
-                <i class="fa fa-chevron-left"></i> 面试题总结（From J_Knight）
+              <a href="/2016/10/14/ancs-bind/" rel="next" title="处理ANCS设备连接绑定问题">
+                <i class="fa fa-chevron-left"></i> 处理ANCS设备连接绑定问题
               </a>
             
           </div>
@@ -720,8 +658,8 @@ AVPlayerItemPlaybackStalledNotification
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/17/UIButton-detail/" rel="prev" title="可能被忽略的UIButton细节">
-                可能被忽略的UIButton细节 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/12/bluetooth-number-transform/" rel="prev" title="iOS蓝牙中的进制转换">
+                iOS蓝牙中的进制转换 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -923,7 +861,7 @@ AVPlayerItemPlaybackStalledNotification
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么使用AVPlayer："><span class="nav-number">1.</span> <span class="nav-text">为什么使用AVPlayer：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、播放状态-status"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、播放状态 status</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取电话状态"><span class="nav-number">1.</span> <span class="nav-text">获取电话状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何获取电话状态"><span class="nav-number">1.1.</span> <span class="nav-text">如何获取电话状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CoreTelephony框架是不是私有库"><span class="nav-number">1.2.</span> <span class="nav-text">CoreTelephony框架是不是私有库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取短信状态"><span class="nav-number">2.</span> <span class="nav-text">获取短信状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">2.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
             
 
           </div>

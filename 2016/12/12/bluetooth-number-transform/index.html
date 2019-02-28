@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="虽然一直都有想要保持写日记的习惯，但是对于我这种上班时间不稳定切偏晚，经常11点12点才能离开公司的人，就更难了。但如果不写点什么，总感觉这段时间就丢失了，往会看的时候会产生一种失落感。于是找到一种折中的方案，索性把时间跨度拉大一点，一个月写一篇总结。东西就放在简书上，会和博客同步。不管产出的东西多少，希望这个习惯能尽可能长的保持下去。">
-<meta name="keywords" content="生活">
+  <meta name="description" content="最近在忙一个蓝牙项目，在处理蓝牙数据的时候，经常遇到进制之间的转换，蓝牙处理的是16进制（NSData），而我们习惯的计数方式是10进制，为了节省空间，蓝牙也会把16进制（NSData）拆成2进制记录。这里我们研究下如何在他们之间进行转换。">
+<meta name="keywords" content="蓝牙">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2018年七月">
-<meta property="og:url" content="http://zhangferry.github.io/2018/08/06/201807summary/index.html">
+<meta property="og:title" content="iOS蓝牙中的进制转换">
+<meta property="og:url" content="http://zhangferry.github.io/2016/12/12/bluetooth-number-transform/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="虽然一直都有想要保持写日记的习惯，但是对于我这种上班时间不稳定切偏晚，经常11点12点才能离开公司的人，就更难了。但如果不写点什么，总感觉这段时间就丢失了，往会看的时候会产生一种失落感。于是找到一种折中的方案，索性把时间跨度拉大一点，一个月写一篇总结。东西就放在简书上，会和博客同步。不管产出的东西多少，希望这个习惯能尽可能长的保持下去。">
+<meta property="og:description" content="最近在忙一个蓝牙项目，在处理蓝牙数据的时候，经常遇到进制之间的转换，蓝牙处理的是16进制（NSData），而我们习惯的计数方式是10进制，为了节省空间，蓝牙也会把16进制（NSData）拆成2进制记录。这里我们研究下如何在他们之间进行转换。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-64df1811bbc768eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-08T13:12:49.403Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-e8b76e6d8dcb9416.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-08T13:12:35.279Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2018年七月">
-<meta name="twitter:description" content="虽然一直都有想要保持写日记的习惯，但是对于我这种上班时间不稳定切偏晚，经常11点12点才能离开公司的人，就更难了。但如果不写点什么，总感觉这段时间就丢失了，往会看的时候会产生一种失落感。于是找到一种折中的方案，索性把时间跨度拉大一点，一个月写一篇总结。东西就放在简书上，会和博客同步。不管产出的东西多少，希望这个习惯能尽可能长的保持下去。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1059465-64df1811bbc768eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="iOS蓝牙中的进制转换">
+<meta name="twitter:description" content="最近在忙一个蓝牙项目，在处理蓝牙数据的时候，经常遇到进制之间的转换，蓝牙处理的是16进制（NSData），而我们习惯的计数方式是10进制，为了节省空间，蓝牙也会把16进制（NSData）拆成2进制记录。这里我们研究下如何在他们之间进行转换。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-e8b76e6d8dcb9416.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -118,7 +118,7 @@
 
 
 
-  <link rel="canonical" href="http://zhangferry.github.io/2018/08/06/201807summary/">
+  <link rel="canonical" href="http://zhangferry.github.io/2016/12/12/bluetooth-number-transform/">
 
 
 
@@ -128,7 +128,7 @@
   };
 </script>
 
-  <title>2018年七月 | zhangferry</title>
+  <title>iOS蓝牙中的进制转换 | zhangferry</title>
   
 
 
@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2018/08/06/201807summary/">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/12/12/bluetooth-number-transform/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangferry">
@@ -362,7 +362,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">2018年七月
+          <h2 class="post-title" itemprop="name headline">iOS蓝牙中的进制转换
 
               
             
@@ -388,12 +388,30 @@
                 
               
 
-              <time title="创建时间：2018-08-06 11:28:09" itemprop="dateCreated datePublished" datetime="2018-08-06T11:28:09+08:00">2018-08-06</time>
+              <time title="创建时间：2016-12-12 16:07:54" itemprop="dateCreated datePublished" datetime="2016-12-12T16:07:54+08:00">2016-12-12</time>
             
 
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/蓝牙总结/" itemprop="url" rel="index"><span itemprop="name">蓝牙总结</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -424,7 +442,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.4k</span>
+                <span title="本文字数">8.2k</span>
               
 
               
@@ -438,7 +456,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">7 分钟</span>
               
             </div>
           
@@ -458,11 +476,253 @@
       
 
       
-        <p><img src="https://upload-images.jianshu.io/upload_images/1059465-64df1811bbc768eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="十渡"></p>
-<p>虽然一直都有想要保持写日记的习惯，但是对于我这种上班时间不稳定切偏晚，经常11点12点才能离开公司的人，就更难了。但如果不写点什么，总感觉这段时间就丢失了，往会看的时候会产生一种失落感。于是找到一种折中的方案，索性把时间跨度拉大一点，一个月写一篇总结。东西就放在简书上，会和博客同步。不管产出的东西多少，希望这个习惯能尽可能长的保持下去。<br><a id="more"></a></p>
-<h3 id="关于工作"><a href="#关于工作" class="headerlink" title="关于工作"></a>关于工作</h3><p>七月份一直在维护冥想类的新产品Peace，七月份上的线，一周一个版本，目前是1.3了。从最开始的数据不理想，到分析投放数据，开会讨论找问题，对比竞品，找到问题，指定解决方案，快速迭代，产品在越来越好，数据也在越来越好。我也在这个过程中全程目睹了一个新产品的发展历程，这种体验可以说是一件很棒的事了。<br>但是这段时间也是最忙的一段时期，一周一版一点也不轻松。排期排到周五，就不管多晚周五那天（甚至是已经周六）都要发版的，最晚的一次是战斗到夜里一点。随后老大也调整了策略，多留出一天时间，进行codereview，排期不再那么满，但是快速迭代的节奏还是要一直保持的。<br>说下最近的能力问题，项目中磨练了很多，踩了很多坑，也总结掌握了一些经验，但并不能感觉到自己已经达到了何种地步。都是碎片化的知识点，知识面不系统，也没法找到一个系统的东西去参考，说自己掌握了那些还差那些。直到遇到了技能图谱这个东西，代表个人能力的技能树。于是参考网上的iOS技能图谱，自己做了一个图谱。瞬间思路也清晰了，以后的博客内容，学习内容就可以根据这个东西来了。</p>
-<h3 id="关于生活"><a href="#关于生活" class="headerlink" title="关于生活"></a>关于生活</h3><p>生活方面，园区正在组织篮球赛，我作为篮球队的一员在比赛的一个月之前，就已经开始训练了，一周一次两小时的训练。体育这个东西一直以来也是我心心念的小梦想，怎么说呢，虽然不是运动员，但运动本身总能给我带来不一样的，超出我自身限制的体验。我以前总幻想可能这就是兴趣吧，我喜欢这个，但成熟之后，想法就变成了，体育没那么简单，作为一个爱好就够了。<br>当运动员的梦想渐行渐远时，去年和今年的两场半程马拉松，又把这个心结给勾了出来，两场比赛都完赛时，那种巨大的满足感，只有两个字可以形容，贼舒服！<br>话题拉回来，渐渐的也迎来了篮球联赛的正式比赛，小组赛6进2，我们打了两场，一胜一负。我当了一场主力，虽然表现一般，只为球队贡献了6分，但也算是战斗到最后一刻。很荣幸啦，那种奔跑如风的感觉，观众为自己加油喝彩的感觉，不管结果怎样，我都享受到了比赛了。</p>
-<h3 id="关于自己"><a href="#关于自己" class="headerlink" title="关于自己"></a>关于自己</h3><p>去了趟天津，见自己高中时的死党，大家，一起吃饭喝酒，谈论工作，结婚，房价。想起高中时，我们几个因为食堂没有座位蹲在一起吃饭场景，恍若隔日啊。<br>和女朋友去了趟十渡，玩了标志性的玻璃栈道，高山漂流，抗日英雄纪念馆，十渡风景也很美。其中高山漂流一路冲下来，身上湿了一大半，遇到一个小朋友，说“你们怕水吗？”我还没弄明白怎么回事就说了句“不怕啊”，他就跟妈妈一起开始向我俩泼水了。这熊孩子，跟我刚！当自己放下顾忌，肆无忌惮地疯玩时，这才是真正的快乐吧。<br>关于自身的成长，感觉自己自律性还是差一些，坏习惯多一些，我能感觉到坏习惯对我形成的阻力，但是要完全克服或者完全抹掉还是需要相当一段时间努力的。<br>我也在排除一些对自己产生干扰的外界因素，卸载了手机里让我耗费时间的王者荣耀，刺激战场，头条系产品。当拿起手机发现没什么可玩时，我能感受到自己时间是富余的。<br>就这些吧，希望自己能一直遵从内心，成为那个让自己满意的人。</p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/1059465-e8b76e6d8dcb9416.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Bluetooth4.0.jpg"><br>最近在忙一个蓝牙项目，在处理蓝牙数据的时候，经常遇到进制之间的转换，蓝牙处理的是16进制（NSData），而我们习惯的计数方式是10进制，为了节省空间，蓝牙也会把16进制（NSData）拆成2进制记录。这里我们研究下如何在他们之间进行转换。<br><a id="more"></a><br><strong>假设我们要向蓝牙发送0x1B9901这条数据</strong></p>
+<h2 id="Byte转NSData"><a href="#Byte转NSData" class="headerlink" title="Byte转NSData"></a>Byte转NSData</h2><pre><code>Byte value[3]={0};
+value[0]=0x1B;
+value[1]=0x99;
+value[2]=0x01;
+NSData * data = [NSData dataWithBytes:&amp;value length:sizeof(value)];
+//发送数据
+[self.peripheral writeValue:data forCharacteristic:self.write type:CBCharacteristicWriteWithoutResponse];
+</code></pre><ul>
+<li><p>优点：这种方法比较简单，没有进行转换，直接一个字节一个字节的拼装好发送出去。</p>
+</li>
+<li><p>缺点：当发送数据比较长时会很麻烦，而且不易更改。</p>
+</li>
+</ul>
+<h2 id="NSString转NSData"><a href="#NSString转NSData" class="headerlink" title="NSString转NSData"></a>NSString转NSData</h2><pre><code>- (NSData *)hexToBytes:(NSString *)str
+{
+    NSMutableData* data = [NSMutableData data];
+    int idx;
+    for (idx = 0; idx+2 &lt;= str.length; idx+=2) {
+        NSRange range = NSMakeRange(idx, 2);
+        NSString* hexStr = [str substringWithRange:range];
+        NSScanner* scanner = [NSScanner scannerWithString:hexStr];
+        unsigned int intValue;
+        [scanner scanHexInt:&amp;intValue];
+        [data appendBytes:&amp;intValue length:1];
+    }
+    return data;
+}
+//发送数据
+[self.peripheral writeValue:[self hexToBytes:@&quot;1B9901&quot;] forCharacteristic:self.write type:CBCharacteristicWriteWithoutResponse];
+</code></pre><ul>
+<li>优点：比较直观，可以一次转换一长条数据，对于一些功能简单的蓝牙程序，这种转换能处理大部分情况。</li>
+<li>缺点：只能发送一些固定的指令，不能参与计算。</li>
+</ul>
+<hr>
+<h2 id="求校验和"><a href="#求校验和" class="headerlink" title="求校验和"></a>求校验和</h2><p>接下来探讨下发送的数据需要计算的情况。<br>最常用的发送数据需要计算的场景是求<strong>校验和（CHECKSUM）</strong>。这个根据硬件厂商来定，常见的求校验和的规则有：</p>
+<ul>
+<li>如果发送数据长度为n字节，则CHECKSUM为前n-1字节之和的低字节</li>
+<li>CHECKSUM=0x100-CHECKSUM（上一步的校验和）</li>
+</ul>
+<p>如果我要发送带上校验和的0x1B9901，方法就是：</p>
+<pre><code>- (NSData *)getCheckSum:(NSString *)byteStr{
+    int length = (int)byteStr.length/2;
+    NSData *data = [self hexToBytes:byteStr];
+    Byte *bytes = (unsigned char *)[data bytes];
+    Byte sum = 0;
+    for (int i = 0; i&lt;length; i++) {
+        sum += bytes[i];
+    }
+    int sumT = sum;
+    int at = 256 -  sumT;
+
+    printf(&quot;校验和：%d\n&quot;,at);
+    if (at == 256) {
+        at = 0;
+    }
+    NSString *str = [NSString stringWithFormat:@&quot;%@%@&quot;,byteStr,[self ToHex:at]];
+    return [self hexToBytes:str];
+}
+
+//将十进制转化为十六进制
+- (NSString *)ToHex:(int)tmpid
+{
+    NSString *nLetterValue;
+    NSString *str =@&quot;&quot;;
+    int ttmpig;
+    for (int i = 0; i&lt;9; i++) {
+        ttmpig=tmpid%16;
+        tmpid=tmpid/16;
+        switch (ttmpig)
+        {
+            case 10:
+                nLetterValue =@&quot;A&quot;;break;
+            case 11:
+                nLetterValue =@&quot;B&quot;;break;
+            case 12:
+                nLetterValue =@&quot;C&quot;;break;
+            case 13:
+                nLetterValue =@&quot;D&quot;;break;
+            case 14:
+                nLetterValue =@&quot;E&quot;;break;
+            case 15:
+                nLetterValue =@&quot;F&quot;;break;
+            default:
+                nLetterValue = [NSString stringWithFormat:@&quot;%u&quot;,ttmpig];
+
+        }
+        str = [nLetterValue stringByAppendingString:str];
+        if (tmpid == 0) {
+            break;
+        }
+    }
+//不够一个字节凑0
+    if(str.length == 1){
+        return [NSString stringWithFormat:@&quot;0%@&quot;,str];
+    }else{
+        return str;
+    }
+}
+//发送数据
+NSData *data = [self getCheckSum:@&quot;1B9901&quot;];//data=&lt;1b99014b&gt;
+[self.peripheral writeValue:data forCharacteristic:self.write type:CBCharacteristicWriteWithoutResponse];
+</code></pre><h2 id="拆分数据"><a href="#拆分数据" class="headerlink" title="拆分数据"></a>拆分数据</h2><p>这种是比较麻烦的，举个栗子：在传输某条信息时，我想把时间放进去，不能用时间戳，还要节省空间，这样就出现了一种新的方式存储时间。<br>这里再补充一些C语言知识：</p>
+<ul>
+<li>一个字节8位（bit）</li>
+<li>char 1字节 int 4字节 unsigned 2字节 float 4字节</li>
+</ul>
+<p>存储时间的条件是：</p>
+<ul>
+<li>只用四个字节（32位）</li>
+<li>前5位表示年（从2000年算起），接着4位表示月，接着5位表示日，接着5位表示时，接着6位表示分，接着3位表示星期，剩余4位保留。</li>
+</ul>
+<p>这样直观的解决办法就是分别取出现在时间的年月日时分星期，先转成2进制，再转成16进制发出去。当然你这么写进去，读的时候就要把16进制数据先转成2进制再转成10进制显示。我们就按这个简单粗暴的思路来，准备工作如下：</p>
+<h3 id="10进制转2进制"><a href="#10进制转2进制" class="headerlink" title="10进制转2进制"></a>10进制转2进制</h3><pre><code>//  十进制转二进制
+- (NSString *)toBinarySystemWithDecimalSystem:(int)num length:(int)length
+{
+    int remainder = 0;      //余数
+    int divisor = 0;        //除数
+
+    NSString * prepare = @&quot;&quot;;
+
+    while (true)
+    {
+        remainder = num%2;
+        divisor = num/2;
+        num = divisor;
+        prepare = [prepare stringByAppendingFormat:@&quot;%d&quot;,remainder];
+
+        if (divisor == 0)
+        {
+            break;
+        }
+    }
+    //倒序输出
+    NSString * result = @&quot;&quot;;
+    for (int i = length -1; i &gt;= 0; i --)
+    {
+        if (i &lt;= prepare.length - 1) {
+            result = [result stringByAppendingFormat:@&quot;%@&quot;,
+                      [prepare substringWithRange:NSMakeRange(i , 1)]];
+
+        }else{
+            result = [result stringByAppendingString:@&quot;0&quot;];
+
+        }
+    }
+    return result;
+}
+### 2进制转10进制
+//  二进制转十进制
+- (NSString *)toDecimalWithBinary:(NSString *)binary
+{
+    int ll = 0 ;
+    int  temp = 0 ;
+    for (int i = 0; i &lt; binary.length; i ++)
+    {
+        temp = [[binary substringWithRange:NSMakeRange(i, 1)] intValue];
+        temp = temp * powf(2, binary.length - i - 1);
+        ll += temp;
+    }
+
+    NSString * result = [NSString stringWithFormat:@&quot;%d&quot;,ll];
+
+    return result;
+}
+### 16进制和2进制互转
+- (NSString *)getBinaryByhex:(NSString *)hex binary:(NSString *)binary
+{
+    NSMutableDictionary  *hexDic = [[NSMutableDictionary alloc] init];
+    hexDic = [[NSMutableDictionary alloc] initWithCapacity:16];
+    [hexDic setObject:@&quot;0000&quot; forKey:@&quot;0&quot;];
+    [hexDic setObject:@&quot;0001&quot; forKey:@&quot;1&quot;];
+    [hexDic setObject:@&quot;0010&quot; forKey:@&quot;2&quot;];
+    [hexDic setObject:@&quot;0011&quot; forKey:@&quot;3&quot;];
+    [hexDic setObject:@&quot;0100&quot; forKey:@&quot;4&quot;];
+    [hexDic setObject:@&quot;0101&quot; forKey:@&quot;5&quot;];
+    [hexDic setObject:@&quot;0110&quot; forKey:@&quot;6&quot;];
+    [hexDic setObject:@&quot;0111&quot; forKey:@&quot;7&quot;];
+    [hexDic setObject:@&quot;1000&quot; forKey:@&quot;8&quot;];
+    [hexDic setObject:@&quot;1001&quot; forKey:@&quot;9&quot;];
+    [hexDic setObject:@&quot;1010&quot; forKey:@&quot;a&quot;];
+    [hexDic setObject:@&quot;1011&quot; forKey:@&quot;b&quot;];
+    [hexDic setObject:@&quot;1100&quot; forKey:@&quot;c&quot;];
+    [hexDic setObject:@&quot;1101&quot; forKey:@&quot;d&quot;];
+    [hexDic setObject:@&quot;1110&quot; forKey:@&quot;e&quot;];
+    [hexDic setObject:@&quot;1111&quot; forKey:@&quot;f&quot;];
+
+    NSMutableString *binaryString=[[NSMutableString alloc] init];
+    if (hex.length) {
+        for (int i=0; i&lt;[hex length]; i++) {
+            NSRange rage;
+            rage.length = 1;
+            rage.location = i;
+            NSString *key = [hex substringWithRange:rage];
+            [binaryString appendString:hexDic[key]];
+        }
+
+    }else{
+        for (int i=0; i&lt;binary.length; i+=4) {
+            NSString *subStr = [binary substringWithRange:NSMakeRange(i, 4)];
+            int index = 0;
+            for (NSString *str in hexDic.allValues) {
+                index ++;
+                if ([subStr isEqualToString:str]) {
+                    [binaryString appendString:hexDic.allKeys[index-1]];
+                    break;
+                }
+            }
+        }
+    }
+    return binaryString;
+}
+</code></pre><p>有了这几种转换函数，完成上面的功能就容易多了，具体怎么操作这里就不写一一出来了。但总感觉怪怪的，这么一个小功能怎么要写这么一大堆代码，当然还可以用C语言的方法去解决。这里主要是为了展示iOS中数据如何转换，C语言的实现方法这里就不写了，有兴趣的同学可以研究下。</p>
+<h2 id="附带两个函数"><a href="#附带两个函数" class="headerlink" title="附带两个函数"></a>附带两个函数</h2><p><strong>int转NSData</strong></p>
+<pre><code>- (NSData *) setId:(int)Id {
+//用4个字节接收
+    Byte bytes[4];
+    bytes[0] = (Byte)(Id&gt;&gt;24);
+    bytes[1] = (Byte)(Id&gt;&gt;16);
+    bytes[2] = (Byte)(Id&gt;&gt;8);
+    bytes[3] = (Byte)(Id);
+    NSData *data = [NSData dataWithBytes:bytes length:4];
+}
+</code></pre><p><strong>NSData转int</strong><br>接受到的数据<code>0x00000a0122</code></p>
+<pre><code>//4字节表示的int
+NSData *intData = [data subdataWithRange:NSMakeRange(2, 4)];
+    int value = CFSwapInt32BigToHost(*(int*)([intData bytes]));//655650
+//2字节表示的int
+NSData *intData = [data subdataWithRange:NSMakeRange(4, 2)];
+    int value = CFSwapInt16BigToHost(*(int*)([intData bytes]));//290
+//1字节表示的int
+char *bs = (unsigned char *)[[data subdataWithRange:NSMakeRange(5, 1) ] bytes];
+    int value = *bs;//34
+------------------------
+//补充内容，因为没有三个字节转int的方法，这里补充一个通用方法
+- (unsigned)parseIntFromData:(NSData *)data{
+
+       NSString *dataDescription = [data description];
+       NSString *dataAsString = [dataDescription substringWithRange:NSMakeRange(1, [dataDescription length]-2)];
+
+       unsigned intData = 0;
+       NSScanner *scanner = [NSScanner scannerWithString:dataAsString];
+       [scanner scanHexInt:&amp;intData];
+    return intData;
+}
+</code></pre><p>这两个转换在某些场景下使用频率也是挺高的，蓝牙里面的数据转换基本也就这么多了，希望能够帮助大家。<br>更多关于字节编码的问题，大家可以点这里：<a href="http://www.doc88.com/p-2905571595364.html" target="_blank" rel="noopener">传送门</a></p>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>基于CoreBluetooth4.0框架的连接BLE4.0的Demo：<a href="https://github.com/zhangferry/FYBluetooth" target="_blank" rel="noopener">你不点一下吗</a></p>
 
       
     </div>
@@ -510,7 +770,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/生活/" rel="tag"># 生活</a>
+            <a href="/tags/蓝牙/" rel="tag"># 蓝牙</a>
           
         </div>
       
@@ -523,8 +783,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/02/monthly_1/" rel="next" title="iOS开发月报#1|201807">
-                <i class="fa fa-chevron-left"></i> iOS开发月报#1|201807
+              <a href="/2016/12/12/calling-and-sms-state/" rel="next" title="iOS获取来电和短信发送状态">
+                <i class="fa fa-chevron-left"></i> iOS获取来电和短信发送状态
               </a>
             
           </div>
@@ -533,8 +793,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/09/skill-map/" rel="prev" title="iOS技能图谱">
-                iOS技能图谱 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/20/build-blog-by-hexo/" rel="prev" title="基于Hexo搭建自己的博客小屋">
+                基于Hexo搭建自己的博客小屋 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -736,7 +996,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于工作"><span class="nav-number">1.</span> <span class="nav-text">关于工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于生活"><span class="nav-number">2.</span> <span class="nav-text">关于生活</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于自己"><span class="nav-number">3.</span> <span class="nav-text">关于自己</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Byte转NSData"><span class="nav-number">1.</span> <span class="nav-text">Byte转NSData</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSString转NSData"><span class="nav-number">2.</span> <span class="nav-text">NSString转NSData</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求校验和"><span class="nav-number">3.</span> <span class="nav-text">求校验和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拆分数据"><span class="nav-number">4.</span> <span class="nav-text">拆分数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10进制转2进制"><span class="nav-number">4.1.</span> <span class="nav-text">10进制转2进制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附带两个函数"><span class="nav-number">5.</span> <span class="nav-text">附带两个函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展"><span class="nav-number">6.</span> <span class="nav-text">扩展</span></a></li></ol></div>
             
 
           </div>

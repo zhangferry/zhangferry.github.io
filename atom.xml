@@ -69,7 +69,7 @@
     <link href="http://zhangferry.github.io/2019/02/20/figure_bed_github/"/>
     <id>http://zhangferry.github.io/2019/02/20/figure_bed_github/</id>
     <published>2019-02-20T02:54:57.000Z</published>
-    <updated>2019-02-25T15:18:27.582Z</updated>
+    <updated>2019-02-28T14:48:32.960Z</updated>
     
     <summary type="html">
     
@@ -84,7 +84,7 @@
     </summary>
     
     
-      <category term="杂项" scheme="http://zhangferry.github.io/tags/%E6%9D%82%E9%A1%B9/"/>
+      <category term="工具" scheme="http://zhangferry.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -132,8 +132,8 @@
   
   <entry>
     <title>2018年总结</title>
-    <link href="http://zhangferry.github.io/2019/01/01/2018-summary/"/>
-    <id>http://zhangferry.github.io/2019/01/01/2018-summary/</id>
+    <link href="http://zhangferry.github.io/2019/01/01/2018-year-summary/"/>
+    <id>http://zhangferry.github.io/2019/01/01/2018-year-summary/</id>
     <published>2019-01-01T15:22:25.000Z</published>
     <updated>2019-02-08T13:12:57.153Z</updated>
     
@@ -175,7 +175,7 @@
     <link href="http://zhangferry.github.io/2018/11/26/avplayer-supported-format/"/>
     <id>http://zhangferry.github.io/2018/11/26/avplayer-supported-format/</id>
     <published>2018-11-26T08:27:50.000Z</published>
-    <updated>2019-02-09T06:56:40.260Z</updated>
+    <updated>2019-02-28T14:48:32.968Z</updated>
     
     <summary type="html">
     
@@ -190,6 +190,8 @@
     
     </summary>
     
+    
+      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
     
       <category term="AVPlayer" scheme="http://zhangferry.github.io/tags/AVPlayer/"/>
     
@@ -291,8 +293,8 @@
   
   <entry>
     <title>《精进》阅后总结</title>
-    <link href="http://zhangferry.github.io/2018/09/02/%E3%80%8A%E7%B2%BE%E8%BF%9B%E3%80%8B%E9%98%85%E5%90%8E%E6%80%BB%E7%BB%93/"/>
-    <id>http://zhangferry.github.io/2018/09/02/《精进》阅后总结/</id>
+    <link href="http://zhangferry.github.io/2018/09/02/jingjin-read-summary/"/>
+    <id>http://zhangferry.github.io/2018/09/02/jingjin-read-summary/</id>
     <published>2018-09-02T15:20:33.000Z</published>
     <updated>2019-02-08T13:12:03.703Z</updated>
     
@@ -354,8 +356,8 @@
   
   <entry>
     <title>2018年七月</title>
-    <link href="http://zhangferry.github.io/2018/08/06/201807summary/"/>
-    <id>http://zhangferry.github.io/2018/08/06/201807summary/</id>
+    <link href="http://zhangferry.github.io/2018/08/06/201807-summary/"/>
+    <id>http://zhangferry.github.io/2018/08/06/201807-summary/</id>
     <published>2018-08-06T03:28:09.000Z</published>
     <updated>2019-02-08T13:12:49.403Z</updated>
     
@@ -412,10 +414,10 @@
   
   <entry>
     <title>AVPlayer详解系列（一）参数设置</title>
-    <link href="http://zhangferry.github.io/2017/08/25/avplayer-config-detail-1/"/>
-    <id>http://zhangferry.github.io/2017/08/25/avplayer-config-detail-1/</id>
+    <link href="http://zhangferry.github.io/2017/08/25/avplayer-detail-1/"/>
+    <id>http://zhangferry.github.io/2017/08/25/avplayer-detail-1/</id>
     <published>2017-08-25T08:27:50.000Z</published>
-    <updated>2019-02-08T13:40:04.631Z</updated>
+    <updated>2019-02-28T14:48:33.000Z</updated>
     
     <summary type="html">
     
@@ -430,6 +432,8 @@
     
     </summary>
     
+    
+      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
     
       <category term="AVPlayer" scheme="http://zhangferry.github.io/tags/AVPlayer/"/>
     
