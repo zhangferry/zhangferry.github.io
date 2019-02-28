@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2019-02-20T14:22:17.606Z</updated>
+  <updated>2019-02-27T16:19:05.918Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -17,11 +17,59 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>iOS开发月报#8|201902</title>
+    <link href="http://zhangferry.github.io/2019/02/27/monthly_8/"/>
+    <id>http://zhangferry.github.io/2019/02/27/monthly_8/</id>
+    <published>2019-02-27T02:54:57.000Z</published>
+    <updated>2019-02-27T16:19:05.918Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。&lt;br&gt;欢迎推荐内容，可以前往&lt;a href=&quot;https://github.com/zhangferry/iOSMonthlyReport&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于消息摘要及对应的Swift实现</title>
+    <link href="http://zhangferry.github.io/2019/02/27/digest_introduction/"/>
+    <id>http://zhangferry.github.io/2019/02/27/digest_introduction/</id>
+    <published>2019-02-27T02:54:57.000Z</published>
+    <updated>2019-02-27T15:17:55.622Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190227163346.jpg&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://zhangferry.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>艰难的图床优化方案(MWeb+PicGo+Github)</title>
-    <link href="http://zhangferry.github.io/2019/03/03/figure_bed_github/"/>
-    <id>http://zhangferry.github.io/2019/03/03/figure_bed_github/</id>
-    <published>2019-03-03T02:54:57.000Z</published>
-    <updated>2019-02-20T14:22:17.606Z</updated>
+    <link href="http://zhangferry.github.io/2019/02/20/figure_bed_github/"/>
+    <id>http://zhangferry.github.io/2019/02/20/figure_bed_github/</id>
+    <published>2019-02-20T02:54:57.000Z</published>
+    <updated>2019-02-25T15:18:27.582Z</updated>
     
     <summary type="html">
     
@@ -384,50 +432,6 @@
     
     
       <category term="AVPlayer" scheme="http://zhangferry.github.io/tags/AVPlayer/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>面试题总结（From J_Knight）</title>
-    <link href="http://zhangferry.github.io/2017/06/29/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93%EF%BC%88J-Knight%EF%BC%89/"/>
-    <id>http://zhangferry.github.io/2017/06/29/面试题总结（J-Knight）/</id>
-    <published>2017-06-29T09:22:27.000Z</published>
-    <updated>2019-02-08T13:29:37.790Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;前一段时间看了&lt;a href=&quot;https://knightsj.github.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;J_Knight&lt;/a&gt;的&lt;a href=&quot;http://www.jianshu.com/p/56e40ea56813&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2017年5月iOS找人心得（附面试题）&lt;/a&gt;。作为一个在编程前线奋斗了将近两年的iOS从业人员，面对这些题目时，有些竟感觉生疏，甚至答不上来，很是惭愧。个人感觉，像runtime、线程、信号量相关的偏底层知识虽然平时基本用不到。特别是很多人可能都没参与过稍复杂项目的开发，优化，这些内容对于很多新手iOS开发来说只存在于理论。但并不是说这些知识不重要，相反，它是我们进阶的必经之路。此篇文章的目的一方面自己整理，一方面希望和大家共同学习进步。以下内容多数为整理，时间仓促可能有不准确的地方，如果缺漏，欢迎指正。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;部分答案出处：&lt;a href=&quot;https://github.com/ChenYilong/iOSInterviewQuestions&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;iOSInterviewQuestions&lt;/a&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://zhangferry.github.io/categories/iOS/"/>
-    
-    
-      <category term="面试" scheme="http://zhangferry.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS蓝牙知识快速入门（详尽版）</title>
-    <link href="http://zhangferry.github.io/2017/01/13/iOS%E8%93%9D%E7%89%99%E7%9F%A5%E8%AF%86%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%EF%BC%88%E8%AF%A6%E5%B0%BD%E7%89%88%EF%BC%89/"/>
-    <id>http://zhangferry.github.io/2017/01/13/iOS蓝牙知识快速入门（详尽版）/</id>
-    <published>2017-01-13T14:36:41.000Z</published>
-    <updated>2019-02-09T05:46:33.720Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1059465-d8149efe4c37d452.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iOS-bluetooth&quot;&gt;&lt;br&gt;以前写过几篇蓝牙相关的文章，但是没有涉及扫描、收发指令这些基础功能的实现。所以打算写一篇尽可能详尽的蓝牙知识汇总，一方面给有需要的同学看，一方面是对自己学习蓝牙的一个总结。&lt;/p&gt;
-&lt;p&gt;这篇文章的目的：教你实现设备的扫描，连接，数据收发，蓝牙数据解析。如果在实现上面任一功能遇到问题时，欢迎留下你的问题，我将进行补充，对于说法有误的地方也请老司机予以指正。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="蓝牙总结" scheme="http://zhangferry.github.io/categories/%E8%93%9D%E7%89%99%E6%80%BB%E7%BB%93/"/>
-    
-    
-      <category term="蓝牙" scheme="http://zhangferry.github.io/tags/%E8%93%9D%E7%89%99/"/>
     
   </entry>
   

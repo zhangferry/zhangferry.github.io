@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="博客写作优化写博客就肯定会遇到插入图片的情况，我之前的做法是先在Boostnote这种Markdown编辑器里面写个草稿，如果有图片就附上图片，然后再粘到简书的web端。当然图片也需要另拖，会生成一个简书的图片链接，相当于把简书作为图床，然后我再把简书排好版的文章发布到自己的博客。。。 当然是很麻烦的方式，这种写法持续了大半年之后，开始寻找更高效的写博客的方式。首先客户端，最终选了MWeb。然后是">
+<meta name="keywords" content="杂项">
+<meta property="og:type" content="article">
+<meta property="og:title" content="艰难的图床优化方案(MWeb+PicGo+Github)">
+<meta property="og:url" content="http://zhangferry.github.io/2019/02/20/figure_bed_github/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="博客写作优化写博客就肯定会遇到插入图片的情况，我之前的做法是先在Boostnote这种Markdown编辑器里面写个草稿，如果有图片就附上图片，然后再粘到简书的web端。当然图片也需要另拖，会生成一个简书的图片链接，相当于把简书作为图床，然后我再把简书排好版的文章发布到自己的博客。。。 当然是很麻烦的方式，这种写法持续了大半年之后，开始寻找更高效的写博客的方式。首先客户端，最终选了MWeb。然后是">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/15504845205127.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/02060BA7-54CC-448B-ABFE-ADFE6E72FF1B.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/15504954147366.jpg">
+<meta property="og:updated_time" content="2019-02-25T15:18:27.582Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="艰难的图床优化方案(MWeb+PicGo+Github)">
+<meta name="twitter:description" content="博客写作优化写博客就肯定会遇到插入图片的情况，我之前的做法是先在Boostnote这种Markdown编辑器里面写个草稿，如果有图片就附上图片，然后再粘到简书的web端。当然图片也需要另拖，会生成一个简书的图片链接，相当于把简书作为图床，然后我再把简书排好版的文章发布到自己的博客。。。 当然是很麻烦的方式，这种写法持续了大半年之后，开始寻找更高效的写博客的方式。首先客户端，最终选了MWeb。然后是">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/15504845205127.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://zhangferry.github.io/2019/02/20/figure_bed_github/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>艰难的图床优化方案(MWeb+PicGo+Github) | zhangferry</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?afe60f79e35ee3c65b92d9a2ff459653";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhangferry</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">11</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">31</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/02/20/figure_bed_github/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">艰难的图床优化方案(MWeb+PicGo+Github)
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-20 10:54:57" itemprop="dateCreated datePublished" datetime="2019-02-20T10:54:57+08:00">2019-02-20</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="博客写作优化"><a href="#博客写作优化" class="headerlink" title="博客写作优化"></a>博客写作优化</h2><p>写博客就肯定会遇到插入图片的情况，我之前的做法是先在<a href="https://boostnote.io/" target="_blank" rel="noopener">Boostnote</a>这种Markdown编辑器里面写个草稿，如果有图片就附上图片，然后再粘到简书的web端。当然图片也需要另拖，会生成一个简书的图片链接，相当于把简书作为图床，然后我再把简书排好版的文章发布到自己的博客。。。</p>
+<p>当然是很麻烦的方式，这种写法持续了大半年之后，开始寻找更高效的写博客的方式。首先客户端，最终选了MWeb。然后是要解决麻烦的图床问题，因为MWeb内嵌了七牛云图传服务，所以申请了七牛云账号，用了一段时间感觉真是如丝般顺滑。</p>
+<h2 id="图床历险记"><a href="#图床历险记" class="headerlink" title="图床历险记"></a>图床历险记</h2><p>直到我收到了这个：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/15504845205127.jpg" alt=""></p>
+<p>在七牛云上申请的只是测试域名服务，只有一个月的有效期。如果想继续使用就需要绑定自己的域名，而且这个域名还需要备案。</p>
+<p>于是我在腾讯云上注册了两年的<a href="http://www.zhangferry.com" target="_blank" rel="noopener">zhangferry.com</a>这个域名。填写资料时，我看到系统提示域名要进行备案，备案过程中又发现，要有绑定腾讯云服务才能进行备案。？？我只是要域名并不需要云服务啊。隐约感觉好像被下套了，需要解决的问题一个套一个。我还怀着侥幸的心理看了下腾讯云服务的价格，用不起用不起。。。<br>看到提示说如果不备案域名，三个月后会被回收，有点慌。询问客服之后得知，服务器在国内且没有备案的情况下才会被回收，因为我的博客是搭在Github上的，所以可以不备案，松了一口气，域名保住了。但是，不备案七牛云又不干了，what f。。。</p>
+<p>纠结一段时间之后我只能放弃七牛云，寻找其他的图床服务，知乎上有一个总结比较全的文章<a href="https://zhuanlan.zhihu.com/p/35270383" target="_blank" rel="noopener">盘点一下免费好用的图床</a>。原来是有很多免费服务的，感觉找到了解决方案。但是，又是一个但是，图床这个东西，免费就意味着不稳定，万一哪天挂了，图片就都丢了。最后文末有总结：<strong>如果打算长期稳定使用请优先选择又拍云或者七牛云，如果是存储并不重要的图片可以使用免费不限大小的SM.MS图床</strong>。</p>
+<p>再结合我对图床的需求：免费+稳定。<a href="https://sm.ms/" target="_blank" rel="noopener">SM.MS</a>好像是最接近的方案了，虽然SM.MS知名度不算低，但是我还是有点担心它的稳定性。</p>
+<p>再继续找，找到了这个<a href="https://github.com/Molunerfinn/PicGo" target="_blank" rel="noopener">PicGo</a>，一个图床管理工具，顺着PicGo（v2.0.3）我找到了Github作为图床这一方案。Github，对啊，我直接就确认了这种方案。虽然有人说Github图片国内访问会慢一些，但是它肯定能保证数据的稳定性啊。这样图床工具和图床服务都找好了，喜大普奔！</p>
+<h2 id="Github图床配置"><a href="#Github图床配置" class="headerlink" title="Github图床配置"></a>Github图床配置</h2><p>说了很多废话，终于到了这个理想图床的配置阶段了，比较简单。</p>
+<h3 id="1、建一个仓库"><a href="#1、建一个仓库" class="headerlink" title="1、建一个仓库"></a>1、建一个仓库</h3><p>用于存需要上传的图片。这个仓库最好是public的，因为private的仓库，图片链接会带token，这个token又存在过期的问题。</p>
+<h3 id="2、获取授权token"><a href="#2、获取授权token" class="headerlink" title="2、获取授权token"></a>2、获取授权token</h3><p>在Github的<a href="https://github.com/settings/tokens" target="_blank" rel="noopener">Developer setting</a>界面生一个token。记得保存，因为它只会显示一次。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/02060BA7-54CC-448B-ABFE-ADFE6E72FF1B.png" alt=""></p>
+<h3 id="3、配置PicGo"><a href="#3、配置PicGo" class="headerlink" title="3、配置PicGo"></a>3、配置PicGo</h3><p>根据图示：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/15504954147366.jpg" alt=""></p>
+<h3 id="4、使用"><a href="#4、使用" class="headerlink" title="4、使用"></a>4、使用</h3><p>使用也很方便，PicGo有两种方式：<br><strong>屏幕截图</strong><br>截取图片之后，图片会出现在PicGo的待上传列表里面。我们手动点一下会触发上传，上传成功之后，剪贴板会有对应markdown格式的图片文本，直接粘贴可以使用。<br><strong>固定图片</strong><br>我们需要将需要使用的图片拖到PicGo的客户端内手动上传，上传成功之后，会自动复制成markdown文本，可以直接粘贴使用。</p>
+<p>终于搞定了，撒花！</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="zhangferry 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/杂项/" rel="tag"># 杂项</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/31/monthly_7/" rel="next" title="iOS开发月报#7|201901">
+                <i class="fa fa-chevron-left"></i> iOS开发月报#7|201901
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/27/digest_introduction/" rel="prev" title="关于消息摘要及对应的Swift实现">
+                关于消息摘要及对应的Swift实现 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zhangferry">
+            
+              <p class="site-author-name" itemprop="name">zhangferry</p>
+              <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zhangferry" title="GitHub &rarr; https://github.com/zhangferry" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/2947186387/profile" title="Weibo &rarr; https://weibo.com/2947186387/profile" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#博客写作优化"><span class="nav-number">1.</span> <span class="nav-text">博客写作优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图床历险记"><span class="nav-number">2.</span> <span class="nav-text">图床历险记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github图床配置"><span class="nav-number">3.</span> <span class="nav-text">Github图床配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、建一个仓库"><span class="nav-number">3.1.</span> <span class="nav-text">1、建一个仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、获取授权token"><span class="nav-number">3.2.</span> <span class="nav-text">2、获取授权token</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、配置PicGo"><span class="nav-number">3.3.</span> <span class="nav-text">3、配置PicGo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、使用"><span class="nav-number">3.4.</span> <span class="nav-text">4、使用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangferry</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">134k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:02</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '012999c912503aff4cac',
+    clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
+    repo: 'zhangferry.github.io',
+    owner: 'zhangferry',
+    admin: ['zhangferry'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
