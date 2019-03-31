@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="这个项目在有7k多star的时候我就看到有人推了，当时也就是看看而已，了解了这个标识的意思，并没有点进去，更没有star。再之后随着越来越多的star和关注量，公众号、社区、论坛，但凡有程序员的角落，大家都在争先传播着“996ICU”这个概念，每一次转发、star都是对996这种工作制的无声抵抗。 刚才看了一眼star已经12w+，马上就要超过react，这足以说明忍受着996的程序员是多么大的">
+<meta name="keywords" content="生活">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于996ICU的一些看法">
+<meta property="og:url" content="http://zhangferry.github.io/temp/996-ICU.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="这个项目在有7k多star的时候我就看到有人推了，当时也就是看看而已，了解了这个标识的意思，并没有点进去，更没有star。再之后随着越来越多的star和关注量，公众号、社区、论坛，但凡有程序员的角落，大家都在争先传播着“996ICU”这个概念，每一次转发、star都是对996这种工作制的无声抵抗。 刚才看了一眼star已经12w+，马上就要超过react，这足以说明忍受着996的程序员是多么大的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://zhangferry.github.io/temp/media/15539607385759.jpg">
+<meta property="og:updated_time" content="2019-03-31T12:03:57.467Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于996ICU的一些看法">
+<meta name="twitter:description" content="这个项目在有7k多star的时候我就看到有人推了，当时也就是看看而已，了解了这个标识的意思，并没有点进去，更没有star。再之后随着越来越多的star和关注量，公众号、社区、论坛，但凡有程序员的角落，大家都在争先传播着“996ICU”这个概念，每一次转发、star都是对996这种工作制的无声抵抗。 刚才看了一眼star已经12w+，马上就要超过react，这足以说明忍受着996的程序员是多么大的">
+<meta name="twitter:image" content="http://zhangferry.github.io/temp/media/15539607385759.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://zhangferry.github.io/temp/996-ICU.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>关于996ICU的一些看法 | zhangferry</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?afe60f79e35ee3c65b92d9a2ff459653";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhangferry</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">11</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">33</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+<h2 class="post-title" itemprop="name headline">关于996ICU的一些看法
+
+</h2>
+
+<div class="post-meta">
+  
+  
+
+
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <p><img src="media/15539607385759.jpg" alt="-w428"></p>
+<p>这个项目在有7k多star的时候我就看到有人推了，当时也就是看看而已，了解了这个标识的意思，并没有点进去，更没有star。再之后随着越来越多的star和关注量，公众号、社区、论坛，但凡有程序员的角落，大家都在争先传播着“996ICU”这个概念，每一次转发、star都是对996这种工作制的无声抵抗。</p>
+<p>刚才看了一眼star已经12w+，马上就要超过react，这足以说明忍受着996的程序员是多么大的一个群体。我这里不想跟大部分人一样，痛斥996，歌颂这种行为，我想说些不一样的东西。</p>
+<p>从自己经历出发吧，2015年刚出来工作的时候是996，当时我并没有不情愿或者觉得累，因为我很清楚自己就是个菜鸟，996可以让自己有更多的时间用来学习东西，提升技术。这种工作节奏持续了大半年，这段时间的感受也是即充实又满足的。后来公司业绩好转，改成大小周，再几个月后又改成双休。当然最开始享受双休的那几天还是很爽的，后来就慢慢习惯了，996前后我的工作状态并没有什么变化。</p>
+<p>再后来进了现在的公司，人事告诉我大小周，那时我已经保持了将近一年的双休节奏，稍微犹豫了那么一会，但考虑到公司不错的发展前景，我还是答应进来了。从双休切换到大小周之后，我才意识到双休是多么爽的一件事。。。真的深刻体会到得到了就习以为常，失去了才懂的珍惜的感受。</p>
+<p>在我进来不到半年的时间，公司运行的大小周调整为975，因为晚上7点公司提供晚餐，其实开发这边都是吃完饭休息一会再继续回去工作，大约也是9点走，可以说是995。</p>
+<p>得知双休之后，我的学习状态也高涨起来了，规划着两天的自由时间可以做很多事情了，睡懒觉、打游戏、学一些自己感兴趣的东西、跑步。然而实际情况却是开始双休之后的很长一段时间里，我完成度最高的是睡懒觉、打游戏，对于学习，健身基本没怎么执行。有那么几个周末我深深地体会到舒适区只要进入，是很难挣脱出来。周末的早上醒来就感觉自己是被封印在床上了一样，除了刷手机什么都不想做，哪都不想去，早上喝水，中午叫外卖，晚上再来一份外卖，一天结束了。</p>
+<p>同时我又是一个反省意识很强的人，在虚度了一个周末之后心里就会非常自责。一个被荒废的周末还不如忙碌一天的工作给我带来的满足感，我甚至产生了想要回到996的状态，以此来约束自律性很差的自己。</p>
+<p>再后来也就是最近一段时间，为了达成近两个月的OKR，我“如愿以偿”地又回到了996的模式。因为早有准备，多上一天班并没有让我感觉失去多少自由。公司也考虑大家劳逸结合的情况，搭建了台球，乒乓球，Switch游戏机这种娱乐措施。周六加班，也就是做一些修修补补的任务，中午吃完饭会打一会台球，乒乓球，或者玩一会农药，回来继续工作。有时候会感觉周六加班更像是换了一个地方过周末。</p>
+<p>但其实我也不是完全接受996的，它解决了我的时间配比问题，但也会给我引起其他不便。比如我想和女朋友周末出去就近玩一下，北京以内还好，如果想出北京就会时间安排不过来。当然还有其他的不便，要知道休息两天和休息一天可是相差一倍呢。</p>
+<p>那回到这个话题，996这个制度是否OK呢？</p>
+<p>如果你自律性很强，有很多想法想要实现，也有较好的时间规划，那多一些自己的私人时间是再好不过的了，996对你的确不能让你发挥更大的作用。如果你自律性很差，也没考虑过多出来的时间用来干嘛（玩和睡除外），那我建议你可以先好好想想双休之后你会做什么，双休对你来说生活品质是提高了还是降低了。当然如果你认为自己就是不想加班，只想过平淡恬静的生活，上班对你来说就是为了赚钱，这种想法也没错。因为不是每个程序员都热爱着这份工作，能从中获取到乐趣的，那就换份轻松点的工作呗。我下面讨论的内容对这类人群也是不适用的，你们可以看到这就结束了。</p>
+<p>说些不那么中听的话，如果你自律性差，公司的996相当于帮你加了一道屏障，这个时间段它帮你隔开舒适区，迫使你投入到工作中。而我公司也有不少，没有加班任务，时不时也会主动来公司加班的人。那最理想的情况其实就是，公司相信员工，不强制加班，大家想休息了，该休息了就休息，保证把工作效率提上去。员工呢，同时为自己和公司负责，没完成工作，学习新东西，就可以来公司主动加班。</p>
+<p>之所以说他理想，是因为很多公司不信任员工，很多员工也没有那种对自己和公司强烈的责任感。所以互联网行业出现这么多的996不是单纯公司的问题，一些程序员也负有一定的责任。</p>
+<p>再说一些特殊情况，如果是无良公司，不考虑员工效率问题，各种强制加班，搞996，那我也是坚决反对的。</p>
+<p>996ICU项目里有提《劳动法》，标准工时一周最高为48小时，而996是72小时，超标不少；以及超时薪资应为平日工资的150%。这让我想到了大二寒假在电子厂打工的经历，标标准准的按照劳动法来的，基本都是按时薪算的。为什么同样是受劳务合同保护，不同的行业却有着不同的处理方式呢？</p>
+<p>我认为一个重要的原因是，电子厂流水线上的那是标准的工人，计时或者计件，可以清清楚楚的搞清楚。而程序员呢，智力劳动，没法准确的衡量一个人的工作价值。你加班两小时，是因为水平问题还是别的原因，如果是自己原因的话，公司需要付钱吗，这个说不清的。所以是否要按照劳动法付给雇员加班费，存在很多不确定因素，这个是不现实也是不合理的。</p>
+<p>我们很多人其实心理也明白，去给996ICU点一个star并不会让自己摆脱996现状。但我们还是那样做了，这其中有一点抗争精神，但抗争之后我希望大家能够更清楚的看待996这个问题。</p>
+<p>我更希望996这个含义可以适当拓宽一点，包含我们工作及工作以外提升自我的时间。<br>如果公司要求996，分出一些时间做自己的事情，保证工作学习的82配比。如果不要求996，那就尽可能合理分配时间，保证每周有72小时是投入到这个行业里来的。在这段时间里你可以用来提升自我，或者是听我给你们吹牛🙃</p>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+
+
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zhangferry">
+            
+              <p class="site-author-name" itemprop="name">zhangferry</p>
+              <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zhangferry" title="GitHub &rarr; https://github.com/zhangferry" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/2947186387/profile" title="Weibo &rarr; https://weibo.com/2947186387/profile" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangferry</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">141k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:08</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '012999c912503aff4cac',
+    clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
+    repo: 'zhangferry.github.io',
+    owner: 'zhangferry',
+    admin: ['zhangferry'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>

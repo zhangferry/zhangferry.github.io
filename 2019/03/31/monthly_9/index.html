@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 TipsSpine + SpriteKit项目中需要引入一些实物动画，每个动画之间有不同形态的切换，考虑过gif, mp4, AE + lottie, Spine + SpriteKit。 最后确定使用Spine做动">
+<meta name="keywords" content="月报">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发月报#9|201903">
+<meta property="og:url" content="http://zhangferry.github.io/2019/03/31/monthly_9/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 TipsSpine + SpriteKit项目中需要引入一些实物动画，每个动画之间有不同形态的切换，考虑过gif, mp4, AE + lottie, Spine + SpriteKit。 最后确定使用Spine做动">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-afa5d63933b5bf3c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-31T14:04:26.549Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发月报#9|201903">
+<meta name="twitter:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 TipsSpine + SpriteKit项目中需要引入一些实物动画，每个动画之间有不同形态的切换，考虑过gif, mp4, AE + lottie, Spine + SpriteKit。 最后确定使用Spine做动">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-afa5d63933b5bf3c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://zhangferry.github.io/2019/03/31/monthly_9/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>iOS开发月报#9|201903 | zhangferry</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?afe60f79e35ee3c65b92d9a2ff459653";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhangferry</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">11</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">33</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/03/31/monthly_9/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">iOS开发月报#9|201903
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-31 21:30:57" itemprop="dateCreated datePublished" datetime="2019-03-31T21:30:57+08:00">2019-03-31</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。<br><img src="http://upload-images.jianshu.io/upload_images/1059465-afa5d63933b5bf3c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="Spine-SpriteKit"><a href="#Spine-SpriteKit" class="headerlink" title="Spine + SpriteKit"></a>Spine + SpriteKit</h3><p>项目中需要引入一些实物动画，每个动画之间有不同形态的切换，考虑过gif, mp4, AE + lottie, Spine + SpriteKit。</p>
+<p>最后确定使用<a href="http://zh.esotericsoftware.com/" target="_blank" rel="noopener">Spine</a>做动画效果，用SpriteKit处理动画。Spin并没有官方支持SpirteKit的库，但有一个做的比较好的第三方库<a href="https://github.com/maxgribov/Spine" target="_blank" rel="noopener">maxgribov/Spine</a>，支持Swift4.1。</p>
+<p>该库支持Bones, Slots, Skins等常用的动画要素，通过Spine导出的json文件和动画素材做出各种动画效果，是仅有的近期还在维护的支持SpriteKit的Spine运行时库。但它也存在一个问题，还不支持Mesh Animation(网格动画)。如果所需的动画效果不需要网格的话，非常推荐使用这个库。</p>
+<p>而我们所需的动画效果又必须用到网格动画，思考再三考虑决定放弃使用这个库，使用SKTextureAtlas(纹理集) + 逐帧动画来实现特殊的动画效果。虽然输出的还是png序列，但是SpriteKit对纹理集有足够的优化，Xcode会在打包时把.atlas文件夹中的所有图片做成一张合图，然后生成一个plist文件描述每个小图片的位置信息，所以包的大小和渲染成本都会大大降低。</p>
+<h3 id="快速创建转场样式"><a href="#快速创建转场样式" class="headerlink" title="快速创建转场样式"></a>快速创建转场样式</h3><p>说到自定义转场我们可能会直接想到<code>UIViewControllerAnimatedTransitioning</code>，结合这个类我们可以实现多种多样的订阅样式。但是使用这种方式做转场，我们需要引入很多代码。有一种简单的实现转场的方式是通过<code>CATransition</code></p>
+<blockquote>
+<p>An object that provides an animated transition between a layer’s states.</p>
+</blockquote>
+<p>通过文档的介绍我们知道，这个类就是用来做转场的，只不过支持的样式有限，但如果正好满足你需要的话，推荐使用这种方式来实现转场。</p>
+<p>我们来实现一个present的渐变效果：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建transition对象</span></span><br><span class="line"><span class="keyword">let</span> transition = <span class="type">CATransition</span>()</span><br><span class="line">transition.duration = <span class="number">0.5</span></span><br><span class="line"><span class="comment">//动画样式</span></span><br><span class="line"><span class="comment">//type: .fade, .moveIn, .push, .reveal</span></span><br><span class="line">transition.type = .fade</span><br><span class="line"><span class="comment">//动画出现方位</span></span><br><span class="line"><span class="comment">//subtype: .fromRight, .fromLeft, .fromTop, .fromBottem</span></span><br><span class="line"><span class="comment">//transition.subtype = .fromRight</span></span><br><span class="line">transition.timingFunction = <span class="type">CAMediaTimingFunction</span>(name: .easeIn)</span><br><span class="line"></span><br><span class="line"><span class="keyword">self</span>.view.window?.layer.add(transition, forKey: <span class="string">"present"</span>)</span><br><span class="line"><span class="keyword">self</span>.present(targetVc, animated: <span class="literal">false</span>, completion: completion)</span><br></pre></td></tr></table></figure></p>
+<p>如果是做push的渐变，我们只需要改变最后的控制动画的代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父容器为UINavigationController</span></span><br><span class="line"><span class="keyword">self</span>.view.layer.add(transition, forKey: <span class="string">"push"</span>)</span><br><span class="line"><span class="keyword">self</span>.present(targetVc, animated: <span class="literal">false</span>, completion: completion)</span><br><span class="line"></span><br><span class="line"><span class="comment">//父容器为UITabbarController</span></span><br><span class="line"><span class="keyword">self</span>.tabBarController?.view.layer.add(transition, forKey: <span class="string">"push"</span>)</span><br><span class="line"><span class="keyword">self</span>.present(targetVc, animated: <span class="literal">false</span>, completion: completion)</span><br></pre></td></tr></table></figure></p>
+<h3 id="什么是UserAgent"><a href="#什么是UserAgent" class="headerlink" title="什么是UserAgent"></a>什么是UserAgent</h3><p><code>User-Agent</code> 首部包含了一个特征字符串，用来让网络协议的对端来识别发起请求的用户代理软件的应用类型、操作系统、软件开发商以及版本号，然后前端的展示就可以根据这些信息进行针对性的优化。</p>
+<p>我们打开Chrome浏览器，生成一个请求，然后用Charles抓包，可以看到对应的<code>User-Agent</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user-agent  Mozilla/<span class="number">5.0</span> (Macintosh; Intel Mac OS X <span class="number">10</span>_13_6) AppleWebKit/<span class="number">537.36</span> (KHTML, like Gecko) Chrome/<span class="number">74.0</span><span class="number">.3729</span><span class="number">.28</span> Safari/<span class="number">537.36</span></span><br></pre></td></tr></table></figure></p>
+<p>通过UA我们可以得到以下信息：</p>
+<table>
+<thead>
+<tr>
+<th>信息项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>浏览器名称</td>
+<td>Chrome</td>
+</tr>
+<tr>
+<td>浏览器版本号</td>
+<td>70.4.3729.28</td>
+</tr>
+<tr>
+<td>渲染引擎</td>
+<td>WebKit 537.36</td>
+</tr>
+<tr>
+<td>操作系统</td>
+<td>Mac OS 10.13.6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Apple-Configurator-2-出现-Unauthorized-Error"><a href="#Apple-Configurator-2-出现-Unauthorized-Error" class="headerlink" title="Apple Configurator 2 出现 Unauthorized Error"></a>Apple Configurator 2 出现 Unauthorized Error</h3><p>注销账号，再次登录</p>
+<h3 id="Command-PhaseScriptExecution-failed-with-a-nonzero-exit-code"><a href="#Command-PhaseScriptExecution-failed-with-a-nonzero-exit-code" class="headerlink" title="Command PhaseScriptExecution failed with a nonzero exit code"></a>Command PhaseScriptExecution failed with a nonzero exit code</h3><p>运行一个项目时遇到了这个bug提示，一直编译不过去，这其实是一个Xcode10引起的bug。<br>解决方案：<br>在Xcode菜单栏选择File -&gt; Workspace Setting -&gt; Build System 选择Legacy Build System 重新运行即可。<br>参考：<a href="https://juejin.im/post/5ba35cc05188255c7c655a8c" target="_blank" rel="noopener">踩坑Xcode 10之New Build System</a></p>
+<h3 id="斐波那契函数"><a href="#斐波那契函数" class="headerlink" title="斐波那契函数"></a>斐波那契函数</h3><p>斐波那契数列（Fibonacci sequence），又称黄金分割数列、因数学家列昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，指的是这样一个数列：1、1、2、3、5、8、13、21、34、……</p>
+<p>这个是我们公司技术面试的必问题目，也是筛掉人数最多的一个问题。有一部分同学会使用数组尝试解决这个问题，但这会把问题复杂度升级，还有些可能根本没有思路。但其实这个问题不复杂的，用到递归可以很快的解决。斐波那契函数的数学表达是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">F(1)=1</span><br><span class="line">F(2)=1</span><br><span class="line">F(n)=F(n-1)+F(n-2)（n&gt;=3，n∈N*）</span><br></pre></td></tr></table></figure></p>
+<p>用Swift实现就是：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fibonacci</span><span class="params">(n: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span> || n == <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fibonacci(n: n - <span class="number">1</span>) + fibonacci(n: n - <span class="number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><h3 id="SpriteKit-Tutorial-for-Beginners"><a href="#SpriteKit-Tutorial-for-Beginners" class="headerlink" title="SpriteKit Tutorial for Beginners"></a><a href="https://www.raywenderlich.com/71-spritekit-tutorial-for-beginners" target="_blank" rel="noopener">SpriteKit Tutorial for Beginners</a></h3><p>raywenderlich上介绍SpriteKit入门的一篇教程，通过这篇文章你可以实现一个忍者击杀怪物的小游戏，理解SpriteKit框架里常用的几种游戏元素。不得不说这个教程做的是真的棒👍</p>
+<h3 id="开发小知识"><a href="#开发小知识" class="headerlink" title="开发小知识"></a><a href="https://www.jianshu.com/p/5a4ba3c165b9" target="_blank" rel="noopener">开发小知识</a></h3><p>该文章主要整理一些小知识点，主要涉及 iOS 以及计算基础相关知识点，某些知识点暂时只有标题，后续会持续更新。笔者最近一段时间面试过程中发现一些普遍现象，对于一些很不起眼的问题，很多开发者都只停留在知道、听说过的层面，但是一旦问 是什么 和 为什么 ，很多应试者回答的并不理想。<br>大家可以对着这篇文章查找自己的知识盲区。</p>
+<h3 id="Swift-5-终于来了，快来看看有什么更新！！"><a href="#Swift-5-终于来了，快来看看有什么更新！！" class="headerlink" title="Swift 5 终于来了，快来看看有什么更新！！"></a><a href="https://mp.weixin.qq.com/s/-fLVdoTz3lT5Kxnea0-Avg" target="_blank" rel="noopener">Swift 5 终于来了，快来看看有什么更新！！</a></h3><p>Xcode10.2 已经发布，是时候开始使用 Swift5 了，可以提前看下老司机周报总结的Swift5 更新内容，对适配工作做好准备。</p>
+<h3 id="苹果开了一场没有任何硬件的发布会"><a href="#苹果开了一场没有任何硬件的发布会" class="headerlink" title="苹果开了一场没有任何硬件的发布会"></a><a href="https://mp.weixin.qq.com/s/ggqK8kzU0efgTdPIZ5vbVw" target="_blank" rel="noopener">苹果开了一场没有任何硬件的发布会</a></h3><p>3 月 26 日凌晨 1 点，苹果在 Apple Park 新总部的乔布斯剧院召开了春季特别活动。</p>
+<p>在活动现场，苹果发布了：</p>
+<ul>
+<li>新闻服务 Apple News+</li>
+<li>可以返现的 Apple Card</li>
+<li>游戏服务 Apple Arcade</li>
+<li>全新的 Apple TV App 服务</li>
+<li>Apple TV+ 原创视频服务</li>
+</ul>
+<p>全部是软件和服务，没有新硬件的出现——这或许意味着，苹果正在寻找下一个十年的生长空间。</p>
+<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><h3 id="辞职环游中国的程序员小-K"><a href="#辞职环游中国的程序员小-K" class="headerlink" title="辞职环游中国的程序员小 K"></a><a href="https://talk.swift.gg/19" target="_blank" rel="noopener">辞职环游中国的程序员小 K</a></h3><p>大概每个人都有过这种冲动，辞掉工作出去旅行，想去哪就去哪，再也不用赶需求修 bug 通宵加班。不过对大多数人来说，也就止步于“想想”，并不会付诸行动。但是我身边有一位朋友，真的做到了这件事：辞职一年环游中国！</p>
+<p>这是最近几期ggtalk对我触动最大的一期，同样是做iOS开发的，为什么人家那么优秀🙃</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="996-ICU"><a href="#996-ICU" class="headerlink" title="996.ICU"></a><a href="https://github.com/996icu/996.ICU" target="_blank" rel="noopener">996.ICU</a></h3><p>工作996，生病ICU。这段时间的“明星项目”，旨在反抗国内互联网公司形成的每周工作6天，每天工作早9点到晚9点的不良加班风气。截止到3月30号，仅四天时间star已经超11万。</p>
+<h3 id="XVim2"><a href="#XVim2" class="headerlink" title="XVim2"></a><a href="https://github.com/XVimProject/XVim2" target="_blank" rel="noopener">XVim2</a></h3><p>XVim2是一个用于Xcode的Vim插件。如果你是一个Vim党，你可以直接在Xcode代码编辑界面使用Vim的各种特性。我是最近开始接触，也在慢慢适应Vim的远离鼠标工作模式。另附送一个安装流程：</p>
+<p>1、关闭Xcode<br>2、钥匙串-&gt;证书助理-&gt;证书创建<br>    名称：XcodeSigner<br>    身份类型：自签名根证书<br>    证书类型：代码签名<br>3、重新签署Xcode<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#需要等待一段时间</span></span><br><span class="line">sudo codesign -f -s XcodeSigner /Applications/Xcode.app</span><br></pre></td></tr></table></figure></p>
+<p>4、按照官方步骤安装XVim2</p>
+<h2 id="文摘"><a href="#文摘" class="headerlink" title="文摘"></a>文摘</h2><p>1、培养出在没人监督自己的时候也能高效工作的自我责任感非常重要。你也可以拔这称为是具有一种性格或者具有一种素质，它们都是同一个概念。如果缺乏对自己的责任感，你将永远依赖外部动机来驱使你努力工作。你容易折服于一根胡萝卜的诱惑，也容易屈从于一根大棒的威胁。<br>–《软技能：代码之外的生存指南》</p>
+<p>2、最终，它成为我自己的知识体系中严重的短板。没有花时间去彻底掌握Lambda表达式的工作原理，结果浪费了大把的时间。最后当我下决心花时间去了解Lambda表达式的时候，我只花了几个小时阅读并实践，就领会了这一概念。<br>–《软技能：代码之外的生存指南》</p>
+<p>3、回到从前，在我们刚开始一起生活的时候，我们就决定将我们收入的10%用于风险什一税–实际上我们把这部分收入捐给一家慈善机构，以帮助印度的孤儿。在我们第一次奉献什一税的第二周，我的妻子就得到了加薪，加薪的数额正好是我们当时奉献什一税的数额。我个人认为，我们的成功很大一部分就是因为这种对奉献的承诺，一直恪守到今天。<br>即使你不信仰任何宗教，我认为这一点也有某种符合逻辑的解释。我认为，你把钱看的越重，你就越难以在理财方面做出明智的、成功的投资选择。自愿把自己收入的固定数额奉献或者捐赠给慈善机构，可以改变你对金钱的看法。这一思想上的转变让你从金钱的所有者变成管理者。<br>–《软技能：代码之外的生存指南》</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="zhangferry 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/月报/" rel="tag"># 月报</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/31/996-ICU/" rel="next" title="关于996ICU的一些看法">
+                <i class="fa fa-chevron-left"></i> 关于996ICU的一些看法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zhangferry">
+            
+              <p class="site-author-name" itemprop="name">zhangferry</p>
+              <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zhangferry" title="GitHub &rarr; https://github.com/zhangferry" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/2947186387/profile" title="Weibo &rarr; https://weibo.com/2947186387/profile" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">1.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spine-SpriteKit"><span class="nav-number">1.1.</span> <span class="nav-text">Spine + SpriteKit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速创建转场样式"><span class="nav-number">1.2.</span> <span class="nav-text">快速创建转场样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是UserAgent"><span class="nav-number">1.3.</span> <span class="nav-text">什么是UserAgent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apple-Configurator-2-出现-Unauthorized-Error"><span class="nav-number">1.4.</span> <span class="nav-text">Apple Configurator 2 出现 Unauthorized Error</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Command-PhaseScriptExecution-failed-with-a-nonzero-exit-code"><span class="nav-number">1.5.</span> <span class="nav-text">Command PhaseScriptExecution failed with a nonzero exit code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#斐波那契函数"><span class="nav-number">1.6.</span> <span class="nav-text">斐波那契函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐阅读"><span class="nav-number">2.</span> <span class="nav-text">推荐阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpriteKit-Tutorial-for-Beginners"><span class="nav-number">2.1.</span> <span class="nav-text">SpriteKit Tutorial for Beginners</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发小知识"><span class="nav-number">2.2.</span> <span class="nav-text">开发小知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swift-5-终于来了，快来看看有什么更新！！"><span class="nav-number">2.3.</span> <span class="nav-text">Swift 5 终于来了，快来看看有什么更新！！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#苹果开了一场没有任何硬件的发布会"><span class="nav-number">2.4.</span> <span class="nav-text">苹果开了一场没有任何硬件的发布会</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音视频"><span class="nav-number">3.</span> <span class="nav-text">音视频</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#辞职环游中国的程序员小-K"><span class="nav-number">3.1.</span> <span class="nav-text">辞职环游中国的程序员小 K</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github"><span class="nav-number">4.</span> <span class="nav-text">Github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#996-ICU"><span class="nav-number">4.1.</span> <span class="nav-text">996.ICU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XVim2"><span class="nav-number">4.2.</span> <span class="nav-text">XVim2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文摘"><span class="nav-number">5.</span> <span class="nav-text">文摘</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangferry</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">141k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:08</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '012999c912503aff4cac',
+    clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
+    repo: 'zhangferry.github.io',
+    owner: 'zhangferry',
+    admin: ['zhangferry'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>

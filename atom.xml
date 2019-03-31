@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2019-02-28T14:17:21.133Z</updated>
+  <updated>2019-03-31T14:04:26.549Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS开发月报#9|201903</title>
+    <link href="http://zhangferry.github.io/2019/03/31/monthly_9/"/>
+    <id>http://zhangferry.github.io/2019/03/31/monthly_9/</id>
+    <published>2019-03-31T13:30:57.000Z</published>
+    <updated>2019-03-31T14:04:26.549Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。&lt;br&gt;欢迎推荐内容，可以前往&lt;a href=&quot;https://github.com/zhangferry/iOSMonthlyReport&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于996ICU的一些看法</title>
+    <link href="http://zhangferry.github.io/2019/03/31/996-ICU/"/>
+    <id>http://zhangferry.github.io/2019/03/31/996-ICU/</id>
+    <published>2019-03-31T12:00:34.000Z</published>
+    <updated>2019-03-31T14:06:05.501Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1059465-693ded7ab49b4da3?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="http://zhangferry.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS开发月报#8|201902</title>
@@ -69,7 +117,7 @@
     <link href="http://zhangferry.github.io/2019/02/20/figure_bed_github/"/>
     <id>http://zhangferry.github.io/2019/02/20/figure_bed_github/</id>
     <published>2019-02-20T02:54:57.000Z</published>
-    <updated>2019-02-28T14:48:32.960Z</updated>
+    <updated>2019-03-30T13:37:11.650Z</updated>
     
     <summary type="html">
     
@@ -135,7 +183,7 @@
     <link href="http://zhangferry.github.io/2019/01/01/2018-year-summary/"/>
     <id>http://zhangferry.github.io/2019/01/01/2018-year-summary/</id>
     <published>2019-01-01T15:22:25.000Z</published>
-    <updated>2019-02-08T13:12:57.153Z</updated>
+    <updated>2019-03-30T13:37:11.648Z</updated>
     
     <summary type="html">
     
@@ -175,7 +223,7 @@
     <link href="http://zhangferry.github.io/2018/11/26/avplayer-supported-format/"/>
     <id>http://zhangferry.github.io/2018/11/26/avplayer-supported-format/</id>
     <published>2018-11-26T08:27:50.000Z</published>
-    <updated>2019-02-28T14:50:27.860Z</updated>
+    <updated>2019-03-30T13:37:11.649Z</updated>
     
     <summary type="html">
     
@@ -192,6 +240,8 @@
     
     
       <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+    
+      <category term="AVPlayer" scheme="http://zhangferry.github.io/tags/AVPlayer/"/>
     
   </entry>
   
@@ -294,7 +344,7 @@
     <link href="http://zhangferry.github.io/2018/09/02/jingjin-read-summary/"/>
     <id>http://zhangferry.github.io/2018/09/02/jingjin-read-summary/</id>
     <published>2018-09-02T15:20:33.000Z</published>
-    <updated>2019-02-08T13:12:03.703Z</updated>
+    <updated>2019-03-30T13:37:11.651Z</updated>
     
     <summary type="html">
     
@@ -357,7 +407,7 @@
     <link href="http://zhangferry.github.io/2018/08/06/201807-summary/"/>
     <id>http://zhangferry.github.io/2018/08/06/201807-summary/</id>
     <published>2018-08-06T03:28:09.000Z</published>
-    <updated>2019-02-08T13:12:49.403Z</updated>
+    <updated>2019-03-30T13:37:11.648Z</updated>
     
     <summary type="html">
     
@@ -386,52 +436,6 @@
     
     
       <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>可能被忽略的UIButton细节</title>
-    <link href="http://zhangferry.github.io/2018/07/17/UIButton-detail/"/>
-    <id>http://zhangferry.github.io/2018/07/17/UIButton-detail/</id>
-    <published>2018-07-17T02:55:35.000Z</published>
-    <updated>2019-02-08T13:12:46.405Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;关于System-Button&quot;&gt;&lt;a href=&quot;#关于System-Button&quot; class=&quot;headerlink&quot; title=&quot;关于System Button&quot;&gt;&lt;/a&gt;关于System Button&lt;/h2&gt;&lt;hr&gt;
-&lt;p&gt;看一个简单的例子：&lt;br&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;button.setTitle(&lt;span class=&quot;string&quot;&gt;&quot;Title&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;: .normal)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;button.setImage(&lt;span class=&quot;type&quot;&gt;UIImage&lt;/span&gt;(named: &lt;span class=&quot;string&quot;&gt;&quot;icon&quot;&lt;/span&gt;), &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;: .normal)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;buttonType分别设置为system和custom，仅做如上设置，显示效果对比（上面的custom，下面的是system）&lt;/p&gt;
-&lt;p&gt;&lt;div align=&quot;center&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://ws4.sinaimg.cn/large/006tKfTcgy1ftcrof65cij305x00xa9u.jpg&quot; alt=&quot;button_normal&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/006tKfTcgy1ftcrokww28j305x010q2r.jpg&quot; alt=&quot;button_system&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;br&gt;system Button显示出蓝色其实是tintColor的效果，关于tintColor的说法是：&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AVPlayer详解系列（一）参数设置</title>
-    <link href="http://zhangferry.github.io/2017/08/25/avplayer-detail-1/"/>
-    <id>http://zhangferry.github.io/2017/08/25/avplayer-detail-1/</id>
-    <published>2017-08-25T08:27:50.000Z</published>
-    <updated>2019-02-28T14:50:27.866Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;最近工作内容基本都是围绕视频播放展开的，从AVPlayer到IJKPlayer，期间遇到挺多问题，趟了很多bug，也总结了一些心得。对AVPlayer了解的更多一些，因为涉及点比较多，所以打算做一个系列详尽的写一下这部分内容。希望大家多多支持，有问
-        
-      
-    
-    </summary>
-    
-    
-      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
     
   </entry>
   
