@@ -417,6 +417,18 @@
           
             
             
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2016/12/12/bluetooth-number-transform/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2016/12/12/bluetooth-number-transform/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -818,7 +830,10 @@ char *bs = (unsigned char *)[[data subdataWithRange:NSMakeRange(5, 1) ] bytes];
           
 
   
-    <div class="comments" id="gitalk-container">
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
     </div>
 
   
@@ -1180,29 +1195,44 @@ char *bs = (unsigned char *)[[data subdataWithRange:NSMakeRange(5, 1) ] bytes];
 
 
   
-    
+    <!-- LOCAL: You can save these files to your site and update links -->
 
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitmint.browser.js"></script>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
+<!-- END LOCAL -->
 
+<style>
+#gitment-container a {
+  border-bottom: none;
+}
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-
-
-
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+</style>
 
 <script>
-  var gitalk = new Gitalk({
-    clientID: '012999c912503aff4cac',
-    clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-    repo: 'zhangferry.github.io',
-    owner: 'zhangferry',
-    admin: ['zhangferry'],
-    id: md5(location.pathname),
-    distractionFreeMode: 'true'
-  });
-  gitalk.render('gitalk-container');
+  function renderGitment() {
+    var gitment = new Gitmint({
+      id: window.location.pathname,
+      owner: 'zhangferry',
+      repo: 'zhangferry.github.io',
+      
+        lang: '' || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+      
+      oauth: {
+      
+      
+        client_secret: '3e709c446fce8b40979b9840c9975e7ced285f35',
+      
+        client_id: '012999c912503aff4cac'
+      }
+    });
+    gitment.render('gitment-container');
+  }
+
+  
+    renderGitment();
+  
 </script>
 
   
