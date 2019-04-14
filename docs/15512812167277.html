@@ -252,7 +252,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">11</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">12</span></a>
 
   </li>
         
@@ -271,7 +271,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">34</span></a>
 
   </li>
         
@@ -404,7 +404,7 @@
 <h2 id="帮助我们改进-MWeb"><a href="#帮助我们改进-MWeb" class="headerlink" title="帮助我们改进 MWeb"></a>帮助我们改进 MWeb</h2><p>如果你喜欢 MWeb，想让它变得更好，你可以：</p>
 <ol>
 <li>推荐 MWeb，让更多的人知道。</li>
-<li>给我们发反馈和建议：<a href="mailto:&#x63;&#x6f;&#100;&#101;&#114;&#102;&#x6f;&#x72;&#97;&#114;&#116;&#43;&#50;&#51;&#51;&#x33;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;" target="_blank" rel="noopener">&#x63;&#x6f;&#100;&#101;&#114;&#102;&#x6f;&#x72;&#97;&#114;&#116;&#43;&#50;&#51;&#51;&#x33;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;</a></li>
+<li>给我们发反馈和建议：<a href="mailto:&#x63;&#x6f;&#x64;&#x65;&#114;&#x66;&#x6f;&#x72;&#97;&#x72;&#x74;&#x2b;&#50;&#51;&#x33;&#51;&#64;&#x67;&#109;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;" target="_blank" rel="noopener">&#x63;&#x6f;&#x64;&#x65;&#114;&#x66;&#x6f;&#x72;&#97;&#x72;&#x74;&#x2b;&#50;&#51;&#x33;&#51;&#64;&#x67;&#109;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;</a></li>
 <li>在 Mac App Store 上评价 （如果是在 MAS 上购买的话）。</li>
 </ol>
 
@@ -428,10 +428,7 @@
           
 
   
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
+    <div class="comments" id="gitalk-container">
     </div>
 
   
@@ -484,7 +481,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -540,7 +537,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -641,7 +640,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">141k</span>
+    <span title="站点总字数">142k</span>
   
 
   
@@ -650,7 +649,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:08</span>
+    <span title="站点阅读时长">2:09</span>
   
 </div>
 
@@ -793,44 +792,29 @@
 
 
   
-    <!-- LOCAL: You can save these files to your site and update links -->
+    
 
-  
-  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitmint.browser.js"></script>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
-<!-- END LOCAL -->
 
-<style>
-#gitment-container a {
-  border-bottom: none;
-}
 
-</style>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
 
 <script>
-  function renderGitment() {
-    var gitment = new Gitmint({
-      id: window.location.pathname,
-      owner: 'zhangferry',
-      repo: 'zhangferry.github.io',
-      
-        lang: '' || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-      
-      oauth: {
-      
-      
-        client_secret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-      
-        client_id: '012999c912503aff4cac'
-      }
-    });
-    gitment.render('gitment-container');
-  }
-
-  
-    renderGitment();
-  
+  var gitalk = new Gitalk({
+    clientID: '012999c912503aff4cac',
+    clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
+    repo: 'zhangferry.github.io',
+    owner: 'zhangferry',
+    admin: ['zhangferry'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
 </script>
 
   

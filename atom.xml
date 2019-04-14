@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2019-04-12T14:45:35.836Z</updated>
+  <updated>2019-04-14T09:49:55.067Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一则iOS招聘信息</title>
+    <link href="http://zhangferry.github.io/2019/04/12/ios-interview/"/>
+    <id>http://zhangferry.github.io/2019/04/12/ios-interview/</id>
+    <published>2019-04-12T13:48:34.000Z</published>
+    <updated>2019-04-14T09:49:55.067Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天放出一波我司的招聘信息吧，这里只说了iOS的招聘要求。其实还有Android + Unity + 游戏测试等一大波岗位虚位以待，如果有意愿的小伙伴可以私信我哦。&lt;/p&gt;
+&lt;h2 id=&quot;公司介绍&quot;&gt;&lt;a href=&quot;#公司介绍&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="工作" scheme="http://zhangferry.github.io/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS开发月报#9|201903</title>
@@ -418,24 +443,6 @@
     
     
       <category term="生活" scheme="http://zhangferry.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS开发月报#1|201807</title>
-    <link href="http://zhangferry.github.io/2018/08/02/monthly_1/"/>
-    <id>http://zhangferry.github.io/2018/08/02/monthly_1/</id>
-    <published>2018-08-02T06:22:32.000Z</published>
-    <updated>2019-02-08T13:12:29.679Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;关闭隐式动画&quot;&gt;&lt;a href=&quot;#关闭隐式动画&quot; class=&quot;headerlink&quot; title=&quot;关闭隐式动画&quot;&gt;&lt;/a&gt;关闭隐式动画&lt;/h2&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;type&quot;&gt;CATransaction&lt;/span&gt;.begin()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;type&quot;&gt;CATransaction&lt;/span&gt;.setDisableActions(&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.layer.frame = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.bounds&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;type&quot;&gt;CATransaction&lt;/span&gt;.commit()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
     
   </entry>
   
