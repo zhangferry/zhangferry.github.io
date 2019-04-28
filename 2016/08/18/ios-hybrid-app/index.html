@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="在项目开发中，我们常常遇到这种情况，一个功能性界面需要分享到其他平台，或者是一个较复杂，原生框架不易实现，需要经常变动的界面，处理这种功能，最优的处理办法就是交给H5来完成了。像这种介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”的应用就被成为Hybrid App。在iOS端涉及的知识就是JS和OC">
+  <meta name="description" content="在项目开发中，我们常常遇到这种情况，一个功能性界面需要分享到其他平台，或者是一个较复杂，原生框架不易实现，需要经常变动的界面，处理这种功能，最优的处理办法就是交给H5来完成了。像这种介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”的应用就被成为Hybrid App。">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS中实现JS和OC的交互(Hybrid App)">
 <meta property="og:url" content="http://zhangferry.github.io/2016/08/18/ios-hybrid-app/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="在项目开发中，我们常常遇到这种情况，一个功能性界面需要分享到其他平台，或者是一个较复杂，原生框架不易实现，需要经常变动的界面，处理这种功能，最优的处理办法就是交给H5来完成了。像这种介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”的应用就被成为Hybrid App。在iOS端涉及的知识就是JS和OC">
+<meta property="og:description" content="在项目开发中，我们常常遇到这种情况，一个功能性界面需要分享到其他平台，或者是一个较复杂，原生框架不易实现，需要经常变动的界面，处理这种功能，最优的处理办法就是交给H5来完成了。像这种介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”的应用就被成为Hybrid App。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-475ece93e7990cbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-cc53a2d8dd514f16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-09T05:36:40.331Z">
+<meta property="og:updated_time" content="2019-04-28T13:00:34.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS中实现JS和OC的交互(Hybrid App)">
-<meta name="twitter:description" content="在项目开发中，我们常常遇到这种情况，一个功能性界面需要分享到其他平台，或者是一个较复杂，原生框架不易实现，需要经常变动的界面，处理这种功能，最优的处理办法就是交给H5来完成了。像这种介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”的应用就被成为Hybrid App。在iOS端涉及的知识就是JS和OC">
+<meta name="twitter:description" content="在项目开发中，我们常常遇到这种情况，一个功能性界面需要分享到其他平台，或者是一个较复杂，原生框架不易实现，需要经常变动的界面，处理这种功能，最优的处理办法就是交给H5来完成了。像这种介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”的应用就被成为Hybrid App。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-475ece93e7990cbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -275,7 +275,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">34</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">35</span></a>
 
   </li>
         
@@ -460,7 +460,7 @@
 
       
         <p><img src="http://upload-images.jianshu.io/upload_images/1059465-475ece93e7990cbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Hybrid.png"></p>
-<p>在项目开发中，我们常常遇到这种情况，一个功能性界面需要分享到其他平台，或者是一个较复杂，原生框架不易实现，需要经常变动的界面，处理这种功能，最优的处理办法就是交给H5来完成了。像这种介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”的应用就被成为<code>Hybrid App</code>。<br>在iOS端涉及的知识就是JS和OC之间的交互，下面我们逐步学习如何处理这两者交互的问题。</p>
+<p>在项目开发中，我们常常遇到这种情况，一个功能性界面需要分享到其他平台，或者是一个较复杂，原生框架不易实现，需要经常变动的界面，处理这种功能，最优的处理办法就是交给H5来完成了。像这种介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”的应用就被成为<code>Hybrid App</code>。<br><a id="more"></a><br>在iOS端涉及的知识就是JS和OC之间的交互，下面我们逐步学习如何处理这两者交互的问题。</p>
 <p>##目录</p>
 <blockquote>
 <ul>
@@ -684,7 +684,7 @@ JSValue *Callback = [self.context objectForKeyedSubscript:@&quot;alertShow&quot;
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -826,7 +826,7 @@ JSValue *Callback = [self.context objectForKeyedSubscript:@&quot;alertShow&quot;
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">142k</span>
+    <span title="站点总字数">144k</span>
   
 
   
@@ -835,7 +835,7 @@ JSValue *Callback = [self.context objectForKeyedSubscript:@&quot;alertShow&quot;
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:09</span>
+    <span title="站点阅读时长">2:11</span>
   
 </div>
 

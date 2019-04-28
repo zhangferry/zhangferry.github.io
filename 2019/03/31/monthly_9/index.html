@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 TipsSpine + SpriteKit项目中需要引入一些实物动画，每个动画之间有不同形态的切换，考虑过gif, mp4, AE + lottie, Spine + SpriteKit。 最后确定使用Spine做动">
+  <meta name="description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
 <meta name="keywords" content="月报">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS开发月报#9|201903">
 <meta property="og:url" content="http://zhangferry.github.io/2019/03/31/monthly_9/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 TipsSpine + SpriteKit项目中需要引入一些实物动画，每个动画之间有不同形态的切换，考虑过gif, mp4, AE + lottie, Spine + SpriteKit。 最后确定使用Spine做动">
+<meta property="og:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-afa5d63933b5bf3c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-12T14:45:35.836Z">
+<meta property="og:updated_time" content="2019-04-28T13:00:34.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发月报#9|201903">
-<meta name="twitter:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 TipsSpine + SpriteKit项目中需要引入一些实物动画，每个动画之间有不同形态的切换，考虑过gif, mp4, AE + lottie, Spine + SpriteKit。 最后确定使用Spine做动">
+<meta name="twitter:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-afa5d63933b5bf3c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -274,7 +274,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">34</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">35</span></a>
 
   </li>
         
@@ -458,7 +458,7 @@
       
 
       
-        <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。<br><img src="http://upload-images.jianshu.io/upload_images/1059465-afa5d63933b5bf3c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+        <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。<br><img src="http://upload-images.jianshu.io/upload_images/1059465-afa5d63933b5bf3c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br><a id="more"></a></p>
 <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="Spine-SpriteKit"><a href="#Spine-SpriteKit" class="headerlink" title="Spine + SpriteKit"></a>Spine + SpriteKit</h3><p>项目中需要引入一些实物动画，每个动画之间有不同形态的切换，考虑过gif, mp4, AE + lottie, Spine + SpriteKit。</p>
 <p>最后确定使用<a href="http://zh.esotericsoftware.com/" target="_blank" rel="noopener">Spine</a>做动画效果，用SpriteKit处理动画。Spin并没有官方支持SpirteKit的库，但有一个做的比较好的第三方库<a href="https://github.com/maxgribov/Spine" target="_blank" rel="noopener">maxgribov/Spine</a>，支持Swift4.1。</p>
 <p>该库支持Bones, Slots, Skins等常用的动画要素，通过Spine导出的json文件和动画素材做出各种动画效果，是仅有的近期还在维护的支持SpriteKit的Spine运行时库。但它也存在一个问题，还不支持Mesh Animation(网格动画)。如果所需的动画效果不需要网格的话，非常推荐使用这个库。</p>
@@ -674,7 +674,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -833,7 +833,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">142k</span>
+    <span title="站点总字数">144k</span>
   
 
   
@@ -842,7 +842,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:09</span>
+    <span title="站点阅读时长">2:11</span>
   
 </div>
 

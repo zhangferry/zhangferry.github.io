@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-3f9893059e8e70ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-fe149f35edab6e56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-08T13:34:51.792Z">
+<meta property="og:updated_time" content="2019-04-28T13:00:34.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蓝牙固件升级">
 <meta name="twitter:description" content="###升级介绍  蓝牙固件升级是使用手机给固件进行更新，以达到修复bug，完善功能的作用。升级的大概流程是：首先，当手环的固件需要升级时，由嵌入式开发人员提供新的固件，由服务器管理人员将固件放到服务器上，此时，用户打开手机APP的时候会检测到服务器有更新，请求更新手环固件，确认更新后，手机会从服务器下载固件。下载完毕后，APP会读取固件内容，并根据升级协议将内容传到手环里，完成升级。     D">
@@ -275,7 +275,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">34</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">35</span></a>
 
   </li>
         
@@ -443,7 +443,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">749</span>
+                <span title="本文字数">746</span>
               
 
               
@@ -484,13 +484,8 @@
 </blockquote>
 <ul>
 <li>DFU =  Device Firmware Update （设备固件更新）</li>
-<li>OTA = Over The Air （空中升级）</li>
-</ul>
-<p>###升级流程<br>各个蓝牙设备不尽相同，以下是我测试设备的升级流程：</p>
-<p>######OTA下载固件<br>从云端下载的固件为.bin后缀的文件，文件名会有一定的格式，含有固件版本号和文件CRC32校验值。</p>
-<p>######数据分块<br>规定一个数据块大小比如2048字节，然后把升级数据进行分块，不够的就剩余多少作为一块。蓝牙一次发送的数据量是有限的，所以每次发送20字节的数据。这个数据要遵循升级数据格式，带指令头和校验和，下载包的数据只是这20字节中的一部分。所有包内数据都携带在每条升级数据指令中。</p>
-<p>######升级过程</p>
-<ul>
+<li>OTA = Over The Air （空中升级）<a id="more"></a>
+###升级流程<br>各个蓝牙设备不尽相同，以下是我测试设备的升级流程：<br>######OTA下载固件<br>从云端下载的固件为.bin后缀的文件，文件名会有一定的格式，含有固件版本号和文件CRC32校验值。<br>######数据分块<br>规定一个数据块大小比如2048字节，然后把升级数据进行分块，不够的就剩余多少作为一块。蓝牙一次发送的数据量是有限的，所以每次发送20字节的数据。这个数据要遵循升级数据格式，带指令头和校验和，下载包的数据只是这20字节中的一部分。所有包内数据都携带在每条升级数据指令中。<br>######升级过程<ul>
 <li>连接设备，发送升级请求。</li>
 <li>待蓝牙确认之后，开始发送数据头告知蓝牙此次发送的数据量和CRC校验。</li>
 <li>开始发送升级数据。（每条数据之间间隔20ms为了蓝牙能够方便处理）</li>
@@ -498,6 +493,8 @@
 <li>蓝牙确认发送下一个块，返回错误则终止此次升级</li>
 <li>发完所有数据之后发送升级完成</li>
 <li>蓝牙确认则升级完成，返回错误则升级失败</li>
+</ul>
+</li>
 </ul>
 <p>######流程图<br><img src="http://upload-images.jianshu.io/upload_images/1059465-fe149f35edab6e56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="upgrade.png"></p>
 <p>###总结<br>蓝牙升级最复杂的就在升级过程，大量的数据与蓝牙交互，这时最好记录发送到升级数据的那一部分，可以给用户展示升级的进程。</p>
@@ -636,7 +633,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -778,7 +775,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">142k</span>
+    <span title="站点总字数">144k</span>
   
 
   
@@ -787,7 +784,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:09</span>
+    <span title="站点阅读时长">2:11</span>
   
 </div>
 

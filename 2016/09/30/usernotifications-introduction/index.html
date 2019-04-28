@@ -96,13 +96,13 @@
 
 
 
-  <meta name="description" content="iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。 以下的用语，如无特别表述，通知就代表本地通知，推送就代表远程服务器的推送。 ##快速添加一个通知我们先举个完整的代码例子，大家了解下这个流程，然后分步介绍这几项：">
+  <meta name="description" content="iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS10本地通知UserNotifications快速入门">
 <meta property="og:url" content="http://zhangferry.github.io/2016/09/30/usernotifications-introduction/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。 以下的用语，如无特别表述，通知就代表本地通知，推送就代表远程服务器的推送。 ##快速添加一个通知我们先举个完整的代码例子，大家了解下这个流程，然后分步介绍这几项：">
+<meta property="og:description" content="iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-24a743794b38b19c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-6d61819c9bfd09dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -116,10 +116,10 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-296bf320ce219e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-46dfa08e664a7a3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-b1dd1a73d6c21873.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-09T05:43:08.735Z">
+<meta property="og:updated_time" content="2019-04-28T13:00:34.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS10本地通知UserNotifications快速入门">
-<meta name="twitter:description" content="iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。 以下的用语，如无特别表述，通知就代表本地通知，推送就代表远程服务器的推送。 ##快速添加一个通知我们先举个完整的代码例子，大家了解下这个流程，然后分步介绍这几项：">
+<meta name="twitter:description" content="iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-24a743794b38b19c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -285,7 +285,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">34</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">35</span></a>
 
   </li>
         
@@ -470,8 +470,7 @@
 
       
         <p><img src="http://upload-images.jianshu.io/upload_images/1059465-24a743794b38b19c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification.png"></p>
-<p>iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。</p>
-<p>以下的用语，如无特别表述，<code>通知</code>就代表本地通知，<code>推送</code>就代表远程服务器的推送。</p>
+<p>iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。<br><a id="more"></a><br>以下的用语，如无特别表述，<code>通知</code>就代表本地通知，<code>推送</code>就代表远程服务器的推送。</p>
 <p>##快速添加一个通知<br>我们先举个完整的代码例子，大家了解下这个流程，然后分步介绍这几项：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一步：注册通知</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</span><br><span class="line">    <span class="comment">// Override point for customization after application launch.</span></span><br><span class="line">    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];</span><br><span class="line">    <span class="comment">//请求获取通知权限（角标，声音，弹框）</span></span><br><span class="line">    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(<span class="built_in">BOOL</span> granted, <span class="built_in">NSError</span> * _Nullable error) &#123;</span><br><span class="line">        <span class="keyword">if</span> (granted) &#123;</span><br><span class="line">            <span class="comment">//获取用户是否同意开启通知</span></span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"request authorization successed!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//第二步：新建通知内容对象</span></span><br><span class="line">    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init]</span><br><span class="line">    content.title = <span class="string">@"iOS10通知"</span>;</span><br><span class="line">    content.subtitle = <span class="string">@"新通知学习笔记"</span>;</span><br><span class="line">    content.body = <span class="string">@"新通知变化很大，之前本地通知和远程推送是两个类，现在合成一个了。这是一条测试通知，"</span>;</span><br><span class="line">    content.badge = @<span class="number">1</span>;</span><br><span class="line">    UNNotificationSound *sound = [UNNotificationSound soundNamed:<span class="string">@"caodi.m4a"</span>];</span><br><span class="line">    content.sound = sound;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第三步：通知触发机制。（重复提醒，时间间隔要大于60s）</span></span><br><span class="line">    UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:<span class="number">5</span> repeats:<span class="literal">NO</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第四步：创建UNNotificationRequest通知请求对象</span></span><br><span class="line">    <span class="built_in">NSString</span> *requertIdentifier = <span class="string">@"RequestIdentifier"</span>;</span><br><span class="line">    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requertIdentifier content:content trigger:trigger1];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第五步：将通知加到通知中心</span></span><br><span class="line">    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(<span class="built_in">NSError</span> * _Nullable error) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Error:%@"</span>,error);</span><br><span class="line"></span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最终效果如下：</p>
@@ -662,7 +661,7 @@ trigger:(nullable UNNotificationTrigger *)trigger;</code><br>就是把上面三�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -804,7 +803,7 @@ trigger:(nullable UNNotificationTrigger *)trigger;</code><br>就是把上面三�
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">142k</span>
+    <span title="站点总字数">144k</span>
   
 
   
@@ -813,7 +812,7 @@ trigger:(nullable UNNotificationTrigger *)trigger;</code><br>就是把上面三�
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:09</span>
+    <span title="站点阅读时长">2:11</span>
   
 </div>
 

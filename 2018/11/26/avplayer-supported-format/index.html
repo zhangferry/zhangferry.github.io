@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。 基本概念一个在线视频能够播放，大致是经过了如下步骤： 可以总结为：拉数据-&amp;gt;解协议-&amp;gt;解封装-&amp;gt;音视频解码-&amp;gt;音视频同步-&amp;gt;播放。下面就针对这几个概念一一做下解释： 播放协议一般点播采用HTTP，而直播的话，大部分还是采用RTMP">
+  <meta name="description" content="发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。">
 <meta name="keywords" content="iOS,AVPlayer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AVPlayer支持的视频格式">
 <meta property="og:url" content="http://zhangferry.github.io/2018/11/26/avplayer-supported-format/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。 基本概念一个在线视频能够播放，大致是经过了如下步骤： 可以总结为：拉数据-&amp;gt;解协议-&amp;gt;解封装-&amp;gt;音视频解码-&amp;gt;音视频同步-&amp;gt;播放。下面就针对这几个概念一一做下解释： 播放协议一般点播采用HTTP，而直播的话，大部分还是采用RTMP">
+<meta property="og:description" content="发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-d573ac8a2e21fb3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1059465-fa95df4f7ab02bf9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-30T13:37:11.649Z">
+<meta property="og:updated_time" content="2019-04-28T13:00:34.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AVPlayer支持的视频格式">
-<meta name="twitter:description" content="发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。 基本概念一个在线视频能够播放，大致是经过了如下步骤： 可以总结为：拉数据-&amp;gt;解协议-&amp;gt;解封装-&amp;gt;音视频解码-&amp;gt;音视频同步-&amp;gt;播放。下面就针对这几个概念一一做下解释： 播放协议一般点播采用HTTP，而直播的话，大部分还是采用RTMP">
+<meta name="twitter:description" content="发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1059465-d573ac8a2e21fb3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -275,7 +275,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">34</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">35</span></a>
 
   </li>
         
@@ -459,7 +459,7 @@
       
 
       
-        <p>发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。</p>
+        <p>发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。<br><a id="more"></a></p>
 <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>一个在线视频能够播放，大致是经过了如下步骤：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-d573ac8a2e21fb3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="video_play_progress.png"></p>
 <p>可以总结为：拉数据-&gt;解协议-&gt;解封装-&gt;音视频解码-&gt;音视频同步-&gt;播放。<br>下面就针对这几个概念一一做下解释：</p>
 <h3 id="播放协议"><a href="#播放协议" class="headerlink" title="播放协议"></a>播放协议</h3><p>一般点播采用HTTP，而直播的话，大部分还是采用RTMP或者私有协议，原因是延时会比较小，RTMP本身也是为了直播设计的。常见的流媒体协议：</p>
@@ -843,7 +843,7 @@ table th:nth-of-type(2) {
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1002,7 +1002,7 @@ table th:nth-of-type(2) {
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">142k</span>
+    <span title="站点总字数">144k</span>
   
 
   
@@ -1011,7 +1011,7 @@ table th:nth-of-type(2) {
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:09</span>
+    <span title="站点阅读时长">2:11</span>
   
 </div>
 

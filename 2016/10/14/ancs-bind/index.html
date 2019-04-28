@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="ANCS（Apple Notification Center Service，苹果通知中心）的目的是提供给蓝牙外设一种简单、方便的获取iOS设备通知信息的方式。使得蓝牙手环，手表可以接收到来自iPhone的来电、短信及QQ、微信等应用的通知消息。 如果你已经能够连接普通蓝牙，初次面对ANCS设备可能会有以下问题：  问题一：遵循ANCS协议的的设备会直接和系统相连，即使杀掉应用，连接还是存在的。">
+  <meta name="description" content="ANCS（Apple Notification Center Service，苹果通知中心）的目的是提供给蓝牙外设一种简单、方便的获取iOS设备通知信息的方式。使得蓝牙手环，手表可以接收到来自iPhone的来电、短信及QQ、微信等应用的通知消息。">
 <meta name="keywords" content="蓝牙">
 <meta property="og:type" content="article">
 <meta property="og:title" content="处理ANCS设备连接绑定问题">
 <meta property="og:url" content="http://zhangferry.github.io/2016/10/14/ancs-bind/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="ANCS（Apple Notification Center Service，苹果通知中心）的目的是提供给蓝牙外设一种简单、方便的获取iOS设备通知信息的方式。使得蓝牙手环，手表可以接收到来自iPhone的来电、短信及QQ、微信等应用的通知消息。 如果你已经能够连接普通蓝牙，初次面对ANCS设备可能会有以下问题：  问题一：遵循ANCS协议的的设备会直接和系统相连，即使杀掉应用，连接还是存在的。">
+<meta property="og:description" content="ANCS（Apple Notification Center Service，苹果通知中心）的目的是提供给蓝牙外设一种简单、方便的获取iOS设备通知信息的方式。使得蓝牙手环，手表可以接收到来自iPhone的来电、短信及QQ、微信等应用的通知消息。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-f45041c3c8cf024b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-ee5970ce54abaaed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-09T05:46:07.586Z">
+<meta property="og:updated_time" content="2019-04-28T13:00:34.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="处理ANCS设备连接绑定问题">
-<meta name="twitter:description" content="ANCS（Apple Notification Center Service，苹果通知中心）的目的是提供给蓝牙外设一种简单、方便的获取iOS设备通知信息的方式。使得蓝牙手环，手表可以接收到来自iPhone的来电、短信及QQ、微信等应用的通知消息。 如果你已经能够连接普通蓝牙，初次面对ANCS设备可能会有以下问题：  问题一：遵循ANCS协议的的设备会直接和系统相连，即使杀掉应用，连接还是存在的。">
+<meta name="twitter:description" content="ANCS（Apple Notification Center Service，苹果通知中心）的目的是提供给蓝牙外设一种简单、方便的获取iOS设备通知信息的方式。使得蓝牙手环，手表可以接收到来自iPhone的来电、短信及QQ、微信等应用的通知消息。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-f45041c3c8cf024b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -275,7 +275,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">34</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">35</span></a>
 
   </li>
         
@@ -478,8 +478,7 @@
 
       
         <p><img src="http://upload-images.jianshu.io/upload_images/1059465-f45041c3c8cf024b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ANCS.jpg"></p>
-<p><a href="https://developer.apple.com/library/content/documentation/CoreBluetooth/Reference/AppleNotificationCenterServiceSpecification/Introduction/Introduction.html" target="_blank" rel="noopener">ANCS</a>（Apple Notification Center Service，苹果通知中心）的目的是提供给蓝牙外设一种简单、方便的获取iOS设备通知信息的方式。使得蓝牙手环，手表可以接收到来自iPhone的来电、短信及QQ、微信等应用的通知消息。</p>
-<p>如果你已经能够连接普通蓝牙，初次面对ANCS设备可能会有以下问题：</p>
+<p><a href="https://developer.apple.com/library/content/documentation/CoreBluetooth/Reference/AppleNotificationCenterServiceSpecification/Introduction/Introduction.html" target="_blank" rel="noopener">ANCS</a>（Apple Notification Center Service，苹果通知中心）的目的是提供给蓝牙外设一种简单、方便的获取iOS设备通知信息的方式。使得蓝牙手环，手表可以接收到来自iPhone的来电、短信及QQ、微信等应用的通知消息。<br><a id="more"></a><br>如果你已经能够连接普通蓝牙，初次面对ANCS设备可能会有以下问题：</p>
 <blockquote>
 <p>问题一：遵循ANCS协议的的设备会直接和系统相连，即使杀掉应用，连接还是存在的。而如果蓝牙设备处于连接状态，它不会被扫描到，怎么再次连接呢？</p>
 </blockquote>
@@ -650,7 +649,7 @@ if (peripherals.count &gt; 0) {
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -792,7 +791,7 @@ if (peripherals.count &gt; 0) {
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">142k</span>
+    <span title="站点总字数">144k</span>
   
 
   
@@ -801,7 +800,7 @@ if (peripherals.count &gt; 0) {
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:09</span>
+    <span title="站点阅读时长">2:11</span>
   
 </div>
 

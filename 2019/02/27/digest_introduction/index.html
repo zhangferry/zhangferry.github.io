@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="开发过程中我们经常会遇到对数据进行一些类似MD5，SHA-256等的处理，那处理的作用是什么以及为什么要这么做，就是今天要讨论的内容。如果你对这些算法的概念已经很熟悉，那就不用继续往下看了，如果你感觉生疏，或者并不能说清楚他们的作用，那就跟着我一起回顾一下吧。 从MD5说起我门从最常见的MD5说起。下面是维基百科对MD5的定义：  MD5消息摘要算法（英语：MD5 Message-Digest A">
+  <meta name="description" content="开发过程中我们经常会遇到对数据进行一些类似MD5，SHA-256等的处理，那处理的作用是什么以及为什么要这么做，就是今天要讨论的内容。如果你对这些算法的概念已经很熟悉，那就不用继续往下看了，如果你感觉生疏，或者并不能说清楚他们的作用，那就跟着我一起回顾一下吧。">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于消息摘要及对应的Swift实现">
 <meta property="og:url" content="http://zhangferry.github.io/2019/02/27/digest_introduction/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="开发过程中我们经常会遇到对数据进行一些类似MD5，SHA-256等的处理，那处理的作用是什么以及为什么要这么做，就是今天要讨论的内容。如果你对这些算法的概念已经很熟悉，那就不用继续往下看了，如果你感觉生疏，或者并不能说清楚他们的作用，那就跟着我一起回顾一下吧。 从MD5说起我门从最常见的MD5说起。下面是维基百科对MD5的定义：  MD5消息摘要算法（英语：MD5 Message-Digest A">
+<meta property="og:description" content="开发过程中我们经常会遇到对数据进行一些类似MD5，SHA-256等的处理，那处理的作用是什么以及为什么要这么做，就是今天要讨论的内容。如果你对这些算法的概念已经很熟悉，那就不用继续往下看了，如果你感觉生疏，或者并不能说清楚他们的作用，那就跟着我一起回顾一下吧。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190227163346.jpg">
-<meta property="og:updated_time" content="2019-02-27T15:17:55.622Z">
+<meta property="og:updated_time" content="2019-04-28T13:00:34.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于消息摘要及对应的Swift实现">
-<meta name="twitter:description" content="开发过程中我们经常会遇到对数据进行一些类似MD5，SHA-256等的处理，那处理的作用是什么以及为什么要这么做，就是今天要讨论的内容。如果你对这些算法的概念已经很熟悉，那就不用继续往下看了，如果你感觉生疏，或者并不能说清楚他们的作用，那就跟着我一起回顾一下吧。 从MD5说起我门从最常见的MD5说起。下面是维基百科对MD5的定义：  MD5消息摘要算法（英语：MD5 Message-Digest A">
+<meta name="twitter:description" content="开发过程中我们经常会遇到对数据进行一些类似MD5，SHA-256等的处理，那处理的作用是什么以及为什么要这么做，就是今天要讨论的内容。如果你对这些算法的概念已经很熟悉，那就不用继续往下看了，如果你感觉生疏，或者并不能说清楚他们的作用，那就跟着我一起回顾一下吧。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190227163346.jpg">
 
 
@@ -274,7 +274,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">34</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">35</span></a>
 
   </li>
         
@@ -458,7 +458,7 @@
       
 
       
-        <p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190227163346.jpg" alt=""><br>开发过程中我们经常会遇到对数据进行一些类似<code>MD5</code>，<code>SHA-256</code>等的处理，那处理的作用是什么以及为什么要这么做，就是今天要讨论的内容。如果你对这些算法的概念已经很熟悉，那就不用继续往下看了，如果你感觉生疏，或者并不能说清楚他们的作用，那就跟着我一起回顾一下吧。</p>
+        <p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190227163346.jpg" alt=""><br>开发过程中我们经常会遇到对数据进行一些类似<code>MD5</code>，<code>SHA-256</code>等的处理，那处理的作用是什么以及为什么要这么做，就是今天要讨论的内容。如果你对这些算法的概念已经很熟悉，那就不用继续往下看了，如果你感觉生疏，或者并不能说清楚他们的作用，那就跟着我一起回顾一下吧。<br><a id="more"></a></p>
 <h2 id="从MD5说起"><a href="#从MD5说起" class="headerlink" title="从MD5说起"></a>从MD5说起</h2><p>我门从最常见的<a href="https://zh.wikipedia.org/wiki/MD5" target="_blank" rel="noopener">MD5</a>说起。下面是维基百科对MD5的定义：</p>
 <blockquote>
 <p>MD5消息摘要算法（英语：MD5 Message-Digest Algorithm），一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。</p>
@@ -674,7 +674,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -833,7 +833,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">142k</span>
+    <span title="站点总字数">144k</span>
   
 
   
@@ -842,7 +842,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:09</span>
+    <span title="站点阅读时长">2:11</span>
   
 </div>
 

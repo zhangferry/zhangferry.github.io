@@ -96,13 +96,13 @@
 
 
 
-  <meta name="description" content="这里主要参考这个项目：iOS-nRF-Toolbox，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。  项目是用Swift写的，不过之前还是有OC版本的，但是后来由于一些**（不可描述的问题），才变成了现在的纯Swift版本。对于使用Swift开发的人员，直接仿照Demo操作即可。如果你是用Swift开发的，那下面的内容你可以不用看了。接下来我就讲一下针对OC引用DF">
+  <meta name="description" content="这里主要参考这个项目：iOS-nRF-Toolbox，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。">
 <meta name="keywords" content="蓝牙">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nRF芯片设备DFU升级（适配Xcode10.1）">
 <meta property="og:url" content="http://zhangferry.github.io/2016/12/28/nRF-DFU-upgrade/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="这里主要参考这个项目：iOS-nRF-Toolbox，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。  项目是用Swift写的，不过之前还是有OC版本的，但是后来由于一些**（不可描述的问题），才变成了现在的纯Swift版本。对于使用Swift开发的人员，直接仿照Demo操作即可。如果你是用Swift开发的，那下面的内容你可以不用看了。接下来我就讲一下针对OC引用DF">
+<meta property="og:description" content="这里主要参考这个项目：iOS-nRF-Toolbox，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-1afdc502de9bec75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-163cdfb2d7b5da14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -110,10 +110,10 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-914a66ffc635ced8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-7b4336365cd8afc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-9a9dbc9595473841.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-09T05:44:00.934Z">
+<meta property="og:updated_time" content="2019-04-28T13:00:34.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nRF芯片设备DFU升级（适配Xcode10.1）">
-<meta name="twitter:description" content="这里主要参考这个项目：iOS-nRF-Toolbox，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。  项目是用Swift写的，不过之前还是有OC版本的，但是后来由于一些**（不可描述的问题），才变成了现在的纯Swift版本。对于使用Swift开发的人员，直接仿照Demo操作即可。如果你是用Swift开发的，那下面的内容你可以不用看了。接下来我就讲一下针对OC引用DF">
+<meta name="twitter:description" content="这里主要参考这个项目：iOS-nRF-Toolbox，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-1afdc502de9bec75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">34</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">35</span></a>
 
   </li>
         
@@ -483,7 +483,7 @@
       
         <p><img src="http://upload-images.jianshu.io/upload_images/1059465-1afdc502de9bec75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Nordic.png"></p>
 <blockquote>
-<p>这里主要参考这个项目：<a href="https://github.com/NordicSemiconductor/IOS-nRF-Toolbox" target="_blank" rel="noopener">iOS-nRF-Toolbox</a>，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。</p>
+<p>这里主要参考这个项目：<a href="https://github.com/NordicSemiconductor/IOS-nRF-Toolbox" target="_blank" rel="noopener">iOS-nRF-Toolbox</a>，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。<br><a id="more"></a></p>
 </blockquote>
 <p>项目是用Swift写的，不过之前还是有OC版本的，但是后来由于一些**（不可描述的问题），才变成了现在的纯Swift版本。对于使用Swift开发的人员，直接仿照Demo操作即可。如果你是用Swift开发的，那下面的内容你可以不用看了。接下来我就讲一下针对OC引用DFU升级的操作步骤和我遇到的问题。</p>
 <h2 id="代码研究"><a href="#代码研究" class="headerlink" title="代码研究"></a>代码研究</h2><p>nRF-Toolbox项目包含BGM，HRM，HTM，DFU等多个模块，我们今天只关注其中的DFU升级模块。打开项目，在对应的<code>NORDFUViewController.swift</code>中我们能够看到有三个引用库<br><code>import UIKit</code>,<code>import CoreBluetooth</code>,<code>import iOSDFULibrary</code>，这里的<a href="https://github.com/NordicSemiconductor/IOS-Pods-DFU-Library" target="_blank" rel="noopener">iOSDFULibrary</a>就是DFU升级的库，也是解决DFU升级最重要的组件。我们只要把这个库集成到我们的项目中，就能够完成nRF设备的DFU升级了。</p>
@@ -746,7 +746,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -905,7 +905,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">142k</span>
+    <span title="站点总字数">144k</span>
   
 
   
@@ -914,7 +914,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:09</span>
+    <span title="站点阅读时长">2:11</span>
   
 </div>
 
