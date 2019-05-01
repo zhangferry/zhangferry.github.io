@@ -96,20 +96,25 @@
 
 
 
-  <meta name="description" content="关闭隐式动画1234CATransaction.begin()CATransaction.setDisableActions(true)self.layer.frame = self.boundsCATransaction.commit()">
+  <meta name="description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
 <meta name="keywords" content="月报">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS开发月报#1|201807">
-<meta property="og:url" content="http://zhangferry.github.io/2018/08/02/monthly_1/index.html">
+<meta property="og:title" content="iOS开发月报#10|201904">
+<meta property="og:url" content="http://zhangferry.github.io/2019/04/30/monthly_10/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="关闭隐式动画1234CATransaction.begin()CATransaction.setDisableActions(true)self.layer.frame = self.boundsCATransaction.commit()">
+<meta property="og:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ftvc9rh18lj30gu080wk9.jpg">
-<meta property="og:updated_time" content="2019-02-08T13:12:29.679Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190428174837.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190428151857.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190428153423.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190430101209.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190430103042.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190428173326.png">
+<meta property="og:updated_time" content="2019-05-01T01:11:58.015Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS开发月报#1|201807">
-<meta name="twitter:description" content="关闭隐式动画1234CATransaction.begin()CATransaction.setDisableActions(true)self.layer.frame = self.boundsCATransaction.commit()">
-<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ftvc9rh18lj30gu080wk9.jpg">
+<meta name="twitter:title" content="iOS开发月报#10|201904">
+<meta name="twitter:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190428174837.jpg">
 
 
 
@@ -118,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://zhangferry.github.io/2018/08/02/monthly_1/">
+  <link rel="canonical" href="http://zhangferry.github.io/2019/04/30/monthly_10/">
 
 
 
@@ -128,7 +133,7 @@
   };
 </script>
 
-  <title>iOS开发月报#1|201807 | zhangferry</title>
+  <title>iOS开发月报#10|201904 | zhangferry</title>
   
 
 
@@ -345,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2018/08/02/monthly_1/">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/04/30/monthly_10/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangferry">
@@ -362,7 +367,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">iOS开发月报#1|201807
+          <h2 class="post-title" itemprop="name headline">iOS开发月报#10|201904
 
               
             
@@ -388,7 +393,7 @@
                 
               
 
-              <time title="创建时间：2018-08-02 14:22:32" itemprop="dateCreated datePublished" datetime="2018-08-02T14:22:32+08:00">2018-08-02</time>
+              <time title="创建时间：2019-04-30 14:11:30" itemprop="dateCreated datePublished" datetime="2019-04-30T14:11:30+08:00">2019-04-30</time>
             
 
             
@@ -424,7 +429,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.6k</span>
+                <span title="本文字数">2.9k</span>
               
 
               
@@ -458,25 +463,43 @@
       
 
       
-        <h2 id="关闭隐式动画"><a href="#关闭隐式动画" class="headerlink" title="关闭隐式动画"></a>关闭隐式动画</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">CATransaction</span>.begin()</span><br><span class="line"><span class="type">CATransaction</span>.setDisableActions(<span class="literal">true</span>)</span><br><span class="line"><span class="keyword">self</span>.layer.frame = <span class="keyword">self</span>.bounds</span><br><span class="line"><span class="type">CATransaction</span>.commit()</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题"><a href="#AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题" class="headerlink" title="AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题"></a>AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">player.automaticallyWaitsToMinimizeStalling = <span class="literal">false</span><span class="comment">//延迟播放，默认开</span></span><br></pre></td></tr></table></figure>
-<p>关于这个属性的一些说明：</p>
-<blockquote>
-<p>In versions of iOS prior to iOS 10.0 and versions of OS X prior to 10.12, this property is unavailable, and the behavior of the AVPlayer corresponds to the type of content being played. For streaming content, including HTTP Live Streaming, the AVPlayer acts as if automaticallyWaitsToMinimizeStalling is YES. For file-based content, including file-based content accessed via progressive http download, the AVPlayer acts as if automaticallyWaitsToMinimizeStalling is NO.</p>
-</blockquote>
-<p>大致是说在iOS10之前的客户端，虽然这个参数不可用，但是非流媒体类型的播放这个配置默认为false，所以在iOS10下建议这个属性值为false。</p>
-<h2 id="AVPlayer是否正在播放的判断"><a href="#AVPlayer是否正在播放的判断" class="headerlink" title="AVPlayer是否正在播放的判断"></a>AVPlayer是否正在播放的判断</h2><p>当我们使用KVO监听player.rate来判断player的是否正在播放时，会发现这个值是不准的。其实准确的说是<code>player.rate=1</code>不代表正在播放，<code>player.rate=0</code>是可以代表正在暂停的。所以<code>player.rate=0</code>代表暂停，正在播放的状态可以这样判断：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.timeObserve = <span class="keyword">self</span>.player.addPeriodicTimeObserver(forInterval: <span class="type">CMTimeMake</span>(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">queue: <span class="type">DispatchQueue</span>.main,</span><br><span class="line">using: &#123;(time) <span class="keyword">in</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">self</span>.player.timeControlStatus == <span class="type">AVPlayerTimeControlStatus</span>.playing &#123;</span><br><span class="line"><span class="comment">//AVPlayerTimeControlStatus为iOS之后的API</span></span><br><span class="line"><span class="keyword">self</span>.state = .playing</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h2 id="下载时URLSessionConfiguration的配置"><a href="#下载时URLSessionConfiguration的配置" class="headerlink" title="下载时URLSessionConfiguration的配置"></a>下载时URLSessionConfiguration的配置</h2><p>使用Alamofire下载时，我们通常需要一个<code>SessionManager</code>配置下载参数：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> configuration = <span class="type">URLSessionConfiguration</span>.<span class="keyword">default</span></span><br><span class="line">configuration.timeoutIntervalForRequest = <span class="number">50</span><span class="comment">//50s超时</span></span><br><span class="line"><span class="comment">/** 最大同时下载数 ---- iOS对于同一个IP服务器的并发最大默认为4，OS X为6 */</span></span><br><span class="line">configuration.httpMaximumConnectionsPerHost = <span class="number">4</span></span><br><span class="line"><span class="comment">/** A Boolean value that indicates whether TCP connections should be kept open when the app moves to the background. */</span></span><br><span class="line">configuration.shouldUseExtendedBackgroundIdleMode = <span class="literal">true</span><span class="comment">//为true支持后台下载</span></span><br><span class="line">manager = <span class="type">Alamofire</span>.<span class="type">SessionManager</span>(configuration: configuration)</span><br></pre></td></tr></table></figure></p>
-<h2 id="不要存储沙盒绝对地址"><a href="#不要存储沙盒绝对地址" class="headerlink" title="不要存储沙盒绝对地址"></a>不要存储沙盒绝对地址</h2><p>当我们向沙盒写入数据时，将该绝对路径保存下来，下次再打开该地址并不会获取到我们存入的数据。原因如下：</p>
-<p>iOS8之后，苹果添加的新特性，将每次打开app内的沙盒［唯一编码路径］（红框部分）重新生成，并保持上一次的沙盒文件（Documents、Library、tmp）移到新生成的文件内，旧文件删除，就是说，你保存的文件都在，只不过每次打开后，都会有一个新的绝对路径。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ftvc9rh18lj30gu080wk9.jpg" alt="localPath.png"><br>所以存储路径应该存相对路径：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这两个都代表document的相对路径</span></span><br><span class="line"><span class="keyword">let</span> rootPath = <span class="type">NSHomeDirectory</span>() + <span class="string">"/Documents/"</span></span><br><span class="line"><span class="keyword">let</span> rootPath = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.documentDirectory, .userDomainMask, <span class="literal">true</span>).first</span><br></pre></td></tr></table></figure></p>
-<h2 id="childViewController的viewDidAppear方法调用"><a href="#childViewController的viewDidAppear方法调用" class="headerlink" title="childViewController的viewDidAppear方法调用"></a>childViewController的viewDidAppear方法调用</h2><p>如果一个ViewController中嵌套了多个childViewController。当宿主VC（我们暂且这么称呼它）调用viewDidAppear等方法时，其中的childViewController都会默认调用对应方法。如果我们不想childViewController调用该方法可以重写该VC的属性：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="keyword">var</span> shouldAutomaticallyForwardAppearanceMethods: <span class="type">Bool</span> &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="图片切换渐入渐出的方法"><a href="#图片切换渐入渐出的方法" class="headerlink" title="图片切换渐入渐出的方法"></a>图片切换渐入渐出的方法</h2><p>通过<code>UIImageView</code>展示图片和<code>layer.contents</code>展示图片都可以使用以下方法：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let transition = <span class="built_in">CATransition</span>()</span><br><span class="line">transition.duration = <span class="number">0.5</span></span><br><span class="line">transition.type = kCATransitionFade</span><br><span class="line"><span class="keyword">self</span>.view.layer.add(transition, forKey: <span class="string">"layer.contents"</span>)</span><br><span class="line"><span class="keyword">self</span>.view.layer.contents = image.cgImage<span class="comment">//适用于imageView</span></span><br></pre></td></tr></table></figure>
-<h2 id="cell移出视图，移入视图的方法"><a href="#cell移出视图，移入视图的方法" class="headerlink" title="cell移出视图，移入视图的方法"></a>cell移出视图，移入视图的方法</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//TableViewCell</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prepareForReuse</span><span class="params">()</span></span> &#123;</span><br><span class="line"><span class="keyword">super</span>.prepareForReuse()<span class="comment">//使用重用池的cell,显示过的cell移至可视范围</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//TableView</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath)</span></span> &#123;</span><br><span class="line"><span class="comment">//cell移出视图时调用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="tableview-collectionView数据reload之后的操作"><a href="#tableview-collectionView数据reload之后的操作" class="headerlink" title="tableview,collectionView数据reload之后的操作"></a>tableview,collectionView数据reload之后的操作</h2><p>我们如果要想实现在reload之后弹出alertView，或者滚动到特定一行，可能会直接写：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tableView.reloadData()</span><br><span class="line">tableView.scrollToRow(at: indexPath, at: .middle, animated: <span class="literal">true</span>)</span><br></pre></td></tr></table></figure></p>
-<p>看似没问题，但是滚动没起作用，因为reloadData是立即返回的，不会等tableview刷新完成。<br>解决办法就是需要等reload完成之后再做我们需要的操作，reload是否完成有几种方式监听：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//collectionView</span></span><br><span class="line">collectionView.performBatchUpdates(<span class="literal">nil</span>) &#123; (finished) <span class="keyword">in</span></span><br><span class="line">    <span class="comment">//reload完成</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//tableView方法只有iOS11可用</span></span><br><span class="line">tableView.performBatchUpdates(<span class="literal">nil</span>) &#123; (finished) <span class="keyword">in</span></span><br><span class="line">    <span class="comment">//reload完成</span></span><br><span class="line">&#125;<span class="comment">//替代func beginUpdates()，func endUpdates()</span></span><br><span class="line"><span class="comment">//tableView等reload完成还可以使用</span></span><br><span class="line">tableView.reloadData()</span><br><span class="line"><span class="type">DispatchQueue</span>.main.async &#123;</span><br><span class="line">    <span class="comment">//reload完成</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。</p>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190428174837.jpg" alt=""><br><a id="more"></a></p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="关于分享中的一些问题"><a href="#关于分享中的一些问题" class="headerlink" title="关于分享中的一些问题"></a>关于分享中的一些问题</h3><p><strong>微博</strong></p>
+<ul>
+<li>多媒体内容的缩略图，即thumbnialData的大小应小于32K。否则会导致分享失败</li>
+<li>微博分享的AppStore下载链接无法打开，这是因为微博屏蔽了指向AppStore的链接。一个可行的做法的将微博的下载链接增加一个引导页，提醒用户通过Safari打开。</li>
+</ul>
+<p><strong>微信</strong></p>
+<ul>
+<li>多媒体缩略图不能超过64K。</li>
+<li>微信分享从6.7.2之后无法获知是否真的分享成功。这个是官方的调整，旨在减少“强制分享至不同群”等滥用分享能力。</li>
+</ul>
+<p><strong>facebook</strong><br>关于facebook分享的采坑可以查看这篇文章，基本也都是我遇到的问题。<a href="https://www.jianshu.com/p/0e9c73e310c8" target="_blank" rel="noopener">iOS Facebook 分享中的坑</a></p>
+<p><strong>Twitter</strong><br>相同内容分享两次之后再分享将失败。</p>
+<h3 id="SWIFT-VERSION-‘5-0’-is-unsupported-supported-versions-are-3-0-4-0-4-2-in-target-‘SwiftyJSON’"><a href="#SWIFT-VERSION-‘5-0’-is-unsupported-supported-versions-are-3-0-4-0-4-2-in-target-‘SwiftyJSON’" class="headerlink" title="SWIFT_VERSION ‘5.0’ is unsupported, supported versions are: 3.0, 4.0, 4.2. (in target ‘SwiftyJSON’)"></a>SWIFT_VERSION ‘5.0’ is unsupported, supported versions are: 3.0, 4.0, 4.2. (in target ‘SwiftyJSON’)</h3><p>这个问题是多人写作开发引起的，有一个同事将<code>SwiftJSON</code>的版本升级至4.3.0，使其支持Swift5.0，但是Swift5.0跟Swift4.0+不兼容，导致出现上面的错误提示。</p>
+<p>修复方式，手动指定<code>SwiftJSON</code>版本，使其低于或者等于4.2.0。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod <span class="string">'SwiftyJSON'</span>, <span class="string">'~&gt; 4.2.0'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Encountered-an-unknown-error-Unable-to-find-a-specification-for-FrameworkA-depended-upon-by-FrameworkB"><a href="#Encountered-an-unknown-error-Unable-to-find-a-specification-for-FrameworkA-depended-upon-by-FrameworkB" class="headerlink" title="Encountered an unknown error (Unable to find a specification for FrameworkA depended upon by FrameworkB"></a>Encountered an unknown error (Unable to find a specification for FrameworkA depended upon by FrameworkB</h3><p><code>FrameworkA</code>和<code>FrameworkB</code>都是私有的<code>Cocoapods</code>库，在制作<code>FrameworkA</code>时引用了<code>FrameworkB</code>，如果执行<code>pod spec lint</code>就会出现如上的提示，到时lint无法通过。</p>
+<p>这是因为lint在对引用库验证时，默认只验证官网的仓库，我们需要手动添加验证源才能通过，方法是：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod spec lint --sources=git@bitbucket.<span class="symbol">org:</span>company/privateRepo.git,<span class="symbol">https:</span>/<span class="regexp">/github.com/</span>CocoaPods/Specs --allow-warnings</span><br></pre></td></tr></table></figure></p>
+<h3 id="Tabbar的初始化会立即调用viewDidLoad方法"><a href="#Tabbar的初始化会立即调用viewDidLoad方法" class="headerlink" title="Tabbar的初始化会立即调用viewDidLoad方法"></a>Tabbar的初始化会立即调用viewDidLoad方法</h3><p>正常当我们初始一个<code>UIViewController</code>的时候，总是先执行<code>init</code>方法，执行完之后才会调用<code>viewDidLoad</code>方法。但是如果是<code>UITabbarViewController</code>的初始化则不同，它会在执行<code>init</code>方法的时候立即调用<code>viewDidLoad</code>。</p>
+<p>来自Stack Overflow的解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UITabBarControllers call loadView inside [super init] method, which causes the call to viewDidLoad. So the viewDidLoad method will be called before init has finished its job.</span><br><span class="line"></span><br><span class="line">If you have some thing to setup in viewDidLoad you should perhaps do it inside init method after the call to [super init].</span><br></pre></td></tr></table></figure></p>
+<h3 id="AppleScript打印换行"><a href="#AppleScript打印换行" class="headerlink" title="AppleScript打印换行"></a>AppleScript打印换行</h3><p>当我使用AppleScript编辑一段脚本时，有一个需求是打印一段换行的文本，试了很多方案，包括<code>\n</code>,<code>\r</code>, <code>ASCII码</code>等都不行，脚本执行时会忽略<code>\</code>符合自动换行，分开执行输入内容。</p>
+<p>最后在不断尝试中找到了一种方案，直接敲出换行，如下，在变量<code>_input</code>后拼接一个换行符：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tell</span> note1 <span class="keyword">to</span> append <span class="built_in">text</span> <span class="string">"[*]"</span> &amp; _input &amp; <span class="string">"</span></span><br><span class="line"><span class="string">"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="由于第三方SDK使用了用于定位的功能，导致收到苹果的隐私警告邮件"><a href="#由于第三方SDK使用了用于定位的功能，导致收到苹果的隐私警告邮件" class="headerlink" title="由于第三方SDK使用了用于定位的功能，导致收到苹果的隐私警告邮件"></a>由于第三方SDK使用了用于定位的功能，导致收到苹果的隐私警告邮件</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190428151857.png" alt=""><br>后来定位的到的原因是<code>Facebook</code>相关的几个库均使用了<code>CoreLocation</code>，也就是说<code>Facebook</code>有偷偷使用用户地理位置权限的嫌疑。当然联系他们提供不带此功能的SDK也不显示，后来在react的issuse中也发现了对于此问题的讨论。<a href="https://github.com/facebook/react-native/issues/20879" target="_blank" rel="noopener">#20879</a></p>
+<p>解决方案如下，即增加对应的隐私条款选项：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190428153423.png" alt=""></p>
+<h3 id="违反Guideline2-3-1被打回"><a href="#违反Guideline2-3-1被打回" class="headerlink" title="违反Guideline2.3.1被打回"></a>违反Guideline2.3.1被打回</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190430101209.png" alt=""><br>在一次小版本提交时，遇到了这个违反Guideline2.3.1被打回的问题，也是第一次遇到。原因描述是含有模糊代码，选择器错误或者误导审核的功能。实际排查中我们并未猜想到哪里可能导致这些问题。</p>
+<p>后来通过邮件跟审核人员沟通，得到如下回复：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190430103042.png" alt=""><br>问题又好了？猜想可能是苹果审核的问题，他们也是会犯错误的。</p>
+<p>后来在网上查过这种问题的处理情况，从资料时间来看，可以确定这个是最近一年才出现过的问题。处理方法是，首先是应该跟审核人员联系，让他们告知是哪里的问题；然后再根据情况进行修改。</p>
+<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><h3 id="作为面试官，哪类-iOS-开发更容易被你青睐？"><a href="#作为面试官，哪类-iOS-开发更容易被你青睐？" class="headerlink" title="作为面试官，哪类 iOS 开发更容易被你青睐？"></a><a href="https://mp.weixin.qq.com/s/IpbKUX7562uGA9caYdV-3w" target="_blank" rel="noopener">作为面试官，哪类 iOS 开发更容易被你青睐？</a></h3><p>来自老司机团队的文章，正在找工作的你肯定能从中有所收获。</p>
+<p>再贴一个我司的<a href="https://zhangferry.com/2019/04/12/ios-interview/" target="_blank" rel="noopener">招聘信息</a>，有意愿的小伙伴赶紧简历投过来。</p>
+<h3 id="用户端智能的应用实践"><a href="#用户端智能的应用实践" class="headerlink" title="用户端智能的应用实践"></a><a href="http://blog.cnbang.net/tech/3643/" target="_blank" rel="noopener">用户端智能的应用实践</a></h3><p>bang写的关于应用功能优化的几个点，根据用户的特征推荐金额，根据用户使用习惯调整push的时间，有些方案不一定能够为我们所用但是解决问题的思路还是挺不错的。</p>
+<h3 id="谈Linux，Windows-和Mac"><a href="#谈Linux，Windows-和Mac" class="headerlink" title="谈Linux，Windows,和Mac"></a><a href="http://www.yinwang.org/blog-cn/2013/03/07/linux-windows-mac" target="_blank" rel="noopener">谈Linux，Windows,和Mac</a></h3><p><a href="http://www.yinwang.org/" target="_blank" rel="noopener">王垠</a>的博客其实已经被删除了，这个是网络留存的快照文件。牛B的人总是能留下牛B的话，这是王垠关于Linux、Windows和Mac的看法。</p>
+<h3 id="Swift语言的设计错误"><a href="#Swift语言的设计错误" class="headerlink" title="Swift语言的设计错误"></a><a href="http://www.yinwang.org/blog-cn/2016/06/06/swift" target="_blank" rel="noopener">Swift语言的设计错误</a></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> shoppingList = [<span class="string">"Eggs"</span>, <span class="string">"Milk"</span>]</span><br><span class="line"><span class="comment">//这么写应不应该报错？</span></span><br><span class="line">shoppingList[<span class="number">0</span>] = <span class="string">"Salad"</span></span><br></pre></td></tr></table></figure>
+<p>关于以上问题的讨论。当前Swift是不允许对<code>let</code>生命的数字修改内部元素的。在王垠看来这是一个低级的错误，具体为什么这么定义“不对”，可以看文章讨论。</p>
+<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="iOS-Source-Probe"><a href="#iOS-Source-Probe" class="headerlink" title="iOS-Source-Probe"></a><a href="https://github.com/Desgard/iOS-Source-Probe" target="_blank" rel="noopener">iOS-Source-Probe</a></h3><p>iOS源码探求系列，是iOS相关源码的分析合集。</p>
+<h3 id="AutoInch"><a href="#AutoInch" class="headerlink" title="AutoInch"></a><a href="https://github.com/lixiang1994/AutoInch" target="_blank" rel="noopener">AutoInch</a></h3><p>优雅的iPhone全尺寸/等比例精准适配工具，可以通过设置一个屏幕的尺寸值，而自动配置其他尺寸值。支持代码和xib两种方式。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190428173326.png" alt=""></p>
+<h3 id="SwiftTips"><a href="#SwiftTips" class="headerlink" title="SwiftTips"></a><a href="https://github.com/Luur/SwiftTips" target="_blank" rel="noopener">SwiftTips</a></h3><p>作者总结的Swift使用中的一些小技巧，和喵神的<a href="https://leanpub.com/swifter" target="_blank" rel="noopener">《100 个 Swift 必备 tips》</a>有异曲同工之妙。作为一名刚入门的Swifter，这两个资料都是非常推荐看一看的。</p>
+<h3 id="ZFPlayer"><a href="#ZFPlayer" class="headerlink" title="ZFPlayer"></a><a href="https://github.com/renzifeng/ZFPlayer" target="_blank" rel="noopener">ZFPlayer</a></h3><p>非常全面的一款iOS播放器，支持AVPlayer和ijkplayer两种播放模块。项目包含主流的视频播放场景，抖音、微博短视频等样式。如果是对视频功能有需求的小伙伴非常建议看一看。</p>
 
       
     </div>
@@ -537,8 +560,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/17/UIButton-detail/" rel="next" title="可能被忽略的UIButton细节">
-                <i class="fa fa-chevron-left"></i> 可能被忽略的UIButton细节
+              <a href="/2019/04/12/ios-interview/" rel="next" title="一则iOS招聘信息">
+                <i class="fa fa-chevron-left"></i> 一则iOS招聘信息
               </a>
             
           </div>
@@ -546,10 +569,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/06/201807-summary/" rel="prev" title="2018年七月">
-                2018年七月 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -752,7 +771,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭隐式动画"><span class="nav-number">1.</span> <span class="nav-text">关闭隐式动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题"><span class="nav-number">2.</span> <span class="nav-text">AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AVPlayer是否正在播放的判断"><span class="nav-number">3.</span> <span class="nav-text">AVPlayer是否正在播放的判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载时URLSessionConfiguration的配置"><span class="nav-number">4.</span> <span class="nav-text">下载时URLSessionConfiguration的配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不要存储沙盒绝对地址"><span class="nav-number">5.</span> <span class="nav-text">不要存储沙盒绝对地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#childViewController的viewDidAppear方法调用"><span class="nav-number">6.</span> <span class="nav-text">childViewController的viewDidAppear方法调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片切换渐入渐出的方法"><span class="nav-number">7.</span> <span class="nav-text">图片切换渐入渐出的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cell移出视图，移入视图的方法"><span class="nav-number">8.</span> <span class="nav-text">cell移出视图，移入视图的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tableview-collectionView数据reload之后的操作"><span class="nav-number">9.</span> <span class="nav-text">tableview,collectionView数据reload之后的操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">1.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于分享中的一些问题"><span class="nav-number">1.1.</span> <span class="nav-text">关于分享中的一些问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SWIFT-VERSION-‘5-0’-is-unsupported-supported-versions-are-3-0-4-0-4-2-in-target-‘SwiftyJSON’"><span class="nav-number">1.2.</span> <span class="nav-text">SWIFT_VERSION ‘5.0’ is unsupported, supported versions are: 3.0, 4.0, 4.2. (in target ‘SwiftyJSON’)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Encountered-an-unknown-error-Unable-to-find-a-specification-for-FrameworkA-depended-upon-by-FrameworkB"><span class="nav-number">1.3.</span> <span class="nav-text">Encountered an unknown error (Unable to find a specification for FrameworkA depended upon by FrameworkB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tabbar的初始化会立即调用viewDidLoad方法"><span class="nav-number">1.4.</span> <span class="nav-text">Tabbar的初始化会立即调用viewDidLoad方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AppleScript打印换行"><span class="nav-number">1.5.</span> <span class="nav-text">AppleScript打印换行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#由于第三方SDK使用了用于定位的功能，导致收到苹果的隐私警告邮件"><span class="nav-number">1.6.</span> <span class="nav-text">由于第三方SDK使用了用于定位的功能，导致收到苹果的隐私警告邮件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#违反Guideline2-3-1被打回"><span class="nav-number">1.7.</span> <span class="nav-text">违反Guideline2.3.1被打回</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐阅读"><span class="nav-number">2.</span> <span class="nav-text">推荐阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作为面试官，哪类-iOS-开发更容易被你青睐？"><span class="nav-number">2.1.</span> <span class="nav-text">作为面试官，哪类 iOS 开发更容易被你青睐？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户端智能的应用实践"><span class="nav-number">2.2.</span> <span class="nav-text">用户端智能的应用实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#谈Linux，Windows-和Mac"><span class="nav-number">2.3.</span> <span class="nav-text">谈Linux，Windows,和Mac</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swift语言的设计错误"><span class="nav-number">2.4.</span> <span class="nav-text">Swift语言的设计错误</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音视频"><span class="nav-number">3.</span> <span class="nav-text">音视频</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github"><span class="nav-number">4.</span> <span class="nav-text">Github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS-Source-Probe"><span class="nav-number">4.1.</span> <span class="nav-text">iOS-Source-Probe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AutoInch"><span class="nav-number">4.2.</span> <span class="nav-text">AutoInch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SwiftTips"><span class="nav-number">4.3.</span> <span class="nav-text">SwiftTips</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZFPlayer"><span class="nav-number">4.4.</span> <span class="nav-text">ZFPlayer</span></a></li></ol></li></ol></div>
             
 
           </div>
