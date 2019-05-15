@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2019-05-01T01:11:58.015Z</updated>
+  <updated>2019-05-11T13:54:35.495Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【译】iOS13新特性抢鲜看</title>
+    <link href="http://zhangferry.github.io/2019/05/10/iOS13_new_features/"/>
+    <id>http://zhangferry.github.io/2019/05/10/iOS13_new_features/</id>
+    <published>2019-05-10T02:00:34.000Z</published>
+    <updated>2019-05-11T13:54:35.495Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.macrumors.com/roundup/ios-13/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文链接&lt;/a&gt;&lt;br&gt;作者：MacRumors
+        
+      
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS开发月报#10|201904</title>
     <link href="http://zhangferry.github.io/2019/04/30/monthly_10/"/>
     <id>http://zhangferry.github.io/2019/04/30/monthly_10/</id>
     <published>2019-04-30T06:11:30.000Z</published>
-    <updated>2019-05-01T01:11:58.015Z</updated>
+    <updated>2019-05-11T04:48:01.520Z</updated>
     
     <summary type="html">
     
@@ -40,7 +65,7 @@
     <link href="http://zhangferry.github.io/2019/04/12/ios-interview/"/>
     <id>http://zhangferry.github.io/2019/04/12/ios-interview/</id>
     <published>2019-04-12T13:48:34.000Z</published>
-    <updated>2019-05-01T01:11:19.275Z</updated>
+    <updated>2019-05-11T04:48:01.520Z</updated>
     
     <summary type="html">
     
@@ -58,7 +83,7 @@
     <link href="http://zhangferry.github.io/2019/03/31/monthly_9/"/>
     <id>http://zhangferry.github.io/2019/03/31/monthly_9/</id>
     <published>2019-03-31T13:30:57.000Z</published>
-    <updated>2019-05-01T01:11:19.278Z</updated>
+    <updated>2019-05-11T04:48:01.521Z</updated>
     
     <summary type="html">
     
@@ -76,7 +101,7 @@
     <link href="http://zhangferry.github.io/2019/03/31/996-ICU/"/>
     <id>http://zhangferry.github.io/2019/03/31/996-ICU/</id>
     <published>2019-03-31T12:00:34.000Z</published>
-    <updated>2019-05-01T01:11:19.266Z</updated>
+    <updated>2019-05-11T04:48:01.518Z</updated>
     
     <summary type="html">
     
@@ -95,7 +120,7 @@
     <link href="http://zhangferry.github.io/2019/02/28/monthly_8/"/>
     <id>http://zhangferry.github.io/2019/02/28/monthly_8/</id>
     <published>2019-02-28T02:30:57.000Z</published>
-    <updated>2019-05-01T01:11:19.277Z</updated>
+    <updated>2019-05-11T04:48:01.521Z</updated>
     
     <summary type="html">
     
@@ -113,7 +138,7 @@
     <link href="http://zhangferry.github.io/2019/02/27/digest_introduction/"/>
     <id>http://zhangferry.github.io/2019/02/27/digest_introduction/</id>
     <published>2019-02-27T02:54:57.000Z</published>
-    <updated>2019-05-01T01:11:19.270Z</updated>
+    <updated>2019-05-11T04:48:01.519Z</updated>
     
     <summary type="html">
     
@@ -131,7 +156,7 @@
     <link href="http://zhangferry.github.io/2019/02/20/figure_bed_github/"/>
     <id>http://zhangferry.github.io/2019/02/20/figure_bed_github/</id>
     <published>2019-02-20T02:54:57.000Z</published>
-    <updated>2019-05-01T01:11:19.273Z</updated>
+    <updated>2019-05-11T04:48:01.520Z</updated>
     
     <summary type="html">
     
@@ -149,7 +174,7 @@
     <link href="http://zhangferry.github.io/2019/01/31/monthly_7/"/>
     <id>http://zhangferry.github.io/2019/01/31/monthly_7/</id>
     <published>2019-01-31T02:54:57.000Z</published>
-    <updated>2019-05-01T01:11:19.277Z</updated>
+    <updated>2019-05-11T04:48:01.521Z</updated>
     
     <summary type="html">
     
@@ -168,7 +193,7 @@
     <link href="http://zhangferry.github.io/2019/01/02/monthly_6/"/>
     <id>http://zhangferry.github.io/2019/01/02/monthly_6/</id>
     <published>2019-01-02T02:54:57.000Z</published>
-    <updated>2019-05-01T01:11:19.276Z</updated>
+    <updated>2019-05-11T04:48:01.520Z</updated>
     
     <summary type="html">
     
@@ -186,7 +211,7 @@
     <link href="http://zhangferry.github.io/2019/01/01/2018-year-summary/"/>
     <id>http://zhangferry.github.io/2019/01/01/2018-year-summary/</id>
     <published>2019-01-01T15:22:25.000Z</published>
-    <updated>2019-05-01T01:11:19.265Z</updated>
+    <updated>2019-05-11T04:48:01.518Z</updated>
     
     <summary type="html">
     
@@ -223,7 +248,7 @@
     <link href="http://zhangferry.github.io/2018/11/26/avplayer-supported-format/"/>
     <id>http://zhangferry.github.io/2018/11/26/avplayer-supported-format/</id>
     <published>2018-11-26T08:27:50.000Z</published>
-    <updated>2019-05-01T01:11:19.267Z</updated>
+    <updated>2019-05-11T04:48:01.519Z</updated>
     
     <summary type="html">
     
@@ -363,30 +388,6 @@
     
       &lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1059465-ab8debcc283dcc57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;cocoapods.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;CocoaPods是OS X和iOS下的一个第三方开源类库管理工具，通过CocoaPods工具我们可以为项目添加依赖库（这些类库必须是CocoaPods本身所支持的），并且可以轻松管理其版本。它是目前iOS开发中使用最广泛的开源库管理工具，如果我们内部协作的组件化能够使用这种方式管理的话，那将是很便利的。&lt;br&gt;在通过Cocoapods建立内部私有库之前，我们需要再熟悉下Cocoapods的工作流程，我们创建内部私有库时也会依照这个流程来。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS技能图谱</title>
-    <link href="http://zhangferry.github.io/2018/08/09/skill-map/"/>
-    <id>http://zhangferry.github.io/2018/08/09/skill-map/</id>
-    <published>2018-08-09T06:47:34.000Z</published>
-    <updated>2019-02-08T13:30:05.429Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;结合目前遇到过的一些技术点和唐巧的&lt;a href=&quot;https://gist.github.com/tangqiaoboy/5fadd9ba398277680b87&quot; target=&quot;_blank&quot;
-        
-      
     
     </summary>
     
