@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2019-05-17T15:16:35.990Z</updated>
+  <updated>2019-06-08T10:00:34.044Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS开发月报#11|201905</title>
+    <link href="http://zhangferry.github.io/2019/06/03/monthly_11/"/>
+    <id>http://zhangferry.github.io/2019/06/03/monthly_11/</id>
+    <published>2019-06-03T02:54:57.000Z</published>
+    <updated>2019-06-08T10:00:34.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。&lt;br&gt;欢迎推荐内容，可以前往&lt;a href=&quot;https://github.com/zhangferry/iOSMonthlyReport&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>将黑苹果系统升级至macOS 10.14.4(Mojave)</title>
@@ -378,26 +402,6 @@
     
     
       <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《精进》阅后总结</title>
-    <link href="http://zhangferry.github.io/2018/09/02/jingjin-read-summary/"/>
-    <id>http://zhangferry.github.io/2018/09/02/jingjin-read-summary/</id>
-    <published>2018-09-02T15:20:33.000Z</published>
-    <updated>2019-05-17T15:23:26.325Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1059465-6b6566e95596f8a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;精进.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;最近刚看完采铜的这本《精进-如何成为一个很厉害的人》，一本很值得推荐的书。这种讲述如何学习，如何自我提升的书很容易一不小心写成空洞的心灵鸡汤。然而我在实际阅读中根本没有这种想法，因为它专业性很强，我感受到的是作者的博学和诚意，还有经常性的好像被点拨了一下的惊喜。没有深入的思考和深厚的学术功底是写不出这种书，推荐大家有机会也仔细地读一读。&lt;br&gt;阅读过程中画了很多自己受启发的观点，也可以说是我读到的这本书中的精华部分，摘录了下来。全书分七个章节，逐一讲述如何成为一个很厉害的人：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1059465-53a1ff8e7834d421.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;image.png&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="阅读" scheme="http://zhangferry.github.io/tags/%E9%98%85%E8%AF%BB/"/>
     
   </entry>
   
