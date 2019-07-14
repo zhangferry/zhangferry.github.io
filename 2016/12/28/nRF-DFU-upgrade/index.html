@@ -99,7 +99,7 @@
   <meta name="description" content="这里主要参考这个项目：iOS-nRF-Toolbox，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。">
 <meta name="keywords" content="蓝牙,DFU">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nRF芯片设备DFU升级（适配Xcode10.1）">
+<meta property="og:title" content="nRF芯片设备DFU升级（适配Xcode10.2.1）">
 <meta property="og:url" content="http://zhangferry.github.io/2016/12/28/nRF-DFU-upgrade/index.html">
 <meta property="og:site_name" content="zhangferry">
 <meta property="og:description" content="这里主要参考这个项目：iOS-nRF-Toolbox，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。">
@@ -110,9 +110,10 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-914a66ffc635ced8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-7b4336365cd8afc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-9a9dbc9595473841.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-05-17T15:23:26.363Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/9fd65f10e4416cff5fe61ea9cf1ca4f0.jpg">
+<meta property="og:updated_time" content="2019-07-14T03:16:34.021Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nRF芯片设备DFU升级（适配Xcode10.1）">
+<meta name="twitter:title" content="nRF芯片设备DFU升级（适配Xcode10.2.1）">
 <meta name="twitter:description" content="这里主要参考这个项目：iOS-nRF-Toolbox，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-1afdc502de9bec75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
@@ -133,7 +134,7 @@
   };
 </script>
 
-  <title>nRF芯片设备DFU升级（适配Xcode10.1） | zhangferry</title>
+  <title>nRF芯片设备DFU升级（适配Xcode10.2.1） | zhangferry</title>
   
 
 
@@ -367,7 +368,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">nRF芯片设备DFU升级（适配Xcode10.1）
+          <h2 class="post-title" itemprop="name headline">nRF芯片设备DFU升级（适配Xcode10.2.1）
 
               
             
@@ -447,7 +448,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.7k</span>
+                <span title="本文字数">7.1k</span>
               
 
               
@@ -487,7 +488,7 @@
 </blockquote>
 <p>项目是用Swift写的，不过之前还是有OC版本的，但是后来由于一些**（不可描述的问题），才变成了现在的纯Swift版本。对于使用Swift开发的人员，直接仿照Demo操作即可。如果你是用Swift开发的，那下面的内容你可以不用看了。接下来我就讲一下针对OC引用DFU升级的操作步骤和我遇到的问题。</p>
 <h2 id="代码研究"><a href="#代码研究" class="headerlink" title="代码研究"></a>代码研究</h2><p>nRF-Toolbox项目包含BGM，HRM，HTM，DFU等多个模块，我们今天只关注其中的DFU升级模块。打开项目，在对应的<code>NORDFUViewController.swift</code>中我们能够看到有三个引用库<br><code>import UIKit</code>,<code>import CoreBluetooth</code>,<code>import iOSDFULibrary</code>，这里的<a href="https://github.com/NordicSemiconductor/IOS-Pods-DFU-Library" target="_blank" rel="noopener">iOSDFULibrary</a>就是DFU升级的库，也是解决DFU升级最重要的组件。我们只要把这个库集成到我们的项目中，就能够完成nRF设备的DFU升级了。</p>
-<p>##集成步骤<br>有两种方案集成：</p>
+<h2 id="集成步骤"><a href="#集成步骤" class="headerlink" title="集成步骤"></a>集成步骤</h2><p>有两种方案集成：</p>
 <ul>
 <li>通过cocoapods集成</li>
 <li>编译出framework然后把库导入项目</li>
@@ -513,27 +514,11 @@ github &quot;marmelroy/Zip&quot; ~&gt; 0.6
 <p><a href="https://github.com/Carthage/Carthage#installing-carthage" target="_blank" rel="noopener">carthage</a>是一种和cocoapods相似的的类库管理工具，如果不会使用的话可以参照Demo，将framework文件导入到自己的项目。</p>
 <p><strong>第二步、导入framework</strong><br>Target-&gt;General<br><img src="http://upload-images.jianshu.io/upload_images/1059465-9633f3e7feab7f5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="128F494E-C863-49E7-AC44-A7B53B3EB463.png"></p>
 <p>直接拖入项目默认只会导入到<code>Linked Frameworks and Libraries</code>，我们还需要在Embeded Binaries中引入。</p>
-<p><strong>第三步、使用iOSDFULibrary</strong></p>
-<pre><code>//create a DFUFirmware object using a NSURL to a Distribution Packer(ZIP)
-DFUFirmware *selectedFirmware = [[DFUFirmware alloc] initWithUrlToZipFile:url];// or
-//Use the DFUServiceInitializer to initialize the DFU process.
-DFUServiceInitiator *initiator = [[DFUServiceInitiator alloc] initWithCentralManager: centralManager target:selectedPeripheral];
-[initiator withFirmware:selectedFirmware];
-// Optional:
-// initiator.forceDfu = YES/NO; // default NO
-// initiator.packetReceiptNotificationParameter = N; // default is 12
-initiator.logger = self; // - to get log info
-initiator.delegate = self; // - to be informed about current state and errors 
-initiator.progressDelegate = self; // - to show progress bar
-// initiator.peripheralSelector = ... // the default selector is used
-
- DFUServiceController *controller = [initiator start];
-</code></pre><p>库中有三个代理方法<code>DFUProgressDelegate</code>，<code>DFUServiceDelegate</code>，<code>LoggerDelegate</code>，它们的作用分别为监视DFU升级进度，DFU升级及蓝牙连接状态，打印状态日志。</p>
-<p>##常见问题<br>1、<strong>selectedFirmware返回nil</strong></p>
-<pre><code>DFUFirmware *selectedFirmware = [[DFUFirmware alloc] initWithUrlToZipFile:url];
-</code></pre><p>需要在<code>General</code>的<code>Embeded Binaries</code>选项卡里导入那<code>Zip.framework</code>和<code>iOSDFULibrary.framework</code><br>2、<strong>崩溃报错</strong></p>
-<pre><code>dyld: Library not loaded: @rpath/libswiftCore.dylibReferenced from: /private/var/containers/Bundle/Application/02516D79-BB30-4278-81B8-3F86BF2AE2A7/XingtelBLE.app/Frameworks/iOSDFULibrary.framework/iOSDFULibraryReason: image not found
-</code></pre><p>需要改两个地方<br><img src="http://upload-images.jianshu.io/upload_images/1059465-914a66ffc635ced8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="error1.png"></p>
+<p><strong>第三步、使用iOSDFULibrary</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//create a DFUFirmware object using a NSURL to a Distribution Packer(ZIP)</span><br><span class="line">DFUFirmware *selectedFirmware = [[DFUFirmware alloc] initWithUrlToZipFile:url];// or</span><br><span class="line">//Use the DFUServiceInitializer to initialize the DFU process.</span><br><span class="line">DFUServiceInitiator *initiator = [[DFUServiceInitiator alloc] initWithCentralManager: centralManager target:selectedPeripheral];</span><br><span class="line">[initiator withFirmware:selectedFirmware];</span><br><span class="line">// Optional:</span><br><span class="line">// initiator.forceDfu = YES/NO; // default NO</span><br><span class="line">// initiator.packetReceiptNotificationParameter = N; // default is 12</span><br><span class="line">initiator.logger = self; // - to get log info</span><br><span class="line">initiator.delegate = self; // - to be informed about current state and errors </span><br><span class="line">initiator.progressDelegate = self; // - to show progress bar</span><br><span class="line">// initiator.peripheralSelector = ... // the default selector is used</span><br><span class="line"></span><br><span class="line">DFUServiceController *controller = [initiator start];</span><br></pre></td></tr></table></figure></p>
+<p>库中有三个代理方法<code>DFUProgressDelegate</code>，<code>DFUServiceDelegate</code>，<code>LoggerDelegate</code>，它们的作用分别为监视DFU升级进度，DFU升级及蓝牙连接状态，打印状态日志。</p>
+<p>##常见问题<br>1、<strong>selectedFirmware返回nil</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DFUFirmware *selectedFirmware = [[DFUFirmware alloc] initWithUrlToZipFile:url];</span><br></pre></td></tr></table></figure></p>
+<p>需要在<code>General</code>的<code>Embeded Binaries</code>选项卡里导入那<code>Zip.framework</code>和<code>iOSDFULibrary.framework</code><br>2、<strong>崩溃报错</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dyld: Library not loaded: @rpath/libswiftCore.dylibReferenced from: /private/var/containers/Bundle/Application/02516D79-BB30-4278-81B8-3F86BF2AE2A7/XingtelBLE.app/Frameworks/iOSDFULibrary.framework/iOSDFULibraryReason: image not found</span><br></pre></td></tr></table></figure></p>
+<p>需要改两个地方<br><img src="http://upload-images.jianshu.io/upload_images/1059465-914a66ffc635ced8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="error1.png"></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-7b4336365cd8afc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="erro2.png"><br>如果不起作用，将Runpath Search Paths的选项内容删掉再重新添加一遍即可<br>3、<strong>打包上架时报ERROR IT MS-90087等问题</strong><br>问题描述：</p>
 <pre><code>ERROR ITMS-90087: &quot;Unsupported Architectures. The executable for ***.app/Frameworks/SDK.framework contains unsupported architectures &apos;[x86_64, i386]&apos;.&quot;
 ERROR ITMS-90362: &quot;Invalid Info.plist value. The value for the key &apos;MinimumOSVersion&apos; in bundle ***.app/Frameworks/SDK.framework is invalid. The minimum value is 8.0&quot;
@@ -569,7 +554,7 @@ rm &quot;$FRAMEWORK_EXECUTABLE_PATH&quot;
 mv &quot;$FRAMEWORK_EXECUTABLE_PATH-merged&quot; &quot;$FRAMEWORK_EXECUTABLE_PATH&quot;
 
 done
-</code></pre><p>##完整OC项目<br>这个是对应Swift版本用OC写的完整项目，应该是OC停止维护之前的版本。会有一些bug。在将DFUFramework更新之后，我把它搬到了我的github上，有需要的同学可以下载研究：<a href="https://github.com/zhangferry/nRF-Toolbox" target="_blank" rel="noopener">OC-nRFTool-box</a>。</p>
+</code></pre><h2 id="完整OC项目"><a href="#完整OC项目" class="headerlink" title="完整OC项目"></a>完整OC项目</h2><p>这个是对应Swift版本用OC写的完整项目，应该是OC停止维护之前的版本。会有一些bug。在将DFUFramework更新之后，我把它搬到了我的github上，有需要的同学可以下载研究：<a href="https://github.com/zhangferry/nRF-Toolbox" target="_blank" rel="noopener">OC-nRFTool-box</a>。</p>
 <hr>
 <p>以下为更新内容，时间：2017.12.26<br>收到很多关于无法适配Xcode9.2的反馈，因为最近比较忙没时间处理，不好意思啦，今天抽出时间来把代码更新了一下。</p>
 <h2 id="Xcode9-2-出现的问题"><a href="#Xcode9-2-出现的问题" class="headerlink" title="Xcode9.2 出现的问题"></a>Xcode9.2 出现的问题</h2><blockquote>
@@ -596,8 +581,14 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
 <pre><code>cd Carthage/Build/iOS  /**framework输出位置，将老的framework替换掉*/
 </code></pre><p><strong>注意</strong><br>nRF Toolbox项目方法变更</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[initiator withFirmwareFile:selectedFirmware];<span class="comment">/** 旧版本方法 */</span></span><br><span class="line">initiator = [initiator withFirmware:selectedFirmware];<span class="comment">/** 新版本方法 */</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p>DFU v4.2版本API变更兼容旧版，但标为<code>DEPRECATED</code>，<a href="https://github.com/zhangferry/nRF-Toolbox" target="_blank" rel="noopener">github</a>项目已经更新。</p>
+<h2 id="更新：2019-7-14"><a href="#更新：2019-7-14" class="headerlink" title="更新：2019-7-14"></a>更新：2019-7-14</h2><p>针对之前常出的这种问题：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">dyld:</span> Library <span class="keyword">not</span> <span class="symbol">loaded:</span> @rpath/libswiftCore.dylib</span><br><span class="line">Referenced <span class="symbol">from:</span> /private/var/containers/Bundle/Application/CDB2F4ED-C49C-<span class="number">4303</span>-BE1F-<span class="number">5</span>D9D990380F3/nRF Toolbox.app/Frameworks/Zip.framework/Zip</span><br><span class="line"><span class="symbol">Reason:</span> image <span class="keyword">not</span> found</span><br></pre></td></tr></table></figure></p>
+<p>均是由Swift库版本不一致引起的，<code>iOSDFULibrary</code>目前已经支持到<code>Swift 5</code>，所以我们应该升级一下版本。为了方便使用，我将<code>Carthage</code>集成到了项目里，如果以后需要再升级，更新Cartfile文件里的版本号，执行更新命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">carthage update --platform iOS</span><br></pre></td></tr></table></figure></p>
+<h3 id="上线注意事项（由-jianxiong1997提供）"><a href="#上线注意事项（由-jianxiong1997提供）" class="headerlink" title="上线注意事项（由@jianxiong1997提供）"></a>上线注意事项（由@jianxiong1997提供）</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/9fd65f10e4416cff5fe61ea9cf1ca4f0.jpg" alt=""><br>需要删除<code>ZIPFoundation.framework</code>中的</p>
+<ul>
+<li>libswiftRemoteMirror.dylib</li>
+<li>Frameworks</li>
+</ul>
+<p><a href="https://github.com/zhangferry/nRF-Toolbox" target="_blank" rel="noopener">github</a>项目同步更新。</p>
 
       
     </div>
@@ -915,7 +906,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码研究"><span class="nav-number">1.</span> <span class="nav-text">代码研究</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xcode9-2-出现的问题"><span class="nav-number">2.</span> <span class="nav-text">Xcode9.2 出现的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案-Carthage"><span class="nav-number">3.</span> <span class="nav-text">解决方案 Carthage</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码研究"><span class="nav-number">1.</span> <span class="nav-text">代码研究</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成步骤"><span class="nav-number">2.</span> <span class="nav-text">集成步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整OC项目"><span class="nav-number">3.</span> <span class="nav-text">完整OC项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xcode9-2-出现的问题"><span class="nav-number">4.</span> <span class="nav-text">Xcode9.2 出现的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案-Carthage"><span class="nav-number">5.</span> <span class="nav-text">解决方案 Carthage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新：2019-7-14"><span class="nav-number">6.</span> <span class="nav-text">更新：2019-7-14</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上线注意事项（由-jianxiong1997提供）"><span class="nav-number">6.1.</span> <span class="nav-text">上线注意事项（由@jianxiong1997提供）</span></a></li></ol></li></ol></div>
             
 
           </div>
