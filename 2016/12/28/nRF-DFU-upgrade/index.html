@@ -111,7 +111,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-7b4336365cd8afc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-9a9dbc9595473841.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/9fd65f10e4416cff5fe61ea9cf1ca4f0.jpg">
-<meta property="og:updated_time" content="2019-07-14T03:16:34.021Z">
+<meta property="og:updated_time" content="2019-07-14T03:23:14.788Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nRF芯片设备DFU升级（适配Xcode10.2.1）">
 <meta name="twitter:description" content="这里主要参考这个项目：iOS-nRF-Toolbox，它是Nordic公司开发的测试工程，包含一整套nRF设备的测试解决方案。">
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">39</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">40</span></a>
 
   </li>
         
@@ -448,7 +448,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">7.1k</span>
+                <span title="本文字数">7.2k</span>
               
 
               
@@ -462,7 +462,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">6 分钟</span>
+                <span title="阅读时长">7 分钟</span>
               
             </div>
           
@@ -516,7 +516,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 0.6
 <p>直接拖入项目默认只会导入到<code>Linked Frameworks and Libraries</code>，我们还需要在Embeded Binaries中引入。</p>
 <p><strong>第三步、使用iOSDFULibrary</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//create a DFUFirmware object using a NSURL to a Distribution Packer(ZIP)</span><br><span class="line">DFUFirmware *selectedFirmware = [[DFUFirmware alloc] initWithUrlToZipFile:url];// or</span><br><span class="line">//Use the DFUServiceInitializer to initialize the DFU process.</span><br><span class="line">DFUServiceInitiator *initiator = [[DFUServiceInitiator alloc] initWithCentralManager: centralManager target:selectedPeripheral];</span><br><span class="line">[initiator withFirmware:selectedFirmware];</span><br><span class="line">// Optional:</span><br><span class="line">// initiator.forceDfu = YES/NO; // default NO</span><br><span class="line">// initiator.packetReceiptNotificationParameter = N; // default is 12</span><br><span class="line">initiator.logger = self; // - to get log info</span><br><span class="line">initiator.delegate = self; // - to be informed about current state and errors </span><br><span class="line">initiator.progressDelegate = self; // - to show progress bar</span><br><span class="line">// initiator.peripheralSelector = ... // the default selector is used</span><br><span class="line"></span><br><span class="line">DFUServiceController *controller = [initiator start];</span><br></pre></td></tr></table></figure></p>
 <p>库中有三个代理方法<code>DFUProgressDelegate</code>，<code>DFUServiceDelegate</code>，<code>LoggerDelegate</code>，它们的作用分别为监视DFU升级进度，DFU升级及蓝牙连接状态，打印状态日志。</p>
-<p>##常见问题<br>1、<strong>selectedFirmware返回nil</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DFUFirmware *selectedFirmware = [[DFUFirmware alloc] initWithUrlToZipFile:url];</span><br></pre></td></tr></table></figure></p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>1、<strong>selectedFirmware返回nil</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DFUFirmware *selectedFirmware = [[DFUFirmware alloc] initWithUrlToZipFile:url];</span><br></pre></td></tr></table></figure></p>
 <p>需要在<code>General</code>的<code>Embeded Binaries</code>选项卡里导入那<code>Zip.framework</code>和<code>iOSDFULibrary.framework</code><br>2、<strong>崩溃报错</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dyld: Library not loaded: @rpath/libswiftCore.dylibReferenced from: /private/var/containers/Bundle/Application/02516D79-BB30-4278-81B8-3F86BF2AE2A7/XingtelBLE.app/Frameworks/iOSDFULibrary.framework/iOSDFULibraryReason: image not found</span><br></pre></td></tr></table></figure></p>
 <p>需要改两个地方<br><img src="http://upload-images.jianshu.io/upload_images/1059465-914a66ffc635ced8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="error1.png"></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-7b4336365cd8afc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="erro2.png"><br>如果不起作用，将Runpath Search Paths的选项内容删掉再重新添加一遍即可<br>3、<strong>打包上架时报ERROR IT MS-90087等问题</strong><br>问题描述：</p>
@@ -583,6 +583,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[initiator withFirmwareFile:selectedFirmware];<span class="comment">/** 旧版本方法 */</span></span><br><span class="line">initiator = [initiator withFirmware:selectedFirmware];<span class="comment">/** 新版本方法 */</span></span><br></pre></td></tr></table></figure>
 <h2 id="更新：2019-7-14"><a href="#更新：2019-7-14" class="headerlink" title="更新：2019-7-14"></a>更新：2019-7-14</h2><p>针对之前常出的这种问题：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">dyld:</span> Library <span class="keyword">not</span> <span class="symbol">loaded:</span> @rpath/libswiftCore.dylib</span><br><span class="line">Referenced <span class="symbol">from:</span> /private/var/containers/Bundle/Application/CDB2F4ED-C49C-<span class="number">4303</span>-BE1F-<span class="number">5</span>D9D990380F3/nRF Toolbox.app/Frameworks/Zip.framework/Zip</span><br><span class="line"><span class="symbol">Reason:</span> image <span class="keyword">not</span> found</span><br></pre></td></tr></table></figure></p>
 <p>均是由Swift库版本不一致引起的，<code>iOSDFULibrary</code>目前已经支持到<code>Swift 5</code>，所以我们应该升级一下版本。为了方便使用，我将<code>Carthage</code>集成到了项目里，如果以后需要再升级，更新Cartfile文件里的版本号，执行更新命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">carthage update --platform iOS</span><br></pre></td></tr></table></figure></p>
+<p>如果你想要将DFU的framework集成到你自己的项目里，可以在<code>Carthage/Build/iOS/</code>中找到<code>iOSDFULibrary.framework</code>, <code>ZIPFoundation.framework</code> 将其拖到项目中即可。</p>
 <h3 id="上线注意事项（由-jianxiong1997提供）"><a href="#上线注意事项（由-jianxiong1997提供）" class="headerlink" title="上线注意事项（由@jianxiong1997提供）"></a>上线注意事项（由@jianxiong1997提供）</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/9fd65f10e4416cff5fe61ea9cf1ca4f0.jpg" alt=""><br>需要删除<code>ZIPFoundation.framework</code>中的</p>
 <ul>
 <li>libswiftRemoteMirror.dylib</li>
@@ -739,7 +740,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -906,7 +907,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码研究"><span class="nav-number">1.</span> <span class="nav-text">代码研究</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成步骤"><span class="nav-number">2.</span> <span class="nav-text">集成步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整OC项目"><span class="nav-number">3.</span> <span class="nav-text">完整OC项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xcode9-2-出现的问题"><span class="nav-number">4.</span> <span class="nav-text">Xcode9.2 出现的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案-Carthage"><span class="nav-number">5.</span> <span class="nav-text">解决方案 Carthage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新：2019-7-14"><span class="nav-number">6.</span> <span class="nav-text">更新：2019-7-14</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上线注意事项（由-jianxiong1997提供）"><span class="nav-number">6.1.</span> <span class="nav-text">上线注意事项（由@jianxiong1997提供）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码研究"><span class="nav-number">1.</span> <span class="nav-text">代码研究</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成步骤"><span class="nav-number">2.</span> <span class="nav-text">集成步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">3.</span> <span class="nav-text">常见问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整OC项目"><span class="nav-number">4.</span> <span class="nav-text">完整OC项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xcode9-2-出现的问题"><span class="nav-number">5.</span> <span class="nav-text">Xcode9.2 出现的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案-Carthage"><span class="nav-number">6.</span> <span class="nav-text">解决方案 Carthage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新：2019-7-14"><span class="nav-number">7.</span> <span class="nav-text">更新：2019-7-14</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上线注意事项（由-jianxiong1997提供）"><span class="nav-number">7.1.</span> <span class="nav-text">上线注意事项（由@jianxiong1997提供）</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -938,7 +939,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">157k</span>
+    <span title="站点总字数">161k</span>
   
 
   
@@ -947,7 +948,7 @@ github &quot;marmelroy/Zip&quot; ~&gt; 1.1
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:23</span>
+    <span title="站点阅读时长">2:27</span>
   
 </div>
 

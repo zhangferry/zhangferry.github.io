@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2019-06-30T22:56:52.847Z</updated>
+  <updated>2019-07-31T15:00:18.245Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS开发月报#13|201907</title>
+    <link href="http://zhangferry.github.io/2019/07/31/monthly_13/"/>
+    <id>http://zhangferry.github.io/2019/07/31/monthly_13/</id>
+    <published>2019-07-31T12:54:57.000Z</published>
+    <updated>2019-07-31T15:00:18.245Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。&lt;br&gt;欢迎推荐内容，可以前往&lt;a href=&quot;https://github.com/zhangferry/iOSMonthlyReport&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS开发月报#12|201906</title>
@@ -384,25 +408,6 @@
       &lt;p&gt;作为git最常用的几个命令&lt;code&gt;git status&lt;/code&gt;、&lt;code&gt;git add&lt;/code&gt;、&lt;code&gt;git commit&lt;/code&gt;，我们每天可能都会写个数十遍。但是越是这种我们熟悉的操作，越容易存在一些我们忽略的细节。这篇文章就是用来记录下这些细节，记录我们常用命令中不常用的操作。&lt;/p&gt;
 &lt;p&gt;在git中编辑过某些文件之后，由于自上次提交后你对它们做了修改，git 将它们标记为已修改文件。 我们逐步将这些修改过的文件放入暂存区，然后提交所有暂存了的修改，如此反复。所以使用 git 时文件的生命周期如下：&lt;br&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1059465-6aee09f81493701f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;lifecycle.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;回顾完就进入正题&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="git" scheme="http://zhangferry.github.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用git stash储存和恢复进度</title>
-    <link href="http://zhangferry.github.io/2018/09/04/git_stash/"/>
-    <id>http://zhangferry.github.io/2018/09/04/git_stash/</id>
-    <published>2018-09-04T06:53:34.000Z</published>
-    <updated>2019-05-17T15:23:26.332Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;当我们正在当前项目处理一些事情时，有一个需求插进来，使得我们要在别的分支做一些工作。切换分支之前当前任务是需要保存的，但我们并没有完成一个完整的任务，直接&lt;code&gt;commit&lt;/code&gt;显得不合适，这时就可以使用&lt;code&gt;git stash&lt;/code&gt;命令。stash是储藏的意思，该命令的作用也可以理解为先将当前的修改储藏起来，等我们在其他分支做完必要工作之后可以再回到储藏时的状态。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git stash&lt;/code&gt;大致可以分为储存和恢复这两步。&lt;br&gt;
     
     </summary>
     

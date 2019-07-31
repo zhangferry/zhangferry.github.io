@@ -96,20 +96,22 @@
 
 
 
-  <meta name="description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
+  <meta name="description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 TipsGolbal queues的优先级如果要在后台执行非UI相关的工作, 一般把这部分工作放在Global queue. Global queue是一种系统内共享的并行的队列。申请Global queue的方法很">
 <meta name="keywords" content="月报">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS开发月报#8|201902">
-<meta property="og:url" content="http://zhangferry.github.io/2019/02/28/monthly_8/index.html">
+<meta property="og:title" content="iOS开发月报#13|201907">
+<meta property="og:url" content="http://zhangferry.github.io/2019/07/31/monthly_13/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
+<meta property="og:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 TipsGolbal queues的优先级如果要在后台执行非UI相关的工作, 一般把这部分工作放在Global queue. Global queue是一种系统内共享的并行的队列。申请Global queue的方法很">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190228110103.jpg">
-<meta property="og:updated_time" content="2019-05-17T15:05:39.648Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731213558.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731203414.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731203603.png">
+<meta property="og:updated_time" content="2019-07-31T15:00:18.245Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS开发月报#8|201902">
-<meta name="twitter:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190228110103.jpg">
+<meta name="twitter:title" content="iOS开发月报#13|201907">
+<meta name="twitter:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 TipsGolbal queues的优先级如果要在后台执行非UI相关的工作, 一般把这部分工作放在Global queue. Global queue是一种系统内共享的并行的队列。申请Global queue的方法很">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731213558.png">
 
 
 
@@ -118,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://zhangferry.github.io/2019/02/28/monthly_8/">
+  <link rel="canonical" href="http://zhangferry.github.io/2019/07/31/monthly_13/">
 
 
 
@@ -128,7 +130,7 @@
   };
 </script>
 
-  <title>iOS开发月报#8|201902 | zhangferry</title>
+  <title>iOS开发月报#13|201907 | zhangferry</title>
   
 
 
@@ -345,7 +347,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/02/28/monthly_8/">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/07/31/monthly_13/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangferry">
@@ -362,7 +364,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">iOS开发月报#8|201902
+          <h2 class="post-title" itemprop="name headline">iOS开发月报#13|201907
 
               
             
@@ -388,7 +390,7 @@
                 
               
 
-              <time title="创建时间：2019-02-28 10:30:57" itemprop="dateCreated datePublished" datetime="2019-02-28T10:30:57+08:00">2019-02-28</time>
+              <time title="创建时间：2019-07-31 20:54:57" itemprop="dateCreated datePublished" datetime="2019-07-31T20:54:57+08:00">2019-07-31</time>
             
 
             
@@ -424,7 +426,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.8k</span>
+                <span title="本文字数">4.1k</span>
               
 
               
@@ -438,7 +440,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -458,53 +460,35 @@
       
 
       
-        <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190228110103.jpg" alt=""><br><a id="more"></a></p>
-<h2 id="新闻一览"><a href="#新闻一览" class="headerlink" title="新闻一览"></a>新闻一览</h2><p><a href="https://research.hackerrank.com/developer-skills/2019" target="_blank" rel="noopener">2019年开发人员技能报告</a></p>
-<p>这是<a href="https://www.hackerrank.com/" target="_blank" rel="noopener">HackerRank</a>平台通过对7万多名开发人员做的一项调查，问题从他们认为最有前途的技术到他们在工作中和面试过程中想要的是什么，甚至还有coding过程中听什么音乐最有帮助！一起看下吧。</p>
-<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="presentedviewcontroller和presentingViewController"><a href="#presentedviewcontroller和presentingViewController" class="headerlink" title="presentedviewcontroller和presentingViewController"></a>presentedviewcontroller和presentingViewController</h3><p>假设从A控制器通过present的方式跳转到了B控制器，那么 <code>A.presentedViewController</code> 就是B控制器；<br><code>B.presentingViewController</code> 就是A控制器。如果没有对应关系会返回<code>nil</code></p>
-<h3 id="获取类名"><a href="#获取类名" class="headerlink" title="获取类名"></a>获取类名</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//传入实例对象object</span></span><br><span class="line"><span class="keyword">let</span> typeName = <span class="type">String</span>(describing: type(of: object))</span><br></pre></td></tr></table></figure>
-<h3 id="隐藏NavigationBar导致手势返回失效"><a href="#隐藏NavigationBar导致手势返回失效" class="headerlink" title="隐藏NavigationBar导致手势返回失效"></a>隐藏NavigationBar导致手势返回失效</h3><p>当我们从一个A(NavigationController)界面通过push进入B界面，如果要隐藏B的NavigationBar，那么从B到A的返回手势也会被屏蔽掉。<br>如果需要加回来我们可以这么做：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.给需要添加返回手势的ViewController增加UIGestureRecognizerDelegate</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.由当前ViewController接管pop手势</span></span><br><span class="line"><span class="keyword">self</span>.navigationController?.interactivePopGestureRecognizer?.delegate = <span class="keyword">self</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="关于-Decimal"><a href="#关于-Decimal" class="headerlink" title="关于 Decimal"></a>关于 Decimal</h3><p>官方对<code>Decimal</code>介绍就一句话</p>
+        <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731213558.png" alt=""></p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="Golbal-queues的优先级"><a href="#Golbal-queues的优先级" class="headerlink" title="Golbal queues的优先级"></a>Golbal queues的优先级</h3><p>如果要在后台执行非UI相关的工作, 一般把这部分工作放在Global queue. Global queue是一种系统内共享的并行的队列。申请Global queue的方法很简单:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let userQueue = DispatchQueue.global(qos: .userInitiated)</span><br></pre></td></tr></table></figure></p>
+<p>其中后面的<code>.userInitiated</code>参数代表队列的优先级。该优先级公有6中分类，有高到低为：<br><code>userInteractive&gt;default&gt;unspecified&gt;userInitiated&gt;utility&gt;background</code><br>通过该段代码验证：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>...<span class="number">3</span> &#123;</span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.<span class="keyword">default</span>).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.default, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.background).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.background, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.unspecified).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.unspecified, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.userInitiated).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.userInitiated, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.userInteractive).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.userInteractive, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.utility).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.utility, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中<code>userInitiated</code>为<code>LIFO(后进先出)</code>，即如果有新插入的<code>userInteractive</code>级别的队列任务，为先执行新任务之后再执行之前该级别任务。其余优先级的队列任务均是<code>FIFO(先进先出)</code>。</p>
+<h3 id="“No-such-module”-when-using-testable-in-Xcode-Unit-tests"><a href="#“No-such-module”-when-using-testable-in-Xcode-Unit-tests" class="headerlink" title="“No such module” when using @testable in Xcode Unit tests"></a>“No such module” when using @testable in Xcode Unit tests</h3><p>因为测试工程和主工程分属不同<code>Module</code>，所以如果我们想在测试项目中调用主工程代码需要导入主工程：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@testable</span> <span class="keyword">import</span> moduleName</span><br></pre></td></tr></table></figure></p>
+<p>这个时候如果报以上错误，会有以下可能：<br>1、targetName错误<br>这个可以去<code>Target-&gt;Build Setting-&gt;Product Module Name</code>确认。<br>2、主工程和测试模块支持版本号不一致<br>保证<code>Build Setting-&gt;iOS Deployment Target</code>中的版本号在主工程和测试工程中一致。</p>
+<h3 id="authenticating-with-the-app-store上传卡顿"><a href="#authenticating-with-the-app-store上传卡顿" class="headerlink" title="authenticating with the app store上传卡顿"></a>authenticating with the app store上传卡顿</h3><p>如果往AppStoreConnect传包一直卡在这个步骤，可以试一下这种方式：<br>第一步：<code>cd ~</code><br>第二步：<code>mv .itmstransporter/ .old_itmstransporter/</code><br>第三步：<code>&quot;/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/itms/bin/iTMSTransporter&quot;</code><br>等待执行完成。</p>
+<h3 id="订阅的freetrial没有标明截止时间被拒"><a href="#订阅的freetrial没有标明截止时间被拒" class="headerlink" title="订阅的freetrial没有标明截止时间被拒"></a>订阅的freetrial没有标明截止时间被拒</h3><p>如题，如果订阅功能含freetrial，一定要在freetrial按钮旁边标清楚试用的截止时间。</p>
+<h3 id="WakaTime"><a href="#WakaTime" class="headerlink" title="WakaTime"></a><a href="https://wakatime.com/dashboard" target="_blank" rel="noopener">WakaTime</a></h3><p>一款能够统计开发时间的网页端应用，支持众多IDE。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731203414.png" alt=""><br>集成到IDE之后，注册账号然后会获取到一个Key，绑定该值。然后当我们愉快的开发时，一些开发的信息就会被记录下来。我们可以通过其网页端的dashboard查看我们开发的情况。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731203603.png" alt=""><br>因为前几天升级XCode，需要重新装插件，所以最近几天的开发记录为空。</p>
+<h3 id="Lookin-免费好用的iOS-UI调试软件"><a href="#Lookin-免费好用的iOS-UI调试软件" class="headerlink" title="Lookin | 免费好用的iOS UI调试软件"></a><a href="https://lookin.work/" target="_blank" rel="noopener">Lookin | 免费好用的iOS UI调试软件</a></h3><p>出自QMUI团队，可能是小集的影响力已经很大了，这个软件首发之后竟发现已经有一众人开始关注这个东西了。可能因为UI调试这个操作是一个高频的行为，而Xcode目前又做的不够好，所以大家都期待有一个高效的UI调试工具。我也是下下来试了下，结合之前对<a href="https://revealapp.com/" target="_blank" rel="noopener">Reveal</a>和<a href="https://sherlock.inspiredcode.io" target="_blank" rel="noopener">Sherlock</a>的使用，说下自己的体会吧，首先是优点：<br>1、免费<br>2、支持动态修改UI元素属性，例如位置，颜色，圆角这些<br>3、可以查看CALayer的信息<br>因为是刚发布没多久，还是有些需要改进的地方的<br>1、动态修改UI元素的信息，均是通过UIView，和CALayer的信息进行修改，无法实现像UILabel改文案，更新行数等操作<br>2、3D的渲染有时候会有bug出现，位置不正确，另外仅支持一个左右的旋转不支持上下<br>3、屏幕适配还不支持，不能修改屏幕<br>其实我对sherlock也都仅限于使用，中和频率不高的使用性和高昂的费用，我选择试用结束就放弃，虽然Lookin还存在一些不足，但是免费大于一切啊，希望可以做的更好，为更多开发者带来便利。</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="R-swift"><a href="#R-swift" class="headerlink" title="R.swift"></a><a href="https://github.com/mac-cain13/R.swift" target="_blank" rel="noopener">R.swift</a></h3><p>Android开发中引用资源可以通过<code>R机制</code>，所谓<code>R机制</code>就是在我们创建一个Android项目的时候，IDE会自动帮我们创建一个名为R的类型，它所在的文件名称也是叫做R.java，R类型中没有任何方法，包含的是代表不同类型资源的内部静态类，而这些内部静态类中，也只有静态的属性，每个属性代表一个资源，故我们要引用某个资源类型中的某个资源，可用R.资源类型.资源名来引用。下面就是代码中的实例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  从图片资源文件夹中加载名为"image_test"的图片以其创建位图</span></span><br><span class="line">Bitmap aBitmap = BitmapFactory.decodeResource(<span class="keyword">this</span>.getResources(), R.drawable.image_test);</span><br></pre></td></tr></table></figure></p>
+<p>相对来说iOS中的资源引用就麻烦很多，需要通过字符串引用，无法代码补全，资源更换无法自检查。解决iOS资源引用的这些问题而借鉴Android方案的<code>R.Swift</code>应运而生。<br>传统的方式：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> settingsIcon = <span class="type">UIImage</span>(named: <span class="string">"settings-icon"</span>)</span><br><span class="line"><span class="keyword">let</span> gradientBackground = <span class="type">UIImage</span>(named: <span class="string">"gradient.jpg"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>使用R.Swift<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let settingsIcon = R.image.settingsIcon()</span><br><span class="line">let gradientBackground = R.image.gradientJpg()</span><br></pre></td></tr></table></figure></p>
+<p>不光图片，它还支持<code>Fonts</code>，<code>Resource files</code>，<code>Colors</code>，<code>Localized strings</code>，<code>Storyboards</code>，<code>Segues</code>，<code>Nibs</code>，<code>Reuseable Cells</code>。<br>我第一次见到这玩意的时候就一个感受：wocao，🐂🍺！<br>更多关于R.Swift的使用规则参照官网说明。</p>
+<h3 id="Swift-Books"><a href="#Swift-Books" class="headerlink" title="Swift-Books"></a><a href="https://github.com/longsirhero/Swift-Books" target="_blank" rel="noopener">Swift-Books</a></h3><p>github上的内容，可以分为两类，纯干货和干货的整理。这个库属于后者，是一个收录Swift&amp;Object-C相关资料的仓库。收录的都是比较经典的学习资料，而且非常全！<br>建库已经两年了，但是star却不多，不知道是因为曝光度的问题，还是因为大家对设计版权问题的内容有些警惕。但不管怎样吧，我还是要推一推这个库。</p>
+<h3 id="open-source-ios-apps"><a href="#open-source-ios-apps" class="headerlink" title="open-source-ios-apps"></a><a href="https://github.com/dkhamsing/open-source-ios-apps" target="_blank" rel="noopener">open-source-ios-apps</a></h3><p>开源的iOS应用列表。基本涵盖了iOS开发涉及的所有领域，通过完整的app去学习别人的开发技巧是一个相对直观的方式，面对这个大礼包，记得来看一看哈。</p>
+<h3 id="Chinese-Podcasts"><a href="#Chinese-Podcasts" class="headerlink" title="Chinese-Podcasts"></a><a href="https://github.com/alaskasquirrel/Chinese-Podcasts" target="_blank" rel="noopener">Chinese-Podcasts</a></h3><p>中文博客的收录，包含科技，风投，生活，电影，设计等领域。<br>音频内容最大的优势就是便捷，你可以在走路，跑步，甚至休息的时候使用它。音频相比视频还有一个更大的好处是，它会给大脑预留更多的想象空间，听音频我们会思考的更多一些。<br>去年一直在听东吴同学会，最近一段时间则听ggtalk和硅谷早知道多一些。</p>
+<h2 id="文摘"><a href="#文摘" class="headerlink" title="文摘"></a>文摘</h2><p>1、</p>
 <blockquote>
-<p>A structure representing a base-10 number.</p>
+<p>生存是一种即时策略游戏，所有的人都是这场游戏的玩家。财务自由了，就是游戏赢家。<br>–《科技爱好者周刊：66期》</p>
 </blockquote>
-<p>表示以10为基数的数的结构体，就是十进制的表示方法。<br>它可以通过 <code>mantissa * 10 ^ exponent</code>的形式表示任意数值。<code>mantissa</code>(尾数)是最长38位的整数，<code>exponent</code>(指数)是 -128到127的整数。</p>
-<p>你也可以把Decimal理解成跟Int, Float, Double一样的数据类型，那有了整形，浮点型数值还会出现Decimal这个类型？<br>可以看一个例子：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="built_in">stride</span>: <span class="type">Float</span> = <span class="number">0.01</span></span><br><span class="line"><span class="keyword">var</span> sum: <span class="type">Float</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">1</span>...<span class="number">100</span> &#123;</span><br><span class="line">    sum += <span class="built_in">stride</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(sum)<span class="comment">//0.99999934</span></span><br></pre></td></tr></table></figure></p>
-<p>sum的值不是1，这是因为精度的问题，那如果把Float换成Decimal就会完全等于1。</p>
-<p><code>SKProduct</code>的<code>price</code>属性就是Decimal类型</p>
-<h3 id="违反5-5条款被打回的经历"><a href="#违反5-5条款被打回的经历" class="headerlink" title="违反5.5条款被打回的经历"></a>违反5.5条款被打回的经历</h3><p>在一次有关内购项审核被打回的经历中，遇到了一个新问题，错误描述中提示违反了条款<code>5.5 Developer Code of Conduct</code>。<br>简单看下这一条</p>
+<p>2、</p>
 <blockquote>
-<p>Please treat everyone with respect, whether in your responses to App Store reviews, customer support requests, or when communicating with Apple, including your responses in Resolution Center. Do not engage in harassment of any kind, discriminatory practices, intimidation, bullying, and don’t encourage others to engage in any of the above.<br>Customer trust is the cornerstone of the App Store’s success. Apps should never prey on users or attempt to rip-off customers, trick them into making unwanted purchases, force them to share unnecessary data, raise prices in a tricky manner, charge for features or content that are not delivered, or engage in any other manipulative practices within or outside of the app.</p>
+<p>我以为别人尊重我，是因为我很优秀。慢慢的我明白了，别人尊重我，是别人很优秀；优秀的人更懂得尊重别人，对人恭敬其实是在庄严你自己。</p>
 </blockquote>
-<p>总结一下就是要尊重用户。</p>
-<p>在联系过苹果审核客服之后，被告知是因为在引导过程中弹了两次订阅弹窗（一次订阅，一次freetrial）被拒的。但其实这个流程已经跑了大半年，一直没问题，这次却突然被揪出来了，有点莫名其妙。</p>
-<p>可能审核人员认为，这种行为有诱导或者强迫用户付费的嫌疑。由此也可以看出审核人员对项目流程的管理越来越严格了。去掉一个步骤之后再次提交就过审了。</p>
-<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><h3 id="Swift-ABI-稳定对我们到底意味着什么"><a href="#Swift-ABI-稳定对我们到底意味着什么" class="headerlink" title="Swift ABI 稳定对我们到底意味着什么"></a><a href="https://onevcat.com/2019/02/swift-abi/" target="_blank" rel="noopener">Swift ABI 稳定对我们到底意味着什么</a></h3><p>Swift 社区最近最重大的新闻应该就是 ABI 稳定了。这个话题虽然已经讨论了有一阵子了，但随着 Xcode 10.2 beta 的迭代和 Swift 5 的 release 被提上日程，最终 Swift ABI 稳定能做到什么程度，我们开发者能做些什么，需要做些什么，就变成了一个重要的话题。</p>
-<p>一起来看下使用 Swift 5 会对我们的项目有什么影响以及怎么处理。</p>
-<h3 id="Void"><a href="#Void" class="headerlink" title="Void"></a><a href="https://juejin.im/post/5c73af896fb9a049cb1963d4" target="_blank" rel="noopener">Void</a></h3><p>SwiftGG翻译组翻译的Mattt一篇介绍Void的文章。<br><code>Void</code>是什么，它和<code>nil</code>有什么区别，这个我们经常用但不一定真的理解的东西，一起通过这篇文章看下吧。</p>
-<h3 id="love2-io"><a href="#love2-io" class="headerlink" title="love2.io"></a><a href="https://love2.io/@tzivanmoe/doc/a-programmer-prepares/README.md" target="_blank" rel="noopener">love2.io</a></h3><p>程序员的自我修养，作为一个合格的程序员需要具备哪些知识呢？</p>
-<p>数据结构、算法、代码架构、项目管理工具、网络知识等？可能还不够，还需要懂点设计、学着当一个合格的PM、学会团队合作、学会学习、提升效率等等；够了吗？你还需要了解一下创业流程、关注自己的身体健康。。。</p>
-<p>太多了，不列举了，因为这里都有。</p>
-<h3 id="为什么数字下标要从-0-开始而不是-1？"><a href="#为什么数字下标要从-0-开始而不是-1？" class="headerlink" title="为什么数字下标要从 0 开始而不是 1？"></a><a href="http://czheo.github.io/2019/02/24/why-numbering-should-start-at-zero/" target="_blank" rel="noopener">为什么数字下标要从 0 开始而不是 1？</a></h3><p>大家都知道数字下标是从0开始的，那为什么是0而不是1呢？说实话在看这篇文章之前我也不能很清楚的说明白，如果你也有这种疑惑就看看这个文章吧。</p>
-<h3 id="什么叫有知识"><a href="#什么叫有知识" class="headerlink" title="什么叫有知识"></a><a href="https://mp.weixin.qq.com/s/P87aDQ5h5qfy27bc77fOUg" target="_blank" rel="noopener">什么叫有知识</a></h3><p>选自罗胖60秒：<br>1、话说什么叫做有知识？最近我看万维钢老师有一个有趣的定义。他说，考试得了高分，不叫有知识。茶余饭后能高谈阔论，这也不叫有知识。</p>
-<p>你发现没有，这些场合下，知识虽然有用，但是这些知识都不太牵扯到具体的得失，所以只是智力游戏。</p>
-<p>2、那什么才叫有知识呢？万维钢老师说，只有当局势不明朗，没有人告诉你该怎么办，而错误的判断又会导致一些不良后果，这个时候，如果你因为有知识而敢于拿一个主意，你才算是真有知识。</p>
-<p>3、请注意，这不是在说，实用的知识才是知识，而是在说，只有当知识能够帮助你做实际决策的时候，它才是你的知识。</p>
-<p>4、这种决策当然可大可小，大到你选择什么样的职业，选择听医生的哪个建议；小到帮你选择看哪一部电影，或者是为孩子挑选买哪一本书。这都是具体的决策。</p>
-<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><p><a href="https://www.gcores.com/radios/106545" target="_blank" rel="noopener">苏俄科幻简史：直指星海的冒险时代</a></p>
-<p>最近在机核（gamecores）上听到的一段讲述苏俄科幻的音频，可以当故事听，也可以当一段历史去听，非常有意思。</p>
-<p>对于很多人而言，苏俄的科幻文学、电影乃至游戏都是一个比较陌生的概念。事实上从沙俄末期到苏联再到今天的俄罗斯，来自极北之地的斯拉夫人民也曾在科幻这个领域上走了很远很远，取得了惊人的成绩。</p>
-<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="DoraemonKit"><a href="#DoraemonKit" class="headerlink" title="DoraemonKit"></a><a href="https://github.com/didi/DoraemonKit" target="_blank" rel="noopener">DoraemonKit</a></h3><p>由滴滴团队开源，中文名“哆啦A梦”。</p>
-<p>DoraemonKit 是一个功能集合面板，能够让每一个 App 快速接入一些常用的或者你没有实现的一些辅助开发工具、测试效率工具、视觉辅助工具，而且能够完美在 Doraemon 面板中接入你已经实现的与业务紧密耦合的一些非通有的辅助工具，功能强大，接入方便，便于扩展。</p>
-<h3 id="git-history"><a href="#git-history" class="headerlink" title="git-history"></a><a href="https://github.com/pomber/git-history" target="_blank" rel="noopener">git-history</a></h3><p>这个项目可以让你在浏览器动态地查看Github库上代码的变动历史。</p>
-<p>使用方法非常简单：<br>1、在对应的文件url中把<code>github.com</code>替换成<code>github.githistory.xyz</code><br>2、没有第二步</p>
-<h3 id="resume-github-com"><a href="#resume-github-com" class="headerlink" title="resume.github.com"></a><a href="https://github.com/resume/resume.github.com" target="_blank" rel="noopener">resume.github.com</a></h3><p>这个库可以通过你仓库的活跃事件来生成一份在线简历。使用很简单，直接访问以下网址：<a href="https://resume.github.io/?yourusername" target="_blank" rel="noopener">https://resume.github.io/?yourusername</a></p>
-<p>需要将<code>yourusername</code>替换成你的用户名，别忘了那个<code>?</code></p>
-<h3 id="iOS-Developer-Roadmap"><a href="#iOS-Developer-Roadmap" class="headerlink" title="iOS-Developer-Roadmap"></a><a href="https://github.com/BohdanOrlov/iOS-Developer-Roadmap" target="_blank" rel="noopener">iOS-Developer-Roadmap</a></h3><p>一名iOS开发人员需要具备哪些知识呢？这个库做了比较详尽的总结，以技能树的形式对iOS开发所需知识点，知识面做了整理，我们可以作为参照，查看自己有哪些缺失。</p>
-<ul>
-<li><a href="https://github.com/BohdanOrlov/iOS-Developer-Roadmap/blob/master/RoadmapProject/Script/Generated/ROADMAP.md" target="_blank" rel="noopener">文本版本</a></li>
-<li>图片版本(<a href="https://github.com/BohdanOrlov/iOS-Developer-Roadmap/blob/master/RoadmapProject/Script/Generated/ESSENTIALROADMAP.png" target="_blank" rel="noopener">基础版本</a>, <a href="https://github.com/BohdanOrlov/iOS-Developer-Roadmap/blob/master/RoadmapProject/Script/Generated/ROADMAP.png" target="_blank" rel="noopener">完整版本</a>)</li>
-</ul>
+<p>3、</p>
+<blockquote>
+<p>所谓成熟的人，就是精神上能够自给自足的人。</p>
+</blockquote>
 
       
     </div>
@@ -565,8 +549,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/27/digest_introduction/" rel="next" title="关于消息摘要及对应的Swift实现">
-                <i class="fa fa-chevron-left"></i> 关于消息摘要及对应的Swift实现
+              <a href="/2019/06/29/monthly_12/" rel="next" title="iOS开发月报#12|201906">
+                <i class="fa fa-chevron-left"></i> iOS开发月报#12|201906
               </a>
             
           </div>
@@ -574,10 +558,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/31/996-ICU/" rel="prev" title="关于996ICU的一些看法">
-                关于996ICU的一些看法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -820,7 +800,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新闻一览"><span class="nav-number">1.</span> <span class="nav-text">新闻一览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">2.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#presentedviewcontroller和presentingViewController"><span class="nav-number">2.1.</span> <span class="nav-text">presentedviewcontroller和presentingViewController</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取类名"><span class="nav-number">2.2.</span> <span class="nav-text">获取类名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏NavigationBar导致手势返回失效"><span class="nav-number">2.3.</span> <span class="nav-text">隐藏NavigationBar导致手势返回失效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于-Decimal"><span class="nav-number">2.4.</span> <span class="nav-text">关于 Decimal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#违反5-5条款被打回的经历"><span class="nav-number">2.5.</span> <span class="nav-text">违反5.5条款被打回的经历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐阅读"><span class="nav-number">3.</span> <span class="nav-text">推荐阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Swift-ABI-稳定对我们到底意味着什么"><span class="nav-number">3.1.</span> <span class="nav-text">Swift ABI 稳定对我们到底意味着什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Void"><span class="nav-number">3.2.</span> <span class="nav-text">Void</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#love2-io"><span class="nav-number">3.3.</span> <span class="nav-text">love2.io</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么数字下标要从-0-开始而不是-1？"><span class="nav-number">3.4.</span> <span class="nav-text">为什么数字下标要从 0 开始而不是 1？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么叫有知识"><span class="nav-number">3.5.</span> <span class="nav-text">什么叫有知识</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音视频"><span class="nav-number">4.</span> <span class="nav-text">音视频</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github"><span class="nav-number">5.</span> <span class="nav-text">Github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DoraemonKit"><span class="nav-number">5.1.</span> <span class="nav-text">DoraemonKit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-history"><span class="nav-number">5.2.</span> <span class="nav-text">git-history</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resume-github-com"><span class="nav-number">5.3.</span> <span class="nav-text">resume.github.com</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS-Developer-Roadmap"><span class="nav-number">5.4.</span> <span class="nav-text">iOS-Developer-Roadmap</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">1.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Golbal-queues的优先级"><span class="nav-number">1.1.</span> <span class="nav-text">Golbal queues的优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#“No-such-module”-when-using-testable-in-Xcode-Unit-tests"><span class="nav-number">1.2.</span> <span class="nav-text">“No such module” when using @testable in Xcode Unit tests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#authenticating-with-the-app-store上传卡顿"><span class="nav-number">1.3.</span> <span class="nav-text">authenticating with the app store上传卡顿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#订阅的freetrial没有标明截止时间被拒"><span class="nav-number">1.4.</span> <span class="nav-text">订阅的freetrial没有标明截止时间被拒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WakaTime"><span class="nav-number">1.5.</span> <span class="nav-text">WakaTime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lookin-免费好用的iOS-UI调试软件"><span class="nav-number">1.6.</span> <span class="nav-text">Lookin | 免费好用的iOS UI调试软件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github"><span class="nav-number">2.</span> <span class="nav-text">Github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#R-swift"><span class="nav-number">2.1.</span> <span class="nav-text">R.swift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swift-Books"><span class="nav-number">2.2.</span> <span class="nav-text">Swift-Books</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#open-source-ios-apps"><span class="nav-number">2.3.</span> <span class="nav-text">open-source-ios-apps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chinese-Podcasts"><span class="nav-number">2.4.</span> <span class="nav-text">Chinese-Podcasts</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文摘"><span class="nav-number">3.</span> <span class="nav-text">文摘</span></a></li></ol></div>
             
 
           </div>

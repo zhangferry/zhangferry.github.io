@@ -271,7 +271,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">39</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">40</span></a>
 
   </li>
         
@@ -326,6 +326,201 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/07/31/monthly_13/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/31/monthly_13/" class="post-title-link" itemprop="url">iOS开发月报#13|201907</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-31 20:54:57" itemprop="dateCreated datePublished" datetime="2019-07-31T20:54:57+08:00">2019-07-31</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731213558.png" alt=""></p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="Golbal-queues的优先级"><a href="#Golbal-queues的优先级" class="headerlink" title="Golbal queues的优先级"></a>Golbal queues的优先级</h3><p>如果要在后台执行非UI相关的工作, 一般把这部分工作放在Global queue. Global queue是一种系统内共享的并行的队列。申请Global queue的方法很简单:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let userQueue = DispatchQueue.global(qos: .userInitiated)</span><br></pre></td></tr></table></figure></p>
+<p>其中后面的<code>.userInitiated</code>参数代表队列的优先级。该优先级公有6中分类，有高到低为：<br><code>userInteractive&gt;default&gt;unspecified&gt;userInitiated&gt;utility&gt;background</code><br>通过该段代码验证：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>...<span class="number">3</span> &#123;</span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.<span class="keyword">default</span>).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.default, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.background).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.background, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.unspecified).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.unspecified, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.userInitiated).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.userInitiated, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.userInteractive).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.userInteractive, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.utility).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.utility, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中<code>userInitiated</code>为<code>LIFO(后进先出)</code>，即如果有新插入的<code>userInteractive</code>级别的队列任务，为先执行新任务之后再执行之前该级别任务。其余优先级的队列任务均是<code>FIFO(先进先出)</code>。</p>
+<h3 id="“No-such-module”-when-using-testable-in-Xcode-Unit-tests"><a href="#“No-such-module”-when-using-testable-in-Xcode-Unit-tests" class="headerlink" title="“No such module” when using @testable in Xcode Unit tests"></a>“No such module” when using @testable in Xcode Unit tests</h3><p>因为测试工程和主工程分属不同<code>Module</code>，所以如果我们想在测试项目中调用主工程代码需要导入主工程：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@testable</span> <span class="keyword">import</span> moduleName</span><br></pre></td></tr></table></figure></p>
+<p>这个时候如果报以上错误，会有以下可能：<br>1、targetName错误<br>这个可以去<code>Target-&gt;Build Setting-&gt;Product Module Name</code>确认。<br>2、主工程和测试模块支持版本号不一致<br>保证<code>Build Setting-&gt;iOS Deployment Target</code>中的版本号在主工程和测试工程中一致。</p>
+<h3 id="authenticating-with-the-app-store上传卡顿"><a href="#authenticating-with-the-app-store上传卡顿" class="headerlink" title="authenticating with the app store上传卡顿"></a>authenticating with the app store上传卡顿</h3><p>如果往AppStoreConnect传包一直卡在这个步骤，可以试一下这种方式：<br>第一步：<code>cd ~</code><br>第二步：<code>mv .itmstransporter/ .old_itmstransporter/</code><br>第三步：<code>&quot;/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/itms/bin/iTMSTransporter&quot;</code><br>等待执行完成。</p>
+<h3 id="订阅的freetrial没有标明截止时间被拒"><a href="#订阅的freetrial没有标明截止时间被拒" class="headerlink" title="订阅的freetrial没有标明截止时间被拒"></a>订阅的freetrial没有标明截止时间被拒</h3><p>如题，如果订阅功能含freetrial，一定要在freetrial按钮旁边标清楚试用的截止时间。</p>
+<h3 id="WakaTime"><a href="#WakaTime" class="headerlink" title="WakaTime"></a><a href="https://wakatime.com/dashboard" target="_blank" rel="noopener">WakaTime</a></h3><p>一款能够统计开发时间的网页端应用，支持众多IDE。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731203414.png" alt=""><br>集成到IDE之后，注册账号然后会获取到一个Key，绑定该值。然后当我们愉快的开发时，一些开发的信息就会被记录下来。我们可以通过其网页端的dashboard查看我们开发的情况。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731203603.png" alt=""><br>因为前几天升级XCode，需要重新装插件，所以最近几天的开发记录为空。</p>
+<h3 id="Lookin-免费好用的iOS-UI调试软件"><a href="#Lookin-免费好用的iOS-UI调试软件" class="headerlink" title="Lookin | 免费好用的iOS UI调试软件"></a><a href="https://lookin.work/" target="_blank" rel="noopener">Lookin | 免费好用的iOS UI调试软件</a></h3><p>出自QMUI团队，可能是小集的影响力已经很大了，这个软件首发之后竟发现已经有一众人开始关注这个东西了。可能因为UI调试这个操作是一个高频的行为，而Xcode目前又做的不够好，所以大家都期待有一个高效的UI调试工具。我也是下下来试了下，结合之前对<a href="https://revealapp.com/" target="_blank" rel="noopener">Reveal</a>和<a href="https://sherlock.inspiredcode.io" target="_blank" rel="noopener">Sherlock</a>的使用，说下自己的体会吧，首先是优点：<br>1、免费<br>2、支持动态修改UI元素属性，例如位置，颜色，圆角这些<br>3、可以查看CALayer的信息<br>因为是刚发布没多久，还是有些需要改进的地方的<br>1、动态修改UI元素的信息，均是通过UIView，和CALayer的信息进行修改，无法实现像UILabel改文案，更新行数等操作<br>2、3D的渲染有时候会有bug出现，位置不正确，另外仅支持一个左右的旋转不支持上下<br>3、屏幕适配还不支持，不能修改屏幕<br>其实我对sherlock也都仅限于使用，中和频率不高的使用性和高昂的费用，我选择试用结束就放弃，虽然Lookin还存在一些不足，但是免费大于一切啊，希望可以做的更好，为更多开发者带来便利。</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="R-swift"><a href="#R-swift" class="headerlink" title="R.swift"></a><a href="https://github.com/mac-cain13/R.swift" target="_blank" rel="noopener">R.swift</a></h3><p>Android开发中引用资源可以通过<code>R机制</code>，所谓<code>R机制</code>就是在我们创建一个Android项目的时候，IDE会自动帮我们创建一个名为R的类型，它所在的文件名称也是叫做R.java，R类型中没有任何方法，包含的是代表不同类型资源的内部静态类，而这些内部静态类中，也只有静态的属性，每个属性代表一个资源，故我们要引用某个资源类型中的某个资源，可用R.资源类型.资源名来引用。下面就是代码中的实例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  从图片资源文件夹中加载名为"image_test"的图片以其创建位图</span></span><br><span class="line">Bitmap aBitmap = BitmapFactory.decodeResource(<span class="keyword">this</span>.getResources(), R.drawable.image_test);</span><br></pre></td></tr></table></figure></p>
+<p>相对来说iOS中的资源引用就麻烦很多，需要通过字符串引用，无法代码补全，资源更换无法自检查。解决iOS资源引用的这些问题而借鉴Android方案的<code>R.Swift</code>应运而生。<br>传统的方式：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> settingsIcon = <span class="type">UIImage</span>(named: <span class="string">"settings-icon"</span>)</span><br><span class="line"><span class="keyword">let</span> gradientBackground = <span class="type">UIImage</span>(named: <span class="string">"gradient.jpg"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>使用R.Swift<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let settingsIcon = R.image.settingsIcon()</span><br><span class="line">let gradientBackground = R.image.gradientJpg()</span><br></pre></td></tr></table></figure></p>
+<p>不光图片，它还支持<code>Fonts</code>，<code>Resource files</code>，<code>Colors</code>，<code>Localized strings</code>，<code>Storyboards</code>，<code>Segues</code>，<code>Nibs</code>，<code>Reuseable Cells</code>。<br>我第一次见到这玩意的时候就一个感受：wocao，🐂🍺！<br>更多关于R.Swift的使用规则参照官网说明。</p>
+<h3 id="Swift-Books"><a href="#Swift-Books" class="headerlink" title="Swift-Books"></a><a href="https://github.com/longsirhero/Swift-Books" target="_blank" rel="noopener">Swift-Books</a></h3><p>github上的内容，可以分为两类，纯干货和干货的整理。这个库属于后者，是一个收录Swift&amp;Object-C相关资料的仓库。收录的都是比较经典的学习资料，而且非常全！<br>建库已经两年了，但是star却不多，不知道是因为曝光度的问题，还是因为大家对设计版权问题的内容有些警惕。但不管怎样吧，我还是要推一推这个库。</p>
+<h3 id="open-source-ios-apps"><a href="#open-source-ios-apps" class="headerlink" title="open-source-ios-apps"></a><a href="https://github.com/dkhamsing/open-source-ios-apps" target="_blank" rel="noopener">open-source-ios-apps</a></h3><p>开源的iOS应用列表。基本涵盖了iOS开发涉及的所有领域，通过完整的app去学习别人的开发技巧是一个相对直观的方式，面对这个大礼包，记得来看一看哈。</p>
+<h3 id="Chinese-Podcasts"><a href="#Chinese-Podcasts" class="headerlink" title="Chinese-Podcasts"></a><a href="https://github.com/alaskasquirrel/Chinese-Podcasts" target="_blank" rel="noopener">Chinese-Podcasts</a></h3><p>中文博客的收录，包含科技，风投，生活，电影，设计等领域。<br>音频内容最大的优势就是便捷，你可以在走路，跑步，甚至休息的时候使用它。音频相比视频还有一个更大的好处是，它会给大脑预留更多的想象空间，听音频我们会思考的更多一些。<br>去年一直在听东吴同学会，最近一段时间则听ggtalk和硅谷早知道多一些。</p>
+<h2 id="文摘"><a href="#文摘" class="headerlink" title="文摘"></a>文摘</h2><p>1、</p>
+<blockquote>
+<p>生存是一种即时策略游戏，所有的人都是这场游戏的玩家。财务自由了，就是游戏赢家。<br>–《科技爱好者周刊：66期》</p>
+</blockquote>
+<p>2、</p>
+<blockquote>
+<p>我以为别人尊重我，是因为我很优秀。慢慢的我明白了，别人尊重我，是别人很优秀；优秀的人更懂得尊重别人，对人恭敬其实是在庄严你自己。</p>
+</blockquote>
+<p>3、</p>
+<blockquote>
+<p>所谓成熟的人，就是精神上能够自给自足的人。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1937,179 +2132,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/02/27/digest_introduction/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangferry">
-      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/27/digest_introduction/" class="post-title-link" itemprop="url">关于消息摘要及对应的Swift实现</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-02-27 10:54:57" itemprop="dateCreated datePublished" datetime="2019-02-27T10:54:57+08:00">2019-02-27</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">5.7k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">5 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190227163346.jpg" alt=""><br>开发过程中我们经常会遇到对数据进行一些类似<code>MD5</code>，<code>SHA-256</code>等的处理，那处理的作用是什么以及为什么要这么做，就是今天要讨论的内容。如果你对这些算法的概念已经很熟悉，那就不用继续往下看了，如果你感觉生疏，或者并不能说清楚他们的作用，那就跟着我一起回顾一下吧。<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/02/27/digest_introduction/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2159,7 +2181,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2341,7 +2363,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">157k</span>
+    <span title="站点总字数">161k</span>
   
 
   
@@ -2350,7 +2372,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:23</span>
+    <span title="站点阅读时长">2:27</span>
   
 </div>
 
