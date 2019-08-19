@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="国际化及本地化概念将标题取名为国际化及本地化（internationalization and localization），是因为这两个概念是有差异的，而这个差异常常被我们忽略，以下是维基百科的解释：  国际化是指在设计软件，将软件与特定语言及地区脱钩的过程。当软件被移植到不同的语言及地区时，软件本身不用做内部工程上的改变或修正。本地化则是指当移植软件时，加上与特定区域设置有关的信息和翻译文件的过">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS国际化及本地化（一）不同语言的差异处理及测试">
+<meta property="og:url" content="http://zhangferry.github.io/2019/08/15/localization_guide/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="国际化及本地化概念将标题取名为国际化及本地化（internationalization and localization），是因为这两个概念是有差异的，而这个差异常常被我们忽略，以下是维基百科的解释：  国际化是指在设计软件，将软件与特定语言及地区脱钩的过程。当软件被移植到不同的语言及地区时，软件本身不用做内部工程上的改变或修正。本地化则是指当移植软件时，加上与特定区域设置有关的信息和翻译文件的过">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c937940df04ce5?w=1098&h=564&f=png&s=50699">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c937940fb4a809?w=1246&h=628&f=png&s=144160">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c93794102637a6?w=1374&h=828&f=png&s=54488">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c937941091f66b?w=1348&h=751&f=png&s=70638">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c9379410bd4777?w=1202&h=528&f=png&s=268123">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c9379411818f8b?w=446&h=113&f=png&s=12076">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c937944e689382?w=146&h=23&f=png&s=4694">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c937948efe99c2?w=93&h=109&f=png&s=4849">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c93794779e2a46?w=345&h=166&f=png&s=13927">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c937947015ded9?w=672&h=219&f=png&s=32423">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c9379494fa88f0?w=417&h=155&f=png&s=50281">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c93794db49c060?w=577&h=177&f=png&s=21573">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c93794dc742115?w=640&h=371&f=png&s=43620">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c93794dc833280?w=482&h=263&f=png&s=29718">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c937950857c5ac?w=1397&h=872&f=png&s=953020">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c937950a85f170?w=1202&h=528&f=png&s=268783">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c937950a9ee4e0?w=339&h=768&f=png&s=349250">
+<meta property="og:updated_time" content="2019-08-19T01:00:36.051Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS国际化及本地化（一）不同语言的差异处理及测试">
+<meta name="twitter:description" content="国际化及本地化概念将标题取名为国际化及本地化（internationalization and localization），是因为这两个概念是有差异的，而这个差异常常被我们忽略，以下是维基百科的解释：  国际化是指在设计软件，将软件与特定语言及地区脱钩的过程。当软件被移植到不同的语言及地区时，软件本身不用做内部工程上的改变或修正。本地化则是指当移植软件时，加上与特定区域设置有关的信息和翻译文件的过">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/8/15/16c937940df04ce5?w=1098&h=564&f=png&s=50699">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://zhangferry.github.io/2019/08/15/localization_guide/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>iOS国际化及本地化（一）不同语言的差异处理及测试 | zhangferry</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?afe60f79e35ee3c65b92d9a2ff459653";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhangferry</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">23</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/08/15/localization_guide/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">iOS国际化及本地化（一）不同语言的差异处理及测试
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-15 10:54:57" itemprop="dateCreated datePublished" datetime="2019-08-15T10:54:57+08:00">2019-08-15</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">9.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">8 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="国际化及本地化概念"><a href="#国际化及本地化概念" class="headerlink" title="国际化及本地化概念"></a>国际化及本地化概念</h2><p>将标题取名为国际化及本地化（internationalization and localization），是因为这两个概念是有差异的，而这个差异常常被我们忽略，以下是维基百科的解释：</p>
+<blockquote>
+<p>国际化是指在设计软件，将软件与特定语言及地区脱钩的过程。当软件被移植到不同的语言及地区时，软件本身不用做内部工程上的改变或修正。本地化则是指当移植软件时，加上与特定区域设置有关的信息和翻译文件的过程。</p>
+<p>国际化和本地化之间的区别虽然微妙，但却很重要。国际化意味着产品有适用于任何地方的“潜力”；本地化则是为了更适合于“特定”地方的使用，而另外增添的特色。用一项产品来说，国际化只需做一次，但本地化则要针对不同的区域各做一次。这两者之间是互补的，并且两者合起来才能让一个系统适用于各地。</p>
+</blockquote>
+<p>有些时候我们也会用国际化或者全球化代替这两者含义。</p>
+<p>作为一款优秀的产品我们做多语言版本时不应仅仅考虑到翻译这一层面，还有更多本地化相关内容需要我们注意，这篇文章主要涉及的也是本地化这一块。</p>
+<h2 id="国际化工作流程"><a href="#国际化工作流程" class="headerlink" title="国际化工作流程"></a>国际化工作流程</h2><p><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937940df04ce5?w=1098&amp;h=564&amp;f=png&amp;s=50699" alt=""></p>
+<p>本篇文章主要介绍Internationalize和Test这两步。</p>
+<p>本文目录为：</p>
+<blockquote>
+<p>1.增加多语言</p>
+<p>2.UI元素的本地化</p>
+<p>3.资源文件本地化</p>
+<p>4.字符串相关的本地化</p>
+<p>5.使用NSLocal进行本地化</p>
+<p>6.从右到左语言的处理</p>
+<p>7.本地化测试</p>
+</blockquote>
+<h2 id="增加多语言"><a href="#增加多语言" class="headerlink" title="增加多语言"></a>增加多语言</h2><p>1、在项目导航栏选择项目（不是target）</p>
+<p>2、在Localizations一栏，点击“+”号，添加语言<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937940fb4a809?w=1246&amp;h=628&amp;f=png&amp;s=144160" alt=""><br>每个条目都是由语言名称和语言id构成，例如<code>Chinese(Simplified)(zh-Hans)</code>, <code>Japanese(ja)</code><br>至此我们的项目就开启了对应语言的本地化支持。</p>
+<p>3、在对话框中选中你想本地化的文件。</p>
+<h3 id="语言和区域的影响"><a href="#语言和区域的影响" class="headerlink" title="语言和区域的影响"></a>语言和区域的影响</h3><p><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93794102637a6?w=1374&amp;h=828&amp;f=png&amp;s=54488" alt=""><br>通过观察系统日历，我们可以看到即使语言一样，国家区域的不一致也会有一些约定上的区别，关于日期和时间的本地化会在下面介绍。</p>
+<p>1、语言设置：Setting -&gt; General -&gt; Language &amp; Region<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937941091f66b?w=1348&amp;h=751&amp;f=png&amp;s=70638" alt=""><br>同样的，关于Region和Calendar的设置也在该页面。</p>
+<h2 id="资源文件的本地化"><a href="#资源文件的本地化" class="headerlink" title="资源文件的本地化"></a>资源文件的本地化</h2><h3 id="storyboard-xib文件"><a href="#storyboard-xib文件" class="headerlink" title="storyboard, xib文件"></a>storyboard, xib文件</h3><p>对于<code>sotryboard</code>和<code>xib</code>文件的本地化是Xcode直接支持的。<br>在添加语言时会提示我们自动选择创建本地化文件，如果是在添加语言之后创建的IB文件，可以通过xcode右侧属性栏中点击<code>Localize...</code>生成本地化文件。</p>
+<h3 id="图片文件"><a href="#图片文件" class="headerlink" title="图片文件"></a>图片文件</h3><p><strong>1、方法一</strong><br>对于图片内容我们可以通过同IB文件的方式进行本地化，但是有一个限制就是图片要是放到项目文件层级的，而不能放到Assets文件夹中。<br>好消息是Xcode 11将放开这种限制，对于Assets引入的图片也可以做本地化处理。</p>
+<p><strong>2、方法二</strong><br>除了Xcode本身支持的方式，我们还可以通过命名来区分图片内容，把图片名当做需要本地化的字符串，各个语言对应不同版本的图片名，这样也可以实现图片文件的本地化。</p>
+<h3 id="音视频及其他资源文件"><a href="#音视频及其他资源文件" class="headerlink" title="音视频及其他资源文件"></a>音视频及其他资源文件</h3><p>如果是内置的像是音视频，json或者其他类型的配置文件这类内容，可以使用图片文件的方法二进行引入。</p>
+<p>更多详细的设置可以参考这个文章：<a href="https://juejin.im/post/5b90ea53e51d450ea131ef81" target="_blank" rel="noopener">iOS语言国际化/本地化-实践总结</a></p>
+<h2 id="UI元素的本地化"><a href="#UI元素的本地化" class="headerlink" title="UI元素的本地化"></a>UI元素的本地化</h2><h3 id="使用Auto-layout"><a href="#使用Auto-layout" class="headerlink" title="使用Auto layout"></a>使用Auto layout</h3><p><code>Auto layout</code>是相对布局，它有能力在语言和区域变化时进行自适应。以下有几点使用auto layout的技巧：</p>
+<p><strong>1、移除宽度的约束</strong><br>相同含义下不同语言宽度往往不一样，应该让控件能够自适应。</p>
+<p><strong>2、使用内容内部大小</strong><br>fields和label默认是自动调整大小的，如果一个显示本地化内容的视图需要这个功能，选择该view，选择<code>Editor &gt; Size To Fit Content</code></p>
+<p><strong>3、使用<code>leading</code>和<code>trailing</code>属性</strong><br>正常<code>leading</code>和<code>trailing</code>对应<code>left</code>和<code>right</code>，他们含义相同。但是有些国家，像是希伯来和阿拉伯的人使用习惯是从右往左。如果你是使用<code>leading</code>和<code>trailing</code>，在该环境下将自动对应<code>right</code>和<code>left</code>。</p>
+<p><strong>4、将视图固定到相邻视图</strong><br>就是定义相邻约束，避免某一视图变化导致重叠。</p>
+<h3 id="使用伪本地化发现问题"><a href="#使用伪本地化发现问题" class="headerlink" title="使用伪本地化发现问题"></a>使用伪本地化发现问题</h3><p>这个功能只支持使用<code>storyboard</code>和<code>xib</code>进行布局的UI。<br>1、选中需要测试的.storyboard或者.xib文件<br>2、选择菜单栏 View &gt; Assistant Editor &gt; Show Assistant Editor<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c9379410bd4777?w=1202&amp;h=528&amp;f=png&amp;s=268123" alt=""></p>
+<h2 id="字符串相关的本地化"><a href="#字符串相关的本地化" class="headerlink" title="字符串相关的本地化"></a>字符串相关的本地化</h2><h3 id="使用Unicode字符串"><a href="#使用Unicode字符串" class="headerlink" title="使用Unicode字符串"></a>使用Unicode字符串</h3><p>对于所有面向用户的字符串都要使用<code>NSString, NSAttributedString</code>，对于Swift就是<code>String, AttributedString</code>，因为他们支持Unicode，Unicode是世界上所有书写系统的字符编码标准。</p>
+<p>对于一些特殊的字符串需求：<br><strong>1、访问字符串中的字符</strong><br>使用NSString中的<code>rangeOfComposedCharacterSequenceAtIndex:</code>和 <code>rangeOfComposedCharacterSequencesForRange:</code>方法，他们会确保你在取字符串时不会破坏原文本。看一个例子你可能会明白：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c9379411818f8b?w=446&amp;h=113&amp;f=png&amp;s=12076" alt=""><br>这两个文字无论是在UTF-16还是UTF-32编码的情况下都是不同的长度，所以我们不能通过长度而要通过以上的两种方式取目标字符串。</p>
+<p><strong>2、遍历字符串</strong></p>
+<p>如果我们要遍历展示下面的字符串：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937944e689382?w=146&amp;h=23&amp;f=png&amp;s=4694" alt=""></p>
+<p>可以通过<code>enumerateSubstringsInRange:options:usingBlock:</code>方法，其中options参数如果传递<code>NSStringEnumerationByComposedCharacterSequences</code>将会按照最小字符进行遍历，如果选用<code>NSStringEnumerationByWords</code>将会按照词语进行遍历。<br>以上例子使用该值遍历的结果是：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937948efe99c2?w=93&amp;h=109&amp;f=png&amp;s=4849" alt=""></p>
+<p>更多关于字符串相关的本地化问题可以参照该条视频：<br><a href="https://developer.apple.com/videos/play/wwdc2013/219/" target="_blank" rel="noopener">WWDC 2013 Making Your App World-Ready
+</a></p>
+<p><strong>3、关于人名，邮寄地址，电话号码的检测</strong><br>因为不同国家对于人名和电话号码的规则差别较大，我们可以针对不同国家写正则进行检测，也可以使用苹果提供的一个特殊含义字符的检测类：<a href="https://developer.apple.com/documentation/foundation/nsdatadetector" target="_blank" rel="noopener">NSDataDetector</a></p>
+<p>支持检测的类型包括日期，地址，链接，手机号，交通信息。</p>
+<h3 id="获取当前语言"><a href="#获取当前语言" class="headerlink" title="获取当前语言"></a>获取当前语言</h3><p>将语言设置为English(United Kingdom)，区域设置成United States，通过以下API获取到：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//en</span></span><br><span class="line"><span class="built_in">NSString</span> *languageID = [[<span class="built_in">NSBundle</span> mainBundle] preferredLocalizations].firstObject;</span><br></pre></td></tr></table></figure></p>
+<p>一般获取语言所用的方式是通过Bundle也就是第一种方式。</p>
+<h2 id="使用NSLocal进行本地化"><a href="#使用NSLocal进行本地化" class="headerlink" title="使用NSLocal进行本地化"></a>使用NSLocal进行本地化</h2><p>NSLocale对象封装关于特定区域格式化标准的信息，包括日期，时间，测量，数字，货币等一系列内容。</p>
+<p>将语言设置为English(United Kingdom)，区域设置成United States，通过以下API获取到：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//en-GB_US</span></span><br><span class="line">[<span class="built_in">NSLocale</span> currentLocale].localeIdentifier;</span><br><span class="line"><span class="comment">//en</span></span><br><span class="line">[<span class="built_in">NSLocale</span> currentLocale].languageCode;</span><br></pre></td></tr></table></figure></p>
+<p>其中languageCode跟通过Bundle获取到的是一样的。</p>
+<p>其中localIdentifier表示为<code>en-GB_US</code>，对应为：<code>语言id-国家id_区域码</code>，这几个内容都可以通过NSLocal对象取到。</p>
+<h3 id="获取特定语言的引号"><a href="#获取特定语言的引号" class="headerlink" title="获取特定语言的引号"></a>获取特定语言的引号</h3><p>因为每种语言对于引号的使用是不一样的，我们可以通过NSLocal获取到引号<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.Get the language that the app is using.</span></span><br><span class="line"><span class="built_in">NSString</span> *languageID = [[<span class="built_in">NSBundle</span> mainBundle] preferredLocalizations].firstObject;</span><br><span class="line"><span class="comment">//2.Get the associated locale object.</span></span><br><span class="line"><span class="built_in">NSLocale</span> *locale = [<span class="built_in">NSLocale</span> localeWithLocaleIdentifier:languageID];</span><br><span class="line"><span class="comment">//3.Get the beginning and ending symbols for quotes from the locale object.</span></span><br><span class="line">bQuote = [locale objectForKey:<span class="built_in">NSLocaleQuotationBeginDelimiterKey</span>];</span><br><span class="line">eQuote = [locale objectForKey:<span class="built_in">NSLocaleQuotationEndDelimiterKey</span>];</span><br><span class="line"><span class="comment">//4.Format a string using the locale-sensitive quotes.</span></span><br><span class="line">quotedString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@%@%@"</span>, bQuote, myText, eQuote];</span><br></pre></td></tr></table></figure></p>
+<p>以下展示了不同区域对于<code>myText</code>为<code>@&quot;iPhone&quot;</code>时的字符串效果。<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93794779e2a46?w=345&amp;h=166&amp;f=png&amp;s=13927" alt=""></p>
+<h3 id="字符串的本地化"><a href="#字符串的本地化" class="headerlink" title="字符串的本地化"></a>字符串的本地化</h3><p>1、创建格式化字符串<br>应该使用<code>localizedStringWithFormat:</code>而不是<code>stringWithFormat:</code>。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *localizedString = [<span class="built_in">NSString</span> localizedStringWithFormat:<span class="string">@"%3.2f"</span>, myNumber];</span><br></pre></td></tr></table></figure></p>
+<p>此方法会根据系统Local进行显示。</p>
+<h3 id="日期时间本地化"><a href="#日期时间本地化" class="headerlink" title="日期时间本地化"></a>日期时间本地化</h3><p>2、日期和时间转字符串<br>使用<code>NSDateFormatter</code>表示<code>NSDate</code>对象。推荐使用这个方法：<code>localizedStringFromDate:dateStyle:timeStyle:</code>。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//14 Aug 2019 at 11:19</span></span><br><span class="line"><span class="built_in">NSString</span> *localizedDateTime = [<span class="built_in">NSDateFormatter</span> localizedStringFromDate:[<span class="built_in">NSDate</span> date] dateStyle:<span class="built_in">NSDateFormatterMediumStyle</span> timeStyle:<span class="built_in">NSDateFormatterShortStyle</span>];</span><br></pre></td></tr></table></figure></p>
+<p>下表展示了语言为英语，区域是美国时的日期和时间格式：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937947015ded9?w=672&amp;h=219&amp;f=png&amp;s=32423" alt=""><br>下表展示了<code>dateStyle</code>为<code>NSDateFormatterMediumStyle</code>，<code>timeStyle</code>为<code>NSDateFormatterShortStyle</code>在不同语言和地区时的表现形式：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c9379494fa88f0?w=417&amp;h=155&amp;f=png&amp;s=50281" alt=""><br>3、使用自定义日期和时间格式<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.Create an NSDateFormatter object.</span></span><br><span class="line"><span class="built_in">NSDateFormatter</span> *dateFormatter = [<span class="built_in">NSDateFormatter</span> new];</span><br><span class="line"><span class="comment">//2.get a localized format string from a template that you provide.</span></span><br><span class="line"><span class="built_in">NSString</span> *localeFormatString = [<span class="built_in">NSDateFormatter</span> dateFormatFromTemplate:<span class="string">@"MMM d"</span> options:<span class="number">0</span> locale:dateFormatter.locale];</span><br><span class="line"><span class="comment">//3.Set the format of the NSDateFormatter instance to the locale-sensitive format string.</span></span><br><span class="line">dateFormatter.dateFormat = localeFormatString;</span><br><span class="line"><span class="comment">//4.Use the stringFromDate: method to get a localized string representation of the date.</span></span><br><span class="line"><span class="built_in">NSString</span> *localizedString = [dateFormatter stringFromDate:[<span class="built_in">NSDate</span> date]];</span><br></pre></td></tr></table></figure></p>
+<p>在不同语言和区域下<code>localizedString</code>对应的内容为：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93794db49c060?w=577&amp;h=177&amp;f=png&amp;s=21573" alt=""></p>
+<p>3、解析日期字符串<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.Create a date formatter object.</span></span><br><span class="line"><span class="built_in">NSDateFormatter</span> *dateFormatter = [<span class="built_in">NSDateFormatter</span> new];</span><br><span class="line"><span class="comment">//2.Set the formatter’s style to a preset style.</span></span><br><span class="line">dateFormatter.dateStyle = <span class="built_in">NSDateFormatterMediumStyle</span>;</span><br><span class="line"><span class="comment">//3.If the input string is not expected to contain a time, set the time style to none.</span></span><br><span class="line">dateFormatter.timeStyle = <span class="built_in">NSDateFormatterNoStyle</span>;</span><br><span class="line"><span class="comment">//4.Set the leniency to YES (enables the heuristics).</span></span><br><span class="line">dateFormatter.lenient = <span class="literal">YES</span>;</span><br><span class="line"><span class="comment">//5.Convert the string to a date object.</span></span><br><span class="line"><span class="built_in">NSDate</span> *date = [dateFormatter dateFromString:inputString];</span><br></pre></td></tr></table></figure></p>
+<p>我们输入的字符串是<code>9/3/14</code>，dateStyle设为<code>NSDateFormatterShortStyle</code>，如果区域为美国，我们得到的NSDate信息为：<code>2014-09-03 07:00:00 +0000</code>，如果区域为德国，我们将得到<code>2014-03-09 08:00:00 +0000</code>。</p>
+<h3 id="数字本地化"><a href="#数字本地化" class="headerlink" title="数字本地化"></a>数字本地化</h3><p>本地化设置会影响小数点符号，千分符，货币符等内容，比如数字<code>1,234.56</code>在意大利应该表示为<code>1.234,56</code>，所以对于数字的格式化我们应该用<code>NSNumberFormatter</code>处理。<br><strong>注意：NSNumberFormatter不是现成安全的</strong><br>1、将Number转成本地化的字符串<br>可以使用<code>NSNumberFormatter</code>的<code>localizedStringFromNumber:numberStyle:</code>方式<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *localizedString = [<span class="built_in">NSNumberFormatter</span> localizedStringFromNumber:myNumber numberStyle:<span class="built_in">NSNumberFormatterDecimalStyle</span>];</span><br></pre></td></tr></table></figure></p>
+<p>以下是不同语言和区域关于数字的显示效果，左侧的style及<code>numberStyle</code>：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93794dc742115?w=640&amp;h=371&amp;f=png&amp;s=43620" alt=""><br>2、将字符串转成NSNumber对象<br>这个类似日期的转换<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.Create a number formatter object.</span></span><br><span class="line"><span class="built_in">NSNumberFormatter</span> *numberFormatter = [<span class="built_in">NSNumberFormatter</span> new];</span><br><span class="line"><span class="comment">//2.Set the formatter’s style to a preset style.</span></span><br><span class="line">numberFormatter.numberStyle = <span class="built_in">NSNumberFormatterDecimalStyle</span>;</span><br><span class="line"><span class="comment">//3.Set the leniency to YES (enables the heuristics).</span></span><br><span class="line">numberFormatter.lenient = <span class="literal">YES</span>;</span><br><span class="line"><span class="comment">//4.Convert the string to a number object.</span></span><br><span class="line"><span class="built_in">NSNumber</span> *number = [numberFormatter numberFromString:inputString];</span><br></pre></td></tr></table></figure></p>
+<p>3、通过NSCalendar计算日期<br>NSCalendar类封装了日历的所有区域差异和复杂性。说他具有复杂性是因为在不同国家，一年之中的月份可能是12或者13，一月中的天数可能是5到31的任意值，每周第一天可能是周六，周日或者周一。可以看下表<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93794dc833280?w=482&amp;h=263&amp;f=png&amp;s=29718" alt=""><br>因此使用NSCalendar取这些值将会很方便。<br>获取Calendar unit的方式为<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.Create an NSDateComponents object.</span></span><br><span class="line"><span class="built_in">NSDateComponents</span> *components = [[<span class="built_in">NSCalendar</span> currentCalendar]</span><br><span class="line">    components:<span class="built_in">NSDayCalendarUnit</span> | <span class="built_in">NSMonthCalendarUnit</span> | <span class="built_in">NSYearCalendarUnit</span> | <span class="built_in">NSEraCalendarUnit</span></span><br><span class="line">    fromDate:[<span class="built_in">NSDate</span> date]];</span><br><span class="line"><span class="comment">//2.Access the values for day, month, year, and era.</span></span><br><span class="line"><span class="built_in">NSInteger</span> day = [components day];</span><br><span class="line"><span class="built_in">NSInteger</span> month = [components month];</span><br><span class="line"><span class="built_in">NSInteger</span> year = [components year];</span><br><span class="line"><span class="built_in">NSInteger</span> era = [components era];</span><br></pre></td></tr></table></figure></p>
+<p>4、监听本地化信息或者时区修改<br>可以通过<code>NSCurrentLocaleDidChangeNotification</code>监听区域的改变<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(localeDidChange:) name:<span class="built_in">NSCurrentLocaleDidChangeNotification</span> object:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure></p>
+<p>同样的监听时区变化可以通过<code>NSSystemTimeZoneDidChangeNotification</code>。</p>
+<h2 id="从右到左语言的处理"><a href="#从右到左语言的处理" class="headerlink" title="从右到左语言的处理"></a>从右到左语言的处理</h2><h3 id="创建从右到左语言的交互界面"><a href="#创建从右到左语言的交互界面" class="headerlink" title="创建从右到左语言的交互界面"></a>创建从右到左语言的交互界面</h3><p>支持从右到左向的语言，在约束层面应该使用Auto layout中的<code>leading</code>和<code>trailing</code>属性，而不是<code>right</code>和<code>right</code>。可以通过以下对比看到区别<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937950857c5ac?w=1397&amp;h=872&amp;f=png&amp;s=953020" alt=""><br>整体像是做了水平的翻转，有很多控件像是segmented控件, 进度指示器系统会自动做翻转。但是有些情况是不需要翻转的：</p>
+<ul>
+<li>视频控制和时间线指示器</li>
+<li>图片，除非他们传达方向感，如箭头</li>
+<li>时钟</li>
+<li>乐谱</li>
+<li>图表（x轴和y轴总是在一致的方向）</li>
+</ul>
+<h3 id="获取布局的方向性"><a href="#获取布局的方向性" class="headerlink" title="获取布局的方向性"></a>获取布局的方向性</h3><p>如果我们想获取当前语言是否应该是从右到左项的语言可以通过以下方法：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//right-to-left language</span></span><br><span class="line"><span class="keyword">if</span> ([<span class="built_in">UIView</span> userInterfaceLayoutDirectionForSemanticContentAttribute:view.semanticContentAttribute] == <span class="built_in">UIUserInterfaceLayoutDirectionRightToLeft</span>) &#123;</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="设置文本的对齐方式"><a href="#设置文本的对齐方式" class="headerlink" title="设置文本的对齐方式"></a>设置文本的对齐方式</h3><p>在iOS中默认的文本对齐方式是“natural”，在OS X中默认方式是“left”。natural的含义就是会感觉语言的方向自动调整为left或者right。<br>如果你想<code>NSMutableParagraphStyle</code>对象的对齐方式为自然的方向，可以：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[(<span class="built_in">NSMutableParagraphStyle</span> *)paraStyle setAlignment:<span class="built_in">NSNaturalTextAlignment</span>];</span><br></pre></td></tr></table></figure></p>
+<h3 id="对双向文本的处理"><a href="#对双向文本的处理" class="headerlink" title="对双向文本的处理"></a>对双向文本的处理</h3><p>双向文本就是一段文本中及含有从右往左的文本还含有从左往右的文本。是不是感觉很诧异？因为即使像阿拉伯和希伯来国家这些书写习惯为从右往左，但是对于数字和拉丁文是从左往右写的。如果你使用的是标准控件，像Label，TextView，Textfiled他们会自动处理双向文本内容。如果你是使用自定义控件，那这些问题就需要你手动处理。</p>
+<h3 id="向双向文本添加Unicode标记"><a href="#向双向文本添加Unicode标记" class="headerlink" title="向双向文本添加Unicode标记"></a>向双向文本添加Unicode标记</h3><p>在某些特殊的时候，系统默认的行为可能会导致一些不正确的结果，这时我们可以通过添加Unicode标记进行纠正。</p>
+<p>例如，手机号在所有语言中都是从左往右读的，如果一个需要本地化的字符串变量表示一个手机号，如果我们需要保证他是从左往右的顺序展示，需要再字符串首部增加一个从左往右的嵌入字符（LRE）：<code>U+202A</code>，在字符尾部增加定向格式字符（PDF）:<code>U+202C</code>。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Wrap the plus (+) prefix and phone number in left-to-right directional markers</span></span><br><span class="line"><span class="built_in">NSString</span> *phoneNumber = <span class="string">@"408-555-1212"</span>;</span><br><span class="line"><span class="built_in">NSString</span> *localizedPhoneNumber = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"\u202A%@\u202C"</span>, phoneNumber];</span><br></pre></td></tr></table></figure></p>
+<h3 id="翻转Cocoa-Touch视图"><a href="#翻转Cocoa-Touch视图" class="headerlink" title="翻转Cocoa Touch视图"></a>翻转Cocoa Touch视图</h3><p>有些视图是不应该翻转的，在iOS9之后可以通过UIView的<code>semanticContentAttribute</code>属性手动指定视图应该是从左到后还是从右往左的方式展示。</p>
+<p>如果是想翻转图片可以通过<code>UIImage</code>的<code>imageFlippedForRightToLeftLayoutDirection</code>方法。</p>
+<h2 id="本地化测试"><a href="#本地化测试" class="headerlink" title="本地化测试"></a>本地化测试</h2><h3 id="通过IB预览测试本地化"><a href="#通过IB预览测试本地化" class="headerlink" title="通过IB预览测试本地化"></a>通过IB预览测试本地化</h3><p>这个功能只能在.storyboard和.xib文件实现。<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937950a85f170?w=1202&amp;h=528&amp;f=png&amp;s=268783" alt=""><br>选中preview之后我们可以通过其右下角的语言选项切换不同语言，然后我们可以实时观察调换语言之后的效果。</p>
+<h3 id="通过伪语言功能测试"><a href="#通过伪语言功能测试" class="headerlink" title="通过伪语言功能测试"></a>通过伪语言功能测试</h3><p>通过<code>Edit Schema &gt; Run &gt; Options</code> 然后点开语言选项，除了各种系统支持语言外，翻到最下面可以看到这几个选项。<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937950a9ee4e0?w=339&amp;h=768&amp;f=png&amp;s=349250" alt=""><br>1.Double-Length Pseudolanguage<br>可以将文本内容变成两倍长度。</p>
+<p>2.Right-to-Left Pseudolanguage<br>将语言方向改成从右往左，也可以将语言改成阿拉伯文或者希伯来文。</p>
+<p>3.Accented Pseudolanguage<br>带重音符号。</p>
+<p>4.Bounded String Pseudolanguage<br>带边界的字符串。</p>
+<p>5.Right-to-Left Pseudolanguage With Right-to-Left Strings<br>同从右往左语言。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>苹果文档：<a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html#//apple_ref/doc/uid/10000171i-CH1-SW1" target="_blank" rel="noopener">Internationzlization and Localization Guide</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="zhangferry 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/31/monthly_13/" rel="next" title="iOS开发月报#13|201907">
+                <i class="fa fa-chevron-left"></i> iOS开发月报#13|201907
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zhangferry">
+            
+              <p class="site-author-name" itemprop="name">zhangferry</p>
+              <p class="site-description motion-element" itemprop="description">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zhangferry" title="GitHub &rarr; https://github.com/zhangferry" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/2947186387/profile" title="Weibo &rarr; https://weibo.com/2947186387/profile" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://colin1994.github.io/" title="http://colin1994.github.io/" rel="noopener" target="_blank">Colin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.evenvi.com/" title="http://www.evenvi.com/" rel="noopener" target="_blank">Evenvi</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#国际化及本地化概念"><span class="nav-number">1.</span> <span class="nav-text">国际化及本地化概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#国际化工作流程"><span class="nav-number">2.</span> <span class="nav-text">国际化工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加多语言"><span class="nav-number">3.</span> <span class="nav-text">增加多语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语言和区域的影响"><span class="nav-number">3.1.</span> <span class="nav-text">语言和区域的影响</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源文件的本地化"><span class="nav-number">4.</span> <span class="nav-text">资源文件的本地化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#storyboard-xib文件"><span class="nav-number">4.1.</span> <span class="nav-text">storyboard, xib文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片文件"><span class="nav-number">4.2.</span> <span class="nav-text">图片文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#音视频及其他资源文件"><span class="nav-number">4.3.</span> <span class="nav-text">音视频及其他资源文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI元素的本地化"><span class="nav-number">5.</span> <span class="nav-text">UI元素的本地化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Auto-layout"><span class="nav-number">5.1.</span> <span class="nav-text">使用Auto layout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用伪本地化发现问题"><span class="nav-number">5.2.</span> <span class="nav-text">使用伪本地化发现问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串相关的本地化"><span class="nav-number">6.</span> <span class="nav-text">字符串相关的本地化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Unicode字符串"><span class="nav-number">6.1.</span> <span class="nav-text">使用Unicode字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取当前语言"><span class="nav-number">6.2.</span> <span class="nav-text">获取当前语言</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用NSLocal进行本地化"><span class="nav-number">7.</span> <span class="nav-text">使用NSLocal进行本地化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取特定语言的引号"><span class="nav-number">7.1.</span> <span class="nav-text">获取特定语言的引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串的本地化"><span class="nav-number">7.2.</span> <span class="nav-text">字符串的本地化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期时间本地化"><span class="nav-number">7.3.</span> <span class="nav-text">日期时间本地化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字本地化"><span class="nav-number">7.4.</span> <span class="nav-text">数字本地化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从右到左语言的处理"><span class="nav-number">8.</span> <span class="nav-text">从右到左语言的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建从右到左语言的交互界面"><span class="nav-number">8.1.</span> <span class="nav-text">创建从右到左语言的交互界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取布局的方向性"><span class="nav-number">8.2.</span> <span class="nav-text">获取布局的方向性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置文本的对齐方式"><span class="nav-number">8.3.</span> <span class="nav-text">设置文本的对齐方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对双向文本的处理"><span class="nav-number">8.4.</span> <span class="nav-text">对双向文本的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向双向文本添加Unicode标记"><span class="nav-number">8.5.</span> <span class="nav-text">向双向文本添加Unicode标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#翻转Cocoa-Touch视图"><span class="nav-number">8.6.</span> <span class="nav-text">翻转Cocoa Touch视图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地化测试"><span class="nav-number">9.</span> <span class="nav-text">本地化测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过IB预览测试本地化"><span class="nav-number">9.1.</span> <span class="nav-text">通过IB预览测试本地化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过伪语言功能测试"><span class="nav-number">9.2.</span> <span class="nav-text">通过伪语言功能测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">10.</span> <span class="nav-text">引用</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangferry</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">171k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:35</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '012999c912503aff4cac',
+    clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
+    repo: 'zhangferry.github.io',
+    owner: 'zhangferry',
+    admin: ['zhangferry'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>

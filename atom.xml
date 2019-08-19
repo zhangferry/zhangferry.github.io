@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2019-07-31T15:00:18.245Z</updated>
+  <updated>2019-08-19T01:00:36.051Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS国际化及本地化（一）不同语言的差异处理及测试</title>
+    <link href="http://zhangferry.github.io/2019/08/15/localization_guide/"/>
+    <id>http://zhangferry.github.io/2019/08/15/localization_guide/</id>
+    <published>2019-08-15T02:54:57.000Z</published>
+    <updated>2019-08-19T01:00:36.051Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;国际化及本地化概念&quot;&gt;&lt;a href=&quot;#国际化及本地化概念&quot; class=&quot;headerlink&quot; title=&quot;国际化及本地化概念&quot;&gt;&lt;/a&gt;国际化及本地化概念&lt;/h2&gt;&lt;p&gt;将标题取名为国际化及本地化（internationalization and
+        
+      
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS开发月报#13|201907</title>
@@ -393,26 +417,6 @@
     
     
       <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git基本操作回顾</title>
-    <link href="http://zhangferry.github.io/2018/09/19/git_command/"/>
-    <id>http://zhangferry.github.io/2018/09/19/git_command/</id>
-    <published>2018-09-19T09:14:55.000Z</published>
-    <updated>2019-05-17T15:23:26.309Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;作为git最常用的几个命令&lt;code&gt;git status&lt;/code&gt;、&lt;code&gt;git add&lt;/code&gt;、&lt;code&gt;git commit&lt;/code&gt;，我们每天可能都会写个数十遍。但是越是这种我们熟悉的操作，越容易存在一些我们忽略的细节。这篇文章就是用来记录下这些细节，记录我们常用命令中不常用的操作。&lt;/p&gt;
-&lt;p&gt;在git中编辑过某些文件之后，由于自上次提交后你对它们做了修改，git 将它们标记为已修改文件。 我们逐步将这些修改过的文件放入暂存区，然后提交所有暂存了的修改，如此反复。所以使用 git 时文件的生命周期如下：&lt;br&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1059465-6aee09f81493701f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;lifecycle.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;回顾完就进入正题&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="git" scheme="http://zhangferry.github.io/tags/git/"/>
     
   </entry>
   
