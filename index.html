@@ -252,7 +252,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">23</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">24</span></a>
 
   </li>
         
@@ -271,7 +271,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">42</span></a>
 
   </li>
         
@@ -342,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/08/15/localization_guide/">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/08/20/builder_design_pattern_swift/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangferry">
@@ -362,7 +362,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/15/localization_guide/" class="post-title-link" itemprop="url">iOS国际化及本地化（一）不同语言的差异处理及测试</a>
+                <a href="/2019/08/20/builder_design_pattern_swift/" class="post-title-link" itemprop="url">【译】设计模式引导--OOP的能力</a>
               
             
           </h2>
@@ -387,7 +387,193 @@
                 
               
 
-              <time title="创建时间：2019-08-15 10:54:57" itemprop="dateCreated datePublished" datetime="2019-08-15T10:54:57+08:00">2019-08-15</time>
+              <time title="创建时间：2019-08-20 10:25:34" itemprop="dateCreated datePublished" datetime="2019-08-20T10:25:34+08:00">2019-08-20</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">8.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">8 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p><a href="https://medium.com/swift-india/design-patterns-by-tutorials-the-power-of-oop-2e871b551cbe" target="_blank" rel="noopener">原文链接</a><br>作者：Hitendra Solanki</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190819211318.jpeg" alt=""><br>导读–本博客系列要求具有面向对象编程的中级专业知识。您应该对类、对象、构造函数、继承、值和引用类型有基本的了解。通过仔细地从头到尾阅读本系列文章，不管是中级还是高级开发，您都将有所收获。</p>
+<p>设计模式用于表示经验丰富的面向对象软件开发人员社区采用的最佳实践。</p>
+<p>建造者模式帮助我们更简单更易读地创建一个类，它遵守着以下两条规则：<br>1、分割原始类和它的构造方法<br>2、在最后一个返回类的实例</p>
+<p><strong>建造者模式最佳的例子就是SwiftUI，是的你没有看错。SwiftUI中大部分类像是Text，Image都是使用的建造者模式。</strong></p>
+<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>想一下，一个<code>Person</code>类拥有不少于十个属性，当你要使用它时，你需要为它创建一个构造方法。它的构造者将拥有不少于十个参数，去管理这么一个带有很多参数的单一函数或构造方式将是非常困难的，最终你也会让这端代码失去可读性。看下面的例子：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="comment">//personal details</span></span><br><span class="line">  <span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> gender: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> birthDate: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> birthPlace: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> height: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> weight: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//contact details</span></span><br><span class="line">  <span class="keyword">var</span> phone: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> email: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//address details</span></span><br><span class="line">  <span class="keyword">var</span> streeAddress: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> zipCode: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> city: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//work details</span></span><br><span class="line">  <span class="keyword">var</span> companyName: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> designation: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> annualIncome: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//constructor</span></span><br><span class="line">  <span class="keyword">init</span>(name: <span class="type">String</span>,</span><br><span class="line">       gender: <span class="type">String</span>,</span><br><span class="line">       birthDate: <span class="type">String</span>,</span><br><span class="line">       birthPlace: <span class="type">String</span>,</span><br><span class="line">       height: <span class="type">String</span>,</span><br><span class="line">       weight: <span class="type">String</span>,</span><br><span class="line">       phone: <span class="type">String</span>,</span><br><span class="line">       email: <span class="type">String</span>,</span><br><span class="line">       streeAddress: <span class="type">String</span>,</span><br><span class="line">       zipCode: <span class="type">String</span>,</span><br><span class="line">       city: <span class="type">String</span>,</span><br><span class="line">       companyName: <span class="type">String</span>,</span><br><span class="line">       designation: <span class="type">String</span>,</span><br><span class="line">       annualIncome: <span class="type">String</span>) &#123;</span><br><span class="line">    <span class="keyword">self</span>.name = name</span><br><span class="line">    <span class="keyword">self</span>.gender = gender</span><br><span class="line">    <span class="keyword">self</span>.birthDate = birthDate</span><br><span class="line">    <span class="keyword">self</span>.birthPlace = birthPlace</span><br><span class="line">    <span class="keyword">self</span>.height = height</span><br><span class="line">    <span class="keyword">self</span>.weight = weight</span><br><span class="line">    <span class="keyword">self</span>.phone = phone</span><br><span class="line">    <span class="keyword">self</span>.email = email</span><br><span class="line">    <span class="keyword">self</span>.streeAddress = streeAddress</span><br><span class="line">    <span class="keyword">self</span>.zipCode = zipCode</span><br><span class="line">    <span class="keyword">self</span>.height = height</span><br><span class="line">    <span class="keyword">self</span>.city = city</span><br><span class="line">    <span class="keyword">self</span>.companyName = companyName</span><br><span class="line">    <span class="keyword">self</span>.designation = designation</span><br><span class="line">    <span class="keyword">self</span>.annualIncome = annualIncome</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This is function in Xcode-Playground which executes our test code</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">let</span> hitendra = <span class="type">Person</span>(name: <span class="string">"Hitendra Solanki"</span>,</span><br><span class="line">                        gender: <span class="string">"Male"</span>,</span><br><span class="line">                        birthDate: <span class="string">"2nd Oct 1991"</span>,</span><br><span class="line">                        birthPlace: <span class="string">"Gujarat, India"</span>,</span><br><span class="line">                        height: <span class="string">"5.9 ft"</span>,</span><br><span class="line">                        weight: <span class="string">"85kg"</span>,</span><br><span class="line">                        phone: <span class="string">"+91 90333-71772"</span>,</span><br><span class="line">                        email: <span class="string">"hitendra.developer@gmail.com"</span>,</span><br><span class="line">                        streeAddress: <span class="string">"52nd Godrej Street"</span>,</span><br><span class="line">                        zipCode: <span class="string">"380015"</span>,</span><br><span class="line">                        city: <span class="string">"Ahmedabad"</span>,</span><br><span class="line">                        companyName: <span class="string">"Fortune 500"</span>,</span><br><span class="line">                        designation: <span class="string">"Software architect"</span>,</span><br><span class="line">                        annualIncome: <span class="string">"45,000 USD"</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//use of Person object</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"\(hitendra.name) works in \(hitendra.companyName) compay as a \(hitendra.designation)."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//call main to execute our test code in Xcode-Playground</span></span><br><span class="line">main()</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Console output:</span></span><br><span class="line"><span class="comment">Hitendra Solanki works in Fortune 500 compay as a Software architect.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></p>
+<p>将上面的例子在playground中运行一下，你会得到预期结果。逻辑上这也是对的。</p>
+<p>我们可以尝试优化上面的代码，从解决这两个问题入手。<br>1、我们必须按照既定的顺序传参数，而不能通过重新排列参数提高可读性。<br>2、即使创建对象时我们不知道一些属性值，我们也不得不传入所有参数。</p>
+<p>例如你需要创建一个<code>Person</code>类，但是这个人还在找工作。只有当他进入某一公司我们才能得到他的工作信息。</p>
+<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><p>1、创建相关属性的逻辑分组。<br>2、为不同分组的属性创建不同的建造者类。<br>3、在建造者类中最后一步返回实例。</p>
+<p>让我们从上面的例子开始，我们已经拥有一个<code>Person</code>类，它含有14个属性。我们仔细观察这14个属性，可以将它分为四组。<br>1、个人信息<br>2、联系方式<br>3、地址信息<br>4、公司信息</p>
+<p>通过强大的设计模式我们可以解决上面两个问题，具体代码如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//This is function in playground which executes our test code</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> hitendra = <span class="type">Person</span>() <span class="comment">//person with empty details</span></span><br><span class="line">  <span class="keyword">let</span> personBuilder = <span class="type">PersonBuilder</span>(person: hitendra)</span><br><span class="line">  </span><br><span class="line">  hitendra = personBuilder</span><br><span class="line">    .personalInfo</span><br><span class="line">      .nameIs(<span class="string">"Hitendra Solanki"</span>)</span><br><span class="line">      .genderIs(<span class="string">"Male"</span>)</span><br><span class="line">      .bornOn(<span class="string">"2nd Oct 1991"</span>)</span><br><span class="line">      .bornAt(<span class="string">"Gujarat, India"</span>)</span><br><span class="line">      .havingHeight(<span class="string">"5.9 ft"</span>)</span><br><span class="line">      .havingWeight(<span class="string">"85 kg"</span>)</span><br><span class="line">    .contacts</span><br><span class="line">      .hasPhone(<span class="string">"+91 90333-71772"</span>)</span><br><span class="line">      .hasEmail(<span class="string">"hitendra.developer@gmail.com"</span>)</span><br><span class="line">    .lives</span><br><span class="line">      .at(<span class="string">"52nd Godrej Street"</span>)</span><br><span class="line">      .inCity(<span class="string">"Ahmedabad"</span>)</span><br><span class="line">      .withZipCode(<span class="string">"380015"</span>)</span><br><span class="line">    .build()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//use of Person object</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"\(hitendra.name) has contact number \(hitendra.phone) and email \(hitendra.email)"</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//later on when we have company details ready for the person</span></span><br><span class="line">  hitendra = personBuilder</span><br><span class="line">    .works</span><br><span class="line">      .asA(<span class="string">"Software architect"</span>)</span><br><span class="line">      .inCompany(<span class="string">"Fortune 500"</span>)</span><br><span class="line">      .hasAnnualEarning(<span class="string">"45,000 USD"</span>)</span><br><span class="line">    .build()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//use of Person object with update info</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"\(hitendra.name) works in \(hitendra.companyName) compay as a \(hitendra.designation)."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//call main to execute our test code</span></span><br><span class="line">main()</span><br><span class="line"></span><br><span class="line"><span class="comment">//Person class which only contains the details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="comment">//personal details</span></span><br><span class="line">  <span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> gender: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> birthDate: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> birthPlace: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> height: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> weight: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//contact details</span></span><br><span class="line">  <span class="keyword">var</span> phone: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> email: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//address details</span></span><br><span class="line">  <span class="keyword">var</span> streeAddress: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> zipCode: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> city: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//work details</span></span><br><span class="line">  <span class="keyword">var</span> companyName: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> designation: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> annualIncome: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//empty constructor</span></span><br><span class="line">  <span class="keyword">init</span>() &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonBuilder class helps to construct the person class instance</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> person: <span class="type">Person</span></span><br><span class="line">  <span class="keyword">init</span>(person: <span class="type">Person</span>)&#123;</span><br><span class="line">    <span class="keyword">self</span>.person = person</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//personal details builder switching</span></span><br><span class="line">  <span class="keyword">var</span> personalInfo: <span class="type">PersonPersonalDetailsBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">PersonPersonalDetailsBuilder</span>(person: <span class="keyword">self</span>.person)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//contact details builder switching</span></span><br><span class="line">  <span class="keyword">var</span> contacts: <span class="type">PersonContactDetailsBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">PersonContactDetailsBuilder</span>(person: <span class="keyword">self</span>.person)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//address details builder switching</span></span><br><span class="line">  <span class="keyword">var</span> lives: <span class="type">PersonAddressDetailsBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">PersonAddressDetailsBuilder</span>(person: <span class="keyword">self</span>.person)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//work details builder switching</span></span><br><span class="line">  <span class="keyword">var</span> works: <span class="type">PersonCompanyDetailsBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">PersonCompanyDetailsBuilder</span>(person: <span class="keyword">self</span>.person)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">build</span><span class="params">()</span></span> -&gt; <span class="type">Person</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.person</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonPersonalDetailsBuilder: update personal details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonPersonalDetailsBuilder</span>: <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">nameIs</span><span class="params">(<span class="number">_</span> name: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.name = name</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">genderIs</span><span class="params">(<span class="number">_</span> gender: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.gender = gender</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">bornOn</span><span class="params">(<span class="number">_</span> birthDate: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.birthDate = birthDate</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">bornAt</span><span class="params">(<span class="number">_</span> birthPlace: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.birthPlace = birthPlace</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">havingHeight</span><span class="params">(<span class="number">_</span> height: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.height = height</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">havingWeight</span><span class="params">(<span class="number">_</span> weight: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.weight = weight</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonContactDetailsBuilder: update contact details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonContactDetailsBuilder</span>: <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">hasPhone</span><span class="params">(<span class="number">_</span> phone: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.phone = phone</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">hasEmail</span><span class="params">(<span class="number">_</span> email: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.email = email</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonAddressDetailsBuilder: update address details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonAddressDetailsBuilder</span>: <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">at</span><span class="params">(<span class="number">_</span> streeAddress: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.streeAddress = streeAddress</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">withZipCode</span><span class="params">(<span class="number">_</span> zipCode: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.zipCode = zipCode</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">inCity</span><span class="params">(<span class="number">_</span> city: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.city = city</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonCompanyDetailsBuilder: update company details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonCompanyDetailsBuilder</span>: <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">inCompany</span><span class="params">(<span class="number">_</span> companyName: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.companyName = companyName</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">asA</span><span class="params">(<span class="number">_</span> designation: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.designation = designation</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">hasAnnualEarning</span><span class="params">(<span class="number">_</span> annualIncome: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.annualIncome = annualIncome</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Console output:</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> Hitendra Solanki has contact number +91 90333-71772 and email hitendra.developer@gmail.com</span></span><br><span class="line"><span class="comment"> Hitendra Solanki works in Fortune 500 compay as a Software architect.</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure></p>
+<p>在上面的例子中，我们把<code>Person</code>类根据职责分割成了几个不同的类。我们创建了多个建造者，他们分别管理相关分组内的属性，而Person只持有这些建造者。</p>
+<p>我们拥有一个建造者基类<code>PersonBuilder</code>和四个衍生的建造者类，<code>PersonPersonalDetailsBuilder</code>, <code>PersonContactDetailsBuilder</code>, <code>PersonAddressDetailsBuilder</code> 和 <code>PersonCompanyDetailsBuilder</code>。</p>
+<p>当其他四个从<code>Personbuilder</code>衍生出来的建造者需要更新相关属性时，<code>Personbuilder</code>这个基类可以帮助我们在它们之间进行转换。</p>
+<p>在上面的例子中我们可以看到新的构造方法变得更加易读了，我们可以用一种更加优雅的方式更新一组或者某一个属性。</p>
+<p>需要注意一下，上面的例子中我们再每个建造者更新方法之后返回了它自己。这让我们能够在相同的建造者中写出链式方法，而不是分开的多行。这个概念称为流程模式。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>1、用一种优雅的方式很容易地初始化一个含很多参数的类。<br>2、遵从单一职责原则。<br>3、根据你的情况，以任意的顺序初始化对象和更新属性。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/08/19/localization_guide/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/19/localization_guide/" class="post-title-link" itemprop="url">iOS国际化及本地化（一）不同语言的差异处理及测试</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-19 10:54:57" itemprop="dateCreated datePublished" datetime="2019-08-19T10:54:57+08:00">2019-08-19</time>
             
 
             
@@ -452,14 +638,15 @@
       
         
           
-            <h2 id="国际化及本地化概念"><a href="#国际化及本地化概念" class="headerlink" title="国际化及本地化概念"></a>国际化及本地化概念</h2><p>将标题取名为国际化及本地化（internationalization and localization），是因为这两个概念是有差异的，而这个差异常常被我们忽略，以下是维基百科的解释：</p>
+            <p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190819180049.png" alt=""></p>
+<h2 id="国际化及本地化概念"><a href="#国际化及本地化概念" class="headerlink" title="国际化及本地化概念"></a>国际化及本地化概念</h2><p>将标题取名为国际化及本地化（internationalization and localization），是因为这两个概念是有差异的，而这个差异常常被我们忽略，以下是维基百科的解释：</p>
 <blockquote>
 <p>国际化是指在设计软件，将软件与特定语言及地区脱钩的过程。当软件被移植到不同的语言及地区时，软件本身不用做内部工程上的改变或修正。本地化则是指当移植软件时，加上与特定区域设置有关的信息和翻译文件的过程。</p>
 <p>国际化和本地化之间的区别虽然微妙，但却很重要。国际化意味着产品有适用于任何地方的“潜力”；本地化则是为了更适合于“特定”地方的使用，而另外增添的特色。用一项产品来说，国际化只需做一次，但本地化则要针对不同的区域各做一次。这两者之间是互补的，并且两者合起来才能让一个系统适用于各地。</p>
 </blockquote>
 <p>有些时候我们也会用国际化或者全球化代替这两者含义。</p>
 <p>作为一款优秀的产品我们做多语言版本时不应仅仅考虑到翻译这一层面，还有更多本地化相关内容需要我们注意，这篇文章主要涉及的也是本地化这一块。</p>
-<h2 id="国际化工作流程"><a href="#国际化工作流程" class="headerlink" title="国际化工作流程"></a>国际化工作流程</h2><p><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937940df04ce5?w=1098&amp;h=564&amp;f=png&amp;s=50699" alt=""></p>
+<h2 id="国际化工作流程"><a href="#国际化工作流程" class="headerlink" title="国际化工作流程"></a>国际化工作流程</h2><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190815094524.png" alt=""></p>
 <p>本篇文章主要介绍Internationalize和Test这两步。</p>
 <p>本文目录为：</p>
 <blockquote>
@@ -472,10 +659,10 @@
 <p>7.本地化测试</p>
 </blockquote>
 <h2 id="增加多语言"><a href="#增加多语言" class="headerlink" title="增加多语言"></a>增加多语言</h2><p>1、在项目导航栏选择项目（不是target）</p>
-<p>2、在Localizations一栏，点击“+”号，添加语言<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937940fb4a809?w=1246&amp;h=628&amp;f=png&amp;s=144160" alt=""><br>每个条目都是由语言名称和语言id构成，例如<code>Chinese(Simplified)(zh-Hans)</code>, <code>Japanese(ja)</code><br>至此我们的项目就开启了对应语言的本地化支持。</p>
+<p>2、在Localizations一栏，点击“+”号，添加语言<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190813162840.png" alt=""><br>每个条目都是由语言名称和语言id构成，例如<code>Chinese(Simplified)(zh-Hans)</code>, <code>Japanese(ja)</code><br>至此我们的项目就开启了对应语言的本地化支持。</p>
 <p>3、在对话框中选中你想本地化的文件。</p>
-<h3 id="语言和区域的影响"><a href="#语言和区域的影响" class="headerlink" title="语言和区域的影响"></a>语言和区域的影响</h3><p><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93794102637a6?w=1374&amp;h=828&amp;f=png&amp;s=54488" alt=""><br>通过观察系统日历，我们可以看到即使语言一样，国家区域的不一致也会有一些约定上的区别，关于日期和时间的本地化会在下面介绍。</p>
-<p>1、语言设置：Setting -&gt; General -&gt; Language &amp; Region<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937941091f66b?w=1348&amp;h=751&amp;f=png&amp;s=70638" alt=""><br>同样的，关于Region和Calendar的设置也在该页面。</p>
+<h3 id="语言和区域的影响"><a href="#语言和区域的影响" class="headerlink" title="语言和区域的影响"></a>语言和区域的影响</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190813164121.png" alt=""><br>通过观察系统日历，我们可以看到即使语言一样，国家区域的不一致也会有一些约定上的区别，关于日期和时间的本地化会在下面介绍。</p>
+<p>1、语言设置：Setting -&gt; General -&gt; Language &amp; Region<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190813164521.png" alt=""><br>同样的，关于Region和Calendar的设置也在该页面。</p>
 <h2 id="资源文件的本地化"><a href="#资源文件的本地化" class="headerlink" title="资源文件的本地化"></a>资源文件的本地化</h2><h3 id="storyboard-xib文件"><a href="#storyboard-xib文件" class="headerlink" title="storyboard, xib文件"></a>storyboard, xib文件</h3><p>对于<code>sotryboard</code>和<code>xib</code>文件的本地化是Xcode直接支持的。<br>在添加语言时会提示我们自动选择创建本地化文件，如果是在添加语言之后创建的IB文件，可以通过xcode右侧属性栏中点击<code>Localize...</code>生成本地化文件。</p>
 <h3 id="图片文件"><a href="#图片文件" class="headerlink" title="图片文件"></a>图片文件</h3><p><strong>1、方法一</strong><br>对于图片内容我们可以通过同IB文件的方式进行本地化，但是有一个限制就是图片要是放到项目文件层级的，而不能放到Assets文件夹中。<br>好消息是Xcode 11将放开这种限制，对于Assets引入的图片也可以做本地化处理。</p>
 <p><strong>2、方法二</strong><br>除了Xcode本身支持的方式，我们还可以通过命名来区分图片内容，把图片名当做需要本地化的字符串，各个语言对应不同版本的图片名，这样也可以实现图片文件的本地化。</p>
@@ -486,12 +673,12 @@
 <p><strong>2、使用内容内部大小</strong><br>fields和label默认是自动调整大小的，如果一个显示本地化内容的视图需要这个功能，选择该view，选择<code>Editor &gt; Size To Fit Content</code></p>
 <p><strong>3、使用<code>leading</code>和<code>trailing</code>属性</strong><br>正常<code>leading</code>和<code>trailing</code>对应<code>left</code>和<code>right</code>，他们含义相同。但是有些国家，像是希伯来和阿拉伯的人使用习惯是从右往左。如果你是使用<code>leading</code>和<code>trailing</code>，在该环境下将自动对应<code>right</code>和<code>left</code>。</p>
 <p><strong>4、将视图固定到相邻视图</strong><br>就是定义相邻约束，避免某一视图变化导致重叠。</p>
-<h3 id="使用伪本地化发现问题"><a href="#使用伪本地化发现问题" class="headerlink" title="使用伪本地化发现问题"></a>使用伪本地化发现问题</h3><p>这个功能只支持使用<code>storyboard</code>和<code>xib</code>进行布局的UI。<br>1、选中需要测试的.storyboard或者.xib文件<br>2、选择菜单栏 View &gt; Assistant Editor &gt; Show Assistant Editor<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c9379410bd4777?w=1202&amp;h=528&amp;f=png&amp;s=268123" alt=""></p>
+<h3 id="使用伪本地化发现问题"><a href="#使用伪本地化发现问题" class="headerlink" title="使用伪本地化发现问题"></a>使用伪本地化发现问题</h3><p>这个功能只支持使用<code>storyboard</code>和<code>xib</code>进行布局的UI。<br>1、选中需要测试的.storyboard或者.xib文件<br>2、选择菜单栏 View &gt; Assistant Editor &gt; Show Assistant Editor<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190813174244.png" alt=""></p>
 <h2 id="字符串相关的本地化"><a href="#字符串相关的本地化" class="headerlink" title="字符串相关的本地化"></a>字符串相关的本地化</h2><h3 id="使用Unicode字符串"><a href="#使用Unicode字符串" class="headerlink" title="使用Unicode字符串"></a>使用Unicode字符串</h3><p>对于所有面向用户的字符串都要使用<code>NSString, NSAttributedString</code>，对于Swift就是<code>String, AttributedString</code>，因为他们支持Unicode，Unicode是世界上所有书写系统的字符编码标准。</p>
-<p>对于一些特殊的字符串需求：<br><strong>1、访问字符串中的字符</strong><br>使用NSString中的<code>rangeOfComposedCharacterSequenceAtIndex:</code>和 <code>rangeOfComposedCharacterSequencesForRange:</code>方法，他们会确保你在取字符串时不会破坏原文本。看一个例子你可能会明白：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c9379411818f8b?w=446&amp;h=113&amp;f=png&amp;s=12076" alt=""><br>这两个文字无论是在UTF-16还是UTF-32编码的情况下都是不同的长度，所以我们不能通过长度而要通过以上的两种方式取目标字符串。</p>
+<p>对于一些特殊的字符串需求：<br><strong>1、访问字符串中的字符</strong><br>使用NSString中的<code>rangeOfComposedCharacterSequenceAtIndex:</code>和 <code>rangeOfComposedCharacterSequencesForRange:</code>方法，他们会确保你在取字符串时不会破坏原文本。看一个例子你可能会明白：</p>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190813174801.png" alt=""><br>这两个文字无论是在UTF-16还是UTF-32编码的情况下都是不同的长度，所以我们不能通过长度而要通过以上的两种方式取目标字符串。</p>
 <p><strong>2、遍历字符串</strong></p>
-<p>如果我们要遍历展示下面的字符串：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937944e689382?w=146&amp;h=23&amp;f=png&amp;s=4694" alt=""></p>
-<p>可以通过<code>enumerateSubstringsInRange:options:usingBlock:</code>方法，其中options参数如果传递<code>NSStringEnumerationByComposedCharacterSequences</code>将会按照最小字符进行遍历，如果选用<code>NSStringEnumerationByWords</code>将会按照词语进行遍历。<br>以上例子使用该值遍历的结果是：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937948efe99c2?w=93&amp;h=109&amp;f=png&amp;s=4849" alt=""></p>
+<p>如果我们要遍历展示下面的字符串：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190813175200.png" alt=""><br>可以通过<code>enumerateSubstringsInRange:options:usingBlock:</code>方法，其中options参数如果传递<code>NSStringEnumerationByComposedCharacterSequences</code>将会按照最小字符进行遍历，如果选用<code>NSStringEnumerationByWords</code>将会按照词语进行遍历。<br>以上例子使用该值遍历的结果是：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190813175638.png" alt=""></p>
 <p>更多关于字符串相关的本地化问题可以参照该条视频：<br><a href="https://developer.apple.com/videos/play/wwdc2013/219/" target="_blank" rel="noopener">WWDC 2013 Making Your App World-Ready
 </a></p>
 <p><strong>3、关于人名，邮寄地址，电话号码的检测</strong><br>因为不同国家对于人名和电话号码的规则差别较大，我们可以针对不同国家写正则进行检测，也可以使用苹果提供的一个特殊含义字符的检测类：<a href="https://developer.apple.com/documentation/foundation/nsdatadetector" target="_blank" rel="noopener">NSDataDetector</a></p>
@@ -503,20 +690,21 @@
 <p>其中languageCode跟通过Bundle获取到的是一样的。</p>
 <p>其中localIdentifier表示为<code>en-GB_US</code>，对应为：<code>语言id-国家id_区域码</code>，这几个内容都可以通过NSLocal对象取到。</p>
 <h3 id="获取特定语言的引号"><a href="#获取特定语言的引号" class="headerlink" title="获取特定语言的引号"></a>获取特定语言的引号</h3><p>因为每种语言对于引号的使用是不一样的，我们可以通过NSLocal获取到引号<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.Get the language that the app is using.</span></span><br><span class="line"><span class="built_in">NSString</span> *languageID = [[<span class="built_in">NSBundle</span> mainBundle] preferredLocalizations].firstObject;</span><br><span class="line"><span class="comment">//2.Get the associated locale object.</span></span><br><span class="line"><span class="built_in">NSLocale</span> *locale = [<span class="built_in">NSLocale</span> localeWithLocaleIdentifier:languageID];</span><br><span class="line"><span class="comment">//3.Get the beginning and ending symbols for quotes from the locale object.</span></span><br><span class="line">bQuote = [locale objectForKey:<span class="built_in">NSLocaleQuotationBeginDelimiterKey</span>];</span><br><span class="line">eQuote = [locale objectForKey:<span class="built_in">NSLocaleQuotationEndDelimiterKey</span>];</span><br><span class="line"><span class="comment">//4.Format a string using the locale-sensitive quotes.</span></span><br><span class="line">quotedString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@%@%@"</span>, bQuote, myText, eQuote];</span><br></pre></td></tr></table></figure></p>
-<p>以下展示了不同区域对于<code>myText</code>为<code>@&quot;iPhone&quot;</code>时的字符串效果。<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93794779e2a46?w=345&amp;h=166&amp;f=png&amp;s=13927" alt=""></p>
+<p>以下展示了不同区域对于<code>myText</code>为<code>@&quot;iPhone&quot;</code>时的字符串效果。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190814110652.png" alt=""></p>
 <h3 id="字符串的本地化"><a href="#字符串的本地化" class="headerlink" title="字符串的本地化"></a>字符串的本地化</h3><p>1、创建格式化字符串<br>应该使用<code>localizedStringWithFormat:</code>而不是<code>stringWithFormat:</code>。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *localizedString = [<span class="built_in">NSString</span> localizedStringWithFormat:<span class="string">@"%3.2f"</span>, myNumber];</span><br></pre></td></tr></table></figure></p>
 <p>此方法会根据系统Local进行显示。</p>
 <h3 id="日期时间本地化"><a href="#日期时间本地化" class="headerlink" title="日期时间本地化"></a>日期时间本地化</h3><p>2、日期和时间转字符串<br>使用<code>NSDateFormatter</code>表示<code>NSDate</code>对象。推荐使用这个方法：<code>localizedStringFromDate:dateStyle:timeStyle:</code>。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//14 Aug 2019 at 11:19</span></span><br><span class="line"><span class="built_in">NSString</span> *localizedDateTime = [<span class="built_in">NSDateFormatter</span> localizedStringFromDate:[<span class="built_in">NSDate</span> date] dateStyle:<span class="built_in">NSDateFormatterMediumStyle</span> timeStyle:<span class="built_in">NSDateFormatterShortStyle</span>];</span><br></pre></td></tr></table></figure></p>
-<p>下表展示了语言为英语，区域是美国时的日期和时间格式：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937947015ded9?w=672&amp;h=219&amp;f=png&amp;s=32423" alt=""><br>下表展示了<code>dateStyle</code>为<code>NSDateFormatterMediumStyle</code>，<code>timeStyle</code>为<code>NSDateFormatterShortStyle</code>在不同语言和地区时的表现形式：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c9379494fa88f0?w=417&amp;h=155&amp;f=png&amp;s=50281" alt=""><br>3、使用自定义日期和时间格式<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.Create an NSDateFormatter object.</span></span><br><span class="line"><span class="built_in">NSDateFormatter</span> *dateFormatter = [<span class="built_in">NSDateFormatter</span> new];</span><br><span class="line"><span class="comment">//2.get a localized format string from a template that you provide.</span></span><br><span class="line"><span class="built_in">NSString</span> *localeFormatString = [<span class="built_in">NSDateFormatter</span> dateFormatFromTemplate:<span class="string">@"MMM d"</span> options:<span class="number">0</span> locale:dateFormatter.locale];</span><br><span class="line"><span class="comment">//3.Set the format of the NSDateFormatter instance to the locale-sensitive format string.</span></span><br><span class="line">dateFormatter.dateFormat = localeFormatString;</span><br><span class="line"><span class="comment">//4.Use the stringFromDate: method to get a localized string representation of the date.</span></span><br><span class="line"><span class="built_in">NSString</span> *localizedString = [dateFormatter stringFromDate:[<span class="built_in">NSDate</span> date]];</span><br></pre></td></tr></table></figure></p>
-<p>在不同语言和区域下<code>localizedString</code>对应的内容为：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93794db49c060?w=577&amp;h=177&amp;f=png&amp;s=21573" alt=""></p>
+<p>下表展示了语言为英语，区域是美国时的日期和时间格式：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190814112216.png" alt=""><br>下表展示了<code>dateStyle</code>为<code>NSDateFormatterMediumStyle</code>，<code>timeStyle</code>为<code>NSDateFormatterShortStyle</code>在不同语言和地区时的表现形式：</p>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190814113048.png" alt=""><br>3、使用自定义日期和时间格式<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.Create an NSDateFormatter object.</span></span><br><span class="line"><span class="built_in">NSDateFormatter</span> *dateFormatter = [<span class="built_in">NSDateFormatter</span> new];</span><br><span class="line"><span class="comment">//2.get a localized format string from a template that you provide.</span></span><br><span class="line"><span class="built_in">NSString</span> *localeFormatString = [<span class="built_in">NSDateFormatter</span> dateFormatFromTemplate:<span class="string">@"MMM d"</span> options:<span class="number">0</span> locale:dateFormatter.locale];</span><br><span class="line"><span class="comment">//3.Set the format of the NSDateFormatter instance to the locale-sensitive format string.</span></span><br><span class="line">dateFormatter.dateFormat = localeFormatString;</span><br><span class="line"><span class="comment">//4.Use the stringFromDate: method to get a localized string representation of the date.</span></span><br><span class="line"><span class="built_in">NSString</span> *localizedString = [dateFormatter stringFromDate:[<span class="built_in">NSDate</span> date]];</span><br></pre></td></tr></table></figure></p>
+<p>在不同语言和区域下<code>localizedString</code>对应的内容为：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190814113008.png" alt=""></p>
 <p>3、解析日期字符串<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.Create a date formatter object.</span></span><br><span class="line"><span class="built_in">NSDateFormatter</span> *dateFormatter = [<span class="built_in">NSDateFormatter</span> new];</span><br><span class="line"><span class="comment">//2.Set the formatter’s style to a preset style.</span></span><br><span class="line">dateFormatter.dateStyle = <span class="built_in">NSDateFormatterMediumStyle</span>;</span><br><span class="line"><span class="comment">//3.If the input string is not expected to contain a time, set the time style to none.</span></span><br><span class="line">dateFormatter.timeStyle = <span class="built_in">NSDateFormatterNoStyle</span>;</span><br><span class="line"><span class="comment">//4.Set the leniency to YES (enables the heuristics).</span></span><br><span class="line">dateFormatter.lenient = <span class="literal">YES</span>;</span><br><span class="line"><span class="comment">//5.Convert the string to a date object.</span></span><br><span class="line"><span class="built_in">NSDate</span> *date = [dateFormatter dateFromString:inputString];</span><br></pre></td></tr></table></figure></p>
 <p>我们输入的字符串是<code>9/3/14</code>，dateStyle设为<code>NSDateFormatterShortStyle</code>，如果区域为美国，我们得到的NSDate信息为：<code>2014-09-03 07:00:00 +0000</code>，如果区域为德国，我们将得到<code>2014-03-09 08:00:00 +0000</code>。</p>
 <h3 id="数字本地化"><a href="#数字本地化" class="headerlink" title="数字本地化"></a>数字本地化</h3><p>本地化设置会影响小数点符号，千分符，货币符等内容，比如数字<code>1,234.56</code>在意大利应该表示为<code>1.234,56</code>，所以对于数字的格式化我们应该用<code>NSNumberFormatter</code>处理。<br><strong>注意：NSNumberFormatter不是现成安全的</strong><br>1、将Number转成本地化的字符串<br>可以使用<code>NSNumberFormatter</code>的<code>localizedStringFromNumber:numberStyle:</code>方式<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *localizedString = [<span class="built_in">NSNumberFormatter</span> localizedStringFromNumber:myNumber numberStyle:<span class="built_in">NSNumberFormatterDecimalStyle</span>];</span><br></pre></td></tr></table></figure></p>
-<p>以下是不同语言和区域关于数字的显示效果，左侧的style及<code>numberStyle</code>：<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93794dc742115?w=640&amp;h=371&amp;f=png&amp;s=43620" alt=""><br>2、将字符串转成NSNumber对象<br>这个类似日期的转换<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.Create a number formatter object.</span></span><br><span class="line"><span class="built_in">NSNumberFormatter</span> *numberFormatter = [<span class="built_in">NSNumberFormatter</span> new];</span><br><span class="line"><span class="comment">//2.Set the formatter’s style to a preset style.</span></span><br><span class="line">numberFormatter.numberStyle = <span class="built_in">NSNumberFormatterDecimalStyle</span>;</span><br><span class="line"><span class="comment">//3.Set the leniency to YES (enables the heuristics).</span></span><br><span class="line">numberFormatter.lenient = <span class="literal">YES</span>;</span><br><span class="line"><span class="comment">//4.Convert the string to a number object.</span></span><br><span class="line"><span class="built_in">NSNumber</span> *number = [numberFormatter numberFromString:inputString];</span><br></pre></td></tr></table></figure></p>
-<p>3、通过NSCalendar计算日期<br>NSCalendar类封装了日历的所有区域差异和复杂性。说他具有复杂性是因为在不同国家，一年之中的月份可能是12或者13，一月中的天数可能是5到31的任意值，每周第一天可能是周六，周日或者周一。可以看下表<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93794dc833280?w=482&amp;h=263&amp;f=png&amp;s=29718" alt=""><br>因此使用NSCalendar取这些值将会很方便。<br>获取Calendar unit的方式为<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.Create an NSDateComponents object.</span></span><br><span class="line"><span class="built_in">NSDateComponents</span> *components = [[<span class="built_in">NSCalendar</span> currentCalendar]</span><br><span class="line">    components:<span class="built_in">NSDayCalendarUnit</span> | <span class="built_in">NSMonthCalendarUnit</span> | <span class="built_in">NSYearCalendarUnit</span> | <span class="built_in">NSEraCalendarUnit</span></span><br><span class="line">    fromDate:[<span class="built_in">NSDate</span> date]];</span><br><span class="line"><span class="comment">//2.Access the values for day, month, year, and era.</span></span><br><span class="line"><span class="built_in">NSInteger</span> day = [components day];</span><br><span class="line"><span class="built_in">NSInteger</span> month = [components month];</span><br><span class="line"><span class="built_in">NSInteger</span> year = [components year];</span><br><span class="line"><span class="built_in">NSInteger</span> era = [components era];</span><br></pre></td></tr></table></figure></p>
+<p>以下是不同语言和区域关于数字的显示效果，左侧的style及<code>numberStyle</code>：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190814115914.png" alt=""><br>2、将字符串转成NSNumber对象<br>这个类似日期的转换<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.Create a number formatter object.</span></span><br><span class="line"><span class="built_in">NSNumberFormatter</span> *numberFormatter = [<span class="built_in">NSNumberFormatter</span> new];</span><br><span class="line"><span class="comment">//2.Set the formatter’s style to a preset style.</span></span><br><span class="line">numberFormatter.numberStyle = <span class="built_in">NSNumberFormatterDecimalStyle</span>;</span><br><span class="line"><span class="comment">//3.Set the leniency to YES (enables the heuristics).</span></span><br><span class="line">numberFormatter.lenient = <span class="literal">YES</span>;</span><br><span class="line"><span class="comment">//4.Convert the string to a number object.</span></span><br><span class="line"><span class="built_in">NSNumber</span> *number = [numberFormatter numberFromString:inputString];</span><br></pre></td></tr></table></figure></p>
+<p>3、通过NSCalendar计算日期<br>NSCalendar类封装了日历的所有区域差异和复杂性。说他具有复杂性是因为在不同国家，一年之中的月份可能是12或者13，一月中的天数可能是5到31的任意值，每周第一天可能是周六，周日或者周一。可以看下表<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190814121444.png" alt=""><br>因此使用NSCalendar取这些值将会很方便。<br>获取Calendar unit的方式为<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.Create an NSDateComponents object.</span></span><br><span class="line"><span class="built_in">NSDateComponents</span> *components = [[<span class="built_in">NSCalendar</span> currentCalendar]</span><br><span class="line">    components:<span class="built_in">NSDayCalendarUnit</span> | <span class="built_in">NSMonthCalendarUnit</span> | <span class="built_in">NSYearCalendarUnit</span> | <span class="built_in">NSEraCalendarUnit</span></span><br><span class="line">    fromDate:[<span class="built_in">NSDate</span> date]];</span><br><span class="line"><span class="comment">//2.Access the values for day, month, year, and era.</span></span><br><span class="line"><span class="built_in">NSInteger</span> day = [components day];</span><br><span class="line"><span class="built_in">NSInteger</span> month = [components month];</span><br><span class="line"><span class="built_in">NSInteger</span> year = [components year];</span><br><span class="line"><span class="built_in">NSInteger</span> era = [components era];</span><br></pre></td></tr></table></figure></p>
 <p>4、监听本地化信息或者时区修改<br>可以通过<code>NSCurrentLocaleDidChangeNotification</code>监听区域的改变<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(localeDidChange:) name:<span class="built_in">NSCurrentLocaleDidChangeNotification</span> object:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure></p>
 <p>同样的监听时区变化可以通过<code>NSSystemTimeZoneDidChangeNotification</code>。</p>
-<h2 id="从右到左语言的处理"><a href="#从右到左语言的处理" class="headerlink" title="从右到左语言的处理"></a>从右到左语言的处理</h2><h3 id="创建从右到左语言的交互界面"><a href="#创建从右到左语言的交互界面" class="headerlink" title="创建从右到左语言的交互界面"></a>创建从右到左语言的交互界面</h3><p>支持从右到左向的语言，在约束层面应该使用Auto layout中的<code>leading</code>和<code>trailing</code>属性，而不是<code>right</code>和<code>right</code>。可以通过以下对比看到区别<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937950857c5ac?w=1397&amp;h=872&amp;f=png&amp;s=953020" alt=""><br>整体像是做了水平的翻转，有很多控件像是segmented控件, 进度指示器系统会自动做翻转。但是有些情况是不需要翻转的：</p>
+<h2 id="从右到左语言的处理"><a href="#从右到左语言的处理" class="headerlink" title="从右到左语言的处理"></a>从右到左语言的处理</h2><h3 id="创建从右到左语言的交互界面"><a href="#创建从右到左语言的交互界面" class="headerlink" title="创建从右到左语言的交互界面"></a>创建从右到左语言的交互界面</h3><p>支持从右到左向的语言，在约束层面应该使用Auto layout中的<code>leading</code>和<code>trailing</code>属性，而不是<code>right</code>和<code>right</code>。可以通过以下对比看到区别<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190814202653.png" alt=""><br>整体像是做了水平的翻转，有很多控件像是segmented控件, 进度指示器系统会自动做翻转。但是有些情况是不需要翻转的：</p>
 <ul>
 <li>视频控制和时间线指示器</li>
 <li>图片，除非他们传达方向感，如箭头</li>
@@ -531,8 +719,8 @@
 <p>例如，手机号在所有语言中都是从左往右读的，如果一个需要本地化的字符串变量表示一个手机号，如果我们需要保证他是从左往右的顺序展示，需要再字符串首部增加一个从左往右的嵌入字符（LRE）：<code>U+202A</code>，在字符尾部增加定向格式字符（PDF）:<code>U+202C</code>。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Wrap the plus (+) prefix and phone number in left-to-right directional markers</span></span><br><span class="line"><span class="built_in">NSString</span> *phoneNumber = <span class="string">@"408-555-1212"</span>;</span><br><span class="line"><span class="built_in">NSString</span> *localizedPhoneNumber = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"\u202A%@\u202C"</span>, phoneNumber];</span><br></pre></td></tr></table></figure></p>
 <h3 id="翻转Cocoa-Touch视图"><a href="#翻转Cocoa-Touch视图" class="headerlink" title="翻转Cocoa Touch视图"></a>翻转Cocoa Touch视图</h3><p>有些视图是不应该翻转的，在iOS9之后可以通过UIView的<code>semanticContentAttribute</code>属性手动指定视图应该是从左到后还是从右往左的方式展示。</p>
 <p>如果是想翻转图片可以通过<code>UIImage</code>的<code>imageFlippedForRightToLeftLayoutDirection</code>方法。</p>
-<h2 id="本地化测试"><a href="#本地化测试" class="headerlink" title="本地化测试"></a>本地化测试</h2><h3 id="通过IB预览测试本地化"><a href="#通过IB预览测试本地化" class="headerlink" title="通过IB预览测试本地化"></a>通过IB预览测试本地化</h3><p>这个功能只能在.storyboard和.xib文件实现。<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937950a85f170?w=1202&amp;h=528&amp;f=png&amp;s=268783" alt=""><br>选中preview之后我们可以通过其右下角的语言选项切换不同语言，然后我们可以实时观察调换语言之后的效果。</p>
-<h3 id="通过伪语言功能测试"><a href="#通过伪语言功能测试" class="headerlink" title="通过伪语言功能测试"></a>通过伪语言功能测试</h3><p>通过<code>Edit Schema &gt; Run &gt; Options</code> 然后点开语言选项，除了各种系统支持语言外，翻到最下面可以看到这几个选项。<br><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c937950a9ee4e0?w=339&amp;h=768&amp;f=png&amp;s=349250" alt=""><br>1.Double-Length Pseudolanguage<br>可以将文本内容变成两倍长度。</p>
+<h2 id="本地化测试"><a href="#本地化测试" class="headerlink" title="本地化测试"></a>本地化测试</h2><h3 id="通过IB预览测试本地化"><a href="#通过IB预览测试本地化" class="headerlink" title="通过IB预览测试本地化"></a>通过IB预览测试本地化</h3><p>这个功能只能在.storyboard和.xib文件实现。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190814201716.png" alt=""><br>选中preview之后我们可以通过其右下角的语言选项切换不同语言，然后我们可以实时观察调换语言之后的效果。</p>
+<h3 id="通过伪语言功能测试"><a href="#通过伪语言功能测试" class="headerlink" title="通过伪语言功能测试"></a>通过伪语言功能测试</h3><p>通过<code>Edit Schema &gt; Run &gt; Options</code> 然后点开语言选项，除了各种系统支持语言外，翻到最下面可以看到这几个选项。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190814214907.png" alt=""><br>1.Double-Length Pseudolanguage<br>可以将文本内容变成两倍长度。</p>
 <p>2.Right-to-Left Pseudolanguage<br>将语言方向改成从右往左，也可以将语言改成阿拉伯文或者希伯来文。</p>
 <p>3.Accented Pseudolanguage<br>带重音符号。</p>
 <p>4.Bounded String Pseudolanguage<br>带边界的字符串。</p>
@@ -2037,180 +2225,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/03/31/996-ICU/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangferry">
-      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/31/996-ICU/" class="post-title-link" itemprop="url">关于996ICU的一些看法</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-31 20:00:34" itemprop="dateCreated datePublished" datetime="2019-03-31T20:00:34+08:00">2019-03-31</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">2.4k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">2 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://upload-images.jianshu.io/upload_images/1059465-693ded7ab49b4da3?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="996ICU"></p>
-<p>这个项目在有7k多star的时候我就看到有人推了，当时也就是看看而已，了解了这个标识的意思，并没有点进去，更没有star。再之后随着越来越多的star和关注量，公众号、社区、论坛，但凡有程序员的角落，大家都在争先传播着“996ICU”这个概念，每一次转发、star都是对996这种工作制的无声抵抗。<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/31/996-ICU/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2260,7 +2274,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2340,7 +2354,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2442,7 +2458,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">171k</span>
+    <span title="站点总字数">180k</span>
   
 
   
@@ -2451,7 +2467,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:35</span>
+    <span title="站点阅读时长">2:43</span>
   
 </div>
 

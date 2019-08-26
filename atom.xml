@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2019-08-19T01:00:36.051Z</updated>
+  <updated>2019-08-26T00:00:35.510Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>iOS国际化及本地化（一）不同语言的差异处理及测试</title>
-    <link href="http://zhangferry.github.io/2019/08/15/localization_guide/"/>
-    <id>http://zhangferry.github.io/2019/08/15/localization_guide/</id>
-    <published>2019-08-15T02:54:57.000Z</published>
-    <updated>2019-08-19T01:00:36.051Z</updated>
+    <title>【译】设计模式引导--OOP的能力</title>
+    <link href="http://zhangferry.github.io/2019/08/20/builder_design_pattern_swift/"/>
+    <id>http://zhangferry.github.io/2019/08/20/builder_design_pattern_swift/</id>
+    <published>2019-08-20T02:25:34.000Z</published>
+    <updated>2019-08-26T00:00:35.510Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,33 @@
       
         
         
-          &lt;h2 id=&quot;国际化及本地化概念&quot;&gt;&lt;a href=&quot;#国际化及本地化概念&quot; class=&quot;headerlink&quot; title=&quot;国际化及本地化概念&quot;&gt;&lt;/a&gt;国际化及本地化概念&lt;/h2&gt;&lt;p&gt;将标题取名为国际化及本地化（internationalization and
+          &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/swift-india/design-patterns-by-tutorials-the-power-of-oop-2e871b551cbe&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://zhangferry.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS国际化及本地化（一）不同语言的差异处理及测试</title>
+    <link href="http://zhangferry.github.io/2019/08/19/localization_guide/"/>
+    <id>http://zhangferry.github.io/2019/08/19/localization_guide/</id>
+    <published>2019-08-19T02:54:57.000Z</published>
+    <updated>2019-08-26T00:01:25.183Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190819180049.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;国际化及本地化概念&quot;&gt;&lt;a
         
       
     
@@ -394,24 +420,6 @@
     
       &lt;p&gt;记录本月开发遇到的知识点，小tips，和bug总结。&lt;/p&gt;
 &lt;h2 id=&quot;大事件&quot;&gt;&lt;a href=&quot;#大事件&quot; class=&quot;headerlink&quot; title=&quot;大事件&quot;&gt;&lt;/a&gt;大事件&lt;/h2&gt;&lt;p&gt;新版iPad Pro、MacBook Air、Mac mini发布，全线涨价，但是真香。。。&lt;br&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1059465-d64ed4ef11a3ee86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;image.png&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS开发月报#3|201809</title>
-    <link href="http://zhangferry.github.io/2018/09/30/monthly_3/"/>
-    <id>http://zhangferry.github.io/2018/09/30/monthly_3/</id>
-    <published>2018-09-30T10:48:02.000Z</published>
-    <updated>2019-02-08T13:12:24.385Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1059465-2711b521a2b371fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;iPhoneX R&quot;&gt;&lt;br&gt;新机发布，你中意XS Max还是XR？&lt;br&gt;
     
     </summary>
     
