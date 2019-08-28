@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2019-08-26T00:00:35.510Z</updated>
+  <updated>2019-08-28T03:02:22.429Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【译】Swift World：设计模式--中介者模式</title>
+    <link href="http://zhangferry.github.io/2019/08/28/design_pattern_mediator/"/>
+    <id>http://zhangferry.github.io/2019/08/28/design_pattern_mediator/</id>
+    <published>2019-08-28T00:27:57.000Z</published>
+    <updated>2019-08-28T03:02:22.429Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;原文：&lt;a href=&quot;https://medium.com/swiftworld/swift-world-design-patterns-mediator-e6b3c35d68b0&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+    
+      <category term="设计模式" scheme="http://zhangferry.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>【译】设计模式引导--OOP的能力</title>
@@ -406,25 +433,6 @@
       <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
     
       <category term="AVPlayer" scheme="http://zhangferry.github.io/tags/AVPlayer/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS开发月报#4|201810</title>
-    <link href="http://zhangferry.github.io/2018/10/31/monthly_4/"/>
-    <id>http://zhangferry.github.io/2018/10/31/monthly_4/</id>
-    <published>2018-10-31T08:00:50.000Z</published>
-    <updated>2019-02-08T13:13:10.338Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;记录本月开发遇到的知识点，小tips，和bug总结。&lt;/p&gt;
-&lt;h2 id=&quot;大事件&quot;&gt;&lt;a href=&quot;#大事件&quot; class=&quot;headerlink&quot; title=&quot;大事件&quot;&gt;&lt;/a&gt;大事件&lt;/h2&gt;&lt;p&gt;新版iPad Pro、MacBook Air、Mac mini发布，全线涨价，但是真香。。。&lt;br&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1059465-d64ed4ef11a3ee86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;image.png&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
     
   </entry>
   
