@@ -96,31 +96,37 @@
 
 
 
-  <meta name="description" content="iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。">
-<meta name="keywords" content="iOS,Notification">
+  <meta name="description" content="最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。 网络基础知识计算机网络最重要的一个概念就是协议，简单来说，协议就是计算机与计算机之间通过网络实现通信时事先达成的一种“约定”。这种“约定”使那些由不同厂商的设备，不同的CPU以及不同操作系统组成的计算机之间，只要遵循相同的协议就能实现通信。 那这个协议由谁来">
+<meta name="keywords" content="计算机网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS10本地通知UserNotifications快速入门">
-<meta property="og:url" content="http://zhangferry.github.io/2016/09/30/usernotifications-introduction/index.html">
+<meta property="og:title" content="《图解TCP&#x2F;IP》总结">
+<meta property="og:url" content="http://zhangferry.github.io/2019/08/31/diagram_tcpip_concepts/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。">
+<meta property="og:description" content="最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。 网络基础知识计算机网络最重要的一个概念就是协议，简单来说，协议就是计算机与计算机之间通过网络实现通信时事先达成的一种“约定”。这种“约定”使那些由不同厂商的设备，不同的CPU以及不同操作系统组成的计算机之间，只要遵循相同的协议就能实现通信。 那这个协议由谁来">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-24a743794b38b19c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-6d61819c9bfd09dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-f41c6386d613fbd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-a459ae47a216b686.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-6572c5180d447cbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-b7497931a422eb7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-98dad809d88ab0e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-ea496e4072fdc52f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-5881abd4c65e5d73.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-296bf320ce219e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-46dfa08e664a7a3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1059465-b1dd1a73d6c21873.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-05-17T15:23:26.394Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919213227.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190915183056.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190915183431.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190915184056.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919143416.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919145252.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919145219.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922200215.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922200920.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922200022.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922200442.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919150413.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922201820.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922201908.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922202435.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922202804.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922203528.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922204520.png">
+<meta property="og:updated_time" content="2019-09-22T12:59:40.488Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS10本地通知UserNotifications快速入门">
-<meta name="twitter:description" content="iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1059465-24a743794b38b19c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="《图解TCP&#x2F;IP》总结">
+<meta name="twitter:description" content="最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。 网络基础知识计算机网络最重要的一个概念就是协议，简单来说，协议就是计算机与计算机之间通过网络实现通信时事先达成的一种“约定”。这种“约定”使那些由不同厂商的设备，不同的CPU以及不同操作系统组成的计算机之间，只要遵循相同的协议就能实现通信。 那这个协议由谁来">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919213227.png">
 
 
 
@@ -129,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://zhangferry.github.io/2016/09/30/usernotifications-introduction/">
+  <link rel="canonical" href="http://zhangferry.github.io/2019/08/31/diagram_tcpip_concepts/">
 
 
 
@@ -139,7 +145,7 @@
   };
 </script>
 
-  <title>iOS10本地通知UserNotifications快速入门 | zhangferry</title>
+  <title>《图解TCP/IP》总结 | zhangferry</title>
   
 
 
@@ -385,7 +391,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2016/09/30/usernotifications-introduction/">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/08/31/diagram_tcpip_concepts/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangferry">
@@ -402,7 +408,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">iOS10本地通知UserNotifications快速入门
+          <h2 class="post-title" itemprop="name headline">《图解TCP/IP》总结
 
               
             
@@ -428,7 +434,7 @@
                 
               
 
-              <time title="创建时间：2016-09-30 18:07:50" itemprop="dateCreated datePublished" datetime="2016-09-30T18:07:50+08:00">2016-09-30</time>
+              <time title="创建时间：2019-08-31 20:00:34" itemprop="dateCreated datePublished" datetime="2019-08-31T20:00:34+08:00">2019-08-31</time>
             
 
             
@@ -464,7 +470,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.6k</span>
+                <span title="本文字数">5.5k</span>
               
 
               
@@ -478,7 +484,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">6 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -498,59 +504,72 @@
       
 
       
-        <p><img src="http://upload-images.jianshu.io/upload_images/1059465-24a743794b38b19c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification.png"></p>
-<p>iOS10更新变动最大的就是通知这部分了，新版通知变得更加统一，使用更加方便，设计更加自由。以前本地通知和远程推送是分开的，虽然这些到了iOS10都合在一起了，但是为了便于理解，我们还是把他俩分开来进行学习。这节我们学习的是本地通知。<br><a id="more"></a><br>以下的用语，如无特别表述，<code>通知</code>就代表本地通知，<code>推送</code>就代表远程服务器的推送。</p>
-<p>##快速添加一个通知<br>我们先举个完整的代码例子，大家了解下这个流程，然后分步介绍这几项：</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一步：注册通知</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</span><br><span class="line">    <span class="comment">// Override point for customization after application launch.</span></span><br><span class="line">    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];</span><br><span class="line">    <span class="comment">//请求获取通知权限（角标，声音，弹框）</span></span><br><span class="line">    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(<span class="built_in">BOOL</span> granted, <span class="built_in">NSError</span> * _Nullable error) &#123;</span><br><span class="line">        <span class="keyword">if</span> (granted) &#123;</span><br><span class="line">            <span class="comment">//获取用户是否同意开启通知</span></span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"request authorization successed!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//第二步：新建通知内容对象</span></span><br><span class="line">    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init]</span><br><span class="line">    content.title = <span class="string">@"iOS10通知"</span>;</span><br><span class="line">    content.subtitle = <span class="string">@"新通知学习笔记"</span>;</span><br><span class="line">    content.body = <span class="string">@"新通知变化很大，之前本地通知和远程推送是两个类，现在合成一个了。这是一条测试通知，"</span>;</span><br><span class="line">    content.badge = @<span class="number">1</span>;</span><br><span class="line">    UNNotificationSound *sound = [UNNotificationSound soundNamed:<span class="string">@"caodi.m4a"</span>];</span><br><span class="line">    content.sound = sound;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第三步：通知触发机制。（重复提醒，时间间隔要大于60s）</span></span><br><span class="line">    UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:<span class="number">5</span> repeats:<span class="literal">NO</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第四步：创建UNNotificationRequest通知请求对象</span></span><br><span class="line">    <span class="built_in">NSString</span> *requertIdentifier = <span class="string">@"RequestIdentifier"</span>;</span><br><span class="line">    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requertIdentifier content:content trigger:trigger1];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第五步：将通知加到通知中心</span></span><br><span class="line">    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(<span class="built_in">NSError</span> * _Nullable error) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Error:%@"</span>,error);</span><br><span class="line"></span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最终效果如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1059465-6d61819c9bfd09dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification01.png"></p>
-<blockquote>
-<p>通知内容UNMutableNotificationContent</p>
-</blockquote>
-<p>通知内容就是设定通知的一些展示信息，iOS10之后可以设置subtitle。<br>声音的设置需要借助一个新类<code>UNNotificationSound</code>，通知文件要放到bundle里面。另外在实际的测试过程中发现，添加通知的声音有时候会无效。这应该是iOS10存在的一个bug，删除掉程序，再安装运行就好了。</p>
-<blockquote>
-<p>触发机制UNNotificationTrigger</p>
-</blockquote>
-<p>Trigger是新加入的一个功能，通过此类可设置本地通知触发条件。它一共有一下几种类型：<br>1、UNPushNotificaitonTrigger<br>推送服务的Trigger，由系统创建<br>2、UNTimeIntervalNotificaitonTrigger<br>时间触发器，可以设置多长时间以后触发，是否重复。如果设置重复，重复时长要大于60s<br>3、UNCalendarNotificaitonTrigger<br>日期触发器，可以设置某一日期触发。例如，提醒我每天早上七点起床：</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSDateComponents</span> *components = [[<span class="built_in">NSDateComponents</span> alloc] init];</span><br><span class="line">components.hour = <span class="number">7</span>;</span><br><span class="line">components.minute = <span class="number">0</span>; <span class="comment">// components 日期         UNCalendarNotificationTrigger *calendarTrigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components repeats:YES];</span></span><br></pre></td></tr></table></figure>
-<p> 4、UNLocationNotificaitonTrigger<br>位置触发器，用于到某一范围之后，触发通知。通过CLRegion设定具体范围。</p>
-<blockquote>
-<p>通知请求UNNotificationRequest</p>
-</blockquote>
-<p>通知请求的构造<br><code>+ (instancetype)requestWithIdentifier:(NSString *)identifier 
-content:(UNNotificationContent *)content 
-trigger:(nullable UNNotificationTrigger *)trigger;</code><br>就是把上面三项连接起来。它有一个参数identifier，这相当于通知的一个身份。iOS10通知支持更新，就是基于此identifier再发一条通知。</p>
-<blockquote>
-<p>通知中心UNUserNotificationCenter</p>
-</blockquote>
-<p>获取通知<code>[UNUserNotificationCenter currentNotificationCenter]</code>然后通过<code>addNotificaitonRequest:</code>就完成了一个通知的添加。</p>
-<p>##扩展通知的内容<br>通知我们已经添加上了，现在我们需要扩展一下通知的内容，给它加一些内容。扩展的内容需要支持3D-touch的手机（6s以上），重压之后全面显示</p>
-<blockquote>
-<p>添加附件</p>
-</blockquote>
-<p>iOS10之前通知的样式不能更改，在iOS10之后引入了UNNotificationationAttachment，可以在通知中添加图片，音频，视频。苹果对这些附件的大小和类型有一个限制：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-f41c6386d613fbd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="attachment_type.png"><br>如果我想在通知里加一个图片，可以这样处理：</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *imageFile = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"sport"</span> ofType:<span class="string">@"png"</span>];</span><br><span class="line">UNNotificationAttachment *imageAttachment = [UNNotificationAttachment attachmentWithIdentifier:<span class="string">@"iamgeAttachment"</span> URL:[<span class="built_in">NSURL</span> fileURLWithPath:imageFile] options:<span class="literal">nil</span> error:<span class="literal">nil</span>];</span><br><span class="line">content.attachments = @[imageAttachment];<span class="comment">//虽然是数组，但是添加多个只能显示第一个</span></span><br><span class="line"><span class="comment">/* add request and notificaiton code ... */</span></span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1059465-a459ae47a216b686.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification02.png"><br>重压之后：<br><img src="http://upload-images.jianshu.io/upload_images/1059465-6572c5180d447cbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notificaiton03.png"></p>
-<blockquote>
-<p>添加交互</p>
-</blockquote>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击可以显示文本输入框</span></span><br><span class="line">UNTextInputNotificationAction *action1 = [UNTextInputNotificationAction actionWithIdentifier:<span class="string">@"replyAction"</span> title:<span class="string">@"文字回复"</span> options:UNNotificationActionOptionNone];</span><br><span class="line">    <span class="comment">//点击进入应用</span></span><br><span class="line">UNNotificationAction *action2 = [UNNotificationAction actionWithIdentifier:<span class="string">@"enterAction"</span> title:<span class="string">@"进入应用"</span> options:UNNotificationActionOptionForeground];</span><br><span class="line">    <span class="comment">//点击取消，没有任何操作</span></span><br><span class="line">UNNotificationAction *action3 = [UNNotificationAction actionWithIdentifier:<span class="string">@"cancelAction"</span> title:<span class="string">@"取消"</span> options:UNNotificationActionOptionDestructive];</span><br><span class="line">    <span class="comment">//通过UNNotificationCategory对象将这几个action行为添加到通知里去</span></span><br><span class="line">UNNotificationCategory *categroy = [UNNotificationCategory categoryWithIdentifier:<span class="string">@"Categroy"</span> actions:@[action1,action2,action3] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];</span><br><span class="line">    <span class="comment">//将categroy赋值到通知内容上</span></span><br><span class="line">    content.categoryIdentifier = <span class="string">@"Categroy"</span>;</span><br><span class="line">    <span class="comment">//设置通知代理，用于检测点击方法</span></span><br><span class="line">[[UNUserNotificationCenter currentNotificationCenter] setDelegate:<span class="keyword">self</span>];</span><br><span class="line"><span class="comment">/* add request and notificaiton code ... */</span></span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1059465-b7497931a422eb7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notificaiotn04.png"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1059465-98dad809d88ab0e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification05.png"></p>
-<p>获取通知交互内容：</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//识别通知交互处理的代理方法</span></span><br><span class="line">- (<span class="keyword">void</span>)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(<span class="keyword">void</span> (^)())completionHandler&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSString</span> *categoryIdentifier = response.notification.request.content.categoryIdentifier;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([categoryIdentifier isEqualToString:<span class="string">@"Categroy"</span>]) &#123;</span><br><span class="line">        <span class="comment">//识别需要被处理的拓展</span></span><br><span class="line">        <span class="keyword">if</span> ([response.actionIdentifier isEqualToString:<span class="string">@"replyAction"</span>])&#123;</span><br><span class="line">            <span class="comment">//识别用户点击的是哪个 action</span></span><br><span class="line">            UNTextInputNotificationResponse *textResponse = (UNTextInputNotificationResponse*)response;</span><br><span class="line">            <span class="comment">//获取输入内容</span></span><br><span class="line">            <span class="built_in">NSString</span> *userText = textResponse.userText;</span><br><span class="line">            <span class="comment">//发送 userText 给需要接收的方法</span></span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"要发送的内容是：%@"</span>,userText);</span><br><span class="line">            <span class="comment">//[ClassName handleUserText: userText];</span></span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>([response.actionIdentifier isEqualToString:<span class="string">@"enterAction"</span>])&#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"点击了进入应用按钮"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"点击了取消"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    completionHandler();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由此我们可以知道action，categroy，request这些东西都是通过各自的identifier获取的。这样可以很方便的定位到某一个通知或者action上，为交互的处理提供了很大的便利。</p>
-<p>##自定义通知样式<br>在Xcode中File-&gt;New-&gt;Targe会出现下面的视图</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1059465-ea496e4072fdc52f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification06.png"><br>Notification Content对应的是通知，Notification Service Extension对应的是推送。我们这里要实现通知的自定义，选择左边那个。创建成功之后会在工程里多一个文件件<br><img src="http://upload-images.jianshu.io/upload_images/1059465-5881abd4c65e5d73.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification07.png"><br>NotificationViewController文件是自动生成的，里面有一个<br><code>- (void)didReceiveNotification:(UNNotification *)notification</code><br>可以在这里定义一些通知的显示。</p>
-<p>MainInterface.storyboard文件是控制通知的storyboard文件，可以编辑需要的通知样式。我们设计一下文字的颜色和显示位置</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1059465-296bf320ce219e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notificaiton08.png"></p>
-<p>接下来你可能会问，怎么把这个自定义的通知样式应用到当前通知里呢？先别急，我们看下一个文件Info.flist里面的内容</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1059465-46dfa08e664a7a3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification09.png"></p>
-<p>第一项<code>UNNotificationExtensionCategory</code>就是UNNotificationCategory的标示，我们把他换成我们通知里使用的标示<code>&quot;Category&quot;</code>，系统就会自动匹配通知显示的样式。<br>第二项<code>UNNotificationExtensionIntialContentSizeRation</code>初始内容 Size 的比例。也可以在 viewDidLoad 中使用 self.preferredContentSize 直接设置 Size。<br>第三项<code>UNNotificationExtensionDefaultContentHidden</code>是否隐藏默认内容，如果设为YES，默认内容会被隐藏。<br>显示的效果：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1059465-b1dd1a73d6c21873.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="notification10.png"></p>
-<p>##总结<br>至此，iOS通知部分的内容就学完了，参考代码：<a href="https://github.com/zhangferry/UserNotificaitonDemo" target="_blank" rel="noopener">Demo</a>。<br>参考文档：<br><a href="http://maquannene.github.io/2016/06/27/iOS10%20UserNotifications%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">iOS10 User Notificaitons学习笔记</a><br><a href="https://onevcat.com/2016/08/notification/" target="_blank" rel="noopener">活久见的重构-iOS10 UserNotificaiotns框架解析</a></p>
+        <p>最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。</p>
+<h2 id="网络基础知识"><a href="#网络基础知识" class="headerlink" title="网络基础知识"></a>网络基础知识</h2><p>计算机网络最重要的一个概念就是协议，简单来说，<strong>协议</strong>就是计算机与计算机之间通过网络实现通信时事先达成的一种“约定”。这种“约定”使那些由不同厂商的设备，不同的CPU以及不同操作系统组成的计算机之间，只要遵循相同的协议就能实现通信。</p>
+<p>那这个协议由谁来规定呢，ISO（国际标准化组织）制定的一个国际标准OSI（开放式通信系统互联参考模型）。本书将要说明的TCP/IP并非ISO所制定的某种国际标准，而是由IETF（互联网工程任务组）所建议的致力于推进标准化作业的一种协议。这里提一下，通常OSI只是一种参考模型，他将网络分层，但是它并没有规定任何具体的协议，协议内容则归属为TCP/IP。</p>
+<p>OSI参考模型中各个分层的作用：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919213227.png" alt=""></p>
+<h2 id="传输方式的分类"><a href="#传输方式的分类" class="headerlink" title="传输方式的分类"></a>传输方式的分类</h2><p><strong>面向有连接型</strong>：<br>在发送数据之前，需要在收发主机之间连接一条通信线路。比如打电话，必须对方接通才能开始通话。</p>
+<p><strong>面向无连接型</strong>：<br>不要求建立连接和断开连接，发送端可以任何时候发送数据，接收端也永远不知道自己何时会收到数据。</p>
+<p><strong>分组交换</strong>：<br>让连接到通信电路的计算机将所要发送的数据分成多个数据包，按照一定的顺序排列之后分别发送，就是分组交换。有了分组交换，数据被细分，所有计算机可以一起收发数据，这样也就提高了通信线路的利用率。TCP/IP正是采用了分组交换技术。</p>
+<p><strong>单播（Unicast）</strong>：<br>一对一通信，早先的固定电话就是单播通信的典型例子。</p>
+<p><strong>广播</strong>：<br>将消息从1台主机发送到与之相连的所有其他主机。典型例子就是电视播放。</p>
+<p><strong>多播</strong><br>与广播类似，将消息发到多个接收主机，不同之处在于多播要限定某一组主机作为接收端，最典型的例子就是电话会议。</p>
+<p><strong>任播</strong><br>从目标主机群中选择一台最符合网络条件的主机作为目标主机发送消息，通常，所被选中的那台特定主机将返回一个丹波信号，随后发送端主机会只跟这台主机进行通信。任播在实际网络中的应用有DNS根域名解析服务器。</p>
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p>TCP/IP通信中使用MAC地址、IP地址、端口号等信息作为地址标识。</p>
+<p>地址很重要的两个属性是唯一性和层次性。</p>
+<p>MAC地址由设备的制造厂商对每块网卡进行分别制定。人们可以通过制造商识别号、制造商内部产品编号以及产品通用编号确保MAC地址的唯一性。但并不具有层次性。IP地址因具有网络号和主机号而具有层次性。</p>
+<h2 id="TCP-IP基础知识"><a href="#TCP-IP基础知识" class="headerlink" title="TCP/IP基础知识"></a>TCP/IP基础知识</h2><p>TCP/IP的诞生<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190915183056.png" alt=""></p>
+<h3 id="TCP-IP的具体含义"><a href="#TCP-IP的具体含义" class="headerlink" title="TCP/IP的具体含义"></a>TCP/IP的具体含义</h3><p>从字面意义上讲，有时这就是指TCP和IP两种协议，但是更多情况下，他是利用IP进行通信时所必须用到的协议群统称。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190915183431.png" alt=""></p>
+<h3 id="TCP-IP规范–RFC"><a href="#TCP-IP规范–RFC" class="headerlink" title="TCP/IP规范–RFC"></a>TCP/IP规范–RFC</h3><p>前面提到的TCP/IP的协议由IEFT讨论制定，被人们列入RFC(Request For Comment)文档并公布到互联网上。RFC不仅记录了协议规范内容，还包含了协议的实现和运用的相关信息，以及实验方面的信息。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190915184056.png" alt=""></p>
+<p>可以通过<a href="https://www.rfc-editor.org/" target="_blank" rel="noopener">RFC Editor</a>查看RFC所有内容。</p>
+<h2 id="TCP-IP协议分层模型"><a href="#TCP-IP协议分层模型" class="headerlink" title="TCP/IP协议分层模型"></a>TCP/IP协议分层模型</h2><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919143416.png" alt=""></p>
+<p>这个就是常被问及网络分层模型，它有两种，一种是OSI7层模型；一种是TCP/IP的5层模型，也有一种分法是4层模型，是将5层模型中的网卡层和硬件层合为网络接口层。</p>
+<h3 id="物理层（硬件）"><a href="#物理层（硬件）" class="headerlink" title="物理层（硬件）"></a>物理层（硬件）</h3><p>TCP/IP的最底层是负责数据传输的硬件。这种硬件就相当于以太网或电话线路等物理层的设备。</p>
+<p>主要功能是：利用传输介质为数据链路层提供物理连接，负责处理数据传输并监控数据出错率，以便数据流的透明传输。</p>
+<h3 id="数据链路层（网络接口层）"><a href="#数据链路层（网络接口层）" class="headerlink" title="数据链路层（网络接口层）"></a>数据链路层（网络接口层）</h3><p>网络接口层（有时人们也将网络接口层与硬件层合并起来称作网络通信层。） 利用以太网中的数据链路层进行通信，因此属于接口层。也就是说，把它当做让NIC起作用的“驱动程序”也无妨。</p>
+<h3 id="网络层（互联网层）"><a href="#网络层（互联网层）" class="headerlink" title="网络层（互联网层）"></a>网络层（互联网层）</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919145252.png" alt=""><br>网络层(Network layer)是参考模型的第3层。主要功能是：为数据在结点之间传输创建逻辑链路，通过路由选择算法为分组通过通信子网选择最适当的路径，以及实现拥塞控制、网络互联等功能。</p>
+<h4 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h4><p>IP是跨越网络传送数据包，使整个互联网都能收到数据的协议。IP协议使数据能够发送到地球的另一端，这期间它使用IP地址作为主机的标识。</p>
+<h4 id="ICMP-Internet-Control-Message-Protocol"><a href="#ICMP-Internet-Control-Message-Protocol" class="headerlink" title="ICMP(Internet Control Message Protocol)"></a>ICMP(Internet Control Message Protocol)</h4><p>IP数据包在发送途中一旦发生异常导致无法到达对端目标地址时，需要给发送端发送一个发生异常的通知。ICMP就是为这一功能而制定的。它有时也被用来诊断网络的健康状况。</p>
+<h4 id="ARP-Address-Resolution-Protocol"><a href="#ARP-Address-Resolution-Protocol" class="headerlink" title="ARP(Address Resolution Protocol)"></a>ARP(Address Resolution Protocol)</h4><p>地址解析协议，从分组数据包的IP地址中解析出物理地址（MAC地址）的一种协议。</p>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919145219.png" alt=""><br>传输层最主要的功能就是能够让应用程序之间实现通信。计算机内部，通常同一时间运行着多个程序。为此，必须分清是哪些程序与哪些程序在进行通信。识别这些应用程序的是端口号。</p>
+<h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><p>TCP是一种面向有连接的传输层协议。它可以保证两端通信主机之间的通信可达。TCP能够正确处理在传输过程中丢包、传输顺序乱掉等异常情况。此外，TCP还能够有效利用带宽，缓解网络拥堵。</p>
+<p><strong>TCP首部</strong><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922200215.png" alt=""><br>其中控制位是用于连接管理的标记位，字段长为8位，每一位从左至右分别为CWR、ECE、URG、ACK、PSH、RST、SYN、FIN。这些控制标志也叫做控制位。当它们对应位上的值为1时，具体含义如下所示。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922200920.png" alt=""></p>
+<p><strong>连接管理</strong><br>TCP会在数据通信之前，通过TCP首部发送一个SYN包作为建立连接的请求等待确认应答（TCP中发送第一个SYN包的一方叫做客户端，接收这个的一方叫做服务端。） 。如果对端发来确认应答，则认为可以进行数据通信。如果对端的确认应答未能到达，就不会进行数据通信。此外，在通信结束时会进行断开连接的处理（FIN包）。</p>
+<p>可以使用TCP首部用于控制的字段来管理TCP连接。一个连接的建立与断开，正常过程至少需要来回发送7个包才能完成（建立一个TCP连接需要发送3个包。这个过程也称作“三次握手”。） 。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922200022.png" alt=""></p>
+<h4 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h4><p>UDP是User Datagram Protocol的缩写。</p>
+<p>UDP有别于TCP，它是一种面向无连接的传输层协议。UDP不会关注对端是否真的收到了传送过去的数据，如果需要检查对端是否收到分组数据包，或者对端是否连接到网络，则需要在应用程序中实现。</p>
+<p>由于UDP面向无连接，它可以随时发送数据。再加上UDP本身的处理既简单又高效，因此经常用于以下几个方面：</p>
+<ul>
+<li>包总量较少的通信（DNS、SNMP等）</li>
+<li>视频、音频等多媒体通信（即时通信）</li>
+<li>限定于LAN等特定网络中的应用通信</li>
+<li>广播通信（广播、多播）</li>
+</ul>
+<p><strong>UDP首部</strong><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922200442.png" alt=""></p>
+<h3 id="应用层（会话层及以上分层）"><a href="#应用层（会话层及以上分层）" class="headerlink" title="应用层（会话层及以上分层）"></a>应用层（会话层及以上分层）</h3><p>TCP/IP的分层中，将OSI参考模型中的会话层、表示层和应用层的功能都集中到了应用程序中实现。这些功能有时由一个单一的程序实现，有时也可能会由多个程序实现。因此，细看TCP/IP的应用程序功能会发现，它不仅实现OSI模型中应用层的内容，还要实现会话层与表示层的功能。</p>
+<h4 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h4><p>在FTP中进行文件传输时会建立两个TCP连接，分别是发出传输请求时所要用到的控制连接与实际传输数据时所要用到的数据连接（这两种连接的控制管理属于会话层的功能。） </p>
+<h4 id="远程登录（TELNET和SSH）"><a href="#远程登录（TELNET和SSH）" class="headerlink" title="远程登录（TELNET和SSH）"></a>远程登录（TELNET和SSH）</h4><p>远程登录是指登录到远程的计算机上，使那台计算机上的程序得以运行的一种功能。TCP/IP网络中远程登录常用TELNET（TELetypewriter NETwork的缩写。有时也称作默认协议。） 和SSH（SSH是Secure SHell的缩写。） 两种协议。</p>
+<h3 id="发送数据包"><a href="#发送数据包" class="headerlink" title="发送数据包"></a>发送数据包</h3><p>假设甲给乙发送电子邮件，内容为：“早上好”。而从TCP/IP通信上看，是从一台计算机A向另一台计算机B发送电子邮件。这一过程可以用如下图示表示：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919150413.png" alt=""></p>
+<h2 id="应用协议"><a href="#应用协议" class="headerlink" title="应用协议"></a>应用协议</h2><h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><p>当用户在浏览器的地址栏里输入所要访问Web页的URI以后，HTTP的处理即会开始。HTTP中默认使用80端口。它的工作机制，首先是客户端向服务器的80端口建立一个TCP连接，然后在这个TCP连接上进行请求和应答以及数据报文的发送。</p>
+<p>HTTP中常用的有两个版本，一个HTTP1.0，另一个是HTTP1.1。在HTTP1.0中每一个命令和应答都会触发一次TCP连接的建立和断开。而从HTTP1.1开始，允许在一个TCP连接上发送多个命令和应答（这种方式也叫保持连接（keep-alive）。） 。由此，大量地减少了TCP连接的建立和断开操作，从而也提高了效率。</p>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922201820.png" alt=""><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922201908.png" alt=""></p>
+<h3 id="多媒体实现技术"><a href="#多媒体实现技术" class="headerlink" title="多媒体实现技术"></a>多媒体实现技术</h3><p>由于TCP具有流控制、拥塞控制、重发机制等功能，有时应用所发出去的数据可能无法迅速到达对端目标主机。然而在互联网电话（使用的VoIP（Voice Over IP的缩写。） ）和电视会议当中，即使有少许丢包，也希望系统延时少一点，非常注重系统的即时性。因此，在实时多媒体通信当中采用UDP。</p>
+<p>然而，只使用UDP还不足以达到进行实时多媒体通信的目的。例如，在互联网电视电话议会中需要提供查询对方号码、模拟电话机的拨号以及以什么形式交互数据等功能。为此，需要一个叫做“呼叫控制”的支持。呼叫控制主要采用H.323与SIP协议。此外，还需要RTP协议（结合多媒体数据本身的特性进行传输的一种协议）和压缩技术（在网络上传输音频、视频等大型多媒体数据时进行压缩）的支持。</p>
+<h4 id="H-323"><a href="#H-323" class="headerlink" title="H.323"></a>H.323</h4><p>H.323是由ITU开发用于在IP网上传输音频、视频的一种协议。起初，它主要是作为接入ISDN网和IP网之上的电话网为目的的一种规范而被提出的。</p>
+<p>H.323定义了4个主要组件。它们分别是终端（用户终端）、网关（吸收用户数据压缩顺序的不一致性）、网闸（电话本管理、呼叫管理）以及多点控制单元（允许多个终端同时使用）。</p>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922202435.png" alt=""></p>
+<h4 id="SIP"><a href="#SIP" class="headerlink" title="SIP"></a>SIP</h4><p>与H.323相对的TCP/IP协议即是SIP（Session Initiation Protocol）协议。</p>
+<p>“终端之间进行多媒体通信时，需要具备事先解析对方地址、呼出对方号码并对所要传输的媒体信息进行处理等功能。此外，还需要具备中断会话和数据转发的功能。这些功能（呼叫控制与信令）都被统一于SIP协议中。它相当于OSI参考模型中的会话层。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922202804.png" alt=""></p>
+<h4 id="RTP和RTCP"><a href="#RTP和RTCP" class="headerlink" title="RTP和RTCP"></a>RTP和RTCP</h4><p>UDP不是一种可靠性传输协议。因此有可能发生丢包或乱序等现象。因此采用UDP实现实时的多媒体通信需要附加一个表示报文顺序的序列号字段，还需要对报文发送时间进行管理。这些正是RTP（Real-Time Protocol）的主要职责。</p>
+<p>RTP为每个报文附加时间戳和序列号。接收报文的应用，根据时间戳决定数据重构的时机。序列号则根据每发出一次报文加一的原则进行累加。RTP使用这个序列号对同一时间戳的数据（尤其是对于视频的数据。视频中一个帧的数据往往要超过一个包，然而它们发送的时间戳一致。此时就可以使用同一时间戳内不同的序列号加以区分。） 进行排序，掌握是否有丢包的情况发生。</p>
+<p>RTCP（RTP Control Protocol）是辅助RTP的一种协议。通过丢包率等线路质量的管理，对RTP的数据传送率进行控制。</p>
+<h3 id="TLS-SSL与HTTPS"><a href="#TLS-SSL与HTTPS" class="headerlink" title="TLS/SSL与HTTPS"></a>TLS/SSL与HTTPS</h3><p>对于一些涉及机密信息的网络连接需要进行加密处理，Web中可以通过TLS/SSL（Transport Layer Security/Secure Sockets Layer。由网景公司最早提出的名称叫SSL，标准化以后被称作TLS。使用TLS/SSL的HTTP通信叫做HTTPS通信。</p>
+<p>HTTPS中采用对称加密方式。而在发送其公共密钥时采用的则是公钥加密方式（对称加密虽然速度快，但是密钥管理是巨大的挑战。公钥加密密钥管理相对简单，但是处理速度非常慢。TLS/SSL将两者进行取长补短令加密过程达到了极好的效果。由于谁都可以发送公钥，使得密钥管理更为简单。） 。</p>
+<p>确认公钥是否正确主要使用认证中心（CA（Certificate Authority） ）签发的证书，而主要的认证中心的信息已经嵌入到浏览器的出厂设置中。如果Web浏览器中尚未加入某个认证中心，那么会在页面上提示一个警告信息。此时，判断认证中心合法与否就要由用户自己决定了。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922203528.png" alt=""></p>
+<h3 id="IEEE802-1X"><a href="#IEEE802-1X" class="headerlink" title="IEEE802.1X"></a>IEEE802.1X</h3><p>IEEE（The Institute of Electronical and Electronics Engineers，美国电子和电气工程师协会）委员会中，依据不同的工作小组制定了各种局域网技术标准。因于1980年2月启动局域网国际标准化项目，所以命名为802。</p>
+<p>IEEE802.1X是为了能够接入LAN交换机和无线LAN接入点而对用户进行认证的技术（包括我们常用的WiFi）<br>并且它只允许被认可的设备才能访问网络。虽然它是一个提供数据链路层控制的规范，但是与TCP/IP关系紧密。一般，由客户端终端、AP（无线基站）或2层交换机以及认证服务器组成。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922204520.png" alt=""></p>
+<h4 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h4><p>蓝牙与IEEE802.11b/g类似，是使用2.4GHz频率无线电波的一种标准（因此，当IEEE802.b/g等设备与蓝牙设备一起使用时，无线电波信号削减有可能导致通信性能的下降。） 。数据传输速率在V2中能达到3Mbps（实际最大吞吐量为2.1Mbps）。通信距离根据无线电波的信号的强弱，有1药看看吧3 B、10药看看吧3 B、100药看看吧3 B三种类型。通信终端最多允许8台设备（其中一台为主节点，其他1～7台为受管节点。这种网络也叫做piconet，微微网。） 。</p>
+<p>如果说IEEE802.11是针对笔记本电脑这样较大的计算机设备的标准，那么蓝牙则是为手机或智能手机、键盘、鼠标等较小设备而设计的标准。</p>
 
       
     </div>
@@ -598,9 +617,7 @@ trigger:(nullable UNNotificationTrigger *)trigger;</code><br>就是把上面三�
       
         <div class="post-tags">
           
-            <a href="/tags/iOS/" rel="tag"># iOS</a>
-          
-            <a href="/tags/Notification/" rel="tag"># Notification</a>
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
           
         </div>
       
@@ -613,8 +630,8 @@ trigger:(nullable UNNotificationTrigger *)trigger;</code><br>就是把上面三�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/18/ios-hybrid-app/" rel="next" title="iOS中实现JS和OC的交互(Hybrid App)">
-                <i class="fa fa-chevron-left"></i> iOS中实现JS和OC的交互(Hybrid App)
+              <a href="/2019/08/28/design_pattern_mediator/" rel="next" title="【译】Swift World：设计模式--中介者模式">
+                <i class="fa fa-chevron-left"></i> 【译】Swift World：设计模式--中介者模式
               </a>
             
           </div>
@@ -622,10 +639,6 @@ trigger:(nullable UNNotificationTrigger *)trigger;</code><br>就是把上面三�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/14/ancs-bind/" rel="prev" title="处理ANCS设备连接绑定问题">
-                处理ANCS设备连接绑定问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -674,8 +687,17 @@ trigger:(nullable UNNotificationTrigger *)trigger;</code><br>就是把上面三�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -852,6 +874,23 @@ trigger:(nullable UNNotificationTrigger *)trigger;</code><br>就是把上面三�
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络基础知识"><span class="nav-number">1.</span> <span class="nav-text">网络基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传输方式的分类"><span class="nav-number">2.</span> <span class="nav-text">传输方式的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#地址"><span class="nav-number">3.</span> <span class="nav-text">地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP基础知识"><span class="nav-number">4.</span> <span class="nav-text">TCP/IP基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP的具体含义"><span class="nav-number">4.1.</span> <span class="nav-text">TCP/IP的具体含义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP规范–RFC"><span class="nav-number">4.2.</span> <span class="nav-text">TCP/IP规范–RFC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP协议分层模型"><span class="nav-number">5.</span> <span class="nav-text">TCP/IP协议分层模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#物理层（硬件）"><span class="nav-number">5.1.</span> <span class="nav-text">物理层（硬件）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据链路层（网络接口层）"><span class="nav-number">5.2.</span> <span class="nav-text">数据链路层（网络接口层）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络层（互联网层）"><span class="nav-number">5.3.</span> <span class="nav-text">网络层（互联网层）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IP"><span class="nav-number">5.3.1.</span> <span class="nav-text">IP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ICMP-Internet-Control-Message-Protocol"><span class="nav-number">5.3.2.</span> <span class="nav-text">ICMP(Internet Control Message Protocol)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ARP-Address-Resolution-Protocol"><span class="nav-number">5.3.3.</span> <span class="nav-text">ARP(Address Resolution Protocol)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传输层"><span class="nav-number">5.4.</span> <span class="nav-text">传输层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP"><span class="nav-number">5.4.1.</span> <span class="nav-text">TCP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UDP"><span class="nav-number">5.4.2.</span> <span class="nav-text">UDP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用层（会话层及以上分层）"><span class="nav-number">5.5.</span> <span class="nav-text">应用层（会话层及以上分层）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FTP"><span class="nav-number">5.5.1.</span> <span class="nav-text">FTP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程登录（TELNET和SSH）"><span class="nav-number">5.5.2.</span> <span class="nav-text">远程登录（TELNET和SSH）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送数据包"><span class="nav-number">5.6.</span> <span class="nav-text">发送数据包</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用协议"><span class="nav-number">6.</span> <span class="nav-text">应用协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP"><span class="nav-number">6.1.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多媒体实现技术"><span class="nav-number">6.2.</span> <span class="nav-text">多媒体实现技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#H-323"><span class="nav-number">6.2.1.</span> <span class="nav-text">H.323</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SIP"><span class="nav-number">6.2.2.</span> <span class="nav-text">SIP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RTP和RTCP"><span class="nav-number">6.2.3.</span> <span class="nav-text">RTP和RTCP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TLS-SSL与HTTPS"><span class="nav-number">6.3.</span> <span class="nav-text">TLS/SSL与HTTPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IEEE802-1X"><span class="nav-number">6.4.</span> <span class="nav-text">IEEE802.1X</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#蓝牙"><span class="nav-number">6.4.1.</span> <span class="nav-text">蓝牙</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

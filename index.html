@@ -252,7 +252,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">24</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
 
   </li>
         
@@ -271,7 +271,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">43</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">44</span></a>
 
   </li>
         
@@ -296,6 +296,14 @@
 
       
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
     </ul>
   
 
@@ -304,6 +312,27 @@
 
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -326,6 +355,238 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/08/31/diagram_tcpip_concepts/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/31/diagram_tcpip_concepts/" class="post-title-link" itemprop="url">《图解TCP/IP》总结</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-31 20:00:34" itemprop="dateCreated datePublished" datetime="2019-08-31T20:00:34+08:00">2019-08-31</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">5.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">5 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。</p>
+<h2 id="网络基础知识"><a href="#网络基础知识" class="headerlink" title="网络基础知识"></a>网络基础知识</h2><p>计算机网络最重要的一个概念就是协议，简单来说，<strong>协议</strong>就是计算机与计算机之间通过网络实现通信时事先达成的一种“约定”。这种“约定”使那些由不同厂商的设备，不同的CPU以及不同操作系统组成的计算机之间，只要遵循相同的协议就能实现通信。</p>
+<p>那这个协议由谁来规定呢，ISO（国际标准化组织）制定的一个国际标准OSI（开放式通信系统互联参考模型）。本书将要说明的TCP/IP并非ISO所制定的某种国际标准，而是由IETF（互联网工程任务组）所建议的致力于推进标准化作业的一种协议。这里提一下，通常OSI只是一种参考模型，他将网络分层，但是它并没有规定任何具体的协议，协议内容则归属为TCP/IP。</p>
+<p>OSI参考模型中各个分层的作用：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919213227.png" alt=""></p>
+<h2 id="传输方式的分类"><a href="#传输方式的分类" class="headerlink" title="传输方式的分类"></a>传输方式的分类</h2><p><strong>面向有连接型</strong>：<br>在发送数据之前，需要在收发主机之间连接一条通信线路。比如打电话，必须对方接通才能开始通话。</p>
+<p><strong>面向无连接型</strong>：<br>不要求建立连接和断开连接，发送端可以任何时候发送数据，接收端也永远不知道自己何时会收到数据。</p>
+<p><strong>分组交换</strong>：<br>让连接到通信电路的计算机将所要发送的数据分成多个数据包，按照一定的顺序排列之后分别发送，就是分组交换。有了分组交换，数据被细分，所有计算机可以一起收发数据，这样也就提高了通信线路的利用率。TCP/IP正是采用了分组交换技术。</p>
+<p><strong>单播（Unicast）</strong>：<br>一对一通信，早先的固定电话就是单播通信的典型例子。</p>
+<p><strong>广播</strong>：<br>将消息从1台主机发送到与之相连的所有其他主机。典型例子就是电视播放。</p>
+<p><strong>多播</strong><br>与广播类似，将消息发到多个接收主机，不同之处在于多播要限定某一组主机作为接收端，最典型的例子就是电话会议。</p>
+<p><strong>任播</strong><br>从目标主机群中选择一台最符合网络条件的主机作为目标主机发送消息，通常，所被选中的那台特定主机将返回一个丹波信号，随后发送端主机会只跟这台主机进行通信。任播在实际网络中的应用有DNS根域名解析服务器。</p>
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p>TCP/IP通信中使用MAC地址、IP地址、端口号等信息作为地址标识。</p>
+<p>地址很重要的两个属性是唯一性和层次性。</p>
+<p>MAC地址由设备的制造厂商对每块网卡进行分别制定。人们可以通过制造商识别号、制造商内部产品编号以及产品通用编号确保MAC地址的唯一性。但并不具有层次性。IP地址因具有网络号和主机号而具有层次性。</p>
+<h2 id="TCP-IP基础知识"><a href="#TCP-IP基础知识" class="headerlink" title="TCP/IP基础知识"></a>TCP/IP基础知识</h2><p>TCP/IP的诞生<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190915183056.png" alt=""></p>
+<h3 id="TCP-IP的具体含义"><a href="#TCP-IP的具体含义" class="headerlink" title="TCP/IP的具体含义"></a>TCP/IP的具体含义</h3><p>从字面意义上讲，有时这就是指TCP和IP两种协议，但是更多情况下，他是利用IP进行通信时所必须用到的协议群统称。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190915183431.png" alt=""></p>
+<h3 id="TCP-IP规范–RFC"><a href="#TCP-IP规范–RFC" class="headerlink" title="TCP/IP规范–RFC"></a>TCP/IP规范–RFC</h3><p>前面提到的TCP/IP的协议由IEFT讨论制定，被人们列入RFC(Request For Comment)文档并公布到互联网上。RFC不仅记录了协议规范内容，还包含了协议的实现和运用的相关信息，以及实验方面的信息。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190915184056.png" alt=""></p>
+<p>可以通过<a href="https://www.rfc-editor.org/" target="_blank" rel="noopener">RFC Editor</a>查看RFC所有内容。</p>
+<h2 id="TCP-IP协议分层模型"><a href="#TCP-IP协议分层模型" class="headerlink" title="TCP/IP协议分层模型"></a>TCP/IP协议分层模型</h2><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919143416.png" alt=""></p>
+<p>这个就是常被问及网络分层模型，它有两种，一种是OSI7层模型；一种是TCP/IP的5层模型，也有一种分法是4层模型，是将5层模型中的网卡层和硬件层合为网络接口层。</p>
+<h3 id="物理层（硬件）"><a href="#物理层（硬件）" class="headerlink" title="物理层（硬件）"></a>物理层（硬件）</h3><p>TCP/IP的最底层是负责数据传输的硬件。这种硬件就相当于以太网或电话线路等物理层的设备。</p>
+<p>主要功能是：利用传输介质为数据链路层提供物理连接，负责处理数据传输并监控数据出错率，以便数据流的透明传输。</p>
+<h3 id="数据链路层（网络接口层）"><a href="#数据链路层（网络接口层）" class="headerlink" title="数据链路层（网络接口层）"></a>数据链路层（网络接口层）</h3><p>网络接口层（有时人们也将网络接口层与硬件层合并起来称作网络通信层。） 利用以太网中的数据链路层进行通信，因此属于接口层。也就是说，把它当做让NIC起作用的“驱动程序”也无妨。</p>
+<h3 id="网络层（互联网层）"><a href="#网络层（互联网层）" class="headerlink" title="网络层（互联网层）"></a>网络层（互联网层）</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919145252.png" alt=""><br>网络层(Network layer)是参考模型的第3层。主要功能是：为数据在结点之间传输创建逻辑链路，通过路由选择算法为分组通过通信子网选择最适当的路径，以及实现拥塞控制、网络互联等功能。</p>
+<h4 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h4><p>IP是跨越网络传送数据包，使整个互联网都能收到数据的协议。IP协议使数据能够发送到地球的另一端，这期间它使用IP地址作为主机的标识。</p>
+<h4 id="ICMP-Internet-Control-Message-Protocol"><a href="#ICMP-Internet-Control-Message-Protocol" class="headerlink" title="ICMP(Internet Control Message Protocol)"></a>ICMP(Internet Control Message Protocol)</h4><p>IP数据包在发送途中一旦发生异常导致无法到达对端目标地址时，需要给发送端发送一个发生异常的通知。ICMP就是为这一功能而制定的。它有时也被用来诊断网络的健康状况。</p>
+<h4 id="ARP-Address-Resolution-Protocol"><a href="#ARP-Address-Resolution-Protocol" class="headerlink" title="ARP(Address Resolution Protocol)"></a>ARP(Address Resolution Protocol)</h4><p>地址解析协议，从分组数据包的IP地址中解析出物理地址（MAC地址）的一种协议。</p>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919145219.png" alt=""><br>传输层最主要的功能就是能够让应用程序之间实现通信。计算机内部，通常同一时间运行着多个程序。为此，必须分清是哪些程序与哪些程序在进行通信。识别这些应用程序的是端口号。</p>
+<h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><p>TCP是一种面向有连接的传输层协议。它可以保证两端通信主机之间的通信可达。TCP能够正确处理在传输过程中丢包、传输顺序乱掉等异常情况。此外，TCP还能够有效利用带宽，缓解网络拥堵。</p>
+<p><strong>TCP首部</strong><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922200215.png" alt=""><br>其中控制位是用于连接管理的标记位，字段长为8位，每一位从左至右分别为CWR、ECE、URG、ACK、PSH、RST、SYN、FIN。这些控制标志也叫做控制位。当它们对应位上的值为1时，具体含义如下所示。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922200920.png" alt=""></p>
+<p><strong>连接管理</strong><br>TCP会在数据通信之前，通过TCP首部发送一个SYN包作为建立连接的请求等待确认应答（TCP中发送第一个SYN包的一方叫做客户端，接收这个的一方叫做服务端。） 。如果对端发来确认应答，则认为可以进行数据通信。如果对端的确认应答未能到达，就不会进行数据通信。此外，在通信结束时会进行断开连接的处理（FIN包）。</p>
+<p>可以使用TCP首部用于控制的字段来管理TCP连接。一个连接的建立与断开，正常过程至少需要来回发送7个包才能完成（建立一个TCP连接需要发送3个包。这个过程也称作“三次握手”。） 。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922200022.png" alt=""></p>
+<h4 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h4><p>UDP是User Datagram Protocol的缩写。</p>
+<p>UDP有别于TCP，它是一种面向无连接的传输层协议。UDP不会关注对端是否真的收到了传送过去的数据，如果需要检查对端是否收到分组数据包，或者对端是否连接到网络，则需要在应用程序中实现。</p>
+<p>由于UDP面向无连接，它可以随时发送数据。再加上UDP本身的处理既简单又高效，因此经常用于以下几个方面：</p>
+<ul>
+<li>包总量较少的通信（DNS、SNMP等）</li>
+<li>视频、音频等多媒体通信（即时通信）</li>
+<li>限定于LAN等特定网络中的应用通信</li>
+<li>广播通信（广播、多播）</li>
+</ul>
+<p><strong>UDP首部</strong><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922200442.png" alt=""></p>
+<h3 id="应用层（会话层及以上分层）"><a href="#应用层（会话层及以上分层）" class="headerlink" title="应用层（会话层及以上分层）"></a>应用层（会话层及以上分层）</h3><p>TCP/IP的分层中，将OSI参考模型中的会话层、表示层和应用层的功能都集中到了应用程序中实现。这些功能有时由一个单一的程序实现，有时也可能会由多个程序实现。因此，细看TCP/IP的应用程序功能会发现，它不仅实现OSI模型中应用层的内容，还要实现会话层与表示层的功能。</p>
+<h4 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h4><p>在FTP中进行文件传输时会建立两个TCP连接，分别是发出传输请求时所要用到的控制连接与实际传输数据时所要用到的数据连接（这两种连接的控制管理属于会话层的功能。） </p>
+<h4 id="远程登录（TELNET和SSH）"><a href="#远程登录（TELNET和SSH）" class="headerlink" title="远程登录（TELNET和SSH）"></a>远程登录（TELNET和SSH）</h4><p>远程登录是指登录到远程的计算机上，使那台计算机上的程序得以运行的一种功能。TCP/IP网络中远程登录常用TELNET（TELetypewriter NETwork的缩写。有时也称作默认协议。） 和SSH（SSH是Secure SHell的缩写。） 两种协议。</p>
+<h3 id="发送数据包"><a href="#发送数据包" class="headerlink" title="发送数据包"></a>发送数据包</h3><p>假设甲给乙发送电子邮件，内容为：“早上好”。而从TCP/IP通信上看，是从一台计算机A向另一台计算机B发送电子邮件。这一过程可以用如下图示表示：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919150413.png" alt=""></p>
+<h2 id="应用协议"><a href="#应用协议" class="headerlink" title="应用协议"></a>应用协议</h2><h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><p>当用户在浏览器的地址栏里输入所要访问Web页的URI以后，HTTP的处理即会开始。HTTP中默认使用80端口。它的工作机制，首先是客户端向服务器的80端口建立一个TCP连接，然后在这个TCP连接上进行请求和应答以及数据报文的发送。</p>
+<p>HTTP中常用的有两个版本，一个HTTP1.0，另一个是HTTP1.1。在HTTP1.0中每一个命令和应答都会触发一次TCP连接的建立和断开。而从HTTP1.1开始，允许在一个TCP连接上发送多个命令和应答（这种方式也叫保持连接（keep-alive）。） 。由此，大量地减少了TCP连接的建立和断开操作，从而也提高了效率。</p>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922201820.png" alt=""><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922201908.png" alt=""></p>
+<h3 id="多媒体实现技术"><a href="#多媒体实现技术" class="headerlink" title="多媒体实现技术"></a>多媒体实现技术</h3><p>由于TCP具有流控制、拥塞控制、重发机制等功能，有时应用所发出去的数据可能无法迅速到达对端目标主机。然而在互联网电话（使用的VoIP（Voice Over IP的缩写。） ）和电视会议当中，即使有少许丢包，也希望系统延时少一点，非常注重系统的即时性。因此，在实时多媒体通信当中采用UDP。</p>
+<p>然而，只使用UDP还不足以达到进行实时多媒体通信的目的。例如，在互联网电视电话议会中需要提供查询对方号码、模拟电话机的拨号以及以什么形式交互数据等功能。为此，需要一个叫做“呼叫控制”的支持。呼叫控制主要采用H.323与SIP协议。此外，还需要RTP协议（结合多媒体数据本身的特性进行传输的一种协议）和压缩技术（在网络上传输音频、视频等大型多媒体数据时进行压缩）的支持。</p>
+<h4 id="H-323"><a href="#H-323" class="headerlink" title="H.323"></a>H.323</h4><p>H.323是由ITU开发用于在IP网上传输音频、视频的一种协议。起初，它主要是作为接入ISDN网和IP网之上的电话网为目的的一种规范而被提出的。</p>
+<p>H.323定义了4个主要组件。它们分别是终端（用户终端）、网关（吸收用户数据压缩顺序的不一致性）、网闸（电话本管理、呼叫管理）以及多点控制单元（允许多个终端同时使用）。</p>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922202435.png" alt=""></p>
+<h4 id="SIP"><a href="#SIP" class="headerlink" title="SIP"></a>SIP</h4><p>与H.323相对的TCP/IP协议即是SIP（Session Initiation Protocol）协议。</p>
+<p>“终端之间进行多媒体通信时，需要具备事先解析对方地址、呼出对方号码并对所要传输的媒体信息进行处理等功能。此外，还需要具备中断会话和数据转发的功能。这些功能（呼叫控制与信令）都被统一于SIP协议中。它相当于OSI参考模型中的会话层。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922202804.png" alt=""></p>
+<h4 id="RTP和RTCP"><a href="#RTP和RTCP" class="headerlink" title="RTP和RTCP"></a>RTP和RTCP</h4><p>UDP不是一种可靠性传输协议。因此有可能发生丢包或乱序等现象。因此采用UDP实现实时的多媒体通信需要附加一个表示报文顺序的序列号字段，还需要对报文发送时间进行管理。这些正是RTP（Real-Time Protocol）的主要职责。</p>
+<p>RTP为每个报文附加时间戳和序列号。接收报文的应用，根据时间戳决定数据重构的时机。序列号则根据每发出一次报文加一的原则进行累加。RTP使用这个序列号对同一时间戳的数据（尤其是对于视频的数据。视频中一个帧的数据往往要超过一个包，然而它们发送的时间戳一致。此时就可以使用同一时间戳内不同的序列号加以区分。） 进行排序，掌握是否有丢包的情况发生。</p>
+<p>RTCP（RTP Control Protocol）是辅助RTP的一种协议。通过丢包率等线路质量的管理，对RTP的数据传送率进行控制。</p>
+<h3 id="TLS-SSL与HTTPS"><a href="#TLS-SSL与HTTPS" class="headerlink" title="TLS/SSL与HTTPS"></a>TLS/SSL与HTTPS</h3><p>对于一些涉及机密信息的网络连接需要进行加密处理，Web中可以通过TLS/SSL（Transport Layer Security/Secure Sockets Layer。由网景公司最早提出的名称叫SSL，标准化以后被称作TLS。使用TLS/SSL的HTTP通信叫做HTTPS通信。</p>
+<p>HTTPS中采用对称加密方式。而在发送其公共密钥时采用的则是公钥加密方式（对称加密虽然速度快，但是密钥管理是巨大的挑战。公钥加密密钥管理相对简单，但是处理速度非常慢。TLS/SSL将两者进行取长补短令加密过程达到了极好的效果。由于谁都可以发送公钥，使得密钥管理更为简单。） 。</p>
+<p>确认公钥是否正确主要使用认证中心（CA（Certificate Authority） ）签发的证书，而主要的认证中心的信息已经嵌入到浏览器的出厂设置中。如果Web浏览器中尚未加入某个认证中心，那么会在页面上提示一个警告信息。此时，判断认证中心合法与否就要由用户自己决定了。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922203528.png" alt=""></p>
+<h3 id="IEEE802-1X"><a href="#IEEE802-1X" class="headerlink" title="IEEE802.1X"></a>IEEE802.1X</h3><p>IEEE（The Institute of Electronical and Electronics Engineers，美国电子和电气工程师协会）委员会中，依据不同的工作小组制定了各种局域网技术标准。因于1980年2月启动局域网国际标准化项目，所以命名为802。</p>
+<p>IEEE802.1X是为了能够接入LAN交换机和无线LAN接入点而对用户进行认证的技术（包括我们常用的WiFi）<br>并且它只允许被认可的设备才能访问网络。虽然它是一个提供数据链路层控制的规范，但是与TCP/IP关系紧密。一般，由客户端终端、AP（无线基站）或2层交换机以及认证服务器组成。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922204520.png" alt=""></p>
+<h4 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h4><p>蓝牙与IEEE802.11b/g类似，是使用2.4GHz频率无线电波的一种标准（因此，当IEEE802.b/g等设备与蓝牙设备一起使用时，无线电波信号削减有可能导致通信性能的下降。） 。数据传输速率在V2中能达到3Mbps（实际最大吞吐量为2.1Mbps）。通信距离根据无线电波的信号的强弱，有1药看看吧3 B、10药看看吧3 B、100药看看吧3 B三种类型。通信终端最多允许8台设备（其中一台为主节点，其他1～7台为受管节点。这种网络也叫做piconet，微微网。） 。</p>
+<p>如果说IEEE802.11是针对笔记本电脑这样较大的计算机设备的标准，那么蓝牙则是为手机或智能手机、键盘、鼠标等较小设备而设计的标准。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -2056,179 +2317,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/04/12/ios-interview/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangferry">
-      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/12/ios-interview/" class="post-title-link" itemprop="url">一则iOS招聘信息</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-12 21:48:34" itemprop="dateCreated datePublished" datetime="2019-04-12T21:48:34+08:00">2019-04-12</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">841</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>今天放出一波我司的招聘信息吧，这里只说了iOS的招聘要求。其实还有Android + Unity + 游戏测试等一大波岗位虚位以待，如果有意愿的小伙伴可以私信我哦。<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/04/12/ios-interview/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2278,7 +2366,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2360,7 +2448,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2462,7 +2552,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">184k</span>
+    <span title="站点总字数">189k</span>
   
 
   
@@ -2471,7 +2561,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:47</span>
+    <span title="站点阅读时长">2:52</span>
   
 </div>
 
@@ -2611,6 +2701,326 @@
 
 
   
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
