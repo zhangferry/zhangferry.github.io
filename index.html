@@ -252,7 +252,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">26</span></a>
 
   </li>
         
@@ -271,7 +271,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">44</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">45</span></a>
 
   </li>
         
@@ -355,6 +355,249 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/11/02/mac_efficiency_promotion/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/11/02/mac_efficiency_promotion/" class="post-title-link" itemprop="url">如何提升Mac下生产效率</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-02 18:40:57" itemprop="dateCreated datePublished" datetime="2019-11-02T18:40:57+08:00">2019-11-02</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="工具篇"><a href="#工具篇" class="headerlink" title="工具篇"></a>工具篇</h2><h3 id="效率神器Alfred"><a href="#效率神器Alfred" class="headerlink" title="效率神器Alfred"></a>效率神器Alfred</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102170129.png" alt=""><br>可以从Alfred官网下载，免费版没有workflow功能，付费购买Powerpack可以使用。建议大家购买正版，如果想找破解版，网上也有很多，自行搜索。</p>
+<p>这有一篇比较详细的Alfred的使用<a href="http://louiszhai.github.io/2018/05/31/alfred/" target="_blank" rel="noopener">教程</a>，大部分都被涵盖进去了。这里主要介绍几种对开发帮助比较大的workflow插件，官方workflows地址在<a href="https://www.alfredapp.com/workflows/" target="_blank" rel="noopener">这里</a>，可以根据需要选择自己喜欢的插件使用。</p>
+<h4 id="Youdao"><a href="#Youdao" class="headerlink" title="Youdao"></a>Youdao</h4><p>其实在开发过程中经常遇到一些与英文打交道的场景，除了系统自带的字典功能，我们常用的就是有道了。直接调起客户端去搜也很方便，但是如果是频繁操作或者是在全屏下操作，还需要跑到有道里面搜一个单词，搜一句话还是会显得麻烦。</p>
+<p>这里有一个Youdao的workflow插件。<a href="http://www.packal.org/workflow/youdao-alfred" target="_blank" rel="noopener">下载地址</a>。安装之后可以通过在Alfred中键入<code>yd {query}</code>调出有道字典，并直接搜索翻译结果。使用Enter复制翻译结果，支持多种语言和句子翻译。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102170404.png" alt=""></p>
+<h4 id="CodeVar"><a href="#CodeVar" class="headerlink" title="CodeVar"></a>CodeVar</h4><p>生成可用的代码变量，解决你不知道该如何命名一个函数，类型，属性的烦恼。支持小驼峰（<code>xt</code>）、大驼峰（<code>dt</code>）、下划线(<code>xh</code>)、中划线（<code>zh</code>）、常量命名（<code>cl</code>）这几种命名方式。<br><a href="https://github.com/xudaolong/CodeVar" target="_blank" rel="noopener">下载地址</a><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102171226.png" alt=""></p>
+<h4 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h4><p>可以直接在Alfred的输入框搜索github仓库。<br><a href="https://github.com/gharlan/alfred-github-workflow" target="_blank" rel="noopener">下载地址</a><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102172412.png" alt=""></p>
+<h4 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h4><p>Snippets。可以将自己常用的代码片段放进去，让后通过快捷键调出Snippets，直接使用代码。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span>&lt;#Name#&gt;<span class="params">()</span></span> &#123;</span><br><span class="line">    &lt;#statements#&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="更多插件"><a href="#更多插件" class="headerlink" title="更多插件"></a>更多插件</h4><p><strong><a href="http://www.alfredworkflow.com/" target="_blank" rel="noopener">Workflow官方插件</a></strong><br><strong><a href="http://www.packal.org/" target="_blank" rel="noopener">packal</a></strong></p>
+<p>第一个插件库，好像很久不维护了，很多插件链接都失效了。第二个packal是alfred的一个活跃论坛，比较推荐到这里发现适合你的好东西。另外github，各个博主的推荐文章也有很多，基本你能想到的搜索主题都可以找到对应的workflow插件，这里就不得不佩服社区力量的强大，还有就是这个自定义插件功能做的太棒了。</p>
+<h3 id="Dash"><a href="#Dash" class="headerlink" title="Dash"></a>Dash</h3><p>文档查询，<a href="https://kapeli.com/dash" target="_blank" rel="noopener">下载地址</a><br>遇到问题最好的解决方式就是查文档，API描述能消除大部分自己的疑虑，Dash支持几十种语言的文档查询，还支持文档注释，tag功能。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102173411.png" alt=""></p>
+<h4 id="Dash-Alfred"><a href="#Dash-Alfred" class="headerlink" title="Dash+Alfred"></a>Dash+Alfred</h4><p>Dash本身支持很多IDE的插件，其中就包括Alfred插件，可以在<code>Preferences-&gt;Integration</code>中找到Alfred。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102173540.png" alt=""><br>使用方式如下：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102173828.png" alt=""></p>
+<h2 id="命令和快捷键篇"><a href="#命令和快捷键篇" class="headerlink" title="命令和快捷键篇"></a>命令和快捷键篇</h2><h3 id="几个常用命令行工具"><a href="#几个常用命令行工具" class="headerlink" title="几个常用命令行工具"></a>几个常用命令行工具</h3><p><strong>say</strong><br>say命令可以读出英文<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ say hello world</span><br></pre></td></tr></table></figure></p>
+<p><strong>echo</strong><br>echo是输出命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输出shell本身的文件名</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$0</span></span><br></pre></td></tr></table></figure></p>
+<p>将一段内容重定向至某一文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">"5.0"</span> &gt; .swift-version</span><br></pre></td></tr></table></figure></p>
+<p><strong>man</strong><br>man命令可以查看某个命令行的详细使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ man <span class="built_in">echo</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>curl</strong><br>curl为client url缩写。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ curl www.baidu.com	<span class="comment">#查看网页源码</span></span><br><span class="line">$ curl -i www.baidu.com <span class="comment">#显示头文件</span></span><br><span class="line">$ curl -o example.html https://www.example.com	<span class="comment">#将服务器回应保存成文件</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="常用终端快捷键"><a href="#常用终端快捷键" class="headerlink" title="常用终端快捷键"></a>常用终端快捷键</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+a</td>
+<td>跳到行首</td>
+</tr>
+<tr>
+<td>Ctrl+e</td>
+<td>跳到行尾</td>
+</tr>
+<tr>
+<td>Ctrl+u</td>
+<td>删除光标之前到行首的字符</td>
+</tr>
+<tr>
+<td>Ctrl+k</td>
+<td>删除光标之前到行尾的字符</td>
+</tr>
+<tr>
+<td>Ctrl+w</td>
+<td>删除从光标位置前到当前所处单词（Word）的开头</td>
+</tr>
+<tr>
+<td>Command+D</td>
+<td>垂直分屏</td>
+</tr>
+<tr>
+<td>Ctrl+D</td>
+<td>关闭垂直分屏</td>
+</tr>
+</tbody>
+</table>
+<h2 id="自己动手写一个工具"><a href="#自己动手写一个工具" class="headerlink" title="自己动手写一个工具"></a>自己动手写一个工具</h2><h3 id="AppleScript"><a href="#AppleScript" class="headerlink" title="AppleScript"></a>AppleScript</h3><p>编写自动化工具就要选一中脚本语言，这里选择了AppleScript。</p>
+<p>这是因为:</p>
+<ul>
+<li>它语法简单，并接近自然语言。（没有标点符号）</li>
+<li>语法查询十分方便。（系统原生提供语法查询字典）</li>
+<li>mac自带<code>Script Editor</code>可以实现编写运行并检查语法</li>
+<li>mac上主流应用都含有AppleScript的语法支持<br>关于AppleScript这有一份简单的<a href="https://sspai.com/post/46912" target="_blank" rel="noopener">教程</a>。<br>我们摘取其中几点，简要讲下AppleScript的语法。</li>
+</ul>
+<h4 id="tell命令"><a href="#tell命令" class="headerlink" title="tell命令"></a>tell命令</h4><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"Safari"</span></span><br><span class="line">    <span class="built_in">activate</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">tell</span></span><br></pre></td></tr></table></figure>
+<p>告诉Safari启动。<br><code>tell</code>命令可以嵌套使用。</p>
+<h4 id="set命令"><a href="#set命令" class="headerlink" title="set命令"></a>set命令</h4><p>定义变量到剪贴板。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set myVariables to clipboard</span><br></pre></td></tr></table></figure></p>
+<h4 id="AppleScript-Suite"><a href="#AppleScript-Suite" class="headerlink" title="AppleScript Suite"></a>AppleScript Suite</h4><p>AppleScript Suite就是 <code>AppleScript</code> 类（class），及其元素（element）和属性（property）的集合。这个就是OmniFocus在<code>AppleScript</code>上定义的Suite。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191030090210.png" alt=""></p>
+<h4 id="脚本字典"><a href="#脚本字典" class="headerlink" title="脚本字典"></a>脚本字典</h4><p>打开「脚本编辑器」 → 新建一个脚本 → 用快捷键 <code>Command+Shift+O</code> 打开 AppleScript 字典（Dictionary）。这个打开之后就能看到各个应用的Suite，我们可以通过这些说明，来完成功能的使用。</p>
+<h3 id="编写脚本"><a href="#编写脚本" class="headerlink" title="编写脚本"></a>编写脚本</h3><p>有了上面的基础我们来编写一个选中文件夹，然后让iTerm2跳转到指定目录的脚本。</p>
+<h4 id="定位文件路径"><a href="#定位文件路径" class="headerlink" title="定位文件路径"></a>定位文件路径</h4><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"Finder"</span></span><br><span class="line">	<span class="keyword">set</span> pathFile <span class="keyword">to</span> selection <span class="keyword">as</span> <span class="built_in">text</span></span><br><span class="line">	<span class="comment">--POSIX是mac中的根目录变量</span></span><br><span class="line">	<span class="keyword">set</span> pathFile <span class="keyword">to</span> <span class="keyword">get</span> <span class="keyword">POSIX path</span> <span class="keyword">of</span> pathFile</span><br><span class="line">	<span class="comment">--防止目录存在空格跳转不了</span></span><br><span class="line">	<span class="keyword">set</span> pathFile <span class="keyword">to</span> <span class="keyword">quoted form</span> <span class="keyword">of</span> pathFile</span><br><span class="line">	<span class="keyword">set</span> pathFile <span class="keyword">to</span> <span class="string">"cd "</span> &amp; pathFile</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">tell</span></span><br></pre></td></tr></table></figure>
+<p>现在我们通过tell和set命令已经获取到了<code>cd pathFile</code>这段文本。</p>
+<h4 id="在iTerm中输入命令"><a href="#在iTerm中输入命令" class="headerlink" title="在iTerm中输入命令"></a>在iTerm中输入命令</h4><p>上一步获取到了文本命令，接下来我们需要将这段命令在iTerm中执行。那怎么将上面的文本写入iTerm中呢？</p>
+<p>大致思路为：打开iTerm &gt; 创建窗口 &gt; 写入命令。</p>
+<p>接下来就是如何实现这几个步骤，通过查看iTerm的Suite:<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102183300.png" alt=""><br>我们可以找到<code>create window with default profile</code>，<code>write</code>命令。有可能这就是我们需要的也有可能不是，所以有些时候是需要尝试出来的。最终实现上面步骤的代码为：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"iTerm"</span></span><br><span class="line">	create window <span class="keyword">with</span> default profile</span><br><span class="line">	<span class="keyword">tell</span> current session <span class="keyword">of</span> current window</span><br><span class="line">		<span class="built_in">write</span> <span class="built_in">text</span> pathFile</span><br><span class="line">	<span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">tell</span></span><br></pre></td></tr></table></figure></p>
+<p>然后完整代码为：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"Finder"</span></span><br><span class="line">    <span class="comment">-- get selection path</span></span><br><span class="line">    <span class="keyword">set</span> pathFile <span class="keyword">to</span> selection <span class="keyword">as</span> <span class="built_in">text</span></span><br><span class="line">    <span class="keyword">set</span> pathFile <span class="keyword">to</span> <span class="keyword">get</span> <span class="keyword">POSIX path</span> <span class="keyword">of</span> pathFile</span><br><span class="line">    <span class="comment">-- fix space problem in the directory</span></span><br><span class="line">    <span class="keyword">set</span> pathFile <span class="keyword">to</span> <span class="keyword">quoted form</span> <span class="keyword">of</span> pathFile</span><br><span class="line">    <span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"iTerm"</span></span><br><span class="line">	   create window <span class="keyword">with</span> default profile</span><br><span class="line">	   <span class="keyword">tell</span> current session <span class="keyword">of</span> current window</span><br><span class="line">		  <span class="built_in">write</span> <span class="built_in">text</span> pathFile</span><br><span class="line">	   <span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">tell</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="AppleScript-Alfred"><a href="#AppleScript-Alfred" class="headerlink" title="AppleScript+Alfred"></a>AppleScript+Alfred</h3><p>上面过程我们编写了脚本，但是怎么方便的使用它呢？可以利用Alfred。<br>在workflow中，我们增加一个Hotkeys。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102184419.png" alt=""></p>
+<p>然后绑定快捷键<code>Command+O</code>，从快捷键脱出一条线，选择<code>Actions &gt; Run Script</code>，选择Language为AS(AppleScript)，粘贴我们刚才写的代码，保存即可。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102184556.png" alt=""></p>
+<p>之后我们可以选中文件夹，触发热键<code>Command+O</code>就能直接在iTerm中定位至改目录了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -2143,180 +2386,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/04/30/monthly_10/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangferry">
-      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/30/monthly_10/" class="post-title-link" itemprop="url">iOS开发月报#10|201904</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-30 14:11:30" itemprop="dateCreated datePublished" datetime="2019-04-30T14:11:30+08:00">2019-04-30</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">2.9k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">3 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。</p>
-<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190428174837.jpg" alt=""><br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/04/30/monthly_10/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2366,7 +2435,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2450,7 +2519,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2552,7 +2623,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">189k</span>
+    <span title="站点总字数">193k</span>
   
 
   
@@ -2561,7 +2632,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:52</span>
+    <span title="站点阅读时长">2:55</span>
   
 </div>
 
