@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2019-11-02T10:49:33.461Z</updated>
+  <updated>2019-11-08T14:59:54.052Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于水滴筹</title>
+    <link href="http://zhangferry.github.io/2019/11/08/shuidi/"/>
+    <id>http://zhangferry.github.io/2019/11/08/shuidi/</id>
+    <published>2019-11-07T23:08:34.000Z</published>
+    <updated>2019-11-08T14:59:54.052Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;很多朋友因为我的原因关注并参与到水滴筹中，有些小伙伴因为担心水滴筹有手续费用就直接把钱打给我。为了打消大家的顾虑，我花了些时间理解水滴筹背后的一些事情。&lt;/p&gt;
+&lt;h2 id=&quot;水滴筹的背景&quot;&gt;&lt;a href=&quot;#水滴筹的背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="http://zhangferry.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>如何提升Mac下生产效率</title>
@@ -425,25 +450,6 @@
     
     
       <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2018年总结</title>
-    <link href="http://zhangferry.github.io/2019/01/01/2018-year-summary/"/>
-    <id>http://zhangferry.github.io/2019/01/01/2018-year-summary/</id>
-    <published>2019-01-01T15:22:25.000Z</published>
-    <updated>2019-05-17T15:23:26.209Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;写的有点晚了，因为一些事情耽搁，本来想干脆不写了。但有股力量不断催促着自己要写下来，于是就有了这篇文章。今年对我是意义重大的一年，从几个方面说吧，工作，生活和2019年的目标。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="生活" scheme="http://zhangferry.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
