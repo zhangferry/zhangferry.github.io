@@ -96,21 +96,21 @@
 
 
 
-  <meta name="description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 TipsGolbal queues的优先级如果要在后台执行非UI相关的工作, 一般把这部分工作放在Global queue. Global queue是一种系统内共享的并行的队列。申请Global queue的方法很">
+  <meta name="description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
 <meta name="keywords" content="月报">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS开发月报#13|201907">
 <meta property="og:url" content="http://zhangferry.github.io/2019/07/31/monthly_13/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 TipsGolbal queues的优先级如果要在后台执行非UI相关的工作, 一般把这部分工作放在Global queue. Global queue是一种系统内共享的并行的队列。申请Global queue的方法很">
+<meta property="og:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731213558.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731203414.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731203603.png">
-<meta property="og:updated_time" content="2019-07-31T15:00:18.245Z">
+<meta property="og:updated_time" content="2019-11-09T12:33:00.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发月报#13|201907">
-<meta name="twitter:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 TipsGolbal queues的优先级如果要在后台执行非UI相关的工作, 一般把这部分工作放在Global queue. Global queue是一种系统内共享的并行的队列。申请Global queue的方法很">
+<meta name="twitter:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731213558.png">
 
 
@@ -276,7 +276,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">46</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">52</span></a>
 
   </li>
         
@@ -489,7 +489,7 @@
       
 
       
-        <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731213558.png" alt=""></p>
+        <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731213558.png" alt=""><br><a id="more"></a></p>
 <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="Golbal-queues的优先级"><a href="#Golbal-queues的优先级" class="headerlink" title="Golbal queues的优先级"></a>Golbal queues的优先级</h3><p>如果要在后台执行非UI相关的工作, 一般把这部分工作放在Global queue. Global queue是一种系统内共享的并行的队列。申请Global queue的方法很简单:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let userQueue = DispatchQueue.global(qos: .userInitiated)</span><br></pre></td></tr></table></figure></p>
 <p>其中后面的<code>.userInitiated</code>参数代表队列的优先级。该优先级公有6中分类，有高到低为：<br><code>userInteractive&gt;default&gt;unspecified&gt;userInitiated&gt;utility&gt;background</code><br>通过该段代码验证：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>...<span class="number">3</span> &#123;</span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.<span class="keyword">default</span>).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.default, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.background).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.background, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.unspecified).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.unspecified, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.userInitiated).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.userInitiated, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.userInteractive).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.userInteractive, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.utility).async &#123;</span><br><span class="line">        <span class="type">NSLog</span>(<span class="string">"DispatchQoS.QoSClass.utility, %d"</span>, i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>其中<code>userInitiated</code>为<code>LIFO(后进先出)</code>，即如果有新插入的<code>userInteractive</code>级别的队列任务，为先执行新任务之后再执行之前该级别任务。其余优先级的队列任务均是<code>FIFO(先进先出)</code>。</p>
@@ -666,7 +666,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -871,7 +871,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">194k</span>
+    <span title="站点总字数">201k</span>
   
 
   
@@ -880,7 +880,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:57</span>
+    <span title="站点阅读时长">3:03</span>
   
 </div>
 

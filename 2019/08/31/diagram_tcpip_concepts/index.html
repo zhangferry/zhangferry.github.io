@@ -96,13 +96,13 @@
 
 
 
-  <meta name="description" content="最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。 网络基础知识计算机网络最重要的一个概念就是协议，简单来说，协议就是计算机与计算机之间通过网络实现通信时事先达成的一种“约定”。这种“约定”使那些由不同厂商的设备，不同的CPU以及不同操作系统组成的计算机之间，只要遵循相同的协议就能实现通信。 那这个协议由谁来">
+  <meta name="description" content="最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。">
 <meta name="keywords" content="计算机网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《图解TCP&#x2F;IP》总结">
 <meta property="og:url" content="http://zhangferry.github.io/2019/08/31/diagram_tcpip_concepts/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。 网络基础知识计算机网络最重要的一个概念就是协议，简单来说，协议就是计算机与计算机之间通过网络实现通信时事先达成的一种“约定”。这种“约定”使那些由不同厂商的设备，不同的CPU以及不同操作系统组成的计算机之间，只要遵循相同的协议就能实现通信。 那这个协议由谁来">
+<meta property="og:description" content="最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919213227.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190915183056.png">
@@ -122,10 +122,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922202804.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922203528.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922204520.png">
-<meta property="og:updated_time" content="2019-09-22T12:59:40.488Z">
+<meta property="og:updated_time" content="2019-11-09T12:30:43.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《图解TCP&#x2F;IP》总结">
-<meta name="twitter:description" content="最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。 网络基础知识计算机网络最重要的一个概念就是协议，简单来说，协议就是计算机与计算机之间通过网络实现通信时事先达成的一种“约定”。这种“约定”使那些由不同厂商的设备，不同的CPU以及不同操作系统组成的计算机之间，只要遵循相同的协议就能实现通信。 那这个协议由谁来">
+<meta name="twitter:description" content="最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919213227.png">
 
 
@@ -291,7 +291,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">46</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">52</span></a>
 
   </li>
         
@@ -504,7 +504,7 @@
       
 
       
-        <p>最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。</p>
+        <p>最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。<br><a id="more"></a></p>
 <h2 id="网络基础知识"><a href="#网络基础知识" class="headerlink" title="网络基础知识"></a>网络基础知识</h2><p>计算机网络最重要的一个概念就是协议，简单来说，<strong>协议</strong>就是计算机与计算机之间通过网络实现通信时事先达成的一种“约定”。这种“约定”使那些由不同厂商的设备，不同的CPU以及不同操作系统组成的计算机之间，只要遵循相同的协议就能实现通信。</p>
 <p>那这个协议由谁来规定呢，ISO（国际标准化组织）制定的一个国际标准OSI（开放式通信系统互联参考模型）。本书将要说明的TCP/IP并非ISO所制定的某种国际标准，而是由IETF（互联网工程任务组）所建议的致力于推进标准化作业的一种协议。这里提一下，通常OSI只是一种参考模型，他将网络分层，但是它并没有规定任何具体的协议，协议内容则归属为TCP/IP。</p>
 <p>OSI参考模型中各个分层的作用：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919213227.png" alt=""></p>
@@ -718,7 +718,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -923,7 +923,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">194k</span>
+    <span title="站点总字数">201k</span>
   
 
   
@@ -932,7 +932,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:57</span>
+    <span title="站点阅读时长">3:03</span>
   
 </div>
 

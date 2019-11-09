@@ -96,23 +96,23 @@
 
 
 
-  <meta name="description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 Tips闪光动画图片上的闪光动画，类似这种效果：分析拆解可知这是一个带透明的白色渐变移动产生的效果。渐变+移动，我们可以使用CAGradientLayer + CABasicAnimation实现：123456789">
+  <meta name="description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
 <meta name="keywords" content="月报">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS开发月报#12|201906">
 <meta property="og:url" content="http://zhangferry.github.io/2019/06/29/monthly_12/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 Tips闪光动画图片上的闪光动画，类似这种效果：分析拆解可知这是一个带透明的白色渐变移动产生的效果。渐变+移动，我们可以使用CAGradientLayer + CABasicAnimation实现：123456789">
+<meta property="og:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/C6B082E3EE78560B53A3C9A99698359F.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/2019-06-30%2014.24.47.gif">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/C8614AF1-9B2E-4CA5-A771-B1BA59F87868.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190630120203.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Juanpe/About-SwiftUI/master/Assets/banner_about_swift.jpg">
-<meta property="og:updated_time" content="2019-06-30T22:56:52.847Z">
+<meta property="og:updated_time" content="2019-11-09T12:33:00.287Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发月报#12|201906">
-<meta name="twitter:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。 Tips闪光动画图片上的闪光动画，类似这种效果：分析拆解可知这是一个带透明的白色渐变移动产生的效果。渐变+移动，我们可以使用CAGradientLayer + CABasicAnimation实现：123456789">
+<meta name="twitter:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry/iOSMonthlyReport提交issue。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/C6B082E3EE78560B53A3C9A99698359F.jpg">
 
 
@@ -278,7 +278,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">46</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">52</span></a>
 
   </li>
         
@@ -491,7 +491,7 @@
       
 
       
-        <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/C6B082E3EE78560B53A3C9A99698359F.jpg" alt=""></p>
+        <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/C6B082E3EE78560B53A3C9A99698359F.jpg" alt=""><br><a id="more"></a></p>
 <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="闪光动画"><a href="#闪光动画" class="headerlink" title="闪光动画"></a>闪光动画</h3><p>图片上的闪光动画，类似这种效果：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/2019-06-30%2014.24.47.gif" alt=""><br>分析拆解可知这是一个带透明的白色渐变移动产生的效果。渐变+移动，我们可以使用<code>CAGradientLayer</code> + <code>CABasicAnimation</code>实现：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">showGradientAnimation</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> gradient = <span class="type">CAGradientLayer</span>()</span><br><span class="line">    gradient.frame = canvasView.bounds</span><br><span class="line">    <span class="comment">//左上角到右下角的渐变</span></span><br><span class="line">    gradient.startPoint = <span class="type">CGPoint</span>(x: <span class="number">0</span>, y: <span class="number">0</span>)</span><br><span class="line">    gradient.endPoint = <span class="type">CGPoint</span>(x: <span class="number">1</span>, y: <span class="number">1</span>)</span><br><span class="line">    gradient.locations = [<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>]</span><br><span class="line">    <span class="comment">//调透明度渐变要使用白色</span></span><br><span class="line">    gradient.colors = [<span class="type">UIColor</span>.<span class="keyword">init</span>(white: <span class="number">1</span>, alpha: <span class="number">0.0</span>).cgColor,</span><br><span class="line">                           <span class="type">UIColor</span>.<span class="keyword">init</span>(white: <span class="number">1</span>, alpha: <span class="number">0.3</span>).cgColor,</span><br><span class="line">                           <span class="type">UIColor</span>.<span class="keyword">init</span>(white: <span class="number">1</span>, alpha: <span class="number">0.0</span>).cgColor]</span><br><span class="line">    </span><br><span class="line">    canvasView.layer.addSublayer(gradient)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> animation = <span class="type">CABasicAnimation</span>.<span class="keyword">init</span>(keyPath: <span class="string">"locations"</span>)</span><br><span class="line">    <span class="comment">//从0位置开始从1位置结束</span></span><br><span class="line">    animation.fromValue = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0.3</span>]</span><br><span class="line">    animation.toValue = [<span class="number">0.7</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">    animation.duration = gradientAnimationDuration</span><br><span class="line">    animation.repeatCount = <span class="number">1</span></span><br><span class="line">    animation.isRemovedOnCompletion = <span class="literal">true</span></span><br><span class="line">    gradient.add(animation, forKey: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="集成Universal-Links时的几点注意事项"><a href="#集成Universal-Links时的几点注意事项" class="headerlink" title="集成Universal Links时的几点注意事项"></a>集成Universal Links时的几点注意事项</h3><p>这个是onlink总结对于各个平台对应用间跳转的支持情况，其中deeplink指Universal Links：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/C8614AF1-9B2E-4CA5-A771-B1BA59F87868.png" alt=""></p>
 <h4 id="跳转至facebook指定页面"><a href="#跳转至facebook指定页面" class="headerlink" title="跳转至facebook指定页面"></a>跳转至facebook指定页面</h4><p>如果是facebook某一主页，可以通过：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里可以替换成自己的主页id</span></span><br><span class="line"><span class="keyword">let</span> url = <span class="type">URL</span>(string: <span class="string">"fb://page?id=**"</span>)! </span><br><span class="line"><span class="type">UIApplication</span>.shared.<span class="keyword">open</span>(url, options: [:], completionHandler: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure></p>
@@ -672,7 +672,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -877,7 +877,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">194k</span>
+    <span title="站点总字数">201k</span>
   
 
   
@@ -886,7 +886,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:57</span>
+    <span title="站点阅读时长">3:03</span>
   
 </div>
 
