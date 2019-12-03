@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2019-11-09T12:29:39.375Z</updated>
+  <updated>2019-12-03T15:17:32.252Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【译】iOS 架构模式--浅析MVC, MVP, MVVM 和 VIPER</title>
+    <link href="http://zhangferry.github.io/2019/11/22/ios_architecture_patterns/"/>
+    <id>http://zhangferry.github.io/2019/11/22/ios_architecture_patterns/</id>
+    <published>2019-11-22T06:39:34.000Z</published>
+    <updated>2019-12-03T15:17:32.252Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;作者：Bohdan Orlov&lt;br&gt;原文地址：&lt;a href=&quot;https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+    
+      <category term="UI" scheme="http://zhangferry.github.io/tags/UI/"/>
+    
+  </entry>
   
   <entry>
     <title>感谢大家的帮助</title>
@@ -27,31 +54,6 @@
     
       &lt;h2 id=&quot;好消息&quot;&gt;&lt;a href=&quot;#好消息&quot; class=&quot;headerlink&quot; title=&quot;好消息&quot;&gt;&lt;/a&gt;好消息&lt;/h2&gt;&lt;p&gt;开始水滴筹之后，父亲治病的消息大家就都知道了，期间收到了很多来自亲友的支持和帮助。先告诉大家好消息，父亲手术完了，并且身体恢复一切正常，已于11月8号中午从重症监护室转到无菌病房，还需要在里面待够五天才转到普通病房。关于看病所需要的筹款，也得到了解决。今天晚上7点左右，我已经终止了这次筹款。&lt;/p&gt;
 &lt;p&gt;看病资金问题能快速解决，除了来自水滴筹的筹款，还有就是公司的大力支持。三位老板帮助了2万元，还破格提前给我发了年终奖，算上水滴筹中的63588元，一直到出院应该是没什么问题了。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="生活" scheme="http://zhangferry.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>七院第六天（11月8号）</title>
-    <link href="http://zhangferry.github.io/2019/11/08/2019_11_8/"/>
-    <id>http://zhangferry.github.io/2019/11/08/2019_11_8/</id>
-    <published>2019-11-08T12:58:34.000Z</published>
-    <updated>2019-11-09T12:21:57.792Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在重症监护室的第五天。&lt;br&gt;上午10点搬出了重症监护室。&lt;br&gt;进入无菌病房第一天。&lt;br&gt;待补全。。&lt;/p&gt;
-
-        
-      
     
     </summary>
     
@@ -79,21 +81,19 @@
   </entry>
   
   <entry>
-    <title>七院第五天（11月7号）</title>
+    <title>为什么会得尿毒症</title>
     <link href="http://zhangferry.github.io/2019/11/07/2019_11_7/"/>
     <id>http://zhangferry.github.io/2019/11/07/2019_11_7/</id>
     <published>2019-11-07T12:58:34.000Z</published>
-    <updated>2019-11-09T12:21:57.770Z</updated>
+    <updated>2019-12-03T15:19:00.157Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;为什么会得尿毒症&quot;&gt;&lt;a href=&quot;#为什么会得尿毒症&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;p&gt;看了父亲的病历，再结合之前了解的一些情况，我试着分析一下为什么会得尿毒症。&lt;/p&gt;
+&lt;h2 id=&quot;一些医学知识&quot;&gt;&lt;a href=&quot;#一些医学知识&quot; class=&quot;headerlink&quot; title=&quot;一些医学知识&quot;&gt;&lt;/a&gt;一些医学知识&lt;/h2&gt;&lt;p&gt;关于肾脏：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;肾脏有很重要的代谢排毒功能，可以清除体内经由食物消化所残留的尿素、尿素氮、肌酸酐等，也会排出水分，维持体内的电解质平衡，甚至是控制血压高低起伏、活化维生素 D 的重要器官。此外，肾脏与肝脏一样，也是体内清除药物的重要器官，这也是为何肾功能不好时，就容易发生药物过量或中毒后遗症的原因。可见肾脏是何等的重要！等到肾脏的功能持续恶化到只剩下不到正常的 10% 时，才较容易出现包括恶心、水肿、高血压、倦怠无力、抽筋等症状，一旦造成更严重的尿毒症时，只能透析治疗。&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     

@@ -371,6 +371,330 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/11/22/ios_architecture_patterns/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangferry">
+      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangferry">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/11/22/ios_architecture_patterns/" class="post-title-link" itemprop="url">【译】iOS 架构模式--浅析MVC, MVP, MVVM 和 VIPER</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-22 14:39:34" itemprop="dateCreated datePublished" datetime="2019-11-22T14:39:34+08:00">2019-11-22</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">13k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">12 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>作者：Bohdan Orlov<br>原文地址：<a href="https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52" target="_blank" rel="noopener">https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52</a></p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191122154526.png" alt=""><br>在iOS开发过程中你是否对MVC的使用感觉很别扭？你是否对转向MVVM有疑惑？你听说过VIPER，但不清楚这个东西是否值得一试。</p>
+<p>接着读下去，你会找到上面这些问题的答案。如果读完仍不能解惑，欢迎到评论区捶我。</p>
+<p>接下来你将在iOS环境下构建关于架构模式的知识体系。我们将简要构建一些经典的例子，并在理论和实践上进行比较他们的不同。如果你需要更多关于任何一个特定的细节，请关注我。</p>
+<p>掌握设计模式容易让人上瘾，所以要注意：阅读本文之前要问自己几个问题：</p>
+<blockquote>
+<p>谁应该持有网络请求：Model还是Controller?</p>
+<p>如何在一个新的View中向ViewModel传递Model</p>
+<p>谁创建了一个新的VIPER模块：Router还是Presenter</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191122152602.png" alt=""></p>
+<hr>
+<h2 id="为什么应该关心选用何种架构"><a href="#为什么应该关心选用何种架构" class="headerlink" title="为什么应该关心选用何种架构"></a>为什么应该关心选用何种架构</h2><p>因为如果你不这么做的话，总有一天，等这个类庞大到同时处理十几种事务，你会发现你根本无法从中找到对应代码并修改bug。当然，将这整个类了然于心是很难的，你会常常忘记一些重要的细节。如果你的程序已经处于这种状态了，那它很可能具有下面这些特征：</p>
+<ul>
+<li>这个类是UIViewController的子类</li>
+<li>你的数据直接在UIViewController中进行存储</li>
+<li>你的UIView基本什么都没做</li>
+<li>你的Model只是一个单纯的数据结构</li>
+<li>你的单元测试没有覆盖任何代码</li>
+</ul>
+<p>即使你认为自己遵守了苹果的指导，并按照苹果推荐的MVC设计规范进行开发，但还是遇到了这些问题。不要担心，这是因为苹果的MVC本身就存在一些问题，我们稍后会再来讨论它。</p>
+<p>让我们定义一下好的架构应该具备的特点：<br>1、平衡的分配实体和具体角色的职责<br>2、把可测试性放在第一位（通过合适的架构，这将很容易实现）<br>3、易用性和低维护成本</p>
+<h3 id="为什么要分配职责"><a href="#为什么要分配职责" class="headerlink" title="为什么要分配职责"></a>为什么要分配职责</h3><p>职责的分配能让我们在尝试搞清楚事情如何运作这一过程中保持一个正常的负荷。你可能会认为你投入的精力越多你的大脑越能适应更加复杂的东西，这没错。但是这个能力是非线性的，而且会很快达到临界点。所以降低复杂性的最好的方式是，根据<strong>职责单一原则</strong>将它的功能（职责）分配到多个实体中。</p>
+<h3 id="为什么要可测试性"><a href="#为什么要可测试性" class="headerlink" title="为什么要可测试性"></a>为什么要可测试性</h3><p>对于那些已经添加了单元测试的项目来说，当他们增加一个新的功能或者重构一个复杂的类时会由单元测试告知失败与否，这多让人很放心啊。同时这也意味着这些测试项将在运行时帮助开发者找到问题，而如果这些问题发生在用户设备上的，解决他们通常会花费一周。</p>
+<h3 id="为什么要易用性"><a href="#为什么要易用性" class="headerlink" title="为什么要易用性"></a>为什么要易用性</h3><p>这并不需要答案，但值得一提的是，最好的代码是那些从未写过的代码。所以，代码越少，bug就越少。这意味着，编写更少代码的愿望不应该仅仅由开发人员的懒惰来解释，而且你不应该为了采用更好的解决方案，而对其维护成本视而不见。</p>
+<h2 id="MV-X-的要素"><a href="#MV-X-的要素" class="headerlink" title="MV(X)的要素"></a>MV(X)的要素</h2><p>如今我们又很多可选的架构方案：</p>
+<ul>
+<li>MVC</li>
+<li>MVP</li>
+<li>MVVM</li>
+<li>VIPER<br>前三项方案是把应用程序的实体分为三类：</li>
+<li><strong>Modes</strong> – 负责数据域和操作数据的数据访问层，例如’<strong>Person</strong>’类, ‘<strong>PersonDataProvider</strong>‘类。</li>
+<li><strong>Views</strong> – 负责展示层（GUI），对于iOS环境就是指所有已‘<strong>UI</strong>’开头的类。</li>
+<li><strong>Controller/Presenter/ViewModel</strong> – 是<strong>Model</strong>和<strong>View</strong>的中介，通常的职责是通过响应用户在<strong>View</strong>的操作改变<strong>Model</strong>，然后根据<strong>Model</strong>的变化更新<strong>View</strong>。</li>
+</ul>
+<p>这些实体的分割帮助我们：</p>
+<ul>
+<li>更好的理解他们</li>
+<li>重用他们（通常是<strong>View</strong>和<strong>Model</strong>）</li>
+<li>单独测试他们</li>
+</ul>
+<p>让我们开始讲解MV(X)模式，随后是VIPER</p>
+<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><h3 id="它原本是什么样的"><a href="#它原本是什么样的" class="headerlink" title="它原本是什么样的"></a>它原本是什么样的</h3><p>在讨论苹果的MVC版本之前，让我们看一下传统的MVC模式：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191124201633.png" alt=""></p>
+<p>这个模式下，<strong>View</strong>是无状态的。它只是简单的被<strong>Controller</strong>渲染当<strong>Model</strong>变化的时候。想一下Web页面，当你点一个链接尝试跳转时，整个页面都会重新渲染。尽管可以在iOS应用程序中实现传统的MVC，但由于架构问题，这并没有多大意义—— 所有三个实体都是紧密耦合的，每个实体都知道其他两个。这正好降低了他们的重用性，而这又是你在程序中不想看到的。因为这个原因，我们将跳过编写传统MVC代码的示例。</p>
+<blockquote>
+<p>传统的MVC似乎不适合现代的iOS开发</p>
+</blockquote>
+<h2 id="苹果的MVC"><a href="#苹果的MVC" class="headerlink" title="苹果的MVC"></a>苹果的MVC</h2><h3 id="预期效果"><a href="#预期效果" class="headerlink" title="预期效果"></a>预期效果</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191124202807.png" alt=""><br><strong>Controller</strong>是<strong>View</strong>和<strong>Model</strong>的中介，因此它俩互相不知道对方。可重用性最差的就是<strong>Controller</strong>，因为我们必须为复杂的业务逻辑提供一个位置，<strong>Model</strong>又不适合。</p>
+<p>理论上，这看起来很简单，但是你总感觉有什么地方不对，是吧？你甚至听到人们解读MVC为<strong>Massive View Controller</strong>。也因此，视图控制器的简化成了iOS开发一个重要的课题。苹果只是采用传统的MVC并对其进行一些改进，为什么会出现这种情况呢?</p>
+<h3 id="现实情况"><a href="#现实情况" class="headerlink" title="现实情况"></a>现实情况</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191124205759.png" alt=""></p>
+<p>Cocoa MVC鼓励你编写大量的视图控制器，因为它们是视图生命周期的一部分，很难说它们是独立的。尽管你有能力转移一些业务逻辑和数据转换工作到<strong>Model</strong>中，当需要转移工作到<strong>View</strong>时你仍然没有太多选择，因为大多数情况<strong>View</strong>的职责就是发送行为到<strong>Controller</strong>。视图控制器最终将成为一个所有东西的委托、数据源、负责调度和取消网络请求，等等。</p>
+<p>这种代码，你肯定见过很多少次了：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userCell = tableView.dequeueReusableCellWithIdentifier(<span class="string">"identifier"</span>) <span class="keyword">as</span> <span class="type">UserCell</span></span><br><span class="line">userCell.configureWithUser(user)</span><br></pre></td></tr></table></figure></p>
+<p>这个cell是<strong>View</strong>，直接通过<strong>Model</strong>进行配置，这明显违反了MVC的要求，但这种事情却经常发生，而且认为还不认为这是错的。如果你严格按照MVC的 做法，你应该在Controller里面配置cell，而不是将<strong>Model</strong>直接传递给<strong>View</strong>，但这样就会增加<strong>Controller</strong>的大小。</p>
+<blockquote>
+<p>Cocoa MVC 被称为 Massive View Controller是多么合理啊。</p>
+</blockquote>
+<p>这个问题还不是那么明显，直到提到单元测试（希望它存在于你的项目）。因为你的视图控制器跟View是紧耦合的，这将使得测试非常困难。所以你应该让你的业务逻辑和视图布局代码尽可能分割开来。</p>
+<p>让我们看一个简单的例子：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span> </span>&#123; <span class="comment">// Model</span></span><br><span class="line">    <span class="keyword">let</span> firstName: <span class="type">String</span></span><br><span class="line">    <span class="keyword">let</span> lastName: <span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GreetingViewController</span> : <span class="title">UIViewController</span> </span>&#123; <span class="comment">// View + Controller</span></span><br><span class="line">    <span class="keyword">var</span> person: <span class="type">Person</span>!</span><br><span class="line">    <span class="keyword">let</span> showGreetingButton = <span class="type">UIButton</span>()</span><br><span class="line">    <span class="keyword">let</span> greetingLabel = <span class="type">UILabel</span>()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        <span class="keyword">self</span>.showGreetingButton.addTarget(<span class="keyword">self</span>, action: <span class="string">"didTapButton:"</span>, forControlEvents: .<span class="type">TouchUpInside</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">didTapButton</span><span class="params">(button: UIButton)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> greeting = <span class="string">"Hello"</span> + <span class="string">" "</span> + <span class="keyword">self</span>.person.firstName + <span class="string">" "</span> + <span class="keyword">self</span>.person.lastName</span><br><span class="line">        <span class="keyword">self</span>.greetingLabel.text = greeting</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// layout code goes here</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Assembling of MVC</span></span><br><span class="line"><span class="keyword">let</span> model = <span class="type">Person</span>(firstName: <span class="string">"David"</span>, lastName: <span class="string">"Blaine"</span>)</span><br><span class="line"><span class="keyword">let</span> view = <span class="type">GreetingViewController</span>()</span><br></pre></td></tr></table></figure>
+<p>这样根本没法测试，对吧？我们可以把greeting的赋值移到一个新的类GreetingModel中，然后分开测试它。但是我们无法在不直接调用UIView相关方法（viewDidLoad, didTapButton）的情况下测试任何外在的逻辑，而如果这样做，这些方法就导致所有view的刷新，所以这本身就是一个不好的单元测试。</p>
+<p>事实上，在一个模拟器上加载和测试UIViews表现正常，不代表它在别的设备依然这样。所以我建议测试时移除单元测试对“宿主程序”的依赖，而直接测试代码。</p>
+<blockquote>
+<p><strong>View</strong>和<strong>Controller</strong>之间的交互行为无法通过Unit Tests进行。</p>
+</blockquote>
+<p>根据上面的说法，Cocoa MVC是一个相当不好的架构方案。让我们再来根据文章开头定义的好架构应有的特性来评价下它：</p>
+<ul>
+<li>职责分离 – <strong>View</strong>和<strong>Model</strong>是分离的，但<strong>View</strong>和<strong>Controller</strong>是紧耦合关系。</li>
+<li>可测试性 – 由于不好的职责分离特性，只有<strong>Model</strong>层是可以测试的。</li>
+<li>易用性 – 这几种架构模式中它的代码量是最少的。每个人都很熟悉这种模式，即使是一个经验有限的开发者也可以很容易的维护这份代码。</li>
+</ul>
+<p>如果你不打算投入很多事情在架构上，或者你感觉对于你们的小项目来说不值得投入过多维护成本，那你应该选择Cocoa MVC。</p>
+<blockquote>
+<p>Cocoa MVC 是开发速度最快的一种架构。</p>
+</blockquote>
+<h2 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h2><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191127143603.png" alt=""></p>
+<p>这是不是更苹果的MVC非常像？确实是这样的，它的名字叫做<a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter" target="_blank" rel="noopener">MVP</a>。等一下，这是不是意味着苹果的MVC事实上就是MVP？不。你可以再观察下这个结构，<strong>View</strong>和<strong>Controller</strong>是紧耦合关系，作为MVP的中介者 – <strong>Presenter</strong>并没有管理视图控制器的生命周期，它里面也不含有布局代码，它的职责是根据数据的状态变化更新<strong>View</strong>，所以呢，<strong>View</strong>这一层就可以很简单的抽出来。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191127144422.png" alt=""></p>
+<blockquote>
+<p>我会告诉你，UIViewController也是View</p>
+</blockquote>
+<p>在<strong>MVP</strong>模式下，UIViewController的子类实际上是<strong>Views</strong>而不是<strong>Presenters</strong>。这种区别提供了极好的可测试性，但这是以开发速度为代价的，因为你必须手动绑定数据和时间，就像这个例子：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span> </span>&#123; <span class="comment">// Model</span></span><br><span class="line">    <span class="keyword">let</span> firstName: <span class="type">String</span></span><br><span class="line">    <span class="keyword">let</span> lastName: <span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">GreetingView</span>: <span class="title">class</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setGreeting</span><span class="params">(greeting: String)</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">GreetingViewPresenter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">init</span>(view: <span class="type">GreetingView</span>, person: <span class="type">Person</span>)</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">showGreeting</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GreetingPresenter</span> : <span class="title">GreetingViewPresenter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unowned</span> <span class="keyword">let</span> view: <span class="type">GreetingView</span></span><br><span class="line">    <span class="keyword">let</span> person: <span class="type">Person</span></span><br><span class="line">    <span class="keyword">required</span> <span class="keyword">init</span>(view: <span class="type">GreetingView</span>, person: <span class="type">Person</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.view = view</span><br><span class="line">        <span class="keyword">self</span>.person = person</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">showGreeting</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> greeting = <span class="string">"Hello"</span> + <span class="string">" "</span> + <span class="keyword">self</span>.person.firstName + <span class="string">" "</span> + <span class="keyword">self</span>.person.lastName</span><br><span class="line">        <span class="keyword">self</span>.view.setGreeting(greeting)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GreetingViewController</span> : <span class="title">UIViewController</span>, <span class="title">GreetingView</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> presenter: <span class="type">GreetingViewPresenter</span>!</span><br><span class="line">    <span class="keyword">let</span> showGreetingButton = <span class="type">UIButton</span>()</span><br><span class="line">    <span class="keyword">let</span> greetingLabel = <span class="type">UILabel</span>()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        <span class="keyword">self</span>.showGreetingButton.addTarget(<span class="keyword">self</span>, action: <span class="string">"didTapButton:"</span>, forControlEvents: .<span class="type">TouchUpInside</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">didTapButton</span><span class="params">(button: UIButton)</span></span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.presenter.showGreeting()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setGreeting</span><span class="params">(greeting: String)</span></span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.greetingLabel.text = greeting</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// layout code goes here</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="关于装配（assembly）的重要说明"><a href="#关于装配（assembly）的重要说明" class="headerlink" title="关于装配（assembly）的重要说明"></a>关于装配（assembly）的重要说明</h3><p>MVP是第一个揭露三层模型装配问题的模式。我们不想让<strong>View</strong>和<strong>Model</strong>互通，因为在试图控制器（View）中执行装配操作是明显不对的，所以我们只能换个地方放装配的代码。例如，我们可以做一个应用范围的<strong>Router</strong>服务，它负责装配工作和<strong>View</strong>到<strong>View</strong>的展示。这个问题的出现不仅要在MVP中解决，在以下的几个模式中也都要解决。</p>
+<p>我们看下MVP的特性：</p>
+<ul>
+<li>职责分离 – 我们将大部分职责分配给了<strong>Presenter</strong>和<strong>Model</strong>，而视图则什么都不需要做（上面的<strong>Model</strong>也是什么都不用做）</li>
+<li>可测试性 – 非常好，我们可以通过静态的<strong>View</strong>测试大多数逻辑。</li>
+<li>易用性 – 在我们上个简单示例中，代码量是MVC的两倍，但是它的逻辑是很清晰的。</li>
+</ul>
+<blockquote>
+<p>在iOS中MVP模式意味着良好的可测试性和大量代码。</p>
+</blockquote>
+<h2 id="MVP-1"><a href="#MVP-1" class="headerlink" title="MVP"></a>MVP</h2><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191127153028.png" alt=""><br>这是另一个MVP的样式 – 由视同控制器担当管理的MVP。这个变体中，<strong>View</strong>和<strong>Model</strong>是直接绑定的，<strong>Presenter</strong>(担当管理的控制器)仍然处理着来自<strong>View</strong>的操作，并且能够改变<strong>View</strong>。</p>
+<p>但是通过上面的学习我们已经知道了，将<strong>View</strong>和<strong>Model</strong>紧耦合处理，这种不明确的职责分离是很糟糕的。这与Cocoa桌面开发中的工作原理类似。</p>
+<p>跟传统MVC一样，我找不到要为这个有缺陷的架构写示例的理由。</p>
+<h2 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h2><h3 id="最新而且是最好的一个MV-X-类型"><a href="#最新而且是最好的一个MV-X-类型" class="headerlink" title="最新而且是最好的一个MV(X)类型"></a>最新而且是最好的一个MV(X)类型</h3><p><a href="https://en.wikipedia.org/wiki/Model_View_ViewModel" target="_blank" rel="noopener">MVVM</a>是最新的MV(X)类型，希望它能解决我们之前讨论过的问题。</p>
+<p>MVVM理论上看起来是很好的，<strong>View</strong>和<strong>Model</strong>我们已经很熟悉了，它俩之间的中介者由<strong>View Model</strong>表示。</p>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191127155036.png" alt=""></p>
+<p>这和MVP很像：</p>
+<ul>
+<li>MVVM也是把视图控制器当做<strong>View</strong></li>
+<li>在<strong>View</strong>和<strong>Model</strong>之间没有紧耦合关系</li>
+</ul>
+<p>此外它的绑定逻辑很像MVP的监管版本；但是这次不是<strong>View</strong>和<strong>Model</strong>，而是<strong>View</strong>和<strong>View Model</strong>之间的绑定。</p>
+<p>所以iOS当中的<strong>View Model</strong>到底是什么呢？它是UIKit独立于视图及其状态的表示。<strong>View Model</strong>调用<strong>Model</strong>执行更改，然后根据<strong>Model</strong>的更新再更新自己，因为我们绑定了<strong>View</strong>和<strong>View Model</strong>，第一个模型将相应的更新。</p>
+<h3 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h3><p>我在MVP部分明确提到过绑定，这次让我们再来讨论一下。绑定出自于MacOS开发，在iOS中是没有的。我们虽然可以通过KVO和通知完成这一过程，但是这样的绑定方式并不方便。</p>
+<p>如果我们不想自己实现的话，有两个选项可供参考：</p>
+<ul>
+<li>一个是基于KVO的绑定库像<a href="https://github.com/Rightpoint/RZDataBinding" target="_blank" rel="noopener">RZDataBinding</a>,<a href="https://github.com/DeclarativeHub/Bond" target="_blank" rel="noopener">SwiftBond</a></li>
+<li>完整的函数式编程工具，像<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" target="_blank" rel="noopener">ReactiveCocoa</a>, <a href="https://github.com/ReactiveX/RxSwift/" target="_blank" rel="noopener">RxSwift</a>, <a href="https://github.com/mxcl/PromiseKit" target="_blank" rel="noopener">PromiseKit</a>。</li>
+</ul>
+<p>如今当你听到“MVVM”，就应该想到ReactiveCocoa。因为它可以让你用很简单的绑定方式构建MVVM，几乎涵盖所有MVVM中的逻辑。</p>
+<p>但是使用响应式框架会面临一个不好的现实：能力越大责任越大。使用reactive很容易将事情复杂化。也就是说，如果发生了一处错误，你需要花费很多时间去调试问题，可以简单看下响应式的调用堆栈。</p>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191127163910.png" alt=""></p>
+<p>在我们的示例中，响应式框架甚至KVO都是多余的，我们将使用showGreeting方法显式地要求<strong>View Model</strong>更新，并使用greetingDidChange回调函数的简单属性。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span> </span>&#123; <span class="comment">// Model</span></span><br><span class="line">    <span class="keyword">let</span> firstName: <span class="type">String</span></span><br><span class="line">    <span class="keyword">let</span> lastName: <span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">GreetingViewModelProtocol</span>: <span class="title">class</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> greeting: <span class="type">String</span>? &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    <span class="keyword">var</span> greetingDidChange: ((<span class="type">GreetingViewModelProtocol</span>) -&gt; ())? &#123; <span class="keyword">get</span> <span class="keyword">set</span> &#125; <span class="comment">// function to call when greeting did change</span></span><br><span class="line">    <span class="keyword">init</span>(person: <span class="type">Person</span>)</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">showGreeting</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GreetingViewModel</span> : <span class="title">GreetingViewModelProtocol</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> person: <span class="type">Person</span></span><br><span class="line">    <span class="keyword">var</span> greeting: <span class="type">String</span>? &#123;</span><br><span class="line">        <span class="keyword">didSet</span> &#123;</span><br><span class="line">            <span class="keyword">self</span>.greetingDidChange?(<span class="keyword">self</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> greetingDidChange: ((<span class="type">GreetingViewModelProtocol</span>) -&gt; ())?</span><br><span class="line">    <span class="keyword">required</span> <span class="keyword">init</span>(person: <span class="type">Person</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.person = person</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">showGreeting</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.greeting = <span class="string">"Hello"</span> + <span class="string">" "</span> + <span class="keyword">self</span>.person.firstName + <span class="string">" "</span> + <span class="keyword">self</span>.person.lastName</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GreetingViewController</span> : <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> viewModel: <span class="type">GreetingViewModelProtocol</span>! &#123;</span><br><span class="line">        <span class="keyword">didSet</span> &#123;</span><br><span class="line">            <span class="keyword">self</span>.viewModel.greetingDidChange = &#123; [<span class="keyword">unowned</span> <span class="keyword">self</span>] viewModel <span class="keyword">in</span></span><br><span class="line">                <span class="keyword">self</span>.greetingLabel.text = viewModel.greeting</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> showGreetingButton = <span class="type">UIButton</span>()</span><br><span class="line">    <span class="keyword">let</span> greetingLabel = <span class="type">UILabel</span>()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        <span class="keyword">self</span>.showGreetingButton.addTarget(<span class="keyword">self</span>.viewModel, action: <span class="string">"showGreeting"</span>, forControlEvents: .<span class="type">TouchUpInside</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// layout code goes here</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Assembling of MVVM</span></span><br></pre></td></tr></table></figure>
+<p>再次回来用这三个特征验证一下：</p>
+<ul>
+<li>职责分离 – 这在我们的小示例还无法体现，但是MVVM的<strong>View</strong>比着MVP的<strong>View</strong>有着更多的职责。因为前者通过<strong>View Model</strong>建立绑定更新它的状态，后者仅仅是把所有事件都交给<strong>Presenter</strong>，不更新自己。</li>
+<li>可测试性 – <strong>View Model</strong>是不知道<strong>View</strong>的，这可以让我们很容易的对它进行测试。<strong>View</strong>可能也需要测试，但因为它依赖UIKit，你可能想跳过它。</li>
+<li>易用性 – 它有河MVP模式相同的代码量，但是实际项目中，你不得不把所有事件通过<strong>View</strong>传给<strong>Presenter</strong>，然后还要手动更新<strong>View</strong>，比较而言，MVVM使用绑定将更加简洁。</li>
+</ul>
+<blockquote>
+<p>MVVM是很有吸引力的，因为它包含了前面提到的优点，此外通过View层的绑定，也不需要额外的代码处理View更新。测试性也还不错。</p>
+</blockquote>
+<h2 id="VIPER"><a href="#VIPER" class="headerlink" title="VIPER"></a>VIPER</h2><h3 id="把乐高的搭建流程应用到iOS设计模式"><a href="#把乐高的搭建流程应用到iOS设计模式" class="headerlink" title="把乐高的搭建流程应用到iOS设计模式"></a>把乐高的搭建流程应用到iOS设计模式</h3><p>VIPER是我们最后一个候选模式，有趣的一点是它不属于MV(X)类型。</p>
+<p>目前为止，你必须同意职责的粒度是很重要的。VIPER在划分职责层面又做了一次迭代，它将项目划分成5层。</p>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191203220802.png" alt=""></p>
+<ul>
+<li><strong>Interactor</strong>– 包含跟数据（<strong>Entities</strong>）和网络相关的业务逻辑，像是创建新的实例对象后者从服务器拉取数据。出于这些目的，你也可以使用Services和Mananger类完成功能，但这就不属于VIPER模块，而是外部依赖类。</li>
+<li><strong>Presenter</strong> – 包含UI相关的业务逻辑，调用<strong>Interactor</strong>中的方法。</li>
+<li><strong>Entities</strong> – 普通的数据对象，不是数据访问层，因为这是<strong>Interactor</strong>的责任。</li>
+<li><strong>Router</strong> – 负责VIPER模块之间的切换。</li>
+</ul>
+<p>基本上，VIPER模块可以是一整屏内容，也可以是你应用中完整的用户行为 – 想一下授权行为，它可以在一个或者几个相关联的界面。“乐高”方块应该多小呢？这取决于你。</p>
+<p>如果我们将它和MV(X)类比，会发现一些在职责划分上的区别：</p>
+<ul>
+<li><strong>Model</strong>(数据交互)逻辑转移到了包含<strong>Entities</strong>数据结构的<strong>Interactor</strong>中。</li>
+<li>只有<strong>Controller/Presenter/ViewModel</strong>这种UI表示层的职责转移到了<strong>Presenter</strong>中，不包含数据。</li>
+<li><strong>VIPER</strong>是第一个明确导航职责的模式，并通过<strong>Router</strong>解决这个问题。</li>
+</ul>
+<blockquote>
+<p>在iOS应用中用一个优雅的方式处理跳转问题确实是一个挑战，MV(X)模式没有处理这个问题。</p>
+</blockquote>
+<p>该示例不涉及模块之间的<strong>路由</strong>或<strong>交互</strong>，因为MV(X)模式根本不涉及这些主题。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span> </span>&#123; <span class="comment">// Entity (usually more complex e.g. NSManagedObject)</span></span><br><span class="line">    <span class="keyword">let</span> firstName: <span class="type">String</span></span><br><span class="line">    <span class="keyword">let</span> lastName: <span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GreetingData</span> </span>&#123; <span class="comment">// Transport data structure (not Entity)</span></span><br><span class="line">    <span class="keyword">let</span> greeting: <span class="type">String</span></span><br><span class="line">    <span class="keyword">let</span> subject: <span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">GreetingProvider</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">provideGreetingData</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">GreetingOutput</span>: <span class="title">class</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">receiveGreetingData</span><span class="params">(greetingData: GreetingData)</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GreetingInteractor</span> : <span class="title">GreetingProvider</span> </span>&#123;</span><br><span class="line">    <span class="keyword">weak</span> <span class="keyword">var</span> output: <span class="type">GreetingOutput</span>!</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">provideGreetingData</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> person = <span class="type">Person</span>(firstName: <span class="string">"David"</span>, lastName: <span class="string">"Blaine"</span>) <span class="comment">// usually comes from data access layer</span></span><br><span class="line">        <span class="keyword">let</span> subject = person.firstName + <span class="string">" "</span> + person.lastName</span><br><span class="line">        <span class="keyword">let</span> greeting = <span class="type">GreetingData</span>(greeting: <span class="string">"Hello"</span>, subject: subject)</span><br><span class="line">        <span class="keyword">self</span>.output.receiveGreetingData(greeting)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">GreetingViewEventHandler</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">didTapShowGreetingButton</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">GreetingView</span>: <span class="title">class</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setGreeting</span><span class="params">(greeting: String)</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GreetingPresenter</span> : <span class="title">GreetingOutput</span>, <span class="title">GreetingViewEventHandler</span> </span>&#123;</span><br><span class="line">    <span class="keyword">weak</span> <span class="keyword">var</span> view: <span class="type">GreetingView</span>!</span><br><span class="line">    <span class="keyword">var</span> greetingProvider: <span class="type">GreetingProvider</span>!</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">didTapShowGreetingButton</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.greetingProvider.provideGreetingData()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">receiveGreetingData</span><span class="params">(greetingData: GreetingData)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> greeting = greetingData.greeting + <span class="string">" "</span> + greetingData.subject</span><br><span class="line">        <span class="keyword">self</span>.view.setGreeting(greeting)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GreetingViewController</span> : <span class="title">UIViewController</span>, <span class="title">GreetingView</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> eventHandler: <span class="type">GreetingViewEventHandler</span>!</span><br><span class="line">    <span class="keyword">let</span> showGreetingButton = <span class="type">UIButton</span>()</span><br><span class="line">    <span class="keyword">let</span> greetingLabel = <span class="type">UILabel</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        <span class="keyword">self</span>.showGreetingButton.addTarget(<span class="keyword">self</span>, action: <span class="string">"didTapButton:"</span>, forControlEvents: .<span class="type">TouchUpInside</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">didTapButton</span><span class="params">(button: UIButton)</span></span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.eventHandler.didTapShowGreetingButton()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setGreeting</span><span class="params">(greeting: String)</span></span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.greetingLabel.text = greeting</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// layout code goes here</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Assembling of VIPER module, without Router</span></span><br><span class="line"><span class="keyword">let</span> view = <span class="type">GreetingViewController</span>()</span><br><span class="line"><span class="keyword">let</span> presenter = <span class="type">GreetingPresenter</span>()</span><br><span class="line"><span class="keyword">let</span> interactor = <span class="type">GreetingInteractor</span>()</span><br><span class="line">view.eventHandler = presenter</span><br><span class="line">presenter.view = view</span><br><span class="line">presenter.greetingProvider = interactor</span><br></pre></td></tr></table></figure>
+<p>让我们再一次对比那几个特征：</p>
+<ul>
+<li>职责分离 – 毫无疑问，VIPER是职责分离做的最好的。</li>
+<li>可测试性 – 职责分离越好，可测试性当然也会更好</li>
+<li>易用性 – 你可能已经猜到了，上面两项意味着维护成本的提升。你必须写很多处理各个类之间交互的代码。</li>
+</ul>
+<h3 id="所有这个乐高模式到底怎么样呢？"><a href="#所有这个乐高模式到底怎么样呢？" class="headerlink" title="所有这个乐高模式到底怎么样呢？"></a>所有这个乐高模式到底怎么样呢？</h3><p>当使用VIPER时，如果你感觉就像是通过乐高方块搭建帝国大厦，这就意味着出现了问题。不应该过早在你的应用中使用VIPER，你需要考虑简便性。有些人不注意简便性，直接使用VIPER，会有点大材小用。我猜测很多人是这么想的，他们的应用迟早都会发展到适用VIPER的复杂程度，所以早晚都会做的事，即使现在维护成本高也应该继续做下去。如果你就是这么想的，我推荐你试一下<a href="https://github.com/strongself/Generamba" target="_blank" rel="noopener">Generamba</a> – 一个生成VIPER组件的工具。虽然对我个人来说，这感觉就像使用自动瞄准系统而不是简单的弹射。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们已经讲解了几个架构模式，希望你能解答曾经困扰你的问题。我敢肯定你也意识到了架构模式的选择没有最好这一说，它取决于你在特定环境下权衡利弊之后做的选择。</p>
+<p>所以，在一个应用中出现混合一种混合的架构模式也是很常见的。例如，你一开始使用MVC，然后你发现有一个界面的逻辑变得很复杂，然后你转向了MVVM，但也是仅限于这个界面。你不必重构别的使用MVC的界面，因为它原本就是工作的好好的，而且这两个架构模式是很容易兼容的。</p>
+<blockquote>
+<p>事情应该力求简单，不过不能过于简单 – 阿尔伯特·爱因斯坦</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/11/09/thanks_letter/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -494,173 +818,6 @@
         
       
     </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangferry.github.io/2019/11/08/2019_11_8/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhangferry">
-      <meta itemprop="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangferry">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/11/08/2019_11_8/" class="post-title-link" itemprop="url">七院第六天（11月8号）</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-11-08 20:58:34" itemprop="dateCreated datePublished" datetime="2019-11-08T20:58:34+08:00">2019-11-08</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">41</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在重症监护室的第五天。<br>上午10点搬出了重症监护室。<br>进入无菌病房第一天。<br>待补全。。</p>
-
-          
-        
-      
-    </div>
 
     
 
@@ -905,7 +1062,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/11/07/2019_11_7/" class="post-title-link" itemprop="url">七院第五天（11月7号）</a>
+                <a href="/2019/11/07/2019_11_7/" class="post-title-link" itemprop="url">为什么会得尿毒症</a>
               
             
           </h2>
@@ -959,7 +1116,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">52</span>
+                <span title="本文字数">2.8k</span>
               
 
               
@@ -973,7 +1130,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -994,10 +1151,20 @@
 
       
         
+          <p>看了父亲的病历，再结合之前了解的一些情况，我试着分析一下为什么会得尿毒症。</p>
+<h2 id="一些医学知识"><a href="#一些医学知识" class="headerlink" title="一些医学知识"></a>一些医学知识</h2><p>关于肾脏：</p>
+<blockquote>
+<p>肾脏有很重要的代谢排毒功能，可以清除体内经由食物消化所残留的尿素、尿素氮、肌酸酐等，也会排出水分，维持体内的电解质平衡，甚至是控制血压高低起伏、活化维生素 D 的重要器官。此外，肾脏与肝脏一样，也是体内清除药物的重要器官，这也是为何肾功能不好时，就容易发生药物过量或中毒后遗症的原因。可见肾脏是何等的重要！等到肾脏的功能持续恶化到只剩下不到正常的 10% 时，才较容易出现包括恶心、水肿、高血压、倦怠无力、抽筋等症状，一旦造成更严重的尿毒症时，只能透析治疗。</p>
+</blockquote>
+          <!--noindex-->
           
-            <h2 id="为什么会得尿毒症"><a href="#为什么会得尿毒症" class="headerlink" title="为什么会得尿毒症"></a>为什么会得尿毒症</h2><p>我看了父亲的病历，以及结合之前了解的一些情况，将分析一下得这个病的前因后果。<br>待补全。。</p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/11/07/2019_11_7/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -2317,7 +2484,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">201k</span>
+    <span title="站点总字数">216k</span>
   
 
   
@@ -2326,7 +2493,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">3:03</span>
+    <span title="站点阅读时长">3:17</span>
   
 </div>
 
