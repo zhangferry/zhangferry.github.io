@@ -96,13 +96,13 @@
 
 
 
-  <meta name="description" content="作者：Bohdan Orlov原文地址：https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52  在iOS开发过程中你是否对MVC的使用感觉很别扭？你是否对转向MVVM有疑惑？你听说过VIPER，但不清楚这个东西是否值得一试。 接着读下去，你会找到上面这些问题的答案。如果读完仍不能解惑，欢迎到评">
+  <meta name="description" content="作者：Bohdan Orlov原文地址：https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52   在iOS开发过程中你是否对MVC的使用感觉很别扭？你是否对转向MVVM有疑惑？你听说过VIPER，但不清楚这个东西是否值得一试。 接着读下去，你会找到上面这些问题的答案。如果读完仍不能解惑，欢迎到">
 <meta name="keywords" content="iOS,UI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【译】iOS 架构模式--浅析MVC, MVP, MVVM 和 VIPER">
 <meta property="og:url" content="http://zhangferry.github.io/2019/11/22/ios_architecture_patterns/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="作者：Bohdan Orlov原文地址：https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52  在iOS开发过程中你是否对MVC的使用感觉很别扭？你是否对转向MVVM有疑惑？你听说过VIPER，但不清楚这个东西是否值得一试。 接着读下去，你会找到上面这些问题的答案。如果读完仍不能解惑，欢迎到评">
+<meta property="og:description" content="作者：Bohdan Orlov原文地址：https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52   在iOS开发过程中你是否对MVC的使用感觉很别扭？你是否对转向MVVM有疑惑？你听说过VIPER，但不清楚这个东西是否值得一试。 接着读下去，你会找到上面这些问题的答案。如果读完仍不能解惑，欢迎到">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191122154526.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191122152602.png">
@@ -115,10 +115,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191127155036.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191127163910.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191203220802.png">
-<meta property="og:updated_time" content="2019-12-03T15:17:32.252Z">
+<meta property="og:updated_time" content="2019-12-04T00:41:06.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【译】iOS 架构模式--浅析MVC, MVP, MVVM 和 VIPER">
-<meta name="twitter:description" content="作者：Bohdan Orlov原文地址：https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52  在iOS开发过程中你是否对MVC的使用感觉很别扭？你是否对转向MVVM有疑惑？你听说过VIPER，但不清楚这个东西是否值得一试。 接着读下去，你会找到上面这些问题的答案。如果读完仍不能解惑，欢迎到评">
+<meta name="twitter:description" content="作者：Bohdan Orlov原文地址：https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52   在iOS开发过程中你是否对MVC的使用感觉很别扭？你是否对转向MVVM有疑惑？你听说过VIPER，但不清楚这个东西是否值得一试。 接着读下去，你会找到上面这些问题的答案。如果读完仍不能解惑，欢迎到">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191122154526.png">
 
 
@@ -284,7 +284,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">52</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">54</span></a>
 
   </li>
         
@@ -500,7 +500,8 @@
         <blockquote>
 <p>作者：Bohdan Orlov<br>原文地址：<a href="https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52" target="_blank" rel="noopener">https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52</a></p>
 </blockquote>
-<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191122154526.png" alt=""><br>在iOS开发过程中你是否对MVC的使用感觉很别扭？你是否对转向MVVM有疑惑？你听说过VIPER，但不清楚这个东西是否值得一试。</p>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191122154526.png" alt=""></p>
+<p>在iOS开发过程中你是否对MVC的使用感觉很别扭？你是否对转向MVVM有疑惑？你听说过VIPER，但不清楚这个东西是否值得一试。</p>
 <p>接着读下去，你会找到上面这些问题的答案。如果读完仍不能解惑，欢迎到评论区捶我。</p>
 <p>接下来你将在iOS环境下构建关于架构模式的知识体系。我们将简要构建一些经典的例子，并在理论和实践上进行比较他们的不同。如果你需要更多关于任何一个特定的细节，请关注我。</p>
 <p>掌握设计模式容易让人上瘾，所以要注意：阅读本文之前要问自己几个问题：</p>
@@ -727,6 +728,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/12/07/transfom_oc_to_swift/" rel="prev" title="OC项目转Swift经验总结">
+                OC项目转Swift经验总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -801,7 +806,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -994,7 +999,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1006,7 +1011,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">216k</span>
+    <span title="站点总字数">225k</span>
   
 
   
@@ -1015,7 +1020,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">3:17</span>
+    <span title="站点阅读时长">3:24</span>
   
 </div>
 

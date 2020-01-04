@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2019-12-03T15:17:32.252Z</updated>
+  <updated>2020-01-04T07:50:38.864Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -17,11 +17,61 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>2019年总结</title>
+    <link href="http://zhangferry.github.io/2020/01/01/2019-year-summary/"/>
+    <id>http://zhangferry.github.io/2020/01/01/2019-year-summary/</id>
+    <published>2020-01-01T12:10:25.000Z</published>
+    <updated>2020-01-04T07:50:38.864Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;好像随着年龄的增长，对时间的感知就变得越来越弱了。总感觉2019年还是一个很新鲜的年份，但它却已经走完了，2020年好像很遥远的样子，但它已经到来了。来个总结吧，2019年，这一年有太多的酸甜苦辣。从工作、生活和规划三个方面展开说吧。&lt;/p&gt;
+&lt;/
+        
+      
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="http://zhangferry.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OC项目转Swift经验总结</title>
+    <link href="http://zhangferry.github.io/2019/12/07/transfom_oc_to_swift/"/>
+    <id>http://zhangferry.github.io/2019/12/07/transfom_oc_to_swift/</id>
+    <published>2019-12-07T10:28:09.000Z</published>
+    <updated>2020-01-04T07:52:57.516Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;运行环境：Xcode 11.1
+        
+      
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【译】iOS 架构模式--浅析MVC, MVP, MVVM 和 VIPER</title>
     <link href="http://zhangferry.github.io/2019/11/22/ios_architecture_patterns/"/>
     <id>http://zhangferry.github.io/2019/11/22/ios_architecture_patterns/</id>
     <published>2019-11-22T06:39:34.000Z</published>
-    <updated>2019-12-03T15:17:32.252Z</updated>
+    <updated>2019-12-04T00:41:06.917Z</updated>
     
     <summary type="html">
     
@@ -366,44 +416,6 @@
     
       &lt;p&gt;这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。&lt;br&gt;欢迎推荐内容，可以前往&lt;a href=&quot;https://github.com/zhangferry/iOSMonthlyReport&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;zhangferry/iOSMonthlyReport&lt;/a&gt;提交issue。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190428174837.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一则iOS招聘信息</title>
-    <link href="http://zhangferry.github.io/2019/04/12/ios-interview/"/>
-    <id>http://zhangferry.github.io/2019/04/12/ios-interview/</id>
-    <published>2019-04-12T13:48:34.000Z</published>
-    <updated>2019-05-17T15:23:26.219Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天放出一波我司的招聘信息吧，这里只说了iOS的招聘要求。其实还有Android + Unity + 游戏测试等一大波岗位虚位以待，如果有意愿的小伙伴可以私信我哦。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="工作" scheme="http://zhangferry.github.io/tags/%E5%B7%A5%E4%BD%9C/"/>
-    
-      <category term="招聘" scheme="http://zhangferry.github.io/tags/%E6%8B%9B%E8%81%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS开发月报#9|201903</title>
-    <link href="http://zhangferry.github.io/2019/03/31/monthly_9/"/>
-    <id>http://zhangferry.github.io/2019/03/31/monthly_9/</id>
-    <published>2019-03-31T13:30:57.000Z</published>
-    <updated>2019-05-17T15:05:39.649Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。&lt;br&gt;欢迎推荐内容，可以前往&lt;a href=&quot;https://github.com/zhangferry/iOSMonthlyReport&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;zhangferry/iOSMonthlyReport&lt;/a&gt;提交issue。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1059465-afa5d63933b5bf3c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;image&quot;&gt;&lt;br&gt;
     
     </summary>
     
