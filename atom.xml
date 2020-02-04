@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2020-01-04T07:50:38.864Z</updated>
+  <updated>2020-02-01T09:35:31.997Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VSCode配置Python版本</title>
+    <link href="http://zhangferry.github.io/2020/02/01/vscode_python/"/>
+    <id>http://zhangferry.github.io/2020/02/01/vscode_python/</id>
+    <published>2020-02-01T03:28:09.000Z</published>
+    <updated>2020-02-01T09:35:31.997Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;刚学习Python没多久，对VSCode也不是很熟悉，在一次解问题的过程中，加深了对这两者的印象，遂记录一下。&lt;/p&gt;
+&lt;p&gt;环境：Mac OS 10.15，VSCode 1.41.1&lt;/p&gt;
+&lt;h2 id=&quot;问题定位&quot;&gt;&lt;a href=&quot;#问题定位&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://zhangferry.github.io/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>2019年总结</title>
@@ -402,25 +428,6 @@
       <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
     
       <category term="翻译" scheme="http://zhangferry.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS开发月报#10|201904</title>
-    <link href="http://zhangferry.github.io/2019/04/30/monthly_10/"/>
-    <id>http://zhangferry.github.io/2019/04/30/monthly_10/</id>
-    <published>2019-04-30T06:11:30.000Z</published>
-    <updated>2019-05-17T15:05:39.648Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。&lt;br&gt;欢迎推荐内容，可以前往&lt;a href=&quot;https://github.com/zhangferry/iOSMonthlyReport&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;zhangferry/iOSMonthlyReport&lt;/a&gt;提交issue。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190428174837.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
     
   </entry>
   
