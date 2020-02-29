@@ -96,22 +96,22 @@
 
 
 
-  <meta name="description" content="Objective-C是一种通用、高级、面向对象的编程语言。它扩展了标准的ANSI C编程语言，将Smalltalk式的消息传递机制加入到ANSI C中。  可以这么理解，Objective-C = C + Runtime，Runtime是将C语言具有面向对象功能的推动剂，是iOS开发中的核心概念。我们可以在苹果开源的 runtime（当前的最新版本 objc4-779.1.tar.gz ）中">
+  <meta name="description" content="Objective-C是一种通用、高级、面向对象的编程语言。它扩展了标准的ANSI C编程语言，将Smalltalk式的消息传递机制加入到ANSI C中。  可以这么理解，Objective-C = C + Runtime，Runtime是将C语言具有面向对象功能的推动剂，是iOS开发中的核心概念。我们可以在苹果开源的 runtime（当前的最新版本objc4-779.1.tar.gz）中可以">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Runtime内存模型探究">
 <meta property="og:url" content="http://zhangferry.github.io/2020/02/23/runtime_objc_class/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="Objective-C是一种通用、高级、面向对象的编程语言。它扩展了标准的ANSI C编程语言，将Smalltalk式的消息传递机制加入到ANSI C中。  可以这么理解，Objective-C = C + Runtime，Runtime是将C语言具有面向对象功能的推动剂，是iOS开发中的核心概念。我们可以在苹果开源的 runtime（当前的最新版本 objc4-779.1.tar.gz ）中">
+<meta property="og:description" content="Objective-C是一种通用、高级、面向对象的编程语言。它扩展了标准的ANSI C编程语言，将Smalltalk式的消息传递机制加入到ANSI C中。  可以这么理解，Objective-C = C + Runtime，Runtime是将C语言具有面向对象功能的推动剂，是iOS开发中的核心概念。我们可以在苹果开源的 runtime（当前的最新版本objc4-779.1.tar.gz）中可以">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/laptop-2838917_1280.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20200223121419.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20200223131049.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20200223131158.png">
-<meta property="og:updated_time" content="2020-02-23T06:05:57.431Z">
+<meta property="og:updated_time" content="2020-02-28T15:26:52.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Runtime内存模型探究">
-<meta name="twitter:description" content="Objective-C是一种通用、高级、面向对象的编程语言。它扩展了标准的ANSI C编程语言，将Smalltalk式的消息传递机制加入到ANSI C中。  可以这么理解，Objective-C = C + Runtime，Runtime是将C语言具有面向对象功能的推动剂，是iOS开发中的核心概念。我们可以在苹果开源的 runtime（当前的最新版本 objc4-779.1.tar.gz ）中">
+<meta name="twitter:description" content="Objective-C是一种通用、高级、面向对象的编程语言。它扩展了标准的ANSI C编程语言，将Smalltalk式的消息传递机制加入到ANSI C中。  可以这么理解，Objective-C = C + Runtime，Runtime是将C语言具有面向对象功能的推动剂，是iOS开发中的核心概念。我们可以在苹果开源的 runtime（当前的最新版本objc4-779.1.tar.gz）中可以">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/zhangferry/Images/master/blog/laptop-2838917_1280.jpg">
 
 
@@ -494,7 +494,7 @@
 <blockquote>
 <p>Objective-C是一种通用、高级、面向对象的编程语言。它扩展了标准的ANSI C编程语言，将Smalltalk式的消息传递机制加入到ANSI C中。</p>
 </blockquote>
-<p>可以这么理解，Objective-C = C + Runtime，Runtime是将C语言具有面向对象功能的推动剂，是iOS开发中的核心概念。我们可以在苹果开源的 <a href="https://opensource.apple.com/tarballs/objc4/" target="_blank" rel="noopener">runtime</a>（当前的最新版本 objc4-779.1.tar.gz ）中可以发现一些 Objective-C 对象模型的实现细节。</p>
+<p>可以这么理解，Objective-C = C + Runtime，Runtime是将C语言具有面向对象功能的推动剂，是iOS开发中的核心概念。我们可以在苹果开源的 <a href="https://opensource.apple.com/tarballs/objc4/" target="_blank" rel="noopener">runtime</a>（当前的最新版本objc4-779.1.tar.gz）中可以发现一些 Objective-C 对象模型的实现细节。</p>
 <h2 id="NSObject的实现"><a href="#NSObject的实现" class="headerlink" title="NSObject的实现"></a>NSObject的实现</h2><p>OC中几乎所有的类都继承自<code>NSObject</code>，OC的动态性也是通过NSObject实现的，那就从NSObject开始探索。</p>
 <p>在<code>runtime</code>源码中的<code>NSObject.h</code>中，我们可以找到<code>NSObject</code>的定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@interface NSObject &lt;NSObject&gt; &#123;</span><br><span class="line">    Class isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>可以看出<code>NSObject</code>里有一个指向<code>Class</code>的<code>isa</code>，其中对于Class的定义在<code>objc.h</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/// An opaque type that represents an Objective-C class.</span><br><span class="line">typedef struct objc_class *Class;</span><br><span class="line"></span><br><span class="line">/// Represents an instance of a class.</span><br><span class="line">struct objc_object &#123;</span><br><span class="line">    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
@@ -515,10 +515,8 @@
 <h3 id="Objective语言历史"><a href="#Objective语言历史" class="headerlink" title="Objective语言历史"></a>Objective语言历史</h3><p>我在网上查资料的时候发现关于runtime的文章非常多，但提示数据模型在OC1.0和2.0之间区别的非常少，其实这一点很重要的。这也是为什么我将这段标题命名为Objective-C1.0数据模型的原因。</p>
 <p>这里补一点<code>Objective-C</code>语言的发展历史（<a href="https://zh.wikipedia.org/wiki/Objective-C" target="_blank" rel="noopener">维基百科</a>）：</p>
 <blockquote>
-<ul>
-<li>Objective-C1.0 即Objective-C++ 由Stepstone 公司的布莱德·考克斯（Brad Cox）和 汤姆·洛夫（Tom Love） 在 1980 年代发明。它是GCC的一个前端，它可以编译混合C++与Objective-C语法的源文件。Objective-C++是C++的扩展，类似于Objective-C是C的扩展。</li>
-<li>Objective-C2.0 在2006年7月苹果全球开发者会议中，Apple宣布了“Objective-C 2.0”的发布，其增加了“现代的垃圾收集，语法改进，运行时性能改进，以及64位支持”。</li>
-</ul>
+<p> Objective-C1.0 即Objective-C++ 由Stepstone 公司的布莱德·考克斯（Brad Cox）和 汤姆·洛夫（Tom Love） 在 1980 年代发明。它是GCC的一个前端，它可以编译混合C++与Objective-C语法的源文件。Objective-C++是C++的扩展，类似于Objective-C是C的扩展。</p>
+<p> Objective-C2.0 在2006年7月苹果全球开发者会议中，Apple宣布了“Objective-C 2.0”的发布，其增加了“现代的垃圾收集，语法改进，运行时性能改进，以及64位支持”。</p>
 </blockquote>
 <h2 id="Objective2-0数据模型"><a href="#Objective2-0数据模型" class="headerlink" title="Objective2.0数据模型"></a>Objective2.0数据模型</h2><p>可以在objc-runtim-new.h文件找到新版对<code>objc_class</code>的数据模型定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">struct objc_class : objc_object &#123;</span><br><span class="line">    // Class ISA;</span><br><span class="line">    Class superclass;</span><br><span class="line">    cache_t cache;             // formerly cache pointer and vtable</span><br><span class="line">    class_data_bits_t bits;    // class_rw_t * plus custom rr/alloc flags</span><br><span class="line">    class_rw_t *data() const &#123;</span><br><span class="line">        return bits.data();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct objc_object &#123;</span><br><span class="line">private:</span><br><span class="line">    isa_t isa;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">union isa_t </span><br><span class="line">&#123;</span><br><span class="line">    isa_t() &#123; &#125;</span><br><span class="line">    isa_t(uintptr_t value) : bits(value) &#123; &#125;</span><br><span class="line">    Class cls;</span><br><span class="line">    uintptr_t bits;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>会发现<code>objc_class</code>不再是一个单独的结构体，而是继承于<code>objc_object</code>，objc_object内部的<code>isa</code>变成了<code>isa_t</code>的<a href="https://baike.baidu.com/item/%E8%81%94%E5%90%88%E4%BD%93" target="_blank" rel="noopener">联合体</a>。</p>
@@ -528,9 +526,8 @@
 <p><code>cache_t</code>是<code>objc_class</code>中的缓存结构体，里面通过<code>bucket_t</code>结构体存储一些最近调用的函数。设置cache最大的原因就是OC为动态语言，函数的执行是通过消息调用实现的，消息调用会首先查找当前类中的方法列表，如果找不到会查找父类，直到检索至<code>NSObject</code>依然找不到函数实现，就会进入消息转发流程。而为了节省每次查找函数表的开销，发明了<code>cache_t</code>。我们从<code>bucket_t</code>的内联函数中可以看出，缓存的SEL和IMP都是在内存中进行加载的。</p>
 <h3 id="method-t"><a href="#method-t" class="headerlink" title="method_t"></a>method_t</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">struct method_t &#123;</span><br><span class="line">    SEL name;</span><br><span class="line">    const char *types;</span><br><span class="line">    MethodListIMP imp;</span><br><span class="line"></span><br><span class="line">    struct SortBySELAddress :</span><br><span class="line">        public std::binary_function&lt;const method_t&amp;,</span><br><span class="line">                                    const method_t&amp;, bool&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        bool operator() (const method_t&amp; lhs,</span><br><span class="line">                         const method_t&amp; rhs)</span><br><span class="line">        &#123; return lhs.name &lt; rhs.name; &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>这是函数的结构体，里面包含3个成员变量。<code>SEL</code>是方法的名字name。<code>types</code>是类型编码，类型可参考<a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html" target="_blank" rel="noopener">Type Encoding</a>。<code>IMP</code>是一个函数指针，指向的是函数的具体实现。在runtime中消息传递和转发的目的就是为了找到IMP，并执行函数。</p>
-<h2 id="数据模型对比"><a href="#数据模型对比" class="headerlink" title="数据模型对比"></a>数据模型对比</h2><p>最后总结下，Objc1.0到2.0的对比：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20200223131049.png" alt=""><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20200223131158.png" alt=""><br>这两张图片引用自<a href="https://halfrost.com/" target="_blank" rel="noopener">寒神</a>博客中的图片。</p>
-<p>参考链接：</p>
-<ul>
+<h2 id="数据模型对比"><a href="#数据模型对比" class="headerlink" title="数据模型对比"></a>数据模型对比</h2><p>最后总结下，Objc1.0到2.0的对比：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20200223131049.png" alt=""><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20200223131158.png" alt=""><br>这两张图片引用自<a href="https://halfrost.com/" target="_blank" rel="noopener">寒神</a>博客。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
 <li><a href="https://github.com/draveness/analyze/blob/master/contents/objc/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90%20ObjC%20%E4%B8%AD%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%93%E6%9E%84.md#%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-objc-%E4%B8%AD%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%93%E6%9E%84" target="_blank" rel="noopener">深入解析 ObjC 中方法的结构</a></li>
 <li><a href="https://halfrost.com/objc_runtime_isa_class/" target="_blank" rel="noopener">神经病院 Objective-C Runtime 入院第一天—— isa 和 Class</a></li>
 </ul>
@@ -853,7 +850,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NSObject的实现"><span class="nav-number">1.</span> <span class="nav-text">NSObject的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Meta-Class（元类）"><span class="nav-number">1.1.</span> <span class="nav-text">Meta Class（元类）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ObjectiveC1-0数据模型"><span class="nav-number">2.</span> <span class="nav-text">ObjectiveC1.0数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Objective语言历史"><span class="nav-number">2.1.</span> <span class="nav-text">Objective语言历史</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Objective2-0数据模型"><span class="nav-number">3.</span> <span class="nav-text">Objective2.0数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#class-data-bits-t"><span class="nav-number">3.1.</span> <span class="nav-text">class_data_bits_t</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cache-t"><span class="nav-number">3.2.</span> <span class="nav-text">cache_t</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#method-t"><span class="nav-number">3.3.</span> <span class="nav-text">method_t</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据模型对比"><span class="nav-number">4.</span> <span class="nav-text">数据模型对比</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NSObject的实现"><span class="nav-number">1.</span> <span class="nav-text">NSObject的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Meta-Class（元类）"><span class="nav-number">1.1.</span> <span class="nav-text">Meta Class（元类）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ObjectiveC1-0数据模型"><span class="nav-number">2.</span> <span class="nav-text">ObjectiveC1.0数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Objective语言历史"><span class="nav-number">2.1.</span> <span class="nav-text">Objective语言历史</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Objective2-0数据模型"><span class="nav-number">3.</span> <span class="nav-text">Objective2.0数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#class-data-bits-t"><span class="nav-number">3.1.</span> <span class="nav-text">class_data_bits_t</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cache-t"><span class="nav-number">3.2.</span> <span class="nav-text">cache_t</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#method-t"><span class="nav-number">3.3.</span> <span class="nav-text">method_t</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据模型对比"><span class="nav-number">4.</span> <span class="nav-text">数据模型对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">5.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>
@@ -885,7 +882,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">234k</span>
+    <span title="站点总字数">240k</span>
   
 
   
@@ -894,7 +891,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">3:33</span>
+    <span title="站点阅读时长">3:38</span>
   
 </div>
 
