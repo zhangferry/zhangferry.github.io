@@ -1,13 +1,164 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="iOS开发月报#1|201807"><meta name="keywords" content="月报"><meta name="author" content="zhangferry"><meta name="copyright" content="zhangferry"><title>iOS开发月报#1|201807 | zhangferry</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关闭隐式动画"><span class="toc-number">1.</span> <span class="toc-text">关闭隐式动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题"><span class="toc-number">2.</span> <span class="toc-text">AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AVPlayer是否正在播放的判断"><span class="toc-number">3.</span> <span class="toc-text">AVPlayer是否正在播放的判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载时URLSessionConfiguration的配置"><span class="toc-number">4.</span> <span class="toc-text">下载时URLSessionConfiguration的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不要存储沙盒绝对地址"><span class="toc-number">5.</span> <span class="toc-text">不要存储沙盒绝对地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#childViewController的viewDidAppear方法调用"><span class="toc-number">6.</span> <span class="toc-text">childViewController的viewDidAppear方法调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片切换渐入渐出的方法"><span class="toc-number">7.</span> <span class="toc-text">图片切换渐入渐出的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cell移出视图，移入视图的方法"><span class="toc-number">8.</span> <span class="toc-text">cell移出视图，移入视图的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tableview-collectionView数据reload之后的操作"><span class="toc-number">9.</span> <span class="toc-text">tableview,collectionView数据reload之后的操作</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">zhangferry</div><div class="author-info__description text-center">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</div><div class="follow-button"><a href="https://github.com/zhangferry">Follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">56</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">27</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://colin1994.github.io/">Colin</a><a class="author-info-links__name text-center" href="http://www.evenvi.com/">Evenvi</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zhangferry</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">iOS开发月报#1|201807</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-08-02</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="关闭隐式动画"><a href="#关闭隐式动画" class="headerlink" title="关闭隐式动画"></a>关闭隐式动画</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">CATransaction</span>.begin()</span><br><span class="line"><span class="type">CATransaction</span>.setDisableActions(<span class="literal">true</span>)</span><br><span class="line"><span class="keyword">self</span>.layer.frame = <span class="keyword">self</span>.bounds</span><br><span class="line"><span class="type">CATransaction</span>.commit()</span><br></pre></td></tr></table></figure>
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>iOS开发月报#1|201807 - zhangferry</title>
+
+
+    <meta name="description" content="关闭隐式动画1234CATransaction.begin()CATransaction.setDisableActions(true)self.layer.frame &#x3D; self.boundsCATransaction.commit()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发月报#1|201807">
+<meta property="og:url" content="http://zhangferry.github.io/2018/08/02/monthly_1/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="关闭隐式动画1234CATransaction.begin()CATransaction.setDisableActions(true)self.layer.frame &#x3D; self.boundsCATransaction.commit()">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
+<meta property="article:published_time" content="2018-08-02T06:22:32.000Z">
+<meta property="article:modified_time" content="2020-03-07T05:41:19.055Z">
+<meta property="article:author" content="zhangferry">
+<meta property="article:tag" content="月报">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangferry.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo_2.svg" alt="iOS开发月报#1|201807" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangferry">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-08-02T06:22:32.000Z">2018-08-02</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1031 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                iOS开发月报#1|201807
+            
+        </h1>
+        <div class="content">
+            <h2 id="关闭隐式动画"><a href="#关闭隐式动画" class="headerlink" title="关闭隐式动画"></a>关闭隐式动画</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">CATransaction</span>.begin()</span><br><span class="line"><span class="type">CATransaction</span>.setDisableActions(<span class="literal">true</span>)</span><br><span class="line"><span class="keyword">self</span>.layer.frame = <span class="keyword">self</span>.bounds</span><br><span class="line"><span class="type">CATransaction</span>.commit()</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题"><a href="#AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题" class="headerlink" title="AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题"></a>AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">player.automaticallyWaitsToMinimizeStalling = <span class="literal">false</span><span class="comment">//延迟播放，默认开</span></span><br></pre></td></tr></table></figure>
 <p>关于这个属性的一些说明：</p>
@@ -15,29 +166,486 @@
 <p>In versions of iOS prior to iOS 10.0 and versions of OS X prior to 10.12, this property is unavailable, and the behavior of the AVPlayer corresponds to the type of content being played. For streaming content, including HTTP Live Streaming, the AVPlayer acts as if automaticallyWaitsToMinimizeStalling is YES. For file-based content, including file-based content accessed via progressive http download, the AVPlayer acts as if automaticallyWaitsToMinimizeStalling is NO.</p>
 </blockquote>
 <p>大致是说在iOS10之前的客户端，虽然这个参数不可用，但是非流媒体类型的播放这个配置默认为false，所以在iOS10下建议这个属性值为false。</p>
-<h2 id="AVPlayer是否正在播放的判断"><a href="#AVPlayer是否正在播放的判断" class="headerlink" title="AVPlayer是否正在播放的判断"></a>AVPlayer是否正在播放的判断</h2><p>当我们使用KVO监听player.rate来判断player的是否正在播放时，会发现这个值是不准的。其实准确的说是<code>player.rate=1</code>不代表正在播放，<code>player.rate=0</code>是可以代表正在暂停的。所以<code>player.rate=0</code>代表暂停，正在播放的状态可以这样判断：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.timeObserve = <span class="keyword">self</span>.player.addPeriodicTimeObserver(forInterval: <span class="type">CMTimeMake</span>(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">queue: <span class="type">DispatchQueue</span>.main,</span><br><span class="line">using: &#123;(time) <span class="keyword">in</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">self</span>.player.timeControlStatus == <span class="type">AVPlayerTimeControlStatus</span>.playing &#123;</span><br><span class="line"><span class="comment">//AVPlayerTimeControlStatus为iOS之后的API</span></span><br><span class="line"><span class="keyword">self</span>.state = .playing</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h2 id="下载时URLSessionConfiguration的配置"><a href="#下载时URLSessionConfiguration的配置" class="headerlink" title="下载时URLSessionConfiguration的配置"></a>下载时URLSessionConfiguration的配置</h2><p>使用Alamofire下载时，我们通常需要一个<code>SessionManager</code>配置下载参数：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> configuration = <span class="type">URLSessionConfiguration</span>.<span class="keyword">default</span></span><br><span class="line">configuration.timeoutIntervalForRequest = <span class="number">50</span><span class="comment">//50s超时</span></span><br><span class="line"><span class="comment">/** 最大同时下载数 ---- iOS对于同一个IP服务器的并发最大默认为4，OS X为6 */</span></span><br><span class="line">configuration.httpMaximumConnectionsPerHost = <span class="number">4</span></span><br><span class="line"><span class="comment">/** A Boolean value that indicates whether TCP connections should be kept open when the app moves to the background. */</span></span><br><span class="line">configuration.shouldUseExtendedBackgroundIdleMode = <span class="literal">true</span><span class="comment">//为true支持后台下载</span></span><br><span class="line">manager = <span class="type">Alamofire</span>.<span class="type">SessionManager</span>(configuration: configuration)</span><br></pre></td></tr></table></figure></p>
+<h2 id="AVPlayer是否正在播放的判断"><a href="#AVPlayer是否正在播放的判断" class="headerlink" title="AVPlayer是否正在播放的判断"></a>AVPlayer是否正在播放的判断</h2><p>当我们使用KVO监听player.rate来判断player的是否正在播放时，会发现这个值是不准的。其实准确的说是<code>player.rate=1</code>不代表正在播放，<code>player.rate=0</code>是可以代表正在暂停的。所以<code>player.rate=0</code>代表暂停，正在播放的状态可以这样判断：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.timeObserve = <span class="keyword">self</span>.player.addPeriodicTimeObserver(forInterval: <span class="type">CMTimeMake</span>(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">queue: <span class="type">DispatchQueue</span>.main,</span><br><span class="line">using: &#123;(time) <span class="keyword">in</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">self</span>.player.timeControlStatus == <span class="type">AVPlayerTimeControlStatus</span>.playing &#123;</span><br><span class="line"><span class="comment">//AVPlayerTimeControlStatus为iOS之后的API</span></span><br><span class="line"><span class="keyword">self</span>.state = .playing</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载时URLSessionConfiguration的配置"><a href="#下载时URLSessionConfiguration的配置" class="headerlink" title="下载时URLSessionConfiguration的配置"></a>下载时URLSessionConfiguration的配置</h2><p>使用Alamofire下载时，我们通常需要一个<code>SessionManager</code>配置下载参数：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> configuration = <span class="type">URLSessionConfiguration</span>.<span class="keyword">default</span></span><br><span class="line">configuration.timeoutIntervalForRequest = <span class="number">50</span><span class="comment">//50s超时</span></span><br><span class="line"><span class="comment">/** 最大同时下载数 ---- iOS对于同一个IP服务器的并发最大默认为4，OS X为6 */</span></span><br><span class="line">configuration.httpMaximumConnectionsPerHost = <span class="number">4</span></span><br><span class="line"><span class="comment">/** A Boolean value that indicates whether TCP connections should be kept open when the app moves to the background. */</span></span><br><span class="line">configuration.shouldUseExtendedBackgroundIdleMode = <span class="literal">true</span><span class="comment">//为true支持后台下载</span></span><br><span class="line">manager = <span class="type">Alamofire</span>.<span class="type">SessionManager</span>(configuration: configuration)</span><br></pre></td></tr></table></figure>
 <h2 id="不要存储沙盒绝对地址"><a href="#不要存储沙盒绝对地址" class="headerlink" title="不要存储沙盒绝对地址"></a>不要存储沙盒绝对地址</h2><p>当我们向沙盒写入数据时，将该绝对路径保存下来，下次再打开该地址并不会获取到我们存入的数据。原因如下：</p>
-<p>iOS8之后，苹果添加的新特性，将每次打开app内的沙盒［唯一编码路径］（红框部分）重新生成，并保持上一次的沙盒文件（Documents、Library、tmp）移到新生成的文件内，旧文件删除，就是说，你保存的文件都在，只不过每次打开后，都会有一个新的绝对路径。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ftvc9rh18lj30gu080wk9.jpg" alt="localPath.png"><br>所以存储路径应该存相对路径：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这两个都代表document的相对路径</span></span><br><span class="line"><span class="keyword">let</span> rootPath = <span class="type">NSHomeDirectory</span>() + <span class="string">"/Documents/"</span></span><br><span class="line"><span class="keyword">let</span> rootPath = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.documentDirectory, .userDomainMask, <span class="literal">true</span>).first</span><br></pre></td></tr></table></figure></p>
+<p>iOS8之后，苹果添加的新特性，将每次打开app内的沙盒［唯一编码路径］（红框部分）重新生成，并保持上一次的沙盒文件（Documents、Library、tmp）移到新生成的文件内，旧文件删除，就是说，你保存的文件都在，只不过每次打开后，都会有一个新的绝对路径。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ftvc9rh18lj30gu080wk9.jpg" alt="localPath.png"><br>所以存储路径应该存相对路径：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这两个都代表document的相对路径</span></span><br><span class="line"><span class="keyword">let</span> rootPath = <span class="type">NSHomeDirectory</span>() + <span class="string">"/Documents/"</span></span><br><span class="line"><span class="keyword">let</span> rootPath = <span class="type">NSSearchPathForDirectoriesInDomains</span>(.documentDirectory, .userDomainMask, <span class="literal">true</span>).first</span><br></pre></td></tr></table></figure>
 <h2 id="childViewController的viewDidAppear方法调用"><a href="#childViewController的viewDidAppear方法调用" class="headerlink" title="childViewController的viewDidAppear方法调用"></a>childViewController的viewDidAppear方法调用</h2><p>如果一个ViewController中嵌套了多个childViewController。当宿主VC（我们暂且这么称呼它）调用viewDidAppear等方法时，其中的childViewController都会默认调用对应方法。如果我们不想childViewController调用该方法可以重写该VC的属性：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="keyword">var</span> shouldAutomaticallyForwardAppearanceMethods: <span class="type">Bool</span> &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="图片切换渐入渐出的方法"><a href="#图片切换渐入渐出的方法" class="headerlink" title="图片切换渐入渐出的方法"></a>图片切换渐入渐出的方法</h2><p>通过<code>UIImageView</code>展示图片和<code>layer.contents</code>展示图片都可以使用以下方法：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let transition = <span class="built_in">CATransition</span>()</span><br><span class="line">transition.duration = <span class="number">0.5</span></span><br><span class="line">transition.type = kCATransitionFade</span><br><span class="line"><span class="keyword">self</span>.view.layer.add(transition, forKey: <span class="string">"layer.contents"</span>)</span><br><span class="line"><span class="keyword">self</span>.view.layer.contents = image.cgImage<span class="comment">//适用于imageView</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="cell移出视图，移入视图的方法"><a href="#cell移出视图，移入视图的方法" class="headerlink" title="cell移出视图，移入视图的方法"></a>cell移出视图，移入视图的方法</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//TableViewCell</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prepareForReuse</span><span class="params">()</span></span> &#123;</span><br><span class="line"><span class="keyword">super</span>.prepareForReuse()<span class="comment">//使用重用池的cell,显示过的cell移至可视范围</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//TableView</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath)</span></span> &#123;</span><br><span class="line"><span class="comment">//cell移出视图时调用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="tableview-collectionView数据reload之后的操作"><a href="#tableview-collectionView数据reload之后的操作" class="headerlink" title="tableview,collectionView数据reload之后的操作"></a>tableview,collectionView数据reload之后的操作</h2><p>我们如果要想实现在reload之后弹出alertView，或者滚动到特定一行，可能会直接写：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tableView.reloadData()</span><br><span class="line">tableView.scrollToRow(at: indexPath, at: .middle, animated: <span class="literal">true</span>)</span><br></pre></td></tr></table></figure></p>
-<p>看似没问题，但是滚动没起作用，因为reloadData是立即返回的，不会等tableview刷新完成。<br>解决办法就是需要等reload完成之后再做我们需要的操作，reload是否完成有几种方式监听：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//collectionView</span></span><br><span class="line">collectionView.performBatchUpdates(<span class="literal">nil</span>) &#123; (finished) <span class="keyword">in</span></span><br><span class="line">    <span class="comment">//reload完成</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//tableView方法只有iOS11可用</span></span><br><span class="line">tableView.performBatchUpdates(<span class="literal">nil</span>) &#123; (finished) <span class="keyword">in</span></span><br><span class="line">    <span class="comment">//reload完成</span></span><br><span class="line">&#125;<span class="comment">//替代func beginUpdates()，func endUpdates()</span></span><br><span class="line"><span class="comment">//tableView等reload完成还可以使用</span></span><br><span class="line">tableView.reloadData()</span><br><span class="line"><span class="type">DispatchQueue</span>.main.async &#123;</span><br><span class="line">    <span class="comment">//reload完成</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangferry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhangferry.github.io/2018/08/02/monthly_1/">http://zhangferry.github.io/2018/08/02/monthly_1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhangferry.github.io">zhangferry</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/月报/">月报</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/08/06/201807-summary/"><i class="fa fa-chevron-left">  </i><span>2018年七月</span></a></div><div class="next-post pull-right"><a href="/2018/07/17/UIButton-detail/"><span>可能被忽略的UIButton细节</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
-  clientID: '012999c912503aff4cac',
-  clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-  repo: 'zhangferry.github.io',
-  owner: 'zhangferry',
-  admin: 'zhangferry',
-  id: md5(decodeURI(location.pathname)),
-  language: 'zh-CN'
-})
-gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2020 By zhangferry</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+
+<h2 id="tableview-collectionView数据reload之后的操作"><a href="#tableview-collectionView数据reload之后的操作" class="headerlink" title="tableview,collectionView数据reload之后的操作"></a>tableview,collectionView数据reload之后的操作</h2><p>我们如果要想实现在reload之后弹出alertView，或者滚动到特定一行，可能会直接写：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tableView.reloadData()</span><br><span class="line">tableView.scrollToRow(at: indexPath, at: .middle, animated: <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<p>看似没问题，但是滚动没起作用，因为reloadData是立即返回的，不会等tableview刷新完成。<br>解决办法就是需要等reload完成之后再做我们需要的操作，reload是否完成有几种方式监听：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//collectionView</span></span><br><span class="line">collectionView.performBatchUpdates(<span class="literal">nil</span>) &#123; (finished) <span class="keyword">in</span></span><br><span class="line">    <span class="comment">//reload完成</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//tableView方法只有iOS11可用</span></span><br><span class="line">tableView.performBatchUpdates(<span class="literal">nil</span>) &#123; (finished) <span class="keyword">in</span></span><br><span class="line">    <span class="comment">//reload完成</span></span><br><span class="line">&#125;<span class="comment">//替代func beginUpdates()，func endUpdates()</span></span><br><span class="line"><span class="comment">//tableView等reload完成还可以使用</span></span><br><span class="line">tableView.reloadData()</span><br><span class="line"><span class="type">DispatchQueue</span>.main.async &#123;</span><br><span class="line">    <span class="comment">//reload完成</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E6%9C%88%E6%8A%A5/" rel="tag">月报</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/08/06/201807-summary/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">2018年七月</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/07/17/UIButton-detail/">
+                <span class="level-item">可能被忽略的UIButton细节</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://zhangferry.github.io/2018/08/02/monthly_1/';
+        this.page.identifier = '2018/08/02/monthly_1/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-zhangferry-github-io' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="zhangferry">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        zhangferry
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        iOS开发
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            56
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/zhangferry" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/zhangferry">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Weibo" href="https://weibo.com/2947186387/profile">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="https://zhangferry.com/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#关闭隐式动画">
+        <span class="has-mr-6">1</span>
+        <span>关闭隐式动画</span>
+        </a></li><li>
+        <a class="is-flex" href="#AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题">
+        <span class="has-mr-6">2</span>
+        <span>AVPlayer出现一直缓存，缓存一段时间之后才开始播放的问题</span>
+        </a></li><li>
+        <a class="is-flex" href="#AVPlayer是否正在播放的判断">
+        <span class="has-mr-6">3</span>
+        <span>AVPlayer是否正在播放的判断</span>
+        </a></li><li>
+        <a class="is-flex" href="#下载时URLSessionConfiguration的配置">
+        <span class="has-mr-6">4</span>
+        <span>下载时URLSessionConfiguration的配置</span>
+        </a></li><li>
+        <a class="is-flex" href="#不要存储沙盒绝对地址">
+        <span class="has-mr-6">5</span>
+        <span>不要存储沙盒绝对地址</span>
+        </a></li><li>
+        <a class="is-flex" href="#childViewController的viewDidAppear方法调用">
+        <span class="has-mr-6">6</span>
+        <span>childViewController的viewDidAppear方法调用</span>
+        </a></li><li>
+        <a class="is-flex" href="#图片切换渐入渐出的方法">
+        <span class="has-mr-6">7</span>
+        <span>图片切换渐入渐出的方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#cell移出视图，移入视图的方法">
+        <span class="has-mr-6">8</span>
+        <span>cell移出视图，移入视图的方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#tableview-collectionView数据reload之后的操作">
+        <span class="has-mr-6">9</span>
+        <span>tableview,collectionView数据reload之后的操作</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo_2.svg" alt="iOS开发月报#1|201807" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 zhangferry&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://zhangferry.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

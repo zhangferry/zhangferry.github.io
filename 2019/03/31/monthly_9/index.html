@@ -1,15 +1,167 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="iOS开发月报#9|201903"><meta name="keywords" content="月报"><meta name="author" content="zhangferry"><meta name="copyright" content="zhangferry"><title>iOS开发月报#9|201903 | zhangferry</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">1.</span> <span class="toc-text">Tips</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spine-SpriteKit"><span class="toc-number">1.1.</span> <span class="toc-text">Spine + SpriteKit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速创建转场样式"><span class="toc-number">1.2.</span> <span class="toc-text">快速创建转场样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是UserAgent"><span class="toc-number">1.3.</span> <span class="toc-text">什么是UserAgent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apple-Configurator-2-出现-Unauthorized-Error"><span class="toc-number">1.4.</span> <span class="toc-text">Apple Configurator 2 出现 Unauthorized Error</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Command-PhaseScriptExecution-failed-with-a-nonzero-exit-code"><span class="toc-number">1.5.</span> <span class="toc-text">Command PhaseScriptExecution failed with a nonzero exit code</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#斐波那契函数"><span class="toc-number">1.6.</span> <span class="toc-text">斐波那契函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐阅读"><span class="toc-number">2.</span> <span class="toc-text">推荐阅读</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SpriteKit-Tutorial-for-Beginners"><span class="toc-number">2.1.</span> <span class="toc-text">SpriteKit Tutorial for Beginners</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发小知识"><span class="toc-number">2.2.</span> <span class="toc-text">开发小知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Swift-5-终于来了，快来看看有什么更新！！"><span class="toc-number">2.3.</span> <span class="toc-text">Swift 5 终于来了，快来看看有什么更新！！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#苹果开了一场没有任何硬件的发布会"><span class="toc-number">2.4.</span> <span class="toc-text">苹果开了一场没有任何硬件的发布会</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#音视频"><span class="toc-number">3.</span> <span class="toc-text">音视频</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#辞职环游中国的程序员小-K"><span class="toc-number">3.1.</span> <span class="toc-text">辞职环游中国的程序员小 K</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Github"><span class="toc-number">4.</span> <span class="toc-text">Github</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#996-ICU"><span class="toc-number">4.1.</span> <span class="toc-text">996.ICU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XVim2"><span class="toc-number">4.2.</span> <span class="toc-text">XVim2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文摘"><span class="toc-number">5.</span> <span class="toc-text">文摘</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">zhangferry</div><div class="author-info__description text-center">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</div><div class="follow-button"><a href="https://github.com/zhangferry">Follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">56</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">27</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://colin1994.github.io/">Colin</a><a class="author-info-links__name text-center" href="http://www.evenvi.com/">Evenvi</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zhangferry</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">iOS开发月报#9|201903</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-31</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。<br><img src="http://upload-images.jianshu.io/upload_images/1059465-afa5d63933b5bf3c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br><a id="more"></a></p>
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>iOS开发月报#9|201903 - zhangferry</title>
+
+
+    <meta name="description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry&#x2F;iOSMonthlyReport提交issue。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发月报#9|201903">
+<meta property="og:url" content="http://zhangferry.github.io/2019/03/31/monthly_9/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry&#x2F;iOSMonthlyReport提交issue。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
+<meta property="article:published_time" content="2019-03-31T13:30:57.000Z">
+<meta property="article:modified_time" content="2020-03-07T05:41:50.187Z">
+<meta property="article:author" content="zhangferry">
+<meta property="article:tag" content="月报">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangferry.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo_2.svg" alt="iOS开发月报#9|201903" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangferry">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-31T13:30:57.000Z">2019-03-31</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    18 分钟 读完 (大约 2675 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                iOS开发月报#9|201903
+            
+        </h1>
+        <div class="content">
+            <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport">zhangferry/iOSMonthlyReport</a>提交issue。<br><img src="http://upload-images.jianshu.io/upload_images/1059465-afa5d63933b5bf3c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<a id="more"></a>
 <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="Spine-SpriteKit"><a href="#Spine-SpriteKit" class="headerlink" title="Spine + SpriteKit"></a>Spine + SpriteKit</h3><p>项目中需要引入一些实物动画，每个动画之间有不同形态的切换，考虑过gif, mp4, AE + lottie, Spine + SpriteKit。</p>
-<p>最后确定使用<a href="http://zh.esotericsoftware.com/" target="_blank" rel="noopener">Spine</a>做动画效果，用SpriteKit处理动画。Spin并没有官方支持SpirteKit的库，但有一个做的比较好的第三方库<a href="https://github.com/maxgribov/Spine" target="_blank" rel="noopener">maxgribov/Spine</a>，支持Swift4.1。</p>
+<p>最后确定使用<a href="http://zh.esotericsoftware.com/">Spine</a>做动画效果，用SpriteKit处理动画。Spin并没有官方支持SpirteKit的库，但有一个做的比较好的第三方库<a href="https://github.com/maxgribov/Spine">maxgribov/Spine</a>，支持Swift4.1。</p>
 <p>该库支持Bones, Slots, Skins等常用的动画要素，通过Spine导出的json文件和动画素材做出各种动画效果，是仅有的近期还在维护的支持SpriteKit的Spine运行时库。但它也存在一个问题，还不支持Mesh Animation(网格动画)。如果所需的动画效果不需要网格的话，非常推荐使用这个库。</p>
 <p>而我们所需的动画效果又必须用到网格动画，思考再三考虑决定放弃使用这个库，使用SKTextureAtlas(纹理集) + 逐帧动画来实现特殊的动画效果。虽然输出的还是png序列，但是SpriteKit对纹理集有足够的优化，Xcode会在打包时把.atlas文件夹中的所有图片做成一张合图，然后生成一个plist文件描述每个小图片的位置信息，所以包的大小和渲染成本都会大大降低。</p>
 <h3 id="快速创建转场样式"><a href="#快速创建转场样式" class="headerlink" title="快速创建转场样式"></a>快速创建转场样式</h3><p>说到自定义转场我们可能会直接想到<code>UIViewControllerAnimatedTransitioning</code>，结合这个类我们可以实现多种多样的订阅样式。但是使用这种方式做转场，我们需要引入很多代码。有一种简单的实现转场的方式是通过<code>CATransition</code></p>
@@ -17,10 +169,14 @@
 <p>An object that provides an animated transition between a layer’s states.</p>
 </blockquote>
 <p>通过文档的介绍我们知道，这个类就是用来做转场的，只不过支持的样式有限，但如果正好满足你需要的话，推荐使用这种方式来实现转场。</p>
-<p>我们来实现一个present的渐变效果：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建transition对象</span></span><br><span class="line"><span class="keyword">let</span> transition = <span class="type">CATransition</span>()</span><br><span class="line">transition.duration = <span class="number">0.5</span></span><br><span class="line"><span class="comment">//动画样式</span></span><br><span class="line"><span class="comment">//type: .fade, .moveIn, .push, .reveal</span></span><br><span class="line">transition.type = .fade</span><br><span class="line"><span class="comment">//动画出现方位</span></span><br><span class="line"><span class="comment">//subtype: .fromRight, .fromLeft, .fromTop, .fromBottem</span></span><br><span class="line"><span class="comment">//transition.subtype = .fromRight</span></span><br><span class="line">transition.timingFunction = <span class="type">CAMediaTimingFunction</span>(name: .easeIn)</span><br><span class="line"></span><br><span class="line"><span class="keyword">self</span>.view.window?.layer.add(transition, forKey: <span class="string">"present"</span>)</span><br><span class="line"><span class="keyword">self</span>.present(targetVc, animated: <span class="literal">false</span>, completion: completion)</span><br></pre></td></tr></table></figure></p>
-<p>如果是做push的渐变，我们只需要改变最后的控制动画的代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父容器为UINavigationController</span></span><br><span class="line"><span class="keyword">self</span>.view.layer.add(transition, forKey: <span class="string">"push"</span>)</span><br><span class="line"><span class="keyword">self</span>.present(targetVc, animated: <span class="literal">false</span>, completion: completion)</span><br><span class="line"></span><br><span class="line"><span class="comment">//父容器为UITabbarController</span></span><br><span class="line"><span class="keyword">self</span>.tabBarController?.view.layer.add(transition, forKey: <span class="string">"push"</span>)</span><br><span class="line"><span class="keyword">self</span>.present(targetVc, animated: <span class="literal">false</span>, completion: completion)</span><br></pre></td></tr></table></figure></p>
+<p>我们来实现一个present的渐变效果：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建transition对象</span></span><br><span class="line"><span class="keyword">let</span> transition = <span class="type">CATransition</span>()</span><br><span class="line">transition.duration = <span class="number">0.5</span></span><br><span class="line"><span class="comment">//动画样式</span></span><br><span class="line"><span class="comment">//type: .fade, .moveIn, .push, .reveal</span></span><br><span class="line">transition.type = .fade</span><br><span class="line"><span class="comment">//动画出现方位</span></span><br><span class="line"><span class="comment">//subtype: .fromRight, .fromLeft, .fromTop, .fromBottem</span></span><br><span class="line"><span class="comment">//transition.subtype = .fromRight</span></span><br><span class="line">transition.timingFunction = <span class="type">CAMediaTimingFunction</span>(name: .easeIn)</span><br><span class="line"></span><br><span class="line"><span class="keyword">self</span>.view.window?.layer.add(transition, forKey: <span class="string">"present"</span>)</span><br><span class="line"><span class="keyword">self</span>.present(targetVc, animated: <span class="literal">false</span>, completion: completion)</span><br></pre></td></tr></table></figure>
+<p>如果是做push的渐变，我们只需要改变最后的控制动画的代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父容器为UINavigationController</span></span><br><span class="line"><span class="keyword">self</span>.view.layer.add(transition, forKey: <span class="string">"push"</span>)</span><br><span class="line"><span class="keyword">self</span>.present(targetVc, animated: <span class="literal">false</span>, completion: completion)</span><br><span class="line"></span><br><span class="line"><span class="comment">//父容器为UITabbarController</span></span><br><span class="line"><span class="keyword">self</span>.tabBarController?.view.layer.add(transition, forKey: <span class="string">"push"</span>)</span><br><span class="line"><span class="keyword">self</span>.present(targetVc, animated: <span class="literal">false</span>, completion: completion)</span><br></pre></td></tr></table></figure>
+
 <h3 id="什么是UserAgent"><a href="#什么是UserAgent" class="headerlink" title="什么是UserAgent"></a>什么是UserAgent</h3><p><code>User-Agent</code> 首部包含了一个特征字符串，用来让网络协议的对端来识别发起请求的用户代理软件的应用类型、操作系统、软件开发商以及版本号，然后前端的展示就可以根据这些信息进行针对性的优化。</p>
-<p>我们打开Chrome浏览器，生成一个请求，然后用Charles抓包，可以看到对应的<code>User-Agent</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user-agent  Mozilla/<span class="number">5.0</span> (Macintosh; Intel Mac OS X <span class="number">10</span>_13_6) AppleWebKit/<span class="number">537.36</span> (KHTML, like Gecko) Chrome/<span class="number">74.0</span><span class="number">.3729</span><span class="number">.28</span> Safari/<span class="number">537.36</span></span><br></pre></td></tr></table></figure></p>
+<p>我们打开Chrome浏览器，生成一个请求，然后用Charles抓包，可以看到对应的<code>User-Agent</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user-agent  Mozilla/<span class="number">5.0</span> (Macintosh; Intel Mac OS X <span class="number">10</span>_13_6) AppleWebKit/<span class="number">537.36</span> (KHTML, like Gecko) Chrome/<span class="number">74.0</span><span class="number">.3729</span><span class="number">.28</span> Safari/<span class="number">537.36</span></span><br></pre></td></tr></table></figure>
 <p>通过UA我们可以得到以下信息：</p>
 <table>
 <thead>
@@ -29,8 +185,7 @@
 <th>内容</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>浏览器名称</td>
 <td>Chrome</td>
 </tr>
@@ -46,17 +201,19 @@
 <td>操作系统</td>
 <td>Mac OS 10.13.6</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="Apple-Configurator-2-出现-Unauthorized-Error"><a href="#Apple-Configurator-2-出现-Unauthorized-Error" class="headerlink" title="Apple Configurator 2 出现 Unauthorized Error"></a>Apple Configurator 2 出现 Unauthorized Error</h3><p>注销账号，再次登录</p>
-<h3 id="Command-PhaseScriptExecution-failed-with-a-nonzero-exit-code"><a href="#Command-PhaseScriptExecution-failed-with-a-nonzero-exit-code" class="headerlink" title="Command PhaseScriptExecution failed with a nonzero exit code"></a>Command PhaseScriptExecution failed with a nonzero exit code</h3><p>运行一个项目时遇到了这个bug提示，一直编译不过去，这其实是一个Xcode10引起的bug<a href=""></a>。<br>解决方案：<br>在Xcode菜单栏选择File -&gt; Workspace Setting -&gt; Build System 选择Legacy Build System 重新运行即可。<br>参考：<a href="https://juejin.im/post/5ba35cc05188255c7c655a8c" target="_blank" rel="noopener">踩坑Xcode 10之New Build System</a></p>
+<h3 id="Command-PhaseScriptExecution-failed-with-a-nonzero-exit-code"><a href="#Command-PhaseScriptExecution-failed-with-a-nonzero-exit-code" class="headerlink" title="Command PhaseScriptExecution failed with a nonzero exit code"></a>Command PhaseScriptExecution failed with a nonzero exit code</h3><p>运行一个项目时遇到了这个bug提示，一直编译不过去，这其实是一个Xcode10引起的bug<a href=""></a>。<br>解决方案：<br>在Xcode菜单栏选择File -&gt; Workspace Setting -&gt; Build System 选择Legacy Build System 重新运行即可。<br>参考：<a href="https://juejin.im/post/5ba35cc05188255c7c655a8c">踩坑Xcode 10之New Build System</a></p>
 <h3 id="斐波那契函数"><a href="#斐波那契函数" class="headerlink" title="斐波那契函数"></a>斐波那契函数</h3><p>斐波那契数列（Fibonacci sequence），又称黄金分割数列、因数学家列昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，指的是这样一个数列：1、1、2、3、5、8、13、21、34、……</p>
-<p>这个是我们公司技术面试的必问题目，也是筛掉人数最多的一个问题。有一部分同学会使用数组尝试解决这个问题，但这会把问题复杂度升级，还有些可能根本没有思路。但其实这个问题不复杂的，用到递归可以很快的解决。斐波那契函数的数学表达是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">F(1)=1</span><br><span class="line">F(2)=1</span><br><span class="line">F(n)=F(n-1)+F(n-2)（n&gt;=3，n∈N*）</span><br></pre></td></tr></table></figure></p>
-<p>用Swift实现就是：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fibonacci</span><span class="params">(n: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span> || n == <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fibonacci(n: n - <span class="number">1</span>) + fibonacci(n: n - <span class="number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><h3 id="SpriteKit-Tutorial-for-Beginners"><a href="#SpriteKit-Tutorial-for-Beginners" class="headerlink" title="SpriteKit Tutorial for Beginners"></a><a href="https://www.raywenderlich.com/71-spritekit-tutorial-for-beginners" target="_blank" rel="noopener">SpriteKit Tutorial for Beginners</a></h3><p>raywenderlich上介绍SpriteKit入门的一篇教程，通过这篇文章你可以实现一个忍者击杀怪物的小游戏，理解SpriteKit框架里常用的几种游戏元素。不得不说这个教程做的是真的棒👍</p>
-<h3 id="开发小知识"><a href="#开发小知识" class="headerlink" title="开发小知识"></a><a href="https://www.jianshu.com/p/5a4ba3c165b9" target="_blank" rel="noopener">开发小知识</a></h3><p>该文章主要整理一些小知识点，主要涉及 iOS 以及计算基础相关知识点，某些知识点暂时只有标题，后续会持续更新。笔者最近一段时间面试过程中发现一些普遍现象，对于一些很不起眼的问题，很多开发者都只停留在知道、听说过的层面，但是一旦问 是什么 和 为什么 ，很多应试者回答的并不理想。<br>大家可以对着这篇文章查找自己的知识盲区。</p>
-<h3 id="Swift-5-终于来了，快来看看有什么更新！！"><a href="#Swift-5-终于来了，快来看看有什么更新！！" class="headerlink" title="Swift 5 终于来了，快来看看有什么更新！！"></a><a href="https://mp.weixin.qq.com/s/-fLVdoTz3lT5Kxnea0-Avg" target="_blank" rel="noopener">Swift 5 终于来了，快来看看有什么更新！！</a></h3><p>Xcode10.2 已经发布，是时候开始使用 Swift5 了，可以提前看下老司机周报总结的Swift5 更新内容，对适配工作做好准备。</p>
-<h3 id="苹果开了一场没有任何硬件的发布会"><a href="#苹果开了一场没有任何硬件的发布会" class="headerlink" title="苹果开了一场没有任何硬件的发布会"></a><a href="https://mp.weixin.qq.com/s/ggqK8kzU0efgTdPIZ5vbVw" target="_blank" rel="noopener">苹果开了一场没有任何硬件的发布会</a></h3><p>3 月 26 日凌晨 1 点，苹果在 Apple Park 新总部的乔布斯剧院召开了春季特别活动。</p>
+<p>这个是我们公司技术面试的必问题目，也是筛掉人数最多的一个问题。有一部分同学会使用数组尝试解决这个问题，但这会把问题复杂度升级，还有些可能根本没有思路。但其实这个问题不复杂的，用到递归可以很快的解决。斐波那契函数的数学表达是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">F(1)&#x3D;1</span><br><span class="line">F(2)&#x3D;1</span><br><span class="line">F(n)&#x3D;F(n-1)+F(n-2)（n&gt;&#x3D;3，n∈N*）</span><br></pre></td></tr></table></figure>
+<p>用Swift实现就是：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fibonacci</span><span class="params">(n: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span> || n == <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fibonacci(n: n - <span class="number">1</span>) + fibonacci(n: n - <span class="number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><h3 id="SpriteKit-Tutorial-for-Beginners"><a href="#SpriteKit-Tutorial-for-Beginners" class="headerlink" title="SpriteKit Tutorial for Beginners"></a><a href="https://www.raywenderlich.com/71-spritekit-tutorial-for-beginners">SpriteKit Tutorial for Beginners</a></h3><p>raywenderlich上介绍SpriteKit入门的一篇教程，通过这篇文章你可以实现一个忍者击杀怪物的小游戏，理解SpriteKit框架里常用的几种游戏元素。不得不说这个教程做的是真的棒👍</p>
+<h3 id="开发小知识"><a href="#开发小知识" class="headerlink" title="开发小知识"></a><a href="https://www.jianshu.com/p/5a4ba3c165b9">开发小知识</a></h3><p>该文章主要整理一些小知识点，主要涉及 iOS 以及计算基础相关知识点，某些知识点暂时只有标题，后续会持续更新。笔者最近一段时间面试过程中发现一些普遍现象，对于一些很不起眼的问题，很多开发者都只停留在知道、听说过的层面，但是一旦问 是什么 和 为什么 ，很多应试者回答的并不理想。<br>大家可以对着这篇文章查找自己的知识盲区。</p>
+<h3 id="Swift-5-终于来了，快来看看有什么更新！！"><a href="#Swift-5-终于来了，快来看看有什么更新！！" class="headerlink" title="Swift 5 终于来了，快来看看有什么更新！！"></a><a href="https://mp.weixin.qq.com/s/-fLVdoTz3lT5Kxnea0-Avg">Swift 5 终于来了，快来看看有什么更新！！</a></h3><p>Xcode10.2 已经发布，是时候开始使用 Swift5 了，可以提前看下老司机周报总结的Swift5 更新内容，对适配工作做好准备。</p>
+<h3 id="苹果开了一场没有任何硬件的发布会"><a href="#苹果开了一场没有任何硬件的发布会" class="headerlink" title="苹果开了一场没有任何硬件的发布会"></a><a href="https://mp.weixin.qq.com/s/ggqK8kzU0efgTdPIZ5vbVw">苹果开了一场没有任何硬件的发布会</a></h3><p>3 月 26 日凌晨 1 点，苹果在 Apple Park 新总部的乔布斯剧院召开了春季特别活动。</p>
 <p>在活动现场，苹果发布了：</p>
 <ul>
 <li>新闻服务 Apple News+</li>
@@ -66,27 +223,510 @@
 <li>Apple TV+ 原创视频服务</li>
 </ul>
 <p>全部是软件和服务，没有新硬件的出现——这或许意味着，苹果正在寻找下一个十年的生长空间。</p>
-<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><h3 id="辞职环游中国的程序员小-K"><a href="#辞职环游中国的程序员小-K" class="headerlink" title="辞职环游中国的程序员小 K"></a><a href="https://talk.swift.gg/19" target="_blank" rel="noopener">辞职环游中国的程序员小 K</a></h3><p>大概每个人都有过这种冲动，辞掉工作出去旅行，想去哪就去哪，再也不用赶需求修 bug 通宵加班。不过对大多数人来说，也就止步于“想想”，并不会付诸行动。但是我身边有一位朋友，真的做到了这件事：辞职一年环游中国！</p>
+<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><h3 id="辞职环游中国的程序员小-K"><a href="#辞职环游中国的程序员小-K" class="headerlink" title="辞职环游中国的程序员小 K"></a><a href="https://talk.swift.gg/19">辞职环游中国的程序员小 K</a></h3><p>大概每个人都有过这种冲动，辞掉工作出去旅行，想去哪就去哪，再也不用赶需求修 bug 通宵加班。不过对大多数人来说，也就止步于“想想”，并不会付诸行动。但是我身边有一位朋友，真的做到了这件事：辞职一年环游中国！</p>
 <p>这是最近几期ggtalk对我触动最大的一期，同样是做iOS开发的，为什么人家那么优秀🙃</p>
-<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="996-ICU"><a href="#996-ICU" class="headerlink" title="996.ICU"></a><a href="https://github.com/996icu/996.ICU" target="_blank" rel="noopener">996.ICU</a></h3><p>工作996，生病ICU。这段时间的“明星项目”，旨在反抗国内互联网公司形成的每周工作6天，每天工作早9点到晚9点的不良加班风气。截止到3月30号，仅四天时间star已经超11万。</p>
-<h3 id="XVim2"><a href="#XVim2" class="headerlink" title="XVim2"></a><a href="https://github.com/XVimProject/XVim2" target="_blank" rel="noopener">XVim2</a></h3><p>XVim2是一个用于Xcode的Vim插件。如果你是一个Vim党，你可以直接在Xcode代码编辑界面使用Vim的各种特性。我是最近开始接触，也在慢慢适应Vim的远离鼠标工作模式。另附送一个安装流程：</p>
-<p>1、关闭Xcode<br>2、钥匙串-&gt;证书助理-&gt;证书创建<br>    名称：XcodeSigner<br>    身份类型：自签名根证书<br>    证书类型：代码签名<br>3、重新签署Xcode<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#需要等待一段时间</span></span><br><span class="line">sudo codesign -f -s XcodeSigner /Applications/Xcode.app</span><br></pre></td></tr></table></figure></p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="996-ICU"><a href="#996-ICU" class="headerlink" title="996.ICU"></a><a href="https://github.com/996icu/996.ICU">996.ICU</a></h3><p>工作996，生病ICU。这段时间的“明星项目”，旨在反抗国内互联网公司形成的每周工作6天，每天工作早9点到晚9点的不良加班风气。截止到3月30号，仅四天时间star已经超11万。</p>
+<h3 id="XVim2"><a href="#XVim2" class="headerlink" title="XVim2"></a><a href="https://github.com/XVimProject/XVim2">XVim2</a></h3><p>XVim2是一个用于Xcode的Vim插件。如果你是一个Vim党，你可以直接在Xcode代码编辑界面使用Vim的各种特性。我是最近开始接触，也在慢慢适应Vim的远离鼠标工作模式。另附送一个安装流程：</p>
+<p>1、关闭Xcode<br>2、钥匙串-&gt;证书助理-&gt;证书创建<br>    名称：XcodeSigner<br>    身份类型：自签名根证书<br>    证书类型：代码签名<br>3、重新签署Xcode</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#需要等待一段时间</span></span><br><span class="line">sudo codesign -f -s XcodeSigner /Applications/Xcode.app</span><br></pre></td></tr></table></figure>
 <p>4、按照官方步骤安装XVim2</p>
 <h2 id="文摘"><a href="#文摘" class="headerlink" title="文摘"></a>文摘</h2><p>1、培养出在没人监督自己的时候也能高效工作的自我责任感非常重要。你也可以拔这称为是具有一种性格或者具有一种素质，它们都是同一个概念。如果缺乏对自己的责任感，你将永远依赖外部动机来驱使你努力工作。你容易折服于一根胡萝卜的诱惑，也容易屈从于一根大棒的威胁。<br>–《软技能：代码之外的生存指南》</p>
 <p>2、最终，它成为我自己的知识体系中严重的短板。没有花时间去彻底掌握Lambda表达式的工作原理，结果浪费了大把的时间。最后当我下决心花时间去了解Lambda表达式的时候，我只花了几个小时阅读并实践，就领会了这一概念。<br>–《软技能：代码之外的生存指南》</p>
 <p>3、回到从前，在我们刚开始一起生活的时候，我们就决定将我们收入的10%用于风险什一税–实际上我们把这部分收入捐给一家慈善机构，以帮助印度的孤儿。在我们第一次奉献什一税的第二周，我的妻子就得到了加薪，加薪的数额正好是我们当时奉献什一税的数额。我个人认为，我们的成功很大一部分就是因为这种对奉献的承诺，一直恪守到今天。<br>即使你不信仰任何宗教，我认为这一点也有某种符合逻辑的解释。我认为，你把钱看的越重，你就越难以在理财方面做出明智的、成功的投资选择。自愿把自己收入的固定数额奉献或者捐赠给慈善机构，可以改变你对金钱的看法。这一思想上的转变让你从金钱的所有者变成管理者。<br>–《软技能：代码之外的生存指南》</p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangferry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhangferry.github.io/2019/03/31/monthly_9/">http://zhangferry.github.io/2019/03/31/monthly_9/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhangferry.github.io">zhangferry</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/月报/">月报</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/04/12/ios-interview/"><i class="fa fa-chevron-left">  </i><span>一则iOS招聘信息</span></a></div><div class="next-post pull-right"><a href="/2019/03/31/996-ICU/"><span>关于996ICU的一些看法</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
-  clientID: '012999c912503aff4cac',
-  clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-  repo: 'zhangferry.github.io',
-  owner: 'zhangferry',
-  admin: 'zhangferry',
-  id: md5(decodeURI(location.pathname)),
-  language: 'zh-CN'
-})
-gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2020 By zhangferry</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E6%9C%88%E6%8A%A5/" rel="tag">月报</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/04/12/ios-interview/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">一则iOS招聘信息</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/31/996-ICU/">
+                <span class="level-item">关于996ICU的一些看法</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://zhangferry.github.io/2019/03/31/monthly_9/';
+        this.page.identifier = '2019/03/31/monthly_9/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-zhangferry-github-io' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="zhangferry">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        zhangferry
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        iOS开发
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            56
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/zhangferry" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/zhangferry">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Weibo" href="https://weibo.com/2947186387/profile">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="https://zhangferry.com/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Tips">
+        <span class="has-mr-6">1</span>
+        <span>Tips</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Spine-SpriteKit">
+        <span class="has-mr-6">1.1</span>
+        <span>Spine + SpriteKit</span>
+        </a></li><li>
+        <a class="is-flex" href="#快速创建转场样式">
+        <span class="has-mr-6">1.2</span>
+        <span>快速创建转场样式</span>
+        </a></li><li>
+        <a class="is-flex" href="#什么是UserAgent">
+        <span class="has-mr-6">1.3</span>
+        <span>什么是UserAgent</span>
+        </a></li><li>
+        <a class="is-flex" href="#Apple-Configurator-2-出现-Unauthorized-Error">
+        <span class="has-mr-6">1.4</span>
+        <span>Apple Configurator 2 出现 Unauthorized Error</span>
+        </a></li><li>
+        <a class="is-flex" href="#Command-PhaseScriptExecution-failed-with-a-nonzero-exit-code">
+        <span class="has-mr-6">1.5</span>
+        <span>Command PhaseScriptExecution failed with a nonzero exit code</span>
+        </a></li><li>
+        <a class="is-flex" href="#斐波那契函数">
+        <span class="has-mr-6">1.6</span>
+        <span>斐波那契函数</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#推荐阅读">
+        <span class="has-mr-6">2</span>
+        <span>推荐阅读</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#SpriteKit-Tutorial-for-Beginners">
+        <span class="has-mr-6">2.1</span>
+        <span>SpriteKit Tutorial for Beginners</span>
+        </a></li><li>
+        <a class="is-flex" href="#开发小知识">
+        <span class="has-mr-6">2.2</span>
+        <span>开发小知识</span>
+        </a></li><li>
+        <a class="is-flex" href="#Swift-5-终于来了，快来看看有什么更新！！">
+        <span class="has-mr-6">2.3</span>
+        <span>Swift 5 终于来了，快来看看有什么更新！！</span>
+        </a></li><li>
+        <a class="is-flex" href="#苹果开了一场没有任何硬件的发布会">
+        <span class="has-mr-6">2.4</span>
+        <span>苹果开了一场没有任何硬件的发布会</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#音视频">
+        <span class="has-mr-6">3</span>
+        <span>音视频</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#辞职环游中国的程序员小-K">
+        <span class="has-mr-6">3.1</span>
+        <span>辞职环游中国的程序员小 K</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Github">
+        <span class="has-mr-6">4</span>
+        <span>Github</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#996-ICU">
+        <span class="has-mr-6">4.1</span>
+        <span>996.ICU</span>
+        </a></li><li>
+        <a class="is-flex" href="#XVim2">
+        <span class="has-mr-6">4.2</span>
+        <span>XVim2</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#文摘">
+        <span class="has-mr-6">5</span>
+        <span>文摘</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo_2.svg" alt="iOS开发月报#9|201903" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 zhangferry&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://zhangferry.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

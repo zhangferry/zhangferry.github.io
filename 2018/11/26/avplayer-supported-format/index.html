@@ -1,13 +1,166 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="AVPlayer支持的视频格式"><meta name="keywords" content="iOS,AVPlayer"><meta name="author" content="zhangferry"><meta name="copyright" content="zhangferry"><title>AVPlayer支持的视频格式 | zhangferry</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#播放协议"><span class="toc-number">1.1.</span> <span class="toc-text">播放协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视频编码"><span class="toc-number">1.2.</span> <span class="toc-text">视频编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#音频编码"><span class="toc-number">1.3.</span> <span class="toc-text">音频编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#封装格式"><span class="toc-number">1.4.</span> <span class="toc-text">封装格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#苹果支持哪些音视频编码格式"><span class="toc-number">2.</span> <span class="toc-text">苹果支持哪些音视频编码格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AVPlayer支持哪些视频格式"><span class="toc-number">3.</span> <span class="toc-text">AVPlayer支持哪些视频格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">4.</span> <span class="toc-text">参考文献</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">zhangferry</div><div class="author-info__description text-center">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</div><div class="follow-button"><a href="https://github.com/zhangferry">Follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">56</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">27</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://colin1994.github.io/">Colin</a><a class="author-info-links__name text-center" href="http://www.evenvi.com/">Evenvi</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zhangferry</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">AVPlayer支持的视频格式</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-26</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。<br><a id="more"></a></p>
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>AVPlayer支持的视频格式 - zhangferry</title>
+
+
+    <meta name="description" content="发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AVPlayer支持的视频格式">
+<meta property="og:url" content="http://zhangferry.github.io/2018/11/26/avplayer-supported-format/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
+<meta property="article:published_time" content="2018-11-26T08:27:50.000Z">
+<meta property="article:modified_time" content="2019-05-17T15:05:39.647Z">
+<meta property="article:author" content="zhangferry">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="AVPlayer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangferry.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo_2.svg" alt="AVPlayer支持的视频格式" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangferry">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-26T08:27:50.000Z">2018-11-26</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    18 分钟 读完 (大约 2676 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                AVPlayer支持的视频格式
+            
+        </h1>
+        <div class="content">
+            <p>发现很多人对视频格式存在一些误解，之前写的一篇文章讲AVPlayer的支持格式也有一些问题，所以这里单独出一篇文章讲一下，希望大家能明白。</p>
+<a id="more"></a>
 <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>一个在线视频能够播放，大致是经过了如下步骤：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-d573ac8a2e21fb3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="video_play_progress.png"></p>
 <p>可以总结为：拉数据-&gt;解协议-&gt;解封装-&gt;音视频解码-&gt;音视频同步-&gt;播放。<br>下面就针对这几个概念一一做下解释：</p>
 <h3 id="播放协议"><a href="#播放协议" class="headerlink" title="播放协议"></a>播放协议</h3><p>一般点播采用HTTP，而直播的话，大部分还是采用RTMP或者私有协议，原因是延时会比较小，RTMP本身也是为了直播设计的。常见的流媒体协议：</p>
@@ -15,50 +168,48 @@
 <thead>
 <tr>
 <th>简写</th>
-<th style="text-align:center">全称</th>
-<th style="text-align:center">推出机构</th>
+<th align="center">全称</th>
+<th align="center">推出机构</th>
 <th>目前使用领域</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>HLS</td>
-<td style="text-align:center">HTTP Live Streaming</td>
-<td style="text-align:center">苹果</td>
+<td align="center">HTTP Live Streaming</td>
+<td align="center">苹果</td>
 <td>多应用于苹果</td>
 </tr>
 <tr>
 <td>RTP</td>
-<td style="text-align:center">实时传输协议</td>
-<td style="text-align:center">IETF</td>
+<td align="center">实时传输协议</td>
+<td align="center">IETF</td>
 <td>范围较广</td>
 </tr>
 <tr>
 <td>RTCP</td>
-<td style="text-align:center">实时传输控制协议</td>
-<td style="text-align:center">IETF</td>
+<td align="center">实时传输控制协议</td>
+<td align="center">IETF</td>
 <td>范围较广</td>
 </tr>
 <tr>
 <td>RTSP</td>
-<td style="text-align:center">实时串流协议</td>
-<td style="text-align:center">RealNetworks等</td>
+<td align="center">实时串流协议</td>
+<td align="center">RealNetworks等</td>
 <td>范围较广</td>
 </tr>
 <tr>
 <td>RTMP</td>
-<td style="text-align:center">实时消息协议</td>
-<td style="text-align:center">Adobe</td>
+<td align="center">实时消息协议</td>
+<td align="center">Adobe</td>
 <td>较流行</td>
 </tr>
 <tr>
 <td>MMS</td>
-<td style="text-align:center">串流媒体协议</td>
-<td style="text-align:center">Microsoft</td>
+<td align="center">串流媒体协议</td>
+<td align="center">Microsoft</td>
 <td>范围较广</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><strong>RTP/RTSP/RTCP的区别</strong></p>
 <blockquote>
 <p>RTSP发起/终结流媒体、RTP传输流媒体数据 、RTCP对RTP进行控制，同步。</p>
@@ -74,8 +225,7 @@
 <th>目前使用领域</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>HEVC(H.265)</td>
 <td>MPEG/ITU-T</td>
 <td>2013</td>
@@ -123,9 +273,13 @@
 <td>2006</td>
 <td>微软</td>
 </tr>
-</tbody>
-</table>
-<p><strong>H.264</strong></p>
+<tr>
+<td><strong>H.264</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <p>H.264又叫AVC，是国际标准化组织（ISO）和国际电信联盟（ITU）共同提出的继MPEG4之后的新一代数字视频压缩格式，它集合了H.263和MPEG4的优点，拥有更高的数据压缩比。在同等的图像质量条件下，H.264的数据压缩比能比H.263高2倍，比MPEG-4高1.5倍。<br>也是目前苹果支持最好的编码格式。</p>
 <h3 id="音频编码"><a href="#音频编码" class="headerlink" title="音频编码"></a>音频编码</h3><p>和视频编码类似，音频编码的作用是减少音频中的冗余，同时在保证一定音频质量的条件下作的压缩处理。</p>
 <table>
@@ -133,38 +287,53 @@
 <tr>
 <th>名称</th>
 <th>推出机构</th>
-<th style="text-align:center">推出时间</th>
-<th style="text-align:center">目前使用领域</th>
+<th align="center">推出时间</th>
+<th align="center">目前使用领域</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>AAC</td>
 <td>MPEG</td>
-<td style="text-align:center">1997</td>
-<td style="text-align:center">流媒体</td>
+<td align="center">1997</td>
+<td align="center">流媒体</td>
 </tr>
 <tr>
 <td>AC-3</td>
 <td>Dolby Inc.</td>
-<td style="text-align:center">1992</td>
-<td style="text-align:center">DVD, 数字电视</td>
+<td align="center">1992</td>
+<td align="center">DVD, 数字电视</td>
 </tr>
 <tr>
 <td>MP3</td>
 <td>MPEG</td>
-<td style="text-align:center">1993</td>
-<td style="text-align:center">各个领域（旧）</td>
+<td align="center">1993</td>
+<td align="center">各个领域（旧）</td>
 </tr>
 <tr>
 <td>WMA</td>
 <td>Microsoft Inc.</td>
-<td style="text-align:center">1999</td>
-<td style="text-align:center">Windows</td>
+<td align="center">1999</td>
+<td align="center">Windows</td>
 </tr>
-</tbody>
-</table>
-<p><strong>AAC</strong><br>AAC（高级音频编码技术 Advanced Audio Coding)，出现于1997年，是基于MPEG-2的音频编码技术。由Fraunhofer IIS、杜比、苹果、AT&amp;T、索尼等公司共同开发，以取代mp3格式。2000年，MPEG-4标准出台，AAC从新整合了其特性，故现又称MPEG-4 AAC，即m4a。<br>苹果的CoreAudio对AAC有较好的支持。</p>
+<tr>
+<td><strong>AAC</strong></td>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>AAC（高级音频编码技术 Advanced Audio Coding)，出现于1997年，是基于MPEG-2的音频编码技术。由Fraunhofer IIS、杜比、苹果、AT&amp;T、索尼等公司共同开发，以取代mp3格式。2000年，MPEG-4标准出台，AAC从新整合了其特性，故现又称MPEG-4 AAC，即m4a。</td>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>苹果的CoreAudio对AAC有较好的支持。</td>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
 <h3 id="封装格式"><a href="#封装格式" class="headerlink" title="封装格式"></a>封装格式</h3><p>我们常见的视频格式MP4, AVI, RMVB, 3GP, MKV都是指视频的封装格式,大部分情况就是视频文件的后缀。常见的组合方式有：</p>
 <style>
 table th:nth-of-type(2) {
@@ -176,59 +345,57 @@ table th:nth-of-type(2) {
 <thead>
 <tr>
 <th>名称</th>
-<th style="text-align:left">简介</th>
+<th align="left">简介</th>
 <th>常用编码格式</th>
 <th>扩展名</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>Flash Video</td>
-<td style="text-align:left">由Adobe Flash延伸出来的的一种流行网络视频封装格式。随着视频网站的丰富，这个格式已经非常普及。</td>
+<td align="left">由Adobe Flash延伸出来的的一种流行网络视频封装格式。随着视频网站的丰富，这个格式已经非常普及。</td>
 <td>H.264+MP3</td>
 <td>flv</td>
 </tr>
 <tr>
 <td>AVI（Audio Video Interleave）</td>
-<td style="text-align:left">比较早的AVI是微软开发的。其含义是Audio Video Interactive，就是把视频和音频编码混合在一起存储。AVI也是最长寿的格式，已经存在10余年了，虽然发布过改版（V2.0于1996年发布），但已显老态。AVI格式上限制比较多，只能有一个视频轨道和一个音频轨道（现在有非标准插件可加入最多两个音频轨道），还可以有一些附加轨道，如文字等。AVI格式不提供任何控制功能。</td>
+<td align="left">比较早的AVI是微软开发的。其含义是Audio Video Interactive，就是把视频和音频编码混合在一起存储。AVI也是最长寿的格式，已经存在10余年了，虽然发布过改版（V2.0于1996年发布），但已显老态。AVI格式上限制比较多，只能有一个视频轨道和一个音频轨道（现在有非标准插件可加入最多两个音频轨道），还可以有一些附加轨道，如文字等。AVI格式不提供任何控制功能。</td>
 <td>Xvid+MP3</td>
 <td>avi</td>
 </tr>
 <tr>
 <td>WMV（Windows Media Video）</td>
-<td style="text-align:left">同样是微软开发的一组数字视频编解码格式的通称，ASF（Advanced Systems Format）是其封装格式。ASF封装的WMV档具有“数字版权保护”功能。</td>
+<td align="left">同样是微软开发的一组数字视频编解码格式的通称，ASF（Advanced Systems Format）是其封装格式。ASF封装的WMV档具有“数字版权保护”功能。</td>
 <td>VC-1+WMA</td>
 <td>wmv/asf</td>
 </tr>
 <tr>
 <td>MPEG（Moving Picture Experts Group）</td>
-<td style="text-align:left">是一个国际标准化组织（ISO）认可的媒体封装形式，受到大部分机器的支持。其存储方式多样，可以适应不同的应用环境。MPEG-4档的档容器格式在Part 1（mux）、14（asp）、15（avc）等中规定。MPEG的控制功能丰富，可以有多个视频（即角度）、音轨、字幕（位图字幕）等等。MPEG的一个简化版本3GP还广泛的用于准3G手机上。</td>
+<td align="left">是一个国际标准化组织（ISO）认可的媒体封装形式，受到大部分机器的支持。其存储方式多样，可以适应不同的应用环境。MPEG-4档的档容器格式在Part 1（mux）、14（asp）、15（avc）等中规定。MPEG的控制功能丰富，可以有多个视频（即角度）、音轨、字幕（位图字幕）等等。MPEG的一个简化版本3GP还广泛的用于准3G手机上。</td>
 <td>H.264+AAC,H263+AAC</td>
 <td>dat(VCD),vob(DVD), mp4, 3gp</td>
 </tr>
 <tr>
 <td>Matroska</td>
-<td style="text-align:left">是一种新的多媒体封装格式，这个封装格式可把多种不同编码的视频及16条或以上不同格式的音频和语言不同的字幕封装到一个Matroska Media档内。它也是其中一种开放源代码的多媒体封装格式。Matroska同时还可以提供非常好的交互功能，而且比MPEG更方便、强大。</td>
+<td align="left">是一种新的多媒体封装格式，这个封装格式可把多种不同编码的视频及16条或以上不同格式的音频和语言不同的字幕封装到一个Matroska Media档内。它也是其中一种开放源代码的多媒体封装格式。Matroska同时还可以提供非常好的交互功能，而且比MPEG更方便、强大。</td>
 <td>各种编码格式的组合</td>
 <td>mkv</td>
 </tr>
 <tr>
 <td>Real Video Real Media（RM）</td>
-<td style="text-align:left">是由RealNetworks开发的一种档容器。它通常只能容纳Real Video和Real Audio编码的媒体。该档带有一定的交互功能，允许编写脚本以控制播放。RM，尤其是可变比特率的RMVB格式，没有复杂的Profile/Level，制作起来较H.264视频格式简单，非常受到网络上传者的欢迎。此外很多人仍有RMVB体积小高质量的错误认知，这个不太正确的观念也导致很多人倾向使用rmvb，事实上在相同码率下，rmvb编码和H.264这个高度压缩的视频编码相比，体积会较大。</td>
+<td align="left">是由RealNetworks开发的一种档容器。它通常只能容纳Real Video和Real Audio编码的媒体。该档带有一定的交互功能，允许编写脚本以控制播放。RM，尤其是可变比特率的RMVB格式，没有复杂的Profile/Level，制作起来较H.264视频格式简单，非常受到网络上传者的欢迎。此外很多人仍有RMVB体积小高质量的错误认知，这个不太正确的观念也导致很多人倾向使用rmvb，事实上在相同码率下，rmvb编码和H.264这个高度压缩的视频编码相比，体积会较大。</td>
 <td>RealVideo+RealAudio</td>
 <td>rm/rmvb</td>
 </tr>
 <tr>
 <td>QuickTime File Format</td>
-<td style="text-align:left">是由苹果公司开发的容器。1998年2月11日，国际标准化组织（ISO）认可QuickTime文件格式作为MPEG-4标准的基础。QuickTime可存储的内容相当丰富，除了视频、音频以外还可支持图片、文字（文本字幕）等。</td>
+<td align="left">是由苹果公司开发的容器。1998年2月11日，国际标准化组织（ISO）认可QuickTime文件格式作为MPEG-4标准的基础。QuickTime可存储的内容相当丰富，除了视频、音频以外还可支持图片、文字（文本字幕）等。</td>
 <td>H.264+AAC</td>
 <td>mov, qt</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><strong>MP4</strong><br>mp4格式是H.264编码指定使用的标准封装格式，3GP是MP4格式的一种简化版本，减少了储存空间和较低的频宽需求，让手机上有限的储存空间可以使用。</p>
 <p>实际上这些封装格式对应的音频视频编码格式也不是固定的，就拿MP4来说，常见的MP4是由H.264+AAC封装，但是也由Xvid+AAC编码的可能。如果解码器不支持Xvid，则可能会出现无法播放，或者播放播放过程有声音无画面的情况。</p>
-<h2 id="苹果支持哪些音视频编码格式"><a href="#苹果支持哪些音视频编码格式" class="headerlink" title="苹果支持哪些音视频编码格式"></a>苹果支持哪些音视频编码格式</h2><p>我们可以在手机介绍界面，找到手机支持的视频格式<a href="https://www.apple.com/iphone/compare/" target="_blank" rel="noopener">iPhone - Compare Models - Apple</a></p>
+<h2 id="苹果支持哪些音视频编码格式"><a href="#苹果支持哪些音视频编码格式" class="headerlink" title="苹果支持哪些音视频编码格式"></a>苹果支持哪些音视频编码格式</h2><p>我们可以在手机介绍界面，找到手机支持的视频格式<a href="https://www.apple.com/iphone/compare/">iPhone - Compare Models - Apple</a></p>
 <p>这里我们可以找到对应iPhone7支持的视频编码格式：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-fa95df4f7ab02bf9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <blockquote>
 <p>Video formats supported: HEVC, H.264, MPEG-4 Part 2, and Motion JPEG</p>
@@ -236,23 +403,466 @@ table th:nth-of-type(2) {
 <p><strong>HEVC</strong><br>又叫H.265，iOS11+A9芯片才开始对HEVC的支持，iPhone6s及以前的设备不支持HEVC解码。<br>音频格式用红框标出来了，内容较多，可自行对比。</p>
 <h2 id="AVPlayer支持哪些视频格式"><a href="#AVPlayer支持哪些视频格式" class="headerlink" title="AVPlayer支持哪些视频格式"></a>AVPlayer支持哪些视频格式</h2><p>苹果设备支持音视频格式并不是就代表<code>AVPlayer</code>也支持那么多格式，确定<code>AVPlayer</code>的支持格式，我们可以查看<code>AVKit</code>中的一个API:</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//展示当前支持的音视频格式</span></span><br><span class="line"><span class="keyword">let</span> asset = <span class="type">AVURLAsset</span>.audiovisualTypes()</span><br><span class="line"><span class="comment">//打印asset可以得到（已经转过展示格式）</span></span><br><span class="line">asset type (</span><br><span class="line">    <span class="string">"audio/aacp"</span>,</span><br><span class="line">    <span class="string">"video/3gpp2"</span>,</span><br><span class="line">    <span class="string">"audio/mpeg3"</span>,</span><br><span class="line">    <span class="string">"audio/mp3"</span>,</span><br><span class="line">    <span class="string">"audio/x-caf"</span>,</span><br><span class="line">    <span class="string">"audio/mpeg"</span>,</span><br><span class="line">    <span class="string">"video/quicktime"</span>,</span><br><span class="line">    <span class="string">"audio/x-mpeg3"</span>,</span><br><span class="line">    <span class="string">"video/mp4"</span>,</span><br><span class="line">    <span class="string">"audio/wav"</span>,</span><br><span class="line">    <span class="string">"video/avi"</span>,</span><br><span class="line">    <span class="string">"audio/scpls"</span>,</span><br><span class="line">    <span class="string">"audio/mp4"</span>,</span><br><span class="line">    <span class="string">"audio/x-mpg"</span>,</span><br><span class="line">    <span class="string">"video/x-m4v"</span>,</span><br><span class="line">    <span class="string">"audio/x-wav"</span>,</span><br><span class="line">    <span class="string">"audio/x-aiff"</span>,</span><br><span class="line">    <span class="string">"application/vnd.apple.mpegurl"</span>,</span><br><span class="line">    <span class="string">"video/3gpp"</span>,</span><br><span class="line">    <span class="string">"text/vtt"</span>,</span><br><span class="line">    <span class="string">"audio/x-mpeg"</span>,</span><br><span class="line">    <span class="string">"audio/wave"</span>,</span><br><span class="line">    <span class="string">"audio/x-m4r"</span>,</span><br><span class="line">    <span class="string">"audio/x-mp3"</span>,</span><br><span class="line">    <span class="string">"audio/AMR"</span>,</span><br><span class="line">    <span class="string">"audio/aiff"</span>,</span><br><span class="line">    <span class="string">"audio/3gpp2"</span>,</span><br><span class="line">    <span class="string">"audio/aac"</span>,</span><br><span class="line">    <span class="string">"audio/mpg"</span>,</span><br><span class="line">    <span class="string">"audio/mpegurl"</span>,</span><br><span class="line">    <span class="string">"audio/x-m4b"</span>,</span><br><span class="line">    <span class="string">"application/mp4"</span>,</span><br><span class="line">    <span class="string">"audio/x-m4p"</span>,</span><br><span class="line">    <span class="string">"audio/x-scpls"</span>,</span><br><span class="line">    <span class="string">"audio/x-mpegurl"</span>,</span><br><span class="line">    <span class="string">"audio/x-aac"</span>,</span><br><span class="line">    <span class="string">"audio/3gpp"</span>,</span><br><span class="line">    <span class="string">"audio/basic"</span>,</span><br><span class="line">    <span class="string">"audio/x-m4a"</span>,</span><br><span class="line">    <span class="string">"application/x-mpegurl"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
 <p>还有一个方式用来判断当前格式是否可播：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//An extended MIME type string such as video/3gpp2; codecs="mp4v.20.9, mp4a.E1" or audio/aac; codecs="mp4a.E1".</span></span><br><span class="line"><span class="keyword">let</span> playable: <span class="type">Bool</span> = <span class="type">AVURLAsset</span>.isPlayableExtendedMIMEType(<span class="string">"video/3gpp2; codecs=\"mp4v.20.9, mp4a.E1\""</span>)</span><br></pre></td></tr></table></figure>
-<p>这里的MIMEType可以在这里找到<br><a href="https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html" target="_blank" rel="noopener">System-Declared Uniform Type Identifiers</a></p>
-<p><strong>总结</strong><br>由此我们可以下一个总结，AVPlayer支持的：<br>视频编码格式：<code>H.264</code>、<code>HEVC</code>(iPhone7及以后设备)、<code>MPEG-4</code>。<br>视频格式（封装格式）：.mp4、.mov、.m4v、.3gp、.avi等。<br>如果想支持更多的视频格式，可以使用使用第三方的框架，常用的视频编码和解码框架有<a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener">VLC</a>和<a href="https://github.com/FFmpeg/FFmpeg" target="_blank" rel="noopener">ffmpeg</a>。</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://zh.wikipedia.org/wiki/%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F" target="_blank" rel="noopener">视频文件格式 - 维基百科，自由的百科全书</a><br><a href="https://zh.wikipedia.org/wiki/%E9%9F%B3%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%AF%94%E8%BE%83" target="_blank" rel="noopener">音频编码格式的比较 - 维基百科，自由的百科全书</a></p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangferry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhangferry.github.io/2018/11/26/avplayer-supported-format/">http://zhangferry.github.io/2018/11/26/avplayer-supported-format/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhangferry.github.io">zhangferry</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/iOS/">iOS</a><a class="post-meta__tags" href="/tags/AVPlayer/">AVPlayer</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/12/01/monthly_5/"><i class="fa fa-chevron-left">  </i><span>iOS开发月报#5|201811</span></a></div><div class="next-post pull-right"><a href="/2018/10/31/monthly_4/"><span>iOS开发月报#4|201810</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
-  clientID: '012999c912503aff4cac',
-  clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-  repo: 'zhangferry.github.io',
-  owner: 'zhangferry',
-  admin: 'zhangferry',
-  id: md5(decodeURI(location.pathname)),
-  language: 'zh-CN'
-})
-gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2020 By zhangferry</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+<p>这里的MIMEType可以在这里找到<br><a href="https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html">System-Declared Uniform Type Identifiers</a></p>
+<p><strong>总结</strong><br>由此我们可以下一个总结，AVPlayer支持的：<br>视频编码格式：<code>H.264</code>、<code>HEVC</code>(iPhone7及以后设备)、<code>MPEG-4</code>。<br>视频格式（封装格式）：.mp4、.mov、.m4v、.3gp、.avi等。<br>如果想支持更多的视频格式，可以使用使用第三方的框架，常用的视频编码和解码框架有<a href="https://www.videolan.org/vlc/">VLC</a>和<a href="https://github.com/FFmpeg/FFmpeg">ffmpeg</a>。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://zh.wikipedia.org/wiki/%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F">视频文件格式 - 维基百科，自由的百科全书</a><br><a href="https://zh.wikipedia.org/wiki/%E9%9F%B3%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%AF%94%E8%BE%83">音频编码格式的比较 - 维基百科，自由的百科全书</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/AVPlayer/" rel="tag">AVPlayer</a>, <a class="has-link-grey -link" href="/tags/iOS/" rel="tag">iOS</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/12/01/monthly_5/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">iOS开发月报#5|201811</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/10/31/monthly_4/">
+                <span class="level-item">iOS开发月报#4|201810</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://zhangferry.github.io/2018/11/26/avplayer-supported-format/';
+        this.page.identifier = '2018/11/26/avplayer-supported-format/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-zhangferry-github-io' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="zhangferry">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        zhangferry
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        iOS开发
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            56
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/zhangferry" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/zhangferry">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Weibo" href="https://weibo.com/2947186387/profile">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="https://zhangferry.com/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#基本概念">
+        <span class="has-mr-6">1</span>
+        <span>基本概念</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#播放协议">
+        <span class="has-mr-6">1.1</span>
+        <span>播放协议</span>
+        </a></li><li>
+        <a class="is-flex" href="#视频编码">
+        <span class="has-mr-6">1.2</span>
+        <span>视频编码</span>
+        </a></li><li>
+        <a class="is-flex" href="#音频编码">
+        <span class="has-mr-6">1.3</span>
+        <span>音频编码</span>
+        </a></li><li>
+        <a class="is-flex" href="#封装格式">
+        <span class="has-mr-6">1.4</span>
+        <span>封装格式</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#苹果支持哪些音视频编码格式">
+        <span class="has-mr-6">2</span>
+        <span>苹果支持哪些音视频编码格式</span>
+        </a></li><li>
+        <a class="is-flex" href="#AVPlayer支持哪些视频格式">
+        <span class="has-mr-6">3</span>
+        <span>AVPlayer支持哪些视频格式</span>
+        </a></li><li>
+        <a class="is-flex" href="#参考文献">
+        <span class="has-mr-6">4</span>
+        <span>参考文献</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo_2.svg" alt="AVPlayer支持的视频格式" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 zhangferry&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://zhangferry.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

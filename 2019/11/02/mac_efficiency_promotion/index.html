@@ -1,28 +1,187 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="如何提升Mac下生产效率"><meta name="keywords" content="mac"><meta name="author" content="zhangferry"><meta name="copyright" content="zhangferry"><title>如何提升Mac下生产效率 | zhangferry</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工具篇"><span class="toc-number">1.</span> <span class="toc-text">工具篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#效率神器Alfred"><span class="toc-number">1.1.</span> <span class="toc-text">效率神器Alfred</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Youdao"><span class="toc-number">1.1.1.</span> <span class="toc-text">Youdao</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CodeVar"><span class="toc-number">1.1.2.</span> <span class="toc-text">CodeVar</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Github"><span class="toc-number">1.1.3.</span> <span class="toc-text">Github</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码片段"><span class="toc-number">1.1.4.</span> <span class="toc-text">代码片段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更多插件"><span class="toc-number">1.1.5.</span> <span class="toc-text">更多插件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dash"><span class="toc-number">1.2.</span> <span class="toc-text">Dash</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dash-Alfred"><span class="toc-number">1.2.1.</span> <span class="toc-text">Dash+Alfred</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令和快捷键篇"><span class="toc-number">2.</span> <span class="toc-text">命令和快捷键篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#几个常用命令行工具"><span class="toc-number">2.1.</span> <span class="toc-text">几个常用命令行工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用终端快捷键"><span class="toc-number">2.2.</span> <span class="toc-text">常用终端快捷键</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自己动手写一个工具"><span class="toc-number">3.</span> <span class="toc-text">自己动手写一个工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AppleScript"><span class="toc-number">3.1.</span> <span class="toc-text">AppleScript</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tell命令"><span class="toc-number">3.1.1.</span> <span class="toc-text">tell命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#set命令"><span class="toc-number">3.1.2.</span> <span class="toc-text">set命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AppleScript-Suite"><span class="toc-number">3.1.3.</span> <span class="toc-text">AppleScript Suite</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#脚本字典"><span class="toc-number">3.1.4.</span> <span class="toc-text">脚本字典</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写脚本"><span class="toc-number">3.2.</span> <span class="toc-text">编写脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#定位文件路径"><span class="toc-number">3.2.1.</span> <span class="toc-text">定位文件路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在iTerm中输入命令"><span class="toc-number">3.2.2.</span> <span class="toc-text">在iTerm中输入命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AppleScript-Alfred"><span class="toc-number">3.3.</span> <span class="toc-text">AppleScript+Alfred</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">zhangferry</div><div class="author-info__description text-center">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</div><div class="follow-button"><a href="https://github.com/zhangferry">Follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">56</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">27</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://colin1994.github.io/">Colin</a><a class="author-info-links__name text-center" href="http://www.evenvi.com/">Evenvi</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zhangferry</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">如何提升Mac下生产效率</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-11-02</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="工具篇"><a href="#工具篇" class="headerlink" title="工具篇"></a>工具篇</h2><h3 id="效率神器Alfred"><a href="#效率神器Alfred" class="headerlink" title="效率神器Alfred"></a>效率神器Alfred</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102170129.png" alt=""><br>可以从Alfred官网下载，免费版没有workflow功能，付费购买Powerpack可以使用。建议大家购买正版，如果想找破解版，网上也有很多，自行搜索。</p>
-<p>这有一篇比较详细的Alfred的使用<a href="http://louiszhai.github.io/2018/05/31/alfred/" target="_blank" rel="noopener">教程</a>，大部分都被涵盖进去了。这里主要介绍几种对开发帮助比较大的workflow插件，官方workflows地址在<a href="https://www.alfredapp.com/workflows/" target="_blank" rel="noopener">这里</a>，可以根据需要选择自己喜欢的插件使用。<br><a id="more"></a></p>
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>如何提升Mac下生产效率 - zhangferry</title>
+
+
+    <meta name="description" content="工具篇效率神器Alfred可以从Alfred官网下载，免费版没有workflow功能，付费购买Powerpack可以使用。建议大家购买正版，如果想找破解版，网上也有很多，自行搜索。 这有一篇比较详细的Alfred的使用教程，大部分都被涵盖进去了。这里主要介绍几种对开发帮助比较大的workflow插件，官方workflows地址在这里，可以根据需要选择自己喜欢的插件使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何提升Mac下生产效率">
+<meta property="og:url" content="http://zhangferry.github.io/2019/11/02/mac_efficiency_promotion/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="工具篇效率神器Alfred可以从Alfred官网下载，免费版没有workflow功能，付费购买Powerpack可以使用。建议大家购买正版，如果想找破解版，网上也有很多，自行搜索。 这有一篇比较详细的Alfred的使用教程，大部分都被涵盖进去了。这里主要介绍几种对开发帮助比较大的workflow插件，官方workflows地址在这里，可以根据需要选择自己喜欢的插件使用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
+<meta property="article:published_time" content="2019-11-02T10:40:57.000Z">
+<meta property="article:modified_time" content="2020-03-07T05:40:17.464Z">
+<meta property="article:author" content="zhangferry">
+<meta property="article:tag" content="mac">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangferry.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo_2.svg" alt="如何提升Mac下生产效率" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangferry">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-02T10:40:57.000Z">2019-11-02</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 分钟 读完 (大约 1882 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                如何提升Mac下生产效率
+            
+        </h1>
+        <div class="content">
+            <h2 id="工具篇"><a href="#工具篇" class="headerlink" title="工具篇"></a>工具篇</h2><h3 id="效率神器Alfred"><a href="#效率神器Alfred" class="headerlink" title="效率神器Alfred"></a>效率神器Alfred</h3><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102170129.png" alt=""><br>可以从Alfred官网下载，免费版没有workflow功能，付费购买Powerpack可以使用。建议大家购买正版，如果想找破解版，网上也有很多，自行搜索。</p>
+<p>这有一篇比较详细的Alfred的使用<a href="http://louiszhai.github.io/2018/05/31/alfred/">教程</a>，大部分都被涵盖进去了。这里主要介绍几种对开发帮助比较大的workflow插件，官方workflows地址在<a href="https://www.alfredapp.com/workflows/">这里</a>，可以根据需要选择自己喜欢的插件使用。</p>
+<a id="more"></a>
 <h4 id="Youdao"><a href="#Youdao" class="headerlink" title="Youdao"></a>Youdao</h4><p>其实在开发过程中经常遇到一些与英文打交道的场景，除了系统自带的字典功能，我们常用的就是有道了。直接调起客户端去搜也很方便，但是如果是频繁操作或者是在全屏下操作，还需要跑到有道里面搜一个单词，搜一句话还是会显得麻烦。</p>
-<p>这里有一个Youdao的workflow插件。<a href="http://www.packal.org/workflow/youdao-alfred" target="_blank" rel="noopener">下载地址</a>。安装之后可以通过在Alfred中键入<code>yd {query}</code>调出有道字典，并直接搜索翻译结果。使用Enter复制翻译结果，支持多种语言和句子翻译。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102170404.png" alt=""></p>
-<h4 id="CodeVar"><a href="#CodeVar" class="headerlink" title="CodeVar"></a>CodeVar</h4><p>生成可用的代码变量，解决你不知道该如何命名一个函数，类型，属性的烦恼。支持小驼峰（<code>xt</code>）、大驼峰（<code>dt</code>）、下划线(<code>xh</code>)、中划线（<code>zh</code>）、常量命名（<code>cl</code>）这几种命名方式。<br><a href="https://github.com/xudaolong/CodeVar" target="_blank" rel="noopener">下载地址</a><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102171226.png" alt=""></p>
-<h4 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h4><p>可以直接在Alfred的输入框搜索github仓库。<br><a href="https://github.com/gharlan/alfred-github-workflow" target="_blank" rel="noopener">下载地址</a><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102172412.png" alt=""></p>
-<h4 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h4><p>Snippets。可以将自己常用的代码片段放进去，让后通过快捷键调出Snippets，直接使用代码。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span>&lt;#Name#&gt;<span class="params">()</span></span> &#123;</span><br><span class="line">    &lt;#statements#&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="更多插件"><a href="#更多插件" class="headerlink" title="更多插件"></a>更多插件</h4><p><strong><a href="http://www.alfredworkflow.com/" target="_blank" rel="noopener">Workflow官方插件</a></strong><br><strong><a href="http://www.packal.org/" target="_blank" rel="noopener">packal</a></strong></p>
+<p>这里有一个Youdao的workflow插件。<a href="http://www.packal.org/workflow/youdao-alfred">下载地址</a>。安装之后可以通过在Alfred中键入<code>yd {query}</code>调出有道字典，并直接搜索翻译结果。使用Enter复制翻译结果，支持多种语言和句子翻译。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102170404.png" alt=""></p>
+<h4 id="CodeVar"><a href="#CodeVar" class="headerlink" title="CodeVar"></a>CodeVar</h4><p>生成可用的代码变量，解决你不知道该如何命名一个函数，类型，属性的烦恼。支持小驼峰（<code>xt</code>）、大驼峰（<code>dt</code>）、下划线(<code>xh</code>)、中划线（<code>zh</code>）、常量命名（<code>cl</code>）这几种命名方式。<br><a href="https://github.com/xudaolong/CodeVar">下载地址</a><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102171226.png" alt=""></p>
+<h4 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h4><p>可以直接在Alfred的输入框搜索github仓库。<br><a href="https://github.com/gharlan/alfred-github-workflow">下载地址</a><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102172412.png" alt=""></p>
+<h4 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h4><p>Snippets。可以将自己常用的代码片段放进去，让后通过快捷键调出Snippets，直接使用代码。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span>&lt;#Name#&gt;<span class="params">()</span></span> &#123;</span><br><span class="line">    &lt;#statements#&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="更多插件"><a href="#更多插件" class="headerlink" title="更多插件"></a>更多插件</h4><p><strong><a href="http://www.alfredworkflow.com/">Workflow官方插件</a></strong><br><strong><a href="http://www.packal.org/">packal</a></strong></p>
 <p>第一个插件库，好像很久不维护了，很多插件链接都失效了。第二个packal是alfred的一个活跃论坛，比较推荐到这里发现适合你的好东西。另外github，各个博主的推荐文章也有很多，基本你能想到的搜索主题都可以找到对应的workflow插件，这里就不得不佩服社区力量的强大，还有就是这个自定义插件功能做的太棒了。</p>
-<h3 id="Dash"><a href="#Dash" class="headerlink" title="Dash"></a>Dash</h3><p>文档查询，<a href="https://kapeli.com/dash" target="_blank" rel="noopener">下载地址</a><br>遇到问题最好的解决方式就是查文档，API描述能消除大部分自己的疑虑，Dash支持几十种语言的文档查询，还支持文档注释，tag功能。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102173411.png" alt=""></p>
+<h3 id="Dash"><a href="#Dash" class="headerlink" title="Dash"></a>Dash</h3><p>文档查询，<a href="https://kapeli.com/dash">下载地址</a><br>遇到问题最好的解决方式就是查文档，API描述能消除大部分自己的疑虑，Dash支持几十种语言的文档查询，还支持文档注释，tag功能。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102173411.png" alt=""></p>
 <h4 id="Dash-Alfred"><a href="#Dash-Alfred" class="headerlink" title="Dash+Alfred"></a>Dash+Alfred</h4><p>Dash本身支持很多IDE的插件，其中就包括Alfred插件，可以在<code>Preferences-&gt;Integration</code>中找到Alfred。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102173540.png" alt=""><br>使用方式如下：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102173828.png" alt=""></p>
-<h2 id="命令和快捷键篇"><a href="#命令和快捷键篇" class="headerlink" title="命令和快捷键篇"></a>命令和快捷键篇</h2><h3 id="几个常用命令行工具"><a href="#几个常用命令行工具" class="headerlink" title="几个常用命令行工具"></a>几个常用命令行工具</h3><p><strong>say</strong><br>say命令可以读出英文<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ say hello world</span><br></pre></td></tr></table></figure></p>
-<p><strong>echo</strong><br>echo是输出命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输出shell本身的文件名</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$0</span></span><br></pre></td></tr></table></figure></p>
-<p>将一段内容重定向至某一文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">"5.0"</span> &gt; .swift-version</span><br></pre></td></tr></table></figure></p>
-<p><strong>man</strong><br>man命令可以查看某个命令行的详细使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ man <span class="built_in">echo</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>curl</strong><br>curl为client url缩写。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ curl www.baidu.com	<span class="comment">#查看网页源码</span></span><br><span class="line">$ curl -i www.baidu.com <span class="comment">#显示头文件</span></span><br><span class="line">$ curl -o example.html https://www.example.com	<span class="comment">#将服务器回应保存成文件</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="命令和快捷键篇"><a href="#命令和快捷键篇" class="headerlink" title="命令和快捷键篇"></a>命令和快捷键篇</h2><h3 id="几个常用命令行工具"><a href="#几个常用命令行工具" class="headerlink" title="几个常用命令行工具"></a>几个常用命令行工具</h3><p><strong>say</strong><br>say命令可以读出英文</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ say hello world</span><br></pre></td></tr></table></figure>
+<p><strong>echo</strong><br>echo是输出命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输出shell本身的文件名</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$0</span></span><br></pre></td></tr></table></figure>
+<p>将一段内容重定向至某一文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">"5.0"</span> &gt; .swift-version</span><br></pre></td></tr></table></figure>
+<p><strong>man</strong><br>man命令可以查看某个命令行的详细使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ man <span class="built_in">echo</span></span><br></pre></td></tr></table></figure>
+<p><strong>curl</strong><br>curl为client url缩写。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ curl www.baidu.com	<span class="comment">#查看网页源码</span></span><br><span class="line">$ curl -i www.baidu.com <span class="comment">#显示头文件</span></span><br><span class="line">$ curl -o example.html https://www.example.com	<span class="comment">#将服务器回应保存成文件</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="常用终端快捷键"><a href="#常用终端快捷键" class="headerlink" title="常用终端快捷键"></a>常用终端快捷键</h3><table>
 <thead>
 <tr>
@@ -30,8 +189,7 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>Ctrl+a</td>
 <td>跳到行首</td>
 </tr>
@@ -59,19 +217,19 @@
 <td>Ctrl+D</td>
 <td>关闭垂直分屏</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h2 id="自己动手写一个工具"><a href="#自己动手写一个工具" class="headerlink" title="自己动手写一个工具"></a>自己动手写一个工具</h2><h3 id="AppleScript"><a href="#AppleScript" class="headerlink" title="AppleScript"></a>AppleScript</h3><p>编写自动化工具就要选一中脚本语言，这里选择了AppleScript。</p>
 <p>这是因为:</p>
 <ul>
 <li>它语法简单，并接近自然语言。（没有标点符号）</li>
 <li>语法查询十分方便。（系统原生提供语法查询字典）</li>
 <li>mac自带<code>Script Editor</code>可以实现编写运行并检查语法</li>
-<li>mac上主流应用都含有AppleScript的语法支持<br>关于AppleScript这有一份简单的<a href="https://sspai.com/post/46912" target="_blank" rel="noopener">教程</a>。<br>我们摘取其中几点，简要讲下AppleScript的语法。</li>
+<li>mac上主流应用都含有AppleScript的语法支持<br>关于AppleScript这有一份简单的<a href="https://sspai.com/post/46912">教程</a>。<br>我们摘取其中几点，简要讲下AppleScript的语法。</li>
 </ul>
 <h4 id="tell命令"><a href="#tell命令" class="headerlink" title="tell命令"></a>tell命令</h4><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"Safari"</span></span><br><span class="line">    <span class="built_in">activate</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">tell</span></span><br></pre></td></tr></table></figure>
 <p>告诉Safari启动。<br><code>tell</code>命令可以嵌套使用。</p>
-<h4 id="set命令"><a href="#set命令" class="headerlink" title="set命令"></a>set命令</h4><p>定义变量到剪贴板。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set myVariables to clipboard</span><br></pre></td></tr></table></figure></p>
+<h4 id="set命令"><a href="#set命令" class="headerlink" title="set命令"></a>set命令</h4><p>定义变量到剪贴板。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set myVariables to clipboard</span><br></pre></td></tr></table></figure>
 <h4 id="AppleScript-Suite"><a href="#AppleScript-Suite" class="headerlink" title="AppleScript Suite"></a>AppleScript Suite</h4><p>AppleScript Suite就是 <code>AppleScript</code> 类（class），及其元素（element）和属性（property）的集合。这个就是OmniFocus在<code>AppleScript</code>上定义的Suite。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191030090210.png" alt=""></p>
 <h4 id="脚本字典"><a href="#脚本字典" class="headerlink" title="脚本字典"></a>脚本字典</h4><p>打开「脚本编辑器」 → 新建一个脚本 → 用快捷键 <code>Command+Shift+O</code> 打开 AppleScript 字典（Dictionary）。这个打开之后就能看到各个应用的Suite，我们可以通过这些说明，来完成功能的使用。</p>
 <h3 id="编写脚本"><a href="#编写脚本" class="headerlink" title="编写脚本"></a>编写脚本</h3><p>有了上面的基础我们来编写一个选中文件夹，然后让iTerm2跳转到指定目录的脚本。</p>
@@ -79,23 +237,523 @@
 <p>现在我们通过tell和set命令已经获取到了<code>cd pathFile</code>这段文本。</p>
 <h4 id="在iTerm中输入命令"><a href="#在iTerm中输入命令" class="headerlink" title="在iTerm中输入命令"></a>在iTerm中输入命令</h4><p>上一步获取到了文本命令，接下来我们需要将这段命令在iTerm中执行。那怎么将上面的文本写入iTerm中呢？</p>
 <p>大致思路为：打开iTerm &gt; 创建窗口 &gt; 写入命令。</p>
-<p>接下来就是如何实现这几个步骤，通过查看iTerm的Suite:<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102183300.png" alt=""><br>我们可以找到<code>create window with default profile</code>，<code>write</code>命令。有可能这就是我们需要的也有可能不是，所以有些时候是需要尝试出来的。最终实现上面步骤的代码为：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"iTerm"</span></span><br><span class="line">	create window <span class="keyword">with</span> default profile</span><br><span class="line">	<span class="keyword">tell</span> current session <span class="keyword">of</span> current window</span><br><span class="line">		<span class="built_in">write</span> <span class="built_in">text</span> pathFile</span><br><span class="line">	<span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">tell</span></span><br></pre></td></tr></table></figure></p>
-<p>然后完整代码为：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"Finder"</span></span><br><span class="line">    <span class="comment">-- get selection path</span></span><br><span class="line">    <span class="keyword">set</span> pathFile <span class="keyword">to</span> selection <span class="keyword">as</span> <span class="built_in">text</span></span><br><span class="line">    <span class="keyword">set</span> pathFile <span class="keyword">to</span> <span class="keyword">get</span> <span class="keyword">POSIX path</span> <span class="keyword">of</span> pathFile</span><br><span class="line">    <span class="comment">-- fix space problem in the directory</span></span><br><span class="line">    <span class="keyword">set</span> pathFile <span class="keyword">to</span> <span class="keyword">quoted form</span> <span class="keyword">of</span> pathFile</span><br><span class="line">    <span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"iTerm"</span></span><br><span class="line">	   create window <span class="keyword">with</span> default profile</span><br><span class="line">	   <span class="keyword">tell</span> current session <span class="keyword">of</span> current window</span><br><span class="line">		  <span class="built_in">write</span> <span class="built_in">text</span> pathFile</span><br><span class="line">	   <span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">tell</span></span><br></pre></td></tr></table></figure></p>
+<p>接下来就是如何实现这几个步骤，通过查看iTerm的Suite:<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102183300.png" alt=""><br>我们可以找到<code>create window with default profile</code>，<code>write</code>命令。有可能这就是我们需要的也有可能不是，所以有些时候是需要尝试出来的。最终实现上面步骤的代码为：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"iTerm"</span></span><br><span class="line">	create window <span class="keyword">with</span> default profile</span><br><span class="line">	<span class="keyword">tell</span> current session <span class="keyword">of</span> current window</span><br><span class="line">		<span class="built_in">write</span> <span class="built_in">text</span> pathFile</span><br><span class="line">	<span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">tell</span></span><br></pre></td></tr></table></figure>
+<p>然后完整代码为：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"Finder"</span></span><br><span class="line">    <span class="comment">-- get selection path</span></span><br><span class="line">    <span class="keyword">set</span> pathFile <span class="keyword">to</span> selection <span class="keyword">as</span> <span class="built_in">text</span></span><br><span class="line">    <span class="keyword">set</span> pathFile <span class="keyword">to</span> <span class="keyword">get</span> <span class="keyword">POSIX path</span> <span class="keyword">of</span> pathFile</span><br><span class="line">    <span class="comment">-- fix space problem in the directory</span></span><br><span class="line">    <span class="keyword">set</span> pathFile <span class="keyword">to</span> <span class="keyword">quoted form</span> <span class="keyword">of</span> pathFile</span><br><span class="line">    <span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"iTerm"</span></span><br><span class="line">	   create window <span class="keyword">with</span> default profile</span><br><span class="line">	   <span class="keyword">tell</span> current session <span class="keyword">of</span> current window</span><br><span class="line">		  <span class="built_in">write</span> <span class="built_in">text</span> pathFile</span><br><span class="line">	   <span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">tell</span></span><br></pre></td></tr></table></figure>
 <h3 id="AppleScript-Alfred"><a href="#AppleScript-Alfred" class="headerlink" title="AppleScript+Alfred"></a>AppleScript+Alfred</h3><p>上面过程我们编写了脚本，但是怎么方便的使用它呢？可以利用Alfred。<br>在workflow中，我们增加一个Hotkeys。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102184419.png" alt=""></p>
 <p>然后绑定快捷键<code>Command+O</code>，从快捷键脱出一条线，选择<code>Actions &gt; Run Script</code>，选择Language为AS(AppleScript)，粘贴我们刚才写的代码，保存即可。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102184556.png" alt=""></p>
 <p>之后我们可以选中文件夹，触发热键<code>Command+O</code>就能直接在iTerm中定位至改目录了。</p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangferry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhangferry.github.io/2019/11/02/mac_efficiency_promotion/">http://zhangferry.github.io/2019/11/02/mac_efficiency_promotion/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhangferry.github.io">zhangferry</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mac/">mac</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/11/03/2019_11_3/"><i class="fa fa-chevron-left">  </i><span>七院第一天（11月3号）</span></a></div><div class="next-post pull-right"><a href="/2019/08/31/diagram_tcpip_concepts/"><span>《图解TCP/IP》总结</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
-  clientID: '012999c912503aff4cac',
-  clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-  repo: 'zhangferry.github.io',
-  owner: 'zhangferry',
-  admin: 'zhangferry',
-  id: md5(decodeURI(location.pathname)),
-  language: 'zh-CN'
-})
-gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2020 By zhangferry</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/mac/" rel="tag">mac</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/11/03/2019_11_3/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">七院第一天（11月3号）</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/31/diagram_tcpip_concepts/">
+                <span class="level-item">《图解TCP/IP》总结</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://zhangferry.github.io/2019/11/02/mac_efficiency_promotion/';
+        this.page.identifier = '2019/11/02/mac_efficiency_promotion/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-zhangferry-github-io' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="zhangferry">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        zhangferry
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        iOS开发
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            56
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/zhangferry" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/zhangferry">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Weibo" href="https://weibo.com/2947186387/profile">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="https://zhangferry.com/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#工具篇">
+        <span class="has-mr-6">1</span>
+        <span>工具篇</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#效率神器Alfred">
+        <span class="has-mr-6">1.1</span>
+        <span>效率神器Alfred</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Youdao">
+        <span class="has-mr-6">1.1.1</span>
+        <span>Youdao</span>
+        </a></li><li>
+        <a class="is-flex" href="#CodeVar">
+        <span class="has-mr-6">1.1.2</span>
+        <span>CodeVar</span>
+        </a></li><li>
+        <a class="is-flex" href="#Github">
+        <span class="has-mr-6">1.1.3</span>
+        <span>Github</span>
+        </a></li><li>
+        <a class="is-flex" href="#代码片段">
+        <span class="has-mr-6">1.1.4</span>
+        <span>代码片段</span>
+        </a></li><li>
+        <a class="is-flex" href="#更多插件">
+        <span class="has-mr-6">1.1.5</span>
+        <span>更多插件</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Dash">
+        <span class="has-mr-6">1.2</span>
+        <span>Dash</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Dash-Alfred">
+        <span class="has-mr-6">1.2.1</span>
+        <span>Dash+Alfred</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#命令和快捷键篇">
+        <span class="has-mr-6">2</span>
+        <span>命令和快捷键篇</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#几个常用命令行工具">
+        <span class="has-mr-6">2.1</span>
+        <span>几个常用命令行工具</span>
+        </a></li><li>
+        <a class="is-flex" href="#常用终端快捷键">
+        <span class="has-mr-6">2.2</span>
+        <span>常用终端快捷键</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#自己动手写一个工具">
+        <span class="has-mr-6">3</span>
+        <span>自己动手写一个工具</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#AppleScript">
+        <span class="has-mr-6">3.1</span>
+        <span>AppleScript</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#tell命令">
+        <span class="has-mr-6">3.1.1</span>
+        <span>tell命令</span>
+        </a></li><li>
+        <a class="is-flex" href="#set命令">
+        <span class="has-mr-6">3.1.2</span>
+        <span>set命令</span>
+        </a></li><li>
+        <a class="is-flex" href="#AppleScript-Suite">
+        <span class="has-mr-6">3.1.3</span>
+        <span>AppleScript Suite</span>
+        </a></li><li>
+        <a class="is-flex" href="#脚本字典">
+        <span class="has-mr-6">3.1.4</span>
+        <span>脚本字典</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#编写脚本">
+        <span class="has-mr-6">3.2</span>
+        <span>编写脚本</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#定位文件路径">
+        <span class="has-mr-6">3.2.1</span>
+        <span>定位文件路径</span>
+        </a></li><li>
+        <a class="is-flex" href="#在iTerm中输入命令">
+        <span class="has-mr-6">3.2.2</span>
+        <span>在iTerm中输入命令</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#AppleScript-Alfred">
+        <span class="has-mr-6">3.3</span>
+        <span>AppleScript+Alfred</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo_2.svg" alt="如何提升Mac下生产效率" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 zhangferry&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://zhangferry.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

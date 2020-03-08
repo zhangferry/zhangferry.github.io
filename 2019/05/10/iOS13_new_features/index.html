@@ -1,18 +1,171 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="【译】iOS13新特性抢鲜看"><meta name="keywords" content="iOS,翻译"><meta name="author" content="zhangferry"><meta name="copyright" content="zhangferry"><title>【译】iOS13新特性抢鲜看 | zhangferry</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#初览"><span class="toc-number">1.</span> <span class="toc-text">初览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我们可以期待什么"><span class="toc-number">2.</span> <span class="toc-text">我们可以期待什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可能的特性"><span class="toc-number">3.</span> <span class="toc-text">可能的特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#夜间模式"><span class="toc-number">3.1.</span> <span class="toc-text">夜间模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iPad调整"><span class="toc-number">3.2.</span> <span class="toc-text">iPad调整</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新的手势"><span class="toc-number">3.3.</span> <span class="toc-text">新的手势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#音量指示器更新"><span class="toc-number">3.4.</span> <span class="toc-text">音量指示器更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#邮件"><span class="toc-number">3.5.</span> <span class="toc-text">邮件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨平台的iOS和Mac应用"><span class="toc-number">3.6.</span> <span class="toc-text">跨平台的iOS和Mac应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新版“找到我的手机”"><span class="toc-number">3.7.</span> <span class="toc-text">新版“找到我的手机”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地图"><span class="toc-number">3.8.</span> <span class="toc-text">地图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提醒事项"><span class="toc-number">3.9.</span> <span class="toc-text">提醒事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图书"><span class="toc-number">3.10.</span> <span class="toc-text">图书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#家庭"><span class="toc-number">3.11.</span> <span class="toc-text">家庭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#健康"><span class="toc-number">3.12.</span> <span class="toc-text">健康</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他新功能"><span class="toc-number">4.</span> <span class="toc-text">其他新功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#速度提升和bug修复"><span class="toc-number">4.1.</span> <span class="toc-text">速度提升和bug修复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#键盘"><span class="toc-number">4.2.</span> <span class="toc-text">键盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字体"><span class="toc-number">4.3.</span> <span class="toc-text">字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新分享栏"><span class="toc-number">4.4.</span> <span class="toc-text">更新分享栏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Safari"><span class="toc-number">4.5.</span> <span class="toc-text">Safari</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#照片实况更新"><span class="toc-number">4.6.</span> <span class="toc-text">照片实况更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#嗨Siri"><span class="toc-number">4.7.</span> <span class="toc-text">嗨Siri</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#屏幕使用时间"><span class="toc-number">4.8.</span> <span class="toc-text">屏幕使用时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#界面的更新"><span class="toc-number">4.9.</span> <span class="toc-text">界面的更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件应用的修改"><span class="toc-number">4.10.</span> <span class="toc-text">文件应用的修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新版的Emojis"><span class="toc-number">4.11.</span> <span class="toc-text">新版的Emojis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#辅助功能"><span class="toc-number">4.12.</span> <span class="toc-text">辅助功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iPad-Pro支持鼠标"><span class="toc-number">4.13.</span> <span class="toc-text">iPad Pro支持鼠标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跟开发者相关的变化"><span class="toc-number">5.</span> <span class="toc-text">跟开发者相关的变化</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">zhangferry</div><div class="author-info__description text-center">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</div><div class="follow-button"><a href="https://github.com/zhangferry">Follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">56</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">27</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://colin1994.github.io/">Colin</a><a class="author-info-links__name text-center" href="http://www.evenvi.com/">Evenvi</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zhangferry</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">【译】iOS13新特性抢鲜看</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-05-10</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
-<p><a href="https://www.macrumors.com/roundup/ios-13/" target="_blank" rel="noopener">原文链接</a><br>作者：MacRumors Staff<br>原文日期：2019-5-2</p>
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>【译】iOS13新特性抢鲜看 - zhangferry</title>
+
+
+    <meta name="description" content="原文链接作者：MacRumors Staff原文日期：2019-5-2  初览iOS13是苹果针对iPhone和iPad的下一代操作系统，将会在6月份的WWDC上和大家初次见面。传闻的功能包括夜间模式、iPad界面更新和新的主屏幕。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【译】iOS13新特性抢鲜看">
+<meta property="og:url" content="http://zhangferry.github.io/2019/05/10/iOS13_new_features/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="原文链接作者：MacRumors Staff原文日期：2019-5-2  初览iOS13是苹果针对iPhone和iPad的下一代操作系统，将会在6月份的WWDC上和大家初次见面。传闻的功能包括夜间模式、iPad界面更新和新的主屏幕。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
+<meta property="article:published_time" content="2019-05-10T15:22:25.000Z">
+<meta property="article:modified_time" content="2019-05-17T15:18:47.158Z">
+<meta property="article:author" content="zhangferry">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="翻译">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangferry.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo_2.svg" alt="【译】iOS13新特性抢鲜看" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangferry">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-10T15:22:25.000Z">2019-05-10</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    18 分钟 读完 (大约 2763 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                【译】iOS13新特性抢鲜看
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p><a href="https://www.macrumors.com/roundup/ios-13/">原文链接</a><br>作者：MacRumors Staff<br>原文日期：2019-5-2</p>
 </blockquote>
-<h2 id="初览"><a href="#初览" class="headerlink" title="初览"></a>初览</h2><p>iOS13是苹果针对iPhone和iPad的下一代操作系统，将会在6月份的WWDC上和大家初次见面。传闻的功能包括夜间模式、iPad界面更新和新的主屏幕。<br><a id="more"></a></p>
+<h2 id="初览"><a href="#初览" class="headerlink" title="初览"></a>初览</h2><p>iOS13是苹果针对iPhone和iPad的下一代操作系统，将会在6月份的WWDC上和大家初次见面。传闻的功能包括夜间模式、iPad界面更新和新的主屏幕。</p>
+<a id="more"></a>
 <h2 id="我们可以期待什么"><a href="#我们可以期待什么" class="headerlink" title="我们可以期待什么"></a>我们可以期待什么</h2><p>苹果位于加州的总部已经在开发iOS操作系统的下一个升级版本，该系统可以在iPhone、iPad和iPod touch上运行。</p>
-<p>虽然目前我们对这款新软件的了解有限，但我们已经听到了一些有趣的传言，这些传言透露了一些我们有望在此次更新中看到的功能和变化，根据之前的更新，这次更新将被命名为“iOS 13”。<a href="https://www.macrumors.com/roundup/ios-12/" target="_blank" rel="noopener">iOS 12</a>标志着苹果iOS开发政策的重大转变，工程师们现在有了更多的自由，可以在必要时推出尚未准备好的功能。</p>
+<p>虽然目前我们对这款新软件的了解有限，但我们已经听到了一些有趣的传言，这些传言透露了一些我们有望在此次更新中看到的功能和变化，根据之前的更新，这次更新将被命名为“iOS 13”。<a href="https://www.macrumors.com/roundup/ios-12/">iOS 12</a>标志着苹果iOS开发政策的重大转变，工程师们现在有了更多的自由，可以在必要时推出尚未准备好的功能。</p>
 <p>由于这个原因，iOS 13可能比之前的更新更加成熟，同时，任何未最终确定的功能都有可能被推迟。</p>
 <p>由于苹果在iOS 12到iOS 13之间专注于bug修复和底层改进所引起的延迟，我们已经获取了惊人数量的泄漏信息，所以可以预见6月份iOS 13不少的特性。</p>
 <p>我们可以预见的功能包括夜晚模式，音量外观的改变，iPad上关于多任务的更新，新的撤销手势，一个合并了“寻找手机”和“寻找朋友”的APP：“寻找我的手机”，闹钟和邮件的更新，以及像iOS app可以很容易的在Mac上使用这样的扩平台能力。</p>
@@ -43,26 +196,556 @@
 <h3 id="屏幕使用时间"><a href="#屏幕使用时间" class="headerlink" title="屏幕使用时间"></a>屏幕使用时间</h3><p>屏幕使用时间功能将增加一个新功能用于限制孩子对手机的使用，可以设定一个可以和不可以玩的时间。</p>
 <h3 id="界面的更新"><a href="#界面的更新" class="headerlink" title="界面的更新"></a>界面的更新</h3><p>当启动多任务处理面板并关闭应用程序时，将会有一个新的动画，iPad的主屏幕将会发生一些变化。</p>
 <h3 id="文件应用的修改"><a href="#文件应用的修改" class="headerlink" title="文件应用的修改"></a>文件应用的修改</h3><p>虽然关于一个改版后的文件应用程序会是什么样子的细节很少，但据说苹果正在为它开发新的功能，比如更好的第三方软件集成。</p>
-<h3 id="新版的Emojis"><a href="#新版的Emojis" class="headerlink" title="新版的Emojis"></a>新版的Emojis</h3><p>新表情符号将不会在iOS 13发布时出现，但在2019年晚些时候的iOS 13更新中，苹果将会引入他们。Unicode联盟已经确定了加入表情符号标准的<a href="https://www.macrumors.com/2019/02/05/2019-new-emoji-list/" target="_blank" rel="noopener">字符</a>，其中包括火鸟、水獭、华夫饼、树懒、白心、牵手的人、冰块、潜水器、猩猩、果汁盒、沙拉三明治等等。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190510115235.jpg" alt=""></p>
+<h3 id="新版的Emojis"><a href="#新版的Emojis" class="headerlink" title="新版的Emojis"></a>新版的Emojis</h3><p>新表情符号将不会在iOS 13发布时出现，但在2019年晚些时候的iOS 13更新中，苹果将会引入他们。Unicode联盟已经确定了加入表情符号标准的<a href="https://www.macrumors.com/2019/02/05/2019-new-emoji-list/">字符</a>，其中包括火鸟、水獭、华夫饼、树懒、白心、牵手的人、冰块、潜水器、猩猩、果汁盒、沙拉三明治等等。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190510115235.jpg" alt=""></p>
 <h3 id="辅助功能"><a href="#辅助功能" class="headerlink" title="辅助功能"></a>辅助功能</h3><p>一个更全面的辅助功能菜单将出现在设置应用程序的主页上，其中包括改进的助听器支持等。</p>
 <h3 id="iPad-Pro支持鼠标"><a href="#iPad-Pro支持鼠标" class="headerlink" title="iPad Pro支持鼠标"></a>iPad Pro支持鼠标</h3><p>有传言称，苹果公司可能计划在iPad Pro上添加USB鼠标支持，作为一项辅助功能，而不需要使用适配器。</p>
 <p>据报道，iPad Pro的USB-C接口将允许你插入USB鼠标，作为那些无法使用触摸屏的用户的另一种输入方式。目前还不清楚该功能何时会实现，但它最早可能在iOS 13中实现。</p>
-<h2 id="跟开发者相关的变化"><a href="#跟开发者相关的变化" class="headerlink" title="跟开发者相关的变化"></a>跟开发者相关的变化</h2><p>对于开发者来说，iOS 13将为媒体播放、搜索、语音呼叫、活动票务、消息附件、航班等功能带来改进的<a href="https://www.macrumors.com/2019/04/22/wwdc-2019-developer-features-rumors/" target="_blank" rel="noopener">Siri集成</a>。</p>
+<h2 id="跟开发者相关的变化"><a href="#跟开发者相关的变化" class="headerlink" title="跟开发者相关的变化"></a>跟开发者相关的变化</h2><p>对于开发者来说，iOS 13将为媒体播放、搜索、语音呼叫、活动票务、消息附件、航班等功能带来改进的<a href="https://www.macrumors.com/2019/04/22/wwdc-2019-developer-features-rumors/">Siri集成</a>。</p>
 <p>其他面向开发者的功能还包括ARKit的改进，它为增强现实提供了一个全新的快速框架，以及一个配套的应用程序，让开发者可以在视觉上创建增强现实体验。ARKit还将支持游戏控制器和立体声AR耳机。</p>
 <p>新框架将包括扩展使用Taptic引擎，对第三方应用程序的文档扫描支持，以及无需使用照片应用程序即可从外部设备捕捉照片的功能。</p>
 <p>NFC将得到改进，开发人员将能够在他们的应用程序中添加对扩展的NFC格式的支持，并且还将添加CoreML的更新版本。</p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangferry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhangferry.github.io/2019/05/10/iOS13_new_features/">http://zhangferry.github.io/2019/05/10/iOS13_new_features/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhangferry.github.io">zhangferry</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/iOS/">iOS</a><a class="post-meta__tags" href="/tags/翻译/">翻译</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/05/17/hackintosh_os_update/"><i class="fa fa-chevron-left">  </i><span>将黑苹果系统升级至macOS 10.14.4(Mojave)</span></a></div><div class="next-post pull-right"><a href="/2019/04/30/monthly_10/"><span>iOS开发月报#10|201904</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
-  clientID: '012999c912503aff4cac',
-  clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-  repo: 'zhangferry.github.io',
-  owner: 'zhangferry',
-  admin: 'zhangferry',
-  id: md5(decodeURI(location.pathname)),
-  language: 'zh-CN'
-})
-gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2020 By zhangferry</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/iOS/" rel="tag">iOS</a>, <a class="has-link-grey -link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/17/hackintosh_os_update/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">将黑苹果系统升级至macOS 10.14.4(Mojave)</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/30/monthly_10/">
+                <span class="level-item">iOS开发月报#10|201904</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://zhangferry.github.io/2019/05/10/iOS13_new_features/';
+        this.page.identifier = '2019/05/10/iOS13_new_features/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-zhangferry-github-io' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="zhangferry">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        zhangferry
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        iOS开发
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            56
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/zhangferry" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/zhangferry">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Weibo" href="https://weibo.com/2947186387/profile">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="https://zhangferry.com/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#初览">
+        <span class="has-mr-6">1</span>
+        <span>初览</span>
+        </a></li><li>
+        <a class="is-flex" href="#我们可以期待什么">
+        <span class="has-mr-6">2</span>
+        <span>我们可以期待什么</span>
+        </a></li><li>
+        <a class="is-flex" href="#可能的特性">
+        <span class="has-mr-6">3</span>
+        <span>可能的特性</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#夜间模式">
+        <span class="has-mr-6">3.1</span>
+        <span>夜间模式</span>
+        </a></li><li>
+        <a class="is-flex" href="#iPad调整">
+        <span class="has-mr-6">3.2</span>
+        <span>iPad调整</span>
+        </a></li><li>
+        <a class="is-flex" href="#新的手势">
+        <span class="has-mr-6">3.3</span>
+        <span>新的手势</span>
+        </a></li><li>
+        <a class="is-flex" href="#音量指示器更新">
+        <span class="has-mr-6">3.4</span>
+        <span>音量指示器更新</span>
+        </a></li><li>
+        <a class="is-flex" href="#邮件">
+        <span class="has-mr-6">3.5</span>
+        <span>邮件</span>
+        </a></li><li>
+        <a class="is-flex" href="#跨平台的iOS和Mac应用">
+        <span class="has-mr-6">3.6</span>
+        <span>跨平台的iOS和Mac应用</span>
+        </a></li><li>
+        <a class="is-flex" href="#新版“找到我的手机”">
+        <span class="has-mr-6">3.7</span>
+        <span>新版“找到我的手机”</span>
+        </a></li><li>
+        <a class="is-flex" href="#地图">
+        <span class="has-mr-6">3.8</span>
+        <span>地图</span>
+        </a></li><li>
+        <a class="is-flex" href="#提醒事项">
+        <span class="has-mr-6">3.9</span>
+        <span>提醒事项</span>
+        </a></li><li>
+        <a class="is-flex" href="#图书">
+        <span class="has-mr-6">3.10</span>
+        <span>图书</span>
+        </a></li><li>
+        <a class="is-flex" href="#家庭">
+        <span class="has-mr-6">3.11</span>
+        <span>家庭</span>
+        </a></li><li>
+        <a class="is-flex" href="#健康">
+        <span class="has-mr-6">3.12</span>
+        <span>健康</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#其他新功能">
+        <span class="has-mr-6">4</span>
+        <span>其他新功能</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#速度提升和bug修复">
+        <span class="has-mr-6">4.1</span>
+        <span>速度提升和bug修复</span>
+        </a></li><li>
+        <a class="is-flex" href="#键盘">
+        <span class="has-mr-6">4.2</span>
+        <span>键盘</span>
+        </a></li><li>
+        <a class="is-flex" href="#字体">
+        <span class="has-mr-6">4.3</span>
+        <span>字体</span>
+        </a></li><li>
+        <a class="is-flex" href="#更新分享栏">
+        <span class="has-mr-6">4.4</span>
+        <span>更新分享栏</span>
+        </a></li><li>
+        <a class="is-flex" href="#Safari">
+        <span class="has-mr-6">4.5</span>
+        <span>Safari</span>
+        </a></li><li>
+        <a class="is-flex" href="#照片实况更新">
+        <span class="has-mr-6">4.6</span>
+        <span>照片实况更新</span>
+        </a></li><li>
+        <a class="is-flex" href="#嗨Siri">
+        <span class="has-mr-6">4.7</span>
+        <span>嗨Siri</span>
+        </a></li><li>
+        <a class="is-flex" href="#屏幕使用时间">
+        <span class="has-mr-6">4.8</span>
+        <span>屏幕使用时间</span>
+        </a></li><li>
+        <a class="is-flex" href="#界面的更新">
+        <span class="has-mr-6">4.9</span>
+        <span>界面的更新</span>
+        </a></li><li>
+        <a class="is-flex" href="#文件应用的修改">
+        <span class="has-mr-6">4.10</span>
+        <span>文件应用的修改</span>
+        </a></li><li>
+        <a class="is-flex" href="#新版的Emojis">
+        <span class="has-mr-6">4.11</span>
+        <span>新版的Emojis</span>
+        </a></li><li>
+        <a class="is-flex" href="#辅助功能">
+        <span class="has-mr-6">4.12</span>
+        <span>辅助功能</span>
+        </a></li><li>
+        <a class="is-flex" href="#iPad-Pro支持鼠标">
+        <span class="has-mr-6">4.13</span>
+        <span>iPad Pro支持鼠标</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#跟开发者相关的变化">
+        <span class="has-mr-6">5</span>
+        <span>跟开发者相关的变化</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo_2.svg" alt="【译】iOS13新特性抢鲜看" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 zhangferry&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://zhangferry.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

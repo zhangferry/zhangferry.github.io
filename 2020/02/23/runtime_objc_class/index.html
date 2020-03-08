@@ -1,20 +1,175 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Runtime内存模型探究"><meta name="keywords" content="iOS"><meta name="author" content="zhangferry"><meta name="copyright" content="zhangferry"><title>Runtime内存模型探究 | zhangferry</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NSObject的实现"><span class="toc-number">1.</span> <span class="toc-text">NSObject的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Meta-Class（元类）"><span class="toc-number">1.1.</span> <span class="toc-text">Meta Class（元类）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ObjectiveC1-0数据模型"><span class="toc-number">2.</span> <span class="toc-text">ObjectiveC1.0数据模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Objective语言历史"><span class="toc-number">2.1.</span> <span class="toc-text">Objective语言历史</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Objective2-0数据模型"><span class="toc-number">3.</span> <span class="toc-text">Objective2.0数据模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#class-data-bits-t"><span class="toc-number">3.1.</span> <span class="toc-text">class_data_bits_t</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cache-t"><span class="toc-number">3.2.</span> <span class="toc-text">cache_t</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#method-t"><span class="toc-number">3.3.</span> <span class="toc-text">method_t</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据模型对比"><span class="toc-number">4.</span> <span class="toc-text">数据模型对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-number">5.</span> <span class="toc-text">参考链接</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">zhangferry</div><div class="author-info__description text-center">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</div><div class="follow-button"><a href="https://github.com/zhangferry">Follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">56</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">27</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://colin1994.github.io/">Colin</a><a class="author-info-links__name text-center" href="http://www.evenvi.com/">Evenvi</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zhangferry</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">Runtime内存模型探究</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-02-23</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/laptop-2838917_1280.jpg" alt=""></p>
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Runtime内存模型探究 - zhangferry</title>
+
+
+    <meta name="description" content="Objective-C是一种通用、高级、面向对象的编程语言。它扩展了标准的ANSI C编程语言，将Smalltalk式的消息传递机制加入到ANSI C中。  可以这么理解，Objective-C &#x3D; C + Runtime，Runtime是将C语言具有面向对象功能的推动剂，是iOS开发中的核心概念。我们可以在苹果开源的 runtime（当前的最新版本objc4-779.1.tar.gz）中可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Runtime内存模型探究">
+<meta property="og:url" content="http://zhangferry.github.io/2020/02/23/runtime_objc_class/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="Objective-C是一种通用、高级、面向对象的编程语言。它扩展了标准的ANSI C编程语言，将Smalltalk式的消息传递机制加入到ANSI C中。  可以这么理解，Objective-C &#x3D; C + Runtime，Runtime是将C语言具有面向对象功能的推动剂，是iOS开发中的核心概念。我们可以在苹果开源的 runtime（当前的最新版本objc4-779.1.tar.gz）中可以">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
+<meta property="article:published_time" content="2020-02-23T05:28:09.000Z">
+<meta property="article:modified_time" content="2020-03-08T13:14:20.289Z">
+<meta property="article:author" content="zhangferry">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangferry.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo_2.svg" alt="Runtime内存模型探究" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangferry">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-23T05:28:09.000Z">2020-02-23</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14 分钟 读完 (大约 2088 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Runtime内存模型探究
+            
+        </h1>
+        <div class="content">
+            <p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/laptop-2838917_1280.jpg" alt=""></p>
 <blockquote>
 <p>Objective-C是一种通用、高级、面向对象的编程语言。它扩展了标准的ANSI C编程语言，将Smalltalk式的消息传递机制加入到ANSI C中。</p>
 </blockquote>
-<p>可以这么理解，Objective-C = C + Runtime，Runtime是将C语言具有面向对象功能的推动剂，是iOS开发中的核心概念。我们可以在苹果开源的 <a href="https://opensource.apple.com/tarballs/objc4/" target="_blank" rel="noopener">runtime</a>（当前的最新版本objc4-779.1.tar.gz）中可以发现一些 Objective-C 对象模型的实现细节。</p>
+<p>可以这么理解，Objective-C = C + Runtime，Runtime是将C语言具有面向对象功能的推动剂，是iOS开发中的核心概念。我们可以在苹果开源的 <a href="https://opensource.apple.com/tarballs/objc4/">runtime</a>（当前的最新版本objc4-779.1.tar.gz）中可以发现一些 Objective-C 对象模型的实现细节。</p>
+<a id="more"></a>
+
 <h2 id="NSObject的实现"><a href="#NSObject的实现" class="headerlink" title="NSObject的实现"></a>NSObject的实现</h2><p>OC中几乎所有的类都继承自<code>NSObject</code>，OC的动态性也是通过NSObject实现的，那就从NSObject开始探索。</p>
-<p>在<code>runtime</code>源码中的<code>NSObject.h</code>中，我们可以找到<code>NSObject</code>的定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@interface NSObject &lt;NSObject&gt; &#123;</span><br><span class="line">    Class isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>可以看出<code>NSObject</code>里有一个指向<code>Class</code>的<code>isa</code>，其中对于Class的定义在<code>objc.h</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/// An opaque type that represents an Objective-C class.</span><br><span class="line">typedef struct objc_class *Class;</span><br><span class="line"></span><br><span class="line">/// Represents an instance of a class.</span><br><span class="line">struct objc_object &#123;</span><br><span class="line">    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>在<code>runtime</code>源码中的<code>NSObject.h</code>中，我们可以找到<code>NSObject</code>的定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@interface NSObject &lt;NSObject&gt; &#123;</span><br><span class="line">    Class isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出<code>NSObject</code>里有一个指向<code>Class</code>的<code>isa</code>，其中对于Class的定义在<code>objc.h</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F; An opaque type that represents an Objective-C class.</span><br><span class="line">typedef struct objc_class *Class;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#x2F; Represents an instance of a class.</span><br><span class="line">struct objc_object &#123;</span><br><span class="line">    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><code>objc_class</code>代表类对象，<code>objc_object</code>代表实例对象，<code>objc_object</code>的<code>isa</code>指向<code>objc_class</code>。<br>这里可以得出一个结论，实例对象的isa是指向类（类对象）的。其实类（objc_class）也有一个isa属性，那它指向什么呢？</p>
 <h3 id="Meta-Class（元类）"><a href="#Meta-Class（元类）" class="headerlink" title="Meta Class（元类）"></a>Meta Class（元类）</h3><p>这里runtime为了设计上的统一性，引入了元类（meta class）的概念。</p>
 <p>对象的实例方法调用时，通过对象的 isa 在类中获取方法的实现。类对象的类方法调用时，通过类的 isa 在元类中获取方法的实现。</p>
@@ -24,42 +179,488 @@
 <li>元类的isa均指向根元类，根元类指向自己</li>
 <li>根元类继承根类（NSObject）</li>
 </ul>
-<h2 id="ObjectiveC1-0数据模型"><a href="#ObjectiveC1-0数据模型" class="headerlink" title="ObjectiveC1.0数据模型"></a>ObjectiveC1.0数据模型</h2><p>我们可以在<code>runtime.h</code>中查看<code>objc_class</code>的定义。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">struct objc_class &#123;</span><br><span class="line">    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line"></span><br><span class="line">#if !__OBJC2__</span><br><span class="line">    Class _Nullable super_class                              OBJC2_UNAVAILABLE;</span><br><span class="line">    const char * _Nonnull name                               OBJC2_UNAVAILABLE;</span><br><span class="line">    long version                                             OBJC2_UNAVAILABLE;</span><br><span class="line">    long info                                                OBJC2_UNAVAILABLE;</span><br><span class="line">    long instance_size                                       OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_ivar_list * _Nullable ivars                  OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_method_list * _Nullable * _Nullable methodLists                    OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_cache * _Nonnull cache                       OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_protocol_list * _Nullable protocols          OBJC2_UNAVAILABLE;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">&#125; OBJC2_UNAVAILABLE;</span><br><span class="line">/* Use `Class` instead of `struct objc_class *` */</span><br></pre></td></tr></table></figure></p>
+<h2 id="ObjectiveC1-0数据模型"><a href="#ObjectiveC1-0数据模型" class="headerlink" title="ObjectiveC1.0数据模型"></a>ObjectiveC1.0数据模型</h2><p>我们可以在<code>runtime.h</code>中查看<code>objc_class</code>的定义。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">struct objc_class &#123;</span><br><span class="line">    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line"></span><br><span class="line">#if !__OBJC2__</span><br><span class="line">    Class _Nullable super_class                              OBJC2_UNAVAILABLE;</span><br><span class="line">    const char * _Nonnull name                               OBJC2_UNAVAILABLE;</span><br><span class="line">    long version                                             OBJC2_UNAVAILABLE;</span><br><span class="line">    long info                                                OBJC2_UNAVAILABLE;</span><br><span class="line">    long instance_size                                       OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_ivar_list * _Nullable ivars                  OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_method_list * _Nullable * _Nullable methodLists                    OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_cache * _Nonnull cache                       OBJC2_UNAVAILABLE;</span><br><span class="line">    struct objc_protocol_list * _Nullable protocols          OBJC2_UNAVAILABLE;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">&#125; OBJC2_UNAVAILABLE;</span><br><span class="line">&#x2F;* Use &#96;Class&#96; instead of &#96;struct objc_class *&#96; *&#x2F;</span><br></pre></td></tr></table></figure>
 <p>注意这两个宏命令：<code>!__OBJC2__</code>和<code>OBJC2_UNAVAILABLE</code>，他们均是为了提示当前的<code>objc_class</code>结构是Objc2之前的结构设计，即Objc1.0的设计。</p>
 <p>从这个<code>objc_class</code>的定义我们可以看出它包含了超类的指针(<code>super_class</code>)，类名(<code>name</code>)，实例大小(<code>instance_size</code>)，<code>objc_ivar_list</code>成员变量列表的指针(<code>ivars</code>)，指向<code>objc_method_list</code><strong>指针的指针</strong>(<code>methodLists</code>)。</p>
 <p>注意<code>*methodLists</code>是指向方法列表的指针，可以动态修改<code>*methodLists</code>的值来添加成员方法，这也是Category实现的原理，同样解释了Category不能添加属性的原因。</p>
 <p>剩下的<code>objc_cache</code>代表函数的缓存列表，<code>objc_protocol_list</code>代表协议列表。</p>
 <h3 id="Objective语言历史"><a href="#Objective语言历史" class="headerlink" title="Objective语言历史"></a>Objective语言历史</h3><p>我在网上查资料的时候发现关于runtime的文章非常多，但提示数据模型在OC1.0和2.0之间区别的非常少，其实这一点很重要的。这也是为什么我将这段标题命名为Objective-C1.0数据模型的原因。</p>
-<p>这里补一点<code>Objective-C</code>语言的发展历史（<a href="https://zh.wikipedia.org/wiki/Objective-C" target="_blank" rel="noopener">维基百科</a>）：</p>
+<p>这里补一点<code>Objective-C</code>语言的发展历史（<a href="https://zh.wikipedia.org/wiki/Objective-C">维基百科</a>）：</p>
 <blockquote>
 <p> Objective-C1.0 即Objective-C++ 由Stepstone 公司的布莱德·考克斯（Brad Cox）和 汤姆·洛夫（Tom Love） 在 1980 年代发明。它是GCC的一个前端，它可以编译混合C++与Objective-C语法的源文件。Objective-C++是C++的扩展，类似于Objective-C是C的扩展。</p>
 <p> Objective-C2.0 在2006年7月苹果全球开发者会议中，Apple宣布了“Objective-C 2.0”的发布，其增加了“现代的垃圾收集，语法改进，运行时性能改进，以及64位支持”。</p>
 </blockquote>
-<h2 id="Objective2-0数据模型"><a href="#Objective2-0数据模型" class="headerlink" title="Objective2.0数据模型"></a>Objective2.0数据模型</h2><p>可以在objc-runtim-new.h文件找到新版对<code>objc_class</code>的数据模型定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">struct objc_class : objc_object &#123;</span><br><span class="line">    // Class ISA;</span><br><span class="line">    Class superclass;</span><br><span class="line">    cache_t cache;             // formerly cache pointer and vtable</span><br><span class="line">    class_data_bits_t bits;    // class_rw_t * plus custom rr/alloc flags</span><br><span class="line">    class_rw_t *data() const &#123;</span><br><span class="line">        return bits.data();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct objc_object &#123;</span><br><span class="line">private:</span><br><span class="line">    isa_t isa;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">union isa_t </span><br><span class="line">&#123;</span><br><span class="line">    isa_t() &#123; &#125;</span><br><span class="line">    isa_t(uintptr_t value) : bits(value) &#123; &#125;</span><br><span class="line">    Class cls;</span><br><span class="line">    uintptr_t bits;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>会发现<code>objc_class</code>不再是一个单独的结构体，而是继承于<code>objc_object</code>，objc_object内部的<code>isa</code>变成了<code>isa_t</code>的<a href="https://baike.baidu.com/item/%E8%81%94%E5%90%88%E4%BD%93" target="_blank" rel="noopener">联合体</a>。</p>
-<h3 id="class-data-bits-t"><a href="#class-data-bits-t" class="headerlink" title="class_data_bits_t"></a>class_data_bits_t</h3><p>我们再回来看类中的其他属性，之前表示类的属性、方法、以及遵循的协议都放在了<code>class_data_bits_t</code>中，更准确的说是放在了<code>class_rw_t</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">struct class_data_bits_t &#123;</span><br><span class="line">    friend objc_class;</span><br><span class="line"></span><br><span class="line">    // Values are the FAST_ flags above.</span><br><span class="line">    uintptr_t bits;</span><br><span class="line">    </span><br><span class="line">    class_rw_t* data() const &#123;</span><br><span class="line">        return (class_rw_t *)(bits &amp; FAST_DATA_MASK);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct class_rw_t &#123;</span><br><span class="line">    // Be warned that Symbolication knows the layout of this structure.</span><br><span class="line">    uint32_t flags;</span><br><span class="line">    uint16_t version;</span><br><span class="line">    uint16_t witness;</span><br><span class="line"></span><br><span class="line">    const class_ro_t *ro;</span><br><span class="line"></span><br><span class="line">    method_array_t methods;</span><br><span class="line">    property_array_t properties;</span><br><span class="line">    protocol_array_t protocols;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct class_ro_t &#123;</span><br><span class="line">    uint32_t flags;</span><br><span class="line">    uint32_t instanceStart;</span><br><span class="line">    uint32_t instanceSize;</span><br><span class="line">#ifdef __LP64__</span><br><span class="line">    uint32_t reserved;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">    const uint8_t * ivarLayout;</span><br><span class="line">    </span><br><span class="line">    const char * name;</span><br><span class="line">    method_list_t * baseMethodList;</span><br><span class="line">    protocol_list_t * baseProtocols;</span><br><span class="line">    const ivar_list_t * ivars;</span><br><span class="line"></span><br><span class="line">    const uint8_t * weakIvarLayout;</span><br><span class="line">    property_list_t *baseProperties;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Objective2-0数据模型"><a href="#Objective2-0数据模型" class="headerlink" title="Objective2.0数据模型"></a>Objective2.0数据模型</h2><p>可以在objc-runtim-new.h文件找到新版对<code>objc_class</code>的数据模型定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">struct objc_class : objc_object &#123;</span><br><span class="line">    &#x2F;&#x2F; Class ISA;</span><br><span class="line">    Class superclass;</span><br><span class="line">    cache_t cache;             &#x2F;&#x2F; formerly cache pointer and vtable</span><br><span class="line">    class_data_bits_t bits;    &#x2F;&#x2F; class_rw_t * plus custom rr&#x2F;alloc flags</span><br><span class="line">    class_rw_t *data() const &#123;</span><br><span class="line">        return bits.data();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct objc_object &#123;</span><br><span class="line">private:</span><br><span class="line">    isa_t isa;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">union isa_t </span><br><span class="line">&#123;</span><br><span class="line">    isa_t() &#123; &#125;</span><br><span class="line">    isa_t(uintptr_t value) : bits(value) &#123; &#125;</span><br><span class="line">    Class cls;</span><br><span class="line">    uintptr_t bits;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>会发现<code>objc_class</code>不再是一个单独的结构体，而是继承于<code>objc_object</code>，objc_object内部的<code>isa</code>变成了<code>isa_t</code>的<a href="https://baike.baidu.com/item/%E8%81%94%E5%90%88%E4%BD%93">联合体</a>。</p>
+<h3 id="class-data-bits-t"><a href="#class-data-bits-t" class="headerlink" title="class_data_bits_t"></a>class_data_bits_t</h3><p>我们再回来看类中的其他属性，之前表示类的属性、方法、以及遵循的协议都放在了<code>class_data_bits_t</code>中，更准确的说是放在了<code>class_rw_t</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">struct class_data_bits_t &#123;</span><br><span class="line">    friend objc_class;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Values are the FAST_ flags above.</span><br><span class="line">    uintptr_t bits;</span><br><span class="line">    </span><br><span class="line">    class_rw_t* data() const &#123;</span><br><span class="line">        return (class_rw_t *)(bits &amp; FAST_DATA_MASK);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct class_rw_t &#123;</span><br><span class="line">    &#x2F;&#x2F; Be warned that Symbolication knows the layout of this structure.</span><br><span class="line">    uint32_t flags;</span><br><span class="line">    uint16_t version;</span><br><span class="line">    uint16_t witness;</span><br><span class="line"></span><br><span class="line">    const class_ro_t *ro;</span><br><span class="line"></span><br><span class="line">    method_array_t methods;</span><br><span class="line">    property_array_t properties;</span><br><span class="line">    protocol_array_t protocols;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct class_ro_t &#123;</span><br><span class="line">    uint32_t flags;</span><br><span class="line">    uint32_t instanceStart;</span><br><span class="line">    uint32_t instanceSize;</span><br><span class="line">#ifdef __LP64__</span><br><span class="line">    uint32_t reserved;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">    const uint8_t * ivarLayout;</span><br><span class="line">    </span><br><span class="line">    const char * name;</span><br><span class="line">    method_list_t * baseMethodList;</span><br><span class="line">    protocol_list_t * baseProtocols;</span><br><span class="line">    const ivar_list_t * ivars;</span><br><span class="line"></span><br><span class="line">    const uint8_t * weakIvarLayout;</span><br><span class="line">    property_list_t *baseProperties;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里面引入了<code>class_rw_t</code>和<code>class_ro_t</code>（rw-readwrite，ro-readonly）两个结构体。可以看到<code>class_rw_t</code>是包含一个常量指针<code>ro</code>，结构体为<code>class_ro_t</code>。这里存储了当前类在编译期就已经确定的属性、方法以及遵循的协议。在 ObjC 运行时的时候会调用 <code>realizeClass</code> 方法，将<code>class_ro_t</code>传入<code>class_rw_t</code>，所以新版的动态性是通过这种方式实现的。</p>
-<h3 id="cache-t"><a href="#cache-t" class="headerlink" title="cache_t"></a>cache_t</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">struct cache_t &#123;</span><br><span class="line">    static bucket_t *emptyBuckets();</span><br><span class="line">    </span><br><span class="line">    struct bucket_t *buckets();</span><br><span class="line">    mask_t mask();</span><br><span class="line">    mask_t occupied();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct bucket_t &#123;</span><br><span class="line">    // IMP-first is better for arm64e ptrauth and no worse for arm64.</span><br><span class="line">    // SEL-first is better for armv7* and i386 and x86_64.</span><br><span class="line">#if __arm64__</span><br><span class="line">    explicit_atomic&lt;uintptr_t&gt; _imp;</span><br><span class="line">    explicit_atomic&lt;SEL&gt; _sel;</span><br><span class="line">#else</span><br><span class="line">    explicit_atomic&lt;SEL&gt; _sel;</span><br><span class="line">    explicit_atomic&lt;uintptr_t&gt; _imp;</span><br><span class="line">#endif</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="cache-t"><a href="#cache-t" class="headerlink" title="cache_t"></a>cache_t</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">struct cache_t &#123;</span><br><span class="line">    static bucket_t *emptyBuckets();</span><br><span class="line">    </span><br><span class="line">    struct bucket_t *buckets();</span><br><span class="line">    mask_t mask();</span><br><span class="line">    mask_t occupied();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct bucket_t &#123;</span><br><span class="line">    &#x2F;&#x2F; IMP-first is better for arm64e ptrauth and no worse for arm64.</span><br><span class="line">    &#x2F;&#x2F; SEL-first is better for armv7* and i386 and x86_64.</span><br><span class="line">#if __arm64__</span><br><span class="line">    explicit_atomic&lt;uintptr_t&gt; _imp;</span><br><span class="line">    explicit_atomic&lt;SEL&gt; _sel;</span><br><span class="line">#else</span><br><span class="line">    explicit_atomic&lt;SEL&gt; _sel;</span><br><span class="line">    explicit_atomic&lt;uintptr_t&gt; _imp;</span><br><span class="line">#endif</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>cache_t</code>是<code>objc_class</code>中的缓存结构体，里面通过<code>bucket_t</code>结构体存储一些最近调用的函数。设置cache最大的原因就是OC为动态语言，函数的执行是通过消息调用实现的，消息调用会首先查找当前类中的方法列表，如果找不到会查找父类，直到检索至<code>NSObject</code>依然找不到函数实现，就会进入消息转发流程。而为了节省每次查找函数表的开销，发明了<code>cache_t</code>。我们从<code>bucket_t</code>的内联函数中可以看出，缓存的SEL和IMP都是在内存中进行加载的。</p>
 <h3 id="method-t"><a href="#method-t" class="headerlink" title="method_t"></a>method_t</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">struct method_t &#123;</span><br><span class="line">    SEL name;</span><br><span class="line">    const char *types;</span><br><span class="line">    MethodListIMP imp;</span><br><span class="line"></span><br><span class="line">    struct SortBySELAddress :</span><br><span class="line">        public std::binary_function&lt;const method_t&amp;,</span><br><span class="line">                                    const method_t&amp;, bool&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        bool operator() (const method_t&amp; lhs,</span><br><span class="line">                         const method_t&amp; rhs)</span><br><span class="line">        &#123; return lhs.name &lt; rhs.name; &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>这是函数的结构体，里面包含3个成员变量。<code>SEL</code>是方法的名字name。<code>types</code>是类型编码，类型可参考<a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html" target="_blank" rel="noopener">Type Encoding</a>。<code>IMP</code>是一个函数指针，指向的是函数的具体实现。在runtime中消息传递和转发的目的就是为了找到IMP，并执行函数。</p>
-<h2 id="数据模型对比"><a href="#数据模型对比" class="headerlink" title="数据模型对比"></a>数据模型对比</h2><p>最后总结下，Objc1.0到2.0的对比：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20200223131049.png" alt=""><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20200223131158.png" alt=""><br>这两张图片引用自<a href="https://halfrost.com/" target="_blank" rel="noopener">寒神</a>博客。</p>
+<p>这是函数的结构体，里面包含3个成员变量。<code>SEL</code>是方法的名字name。<code>types</code>是类型编码，类型可参考<a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html">Type Encoding</a>。<code>IMP</code>是一个函数指针，指向的是函数的具体实现。在runtime中消息传递和转发的目的就是为了找到IMP，并执行函数。</p>
+<h2 id="数据模型对比"><a href="#数据模型对比" class="headerlink" title="数据模型对比"></a>数据模型对比</h2><p>最后总结下，Objc1.0到2.0的对比：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20200223131049.png" alt=""><br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20200223131158.png" alt=""><br>这两张图片引用自<a href="https://halfrost.com/">寒神</a>博客。</p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><a href="https://github.com/draveness/analyze/blob/master/contents/objc/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90%20ObjC%20%E4%B8%AD%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%93%E6%9E%84.md#%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-objc-%E4%B8%AD%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%93%E6%9E%84" target="_blank" rel="noopener">深入解析 ObjC 中方法的结构</a></li>
-<li><a href="https://halfrost.com/objc_runtime_isa_class/" target="_blank" rel="noopener">神经病院 Objective-C Runtime 入院第一天—— isa 和 Class</a></li>
+<li><a href="https://github.com/draveness/analyze/blob/master/contents/objc/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90%20ObjC%20%E4%B8%AD%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%93%E6%9E%84.md#%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-objc-%E4%B8%AD%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%93%E6%9E%84">深入解析 ObjC 中方法的结构</a></li>
+<li><a href="https://halfrost.com/objc_runtime_isa_class/">神经病院 Objective-C Runtime 入院第一天—— isa 和 Class</a></li>
 </ul>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangferry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhangferry.github.io/2020/02/23/runtime_objc_class/">http://zhangferry.github.io/2020/02/23/runtime_objc_class/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhangferry.github.io">zhangferry</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/iOS/">iOS</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2020/02/01/vscode_python/"><span>VSCode配置Python版本</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
-  clientID: '012999c912503aff4cac',
-  clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-  repo: 'zhangferry.github.io',
-  owner: 'zhangferry',
-  admin: 'zhangferry',
-  id: md5(decodeURI(location.pathname)),
-  language: 'zh-CN'
-})
-gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2020 By zhangferry</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/iOS/" rel="tag">iOS</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/01/vscode_python/">
+                <span class="level-item">VSCode配置Python版本</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://zhangferry.github.io/2020/02/23/runtime_objc_class/';
+        this.page.identifier = '2020/02/23/runtime_objc_class/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-zhangferry-github-io' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="zhangferry">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        zhangferry
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        iOS开发
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            56
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/zhangferry" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/zhangferry">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Weibo" href="https://weibo.com/2947186387/profile">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="https://zhangferry.com/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#NSObject的实现">
+        <span class="has-mr-6">1</span>
+        <span>NSObject的实现</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Meta-Class（元类）">
+        <span class="has-mr-6">1.1</span>
+        <span>Meta Class（元类）</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#ObjectiveC1-0数据模型">
+        <span class="has-mr-6">2</span>
+        <span>ObjectiveC1.0数据模型</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Objective语言历史">
+        <span class="has-mr-6">2.1</span>
+        <span>Objective语言历史</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Objective2-0数据模型">
+        <span class="has-mr-6">3</span>
+        <span>Objective2.0数据模型</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#class-data-bits-t">
+        <span class="has-mr-6">3.1</span>
+        <span>class_data_bits_t</span>
+        </a></li><li>
+        <a class="is-flex" href="#cache-t">
+        <span class="has-mr-6">3.2</span>
+        <span>cache_t</span>
+        </a></li><li>
+        <a class="is-flex" href="#method-t">
+        <span class="has-mr-6">3.3</span>
+        <span>method_t</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#数据模型对比">
+        <span class="has-mr-6">4</span>
+        <span>数据模型对比</span>
+        </a></li><li>
+        <a class="is-flex" href="#参考链接">
+        <span class="has-mr-6">5</span>
+        <span>参考链接</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo_2.svg" alt="Runtime内存模型探究" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 zhangferry&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://zhangferry.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

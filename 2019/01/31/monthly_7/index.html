@@ -1,24 +1,183 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="iOS开发月报#7|201901"><meta name="keywords" content="月报"><meta name="author" content="zhangferry"><meta name="copyright" content="zhangferry"><title>iOS开发月报#7|201901 | zhangferry</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#新闻一览"><span class="toc-number">1.</span> <span class="toc-text">新闻一览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Github宣布私有库免费"><span class="toc-number">1.1.</span> <span class="toc-text">Github宣布私有库免费</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Swift-5-Release-Notes-for-Xcode-10-2-beta"><span class="toc-number">1.2.</span> <span class="toc-text">Swift 5 Release Notes for Xcode 10.2 beta</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">2.</span> <span class="toc-text">Tips</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dictionary的merge操作"><span class="toc-number">2.1.</span> <span class="toc-text">Dictionary的merge操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些Git操作"><span class="toc-number">2.2.</span> <span class="toc-text">一些Git操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几个提高效率的快捷键"><span class="toc-number">2.3.</span> <span class="toc-text">几个提高效率的快捷键</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐阅读"><span class="toc-number">3.</span> <span class="toc-text">推荐阅读</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#未来世界的幸存者"><span class="toc-number">3.1.</span> <span class="toc-text">未来世界的幸存者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是真正的程序员"><span class="toc-number">3.2.</span> <span class="toc-text">什么是真正的程序员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Language-Server-Protocol"><span class="toc-number">3.3.</span> <span class="toc-text">Language Server Protocol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hashable-Hasher"><span class="toc-number">3.4.</span> <span class="toc-text">Hashable / Hasher</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Table-View-太複雜？利用-MVVM-和-Protocol-就可以為它重構瘦身！"><span class="toc-number">3.5.</span> <span class="toc-text">Table View 太複雜？利用 MVVM 和 Protocol 就可以為它重構瘦身！</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#音视频"><span class="toc-number">4.</span> <span class="toc-text">音视频</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#程序员的春节趣事"><span class="toc-number">4.1.</span> <span class="toc-text">程序员的春节趣事</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Github"><span class="toc-number">5.</span> <span class="toc-text">Github</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Git中文教程"><span class="toc-number">5.1.</span> <span class="toc-text">Git中文教程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git的奇技淫巧"><span class="toc-number">5.2.</span> <span class="toc-text">Git的奇技淫巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HelloGitHub"><span class="toc-number">5.3.</span> <span class="toc-text">HelloGitHub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GitHub漫游指南"><span class="toc-number">5.4.</span> <span class="toc-text">GitHub漫游指南</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#README"><span class="toc-number">5.5.</span> <span class="toc-text">README</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">zhangferry</div><div class="author-info__description text-center">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</div><div class="follow-button"><a href="https://github.com/zhangferry">Follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">56</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">27</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://colin1994.github.io/">Colin</a><a class="author-info-links__name text-center" href="http://www.evenvi.com/">Evenvi</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zhangferry</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">iOS开发月报#7|201901</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-01-31</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport" target="_blank" rel="noopener">zhangferry/iOSMonthlyReport</a>提交issue。</p>
-<p>另外，马上就要过年了，提前祝大家春节快乐！<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/freestocks-org-506237-unsplash.jpg" alt=""><br><a id="more"></a></p>
-<h2 id="新闻一览"><a href="#新闻一览" class="headerlink" title="新闻一览"></a>新闻一览</h2><h3 id="Github宣布私有库免费"><a href="#Github宣布私有库免费" class="headerlink" title="Github宣布私有库免费"></a><a href="https://github.blog/2019-01-07-new-year-new-github/" target="_blank" rel="noopener">Github宣布私有库免费</a></h3><p>Github宣布提供免费且不限量的私有仓库服务，如果协作者超过3个仍需购买付费服务。<br>喜大普奔啊，得知消息之后，我赶紧就建立一个私有仓库，放一些不想让你们看到的东西🙃</p>
-<h3 id="Swift-5-Release-Notes-for-Xcode-10-2-beta"><a href="#Swift-5-Release-Notes-for-Xcode-10-2-beta" class="headerlink" title="Swift 5 Release Notes for Xcode 10.2 beta"></a><a href="https://developer.apple.com/documentation/xcode_release_notes/xcode_10_2_beta_release_notes/swift_5_release_notes_for_xcode_10_2_beta?language=objc" target="_blank" rel="noopener">Swift 5 Release Notes for Xcode 10.2 beta</a></h3><p>Swift5 版本终于发布了，最低可以使用Xcode10.2beta 查看。Swift5 带来了ABI稳定，届时系统将自带Swift动态库，由Swift编译的项目将不会自动把运行库打到包里。</p>
-<p>Swift5 具体还有哪些特性，可以参考知识小集团队的<a href="https://juejin.im/post/5c4b3e91e51d452c8e6d6bcc" target="_blank" rel="noopener">翻译版本</a></p>
-<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="Dictionary的merge操作"><a href="#Dictionary的merge操作" class="headerlink" title="Dictionary的merge操作"></a>Dictionary的merge操作</h3><p><code>Dictionary</code>的merge可能平常用的不多，我是在一次bug排查的过程中，发现自己对merge操作理解也有些偏差。这里做个简单梳理。<br>看其中一种情况：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dictionary = [<span class="string">"a"</span>: <span class="number">1</span>, <span class="string">"b"</span>: <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// Keeping existing value for key "a":</span></span><br><span class="line">dictionary.merge([<span class="string">"a"</span>: <span class="number">3</span>, <span class="string">"c"</span>: <span class="number">4</span>]) &#123; (current, <span class="number">_</span>) <span class="keyword">in</span> current &#125;</span><br><span class="line"><span class="comment">// ["b": 2, "a": 1, "c": 4]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Taking the new value for key "a":</span></span><br><span class="line">dictionary.merge([<span class="string">"a"</span>: <span class="number">5</span>, <span class="string">"d"</span>: <span class="number">6</span>]) &#123; (<span class="number">_</span>, new) <span class="keyword">in</span> new &#125;</span><br><span class="line"><span class="comment">// ["b": 2, "a": 5, "c": 4, "d": 6]</span></span><br></pre></td></tr></table></figure></p>
-<p>注意尾随闭包中有两个参数，返回第一个参数，表示如果merge操作有重复key值，将保留merge前的value不变。如果闭包返回第二个参数，如果merge有重复key，将更新至最新值。<br><code>Dictionary</code>向关的merge函数一共有四个，使用类似：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">merge</span>&lt;S&gt;<span class="params">(<span class="number">_</span> other: S, uniquingKeysWith combine: <span class="params">([Key : Value].Value, [Key : Value].Value)</span></span></span> <span class="keyword">throws</span> -&gt; [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>) <span class="keyword">rethrows</span> <span class="keyword">where</span> <span class="type">S</span> : <span class="type">Sequence</span>, <span class="type">S</span>.<span class="type">Element</span> == (<span class="type">Key</span>, <span class="type">Value</span>)</span><br><span class="line"><span class="comment">//上面示例对应方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">merge</span><span class="params">(<span class="number">_</span> other: [[Key : Value].Key : [Key : Value].Value], uniquingKeysWith combine: <span class="params">([Key : Value].Value, [Key : Value].Value)</span></span></span> <span class="keyword">throws</span> -&gt; [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>) <span class="keyword">rethrows</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">merging</span>&lt;S&gt;<span class="params">(<span class="number">_</span> other: S, uniquingKeysWith combine: <span class="params">([Key : Value].Value, [Key : Value].Value)</span></span></span> <span class="keyword">throws</span> -&gt; [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>) <span class="keyword">rethrows</span> -&gt; [[<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Key</span> : [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>] <span class="keyword">where</span> <span class="type">S</span> : <span class="type">Sequence</span>, <span class="type">S</span>.<span class="type">Element</span> == (<span class="type">Key</span>, <span class="type">Value</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">merging</span><span class="params">(<span class="number">_</span> other: [[Key : Value].Key : [Key : Value].Value], uniquingKeysWith combine: <span class="params">([Key : Value].Value, [Key : Value].Value)</span></span></span> <span class="keyword">throws</span> -&gt; [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>) <span class="keyword">rethrows</span> -&gt; [[<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Key</span> : [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>]</span><br></pre></td></tr></table></figure></p>
-<h3 id="一些Git操作"><a href="#一些Git操作" class="headerlink" title="一些Git操作"></a>一些Git操作</h3><p><strong>删除子目录git</strong><br>当一个含git的目录包含了其他含git目录时，外部git是不能将内部git纳入版本管理的。有一种解决方案是，移除内部的git仓库。<br>1、删除内部git<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd 需要移除的git目录</span><br><span class="line">rm -rf .git  # 或者显示隐藏目录手动删除.git文件夹</span><br></pre></td></tr></table></figure></p>
-<p>此时虽然已经删除了<code>.git</code>但是原目录还存在缓存，无法添加到外部git中。<br>2、删除缓存内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached next</span><br></pre></td></tr></table></figure></p>
-<p><strong>git pull强制覆盖本地文件</strong><br>当我们需要将某一分支，跟远程对应分支保持一致时，可以做如下操作：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch</span><br><span class="line">git reset --hard origin/branch_name</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure></p>
-<p><strong>fatal:refusing to merge unrelated histories</strong><br>当我们为一个项目关联了一个远程仓库，执行pull的操作时出现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br><span class="line"> * [new branch]      master     -&gt; origin/master</span><br><span class="line">fatal: refusing to merge unrelated histories</span><br></pre></td></tr></table></figure></p>
-<p>这是因为git从2.9.0版本开始，预设行为不允许合并没有共同祖先的分支。如果你非要合并，需要加上<code>--allow-unrelated-histories</code>参数才行：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure></p>
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>iOS开发月报#7|201901 - zhangferry</title>
+
+
+    <meta name="description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry&#x2F;iOSMonthlyReport提交issue。 另外，马上就要过年了，提前祝大家春节快乐！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发月报#7|201901">
+<meta property="og:url" content="http://zhangferry.github.io/2019/01/31/monthly_7/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。欢迎推荐内容，可以前往zhangferry&#x2F;iOSMonthlyReport提交issue。 另外，马上就要过年了，提前祝大家春节快乐！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
+<meta property="article:published_time" content="2019-01-31T02:54:57.000Z">
+<meta property="article:modified_time" content="2020-03-07T05:41:42.296Z">
+<meta property="article:author" content="zhangferry">
+<meta property="article:tag" content="月报">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangferry.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo_2.svg" alt="iOS开发月报#7|201901" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangferry">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-31T02:54:57.000Z">2019-01-31</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    19 分钟 读完 (大约 2801 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                iOS开发月报#7|201901
+            
+        </h1>
+        <div class="content">
+            <p>这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。<br>欢迎推荐内容，可以前往<a href="https://github.com/zhangferry/iOSMonthlyReport">zhangferry/iOSMonthlyReport</a>提交issue。</p>
+<p>另外，马上就要过年了，提前祝大家春节快乐！<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/freestocks-org-506237-unsplash.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="新闻一览"><a href="#新闻一览" class="headerlink" title="新闻一览"></a>新闻一览</h2><h3 id="Github宣布私有库免费"><a href="#Github宣布私有库免费" class="headerlink" title="Github宣布私有库免费"></a><a href="https://github.blog/2019-01-07-new-year-new-github/">Github宣布私有库免费</a></h3><p>Github宣布提供免费且不限量的私有仓库服务，如果协作者超过3个仍需购买付费服务。<br>喜大普奔啊，得知消息之后，我赶紧就建立一个私有仓库，放一些不想让你们看到的东西🙃</p>
+<h3 id="Swift-5-Release-Notes-for-Xcode-10-2-beta"><a href="#Swift-5-Release-Notes-for-Xcode-10-2-beta" class="headerlink" title="Swift 5 Release Notes for Xcode 10.2 beta"></a><a href="https://developer.apple.com/documentation/xcode_release_notes/xcode_10_2_beta_release_notes/swift_5_release_notes_for_xcode_10_2_beta?language=objc">Swift 5 Release Notes for Xcode 10.2 beta</a></h3><p>Swift5 版本终于发布了，最低可以使用Xcode10.2beta 查看。Swift5 带来了ABI稳定，届时系统将自带Swift动态库，由Swift编译的项目将不会自动把运行库打到包里。</p>
+<p>Swift5 具体还有哪些特性，可以参考知识小集团队的<a href="https://juejin.im/post/5c4b3e91e51d452c8e6d6bcc">翻译版本</a></p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="Dictionary的merge操作"><a href="#Dictionary的merge操作" class="headerlink" title="Dictionary的merge操作"></a>Dictionary的merge操作</h3><p><code>Dictionary</code>的merge可能平常用的不多，我是在一次bug排查的过程中，发现自己对merge操作理解也有些偏差。这里做个简单梳理。<br>看其中一种情况：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dictionary = [<span class="string">"a"</span>: <span class="number">1</span>, <span class="string">"b"</span>: <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// Keeping existing value for key "a":</span></span><br><span class="line">dictionary.merge([<span class="string">"a"</span>: <span class="number">3</span>, <span class="string">"c"</span>: <span class="number">4</span>]) &#123; (current, <span class="number">_</span>) <span class="keyword">in</span> current &#125;</span><br><span class="line"><span class="comment">// ["b": 2, "a": 1, "c": 4]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Taking the new value for key "a":</span></span><br><span class="line">dictionary.merge([<span class="string">"a"</span>: <span class="number">5</span>, <span class="string">"d"</span>: <span class="number">6</span>]) &#123; (<span class="number">_</span>, new) <span class="keyword">in</span> new &#125;</span><br><span class="line"><span class="comment">// ["b": 2, "a": 5, "c": 4, "d": 6]</span></span><br></pre></td></tr></table></figure>
+<p>注意尾随闭包中有两个参数，返回第一个参数，表示如果merge操作有重复key值，将保留merge前的value不变。如果闭包返回第二个参数，如果merge有重复key，将更新至最新值。<br><code>Dictionary</code>向关的merge函数一共有四个，使用类似：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">merge</span>&lt;S&gt;<span class="params">(<span class="number">_</span> other: S, uniquingKeysWith combine: <span class="params">([Key : Value].Value, [Key : Value].Value)</span></span></span> <span class="keyword">throws</span> -&gt; [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>) <span class="keyword">rethrows</span> <span class="keyword">where</span> <span class="type">S</span> : <span class="type">Sequence</span>, <span class="type">S</span>.<span class="type">Element</span> == (<span class="type">Key</span>, <span class="type">Value</span>)</span><br><span class="line"><span class="comment">//上面示例对应方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">merge</span><span class="params">(<span class="number">_</span> other: [[Key : Value].Key : [Key : Value].Value], uniquingKeysWith combine: <span class="params">([Key : Value].Value, [Key : Value].Value)</span></span></span> <span class="keyword">throws</span> -&gt; [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>) <span class="keyword">rethrows</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">merging</span>&lt;S&gt;<span class="params">(<span class="number">_</span> other: S, uniquingKeysWith combine: <span class="params">([Key : Value].Value, [Key : Value].Value)</span></span></span> <span class="keyword">throws</span> -&gt; [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>) <span class="keyword">rethrows</span> -&gt; [[<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Key</span> : [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>] <span class="keyword">where</span> <span class="type">S</span> : <span class="type">Sequence</span>, <span class="type">S</span>.<span class="type">Element</span> == (<span class="type">Key</span>, <span class="type">Value</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">merging</span><span class="params">(<span class="number">_</span> other: [[Key : Value].Key : [Key : Value].Value], uniquingKeysWith combine: <span class="params">([Key : Value].Value, [Key : Value].Value)</span></span></span> <span class="keyword">throws</span> -&gt; [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>) <span class="keyword">rethrows</span> -&gt; [[<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Key</span> : [<span class="type">Key</span> : <span class="type">Value</span>].<span class="type">Value</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="一些Git操作"><a href="#一些Git操作" class="headerlink" title="一些Git操作"></a>一些Git操作</h3><p><strong>删除子目录git</strong><br>当一个含git的目录包含了其他含git目录时，外部git是不能将内部git纳入版本管理的。有一种解决方案是，移除内部的git仓库。<br>1、删除内部git</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd 需要移除的git目录</span><br><span class="line">rm -rf .git  # 或者显示隐藏目录手动删除.git文件夹</span><br></pre></td></tr></table></figure>
+<p>此时虽然已经删除了<code>.git</code>但是原目录还存在缓存，无法添加到外部git中。<br>2、删除缓存内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached next</span><br></pre></td></tr></table></figure>
+<p><strong>git pull强制覆盖本地文件</strong><br>当我们需要将某一分支，跟远程对应分支保持一致时，可以做如下操作：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch</span><br><span class="line">git reset --hard origin/branch_name</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<p><strong>fatal:refusing to merge unrelated histories</strong><br>当我们为一个项目关联了一个远程仓库，执行pull的操作时出现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br><span class="line"> * [new branch]      master     -&gt; origin&#x2F;master</span><br><span class="line">fatal: refusing to merge unrelated histories</span><br></pre></td></tr></table></figure>
+<p>这是因为git从2.9.0版本开始，预设行为不允许合并没有共同祖先的分支。如果你非要合并，需要加上<code>--allow-unrelated-histories</code>参数才行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure>
 <h3 id="几个提高效率的快捷键"><a href="#几个提高效率的快捷键" class="headerlink" title="几个提高效率的快捷键"></a>几个提高效率的快捷键</h3><p>最近在熟练使用了几个快捷键后，明显感觉开发效率提高了不少，这里总结了几个常用但不是非常常用的快捷键（Command + C 和 Command V等）。另外</p>
 <ul>
 <li>Command（或 Cmd）⌘</li>
@@ -29,37 +188,531 @@
 </ul>
 <p><strong>Xcode</strong><br>Command + Shift + J 文件目录指向当前文件<br>Command + Shift + O 文件、对象搜索<br>Command + Shift + F 全局搜索<br>Command + shift + , 编辑 scheme<br>Command + Control + Left/Right 浏览历史切换<br>Command + Option + Left/Right 折叠、展开当前代码段<br>Command + Option + C 显示Commit界面<br><strong>系统操作</strong><br>Command + Option + Power 睡眠状态<br>Power 1.5s睡眠状态<br>Command + Control + Power 强制Mac重启</p>
 <p><strong>适用其他程序</strong><br>Command + , 打开偏好设置<br>Command + W 关闭最前面的窗口<br>Command + Option + W 关闭应用所有窗口<br>Command + Q 推出应用<br>Command + M 最小化<br>Command + Shift + [/] 左右切换应用tab</p>
-<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><h3 id="未来世界的幸存者"><a href="#未来世界的幸存者" class="headerlink" title="未来世界的幸存者"></a><a href="http://survivor.ruanyifeng.com/index.html" target="_blank" rel="noopener">未来世界的幸存者</a></h3><p>今年市场经济不景气，很多互联网公司经历“裁员潮”，其实不光是换联网行业，其他行业也面临同样的问题。那怎么提高自己的核心竞争力，是每一个从事互联网行业的人都应该考虑的。我们不应该只满足于日常开发，要找准自己的定位，提早做职业规划。另外不断尝试拓展自己的知识面，增加自己的影响力，这样才能让自己在不断变化的市场中立于不败之地。</p>
-<p>除了阮老师的这本书，还推荐<br>卓同学的<a href="https://juejin.im/post/5c45c999e51d4551cd71f4e2" target="_blank" rel="noopener">iOS 2019 隆中对</a></p>
-<h3 id="什么是真正的程序员"><a href="#什么是真正的程序员" class="headerlink" title="什么是真正的程序员"></a><a href="https://www.cnblogs.com/xueweihan/p/5220513.html" target="_blank" rel="noopener">什么是真正的程序员</a></h3><p>作者仿照《小王子》中的情节，通过小printf遇见的不同类型的程序员，最后悟出什么才是真正的程序员！<br>有两个概念比较有意思：</p>
+<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><h3 id="未来世界的幸存者"><a href="#未来世界的幸存者" class="headerlink" title="未来世界的幸存者"></a><a href="http://survivor.ruanyifeng.com/index.html">未来世界的幸存者</a></h3><p>今年市场经济不景气，很多互联网公司经历“裁员潮”，其实不光是换联网行业，其他行业也面临同样的问题。那怎么提高自己的核心竞争力，是每一个从事互联网行业的人都应该考虑的。我们不应该只满足于日常开发，要找准自己的定位，提早做职业规划。另外不断尝试拓展自己的知识面，增加自己的影响力，这样才能让自己在不断变化的市场中立于不败之地。</p>
+<p>除了阮老师的这本书，还推荐<br>卓同学的<a href="https://juejin.im/post/5c45c999e51d4551cd71f4e2">iOS 2019 隆中对</a></p>
+<h3 id="什么是真正的程序员"><a href="#什么是真正的程序员" class="headerlink" title="什么是真正的程序员"></a><a href="https://www.cnblogs.com/xueweihan/p/5220513.html">什么是真正的程序员</a></h3><p>作者仿照《小王子》中的情节，通过小printf遇见的不同类型的程序员，最后悟出什么才是真正的程序员！<br>有两个概念比较有意思：</p>
 <ul>
 <li>达克效应：能力强的人总是低估自己，能力弱的人总是高估自己。</li>
 <li>能够为人们解决真正需要解决的问题的程序员，才是真正的程序员</li>
 </ul>
-<h3 id="Language-Server-Protocol"><a href="#Language-Server-Protocol" class="headerlink" title="Language Server Protocol"></a><a href="https://swift.gg/2019/01/15/nshipster-language-server-protocol/" target="_blank" rel="noopener">Language Server Protocol</a></h3><p>来自SwiftGG翻译组的一篇文章。<br>苹果公司 在 <a href="https://forums.swift.org/t/new-lsp-language-service-supporting-swift-and-c-family-languages-for-any-editor-and-platform/17024" target="_blank" rel="noopener">Swift.org</a> 论坛上宣布，正在着手为 Swift 和 C 语言支持 <a href="https://microsoft.github.io/language-server-protocol/" target="_blank" rel="noopener">Language Server Protocol</a>（语言服务器协议，LSP）。<br>那这意味着什么呢？这可能是苹果自 2014 年将 Swift 作为开源软件发布以来，为 Swift 做出的最重要的决定。它意味着我们可以不必使用Xcode去开发Swift项目，而是可以选择像是Visual Studio, Atom这些IDE。Swift将变成一种更加通用的变成语言。</p>
-<h3 id="Hashable-Hasher"><a href="#Hashable-Hasher" class="headerlink" title="Hashable / Hasher"></a><a href="https://nshipster.cn/hashable/" target="_blank" rel="noopener">Hashable / Hasher</a></h3><p>Hash是程序开发过程中很重要的一个概念，它可以让我们查找集合特定元素的时间复杂度由O(n)降低到O(1)。<br>这篇文章介绍了Swift中关于哈希的实现，哈希冲突的改变，以及Swift4.1之后关于自动化实现<code>Equatable</code>的相关介绍。</p>
-<h3 id="Table-View-太複雜？利用-MVVM-和-Protocol-就可以為它重構瘦身！"><a href="#Table-View-太複雜？利用-MVVM-和-Protocol-就可以為它重構瘦身！" class="headerlink" title="Table View 太複雜？利用 MVVM 和 Protocol 就可以為它重構瘦身！"></a><a href="https://www.appcoda.com.tw/tableview-mvvm/" target="_blank" rel="noopener">Table View 太複雜？利用 MVVM 和 Protocol 就可以為它重構瘦身！</a></h3><p>TableView是我们常用的系统部件，随着业务逻辑的不断迭代它内部的逻辑可能会越来越复杂，代码量也越来越多，如果不能很好的组织逻辑架构，这里会变得非常臃肿。<br>作者利用<code>MVVM pattern</code>，加上一点<code>Protocol</code>技巧，来简化dataSource的工作，把UI和逻辑解耦合，并且最大化这个tableView模组的扩展性。</p>
-<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><p>临近年关，可能很多人会考虑年后换工作的情况，最近几期的ggtalk也在讨论跳槽这个大家比较关注的话题，希望大家收听之后能够有所收获：<br><a href="https://talk.swift.gg/12" target="_blank" rel="noopener">狭义跳槽论：面试官，大厂新人和准备起跳的某 C</a><br><a href="https://talk.swift.gg/13" target="_blank" rel="noopener">广义跳槽论：简洁明了的方法论</a><br>附带之前的几期关于升职加薪的节目：<br><a href="https://talk.swift.gg/0" target="_blank" rel="noopener">聊聊程序员的升职加薪（上）</a><br><a href="https://talk.swift.gg/4" target="_blank" rel="noopener">聊聊程序员的升职加薪（下）</a></p>
-<h3 id="程序员的春节趣事"><a href="#程序员的春节趣事" class="headerlink" title="程序员的春节趣事"></a><a href="https://talk.swift.gg/14" target="_blank" rel="noopener">程序员的春节趣事</a></h3><p>今天上班路上听了这期节目，全程非常的欢快。我是今天晚上回家的火车，那些相似的春节趣事我也马上要经历一次了，是需要提前准备下怎么应对了🙃。</p>
+<h3 id="Language-Server-Protocol"><a href="#Language-Server-Protocol" class="headerlink" title="Language Server Protocol"></a><a href="https://swift.gg/2019/01/15/nshipster-language-server-protocol/">Language Server Protocol</a></h3><p>来自SwiftGG翻译组的一篇文章。<br>苹果公司 在 <a href="https://forums.swift.org/t/new-lsp-language-service-supporting-swift-and-c-family-languages-for-any-editor-and-platform/17024">Swift.org</a> 论坛上宣布，正在着手为 Swift 和 C 语言支持 <a href="https://microsoft.github.io/language-server-protocol/">Language Server Protocol</a>（语言服务器协议，LSP）。<br>那这意味着什么呢？这可能是苹果自 2014 年将 Swift 作为开源软件发布以来，为 Swift 做出的最重要的决定。它意味着我们可以不必使用Xcode去开发Swift项目，而是可以选择像是Visual Studio, Atom这些IDE。Swift将变成一种更加通用的变成语言。</p>
+<h3 id="Hashable-Hasher"><a href="#Hashable-Hasher" class="headerlink" title="Hashable / Hasher"></a><a href="https://nshipster.cn/hashable/">Hashable / Hasher</a></h3><p>Hash是程序开发过程中很重要的一个概念，它可以让我们查找集合特定元素的时间复杂度由O(n)降低到O(1)。<br>这篇文章介绍了Swift中关于哈希的实现，哈希冲突的改变，以及Swift4.1之后关于自动化实现<code>Equatable</code>的相关介绍。</p>
+<h3 id="Table-View-太複雜？利用-MVVM-和-Protocol-就可以為它重構瘦身！"><a href="#Table-View-太複雜？利用-MVVM-和-Protocol-就可以為它重構瘦身！" class="headerlink" title="Table View 太複雜？利用 MVVM 和 Protocol 就可以為它重構瘦身！"></a><a href="https://www.appcoda.com.tw/tableview-mvvm/">Table View 太複雜？利用 MVVM 和 Protocol 就可以為它重構瘦身！</a></h3><p>TableView是我们常用的系统部件，随着业务逻辑的不断迭代它内部的逻辑可能会越来越复杂，代码量也越来越多，如果不能很好的组织逻辑架构，这里会变得非常臃肿。<br>作者利用<code>MVVM pattern</code>，加上一点<code>Protocol</code>技巧，来简化dataSource的工作，把UI和逻辑解耦合，并且最大化这个tableView模组的扩展性。</p>
+<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><p>临近年关，可能很多人会考虑年后换工作的情况，最近几期的ggtalk也在讨论跳槽这个大家比较关注的话题，希望大家收听之后能够有所收获：<br><a href="https://talk.swift.gg/12">狭义跳槽论：面试官，大厂新人和准备起跳的某 C</a><br><a href="https://talk.swift.gg/13">广义跳槽论：简洁明了的方法论</a><br>附带之前的几期关于升职加薪的节目：<br><a href="https://talk.swift.gg/0">聊聊程序员的升职加薪（上）</a><br><a href="https://talk.swift.gg/4">聊聊程序员的升职加薪（下）</a></p>
+<h3 id="程序员的春节趣事"><a href="#程序员的春节趣事" class="headerlink" title="程序员的春节趣事"></a><a href="https://talk.swift.gg/14">程序员的春节趣事</a></h3><p>今天上班路上听了这期节目，全程非常的欢快。我是今天晚上回家的火车，那些相似的春节趣事我也马上要经历一次了，是需要提前准备下怎么应对了🙃。</p>
 <p>以下是官方内容介绍：<br>快过年了，估计大家也没心情工作学习，准备进入放假状态。严肃的话题放到年后，这期我们请到了袁滚滚、张思琦和老朋友莲叔，围绕着春节轻松愉快的聊一期。</p>
 <h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><p>本篇GitHub模块，介绍几个Git和GitHub相关的项目。</p>
-<h3 id="Git中文教程"><a href="#Git中文教程" class="headerlink" title="Git中文教程"></a><a href="https://github.com/geeeeeeeeek/git-recipes" target="_blank" rel="noopener">Git中文教程</a></h3><p>来自<a href="https://github.com/geeeeeeeeek" target="_blank" rel="noopener">geeeeeeeeek</a>的高质量Git中文教程，在GitHub已经获得了1w+的start。对git操作还有疑问的同学可以借助这份教程，完整的梳理一下git相关的知识，或者扫一下git盲区。 </p>
-<h3 id="Git的奇技淫巧"><a href="#Git的奇技淫巧" class="headerlink" title="Git的奇技淫巧"></a><a href="https://github.com/521xueweihan/git-tips" target="_blank" rel="noopener">Git的奇技淫巧</a></h3><p>我们在使用git的时候，有时候会被一些具体的问题难住，这篇文章从具体操作入手，介绍一些我们知道但不一定都用过的git指令。<br>等等，我也想写一份我自己的Git奇淫技巧了，因为git这个东西是真的庞大。</p>
-<h3 id="HelloGitHub"><a href="#HelloGitHub" class="headerlink" title="HelloGitHub"></a><a href="https://github.com/521xueweihan/HelloGitHub" target="_blank" rel="noopener">HelloGitHub</a></h3><p>这是一个面向编程新手、热爱编程、对开源社区感兴趣人群的项目，内容以月刊的形式更新发布。内容包括：流行项目、入门级项目、让生活变得更美好的工具、书籍、学习心得笔记、企业级项目等，这些开源项目大多都是非常容易上手、很 Cool，能够让你用很短时间感受到编程的魅力和便捷。从而让大家感受到编程的乐趣，动手开始编程。</p>
-<h3 id="GitHub漫游指南"><a href="#GitHub漫游指南" class="headerlink" title="GitHub漫游指南"></a><a href="https://github.com/phodal/github" target="_blank" rel="noopener">GitHub漫游指南</a></h3><p>介绍你可能在Github上遇到的所有问题，从如何起一个好名字到如何推广项目，GitHub用户分析，每一个环节都非常详细。无论你处于编程的哪个阶段，我认为你都能从这份指南中获取到灵感和帮助。</p>
-<h3 id="README"><a href="#README" class="headerlink" title="README"></a><a href="https://github.com/guodongxiaren/README" target="_blank" rel="noopener">README</a></h3><p>该文件用来测试和展示书写README的各种markdown语法。GitHub的markdown语法在标准的markdown语法基础上做了扩充，称之为GitHub Flavored Markdown。简称GFM，GFM在GitHub上有广泛应用，除了README文件外，issues和wiki均支持markdown语法。</p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangferry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhangferry.github.io/2019/01/31/monthly_7/">http://zhangferry.github.io/2019/01/31/monthly_7/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhangferry.github.io">zhangferry</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/月报/">月报</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/02/20/figure_bed_github/"><i class="fa fa-chevron-left">  </i><span>艰难的图床优化方案(MWeb+PicGo+Github)</span></a></div><div class="next-post pull-right"><a href="/2019/01/02/monthly_6/"><span>iOS开发月报#6|201812</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
-  clientID: '012999c912503aff4cac',
-  clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-  repo: 'zhangferry.github.io',
-  owner: 'zhangferry',
-  admin: 'zhangferry',
-  id: md5(decodeURI(location.pathname)),
-  language: 'zh-CN'
-})
-gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2020 By zhangferry</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+<h3 id="Git中文教程"><a href="#Git中文教程" class="headerlink" title="Git中文教程"></a><a href="https://github.com/geeeeeeeeek/git-recipes">Git中文教程</a></h3><p>来自<a href="https://github.com/geeeeeeeeek">geeeeeeeeek</a>的高质量Git中文教程，在GitHub已经获得了1w+的start。对git操作还有疑问的同学可以借助这份教程，完整的梳理一下git相关的知识，或者扫一下git盲区。 </p>
+<h3 id="Git的奇技淫巧"><a href="#Git的奇技淫巧" class="headerlink" title="Git的奇技淫巧"></a><a href="https://github.com/521xueweihan/git-tips">Git的奇技淫巧</a></h3><p>我们在使用git的时候，有时候会被一些具体的问题难住，这篇文章从具体操作入手，介绍一些我们知道但不一定都用过的git指令。<br>等等，我也想写一份我自己的Git奇淫技巧了，因为git这个东西是真的庞大。</p>
+<h3 id="HelloGitHub"><a href="#HelloGitHub" class="headerlink" title="HelloGitHub"></a><a href="https://github.com/521xueweihan/HelloGitHub">HelloGitHub</a></h3><p>这是一个面向编程新手、热爱编程、对开源社区感兴趣人群的项目，内容以月刊的形式更新发布。内容包括：流行项目、入门级项目、让生活变得更美好的工具、书籍、学习心得笔记、企业级项目等，这些开源项目大多都是非常容易上手、很 Cool，能够让你用很短时间感受到编程的魅力和便捷。从而让大家感受到编程的乐趣，动手开始编程。</p>
+<h3 id="GitHub漫游指南"><a href="#GitHub漫游指南" class="headerlink" title="GitHub漫游指南"></a><a href="https://github.com/phodal/github">GitHub漫游指南</a></h3><p>介绍你可能在Github上遇到的所有问题，从如何起一个好名字到如何推广项目，GitHub用户分析，每一个环节都非常详细。无论你处于编程的哪个阶段，我认为你都能从这份指南中获取到灵感和帮助。</p>
+<h3 id="README"><a href="#README" class="headerlink" title="README"></a><a href="https://github.com/guodongxiaren/README">README</a></h3><p>该文件用来测试和展示书写README的各种markdown语法。GitHub的markdown语法在标准的markdown语法基础上做了扩充，称之为GitHub Flavored Markdown。简称GFM，GFM在GitHub上有广泛应用，除了README文件外，issues和wiki均支持markdown语法。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E6%9C%88%E6%8A%A5/" rel="tag">月报</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/20/figure_bed_github/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">艰难的图床优化方案(MWeb+PicGo+Github)</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/02/monthly_6/">
+                <span class="level-item">iOS开发月报#6|201812</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://zhangferry.github.io/2019/01/31/monthly_7/';
+        this.page.identifier = '2019/01/31/monthly_7/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-zhangferry-github-io' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="zhangferry">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        zhangferry
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        iOS开发
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            56
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/zhangferry" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/zhangferry">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Weibo" href="https://weibo.com/2947186387/profile">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="https://zhangferry.com/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#新闻一览">
+        <span class="has-mr-6">1</span>
+        <span>新闻一览</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Github宣布私有库免费">
+        <span class="has-mr-6">1.1</span>
+        <span>Github宣布私有库免费</span>
+        </a></li><li>
+        <a class="is-flex" href="#Swift-5-Release-Notes-for-Xcode-10-2-beta">
+        <span class="has-mr-6">1.2</span>
+        <span>Swift 5 Release Notes for Xcode 10.2 beta</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Tips">
+        <span class="has-mr-6">2</span>
+        <span>Tips</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Dictionary的merge操作">
+        <span class="has-mr-6">2.1</span>
+        <span>Dictionary的merge操作</span>
+        </a></li><li>
+        <a class="is-flex" href="#一些Git操作">
+        <span class="has-mr-6">2.2</span>
+        <span>一些Git操作</span>
+        </a></li><li>
+        <a class="is-flex" href="#几个提高效率的快捷键">
+        <span class="has-mr-6">2.3</span>
+        <span>几个提高效率的快捷键</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#推荐阅读">
+        <span class="has-mr-6">3</span>
+        <span>推荐阅读</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#未来世界的幸存者">
+        <span class="has-mr-6">3.1</span>
+        <span>未来世界的幸存者</span>
+        </a></li><li>
+        <a class="is-flex" href="#什么是真正的程序员">
+        <span class="has-mr-6">3.2</span>
+        <span>什么是真正的程序员</span>
+        </a></li><li>
+        <a class="is-flex" href="#Language-Server-Protocol">
+        <span class="has-mr-6">3.3</span>
+        <span>Language Server Protocol</span>
+        </a></li><li>
+        <a class="is-flex" href="#Hashable-Hasher">
+        <span class="has-mr-6">3.4</span>
+        <span>Hashable / Hasher</span>
+        </a></li><li>
+        <a class="is-flex" href="#Table-View-太複雜？利用-MVVM-和-Protocol-就可以為它重構瘦身！">
+        <span class="has-mr-6">3.5</span>
+        <span>Table View 太複雜？利用 MVVM 和 Protocol 就可以為它重構瘦身！</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#音视频">
+        <span class="has-mr-6">4</span>
+        <span>音视频</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#程序员的春节趣事">
+        <span class="has-mr-6">4.1</span>
+        <span>程序员的春节趣事</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Github">
+        <span class="has-mr-6">5</span>
+        <span>Github</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Git中文教程">
+        <span class="has-mr-6">5.1</span>
+        <span>Git中文教程</span>
+        </a></li><li>
+        <a class="is-flex" href="#Git的奇技淫巧">
+        <span class="has-mr-6">5.2</span>
+        <span>Git的奇技淫巧</span>
+        </a></li><li>
+        <a class="is-flex" href="#HelloGitHub">
+        <span class="has-mr-6">5.3</span>
+        <span>HelloGitHub</span>
+        </a></li><li>
+        <a class="is-flex" href="#GitHub漫游指南">
+        <span class="has-mr-6">5.4</span>
+        <span>GitHub漫游指南</span>
+        </a></li><li>
+        <a class="is-flex" href="#README">
+        <span class="has-mr-6">5.5</span>
+        <span>README</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo_2.svg" alt="iOS开发月报#7|201901" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 zhangferry&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://zhangferry.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

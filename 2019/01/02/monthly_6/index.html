@@ -1,28 +1,185 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="iOS开发月报#6|201812"><meta name="keywords" content="月报"><meta name="author" content="zhangferry"><meta name="copyright" content="zhangferry"><title>iOS开发月报#6|201812 | zhangferry</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#大事件"><span class="toc-number">1.</span> <span class="toc-text">大事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">2.</span> <span class="toc-text">Tips</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更换启动图不生效"><span class="toc-number">2.1.</span> <span class="toc-text">更换启动图不生效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值权限"><span class="toc-number">2.2.</span> <span class="toc-text">赋值权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#App图片瘦身"><span class="toc-number">2.3.</span> <span class="toc-text">App图片瘦身</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、删除不用的图片"><span class="toc-number">2.3.1.</span> <span class="toc-text">1、删除不用的图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、图片压缩"><span class="toc-number">2.3.2.</span> <span class="toc-text">2、图片压缩</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后台音频耗电问题"><span class="toc-number">2.4.</span> <span class="toc-text">后台音频耗电问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐阅读"><span class="toc-number">3.</span> <span class="toc-text">推荐阅读</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS开发过程中的设计模式"><span class="toc-number">3.1.</span> <span class="toc-text">iOS开发过程中的设计模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS逆向"><span class="toc-number">3.2.</span> <span class="toc-text">iOS逆向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用脚本提高工作效率"><span class="toc-number">3.3.</span> <span class="toc-text">利用脚本提高工作效率</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#音视频"><span class="toc-number">4.</span> <span class="toc-text">音视频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Github"><span class="toc-number">5.</span> <span class="toc-text">Github</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12306ForMac"><span class="toc-number">5.1.</span> <span class="toc-text">12306ForMac</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LongestCocoa"><span class="toc-number">5.2.</span> <span class="toc-text">LongestCocoa</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">zhangferry</div><div class="author-info__description text-center">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</div><div class="follow-button"><a href="https://github.com/zhangferry">Follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">56</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">27</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://colin1994.github.io/">Colin</a><a class="author-info-links__name text-center" href="http://www.evenvi.com/">Evenvi</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zhangferry</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">iOS开发月报#6|201812</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-01-02</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="大事件"><a href="#大事件" class="headerlink" title="大事件"></a>大事件</h2><p>这个月的大事件是高通与苹果之间的专利大战。高通分别在中国和德国对苹果公司提起专利诉讼，结果均胜。苹果将在中国禁售iPhoneX及之前的机型。在德国则是全面禁售。<br><a id="more"></a><br>加上新品手机的创新力度不够，导致苹果股票持续走低，四个月前，苹果还是首个突破万亿美元市值的上市公司，到现在股价已经下跌了 36%，市值只有 7160 亿美元，几个月内市值损失接近 3000 亿美元。<br><img src="https://upload-images.jianshu.io/upload_images/1059465-4e4811eeba166496.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="news.png"><br><!--more--></p>
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>iOS开发月报#6|201812 - zhangferry</title>
+
+
+    <meta name="description" content="大事件这个月的大事件是高通与苹果之间的专利大战。高通分别在中国和德国对苹果公司提起专利诉讼，结果均胜。苹果将在中国禁售iPhoneX及之前的机型。在德国则是全面禁售。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发月报#6|201812">
+<meta property="og:url" content="http://zhangferry.github.io/2019/01/02/monthly_6/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="大事件这个月的大事件是高通与苹果之间的专利大战。高通分别在中国和德国对苹果公司提起专利诉讼，结果均胜。苹果将在中国禁售iPhoneX及之前的机型。在德国则是全面禁售。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
+<meta property="article:published_time" content="2019-01-02T02:54:57.000Z">
+<meta property="article:modified_time" content="2020-03-07T05:41:38.956Z">
+<meta property="article:author" content="zhangferry">
+<meta property="article:tag" content="月报">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangferry.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo_2.svg" alt="iOS开发月报#6|201812" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangferry">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-02T02:54:57.000Z">2019-01-02</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    21 分钟 读完 (大约 3222 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                iOS开发月报#6|201812
+            
+        </h1>
+        <div class="content">
+            <h2 id="大事件"><a href="#大事件" class="headerlink" title="大事件"></a>大事件</h2><p>这个月的大事件是高通与苹果之间的专利大战。高通分别在中国和德国对苹果公司提起专利诉讼，结果均胜。苹果将在中国禁售iPhoneX及之前的机型。在德国则是全面禁售。</p>
+<a id="more"></a>
+<p>加上新品手机的创新力度不够，导致苹果股票持续走低，四个月前，苹果还是首个突破万亿美元市值的上市公司，到现在股价已经下跌了 36%，市值只有 7160 亿美元，几个月内市值损失接近 3000 亿美元。<br><img src="https://upload-images.jianshu.io/upload_images/1059465-4e4811eeba166496.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="news.png"></p>
+<!--more-->
 <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="更换启动图不生效"><a href="#更换启动图不生效" class="headerlink" title="更换启动图不生效"></a>更换启动图不生效</h3><p><strong>现象</strong>：更换启动图，不生效，即使删除旧图，运行程序启动图仍然是之前的版本。<br>尝试了删除app重装，clean、重启Xcode，删除DriverData，还试过挪图片位置，改名字，均无效。最后尝试了重启手机-&gt;再安装才正常。</p>
-<p><strong>问题分析</strong>：这个是系统问题，为了加快程序启动的速度系统会把启动图做个缓存，之后每次启动是加载缓存启动图，所以才会出现修改不生效问题。但我们也并不知道系统会什么时候更新启动图，这个就有点尴尬😓<br>stackoverflow上有关于这个问题的讨论：<br><a href="https://stackoverflow.com/questions/33002829/ios-keeping-old-launch-screen-and-app-icon-after-update" target="_blank" rel="noopener">iOS Keeping old launch screen and app icon after update</a></p>
+<p><strong>问题分析</strong>：这个是系统问题，为了加快程序启动的速度系统会把启动图做个缓存，之后每次启动是加载缓存启动图，所以才会出现修改不生效问题。但我们也并不知道系统会什么时候更新启动图，这个就有点尴尬😓<br>stackoverflow上有关于这个问题的讨论：<br><a href="https://stackoverflow.com/questions/33002829/ios-keeping-old-launch-screen-and-app-icon-after-update">iOS Keeping old launch screen and app icon after update</a></p>
 <p>有人说这个不影响线上版本，从上线之后的测试来看，大部分用户没有受到影响，但还是出现了部分手机升级却未更换启动图的问题。<br>因为是系统层面控制，没有太好的解决方案，如果有人遇到这个情况，需要注意一下。</p>
 <h3 id="赋值权限"><a href="#赋值权限" class="headerlink" title="赋值权限"></a>赋值权限</h3><p>在Mac 系统的终端上修改文件权限使用的是 Linux 中的 chmod 命令：<br>r：可读，表示可以读取内容<br>w:可写，表示可以编辑内容，但是不可以删除文件<br>x: 可执行，表示可以执行文件。</p>
 <p>r:4<br>w:2<br>x:1<br>rwx=4+2+1=7</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1059465-078779097f1aa66f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="rwx.png"></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> chmod 777 file</span></span><br></pre></td></tr></table></figure>
 <p>这行命令的意思就是：文件所有者权限是7，同用户组的权限是7，其他非本地用户组的权限是7。同理可以出现这样的命令 chmod740.barshrc</p>
-<p>再讲两个：<br>chmod u=rwx, go=rx .barshrc 这个命令中u表示拥有者，g表示group中的用户，o表示others，和上面的想对应。注意go=rx，这里go是拼接起来的，表示g和o的用户有读和执行的权限。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> chmod a+w .barshrc</span></span><br></pre></td></tr></table></figure></p>
+<p>再讲两个：<br>chmod u=rwx, go=rx .barshrc 这个命令中u表示拥有者，g表示group中的用户，o表示others，和上面的想对应。注意go=rx，这里go是拼接起来的，表示g和o的用户有读和执行的权限。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> chmod a+w .barshrc</span></span><br></pre></td></tr></table></figure>
 <p>表示所有的用户（a表示all）增加写的权限。</p>
 <h3 id="App图片瘦身"><a href="#App图片瘦身" class="headerlink" title="App图片瘦身"></a>App图片瘦身</h3><p>随着项目版本的不断迭代，会很容易积累越来越多的图片，对这些图片我们有两个主要方面可以优化：</p>
-<h4 id="1、删除不用的图片"><a href="#1、删除不用的图片" class="headerlink" title="1、删除不用的图片"></a>1、删除不用的图片</h4><p>我们需要借助一个工具<a href="https://github.com/tinymind/LSUnusedResources" target="_blank" rel="noopener">LSUnusedResources</a><br>它可以检索项目中未使用的图片资源，我们可以指定检索图片的路径，后缀进行过滤。<br><strong>注意</strong>：无法区分png序列的引用。最好手动删除</p>
-<h4 id="2、图片压缩"><a href="#2、图片压缩" class="headerlink" title="2、图片压缩"></a>2、图片压缩</h4><p>可以通过<a href="https://imageoptim.com/mac" target="_blank" rel="noopener">ImageOptim</a>，对图片进行无损压缩。使用时只需将要压缩的文件拖到程序中即可。<br>如果图片较多时，可以借助其命令行工具：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Applications/ImageOptim.app/Contents/MacOS/ImageOptim $file_name</span><br></pre></td></tr></table></figure></p>
-<p>对应的shell脚本:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 处理文件名出现空格问题</span><br><span class="line">MY_IFS=$IFS</span><br><span class="line">IFS=$&apos;\n&apos;</span><br><span class="line">for file_name in $(find &quot;$1&quot; -name &quot;*.png&quot; -type f); do</span><br><span class="line">echo $file_name</span><br><span class="line">/Applications/ImageOptim.app/Contents/MacOS/ImageOptim $file_name</span><br><span class="line">done</span><br><span class="line">IFS=$MY_IFS</span><br></pre></td></tr></table></figure></p>
-<p>该工具还有一个Sketch插件：<a href="https://imageoptim.com/sketch" target="_blank" rel="noopener">Plugin for Sketch
+<h4 id="1、删除不用的图片"><a href="#1、删除不用的图片" class="headerlink" title="1、删除不用的图片"></a>1、删除不用的图片</h4><p>我们需要借助一个工具<a href="https://github.com/tinymind/LSUnusedResources">LSUnusedResources</a><br>它可以检索项目中未使用的图片资源，我们可以指定检索图片的路径，后缀进行过滤。<br><strong>注意</strong>：无法区分png序列的引用。最好手动删除</p>
+<h4 id="2、图片压缩"><a href="#2、图片压缩" class="headerlink" title="2、图片压缩"></a>2、图片压缩</h4><p>可以通过<a href="https://imageoptim.com/mac">ImageOptim</a>，对图片进行无损压缩。使用时只需将要压缩的文件拖到程序中即可。<br>如果图片较多时，可以借助其命令行工具：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;Applications&#x2F;ImageOptim.app&#x2F;Contents&#x2F;MacOS&#x2F;ImageOptim $file_name</span><br></pre></td></tr></table></figure>
+<p>对应的shell脚本:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 处理文件名出现空格问题</span><br><span class="line">MY_IFS&#x3D;$IFS</span><br><span class="line">IFS&#x3D;$&#39;\n&#39;</span><br><span class="line">for file_name in $(find &quot;$1&quot; -name &quot;*.png&quot; -type f); do</span><br><span class="line">echo $file_name</span><br><span class="line">&#x2F;Applications&#x2F;ImageOptim.app&#x2F;Contents&#x2F;MacOS&#x2F;ImageOptim $file_name</span><br><span class="line">done</span><br><span class="line">IFS&#x3D;$MY_IFS</span><br></pre></td></tr></table></figure>
+<p>该工具还有一个Sketch插件：<a href="https://imageoptim.com/sketch">Plugin for Sketch
 </a>，可以在输出icon的时候直接进行压缩优化。</p>
 <h3 id="后台音频耗电问题"><a href="#后台音频耗电问题" class="headerlink" title="后台音频耗电问题"></a>后台音频耗电问题</h3><p><strong>功能：</strong>一段助眠音频可以后台播放，播放完成后如果返回app，会跳到对应的完成界面。<br><strong>问题：</strong>有用户反馈，听音频睡着了，早上醒来，电量掉了很多（40%）。<br><strong>调研：</strong><br>使用Xcode中 <code>Debug Navigator</code>栏的<code>Energy Debug Gauge</code>（需真机）测试。播放完成4分钟左右的后台耗电状态如下：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-4dc9ec91be8167f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Energy Debug Gauge.png"><br>分析可知虽然此时app停止了所有行为，但是生命周期仍处于<code>Background</code>状态，耗电量也还是存在的。暂时认为问题是客户端一直处于<code>Background</code>模式，并未被<code>Suspend</code>，导致一直被系统维护着，所以一直有耗电情况。</p>
 <p>再一次查看苹果关于后台模式的文档：</p>
@@ -36,20 +193,20 @@
 <blockquote>
 <p>设计模式是一套被反复使用的、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的，设计模式使代码编制真正工程化，设计模式是软件工程的基石，如同大厦的一块块砖石一样。项目中合理地运用设计模式可以完美地解决很多问题，每种模式在现实中都有相应的原理来与之对应，每种模式都描述了一个在我们周围不断重复发生的问题，以及该问题的核心解决方案，这也是设计模式能被广泛应用的原因。</p>
 </blockquote>
-<p>以上摘自<a href="http://www.runoob.com/design-pattern/design-pattern-intro.html" target="_blank" rel="noopener">菜鸟教程</a></p>
-<p><a href="https://medium.com/flawless-app-stories/strategy-pattern-in-swift-1462dbddd9fe" target="_blank" rel="noopener">Swift中的策略模式</a><br>从一个小例子入手，讲解策略模式在swift中的使用。</p>
-<p><a href="https://swift.gg/2018/09/10/design-pattern-creational/" target="_blank" rel="noopener">Swift 中的设计模式 #1 工厂方法与单例方法</a><br><a href="https://swift.gg/2018/11/26/design-pattern-behavorial/" target="_blank" rel="noopener">Swift 中的设计模式 #2 观察者模式与备忘录模式</a><br><a href="https://swift.gg/2018/11/29/design-pattern-structural/" target="_blank" rel="noopener">Swift 中的设计模式 #3 外观模式与适配器模式</a><br>SwiftGG翻译组翻译的设计模式系列文章。</p>
-<p><a href="https://github.com/skyming/Trip-to-iOS-Design-Patterns" target="_blank" rel="noopener">设计模式资料整理</a><br>应该是目前总结最全的适合iOS开发的设计模式资料汇总。</p>
+<p>以上摘自<a href="http://www.runoob.com/design-pattern/design-pattern-intro.html">菜鸟教程</a></p>
+<p><a href="https://medium.com/flawless-app-stories/strategy-pattern-in-swift-1462dbddd9fe">Swift中的策略模式</a><br>从一个小例子入手，讲解策略模式在swift中的使用。</p>
+<p><a href="https://swift.gg/2018/09/10/design-pattern-creational/">Swift 中的设计模式 #1 工厂方法与单例方法</a><br><a href="https://swift.gg/2018/11/26/design-pattern-behavorial/">Swift 中的设计模式 #2 观察者模式与备忘录模式</a><br><a href="https://swift.gg/2018/11/29/design-pattern-structural/">Swift 中的设计模式 #3 外观模式与适配器模式</a><br>SwiftGG翻译组翻译的设计模式系列文章。</p>
+<p><a href="https://github.com/skyming/Trip-to-iOS-Design-Patterns">设计模式资料整理</a><br>应该是目前总结最全的适合iOS开发的设计模式资料汇总。</p>
 <h3 id="iOS逆向"><a href="#iOS逆向" class="headerlink" title="iOS逆向"></a>iOS逆向</h3><p><img src="https://upload-images.jianshu.io/upload_images/1059465-f0ddd03518d37a5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="apple-hook.png"></p>
 <blockquote>
 <p>iOS应用逆向工程，是指从目标应用的界面及功能表现入手，使用不同的工具和理论知识去分析其实现原理，得出应用的代码结构、整体设计、功能实现、执行流程等，然后利用iOS的系统知识和语言特性，借鉴或修改原有实现流程的技术。</p>
 </blockquote>
-<p>推荐两篇掘金上关于iOS逆向的文章：<br><a href="https://juejin.im/post/5c19a38ae51d453e0a209256" target="_blank" rel="noopener">TikTok(抖音国际版)逆向，全球的小姐姐们，我来啦！</a><br><a href="https://juejin.im/post/5bc425495188255c9d564044" target="_blank" rel="noopener">逆向 Mac 应用 Bartender</a><br>这两篇都是通过具体实例入手，讲解逆向常用的工具和一些逆向的思路，非常适合新手。最好跟着介绍实际操作一番，第一次成功逆向一个项目之后，那种爽歪歪的感觉，你懂的！</p>
-<p>另外推荐一位逆向领域的牛人刘培庆（<a href="https://www.alonemonkey.com/" target="_blank" rel="noopener">博客</a>，<a href="https://github.com/AloneMonkey" target="_blank" rel="noopener">github</a>），了解逆向的同学大多应该都不陌生，iOS方面的逆向优先参照 <strong><a href="https://github.com/AloneMonkey/MonkeyDev" target="_blank" rel="noopener">MonkeyDev</a></strong>。<br>刘总今年出了新书《iOS应用逆向与安全》，非常适合对逆向有兴趣的同学。</p>
+<p>推荐两篇掘金上关于iOS逆向的文章：<br><a href="https://juejin.im/post/5c19a38ae51d453e0a209256">TikTok(抖音国际版)逆向，全球的小姐姐们，我来啦！</a><br><a href="https://juejin.im/post/5bc425495188255c9d564044">逆向 Mac 应用 Bartender</a><br>这两篇都是通过具体实例入手，讲解逆向常用的工具和一些逆向的思路，非常适合新手。最好跟着介绍实际操作一番，第一次成功逆向一个项目之后，那种爽歪歪的感觉，你懂的！</p>
+<p>另外推荐一位逆向领域的牛人刘培庆（<a href="https://www.alonemonkey.com/">博客</a>，<a href="https://github.com/AloneMonkey">github</a>），了解逆向的同学大多应该都不陌生，iOS方面的逆向优先参照 <strong><a href="https://github.com/AloneMonkey/MonkeyDev">MonkeyDev</a></strong>。<br>刘总今年出了新书《iOS应用逆向与安全》，非常适合对逆向有兴趣的同学。</p>
 <h3 id="利用脚本提高工作效率"><a href="#利用脚本提高工作效率" class="headerlink" title="利用脚本提高工作效率"></a>利用脚本提高工作效率</h3><blockquote>
 <p>脚本语言（英语：Scripting language）是为了缩短传统的“编写、编译、链接、运行”（edit-compile-link-run）过程而创建的计算机编程语言。早期的脚本语言经常被称为批处理语言或工作控制语言。一个脚本通常是解释运行而非编译。脚本语言通常都有简单、易学、易用的特性，目的就是希望能让程序员快速完成程序的编写工作</p>
 </blockquote>
-<p><a href="https://sspai.com/post/46912" target="_blank" rel="noopener">AppleScript入门：探索macOS自动化</a></p>
+<p><a href="https://sspai.com/post/46912">AppleScript入门：探索macOS自动化</a></p>
 <p>文章选自少数派，讲述了：</p>
 <ul>
 <li>什么是 AppleScript？</li>
@@ -57,17 +214,18 @@
 <li>AppleScript 基础语法</li>
 <li>AppleScript suite 之外的解法：模拟键鼠</li>
 </ul>
-<p>非常清晰详细的AppleScript入门文章。<br><a href="https://juejin.im/post/5bfac61ee51d454af013a900" target="_blank" rel="noopener">如何提高工作效率 - 自动化篇</a><br>文章选自掘金，串联Shell Script, Apple Script, Automator, Alfred &amp; WorkFlows，告诉你如果灵活应用，达到利用脚本提高工作效率的目的。</p>
+<p>非常清晰详细的AppleScript入门文章。<br><a href="https://juejin.im/post/5bfac61ee51d454af013a900">如何提高工作效率 - 自动化篇</a><br>文章选自掘金，串联Shell Script, Apple Script, Automator, Alfred &amp; WorkFlows，告诉你如果灵活应用，达到利用脚本提高工作效率的目的。</p>
 <p>我写了一个利用AppleScript和Alfred的WorkFlows在命令行打开指定路径的工具。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1059465-4ada69de8b235846.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="workflow.png"></p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">on</span> <span class="built_in">run</span> argv</span><br><span class="line"><span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"Finder"</span></span><br><span class="line"><span class="comment">-- get selection path</span></span><br><span class="line"><span class="keyword">set</span> pathFile <span class="keyword">to</span> selection <span class="keyword">as</span> <span class="built_in">text</span></span><br><span class="line"><span class="keyword">set</span> pathFile <span class="keyword">to</span> <span class="keyword">get</span> <span class="keyword">POSIX path</span> <span class="keyword">of</span> pathFile</span><br><span class="line"><span class="comment">-- fix space problem in the directory</span></span><br><span class="line"><span class="keyword">set</span> pathFile <span class="keyword">to</span> <span class="keyword">quoted form</span> <span class="keyword">of</span> pathFile</span><br><span class="line"><span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">"Terminal"</span></span><br><span class="line"><span class="built_in">activate</span></span><br><span class="line"><span class="keyword">tell</span> window <span class="number">1</span></span><br><span class="line">do <span class="keyword">script</span> <span class="string">"cd "</span> &amp; pathFile</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line"><span class="keyword">end</span> <span class="built_in">run</span></span><br></pre></td></tr></table></figure>
+
 <p>使用方法是：点击选中文件夹，按下热键<code>CMD + T</code>。</p>
-<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><p><strong><a href="https://talk.swift.gg/9" target="_blank" rel="noopener">创业那点事：听莲叔和羊叔回忆峥嵘岁月</a></strong><br>莲叔和羊叔是 SwiftGG 翻译组的真·大佬。成绩好，学历高，思维缜密，能力很强。听过《升职加薪》那期节目的朋友应该都有印象。作为标准的技术人才，在创业大潮中自然也想试试身手，打拼一番。</p>
-<p><strong><a href="https://talk.swift.gg/8" target="_blank" rel="noopener">和 Cee 聊聊如何拿 Google Offer</a></strong><br>翻译组里真是人才辈出啊，前几天 Cee 在群里说了个好消息，他拿到了美国 Google 的 Offer。群友们纷纷表示祝贺并进行了隆重的认哥仪式，将 SwiftGG 诞生以来第一个 GG（哥哥） 称号颁发给我们公认的大哥 Cee。</p>
-<p>以上两个音频来自于(ggtalk)[<a href="https://talk.swift.gg/]，也是我最近上下班路上用来消遣的音频节目，墙裂推荐！" target="_blank" rel="noopener">https://talk.swift.gg/]，也是我最近上下班路上用来消遣的音频节目，墙裂推荐！</a></p>
-<p><strong><a href="https://www.bilibili.com/video/av21376839" target="_blank" rel="noopener">计算机科学速成课</a></strong><br>由<a href="https://twitter.com/missphilbin" target="_blank" rel="noopener">Carrie Anne Philbin</a>主讲，Carrie Anne Philbin是一名计算机科学教师和作家。她是树莓派基金会的教育主管，也是学校(CAS)多样性和包容组的主席。她为青少年写了电脑书《树莓派历险记》。特意介绍是因为我感觉这个课程因为这个主讲人的个人魅力而趣味十足😄。不管你是不是计算机专业的学生，看过之后应该都能有所收获。</p>
-<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="12306ForMac"><a href="#12306ForMac" class="headerlink" title="12306ForMac"></a><a href="https://github.com/fancymax/12306ForMac" target="_blank" rel="noopener">12306ForMac</a></h3><p>以前要么开Windows虚拟机，要么使用官方Web，现在可以使用12306ForMac订票助手啦。希望对大家有所帮助！</p>
-<h3 id="LongestCocoa"><a href="#LongestCocoa" class="headerlink" title="LongestCocoa"></a><a href="https://github.com/Quotation/LongestCocoa" target="_blank" rel="noopener">LongestCocoa</a></h3><p>SoWhatIsTheLongestMethodOrConstantNamesInCocoaFramework? （那么，Cocoa框架中最长的方法名或常量名是什么？）答案是：</p>
+<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><p><strong><a href="https://talk.swift.gg/9">创业那点事：听莲叔和羊叔回忆峥嵘岁月</a></strong><br>莲叔和羊叔是 SwiftGG 翻译组的真·大佬。成绩好，学历高，思维缜密，能力很强。听过《升职加薪》那期节目的朋友应该都有印象。作为标准的技术人才，在创业大潮中自然也想试试身手，打拼一番。</p>
+<p><strong><a href="https://talk.swift.gg/8">和 Cee 聊聊如何拿 Google Offer</a></strong><br>翻译组里真是人才辈出啊，前几天 Cee 在群里说了个好消息，他拿到了美国 Google 的 Offer。群友们纷纷表示祝贺并进行了隆重的认哥仪式，将 SwiftGG 诞生以来第一个 GG（哥哥） 称号颁发给我们公认的大哥 Cee。</p>
+<p>以上两个音频来自于(ggtalk)[<a href="https://talk.swift.gg/]，也是我最近上下班路上用来消遣的音频节目，墙裂推荐！">https://talk.swift.gg/]，也是我最近上下班路上用来消遣的音频节目，墙裂推荐！</a></p>
+<p><strong><a href="https://www.bilibili.com/video/av21376839">计算机科学速成课</a></strong><br>由<a href="https://twitter.com/missphilbin">Carrie Anne Philbin</a>主讲，Carrie Anne Philbin是一名计算机科学教师和作家。她是树莓派基金会的教育主管，也是学校(CAS)多样性和包容组的主席。她为青少年写了电脑书《树莓派历险记》。特意介绍是因为我感觉这个课程因为这个主讲人的个人魅力而趣味十足😄。不管你是不是计算机专业的学生，看过之后应该都能有所收获。</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="12306ForMac"><a href="#12306ForMac" class="headerlink" title="12306ForMac"></a><a href="https://github.com/fancymax/12306ForMac">12306ForMac</a></h3><p>以前要么开Windows虚拟机，要么使用官方Web，现在可以使用12306ForMac订票助手啦。希望对大家有所帮助！</p>
+<h3 id="LongestCocoa"><a href="#LongestCocoa" class="headerlink" title="LongestCocoa"></a><a href="https://github.com/Quotation/LongestCocoa">LongestCocoa</a></h3><p>SoWhatIsTheLongestMethodOrConstantNamesInCocoaFramework? （那么，Cocoa框架中最长的方法名或常量名是什么？）答案是：</p>
 <ul>
 <li><p>outputImageProviderFromBufferWithPixelFormat:pixelsWide:pixelsHigh:baseAddress:bytesPerRow:releaseCallback:releaseContext:colorSpace:shouldColorMatch:</p>
 </li>
@@ -75,18 +233,492 @@
 </li>
 </ul>
 <p>这个项目有一定的调侃意味，so what? 我选择swift🤣</p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangferry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhangferry.github.io/2019/01/02/monthly_6/">http://zhangferry.github.io/2019/01/02/monthly_6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhangferry.github.io">zhangferry</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/月报/">月报</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/01/31/monthly_7/"><i class="fa fa-chevron-left">  </i><span>iOS开发月报#7|201901</span></a></div><div class="next-post pull-right"><a href="/2019/01/01/2018-year-summary/"><span>2018年总结</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
-  clientID: '012999c912503aff4cac',
-  clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-  repo: 'zhangferry.github.io',
-  owner: 'zhangferry',
-  admin: 'zhangferry',
-  id: md5(decodeURI(location.pathname)),
-  language: 'zh-CN'
-})
-gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2020 By zhangferry</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E6%9C%88%E6%8A%A5/" rel="tag">月报</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/01/31/monthly_7/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">iOS开发月报#7|201901</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/01/2018-year-summary/">
+                <span class="level-item">2018年总结</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://zhangferry.github.io/2019/01/02/monthly_6/';
+        this.page.identifier = '2019/01/02/monthly_6/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-zhangferry-github-io' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="zhangferry">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        zhangferry
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        iOS开发
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            56
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/zhangferry" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/zhangferry">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Weibo" href="https://weibo.com/2947186387/profile">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="https://zhangferry.com/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#大事件">
+        <span class="has-mr-6">1</span>
+        <span>大事件</span>
+        </a></li><li>
+        <a class="is-flex" href="#Tips">
+        <span class="has-mr-6">2</span>
+        <span>Tips</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#更换启动图不生效">
+        <span class="has-mr-6">2.1</span>
+        <span>更换启动图不生效</span>
+        </a></li><li>
+        <a class="is-flex" href="#赋值权限">
+        <span class="has-mr-6">2.2</span>
+        <span>赋值权限</span>
+        </a></li><li>
+        <a class="is-flex" href="#App图片瘦身">
+        <span class="has-mr-6">2.3</span>
+        <span>App图片瘦身</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1、删除不用的图片">
+        <span class="has-mr-6">2.3.1</span>
+        <span>1、删除不用的图片</span>
+        </a></li><li>
+        <a class="is-flex" href="#2、图片压缩">
+        <span class="has-mr-6">2.3.2</span>
+        <span>2、图片压缩</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#后台音频耗电问题">
+        <span class="has-mr-6">2.4</span>
+        <span>后台音频耗电问题</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#推荐阅读">
+        <span class="has-mr-6">3</span>
+        <span>推荐阅读</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#iOS开发过程中的设计模式">
+        <span class="has-mr-6">3.1</span>
+        <span>iOS开发过程中的设计模式</span>
+        </a></li><li>
+        <a class="is-flex" href="#iOS逆向">
+        <span class="has-mr-6">3.2</span>
+        <span>iOS逆向</span>
+        </a></li><li>
+        <a class="is-flex" href="#利用脚本提高工作效率">
+        <span class="has-mr-6">3.3</span>
+        <span>利用脚本提高工作效率</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#音视频">
+        <span class="has-mr-6">4</span>
+        <span>音视频</span>
+        </a></li><li>
+        <a class="is-flex" href="#Github">
+        <span class="has-mr-6">5</span>
+        <span>Github</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#12306ForMac">
+        <span class="has-mr-6">5.1</span>
+        <span>12306ForMac</span>
+        </a></li><li>
+        <a class="is-flex" href="#LongestCocoa">
+        <span class="has-mr-6">5.2</span>
+        <span>LongestCocoa</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo_2.svg" alt="iOS开发月报#6|201812" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 zhangferry&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://zhangferry.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

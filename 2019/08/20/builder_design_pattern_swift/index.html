@@ -1,43 +1,622 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="【译】设计模式引导--OOP的能力"><meta name="keywords" content="设计模式"><meta name="author" content="zhangferry"><meta name="copyright" content="zhangferry"><title>【译】设计模式引导--OOP的能力 | zhangferry</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题："><span class="toc-number">1.</span> <span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案："><span class="toc-number">2.</span> <span class="toc-text">解决方案：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-number">3.</span> <span class="toc-text">优点</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">zhangferry</div><div class="author-info__description text-center">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</div><div class="follow-button"><a href="https://github.com/zhangferry">Follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">56</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">27</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://colin1994.github.io/">Colin</a><a class="author-info-links__name text-center" href="http://www.evenvi.com/">Evenvi</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zhangferry</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">【译】设计模式引导--OOP的能力</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-08-20</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
-<p><a href="https://medium.com/swift-india/design-patterns-by-tutorials-the-power-of-oop-2e871b551cbe" target="_blank" rel="noopener">原文链接</a><br>作者：Hitendra Solanki</p>
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>【译】设计模式引导--OOP的能力 - zhangferry</title>
+
+
+    <meta name="description" content="原文链接作者：Hitendra Solanki  导读–本博客系列要求具有面向对象编程的中级专业知识。您应该对类、对象、构造函数、继承、值和引用类型有基本的了解。通过仔细地从头到尾阅读本系列文章，不管是中级还是高级开发，您都将有所收获。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【译】设计模式引导--OOP的能力">
+<meta property="og:url" content="http://zhangferry.github.io/2019/08/20/builder_design_pattern_swift/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="原文链接作者：Hitendra Solanki  导读–本博客系列要求具有面向对象编程的中级专业知识。您应该对类、对象、构造函数、继承、值和引用类型有基本的了解。通过仔细地从头到尾阅读本系列文章，不管是中级还是高级开发，您都将有所收获。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
+<meta property="article:published_time" content="2019-08-20T02:25:34.000Z">
+<meta property="article:modified_time" content="2020-03-07T05:38:43.086Z">
+<meta property="article:author" content="zhangferry">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangferry.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo_2.svg" alt="【译】设计模式引导--OOP的能力" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangferry">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-20T02:25:34.000Z">2019-08-20</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1709 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                【译】设计模式引导--OOP的能力
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p><a href="https://medium.com/swift-india/design-patterns-by-tutorials-the-power-of-oop-2e871b551cbe">原文链接</a><br>作者：Hitendra Solanki</p>
 </blockquote>
-<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190819211318.jpeg" alt=""><br>导读–本博客系列要求具有面向对象编程的中级专业知识。您应该对类、对象、构造函数、继承、值和引用类型有基本的了解。通过仔细地从头到尾阅读本系列文章，不管是中级还是高级开发，您都将有所收获。<br><a id="more"></a><br>设计模式用于表示经验丰富的面向对象软件开发人员社区采用的最佳实践。</p>
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190819211318.jpeg" alt=""><br>导读–本博客系列要求具有面向对象编程的中级专业知识。您应该对类、对象、构造函数、继承、值和引用类型有基本的了解。通过仔细地从头到尾阅读本系列文章，不管是中级还是高级开发，您都将有所收获。</p>
+<a id="more"></a>
+<p>设计模式用于表示经验丰富的面向对象软件开发人员社区采用的最佳实践。</p>
 <p>建造者模式帮助我们更简单更易读地创建一个类，它遵守着以下两条规则：<br>1、分割原始类和它的构造方法<br>2、在最后一个返回类的实例</p>
 <p><strong>建造者模式最佳的例子就是SwiftUI，是的你没有看错。SwiftUI中大部分类像是Text，Image都是使用的建造者模式。</strong></p>
-<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>想一下，一个<code>Person</code>类拥有不少于十个属性，当你要使用它时，你需要为它创建一个构造方法。它的构造者将拥有不少于十个参数，去管理这么一个带有很多参数的单一函数或构造方式将是非常困难的，最终你也会让这端代码失去可读性。看下面的例子：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="comment">//personal details</span></span><br><span class="line">  <span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> gender: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> birthDate: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> birthPlace: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> height: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> weight: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//contact details</span></span><br><span class="line">  <span class="keyword">var</span> phone: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> email: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//address details</span></span><br><span class="line">  <span class="keyword">var</span> streeAddress: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> zipCode: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> city: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//work details</span></span><br><span class="line">  <span class="keyword">var</span> companyName: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> designation: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> annualIncome: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//constructor</span></span><br><span class="line">  <span class="keyword">init</span>(name: <span class="type">String</span>,</span><br><span class="line">       gender: <span class="type">String</span>,</span><br><span class="line">       birthDate: <span class="type">String</span>,</span><br><span class="line">       birthPlace: <span class="type">String</span>,</span><br><span class="line">       height: <span class="type">String</span>,</span><br><span class="line">       weight: <span class="type">String</span>,</span><br><span class="line">       phone: <span class="type">String</span>,</span><br><span class="line">       email: <span class="type">String</span>,</span><br><span class="line">       streeAddress: <span class="type">String</span>,</span><br><span class="line">       zipCode: <span class="type">String</span>,</span><br><span class="line">       city: <span class="type">String</span>,</span><br><span class="line">       companyName: <span class="type">String</span>,</span><br><span class="line">       designation: <span class="type">String</span>,</span><br><span class="line">       annualIncome: <span class="type">String</span>) &#123;</span><br><span class="line">    <span class="keyword">self</span>.name = name</span><br><span class="line">    <span class="keyword">self</span>.gender = gender</span><br><span class="line">    <span class="keyword">self</span>.birthDate = birthDate</span><br><span class="line">    <span class="keyword">self</span>.birthPlace = birthPlace</span><br><span class="line">    <span class="keyword">self</span>.height = height</span><br><span class="line">    <span class="keyword">self</span>.weight = weight</span><br><span class="line">    <span class="keyword">self</span>.phone = phone</span><br><span class="line">    <span class="keyword">self</span>.email = email</span><br><span class="line">    <span class="keyword">self</span>.streeAddress = streeAddress</span><br><span class="line">    <span class="keyword">self</span>.zipCode = zipCode</span><br><span class="line">    <span class="keyword">self</span>.height = height</span><br><span class="line">    <span class="keyword">self</span>.city = city</span><br><span class="line">    <span class="keyword">self</span>.companyName = companyName</span><br><span class="line">    <span class="keyword">self</span>.designation = designation</span><br><span class="line">    <span class="keyword">self</span>.annualIncome = annualIncome</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This is function in Xcode-Playground which executes our test code</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">let</span> hitendra = <span class="type">Person</span>(name: <span class="string">"Hitendra Solanki"</span>,</span><br><span class="line">                        gender: <span class="string">"Male"</span>,</span><br><span class="line">                        birthDate: <span class="string">"2nd Oct 1991"</span>,</span><br><span class="line">                        birthPlace: <span class="string">"Gujarat, India"</span>,</span><br><span class="line">                        height: <span class="string">"5.9 ft"</span>,</span><br><span class="line">                        weight: <span class="string">"85kg"</span>,</span><br><span class="line">                        phone: <span class="string">"+91 90333-71772"</span>,</span><br><span class="line">                        email: <span class="string">"hitendra.developer@gmail.com"</span>,</span><br><span class="line">                        streeAddress: <span class="string">"52nd Godrej Street"</span>,</span><br><span class="line">                        zipCode: <span class="string">"380015"</span>,</span><br><span class="line">                        city: <span class="string">"Ahmedabad"</span>,</span><br><span class="line">                        companyName: <span class="string">"Fortune 500"</span>,</span><br><span class="line">                        designation: <span class="string">"Software architect"</span>,</span><br><span class="line">                        annualIncome: <span class="string">"45,000 USD"</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//use of Person object</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"\(hitendra.name) works in \(hitendra.companyName) compay as a \(hitendra.designation)."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//call main to execute our test code in Xcode-Playground</span></span><br><span class="line">main()</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Console output:</span></span><br><span class="line"><span class="comment">Hitendra Solanki works in Fortune 500 compay as a Software architect.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>想一下，一个<code>Person</code>类拥有不少于十个属性，当你要使用它时，你需要为它创建一个构造方法。它的构造者将拥有不少于十个参数，去管理这么一个带有很多参数的单一函数或构造方式将是非常困难的，最终你也会让这端代码失去可读性。看下面的例子：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="comment">//personal details</span></span><br><span class="line">  <span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> gender: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> birthDate: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> birthPlace: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> height: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> weight: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//contact details</span></span><br><span class="line">  <span class="keyword">var</span> phone: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> email: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//address details</span></span><br><span class="line">  <span class="keyword">var</span> streeAddress: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> zipCode: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> city: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//work details</span></span><br><span class="line">  <span class="keyword">var</span> companyName: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> designation: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> annualIncome: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//constructor</span></span><br><span class="line">  <span class="keyword">init</span>(name: <span class="type">String</span>,</span><br><span class="line">       gender: <span class="type">String</span>,</span><br><span class="line">       birthDate: <span class="type">String</span>,</span><br><span class="line">       birthPlace: <span class="type">String</span>,</span><br><span class="line">       height: <span class="type">String</span>,</span><br><span class="line">       weight: <span class="type">String</span>,</span><br><span class="line">       phone: <span class="type">String</span>,</span><br><span class="line">       email: <span class="type">String</span>,</span><br><span class="line">       streeAddress: <span class="type">String</span>,</span><br><span class="line">       zipCode: <span class="type">String</span>,</span><br><span class="line">       city: <span class="type">String</span>,</span><br><span class="line">       companyName: <span class="type">String</span>,</span><br><span class="line">       designation: <span class="type">String</span>,</span><br><span class="line">       annualIncome: <span class="type">String</span>) &#123;</span><br><span class="line">    <span class="keyword">self</span>.name = name</span><br><span class="line">    <span class="keyword">self</span>.gender = gender</span><br><span class="line">    <span class="keyword">self</span>.birthDate = birthDate</span><br><span class="line">    <span class="keyword">self</span>.birthPlace = birthPlace</span><br><span class="line">    <span class="keyword">self</span>.height = height</span><br><span class="line">    <span class="keyword">self</span>.weight = weight</span><br><span class="line">    <span class="keyword">self</span>.phone = phone</span><br><span class="line">    <span class="keyword">self</span>.email = email</span><br><span class="line">    <span class="keyword">self</span>.streeAddress = streeAddress</span><br><span class="line">    <span class="keyword">self</span>.zipCode = zipCode</span><br><span class="line">    <span class="keyword">self</span>.height = height</span><br><span class="line">    <span class="keyword">self</span>.city = city</span><br><span class="line">    <span class="keyword">self</span>.companyName = companyName</span><br><span class="line">    <span class="keyword">self</span>.designation = designation</span><br><span class="line">    <span class="keyword">self</span>.annualIncome = annualIncome</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This is function in Xcode-Playground which executes our test code</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">let</span> hitendra = <span class="type">Person</span>(name: <span class="string">"Hitendra Solanki"</span>,</span><br><span class="line">                        gender: <span class="string">"Male"</span>,</span><br><span class="line">                        birthDate: <span class="string">"2nd Oct 1991"</span>,</span><br><span class="line">                        birthPlace: <span class="string">"Gujarat, India"</span>,</span><br><span class="line">                        height: <span class="string">"5.9 ft"</span>,</span><br><span class="line">                        weight: <span class="string">"85kg"</span>,</span><br><span class="line">                        phone: <span class="string">"+91 90333-71772"</span>,</span><br><span class="line">                        email: <span class="string">"hitendra.developer@gmail.com"</span>,</span><br><span class="line">                        streeAddress: <span class="string">"52nd Godrej Street"</span>,</span><br><span class="line">                        zipCode: <span class="string">"380015"</span>,</span><br><span class="line">                        city: <span class="string">"Ahmedabad"</span>,</span><br><span class="line">                        companyName: <span class="string">"Fortune 500"</span>,</span><br><span class="line">                        designation: <span class="string">"Software architect"</span>,</span><br><span class="line">                        annualIncome: <span class="string">"45,000 USD"</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//use of Person object</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"\(hitendra.name) works in \(hitendra.companyName) compay as a \(hitendra.designation)."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//call main to execute our test code in Xcode-Playground</span></span><br><span class="line">main()</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Console output:</span></span><br><span class="line"><span class="comment">Hitendra Solanki works in Fortune 500 compay as a Software architect.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
 <p>将上面的例子在playground中运行一下，你会得到预期结果。逻辑上这也是对的。</p>
 <p>我们可以尝试优化上面的代码，从解决这两个问题入手。<br>1、我们必须按照既定的顺序传参数，而不能通过重新排列参数提高可读性。<br>2、即使创建对象时我们不知道一些属性值，我们也不得不传入所有参数。</p>
 <p>例如你需要创建一个<code>Person</code>类，但是这个人还在找工作。只有当他进入某一公司我们才能得到他的工作信息。</p>
 <h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><p>1、创建相关属性的逻辑分组。<br>2、为不同分组的属性创建不同的建造者类。<br>3、在建造者类中最后一步返回实例。</p>
 <p>让我们从上面的例子开始，我们已经拥有一个<code>Person</code>类，它含有14个属性。我们仔细观察这14个属性，可以将它分为四组。<br>1、个人信息<br>2、联系方式<br>3、地址信息<br>4、公司信息</p>
-<p>通过强大的设计模式我们可以解决上面两个问题，具体代码如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//This is function in playground which executes our test code</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> hitendra = <span class="type">Person</span>() <span class="comment">//person with empty details</span></span><br><span class="line">  <span class="keyword">let</span> personBuilder = <span class="type">PersonBuilder</span>(person: hitendra)</span><br><span class="line">  </span><br><span class="line">  hitendra = personBuilder</span><br><span class="line">    .personalInfo</span><br><span class="line">      .nameIs(<span class="string">"Hitendra Solanki"</span>)</span><br><span class="line">      .genderIs(<span class="string">"Male"</span>)</span><br><span class="line">      .bornOn(<span class="string">"2nd Oct 1991"</span>)</span><br><span class="line">      .bornAt(<span class="string">"Gujarat, India"</span>)</span><br><span class="line">      .havingHeight(<span class="string">"5.9 ft"</span>)</span><br><span class="line">      .havingWeight(<span class="string">"85 kg"</span>)</span><br><span class="line">    .contacts</span><br><span class="line">      .hasPhone(<span class="string">"+91 90333-71772"</span>)</span><br><span class="line">      .hasEmail(<span class="string">"hitendra.developer@gmail.com"</span>)</span><br><span class="line">    .lives</span><br><span class="line">      .at(<span class="string">"52nd Godrej Street"</span>)</span><br><span class="line">      .inCity(<span class="string">"Ahmedabad"</span>)</span><br><span class="line">      .withZipCode(<span class="string">"380015"</span>)</span><br><span class="line">    .build()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//use of Person object</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"\(hitendra.name) has contact number \(hitendra.phone) and email \(hitendra.email)"</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//later on when we have company details ready for the person</span></span><br><span class="line">  hitendra = personBuilder</span><br><span class="line">    .works</span><br><span class="line">      .asA(<span class="string">"Software architect"</span>)</span><br><span class="line">      .inCompany(<span class="string">"Fortune 500"</span>)</span><br><span class="line">      .hasAnnualEarning(<span class="string">"45,000 USD"</span>)</span><br><span class="line">    .build()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//use of Person object with update info</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"\(hitendra.name) works in \(hitendra.companyName) compay as a \(hitendra.designation)."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//call main to execute our test code</span></span><br><span class="line">main()</span><br><span class="line"></span><br><span class="line"><span class="comment">//Person class which only contains the details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="comment">//personal details</span></span><br><span class="line">  <span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> gender: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> birthDate: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> birthPlace: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> height: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> weight: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//contact details</span></span><br><span class="line">  <span class="keyword">var</span> phone: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> email: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//address details</span></span><br><span class="line">  <span class="keyword">var</span> streeAddress: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> zipCode: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> city: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//work details</span></span><br><span class="line">  <span class="keyword">var</span> companyName: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> designation: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> annualIncome: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//empty constructor</span></span><br><span class="line">  <span class="keyword">init</span>() &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonBuilder class helps to construct the person class instance</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> person: <span class="type">Person</span></span><br><span class="line">  <span class="keyword">init</span>(person: <span class="type">Person</span>)&#123;</span><br><span class="line">    <span class="keyword">self</span>.person = person</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//personal details builder switching</span></span><br><span class="line">  <span class="keyword">var</span> personalInfo: <span class="type">PersonPersonalDetailsBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">PersonPersonalDetailsBuilder</span>(person: <span class="keyword">self</span>.person)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//contact details builder switching</span></span><br><span class="line">  <span class="keyword">var</span> contacts: <span class="type">PersonContactDetailsBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">PersonContactDetailsBuilder</span>(person: <span class="keyword">self</span>.person)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//address details builder switching</span></span><br><span class="line">  <span class="keyword">var</span> lives: <span class="type">PersonAddressDetailsBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">PersonAddressDetailsBuilder</span>(person: <span class="keyword">self</span>.person)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//work details builder switching</span></span><br><span class="line">  <span class="keyword">var</span> works: <span class="type">PersonCompanyDetailsBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">PersonCompanyDetailsBuilder</span>(person: <span class="keyword">self</span>.person)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">build</span><span class="params">()</span></span> -&gt; <span class="type">Person</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.person</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonPersonalDetailsBuilder: update personal details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonPersonalDetailsBuilder</span>: <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">nameIs</span><span class="params">(<span class="number">_</span> name: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.name = name</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">genderIs</span><span class="params">(<span class="number">_</span> gender: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.gender = gender</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">bornOn</span><span class="params">(<span class="number">_</span> birthDate: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.birthDate = birthDate</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">bornAt</span><span class="params">(<span class="number">_</span> birthPlace: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.birthPlace = birthPlace</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">havingHeight</span><span class="params">(<span class="number">_</span> height: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.height = height</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">havingWeight</span><span class="params">(<span class="number">_</span> weight: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.weight = weight</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonContactDetailsBuilder: update contact details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonContactDetailsBuilder</span>: <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">hasPhone</span><span class="params">(<span class="number">_</span> phone: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.phone = phone</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">hasEmail</span><span class="params">(<span class="number">_</span> email: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.email = email</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonAddressDetailsBuilder: update address details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonAddressDetailsBuilder</span>: <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">at</span><span class="params">(<span class="number">_</span> streeAddress: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.streeAddress = streeAddress</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">withZipCode</span><span class="params">(<span class="number">_</span> zipCode: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.zipCode = zipCode</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">inCity</span><span class="params">(<span class="number">_</span> city: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.city = city</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonCompanyDetailsBuilder: update company details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonCompanyDetailsBuilder</span>: <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">inCompany</span><span class="params">(<span class="number">_</span> companyName: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.companyName = companyName</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">asA</span><span class="params">(<span class="number">_</span> designation: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.designation = designation</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">hasAnnualEarning</span><span class="params">(<span class="number">_</span> annualIncome: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.annualIncome = annualIncome</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Console output:</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> Hitendra Solanki has contact number +91 90333-71772 and email hitendra.developer@gmail.com</span></span><br><span class="line"><span class="comment"> Hitendra Solanki works in Fortune 500 compay as a Software architect.</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure></p>
+<p>通过强大的设计模式我们可以解决上面两个问题，具体代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//This is function in playground which executes our test code</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> hitendra = <span class="type">Person</span>() <span class="comment">//person with empty details</span></span><br><span class="line">  <span class="keyword">let</span> personBuilder = <span class="type">PersonBuilder</span>(person: hitendra)</span><br><span class="line">  </span><br><span class="line">  hitendra = personBuilder</span><br><span class="line">    .personalInfo</span><br><span class="line">      .nameIs(<span class="string">"Hitendra Solanki"</span>)</span><br><span class="line">      .genderIs(<span class="string">"Male"</span>)</span><br><span class="line">      .bornOn(<span class="string">"2nd Oct 1991"</span>)</span><br><span class="line">      .bornAt(<span class="string">"Gujarat, India"</span>)</span><br><span class="line">      .havingHeight(<span class="string">"5.9 ft"</span>)</span><br><span class="line">      .havingWeight(<span class="string">"85 kg"</span>)</span><br><span class="line">    .contacts</span><br><span class="line">      .hasPhone(<span class="string">"+91 90333-71772"</span>)</span><br><span class="line">      .hasEmail(<span class="string">"hitendra.developer@gmail.com"</span>)</span><br><span class="line">    .lives</span><br><span class="line">      .at(<span class="string">"52nd Godrej Street"</span>)</span><br><span class="line">      .inCity(<span class="string">"Ahmedabad"</span>)</span><br><span class="line">      .withZipCode(<span class="string">"380015"</span>)</span><br><span class="line">    .build()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//use of Person object</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"\(hitendra.name) has contact number \(hitendra.phone) and email \(hitendra.email)"</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//later on when we have company details ready for the person</span></span><br><span class="line">  hitendra = personBuilder</span><br><span class="line">    .works</span><br><span class="line">      .asA(<span class="string">"Software architect"</span>)</span><br><span class="line">      .inCompany(<span class="string">"Fortune 500"</span>)</span><br><span class="line">      .hasAnnualEarning(<span class="string">"45,000 USD"</span>)</span><br><span class="line">    .build()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//use of Person object with update info</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"\(hitendra.name) works in \(hitendra.companyName) compay as a \(hitendra.designation)."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//call main to execute our test code</span></span><br><span class="line">main()</span><br><span class="line"></span><br><span class="line"><span class="comment">//Person class which only contains the details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="comment">//personal details</span></span><br><span class="line">  <span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> gender: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> birthDate: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> birthPlace: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> height: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> weight: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//contact details</span></span><br><span class="line">  <span class="keyword">var</span> phone: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> email: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//address details</span></span><br><span class="line">  <span class="keyword">var</span> streeAddress: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> zipCode: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> city: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//work details</span></span><br><span class="line">  <span class="keyword">var</span> companyName: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> designation: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> annualIncome: <span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//empty constructor</span></span><br><span class="line">  <span class="keyword">init</span>() &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonBuilder class helps to construct the person class instance</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> person: <span class="type">Person</span></span><br><span class="line">  <span class="keyword">init</span>(person: <span class="type">Person</span>)&#123;</span><br><span class="line">    <span class="keyword">self</span>.person = person</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//personal details builder switching</span></span><br><span class="line">  <span class="keyword">var</span> personalInfo: <span class="type">PersonPersonalDetailsBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">PersonPersonalDetailsBuilder</span>(person: <span class="keyword">self</span>.person)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//contact details builder switching</span></span><br><span class="line">  <span class="keyword">var</span> contacts: <span class="type">PersonContactDetailsBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">PersonContactDetailsBuilder</span>(person: <span class="keyword">self</span>.person)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//address details builder switching</span></span><br><span class="line">  <span class="keyword">var</span> lives: <span class="type">PersonAddressDetailsBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">PersonAddressDetailsBuilder</span>(person: <span class="keyword">self</span>.person)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//work details builder switching</span></span><br><span class="line">  <span class="keyword">var</span> works: <span class="type">PersonCompanyDetailsBuilder</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">PersonCompanyDetailsBuilder</span>(person: <span class="keyword">self</span>.person)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">build</span><span class="params">()</span></span> -&gt; <span class="type">Person</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.person</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonPersonalDetailsBuilder: update personal details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonPersonalDetailsBuilder</span>: <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">nameIs</span><span class="params">(<span class="number">_</span> name: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.name = name</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">genderIs</span><span class="params">(<span class="number">_</span> gender: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.gender = gender</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">bornOn</span><span class="params">(<span class="number">_</span> birthDate: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.birthDate = birthDate</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">bornAt</span><span class="params">(<span class="number">_</span> birthPlace: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.birthPlace = birthPlace</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">havingHeight</span><span class="params">(<span class="number">_</span> height: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.height = height</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">havingWeight</span><span class="params">(<span class="number">_</span> weight: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.weight = weight</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonContactDetailsBuilder: update contact details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonContactDetailsBuilder</span>: <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">hasPhone</span><span class="params">(<span class="number">_</span> phone: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.phone = phone</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">hasEmail</span><span class="params">(<span class="number">_</span> email: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.email = email</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonAddressDetailsBuilder: update address details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonAddressDetailsBuilder</span>: <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">at</span><span class="params">(<span class="number">_</span> streeAddress: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.streeAddress = streeAddress</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">withZipCode</span><span class="params">(<span class="number">_</span> zipCode: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.zipCode = zipCode</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">inCity</span><span class="params">(<span class="number">_</span> city: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.city = city</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PersonCompanyDetailsBuilder: update company details</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonCompanyDetailsBuilder</span>: <span class="title">PersonBuilder</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">inCompany</span><span class="params">(<span class="number">_</span> companyName: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.companyName = companyName</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">asA</span><span class="params">(<span class="number">_</span> designation: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.designation = designation</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">hasAnnualEarning</span><span class="params">(<span class="number">_</span> annualIncome: String)</span></span> -&gt; <span class="type">Self</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.person.annualIncome = annualIncome</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Console output:</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> Hitendra Solanki has contact number +91 90333-71772 and email hitendra.developer@gmail.com</span></span><br><span class="line"><span class="comment"> Hitendra Solanki works in Fortune 500 compay as a Software architect.</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
 <p>在上面的例子中，我们把<code>Person</code>类根据职责分割成了几个不同的类。我们创建了多个建造者，他们分别管理相关分组内的属性，而Person只持有这些建造者。</p>
 <p>我们拥有一个建造者基类<code>PersonBuilder</code>和四个衍生的建造者类，<code>PersonPersonalDetailsBuilder</code>, <code>PersonContactDetailsBuilder</code>, <code>PersonAddressDetailsBuilder</code> 和 <code>PersonCompanyDetailsBuilder</code>。</p>
 <p>当其他四个从<code>Personbuilder</code>衍生出来的建造者需要更新相关属性时，<code>Personbuilder</code>这个基类可以帮助我们在它们之间进行转换。</p>
 <p>在上面的例子中我们可以看到新的构造方法变得更加易读了，我们可以用一种更加优雅的方式更新一组或者某一个属性。</p>
 <p>需要注意一下，上面的例子中我们再每个建造者更新方法之后返回了它自己。这让我们能够在相同的建造者中写出链式方法，而不是分开的多行。这个概念称为流程模式。</p>
 <h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>1、用一种优雅的方式很容易地初始化一个含很多参数的类。<br>2、遵从单一职责原则。<br>3、根据你的情况，以任意的顺序初始化对象和更新属性。</p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangferry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhangferry.github.io/2019/08/20/builder_design_pattern_swift/">http://zhangferry.github.io/2019/08/20/builder_design_pattern_swift/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhangferry.github.io">zhangferry</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/设计模式/">设计模式</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/08/28/design_pattern_mediator/"><i class="fa fa-chevron-left">  </i><span>【译】Swift World：设计模式--中介者模式</span></a></div><div class="next-post pull-right"><a href="/2019/08/19/localization_guide/"><span>iOS国际化及本地化（一）不同语言的差异处理及测试</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
-  clientID: '012999c912503aff4cac',
-  clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-  repo: 'zhangferry.github.io',
-  owner: 'zhangferry',
-  admin: 'zhangferry',
-  id: md5(decodeURI(location.pathname)),
-  language: 'zh-CN'
-})
-gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2020 By zhangferry</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/28/design_pattern_mediator/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">【译】Swift World：设计模式--中介者模式</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/19/localization_guide/">
+                <span class="level-item">iOS国际化及本地化（一）不同语言的差异处理及测试</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://zhangferry.github.io/2019/08/20/builder_design_pattern_swift/';
+        this.page.identifier = '2019/08/20/builder_design_pattern_swift/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-zhangferry-github-io' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="zhangferry">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        zhangferry
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        iOS开发
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            56
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/zhangferry" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/zhangferry">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Weibo" href="https://weibo.com/2947186387/profile">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="https://zhangferry.com/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#问题：">
+        <span class="has-mr-6">1</span>
+        <span>问题：</span>
+        </a></li><li>
+        <a class="is-flex" href="#解决方案：">
+        <span class="has-mr-6">2</span>
+        <span>解决方案：</span>
+        </a></li><li>
+        <a class="is-flex" href="#优点">
+        <span class="has-mr-6">3</span>
+        <span>优点</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo_2.svg" alt="【译】设计模式引导--OOP的能力" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 zhangferry&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://zhangferry.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

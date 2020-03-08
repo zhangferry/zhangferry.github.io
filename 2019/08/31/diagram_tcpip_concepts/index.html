@@ -1,13 +1,165 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="《图解TCP/IP》总结"><meta name="keywords" content="计算机网络"><meta name="author" content="zhangferry"><meta name="copyright" content="zhangferry"><title>《图解TCP/IP》总结 | zhangferry</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络基础知识"><span class="toc-number">1.</span> <span class="toc-text">网络基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传输方式的分类"><span class="toc-number">2.</span> <span class="toc-text">传输方式的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#地址"><span class="toc-number">3.</span> <span class="toc-text">地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP基础知识"><span class="toc-number">4.</span> <span class="toc-text">TCP/IP基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP的具体含义"><span class="toc-number">4.1.</span> <span class="toc-text">TCP/IP的具体含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP规范–RFC"><span class="toc-number">4.2.</span> <span class="toc-text">TCP/IP规范–RFC</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP协议分层模型"><span class="toc-number">5.</span> <span class="toc-text">TCP/IP协议分层模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#物理层（硬件）"><span class="toc-number">5.1.</span> <span class="toc-text">物理层（硬件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据链路层（网络接口层）"><span class="toc-number">5.2.</span> <span class="toc-text">数据链路层（网络接口层）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络层（互联网层）"><span class="toc-number">5.3.</span> <span class="toc-text">网络层（互联网层）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IP"><span class="toc-number">5.3.1.</span> <span class="toc-text">IP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ICMP-Internet-Control-Message-Protocol"><span class="toc-number">5.3.2.</span> <span class="toc-text">ICMP(Internet Control Message Protocol)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ARP-Address-Resolution-Protocol"><span class="toc-number">5.3.3.</span> <span class="toc-text">ARP(Address Resolution Protocol)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传输层"><span class="toc-number">5.4.</span> <span class="toc-text">传输层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP"><span class="toc-number">5.4.1.</span> <span class="toc-text">TCP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UDP"><span class="toc-number">5.4.2.</span> <span class="toc-text">UDP</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用层（会话层及以上分层）"><span class="toc-number">5.5.</span> <span class="toc-text">应用层（会话层及以上分层）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FTP"><span class="toc-number">5.5.1.</span> <span class="toc-text">FTP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#远程登录（TELNET和SSH）"><span class="toc-number">5.5.2.</span> <span class="toc-text">远程登录（TELNET和SSH）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发送数据包"><span class="toc-number">5.6.</span> <span class="toc-text">发送数据包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用协议"><span class="toc-number">6.</span> <span class="toc-text">应用协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP"><span class="toc-number">6.1.</span> <span class="toc-text">HTTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多媒体实现技术"><span class="toc-number">6.2.</span> <span class="toc-text">多媒体实现技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#H-323"><span class="toc-number">6.2.1.</span> <span class="toc-text">H.323</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SIP"><span class="toc-number">6.2.2.</span> <span class="toc-text">SIP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RTP和RTCP"><span class="toc-number">6.2.3.</span> <span class="toc-text">RTP和RTCP</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TLS-SSL与HTTPS"><span class="toc-number">6.3.</span> <span class="toc-text">TLS/SSL与HTTPS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IEEE802-1X"><span class="toc-number">6.4.</span> <span class="toc-text">IEEE802.1X</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#蓝牙"><span class="toc-number">6.4.1.</span> <span class="toc-text">蓝牙</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">zhangferry</div><div class="author-info__description text-center">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</div><div class="follow-button"><a href="https://github.com/zhangferry">Follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">56</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">27</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://colin1994.github.io/">Colin</a><a class="author-info-links__name text-center" href="http://www.evenvi.com/">Evenvi</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zhangferry</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">《图解TCP/IP》总结</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-08-31</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。<br><a id="more"></a></p>
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>《图解TCP/IP》总结 - zhangferry</title>
+
+
+    <meta name="description" content="最近刚把《图解TCP&#x2F;IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《图解TCP&#x2F;IP》总结">
+<meta property="og:url" content="http://zhangferry.github.io/2019/08/31/diagram_tcpip_concepts/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="最近刚把《图解TCP&#x2F;IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
+<meta property="article:published_time" content="2019-08-31T12:00:34.000Z">
+<meta property="article:modified_time" content="2020-03-07T05:39:07.851Z">
+<meta property="article:author" content="zhangferry">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangferry.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo_2.svg" alt="《图解TCP/IP》总结" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangferry">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-31T12:00:34.000Z">2019-08-31</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    32 分钟 读完 (大约 4759 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                《图解TCP/IP》总结
+            
+        </h1>
+        <div class="content">
+            <p>最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。</p>
+<a id="more"></a>
 <h2 id="网络基础知识"><a href="#网络基础知识" class="headerlink" title="网络基础知识"></a>网络基础知识</h2><p>计算机网络最重要的一个概念就是协议，简单来说，<strong>协议</strong>就是计算机与计算机之间通过网络实现通信时事先达成的一种“约定”。这种“约定”使那些由不同厂商的设备，不同的CPU以及不同操作系统组成的计算机之间，只要遵循相同的协议就能实现通信。</p>
 <p>那这个协议由谁来规定呢，ISO（国际标准化组织）制定的一个国际标准OSI（开放式通信系统互联参考模型）。本书将要说明的TCP/IP并非ISO所制定的某种国际标准，而是由IETF（互联网工程任务组）所建议的致力于推进标准化作业的一种协议。这里提一下，通常OSI只是一种参考模型，他将网络分层，但是它并没有规定任何具体的协议，协议内容则归属为TCP/IP。</p>
 <p>OSI参考模型中各个分层的作用：<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919213227.png" alt=""></p>
@@ -24,7 +176,7 @@
 <h2 id="TCP-IP基础知识"><a href="#TCP-IP基础知识" class="headerlink" title="TCP/IP基础知识"></a>TCP/IP基础知识</h2><p>TCP/IP的诞生<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190915183056.png" alt=""></p>
 <h3 id="TCP-IP的具体含义"><a href="#TCP-IP的具体含义" class="headerlink" title="TCP/IP的具体含义"></a>TCP/IP的具体含义</h3><p>从字面意义上讲，有时这就是指TCP和IP两种协议，但是更多情况下，他是利用IP进行通信时所必须用到的协议群统称。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190915183431.png" alt=""></p>
 <h3 id="TCP-IP规范–RFC"><a href="#TCP-IP规范–RFC" class="headerlink" title="TCP/IP规范–RFC"></a>TCP/IP规范–RFC</h3><p>前面提到的TCP/IP的协议由IEFT讨论制定，被人们列入RFC(Request For Comment)文档并公布到互联网上。RFC不仅记录了协议规范内容，还包含了协议的实现和运用的相关信息，以及实验方面的信息。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190915184056.png" alt=""></p>
-<p>可以通过<a href="https://www.rfc-editor.org/" target="_blank" rel="noopener">RFC Editor</a>查看RFC所有内容。</p>
+<p>可以通过<a href="https://www.rfc-editor.org/">RFC Editor</a>查看RFC所有内容。</p>
 <h2 id="TCP-IP协议分层模型"><a href="#TCP-IP协议分层模型" class="headerlink" title="TCP/IP协议分层模型"></a>TCP/IP协议分层模型</h2><p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190919143416.png" alt=""></p>
 <p>这个就是常被问及网络分层模型，它有两种，一种是OSI7层模型；一种是TCP/IP的5层模型，也有一种分法是4层模型，是将5层模型中的网卡层和硬件层合为网络接口层。</p>
 <h3 id="物理层（硬件）"><a href="#物理层（硬件）" class="headerlink" title="物理层（硬件）"></a>物理层（硬件）</h3><p>TCP/IP的最底层是负责数据传输的硬件。这种硬件就相当于以太网或电话线路等物理层的设备。</p>
@@ -73,18 +225,544 @@
 <p>IEEE802.1X是为了能够接入LAN交换机和无线LAN接入点而对用户进行认证的技术（包括我们常用的WiFi）<br>并且它只允许被认可的设备才能访问网络。虽然它是一个提供数据链路层控制的规范，但是与TCP/IP关系紧密。一般，由客户端终端、AP（无线基站）或2层交换机以及认证服务器组成。<br><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190922204520.png" alt=""></p>
 <h4 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h4><p>蓝牙与IEEE802.11b/g类似，是使用2.4GHz频率无线电波的一种标准（因此，当IEEE802.b/g等设备与蓝牙设备一起使用时，无线电波信号削减有可能导致通信性能的下降。） 。数据传输速率在V2中能达到3Mbps（实际最大吞吐量为2.1Mbps）。通信距离根据无线电波的信号的强弱，有1药看看吧3 B、10药看看吧3 B、100药看看吧3 B三种类型。通信终端最多允许8台设备（其中一台为主节点，其他1～7台为受管节点。这种网络也叫做piconet，微微网。） 。</p>
 <p>如果说IEEE802.11是针对笔记本电脑这样较大的计算机设备的标准，那么蓝牙则是为手机或智能手机、键盘、鼠标等较小设备而设计的标准。</p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangferry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhangferry.github.io/2019/08/31/diagram_tcpip_concepts/">http://zhangferry.github.io/2019/08/31/diagram_tcpip_concepts/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhangferry.github.io">zhangferry</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/计算机网络/">计算机网络</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/11/02/mac_efficiency_promotion/"><i class="fa fa-chevron-left">  </i><span>如何提升Mac下生产效率</span></a></div><div class="next-post pull-right"><a href="/2019/08/28/design_pattern_mediator/"><span>【译】Swift World：设计模式--中介者模式</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
-  clientID: '012999c912503aff4cac',
-  clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-  repo: 'zhangferry.github.io',
-  owner: 'zhangferry',
-  admin: 'zhangferry',
-  id: md5(decodeURI(location.pathname)),
-  language: 'zh-CN'
-})
-gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2020 By zhangferry</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/11/02/mac_efficiency_promotion/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">如何提升Mac下生产效率</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/28/design_pattern_mediator/">
+                <span class="level-item">【译】Swift World：设计模式--中介者模式</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://zhangferry.github.io/2019/08/31/diagram_tcpip_concepts/';
+        this.page.identifier = '2019/08/31/diagram_tcpip_concepts/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-zhangferry-github-io' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="zhangferry">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        zhangferry
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        iOS开发
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            56
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/zhangferry" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/zhangferry">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Weibo" href="https://weibo.com/2947186387/profile">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="https://zhangferry.com/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#网络基础知识">
+        <span class="has-mr-6">1</span>
+        <span>网络基础知识</span>
+        </a></li><li>
+        <a class="is-flex" href="#传输方式的分类">
+        <span class="has-mr-6">2</span>
+        <span>传输方式的分类</span>
+        </a></li><li>
+        <a class="is-flex" href="#地址">
+        <span class="has-mr-6">3</span>
+        <span>地址</span>
+        </a></li><li>
+        <a class="is-flex" href="#TCP-IP基础知识">
+        <span class="has-mr-6">4</span>
+        <span>TCP/IP基础知识</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#TCP-IP的具体含义">
+        <span class="has-mr-6">4.1</span>
+        <span>TCP/IP的具体含义</span>
+        </a></li><li>
+        <a class="is-flex" href="#TCP-IP规范–RFC">
+        <span class="has-mr-6">4.2</span>
+        <span>TCP/IP规范–RFC</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#TCP-IP协议分层模型">
+        <span class="has-mr-6">5</span>
+        <span>TCP/IP协议分层模型</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#物理层（硬件）">
+        <span class="has-mr-6">5.1</span>
+        <span>物理层（硬件）</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据链路层（网络接口层）">
+        <span class="has-mr-6">5.2</span>
+        <span>数据链路层（网络接口层）</span>
+        </a></li><li>
+        <a class="is-flex" href="#网络层（互联网层）">
+        <span class="has-mr-6">5.3</span>
+        <span>网络层（互联网层）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#IP">
+        <span class="has-mr-6">5.3.1</span>
+        <span>IP</span>
+        </a></li><li>
+        <a class="is-flex" href="#ICMP-Internet-Control-Message-Protocol">
+        <span class="has-mr-6">5.3.2</span>
+        <span>ICMP(Internet Control Message Protocol)</span>
+        </a></li><li>
+        <a class="is-flex" href="#ARP-Address-Resolution-Protocol">
+        <span class="has-mr-6">5.3.3</span>
+        <span>ARP(Address Resolution Protocol)</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#传输层">
+        <span class="has-mr-6">5.4</span>
+        <span>传输层</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#TCP">
+        <span class="has-mr-6">5.4.1</span>
+        <span>TCP</span>
+        </a></li><li>
+        <a class="is-flex" href="#UDP">
+        <span class="has-mr-6">5.4.2</span>
+        <span>UDP</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#应用层（会话层及以上分层）">
+        <span class="has-mr-6">5.5</span>
+        <span>应用层（会话层及以上分层）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#FTP">
+        <span class="has-mr-6">5.5.1</span>
+        <span>FTP</span>
+        </a></li><li>
+        <a class="is-flex" href="#远程登录（TELNET和SSH）">
+        <span class="has-mr-6">5.5.2</span>
+        <span>远程登录（TELNET和SSH）</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#发送数据包">
+        <span class="has-mr-6">5.6</span>
+        <span>发送数据包</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#应用协议">
+        <span class="has-mr-6">6</span>
+        <span>应用协议</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#HTTP">
+        <span class="has-mr-6">6.1</span>
+        <span>HTTP</span>
+        </a></li><li>
+        <a class="is-flex" href="#多媒体实现技术">
+        <span class="has-mr-6">6.2</span>
+        <span>多媒体实现技术</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#H-323">
+        <span class="has-mr-6">6.2.1</span>
+        <span>H.323</span>
+        </a></li><li>
+        <a class="is-flex" href="#SIP">
+        <span class="has-mr-6">6.2.2</span>
+        <span>SIP</span>
+        </a></li><li>
+        <a class="is-flex" href="#RTP和RTCP">
+        <span class="has-mr-6">6.2.3</span>
+        <span>RTP和RTCP</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#TLS-SSL与HTTPS">
+        <span class="has-mr-6">6.3</span>
+        <span>TLS/SSL与HTTPS</span>
+        </a></li><li>
+        <a class="is-flex" href="#IEEE802-1X">
+        <span class="has-mr-6">6.4</span>
+        <span>IEEE802.1X</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#蓝牙">
+        <span class="has-mr-6">6.4.1</span>
+        <span>蓝牙</span>
+        </a></li></ul></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo_2.svg" alt="《图解TCP/IP》总结" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 zhangferry&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://zhangferry.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

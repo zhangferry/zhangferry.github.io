@@ -1,18 +1,172 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="iOS开发月报#4|201810"><meta name="keywords" content="月报"><meta name="author" content="zhangferry"><meta name="copyright" content="zhangferry"><title>iOS开发月报#4|201810 | zhangferry</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#大事件"><span class="toc-number">1.</span> <span class="toc-text">大事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">2.</span> <span class="toc-text">Tips</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#适配swift4-2"><span class="toc-number">2.1.</span> <span class="toc-text">适配swift4.2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性访问权限"><span class="toc-number">2.2.</span> <span class="toc-text">属性访问权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改文件权限"><span class="toc-number">2.3.</span> <span class="toc-text">修改文件权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认关键字"><span class="toc-number">2.4.</span> <span class="toc-text">默认关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tabbar手动跳转"><span class="toc-number">2.5.</span> <span class="toc-text">tabbar手动跳转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义tabbar动画"><span class="toc-number">2.6.</span> <span class="toc-text">自定义tabbar动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NS-ASSUME-NONNULL-BEGIN-和-NS-ASSUME-NONNULL-END"><span class="toc-number">2.7.</span> <span class="toc-text">NS_ASSUME_NONNULL_BEGIN 和 NS_ASSUME_NONNULL_END</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个自定义collectionView布局的bug"><span class="toc-number">2.8.</span> <span class="toc-text">一个自定义collectionView布局的bug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置git-SSH"><span class="toc-number">2.9.</span> <span class="toc-text">配置git SSH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apple-Watch开发注意事项"><span class="toc-number">2.10.</span> <span class="toc-text">Apple Watch开发注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Github"><span class="toc-number">3.</span> <span class="toc-text">Github</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">zhangferry</div><div class="author-info__description text-center">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</div><div class="follow-button"><a href="https://github.com/zhangferry">Follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">56</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">27</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://colin1994.github.io/">Colin</a><a class="author-info-links__name text-center" href="http://www.evenvi.com/">Evenvi</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zhangferry</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">iOS开发月报#4|201810</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-10-31</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>记录本月开发遇到的知识点，小tips，和bug总结。</p>
-<h2 id="大事件"><a href="#大事件" class="headerlink" title="大事件"></a>大事件</h2><p>新版iPad Pro、MacBook Air、Mac mini发布，全线涨价，但是真香。。。<br><img src="https://upload-images.jianshu.io/upload_images/1059465-d64ed4ef11a3ee86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><a id="more"></a></p>
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>iOS开发月报#4|201810 - zhangferry</title>
+
+
+    <meta name="description" content="记录本月开发遇到的知识点，小tips，和bug总结。 大事件新版iPad Pro、MacBook Air、Mac mini发布，全线涨价，但是真香。。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发月报#4|201810">
+<meta property="og:url" content="http://zhangferry.github.io/2018/10/31/monthly_4/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="记录本月开发遇到的知识点，小tips，和bug总结。 大事件新版iPad Pro、MacBook Air、Mac mini发布，全线涨价，但是真香。。。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
+<meta property="article:published_time" content="2018-10-31T08:00:50.000Z">
+<meta property="article:modified_time" content="2020-03-07T05:41:30.650Z">
+<meta property="article:author" content="zhangferry">
+<meta property="article:tag" content="月报">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangferry.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo_2.svg" alt="iOS开发月报#4|201810" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangferry">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-10-31T08:00:50.000Z">2018-10-31</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 分钟 读完 (大约 1846 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                iOS开发月报#4|201810
+            
+        </h1>
+        <div class="content">
+            <p>记录本月开发遇到的知识点，小tips，和bug总结。</p>
+<h2 id="大事件"><a href="#大事件" class="headerlink" title="大事件"></a>大事件</h2><p>新版iPad Pro、MacBook Air、Mac mini发布，全线涨价，但是真香。。。<br><img src="https://upload-images.jianshu.io/upload_images/1059465-d64ed4ef11a3ee86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<a id="more"></a>
 <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="适配swift4-2"><a href="#适配swift4-2" class="headerlink" title="适配swift4.2"></a>适配swift4.2</h3><p>1、利用xcode快速迁移<br>升级到Xcode10之后，我们打开项目会出现如下提示，<br><img src="https://upload-images.jianshu.io/upload_images/1059465-ac05882ccd098391.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p>点击会有一个版本升级窗口，如果你的的项目包含一些第三方库的话，第三方库的选型也会出现在上面：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-8041b545d62a3095.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p>默认勾选第三方库，但是我们适配的时候不应该让Xcode去自动检索第三方库代码。只对我们的app进行代码迁移就够了。<br>适配完后可以在这里查看我们当前的swift版本：<br><img src="https://upload-images.jianshu.io/upload_images/1059465-6e113852a3fb4b35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>对于第三方库，如果都适配了swift4.2，那么更新到对应版本就行了。如果有没适配的，可以通过制定版本的方式解决冲突，在Podfile文件末尾添加如下代码：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">post_install <span class="keyword">do</span> <span class="params">|installer|</span></span><br><span class="line">installer.pods_project.targets.each <span class="keyword">do</span> <span class="params">|target|</span></span><br><span class="line">target.build_configurations.each <span class="keyword">do</span> <span class="params">|config|</span></span><br><span class="line">config.build_settings[<span class="string">'SWIFT_VERSION'</span>] = <span class="string">'4.0'</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<p>对于第三方库，如果都适配了swift4.2，那么更新到对应版本就行了。如果有没适配的，可以通过制定版本的方式解决冲突，在Podfile文件末尾添加如下代码：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">post_install <span class="keyword">do</span> <span class="params">|installer|</span></span><br><span class="line">installer.pods_project.targets.each <span class="keyword">do</span> <span class="params">|target|</span></span><br><span class="line">target.build_configurations.each <span class="keyword">do</span> <span class="params">|config|</span></span><br><span class="line">config.build_settings[<span class="string">'SWIFT_VERSION'</span>] = <span class="string">'4.0'</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="属性访问权限"><a href="#属性访问权限" class="headerlink" title="属性访问权限"></a>属性访问权限</h3><p>swift中提供的访问权限关键词由低到高有以下五种：<br>private &lt; fileprivate &lt; internal &lt; public &lt; open<br>其中internal是Swift中的默认控制级，一下介绍了这几种关键字的区别：</p>
 <ul>
 <li>private：当前作用域或者当前类中访问。</li>
@@ -22,10 +176,12 @@
 <li>open：可跨target使用，允许被集成或者重写。</li>
 </ul>
 <p>对于一个严格的项目来说，精确的最小化访问控制级别对于代码的维护来说是很重要的。能用public的就别用open。</p>
-<h3 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h3><p>当我们执行某些命令行操作，收到如下提示时：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Linking /usr/local/Cellar/the_silver_searcher/2.1.0... </span><br><span class="line">Error: Could not symlink etc/bash_completion.d/ag.bashcomp.sh</span><br><span class="line">/usr/local/etc/bash_completion.d is not writable.</span><br></pre></td></tr></table></figure></p>
-<p>就表明我们对需要修改的文件权限不够，我们可以给文件加上修改的权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R $(whoami) /usr/local/etc/bash_completion.d</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h3><p>当我们执行某些命令行操作，收到如下提示时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Linking &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;the_silver_searcher&#x2F;2.1.0... </span><br><span class="line">Error: Could not symlink etc&#x2F;bash_completion.d&#x2F;ag.bashcomp.sh</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;etc&#x2F;bash_completion.d is not writable.</span><br></pre></td></tr></table></figure>
+<p>就表明我们对需要修改的文件权限不够，我们可以给文件加上修改的权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R $(whoami) &#x2F;usr&#x2F;local&#x2F;etc&#x2F;bash_completion.d</span><br></pre></td></tr></table></figure>
 <p>其中<code>-R</code>表示对目前目录下的所有文件与子目录进行相同的拥有者变更(即以递回的方式逐个变更)</p>
-<h3 id="默认关键字"><a href="#默认关键字" class="headerlink" title="默认关键字"></a>默认关键字</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static let `default` = ImageCache(name: &quot;default&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="默认关键字"><a href="#默认关键字" class="headerlink" title="默认关键字"></a>默认关键字</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static let &#96;default&#96; &#x3D; ImageCache(name: &quot;default&quot;)</span><br></pre></td></tr></table></figure>
 <p>default是默认关键字，如果使用要加单斜号。</p>
 <h3 id="tabbar手动跳转"><a href="#tabbar手动跳转" class="headerlink" title="tabbar手动跳转"></a>tabbar手动跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func tabBarController(UITabBarController, didSelect: UIViewController)</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -33,32 +189,505 @@
 </blockquote>
 <p>tabbar的didSelect代理方法，只有在手动点击的时候才会触发。通过代码跳转是不会触发的。</p>
 <h3 id="自定义tabbar动画"><a href="#自定义tabbar动画" class="headerlink" title="自定义tabbar动画"></a>自定义tabbar动画</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当点击tabBar的时候,自动执行该代理方法(不需要手动设置代理)  </span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tabBar</span><span class="params">(<span class="number">_</span> tabBar: UITabBar, didSelect item: UITabBarItem)</span></span> &#123;  </span><br><span class="line"><span class="keyword">for</span> view <span class="keyword">in</span> tabBar.subviews &#123;</span><br><span class="line"><span class="comment">//控制view实现各种动画效果</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="NS-ASSUME-NONNULL-BEGIN-和-NS-ASSUME-NONNULL-END"><a href="#NS-ASSUME-NONNULL-BEGIN-和-NS-ASSUME-NONNULL-END" class="headerlink" title="NS_ASSUME_NONNULL_BEGIN 和 NS_ASSUME_NONNULL_END"></a>NS_ASSUME_NONNULL_BEGIN 和 NS_ASSUME_NONNULL_END</h3><p>从xcode6.3开始，为了能让OC也能表示swift的?(optional)和!功能，增加了对对象的可选指定。指定属性是否可选，可以：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, copy, nonnull) NSString * tickets;</span><br><span class="line">//或者</span><br><span class="line">@property (nonatomic, copy) NSString * __nonnull tickets;</span><br></pre></td></tr></table></figure></p>
+
+<h3 id="NS-ASSUME-NONNULL-BEGIN-和-NS-ASSUME-NONNULL-END"><a href="#NS-ASSUME-NONNULL-BEGIN-和-NS-ASSUME-NONNULL-END" class="headerlink" title="NS_ASSUME_NONNULL_BEGIN 和 NS_ASSUME_NONNULL_END"></a>NS_ASSUME_NONNULL_BEGIN 和 NS_ASSUME_NONNULL_END</h3><p>从xcode6.3开始，为了能让OC也能表示swift的?(optional)和!功能，增加了对对象的可选指定。指定属性是否可选，可以：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, copy, nonnull) NSString * tickets;</span><br><span class="line">&#x2F;&#x2F;或者</span><br><span class="line">@property (nonatomic, copy) NSString * __nonnull tickets;</span><br></pre></td></tr></table></figure>
+
 <p>如果属性多了，每一个都这么写会很麻烦，苹果增加了一对新的宏命令，就是<code>NS_ASSUME_NONNULL_BEGIN</code>和<code>NS_ASSUME_NONNULL_END</code>。放在里面的对象就相当于都增加了<code>nonnull</code>命令，<code>nonull</code>为默认值。</p>
-<h3 id="一个自定义collectionView布局的bug"><a href="#一个自定义collectionView布局的bug" class="headerlink" title="一个自定义collectionView布局的bug"></a>一个自定义collectionView布局的bug</h3><p><strong>bug描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSInternalInconsistencyException</span><br><span class="line"></span><br><span class="line">UICollectionView received layout attributes for a cell with an index path that does not exist: &lt;NSIndexPath: 0x280d2b200&gt; &#123;length = 2, path = 1 - 5&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>原因：</strong><br><code>layoutAttributesForElementsInRect</code>返回的<code>UICollectionViewLayoutAttributes</code>数组有<code>indexPath</code>没有被 <code>[NSIndexPath indexPathForRow:numberOfSection]</code>覆盖。<br>当数据量增加时不会出问题，当数量减少时出现。有人反映这是iOS10的bug，但实际上，我拿iOS10模拟器跑并没有问题，反而是在崩溃后台看到是iOS12的用户上报的。那究竟什么原因不详，附stackoverflow(<a href="https://stackoverflow.com/questions/39867325/ios-10-bug-uicollectionview-received-layout-attributes-for-a-cell-with-an-index" target="_blank" rel="noopener">iOS 10 bug: UICollectionView received layout attributes for a cell with an index path that does not exist - Stack Overflow</a>]地址。<br><strong>解决方案：</strong><br>当我们自定义layout时，需要清除UICollectionViewLayoutAttributes的缓存<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方案一： 在自定义layout的类里</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prepare</span><span class="params">()</span></span> &#123;</span><br><span class="line"><span class="keyword">super</span>.prepare()</span><br><span class="line">attributesArr.removeAll()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//方案二：在collectionview刷新出</span></span><br><span class="line">collectionView.reloaData()</span><br><span class="line">collectionView.collectionViewLayout.invalidateLayout()</span><br></pre></td></tr></table></figure></p>
-<h3 id="配置git-SSH"><a href="#配置git-SSH" class="headerlink" title="配置git SSH"></a>配置git SSH</h3><p>1、设置git的user name和email<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;username&quot;</span><br><span class="line">$ git config --global user.email &quot;username@gmail.com&quot;</span><br></pre></td></tr></table></figure></p>
-<p>2、生成秘钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;username@gmail.com&quot;</span><br></pre></td></tr></table></figure></p>
-<p>如果不需要设置密码，连按三个回车。最后得到了两个文件：<code>id_rsa</code>和<code>id_rsa.pub</code>。<br>3、添加秘钥到ssh-agent中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure></p>
-<p>4、复制公钥内容到剪贴板<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pbcopy &lt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure></p>
-<p>5、登录git仓库（Github或者Bitbucket）将公钥内容粘贴到指定配置位置。<br>Github地址为：<a href="https://github.com/settings/keys" target="_blank" rel="noopener">https://github.com/settings/keys</a></p>
-<h3 id="Apple-Watch开发注意事项"><a href="#Apple-Watch开发注意事项" class="headerlink" title="Apple Watch开发注意事项"></a>Apple Watch开发注意事项</h3><p>1、watch没有UIKit，对于UI的操作只能通过<code>storyboard</code>进行<br>2、watch只支持帧动画，我们只能通过png序列来实现动画效果。<code>WKInterfaceGroup</code> 和 <code>WKInterfaceImage</code>均可以实现帧动画。<br>3、开发的watch应用内存被限定为80M，太多帧的动画会不支持<br>4、提交应用watch也需要配置市场截图。<br>5、watch分为两个target。当新建一个Target为WatchDemo，xcode会自动生成一个WatchDemo Extension。前者负责UI，后者负责逻辑。引用cocoapods可以这么写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">target &apos;WatchDemo Extension&apos; do</span><br><span class="line">platform :watchos, &apos;3.0&apos;</span><br><span class="line">use_frameworks!</span><br><span class="line">pod &apos;Alamofire&apos;</span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
+<h3 id="一个自定义collectionView布局的bug"><a href="#一个自定义collectionView布局的bug" class="headerlink" title="一个自定义collectionView布局的bug"></a>一个自定义collectionView布局的bug</h3><p><strong>bug描述：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSInternalInconsistencyException</span><br><span class="line"></span><br><span class="line">UICollectionView received layout attributes for a cell with an index path that does not exist: &lt;NSIndexPath: 0x280d2b200&gt; &#123;length &#x3D; 2, path &#x3D; 1 - 5&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>原因：</strong><br><code>layoutAttributesForElementsInRect</code>返回的<code>UICollectionViewLayoutAttributes</code>数组有<code>indexPath</code>没有被 <code>[NSIndexPath indexPathForRow:numberOfSection]</code>覆盖。<br>当数据量增加时不会出问题，当数量减少时出现。有人反映这是iOS10的bug，但实际上，我拿iOS10模拟器跑并没有问题，反而是在崩溃后台看到是iOS12的用户上报的。那究竟什么原因不详，附stackoverflow(<a href="https://stackoverflow.com/questions/39867325/ios-10-bug-uicollectionview-received-layout-attributes-for-a-cell-with-an-index">iOS 10 bug: UICollectionView received layout attributes for a cell with an index path that does not exist - Stack Overflow</a>]地址。<br><strong>解决方案：</strong><br>当我们自定义layout时，需要清除UICollectionViewLayoutAttributes的缓存</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方案一： 在自定义layout的类里</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prepare</span><span class="params">()</span></span> &#123;</span><br><span class="line"><span class="keyword">super</span>.prepare()</span><br><span class="line">attributesArr.removeAll()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//方案二：在collectionview刷新出</span></span><br><span class="line">collectionView.reloaData()</span><br><span class="line">collectionView.collectionViewLayout.invalidateLayout()</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置git-SSH"><a href="#配置git-SSH" class="headerlink" title="配置git SSH"></a>配置git SSH</h3><p>1、设置git的user name和email</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;username&quot;</span><br><span class="line">$ git config --global user.email &quot;username@gmail.com&quot;</span><br></pre></td></tr></table></figure>
+<p>2、生成秘钥</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;username@gmail.com&quot;</span><br></pre></td></tr></table></figure>
+<p>如果不需要设置密码，连按三个回车。最后得到了两个文件：<code>id_rsa</code>和<code>id_rsa.pub</code>。<br>3、添加秘钥到ssh-agent中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
+<p>4、复制公钥内容到剪贴板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pbcopy &lt; ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>5、登录git仓库（Github或者Bitbucket）将公钥内容粘贴到指定配置位置。<br>Github地址为：<a href="https://github.com/settings/keys">https://github.com/settings/keys</a></p>
+<h3 id="Apple-Watch开发注意事项"><a href="#Apple-Watch开发注意事项" class="headerlink" title="Apple Watch开发注意事项"></a>Apple Watch开发注意事项</h3><p>1、watch没有UIKit，对于UI的操作只能通过<code>storyboard</code>进行<br>2、watch只支持帧动画，我们只能通过png序列来实现动画效果。<code>WKInterfaceGroup</code> 和 <code>WKInterfaceImage</code>均可以实现帧动画。<br>3、开发的watch应用内存被限定为80M，太多帧的动画会不支持<br>4、提交应用watch也需要配置市场截图。<br>5、watch分为两个target。当新建一个Target为WatchDemo，xcode会自动生成一个WatchDemo Extension。前者负责UI，后者负责逻辑。引用cocoapods可以这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">target &#39;WatchDemo Extension&#39; do</span><br><span class="line">platform :watchos, &#39;3.0&#39;</span><br><span class="line">use_frameworks!</span><br><span class="line">pod &#39;Alamofire&#39;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 <p>6、Always Embed Swift Standard Libraries<br>在Build Settings里面，这两个target，需要将WatchDemo Extension中设置为Yes，另一个设置为No</p>
-<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><p><a href="https://github.com/marcosgriselli/Sizes" target="_blank" rel="noopener">Sizes</a><br>可以在一个界面，显示各个屏幕尺寸。这样我们就不用每个模拟器跑一遍看效果了。方便调试。</p>
-<p><a href="https://github.com/iGhibli/iOS-DeviceSupport" target="_blank" rel="noopener">iOS-DeviceSupport</a><br>当手机升级，而xcode未升级时，我们会遇到Device Support的弹框，此时要么升级xcode，要么需要导入对应的Device Support文件。这个库就是提供这种文件的。</p>
-<p><a href="https://github.com/johnno1962/InjectionIII" target="_blank" rel="noopener">InjectionIII</a><br>用于解决烦人的UI调试问题。当修改了一些UI属性之后，在xcode中我们只能运行程序才能看到效果，如果是处理大量的UI问题，这个过程是很烦人的。好在InjectionIII帮我们解决了这个问题，一起了解一下吧！</p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangferry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhangferry.github.io/2018/10/31/monthly_4/">http://zhangferry.github.io/2018/10/31/monthly_4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhangferry.github.io">zhangferry</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/月报/">月报</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/11/26/avplayer-supported-format/"><i class="fa fa-chevron-left">  </i><span>AVPlayer支持的视频格式</span></a></div><div class="next-post pull-right"><a href="/2018/09/30/monthly_3/"><span>iOS开发月报#3|201809</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
-  clientID: '012999c912503aff4cac',
-  clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-  repo: 'zhangferry.github.io',
-  owner: 'zhangferry',
-  admin: 'zhangferry',
-  id: md5(decodeURI(location.pathname)),
-  language: 'zh-CN'
-})
-gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2020 By zhangferry</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><p><a href="https://github.com/marcosgriselli/Sizes">Sizes</a><br>可以在一个界面，显示各个屏幕尺寸。这样我们就不用每个模拟器跑一遍看效果了。方便调试。</p>
+<p><a href="https://github.com/iGhibli/iOS-DeviceSupport">iOS-DeviceSupport</a><br>当手机升级，而xcode未升级时，我们会遇到Device Support的弹框，此时要么升级xcode，要么需要导入对应的Device Support文件。这个库就是提供这种文件的。</p>
+<p><a href="https://github.com/johnno1962/InjectionIII">InjectionIII</a><br>用于解决烦人的UI调试问题。当修改了一些UI属性之后，在xcode中我们只能运行程序才能看到效果，如果是处理大量的UI问题，这个过程是很烦人的。好在InjectionIII帮我们解决了这个问题，一起了解一下吧！</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E6%9C%88%E6%8A%A5/" rel="tag">月报</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/11/26/avplayer-supported-format/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">AVPlayer支持的视频格式</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/09/30/monthly_3/">
+                <span class="level-item">iOS开发月报#3|201809</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://zhangferry.github.io/2018/10/31/monthly_4/';
+        this.page.identifier = '2018/10/31/monthly_4/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-zhangferry-github-io' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="zhangferry">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        zhangferry
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        iOS开发
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            56
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/zhangferry" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/zhangferry">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Weibo" href="https://weibo.com/2947186387/profile">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="https://zhangferry.com/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#大事件">
+        <span class="has-mr-6">1</span>
+        <span>大事件</span>
+        </a></li><li>
+        <a class="is-flex" href="#Tips">
+        <span class="has-mr-6">2</span>
+        <span>Tips</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#适配swift4-2">
+        <span class="has-mr-6">2.1</span>
+        <span>适配swift4.2</span>
+        </a></li><li>
+        <a class="is-flex" href="#属性访问权限">
+        <span class="has-mr-6">2.2</span>
+        <span>属性访问权限</span>
+        </a></li><li>
+        <a class="is-flex" href="#修改文件权限">
+        <span class="has-mr-6">2.3</span>
+        <span>修改文件权限</span>
+        </a></li><li>
+        <a class="is-flex" href="#默认关键字">
+        <span class="has-mr-6">2.4</span>
+        <span>默认关键字</span>
+        </a></li><li>
+        <a class="is-flex" href="#tabbar手动跳转">
+        <span class="has-mr-6">2.5</span>
+        <span>tabbar手动跳转</span>
+        </a></li><li>
+        <a class="is-flex" href="#自定义tabbar动画">
+        <span class="has-mr-6">2.6</span>
+        <span>自定义tabbar动画</span>
+        </a></li><li>
+        <a class="is-flex" href="#NS-ASSUME-NONNULL-BEGIN-和-NS-ASSUME-NONNULL-END">
+        <span class="has-mr-6">2.7</span>
+        <span>NS_ASSUME_NONNULL_BEGIN 和 NS_ASSUME_NONNULL_END</span>
+        </a></li><li>
+        <a class="is-flex" href="#一个自定义collectionView布局的bug">
+        <span class="has-mr-6">2.8</span>
+        <span>一个自定义collectionView布局的bug</span>
+        </a></li><li>
+        <a class="is-flex" href="#配置git-SSH">
+        <span class="has-mr-6">2.9</span>
+        <span>配置git SSH</span>
+        </a></li><li>
+        <a class="is-flex" href="#Apple-Watch开发注意事项">
+        <span class="has-mr-6">2.10</span>
+        <span>Apple Watch开发注意事项</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Github">
+        <span class="has-mr-6">3</span>
+        <span>Github</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo_2.svg" alt="iOS开发月报#4|201810" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 zhangferry&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://zhangferry.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

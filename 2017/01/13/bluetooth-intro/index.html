@@ -1,21 +1,177 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="iOS蓝牙知识快速入门（详尽版）"><meta name="keywords" content="蓝牙"><meta name="author" content="zhangferry"><meta name="copyright" content="zhangferry"><title>iOS蓝牙知识快速入门（详尽版） | zhangferry</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思维导图"><span class="toc-number">2.</span> <span class="toc-text">思维导图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#苹果对蓝牙设备有什么要求"><span class="toc-number">3.</span> <span class="toc-text">苹果对蓝牙设备有什么要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作蓝牙设备使用什么库"><span class="toc-number">4.</span> <span class="toc-text">操作蓝牙设备使用什么库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#中心和外围设备"><span class="toc-number">4.1.</span> <span class="toc-text">中心和外围设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务与特征"><span class="toc-number">4.2.</span> <span class="toc-text">服务与特征</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何扫描蓝牙"><span class="toc-number">5.</span> <span class="toc-text">如何扫描蓝牙</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、初始化"><span class="toc-number">5.1.</span> <span class="toc-text">1、初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、扫描"><span class="toc-number">5.2.</span> <span class="toc-text">2、扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、CBCentralManagerDelegate代理方法"><span class="toc-number">5.3.</span> <span class="toc-text">3、CBCentralManagerDelegate代理方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何连接"><span class="toc-number">6.</span> <span class="toc-text">如何连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何发送并接收数据"><span class="toc-number">7.</span> <span class="toc-text">如何发送并接收数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、代理方法"><span class="toc-number">7.1.</span> <span class="toc-text">1、代理方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、步骤"><span class="toc-number">7.2.</span> <span class="toc-text">2、步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、实现上面流程的实例代码"><span class="toc-number">7.3.</span> <span class="toc-text">3、实现上面流程的实例代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何解析蓝牙数据"><span class="toc-number">8.</span> <span class="toc-text">如何解析蓝牙数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展"><span class="toc-number">9.</span> <span class="toc-text">扩展</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">zhangferry</div><div class="author-info__description text-center">只有频率相同的人，才能看见彼此内心深处不为人知的优雅。</div><div class="follow-button"><a href="https://github.com/zhangferry">Follow me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">56</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">27</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://colin1994.github.io/">Colin</a><a class="author-info-links__name text-center" href="http://www.evenvi.com/">Evenvi</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">zhangferry</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">iOS蓝牙知识快速入门（详尽版）</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2017-01-13</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/蓝牙总结/">蓝牙总结</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p><img src="http://upload-images.jianshu.io/upload_images/1059465-d8149efe4c37d452.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-bluetooth"><br>以前写过几篇蓝牙相关的文章，但是没有涉及扫描、收发指令这些基础功能的实现。所以打算写一篇尽可能详尽的蓝牙知识汇总，一方面给有需要的同学看，一方面是对自己学习蓝牙的一个总结。</p>
-<p>这篇文章的目的：教你实现设备的扫描，连接，数据收发，蓝牙数据解析。如果在实现上面任一功能遇到问题时，欢迎留下你的问题，我将进行补充，对于说法有误的地方也请老司机予以指正。<br><a id="more"></a></p>
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>iOS蓝牙知识快速入门（详尽版） - zhangferry</title>
+
+
+    <meta name="description" content="以前写过几篇蓝牙相关的文章，但是没有涉及扫描、收发指令这些基础功能的实现。所以打算写一篇尽可能详尽的蓝牙知识汇总，一方面给有需要的同学看，一方面是对自己学习蓝牙的一个总结。 这篇文章的目的：教你实现设备的扫描，连接，数据收发，蓝牙数据解析。如果在实现上面任一功能遇到问题时，欢迎留下你的问题，我将进行补充，对于说法有误的地方也请老司机予以指正。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS蓝牙知识快速入门（详尽版）">
+<meta property="og:url" content="http://zhangferry.github.io/2017/01/13/bluetooth-intro/index.html">
+<meta property="og:site_name" content="zhangferry">
+<meta property="og:description" content="以前写过几篇蓝牙相关的文章，但是没有涉及扫描、收发指令这些基础功能的实现。所以打算写一篇尽可能详尽的蓝牙知识汇总，一方面给有需要的同学看，一方面是对自己学习蓝牙的一个总结。 这篇文章的目的：教你实现设备的扫描，连接，数据收发，蓝牙数据解析。如果在实现上面任一功能遇到问题时，欢迎留下你的问题，我将进行补充，对于说法有误的地方也请老司机予以指正。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
+<meta property="article:published_time" content="2017-01-13T14:36:41.000Z">
+<meta property="article:modified_time" content="2019-05-17T15:23:26.379Z">
+<meta property="article:author" content="zhangferry">
+<meta property="article:tag" content="蓝牙">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://zhangferry.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo_2.svg" alt="iOS蓝牙知识快速入门（详尽版）" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangferry">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-01-13T14:36:41.000Z">2017-01-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E8%93%9D%E7%89%99%E6%80%BB%E7%BB%93/">蓝牙总结</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    20 分钟 读完 (大约 3066 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                iOS蓝牙知识快速入门（详尽版）
+            
+        </h1>
+        <div class="content">
+            <p><img src="http://upload-images.jianshu.io/upload_images/1059465-d8149efe4c37d452.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS-bluetooth"><br>以前写过几篇蓝牙相关的文章，但是没有涉及扫描、收发指令这些基础功能的实现。所以打算写一篇尽可能详尽的蓝牙知识汇总，一方面给有需要的同学看，一方面是对自己学习蓝牙的一个总结。</p>
+<p>这篇文章的目的：教你实现设备的扫描，连接，数据收发，蓝牙数据解析。如果在实现上面任一功能遇到问题时，欢迎留下你的问题，我将进行补充，对于说法有误的地方也请老司机予以指正。</p>
+<a id="more"></a>
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><blockquote>
 <p><a href="#thought">0、思维导图</a><br><a href="#1">1、苹果对蓝牙设备有什么要求</a><br><a href="#2">2、操作蓝牙设备使用什么库</a><br><a href="#3">3、如何扫描</a><br><a href="#4">4、如何连接</a><br><a href="#5">5、如何发送数据和接收数据</a><br><a href="#6">6、如何解析数据</a><br><a href="#7">7、扩展</a></p>
 </blockquote>
 <h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1059465-46a0e68cfd9c4c9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="思维导图"><br>第一次做图，大家凑合着看哈。这张是我总结的蓝牙知识的结构图，下面的内容将围绕这些东西展开进行。<br><img src="http://upload-images.jianshu.io/upload_images/1059465-18ebcb6eb1790121.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="连接设备流程"><br>这张是蓝牙连接发送数据的流程图，下文进入coding阶段的讲解顺序，大家先有个大概印象，等阅读完本文再回来看这张图将理解的更深一些。</p>
-<h2 id="苹果对蓝牙设备有什么要求"><a href="#苹果对蓝牙设备有什么要求" class="headerlink" title="苹果对蓝牙设备有什么要求"></a>苹果对蓝牙设备有什么要求</h2><p>BLE：bluetouch low energy，蓝牙4.0设备因为低功耗，所有也叫作BLE。苹果在iphone4s及之后的手机型号开始支持蓝牙4.0，这也是最常见的蓝牙设备。低于蓝牙4.0协议的设备需要进行MFI认证，关于MFI认证的申请工作可以看这里：<a href="http://www.jianshu.com/p/b90b0c45398d" target="_blank" rel="noopener">关于MFI认证你所必须要知道的事情</a></p>
-<p>在进行操作蓝牙设备前，我们先下载一个蓝牙工具<code>LightBlue</code>，它可以辅助我们的开发，在进行蓝牙开发之前建议先熟悉一下<a href="https://itunes.apple.com/us/app/lightblue-explorer-bluetooth/id557428110?mt=8" target="_blank" rel="noopener">LightBlue</a>这个工具。</p>
-<h2 id="操作蓝牙设备使用什么库"><a href="#操作蓝牙设备使用什么库" class="headerlink" title="操作蓝牙设备使用什么库"></a>操作蓝牙设备使用什么库</h2><p>苹果自身有一个操作蓝牙的库<code>CoreBluetooth.framework</code>，这个是大多数人员进行蓝牙开发的首选框架，除此之外目前github还有一个比较流行的对原生框架进行封装的三方库<a href="https://github.com/coolnameismy/BabyBluetooth" target="_blank" rel="noopener">BabyBluetooth</a>，它的机制是将CoreBluetooth中众多的delegate写成了block方法，有兴趣的同学可以了解下。下面主要介绍的是原生蓝牙库的知识。</p>
+<h2 id="苹果对蓝牙设备有什么要求"><a href="#苹果对蓝牙设备有什么要求" class="headerlink" title="苹果对蓝牙设备有什么要求"></a>苹果对蓝牙设备有什么要求</h2><p>BLE：bluetouch low energy，蓝牙4.0设备因为低功耗，所有也叫作BLE。苹果在iphone4s及之后的手机型号开始支持蓝牙4.0，这也是最常见的蓝牙设备。低于蓝牙4.0协议的设备需要进行MFI认证，关于MFI认证的申请工作可以看这里：<a href="http://www.jianshu.com/p/b90b0c45398d">关于MFI认证你所必须要知道的事情</a></p>
+<p>在进行操作蓝牙设备前，我们先下载一个蓝牙工具<code>LightBlue</code>，它可以辅助我们的开发，在进行蓝牙开发之前建议先熟悉一下<a href="https://itunes.apple.com/us/app/lightblue-explorer-bluetooth/id557428110?mt=8">LightBlue</a>这个工具。</p>
+<h2 id="操作蓝牙设备使用什么库"><a href="#操作蓝牙设备使用什么库" class="headerlink" title="操作蓝牙设备使用什么库"></a>操作蓝牙设备使用什么库</h2><p>苹果自身有一个操作蓝牙的库<code>CoreBluetooth.framework</code>，这个是大多数人员进行蓝牙开发的首选框架，除此之外目前github还有一个比较流行的对原生框架进行封装的三方库<a href="https://github.com/coolnameismy/BabyBluetooth">BabyBluetooth</a>，它的机制是将CoreBluetooth中众多的delegate写成了block方法，有兴趣的同学可以了解下。下面主要介绍的是原生蓝牙库的知识。</p>
 <h3 id="中心和外围设备"><a href="#中心和外围设备" class="headerlink" title="中心和外围设备"></a>中心和外围设备</h3><p><img src="http://upload-images.jianshu.io/upload_images/1059465-d4c7cabd9f2ca98a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="central-peripheral"></p>
 <p>如图所示，电脑、Pad、手机作为中心，心跳监听器作为外设，这种中心外设模式是最常见的。简单理解就是，发起连接的是中心设备（Central），被连接的是外围设备（Peripheral），对应传统的客户机-服务器体系结构。Central能够扫描侦听到，正在播放广告包的外设。</p>
 <h3 id="服务与特征"><a href="#服务与特征" class="headerlink" title="服务与特征"></a>服务与特征</h3><p>外设可以包含一个或多个服务（CBService），服务是用于实现装置的功能或特征数据相关联的行为集合。<br>而每个服务又对应多个特征（CBCharacteristic）,特征提供外设服务进一步的细节，外设，服务，特征对应的数据结构如下所示</p>
@@ -25,21 +181,18 @@
     NSDictionary *dic = @{CBCentralManagerOptionShowPowerAlertKey : YES,
     CBCentralManagerOptionRestoreIdentifierKey : @&quot;unique identifier&quot;
 };
-self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:centralQueue options:dic];
-</code></pre><p><code>CBCentralManagerOptionShowPowerAlertKey</code>对应的BOOL值，当设为YES时，表示CentralManager初始化时，如果蓝牙没有打开，将弹出Alert提示框<br><code>CBCentralManagerOptionRestoreIdentifierKey</code>对应的是一个唯一标识的字符串，用于蓝牙进程被杀掉恢复连接时用的。</p>
+self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:centralQueue options:dic];</code></pre><p><code>CBCentralManagerOptionShowPowerAlertKey</code>对应的BOOL值，当设为YES时，表示CentralManager初始化时，如果蓝牙没有打开，将弹出Alert提示框<br><code>CBCentralManagerOptionRestoreIdentifierKey</code>对应的是一个唯一标识的字符串，用于蓝牙进程被杀掉恢复连接时用的。</p>
 <h3 id="2、扫描"><a href="#2、扫描" class="headerlink" title="2、扫描"></a>2、扫描</h3><pre><code>//不重复扫描已发现设备        
 NSDictionary *option = @{CBCentralManagerScanOptionAllowDuplicatesKey : [NSNumber numberWithBool:NO],CBCentralManagerOptionShowPowerAlertKey:YES};        
 [self.centralManager scanForPeripheralsWithServices:nil options:option];
-- (void)scanForPeripheralsWithServices:(nullable NSArray&lt;CBUUID *&gt; *)serviceUUIDs options:(nullable NSDictionary&lt;NSString *, id&gt; *)options;
-</code></pre><p>扫面方法，<code>serviceUUIDs</code>用于第一步的筛选，扫描此UUID的设备<br>options有两个常用参数：<code>CBCentralManagerScanOptionAllowDuplicatesKey</code>设置为NO表示不重复扫瞄已发现设备，为YES就是允许。<code>CBCentralManagerOptionShowPowerAlertKey</code>设置为YES就是在蓝牙未打开的时候显示弹框</p>
+- (void)scanForPeripheralsWithServices:(nullable NSArray&lt;CBUUID *&gt; *)serviceUUIDs options:(nullable NSDictionary&lt;NSString *, id&gt; *)options;</code></pre><p>扫面方法，<code>serviceUUIDs</code>用于第一步的筛选，扫描此UUID的设备<br>options有两个常用参数：<code>CBCentralManagerScanOptionAllowDuplicatesKey</code>设置为NO表示不重复扫瞄已发现设备，为YES就是允许。<code>CBCentralManagerOptionShowPowerAlertKey</code>设置为YES就是在蓝牙未打开的时候显示弹框</p>
 <h3 id="3、CBCentralManagerDelegate代理方法"><a href="#3、CBCentralManagerDelegate代理方法" class="headerlink" title="3、CBCentralManagerDelegate代理方法"></a>3、CBCentralManagerDelegate代理方法</h3><p>在初始化的时候我们调用了代理，在CoreBluetooth中有两个代理，</p>
 <ul>
 <li>CBCentralManagerDelegate</li>
 <li>CBPeripheralDelegate</li>
 </ul>
 <p>iOS的命名很友好，我们通过名字就能看出，上面那个是关于中心设备的代理方法，下面是关于外设的代理方法。我们这里先研究<code>CBCentralManagerDelegate</code>中的代理方法</p>
-<pre><code>- (void)centralManagerDidUpdateState:(CBCentralManager *)central;
-</code></pre><p>这个方法标了<code>@required</code>是必须添加的，我们在self.centralManager初始换之后会调用这个方法，回调蓝牙的状态。状态有以下几种：</p>
+<pre><code>- (void)centralManagerDidUpdateState:(CBCentralManager *)central;</code></pre><p>这个方法标了<code>@required</code>是必须添加的，我们在self.centralManager初始换之后会调用这个方法，回调蓝牙的状态。状态有以下几种：</p>
 <pre><code>typedef NS_ENUM(NSInteger, CBCentralManagerState{
     CBCentralManagerStateUnknown = CBManagerStateUnknown,//未知状态
     CBCentralManagerStateResetting = CBManagerStateResetting,//重启状态
@@ -47,8 +200,7 @@ NSDictionary *option = @{CBCentralManagerScanOptionAllowDuplicatesKey : [NSNumbe
     CBCentralManagerStateUnauthorized = CBManagerStateUnauthorized,//未授权
     CBCentralManagerStatePoweredOff = CBManagerStatePoweredOff,//蓝牙未开启
     CBCentralManagerStatePoweredOn = CBManagerStatePoweredOn,//蓝牙启
-} NS_DEPRECATED(NA, NA, 5_0, 10_0, &quot;Use CBManagerState instead”);
-</code></pre><p>该枚举在iOS10之后已经废除了，系统推荐使用<code>CBManagerState</code>，类型都是对应的</p>
+} NS_DEPRECATED(NA, NA, 5_0, 10_0, &quot;Use CBManagerState instead”);</code></pre><p>该枚举在iOS10之后已经废除了，系统推荐使用<code>CBManagerState</code>，类型都是对应的</p>
 <pre><code>typedef NS_ENUM(NSInteger, CBManagerState{
     CBManagerStateUnknown = 0,
     CBManagerStateResetting,
@@ -58,10 +210,8 @@ NSDictionary *option = @{CBCentralManagerScanOptionAllowDuplicatesKey : [NSNumbe
     CBManagerStatePoweredOn,
 } NS_ENUM_AVAILABLE(NA, 10_0);
 
-- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary&lt;NSString *, id&gt; *)advertisementData RSSI:(NSNumber *)RSSI;
-</code></pre><p>peripheral是外设类<br><code>advertisementData</code>是广播的值，一般携带设备名，<code>serviceUUIDs</code>等信息<br>RSSI绝对值越大，表示信号越差，设备离的越远。如果想装换成百分比强度，（RSSI+100）/100，（这是一个约数，蓝牙信号值并不一定是-100 - 0的值，但近似可以如此表示）</p>
-<pre><code>- (void)centralManager:(CBCentralManager *)central willRestoreState:(NSDictionary&lt;NSString *, id&gt; *)dict;
-</code></pre><p>在蓝牙于后台被杀掉时，重连之后会首先调用此方法，可以获取蓝牙恢复时的各种状态</p>
+- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary&lt;NSString *, id&gt; *)advertisementData RSSI:(NSNumber *)RSSI;</code></pre><p>peripheral是外设类<br><code>advertisementData</code>是广播的值，一般携带设备名，<code>serviceUUIDs</code>等信息<br>RSSI绝对值越大，表示信号越差，设备离的越远。如果想装换成百分比强度，（RSSI+100）/100，（这是一个约数，蓝牙信号值并不一定是-100 - 0的值，但近似可以如此表示）</p>
+<pre><code>- (void)centralManager:(CBCentralManager *)central willRestoreState:(NSDictionary&lt;NSString *, id&gt; *)dict;</code></pre><p>在蓝牙于后台被杀掉时，重连之后会首先调用此方法，可以获取蓝牙恢复时的各种状态</p>
 <h2 id="如何连接"><a href="#如何连接" class="headerlink" title="如何连接"></a>如何连接</h2><p>在扫面的代理方法中，我们连接外设名是MI的蓝牙设备</p>
 <pre><code>- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{    
     NSLog(@&quot;advertisementData:%@，RSSI:%@&quot;,advertisementData,RSSI);      
@@ -69,14 +219,10 @@ NSDictionary *option = @{CBCentralManagerScanOptionAllowDuplicatesKey : [NSNumbe
     [self.centralManager connectPeripheral:peripheral options:nil];//发起连接的命令       
           self.peripheral = peripheral;     
     }
-}
-</code></pre><p><strong>连接的状态</strong><br>对应另外的<code>CBCentralManagerDelegate</code>代理方法<br>连接成功的回调</p>
-<pre><code>- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral;
-</code></pre><p>连接失败的回调</p>
-<pre><code>- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error;
-</code></pre><p>连接断开的回调</p>
-<pre><code>- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error;
-</code></pre><p>连接成功之后并没有结束，还记得<code>CBPeripheral</code>中的<code>CBService</code>和<code>CBService</code>中的<code>CBCharacteristic</code>吗，对数据的读写是由<code>CBCharacteristic</code>控制的。我们先用lightblue连接小米手环为例，来看一下，手环内部的数据是不是我们说的那样。</p>
+}</code></pre><p><strong>连接的状态</strong><br>对应另外的<code>CBCentralManagerDelegate</code>代理方法<br>连接成功的回调</p>
+<pre><code>- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral;</code></pre><p>连接失败的回调</p>
+<pre><code>- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error;</code></pre><p>连接断开的回调</p>
+<pre><code>- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error;</code></pre><p>连接成功之后并没有结束，还记得<code>CBPeripheral</code>中的<code>CBService</code>和<code>CBService</code>中的<code>CBCharacteristic</code>吗，对数据的读写是由<code>CBCharacteristic</code>控制的。我们先用lightblue连接小米手环为例，来看一下，手环内部的数据是不是我们说的那样。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-1ab902ebe252094e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="lightblue"></p>
 <p>其中<code>ADVERTISEMENT DATA</code>显示的就是广播信息。</p>
 <blockquote>
@@ -94,8 +240,7 @@ NSDictionary *option = @{CBCentralManagerScanOptionAllowDuplicatesKey : [NSNumbe
     CBCharacteristicPropertyAuthenticatedSignedWrites = 0x40,
     CBCharacteristicPropertyExtendedProperties = 0x80,
     CBCharacteristicPropertyNotifyEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0) = 0x100,
-    CBCharacteristicPropertyIndicateEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0) = 0x200};
-</code></pre><h2 id="如何发送并接收数据"><a href="#如何发送并接收数据" class="headerlink" title="如何发送并接收数据"></a>如何发送并接收数据</h2><p>通过上面的步骤我们发现<code>CBCentralManagerDelegate</code>提供了蓝牙状态监测、扫描、连接的代理方法，但是<code>CBPeripheralDelegate</code>的代理方法却还没使用。别急，马上就要用到了，通过名称判断这个代理的作用，肯定是跟<code>Peripheral</code>有关，我们进入系统API，看它的代理方法都有什么，因为这里的代理方法较多，我就挑选几个常用的拿出来说明一下。</p>
+    CBCharacteristicPropertyIndicateEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0) = 0x200};</code></pre><h2 id="如何发送并接收数据"><a href="#如何发送并接收数据" class="headerlink" title="如何发送并接收数据"></a>如何发送并接收数据</h2><p>通过上面的步骤我们发现<code>CBCentralManagerDelegate</code>提供了蓝牙状态监测、扫描、连接的代理方法，但是<code>CBPeripheralDelegate</code>的代理方法却还没使用。别急，马上就要用到了，通过名称判断这个代理的作用，肯定是跟<code>Peripheral</code>有关，我们进入系统API，看它的代理方法都有什么，因为这里的代理方法较多，我就挑选几个常用的拿出来说明一下。</p>
 <h3 id="1、代理方法"><a href="#1、代理方法" class="headerlink" title="1、代理方法"></a>1、<strong>代理方法</strong></h3><pre><code>//发现服务的回调
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(nullable NSError *)error;
 //发现特征的回调
@@ -103,8 +248,7 @@ NSDictionary *option = @{CBCentralManagerScanOptionAllowDuplicatesKey : [NSNumbe
 //读数据的回调
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error;
 //是否写入成功的回调
- - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error;
-</code></pre><h3 id="2、步骤"><a href="#2、步骤" class="headerlink" title="2、步骤"></a>2、<strong>步骤</strong></h3><p>通过这几个方法我们构建一个流程：连接成功-&gt;获取指定的服务-&gt;获取指定的特征-&gt;订阅指定特征值-&gt;通过具有写权限的特征值写数据-&gt;在<code>didUpdateValueForCharacteristic</code>回调中读取蓝牙反馈值</p>
+ - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error;</code></pre><h3 id="2、步骤"><a href="#2、步骤" class="headerlink" title="2、步骤"></a>2、<strong>步骤</strong></h3><p>通过这几个方法我们构建一个流程：连接成功-&gt;获取指定的服务-&gt;获取指定的特征-&gt;订阅指定特征值-&gt;通过具有写权限的特征值写数据-&gt;在<code>didUpdateValueForCharacteristic</code>回调中读取蓝牙反馈值</p>
 <p>解释一下订阅特征值：特征值具有Notify权限才可以进行订阅，订阅之后该特征值的value发生变化才会回调<code>didUpdateValueForCharacteristic</code></p>
 <h3 id="3、实现上面流程的实例代码"><a href="#3、实现上面流程的实例代码" class="headerlink" title="3、实现上面流程的实例代码"></a>3、<strong>实现上面流程的实例代码</strong></h3><pre><code>//连接成功
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral{
@@ -154,8 +298,7 @@ NSDictionary *option = @{CBCentralManagerScanOptionAllowDuplicatesKey : [NSNumbe
         NSData *value = characteristic.value;        
         NSLog(@&quot;蓝牙回复：%@&quot;,value);
         }
-}
-</code></pre><p>比如我们要获取蓝牙电量，由硬件文档查询得知该指令是<code>**0x1B9901**</code>,那么获取电量的方法就可以写成</p>
+}</code></pre><p>比如我们要获取蓝牙电量，由硬件文档查询得知该指令是<code>**0x1B9901**</code>,那么获取电量的方法就可以写成</p>
 <pre><code>- (void)getBattery{
     Byte value[3]={0};
     value[0]=x1B;
@@ -164,24 +307,501 @@ NSDictionary *option = @{CBCentralManagerScanOptionAllowDuplicatesKey : [NSNumbe
     NSData * data = [NSData dataWithBytes:&amp;value length:sizeof(value)];
     //发送数据
     [self.peripheral writeValue:data forCharacteristic:self.write type:CBCharacteristicWriteWithoutResponse];
-}
-</code></pre><p>如果写入成功，我们将会在<code>didUpdateValueForCharacteristic</code>方法中获取蓝牙回复的信息。</p>
+}</code></pre><p>如果写入成功，我们将会在<code>didUpdateValueForCharacteristic</code>方法中获取蓝牙回复的信息。</p>
 <h2 id="如何解析蓝牙数据"><a href="#如何解析蓝牙数据" class="headerlink" title="如何解析蓝牙数据"></a>如何解析蓝牙数据</h2><p>如果你顺利完成了上一步的操作，并且看到了蓝牙返回的数据，那么恭喜你，蓝牙的常用操作你已经了解大半了。因为蓝牙的任务大部分就是围绕发送指令，获取指令，将蓝牙数据呈现给用户。上一步我们已经获取了蓝牙指令，但是获取的却是<code>0x567b0629</code>这样的数据，这是什么意思呢。这时我们参考硬件文档，看到这样一段:</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1059465-141b274b7ed8e976.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="device-document"><br>那么我们就可以得出设备电量是 60%。</p>
 <p>对数据解析的流程就是：判断校验和是否正确，是不是一条正确的数据-&gt;该条数据是不是我们需要的电量数据，即首字节为<code>0x567b</code>-&gt;根据定义规则解析电量，传给view显示。其中第一步校验数据，视情况而定，也有不需要的情况。</p>
-<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p><a href="http://www.jianshu.com/p/a5e25206df39" target="_blank" rel="noopener">iOS蓝牙中的进制转换</a><br><a href="http://www.jianshu.com/p/0d956862ffa1" target="_blank" rel="noopener">蓝牙固件升级</a><br><a href="http://www.jianshu.com/p/eb5b1e26adf7" target="_blank" rel="noopener">nRF芯片设备DFU升级</a></p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">zhangferry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhangferry.github.io/2017/01/13/bluetooth-intro/">http://zhangferry.github.io/2017/01/13/bluetooth-intro/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhangferry.github.io">zhangferry</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/蓝牙/">蓝牙</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2017/06/29/interview-question/"><i class="fa fa-chevron-left">  </i><span>面试题总结（From J_Knight）</span></a></div><div class="next-post pull-right"><a href="/2017/01/05/custom-domain-blog/"><span>为博客设一个自定义域名</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
-  clientID: '012999c912503aff4cac',
-  clientSecret: '3e709c446fce8b40979b9840c9975e7ced285f35',
-  repo: 'zhangferry.github.io',
-  owner: 'zhangferry',
-  admin: 'zhangferry',
-  id: md5(decodeURI(location.pathname)),
-  language: 'zh-CN'
-})
-gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://raw.githubusercontent.com/zhangferry/Images/master/blog/tent-2339491_1920.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2020 By zhangferry</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
-}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p><a href="http://www.jianshu.com/p/a5e25206df39">iOS蓝牙中的进制转换</a><br><a href="http://www.jianshu.com/p/0d956862ffa1">蓝牙固件升级</a><br><a href="http://www.jianshu.com/p/eb5b1e26adf7">nRF芯片设备DFU升级</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E8%93%9D%E7%89%99/" rel="tag">蓝牙</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2017/06/29/interview-question/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">面试题总结（From J_Knight）</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2017/01/05/custom-domain-blog/">
+                <span class="level-item">为博客设一个自定义域名</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://zhangferry.github.io/2017/01/13/bluetooth-intro/';
+        this.page.identifier = '2017/01/13/bluetooth-intro/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-zhangferry-github-io' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="zhangferry">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        zhangferry
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        iOS开发
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            56
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/zhangferry" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/zhangferry">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Weibo" href="https://weibo.com/2947186387/profile">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="https://zhangferry.com/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#目录">
+        <span class="has-mr-6">1</span>
+        <span>目录</span>
+        </a></li><li>
+        <a class="is-flex" href="#思维导图">
+        <span class="has-mr-6">2</span>
+        <span>思维导图</span>
+        </a></li><li>
+        <a class="is-flex" href="#苹果对蓝牙设备有什么要求">
+        <span class="has-mr-6">3</span>
+        <span>苹果对蓝牙设备有什么要求</span>
+        </a></li><li>
+        <a class="is-flex" href="#操作蓝牙设备使用什么库">
+        <span class="has-mr-6">4</span>
+        <span>操作蓝牙设备使用什么库</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#中心和外围设备">
+        <span class="has-mr-6">4.1</span>
+        <span>中心和外围设备</span>
+        </a></li><li>
+        <a class="is-flex" href="#服务与特征">
+        <span class="has-mr-6">4.2</span>
+        <span>服务与特征</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#如何扫描蓝牙">
+        <span class="has-mr-6">5</span>
+        <span>如何扫描蓝牙</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1、初始化">
+        <span class="has-mr-6">5.1</span>
+        <span>1、初始化</span>
+        </a></li><li>
+        <a class="is-flex" href="#2、扫描">
+        <span class="has-mr-6">5.2</span>
+        <span>2、扫描</span>
+        </a></li><li>
+        <a class="is-flex" href="#3、CBCentralManagerDelegate代理方法">
+        <span class="has-mr-6">5.3</span>
+        <span>3、CBCentralManagerDelegate代理方法</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#如何连接">
+        <span class="has-mr-6">6</span>
+        <span>如何连接</span>
+        </a></li><li>
+        <a class="is-flex" href="#如何发送并接收数据">
+        <span class="has-mr-6">7</span>
+        <span>如何发送并接收数据</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1、代理方法">
+        <span class="has-mr-6">7.1</span>
+        <span>1、代理方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#2、步骤">
+        <span class="has-mr-6">7.2</span>
+        <span>2、步骤</span>
+        </a></li><li>
+        <a class="is-flex" href="#3、实现上面流程的实例代码">
+        <span class="has-mr-6">7.3</span>
+        <span>3、实现上面流程的实例代码</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#如何解析蓝牙数据">
+        <span class="has-mr-6">8</span>
+        <span>如何解析蓝牙数据</span>
+        </a></li><li>
+        <a class="is-flex" href="#扩展">
+        <span class="has-mr-6">9</span>
+        <span>扩展</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo_2.svg" alt="iOS蓝牙知识快速入门（详尽版）" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 zhangferry&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://zhangferry.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
