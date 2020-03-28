@@ -144,6 +144,104 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-28T05:11:27.000Z">2020-03-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/iOS/">iOS</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14 分钟 读完 (大约 2063 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/28/interview_kuaishou/">快手iOS面经</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>过完年来北京之后，有准备看看机会，也是想了解下市场行情。简历没有投太多，只定向投了头条教育部门、抖音、快手、阿里，这些公司。头条和阿里的简历都没过，肯定是亮点太少吧。只有快手简历过了，快手是三轮技术面+一轮HR面，前两轮技术都比较顺利，到第三轮却栽了，很痛心o(╥﹏╥)o。目前就不考虑换工作了，等下半年再说了，接下来的时间再好好精炼一下。</p>
+<p>快手是视频面试，不支持周末，但是可以选择晚上时间，我这几次都是定在了晚上九点。视频面试是通过牛客网进行的，以下是我还记得下来的各轮面试题，对于一些iOS基础知识就不做解答了。</p>
+<h2 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h2><p>1、用递归写一个算法，计算从1到100的和。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sum</span><span class="params">(value: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> value &lt;= <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> number = value</span><br><span class="line">    <span class="keyword">return</span> value + sum(value: number - <span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 计算过程</span></span><br><span class="line"><span class="keyword">let</span> result = sum(value: <span class="number">100</span>)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<p>写完算法之后又围绕着问了几个问题，都是算法基础：</p>
+<ul>
+<li>算法的时间复杂度是多少</li>
+<li>递归会有什么缺点</li>
+<li>不用递归能否实现，复杂度能否降到O(1)</li>
+</ul>
+<p>2、<code>property</code>的作用是什么，有哪些关键词，分别是什么含义？</p>
+<p>3、父类的<code>property</code>是如何查找的？</p>
+<p>4、<code>NSArray</code>、<code>NSDictionary</code>应该如何选关键词？</p>
+<p>5、<code>copy</code>和<code>muteCopy</code>有什么区别，深复制和浅复制是什么意思，如何实现深复制？</p>
+<p>6、用<code>runtime</code>做过什么事情？<code>runtime</code>中的方法交换是如何实现的？</p>
+<p>7、讲一下对KVC合KVO的了解，KVC是否会调用<code>setter</code>方法？</p>
+<p>8、<code>__block</code>有什么作用</p>
+<p>9、说一下对GCD的了解，它有那些方法，分别是做什么用的？</p>
+<p>10、对二叉树是否了解？</p>
+<p>面试官是想接着问这方面的问题的。我当时说了不了解，然后就没有后续了。</p>
+<h2 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h2><p>1、ARC和MRC的区别，iOS是如何管理引用计数的，什么情况下引用计数加1什么情况引用计数减一？</p>
+<p>2、在MRC下执行<code>[object autorelease]</code>会发生什么，<code>autorelease</code>是如何实现的？</p>
+<p>3、OC如何实现多继承？</p>
+<p>这个当时没有答好。其实借助于消息转发，<code>protocol</code>和类别都可以间接实现多继承。</p>
+<p>4、对设计模式有什么了解，讲一下其中一种是如何使用的。</p>
+<p>5、有没有哪个开源库让你用的很舒服，讲一下让你舒服的地方。</p>
+<p>6、一张100*100，RGBA的png图像解压之后占多大内存空间。</p>
+<p>5、算法题</p>
+<p>题目：给定一个个数字arr，判断数组arr中是否所有的数字都只出现过一次。</p>
+<p>这个并没有要求写出来，说是提供思路就行了。我当时给的方案是在便利数组的时候，用一个字典把便利的元素存起来，如果在后面的便利过程中新元素在字典中存在过就说明，有重复数字出现。时间复杂度是O(n)。</p>
+<p>当时也问了有没有办法进行优化，我当时想到了将数组转成<code>Set</code>，然后和原数组比较，两个集合的数量是否变化。</p>
+<p>7、因为我跟他介绍自己Swift用的多一些，然后问了些Swift跟OC的区别，各自的优缺点。</p>
+<p>8、为什么离职，有什么职业规划。</p>
+<h2 id="三面"><a href="#三面" class="headerlink" title="三面"></a>三面</h2><p>1、给定一个Int型数组，用里面的元素组成一个最大数，因为数字可能非常大，用字符串输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,30,34,5,9]</span><br><span class="line">输出: 9534330</span><br></pre></td></tr></table></figure>
+
+<p>这个是leetcode的<a href="https://leetcode-cn.com/problems/largest-number/">179题</a>，难度中等。面试官让先说思路，再去做题。事先说一下这个题我没有做过。当时的思路是用冒泡法进行排序，排序的前提是将较少位数的数字进行循环补齐，例如3和30的比较，变成33和30的比较，34和4的比较变成34和44的比较，然后将结果从大到小整合成字符串输出。</p>
+<p>但是做题是却发现没那么简单，位数的补齐对于2位和3位数的比较还需要求位数的最小公倍数，将他们都转成6位数才能比较。在挣扎了5分钟做了就做罢了。</p>
+<p>后来再去做这道题，其实这就是一个排序而已，只不过他的规则是按高位优先级更高的原则，而这一点跟字符串的比较保持一致，如果再加一些Swift的高阶函数，就可以写成：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">largestNumber</span><span class="params">(<span class="number">_</span> nums: [Int])</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="built_in">sort</span> = nums.<span class="built_in">map</span> &#123;<span class="string">"\($0)"</span>&#125;.sorted &#123; (lStr, rStr) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">return</span> lStr + rStr &gt; rStr + lStr</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="built_in">sort</span>.joined()</span><br><span class="line">    <span class="keyword">if</span> result.<span class="keyword">prefix</span>(<span class="number">1</span>) == <span class="string">"0"</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"0"</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/zhangferry/Images/master/blog/20200328114843.png" alt=""></p>
+<p>2、项目中有这么一个方法<code>func findfile(dir: String suffix: String) -&gt; [String]</code> ，可以通过输入文件夹目录，和后缀检索出所需的文件。</p>
+<p>例如需要在某个文件中检索txt文件或者mp4文件，那就传入dir和suffix就行了。现在又有一些需求，例如需要检索utf8格式的txt或者h264编码的mp4，也会有一些例如查找最近一周更新过的文件这样的需求，你如何优化这个类，让它满足这些情况？</p>
+<p>我首先想到的是这么多需求不可能一个方法就完成，需要根据不同场景拆出不同的方法，但是这些同属于文件操作，会有一个共同使用的方法就是检索文件。这个方法需要传入文件目录，然后递归的返回当前目录所有文件路径。外部不同场景的调用逻辑就用一个<code>enum</code>完成，不同值对应相同范围的不同种类。</p>
+<p>面试官比较关注内部共用的文件检索怎么写，他说子文件如果过多怎么办，如何优化。我有点懵，查找文件至少是要遍历一遍的，子文件过多，这个应该是没法优化的啊。中间卡了一段时间，后来他给了提示说是不是可以用block实现，将文件路径返回出去，由外部决定当前文件是否可用，最终外部的调用类是这个样子。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//我的方案</span></span><br><span class="line"><span class="comment">//func findDir(_ dir: String) -&gt; [String]</span></span><br><span class="line"><span class="comment">//block方案</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findDir</span><span class="params">(<span class="number">_</span> dir: String, block: <span class="params">(<span class="params">(String)</span></span></span></span> -&gt; <span class="type">Bool</span>))</span><br></pre></td></tr></table></figure>
+
+<p>我想来确实没毛病，用block返回内容至少不会将该目录的所有文件都由一个对象持有，而前面一堆的铺垫其实也都是为验证block方案的好处。</p>
+<p>其实事后想下这个问题没啥难的，这种写法自己也有写过，但当时就是没想起来，可能前面一圈的铺垫给我带偏了吧，说亏也不亏，以后多多努力吧。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整体来看，快手的面试题跟我在别处看到的iOS面试题对比要简单些，一面主要是基础知识，二面考察更全面一些，更多让自己谈一些对技术的理解，三面则是更偏实践一些。</p>
+<p>算法虽然三轮都有，但相对比较简单，即使写不出来，有思路也是可以的。当然写出来肯定是加分项，所以大家准备面试时，应该都看一下。算法相关的，排序，数组，二叉树，这几类是重点。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2017-06-29T09:22:27.000Z">2017-06-29</time>
                 
                 <div class="level-item">
@@ -238,7 +336,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            56
+                            57
                         </p>
                     </a>
                 </div>
@@ -354,7 +452,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/ANCS/" style="font-size: 10px;">ANCS</a> <a href="/tags/AVPlayer/" style="font-size: 11.67px;">AVPlayer</a> <a href="/tags/Cocoapods/" style="font-size: 10px;">Cocoapods</a> <a href="/tags/DFU/" style="font-size: 10px;">DFU</a> <a href="/tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="/tags/Hybrid/" style="font-size: 10px;">Hybrid</a> <a href="/tags/Notification/" style="font-size: 10px;">Notification</a> <a href="/tags/UI/" style="font-size: 11.67px;">UI</a> <a href="/tags/git/" style="font-size: 11.67px;">git</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 13.33px;">博客</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 10px;">工作</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%8B%9B%E8%81%98/" style="font-size: 10px;">招聘</a> <a href="/tags/%E6%9C%88%E6%8A%A5/" style="font-size: 18.33px;">月报</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E5%8C%96/" style="font-size: 10px;">本地化</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 16.67px;">生活</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" style="font-size: 10px;">程序员</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%93%9D%E7%89%99/" style="font-size: 15px;">蓝牙</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 11.67px;">设计模式</a> <a href="/tags/%E9%98%85%E8%AF%BB/" style="font-size: 10px;">阅读</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">黑苹果</a>
+        <a href="/tags/ANCS/" style="font-size: 10px;">ANCS</a> <a href="/tags/AVPlayer/" style="font-size: 11.67px;">AVPlayer</a> <a href="/tags/Cocoapods/" style="font-size: 10px;">Cocoapods</a> <a href="/tags/DFU/" style="font-size: 10px;">DFU</a> <a href="/tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="/tags/Hybrid/" style="font-size: 10px;">Hybrid</a> <a href="/tags/Notification/" style="font-size: 10px;">Notification</a> <a href="/tags/UI/" style="font-size: 11.67px;">UI</a> <a href="/tags/git/" style="font-size: 11.67px;">git</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 13.33px;">博客</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 10px;">工作</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%8B%9B%E8%81%98/" style="font-size: 10px;">招聘</a> <a href="/tags/%E6%9C%88%E6%8A%A5/" style="font-size: 18.33px;">月报</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E5%8C%96/" style="font-size: 10px;">本地化</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 16.67px;">生活</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" style="font-size: 10px;">程序员</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%93%9D%E7%89%99/" style="font-size: 15px;">蓝牙</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 11.67px;">设计模式</a> <a href="/tags/%E9%98%85%E8%AF%BB/" style="font-size: 10px;">阅读</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 11.67px;">面试</a> <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">黑苹果</a>
     </div>
 </div>
     
@@ -363,6 +461,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/28/interview_kuaishou/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="快手iOS面经">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-28T05:11:27.000Z">2020-03-28</time></div>
+                    <a href="/2020/03/28/interview_kuaishou/" class="title has-link-black-ter is-size-6 has-text-weight-normal">快手iOS面经</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/iOS/">iOS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -440,25 +557,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/22/ios_architecture_patterns/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【译】iOS 架构模式--浅析MVC, MVP, MVVM 和 VIPER">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-22T06:39:34.000Z">2019-11-22</time></div>
-                    <a href="/2019/11/22/ios_architecture_patterns/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【译】iOS 架构模式--浅析MVC, MVP, MVVM 和 VIPER</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -469,6 +567,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/02/">
@@ -954,7 +1063,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%9D%A2%E8%AF%95/">
                         <span class="tag">面试</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
