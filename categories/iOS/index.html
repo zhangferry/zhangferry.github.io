@@ -34,7 +34,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-bright.css">
 
 
     
@@ -73,7 +73,7 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
 </head>
-<body class="is-2-column">
+<body class="is-3-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
@@ -141,12 +141,21 @@
 <div class="card">
     
     <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/28/interview_kuaishou/"><i class="fas fa-angle-double-right"></i>快手iOS面经</a>
+            
+        </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-28T05:11:27.000Z">2020-03-28</time>
+                <time class="level-item has-text-grey" datetime="2020-03-28T05:11:27.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-03-28</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-03-29T00:13:34.821Z"><i class="far fa-calendar-check">&nbsp;</i>2020-03-29</time>
+                                
                 
                 <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
                 <a class="has-link-grey -link" href="/categories/iOS/">iOS</a>
                 </div>
                 
@@ -154,18 +163,18 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    14 分钟 读完 (大约 2063 个字)
+                    15 分钟 读完 (大约 2195 个字)
                 </span>
                 
                 
             </div>
         </div>
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+        <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
                 <a class="has-link-black-ter" href="/2020/03/28/interview_kuaishou/">快手iOS面经</a>
             
-        </h1>
+        </h1> -->
         <div class="content">
             <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>过完年来北京之后，有准备看看机会，也是想了解下市场行情。简历没有投太多，只定向投了头条教育部门、抖音、快手、阿里，这些公司。头条和阿里的简历都没过，肯定是亮点太少吧。只有快手简历过了，快手是三轮技术面+一轮HR面，前两轮技术都比较顺利，到第三轮却栽了，很痛心o(╥﹏╥)o。目前就不考虑换工作了，等下半年再说了，接下来的时间再好好精炼一下。</p>
 <p>快手是视频面试，不支持周末，但是可以选择晚上时间，我这几次都是定在了晚上九点。视频面试是通过牛客网进行的，以下是我还记得下来的各轮面试题，对于一些iOS基础知识就不做解答了。</p>
@@ -190,17 +199,19 @@
 <p>面试官是想接着问这方面的问题的。我当时说了不了解，然后就没有后续了。</p>
 <h2 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h2><p>1、ARC和MRC的区别，iOS是如何管理引用计数的，什么情况下引用计数加1什么情况引用计数减一？</p>
 <p>2、在MRC下执行<code>[object autorelease]</code>会发生什么，<code>autorelease</code>是如何实现的？</p>
-<p>3、OC如何实现多继承？</p>
+<p>3、CoreAnimation是如何绘制图像的，动画过程中的frame能否获取到？</p>
+<p>4、谈一下对Runlop的了解？</p>
+<p>5、OC如何实现多继承？</p>
 <p>这个当时没有答好。其实借助于消息转发，<code>protocol</code>和类别都可以间接实现多继承。</p>
-<p>4、对设计模式有什么了解，讲一下其中一种是如何使用的。</p>
-<p>5、有没有哪个开源库让你用的很舒服，讲一下让你舒服的地方。</p>
-<p>6、一张100*100，RGBA的png图像解压之后占多大内存空间。</p>
-<p>5、算法题</p>
+<p>6、对设计模式有什么了解，讲一下其中一种是如何使用的。</p>
+<p>7、有没有哪个开源库让你用的很舒服，讲一下让你舒服的地方。<br>我这里说了RxSwift中的观察者模式，和响应式编程。然后面试官问，如果要用OC实现一套RxSwift那样的逻辑应该怎么做。我回答的是结合KVO，将一些需要观察的属性，通过KVO进行监听，然后通过block回调出来。</p>
+<p>8、一张100*100，RGBA的png图像解压之后占多大内存空间。<br>RGBA &gt; FFFFFFFF &gt; 4字节<br>所以会占用：(100 * 100 * 4) / 1024 = 39KB</p>
+<p>9、算法题</p>
 <p>题目：给定一个个数字arr，判断数组arr中是否所有的数字都只出现过一次。</p>
 <p>这个并没有要求写出来，说是提供思路就行了。我当时给的方案是在便利数组的时候，用一个字典把便利的元素存起来，如果在后面的便利过程中新元素在字典中存在过就说明，有重复数字出现。时间复杂度是O(n)。</p>
 <p>当时也问了有没有办法进行优化，我当时想到了将数组转成<code>Set</code>，然后和原数组比较，两个集合的数量是否变化。</p>
-<p>7、因为我跟他介绍自己Swift用的多一些，然后问了些Swift跟OC的区别，各自的优缺点。</p>
-<p>8、为什么离职，有什么职业规划。</p>
+<p>10、因为我跟他介绍自己Swift用的多一些，然后问了些Swift跟OC的区别，各自的优缺点。</p>
+<p>11、为什么离职，有什么职业规划。</p>
 <h2 id="三面"><a href="#三面" class="headerlink" title="三面"></a>三面</h2><p>1、给定一个Int型数组，用里面的元素组成一个最大数，因为数字可能非常大，用字符串输出。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,30,34,5,9]</span><br><span class="line">输出: 9534330</span><br></pre></td></tr></table></figure>
 
@@ -239,12 +250,21 @@
 <div class="card">
     
     <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2017/06/29/interview-question/"><i class="fas fa-angle-double-right"></i>面试题总结（From J_Knight）</a>
+            
+        </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-06-29T09:22:27.000Z">2017-06-29</time>
+                <time class="level-item has-text-grey" datetime="2017-06-29T09:22:27.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2017-06-29</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-17T15:23:26.317Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-17</time>
+                                
                 
                 <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
                 <a class="has-link-grey -link" href="/categories/iOS/">iOS</a>
                 </div>
                 
@@ -259,11 +279,11 @@
             </div>
         </div>
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+        <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
                 <a class="has-link-black-ter" href="/2017/06/29/interview-question/">面试题总结（From J_Knight）</a>
             
-        </h1>
+        </h1> -->
         <div class="content">
             <blockquote>
 <p>前一段时间看了<a href="https://knightsj.github.io/">J_Knight</a>的<a href="http://www.jianshu.com/p/56e40ea56813">2017年5月iOS找人心得（附面试题）</a>。作为一个在编程前线奋斗了将近两年的iOS从业人员，面对这些题目时，有些竟感觉生疏，甚至答不上来，很是惭愧。个人感觉，像runtime、线程、信号量相关的偏底层知识虽然平时基本用不到。特别是很多人可能都没参与过稍复杂项目的开发，优化，这些内容对于很多新手iOS开发来说只存在于理论。但并不是说这些知识不重要，相反，它是我们进阶的必经之路。此篇文章的目的一方面自己整理，一方面希望和大家共同学习进步。以下内容多数为整理，时间仓促可能有不准确的地方，如果缺漏，欢迎指正。</p>
@@ -336,7 +356,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            57
+                            58
                         </p>
                     </a>
                 </div>
@@ -452,7 +472,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/ANCS/" style="font-size: 10px;">ANCS</a> <a href="/tags/AVPlayer/" style="font-size: 11.67px;">AVPlayer</a> <a href="/tags/Cocoapods/" style="font-size: 10px;">Cocoapods</a> <a href="/tags/DFU/" style="font-size: 10px;">DFU</a> <a href="/tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="/tags/Hybrid/" style="font-size: 10px;">Hybrid</a> <a href="/tags/Notification/" style="font-size: 10px;">Notification</a> <a href="/tags/UI/" style="font-size: 11.67px;">UI</a> <a href="/tags/git/" style="font-size: 11.67px;">git</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 13.33px;">博客</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 10px;">工作</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%8B%9B%E8%81%98/" style="font-size: 10px;">招聘</a> <a href="/tags/%E6%9C%88%E6%8A%A5/" style="font-size: 18.33px;">月报</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E5%8C%96/" style="font-size: 10px;">本地化</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 16.67px;">生活</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" style="font-size: 10px;">程序员</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%93%9D%E7%89%99/" style="font-size: 15px;">蓝牙</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 11.67px;">设计模式</a> <a href="/tags/%E9%98%85%E8%AF%BB/" style="font-size: 10px;">阅读</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 11.67px;">面试</a> <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">黑苹果</a>
+        <a href="/tags/ANCS/" style="font-size: 10px;">ANCS</a> <a href="/tags/AVPlayer/" style="font-size: 11.67px;">AVPlayer</a> <a href="/tags/Cocoapods/" style="font-size: 10px;">Cocoapods</a> <a href="/tags/DFU/" style="font-size: 10px;">DFU</a> <a href="/tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="/tags/Hybrid/" style="font-size: 10px;">Hybrid</a> <a href="/tags/Notification/" style="font-size: 10px;">Notification</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/git/" style="font-size: 11.67px;">git</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 13.33px;">博客</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 10px;">工作</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%8B%9B%E8%81%98/" style="font-size: 10px;">招聘</a> <a href="/tags/%E6%9C%88%E6%8A%A5/" style="font-size: 18.33px;">月报</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E5%8C%96/" style="font-size: 10px;">本地化</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 16.67px;">生活</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" style="font-size: 10px;">程序员</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%93%9D%E7%89%99/" style="font-size: 15px;">蓝牙</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 11.67px;">设计模式</a> <a href="/tags/%E9%98%85%E8%AF%BB/" style="font-size: 10px;">阅读</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 11.67px;">面试</a> <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">黑苹果</a>
     </div>
 </div>
     
@@ -461,6 +481,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/05/ios_photo_format_compare/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="iOS开发图片格式选择">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-05T14:39:34.000Z">2020-04-05</time></div>
+                    <a href="/2020/04/05/ios_photo_format_compare/" class="title has-link-black-ter is-size-6 has-text-weight-normal">iOS开发图片格式选择</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -538,25 +577,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/07/transfom_oc_to_swift/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="OC项目转Swift指南">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T10:28:09.000Z">2019-12-07</time></div>
-                    <a href="/2019/12/07/transfom_oc_to_swift/" class="title has-link-black-ter is-size-6 has-text-weight-normal">OC项目转Swift指南</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -567,6 +587,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
@@ -930,7 +961,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/UI/">
                         <span class="tag">UI</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -944,7 +975,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/iOS/">
                         <span class="tag">iOS</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">15</span>
                     </a>
                 </div>
                 

@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-bright.css">
 
 
     
@@ -76,7 +76,7 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
 </head>
-<body class="is-2-column">
+<body class="is-3-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
@@ -136,12 +136,21 @@
 <div class="card">
     
     <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>iOS获取来电和短信发送状态
+            
+        </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-12-12T07:35:51.000Z">2016-12-12</time>
+                <time class="level-item has-text-grey" datetime="2016-12-12T07:35:51.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2016-12-12</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-17T15:23:26.260Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-17</time>
+                                
                 
                 <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
                 <a class="has-link-grey -link" href="/categories/iOS%E7%9F%A5%E8%AF%86%E7%82%B9/">iOS知识点</a>
                 </div>
                 
@@ -156,11 +165,11 @@
             </div>
         </div>
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+        <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
                 iOS获取来电和短信发送状态
             
-        </h1>
+        </h1> -->
         <div class="content">
             <h2 id="获取电话状态"><a href="#获取电话状态" class="headerlink" title="获取电话状态"></a>获取电话状态</h2><p>在我想要了解iOS获取来电状态时，经常被这是不是允许的，是不是要调用私有库等问题困扰。费了好大劲终于解决了上面问题，你可以获取系统提供的电话相关状态，而且它不属于私有库。为了需要这方面资料的人查阅时少走弯路，我把这些东西写下来，废话少说，上代码。</p>
 <a id="more"></a>
@@ -414,7 +423,7 @@ if( [MFMessageComposeViewController canSendText] )// 判断设备能不能发送
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            57
+                            58
                         </p>
                     </a>
                 </div>

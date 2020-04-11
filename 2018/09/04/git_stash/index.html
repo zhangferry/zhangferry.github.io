@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-bright.css">
 
 
     
@@ -76,7 +76,7 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="alternate" href="/atom.xml" title="zhangferry" type="application/atom+xml">
 </head>
-<body class="is-2-column">
+<body class="is-3-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
@@ -136,10 +136,18 @@
 <div class="card">
     
     <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>使用git stash储存和恢复进度
+            
+        </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-09-04T06:53:34.000Z">2018-09-04</time>
+                <time class="level-item has-text-grey" datetime="2018-09-04T06:53:34.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2018-09-04</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-17T15:23:26.332Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-17</time>
+                                
                 
                 
                 <span class="level-item has-text-grey">
@@ -152,11 +160,11 @@
             </div>
         </div>
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+        <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
                 使用git stash储存和恢复进度
             
-        </h1>
+        </h1> -->
         <div class="content">
             <p>当我们正在当前项目处理一些事情时，有一个需求插进来，使得我们要在别的分支做一些工作。切换分支之前当前任务是需要保存的，但我们并没有完成一个完整的任务，直接<code>commit</code>显得不合适，这时就可以使用<code>git stash</code>命令。stash是储藏的意思，该命令的作用也可以理解为先将当前的修改储藏起来，等我们在其他分支做完必要工作之后可以再回到储藏时的状态。</p>
 <p><code>git stash</code>大致可以分为储存和恢复这两步。</p>
@@ -323,7 +331,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            57
+                            58
                         </p>
                     </a>
                 </div>

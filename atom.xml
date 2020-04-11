@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2020-03-28T05:12:08.955Z</updated>
+  <updated>2020-04-11T02:57:38.545Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>iOS开发图片格式选择</title>
+    <link href="http://zhangferry.github.io/2020/04/05/ios_photo_format_compare/"/>
+    <id>http://zhangferry.github.io/2020/04/05/ios_photo_format_compare/</id>
+    <published>2020-04-05T14:39:34.000Z</published>
+    <updated>2020-04-11T02:57:38.545Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://user-gold-cdn.xitu.io/2020/4/6/1714d8ba5edf9f51?w=1022&amp;h=512&amp;f=png&amp;s=436048&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;图片是如何显示的&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+    
+      <category term="UI" scheme="http://zhangferry.github.io/tags/UI/"/>
+    
+  </entry>
+  
+  <entry>
     <title>快手iOS面经</title>
     <link href="http://zhangferry.github.io/2020/03/28/interview_kuaishou/"/>
     <id>http://zhangferry.github.io/2020/03/28/interview_kuaishou/</id>
     <published>2020-03-28T05:11:27.000Z</published>
-    <updated>2020-03-28T05:12:08.955Z</updated>
+    <updated>2020-03-29T00:13:34.821Z</updated>
     
     <summary type="html">
     
@@ -48,7 +76,7 @@
     <link href="http://zhangferry.github.io/2020/02/23/runtime_objc_class/"/>
     <id>http://zhangferry.github.io/2020/02/23/runtime_objc_class/</id>
     <published>2020-02-23T05:28:09.000Z</published>
-    <updated>2020-03-08T13:14:20.289Z</updated>
+    <updated>2020-04-11T02:38:53.306Z</updated>
     
     <summary type="html">
     
@@ -421,26 +449,6 @@
     <summary type="html">
     
       &lt;p&gt;这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。&lt;br&gt;欢迎推荐内容，可以前往&lt;a href=&quot;https://github.com/zhangferry/iOSMonthlyReport&quot;&gt;zhangferry/iOSMonthlyReport&lt;/a&gt;提交issue。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhangferry/Images/master/blog/C6B082E3EE78560B53A3C9A99698359F.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS开发月报#11|201905</title>
-    <link href="http://zhangferry.github.io/2019/06/03/monthly_11/"/>
-    <id>http://zhangferry.github.io/2019/06/03/monthly_11/</id>
-    <published>2019-06-03T02:54:57.000Z</published>
-    <updated>2020-03-07T05:41:56.507Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。&lt;br&gt;欢迎推荐内容，可以前往&lt;a href=&quot;https://github.com/zhangferry/iOSMonthlyReport&quot;&gt;zhangferry/iOSMonthlyReport&lt;/a&gt;提交issue。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhangferry/Images/master/blog/marc-olivier-jodoin-291607-unsplash.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
