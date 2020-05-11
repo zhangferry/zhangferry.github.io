@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2020-04-11T02:57:38.545Z</updated>
+  <updated>2020-05-11T16:01:42.054Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Swift黄金选手鉴定手册</title>
+    <link href="http://zhangferry.github.io/2020/05/10/swifter_question/"/>
+    <id>http://zhangferry.github.io/2020/05/10/swifter_question/</id>
+    <published>2020-05-09T16:00:34.000Z</published>
+    <updated>2020-05-11T16:01:42.054Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/image-20200511230812677.png&quot; alt=&quot;image-20200511230812677&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这篇是对&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Swift" scheme="http://zhangferry.github.io/tags/Swift/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS开发图片格式选择</title>
@@ -430,25 +456,6 @@
     <summary type="html">
     
       &lt;p&gt;这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。&lt;br&gt;欢迎推荐内容，可以前往&lt;a href=&quot;https://github.com/zhangferry/iOSMonthlyReport&quot;&gt;zhangferry/iOSMonthlyReport&lt;/a&gt;提交issue。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190731213558.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="月报" scheme="http://zhangferry.github.io/tags/%E6%9C%88%E6%8A%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS开发月报#12|201906</title>
-    <link href="http://zhangferry.github.io/2019/06/29/monthly_12/"/>
-    <id>http://zhangferry.github.io/2019/06/29/monthly_12/</id>
-    <published>2019-06-29T01:54:57.000Z</published>
-    <updated>2020-03-07T05:41:59.798Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这里记录过去一个月，我看到的值得分享的内容，包含但不限于iOS知识，每个月的最后一天发布。&lt;br&gt;欢迎推荐内容，可以前往&lt;a href=&quot;https://github.com/zhangferry/iOSMonthlyReport&quot;&gt;zhangferry/iOSMonthlyReport&lt;/a&gt;提交issue。&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhangferry/Images/master/blog/C6B082E3EE78560B53A3C9A99698359F.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
