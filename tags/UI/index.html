@@ -150,14 +150,14 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-04-05T14:39:34.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-05</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-11T02:57:38.545Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-11</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-22T14:32:17.655Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-22</time>
                                 
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    34 分钟 读完 (大约 5035 个字)
+                    34 分钟 读完 (大约 5036 个字)
                 </span>
                 
                 
@@ -175,151 +175,16 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// Assets.xcassets中的图片，不需要后缀</span></span><br><span class="line"><span class="keyword">let</span> image = <span class="type">UIImage</span>(named: <span class="string">"icon"</span>)</span><br><span class="line"><span class="keyword">let</span> imageView = <span class="type">UIImageView</span>(frame: rect)</span><br><span class="line">imageView.image = image</span><br><span class="line">view.addSubview(imageView)</span><br></pre></td></tr></table></figure>
 
 <p>运行程序，我们就可以在指定位置看到这个icon。看似简单的代码背后隐藏了很多细节工作。一张图片的展示，从代码执行到展示出来大致经历了这些步骤：</p>
-<p><strong>1. 加载图片</strong></p>
-<ul>
-<li><p>从磁盘中加载一张图片；</p>
-</li>
-<li><p>然后将生成的 <code>UIImage</code> 赋值给 <code>UIImageView</code> ；</p>
-</li>
-<li><p>接着一个隐式的 <code>CATransaction</code> 捕获到了 <code>UIImageView</code> 图层树的变化；</p>
-</li>
-<li><p>分配内存缓冲区用于管理文件 IO 和解压缩操作，将文件数据从磁盘读到内存中；</p>
-</li>
-</ul>
-<p><strong>2. 图片解码（解压）</strong></p>
-<ul>
-<li>将压缩的图片数据解码成未压缩的位图形式，这是一个非常耗时的 CPU 操作，默认在主线程进行；</li>
-</ul>
-<p><strong>3. 图片渲染</strong></p>
-<ul>
-<li><p><code>Core Animation</code> 中<code>CALayer</code>使用解压（解码）的位图数据渲染 <code>UIImageView</code> 的图层；</p>
-</li>
-<li><p>CPU计算好图片的Frame，对图片解压之后，就会交给GPU来做图片渲染渲染流程；</p>
-</li>
-<li><p>GPU获取获取图片的坐标，将坐标交给顶点着色器(顶点计算)，将图片光栅化(获取图片对应屏幕上的像素点)，片元着色器计算(计算每个像素点的最终显示的颜色值)；</p>
-</li>
-<li><p>从帧缓存区中渲染到屏幕上；</p>
-</li>
-</ul>
-<p><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8aa5ffda915?w=1564&h=734&f=png&s=227216" alt=""></p>
-<p>这其中有个关键步骤是图片解码。那为什么要解码呢，这是因为我们平常使用的图片一般为了节约空间都会经过一些压缩算法进行封装，而使用时屏幕要精确的渲染到每个像素点，这就需要把压缩的图片解码展开，便于系统处理。</p>
-<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><h3 id="有损vs无损"><a href="#有损vs无损" class="headerlink" title="有损vs无损"></a>有损vs无损</h3><p><strong>有损压缩</strong>：指在压缩文件大小的过程中，损失了一部分图片的信息，也即降低了图片的质量，并且这种损失是不可逆的，我们不可能从有一个有损压缩过的图片中恢复出全来的图片。常见的有损压缩手段，是按照一定的算法将临近的像素点进行合并。</p>
-<p><strong>无损压缩</strong>：只在压缩文件大小的过程中，图片的质量没有任何损耗。我们任何时候都可以从无损压缩过的图片中恢复出原来的信息。</p>
-<h3 id="索引色vs直接色"><a href="#索引色vs直接色" class="headerlink" title="索引色vs直接色"></a>索引色vs直接色</h3><p><strong>索引色</strong>：用一个数字来代表（索引）一种颜色，在存储图片的时候，存储一个数字的组合，同时存储数字到图片颜色的映射。这种方式只能存储有限种颜色，通常是256种颜色，对应到计算机系统中，使用一个字节的数字来索引一种颜色。</p>
-<p><strong>直接色</strong>：使用四个数字来代表一种颜色，这四个数字分别代表这个颜色中红色、绿色、蓝色以及透明度。现在流行的显示设备可以在这四个维度分别支持256种变化，所以直接色可以表示2的32次方种颜色。当然并非所有的直接色都支持这么多种，为压缩空间使用，有可能只有表达红、绿、蓝的三个数字，每个数字也可能不支持256种变化之多。</p>
-<h3 id="点阵图vs矢量图"><a href="#点阵图vs矢量图" class="headerlink" title="点阵图vs矢量图"></a>点阵图vs矢量图</h3><p><strong>点阵图</strong>：也叫做位图，像素图。构成点阵图的最小单位是象素，位图就是由象素阵列的排列来实现其显示效果的，每个象素有自己的颜色信息，在对位图图像进行编辑操作的时候，可操作的对象是每个象素，我们可以改变图像的色相、饱和度、明度，从而改变图像的显示效果。点阵图缩放会失真，用最近非常流行的沙画来比喻最恰当不过，当你从远处看的时候，画面细腻多彩，但是当你靠的非常近的时候，你就能看到组成画面的每粒沙子以及每个沙粒的颜色。</p>
-<p><strong>矢量图</strong>：也叫做向量图。矢量图并不纪录画面上每一点的信息，而是纪录了元素形状及颜色的算法，当你打开一张矢量图的时候，软件对图形象对应的函数进行运算，将运算结果[图形的形状和颜色]显示给你看。无论显示画面是大还是小，画面上的对象对应的算法是不变的，所以，即使对画面进行倍数相当大的缩放，其显示效果仍然相同(不失真)。</p>
-<h2 id="几种格式的对比"><a href="#几种格式的对比" class="headerlink" title="几种格式的对比"></a>几种格式的对比</h2><p>一张图片，如果我们将它的每一个像素及其对应的颜色都存储起来（BMP格式），是会很大的。为了减小图片占用的存储空间，派生出了各种不同压缩算法所代表的图片格式。常见的图片格式有png、jpeg、heic、gif、webp，svg等。</p>
-<h3 id="PNG"><a href="#PNG" class="headerlink" title="PNG"></a>PNG</h3><p>PNG有两种类型：PNG-8和PNG-24。</p>
-<ul>
-<li><p>PNG-8是无损的、索引色、点阵图。它支持透明度的调节。</p>
-</li>
-<li><p>PNG-24是无损的、直接色、点阵图。因为使用直接色，颜色范围更大，也占用更大的空间。他的目标是替代JPEG，但一般而言，PNG-24的文件大小是JPEG的五倍之多，而显示效果则通常只能获得一点点提升。所以如果不是对图片质量要求特别高，不建议使用PNG-24</p>
-</li>
-</ul>
-<p>PNG是苹果推荐的图片格式，而且这些图片会被一个叫<a href="http://pmt.sourceforge.net/pngcrush/">pngcrush</a>的开源工具优化，这样iOS设备就能在显示时更快的解压和渲染图片。该工具位于目录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;Applications&#x2F;Xcode.app&#x2F;Contents&#x2F;Developer&#x2F;Platforms&#x2F;iPhoneOS.platform&#x2F;Developer&#x2F;usr&#x2F;bin</span><br></pre></td></tr></table></figure>
-
-<h3 id="JPEG"><a href="#JPEG" class="headerlink" title="JPEG"></a>JPEG</h3><p>JPEG是有损的、采用直接色的、点阵图压缩方式。<br>JEPG目标是在不影响人类可分辨的图片质量的前提下，尽可能的压缩文件大小。一般都是用于相机图片的格式。但因为有损，会导致图片失真。iOS可以通过以下方式压缩图片：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 压缩比范围从0到1</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">jpegData</span><span class="params">(compressionQuality: CGFloat)</span></span> -&gt; <span class="type">Data</span>?</span><br></pre></td></tr></table></figure>
-
-<p><strong>题外话</strong><br>一般来说，相同的图片采用JPEG的压缩方式会比png得到更小的尺寸，但也有例外。<br><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8a009a4b6af?w=1052&h=520&f=png&s=132763" alt=""><br><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8ba5f6bc8e5?w=1036&h=884&f=png&s=598026" alt=""></p>
-<p>在网上查了资料说是JEPG更适合处理带有很多杂色的风景图，而对于使用数位板等<strong>电子绘制</strong>的纯色卡通系风格图片，JEPG的压缩方式会适得其反，导致体积更大。</p>
-<h3 id="HEIC"><a href="#HEIC" class="headerlink" title="HEIC"></a>HEIC</h3><p>HEIC是HEIF（High Efficiency Image Format 高效率图像文件格式）的一种。它并非苹果开发，而是由运动图像专家组（MPEG）开发。它同时支持有损压缩、无损压缩、透明度等特性。HEIF规范的完成是在2015年，是这几种图片格式中最新的一种了，目前除了苹果，还没有哪家大厂去拥抱这种格式。</p>
-<p>在iOS 11更新后，iPhone 7及其后硬件，在拍摄照片时的默认图像存储格式。与JPG相比，它占用的空间更小，画质更加无损。HEIC的目的就是作为JPEG的继任者，以后或许会成为一种趋势。目前可以想到的在开发中的应用是，对于一些需要下载的大图可以转成HEIC格式，供客户端使用。但是当前却很少应用，大概率是考虑到图片兼容问题吧。</p>
-<p><strong>题外话</strong></p>
-<p>一个有趣的现象，我用相机（iPhoneXR）拍摄一张照片，通过AirDrop传到电脑，显示为HEIC格式。当我在拍照时选择系统自带的任意一种滤镜，图片格式就变成了JPEG。这是为什么？</p>
-<p>有小伙伴解答：</p>
-<p>iOS拍照选择滤镜会“转”为JPEG，是因为拍照的格式还是HEIF，加滤镜和编辑图片都是相当于复制了一份再做操作的，点击复原又会“转”为HEIF。</p>
-<p>经过测试确实是这样的，而且既然苹果提供复原的操作，说明原图（HEIF）并没有被覆盖。那为什么滤镜不能直接在HEIF格式下操作，猜测可能是跟滤镜的算法相关，该算法只能对JEPG格式编码的图片进行渲染，所以需要中间转成JEPG。</p>
-<p><strong>Live Photo</strong></p>
-<p>Live图片的实质是：一张heic格式封面图 + mov格式视频。</p>
-<p>对于Live Photo的展示，在原生应用中可以使用<a href="https://developer.apple.com/documentation/photokit/phlivephoto">PHLivePhotoView</a>，在Web应用中可以使用<a href="https://developer.apple.com/documentation/livephotoskitjs">LivePhotosKit JS</a>。</p>
-<h3 id="WebP"><a href="#WebP" class="headerlink" title="WebP"></a>WebP</h3><p>WebP最初由Google发布于2010年，图片格式派生自VP8视频编码，也同时支持有损压缩、无损压缩、透明度等特性。2013年低，推出了Animated WebP，还可以支持动图。</p>
-<p>WebP 集合了多种图片文件格式的特点。它像 JPEG 一样适合压缩照片和其他细节丰富的图片，像 GIF 一样可以显示动态图片，像 PNG 一样支持透明图像。根据 Google 的测试，WebP 无损压缩图片比 PNG 图片少了 45％ 的文件体积，即使这些 PNG 图片在使用 <code>pngcrush</code> 和 <code>PNGOUT</code> 处理后，WebP 依旧可以减少 28％ 的文件体积。可以在<a href="https://www.upyun.com/webp?utm_source=zhihu&utm_medium=referral&utm_campaign=260228870&utm_term=webp">点击</a>这里查看WebP对其它格式转换的效果。<br><img src="https://user-gold-cdn.xitu.io/2020/4/8/17158f8ce93ba11c?w=1168&h=679&f=png&s=749382" alt=""></p>
-<p>小是WebP的最大优点，小意味着更少的流量，这也是各大流量入口在意的地方。目前Google、Facebook、阿里等大厂已经在广泛使用WebP格式，国内的一些图床服务（七牛、又拍云）也支持将图片自动转成WebP格式。</p>
-<p>诚然WebP非常优秀，独自完成了图片格式”大一统”的任务。但苹果对WebP的支持却很少，只Safari目前还不支持WebP显示就阻断了很多人应用WebP的决心。</p>
-<p>如果我们需要在项目中显示WebP格式图片就不得不导入Google的<code>libwebp</code>解码库。当然WebP的解码任务在iOS端有些库已经封装好了，OC端可以用<a href="https://github.com/SDWebImage/SDWebImageWebPCoder">SDWebImageWebPCoder</a>，Swift端可以用<a href="https://github.com/Yeatse/KingfisherWebP">KingfisherWebP</a>。以下是使用Kingfisher展示WebP图像的事例：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局配置对WebP图片的解码（仅针对WebP格式）</span></span><br><span class="line"><span class="type">KingfisherManager</span>.shared.defaultOptions += [</span><br><span class="line">    .processor(<span class="type">WebPProcessor</span>.<span class="keyword">default</span>),</span><br><span class="line">    .cacheSerializer(<span class="type">WebPSerializer</span>.<span class="keyword">default</span>)</span><br><span class="line">]</span><br><span class="line"><span class="comment">// 本地webp图片解码</span></span><br><span class="line"><span class="keyword">let</span> localUrl = <span class="type">Bundle</span>.main.url(forResource: <span class="string">"sunset"</span>, withExtension: <span class="string">"webp"</span>)</span><br><span class="line"><span class="keyword">let</span> dataProvider = <span class="type">LocalFileImageDataProvider</span>.<span class="keyword">init</span>(fileURL: localUrl!)</span><br><span class="line">imageView.kf.setImage(with: dataProvider)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 远程webp图片解码。一些图像服务器可能期望“Accept”标头包含“image/webp”，我们还需要加上</span></span><br><span class="line"><span class="keyword">let</span> modifier = <span class="type">AnyModifier</span> &#123; request <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">var</span> req = request</span><br><span class="line">    req.addValue(<span class="string">"image/webp */*"</span>, forHTTPHeaderField: <span class="string">"Accept"</span>)</span><br><span class="line">    <span class="keyword">return</span> req</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">KingfisherManager</span>.shared.defaultOptions += [</span><br><span class="line">    .requestModifier(modifier),</span><br><span class="line">    <span class="comment">// ... other options</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<h3 id="PDF"><a href="#PDF" class="headerlink" title="PDF"></a>PDF</h3><p>pdf图片通常是矢量的，它的导入方式有些特殊。我们需要在<code>Assets.xcassets</code>文件，创建一个<code>New Image Set</code>，然后将该文件的<code>Scales</code>设置为<code>Single Scale</code>，拖入1x尺寸的pdf文件即可：<br><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8a0099633fa?w=1174&h=652&f=png&s=184826" alt=""></p>
-<p>使用时我们可以把它当做普通图片对待：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> image = <span class="type">UIImage</span>(named: <span class="string">"sunset"</span>)</span><br></pre></td></tr></table></figure>
-
-<p>在运行期间Xcode会根据屏幕的比例因子生成对应尺寸的png图像。比如导入一张100x100的pdf图片，在2x和3x的机型里面会生成对应的200x200，300x300的png（可以在Assets.car中找到）。所以pdf只不过是Xcode处理图片的中间状态，下载到手机的应用包里面是没有这张pdf的。</p>
-<p>这种处理方式有一个好处就是，当苹果以后发布一款4x屏幕的手机时，使用pdf处理的图片会自适应生成对应的4x资源，不需要再手动导入。但相比优点，pdf作为图片资源的缺点更多。</p>
-<p>首先是尺寸上，因为是自动生成对应的png，并没有任何优化和压缩，而且我们也并不能在这中间做什么。对比相同尺寸经过<a href="https://imageoptim.com/mac">ImageOptim</a>压缩过的png，在大小上后者会是前者的1/2，甚至1/4。</p>
-<p>另外pdf对阴影和渐变的处理会存在失真的情况：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d99db8700cfb?w=747&h=535&f=png&s=245741" alt=""></p>
-<p>左边是png，右边是pdf。在一些渐变和光影的图像部分可以看出明显的失真。</p>
-<p>更多关于pdf和png的差别，可以看这篇：Why I don’t use PDFs for iOS assets: <a href="https://bjango.com/articles/idontusepdfs/">https://bjango.com/articles/idontusepdfs/</a></p>
-<h3 id="SVG-SF-Symbol"><a href="#SVG-SF-Symbol" class="headerlink" title="SVG/SF Symbol"></a>SVG/SF Symbol</h3><p>SVG是一种无损的矢量图，是众多矢量图中的一种，它的特点是使用XML来描述图片。使用XML的优点是，任何时候你都可以把它当做一个文本文件来对待，也就是说，你可以非常方便的修改SVG图片，你所需要的只需要一个文本编辑器。</p>
-<p>在iOS13之前应用中直接使用SVG的场景非常少，但从iOS13开始，苹果推出了<a href="https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/">SF Symbol</a>，一种svg格式的矢量符号集。而且苹果还提供了多于1500多种icon模板，我们可以在这里<a href="https://developer.apple.com/design/downloads/SF-Symbols.dmg">下载</a>查看。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8a018369cdc?w=2244&h=1310&f=png&s=682672" alt=""></p>
-<p>我们可以从中选择适合自己的icon，选中之后，从File &gt; Export Custom Symbol Templete中导出svg格式图片集，然后拖到Xcode的<code>Assets.xcassets</code>。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8c1b3fc268b?w=1362&h=516&f=png&s=115284" alt=""></p>
-<p>SF Symbol有9种粗细的调节——从ultralight到black——每一种都相当于<code>San Francisco</code>系统字体的重量（weight）。(SF Symbol中的SF是<code>San Francisco</code>（旧金山）的缩写)。这种对应使您能够在符号和相邻文本之间实现精确的权重匹配，同时支持不同大小和上下文的灵活性。</p>
-<p>当然如果这些图标都不能满足需求，我们还可以自定义SF图标，然后通过SF Symbol App进行验证和导出。操作细节可以看这里：<a href="https://developer.apple.com/documentation/uikit/uiimage/creating_custom_symbol_images_for_your_app">Creating Custom Symbol Images for Your App</a>。</p>
-<p>SF Symbol使用起来也很简单：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> configuration = <span class="type">UIImage</span>.<span class="type">SymbolConfiguration</span>.<span class="keyword">init</span>(scale: .small)</span><br><span class="line">imageView.image = <span class="type">UIImage</span>(systemName: <span class="string">"alarm"</span>, withConfiguration: configuration)</span><br></pre></td></tr></table></figure>
-
-<p>SF Symbol可以一次性解决相同icon，不同尺寸，不同粗细的问题，它让我们处理图片像处理字体一样方便。可以想象这就是应用图标的未来。</p>
-<p>当看到SF Symbol仅支持iOS13+，watchOS6+，我又不得不退回到现实，png也挺好的。</p>
-<p><strong>题外话</strong></p>
-<p>我在测试SF Symbol图标时，从生成的应用包中查看图片，会得到这样的结果：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8c263b2fb72?w=322&h=292&f=png&s=43659" alt=""></p>
-<p>代码中的我将图片设置为100x100，仅有这一处地方使用。跟pdf类似我们找不到svg源文件，这好理解，svg只是中间状态，我们最终使用的还是png，但为什么会有多个小尺寸的png图像呢？</p>
-<h2 id="如何选择图片格式"><a href="#如何选择图片格式" class="headerlink" title="如何选择图片格式"></a>如何选择图片格式</h2><p>我们平常开发时，使用最多的就是png了，甚至可能是不加考虑的全部使用png。其实这样是不好的，我们应该充分发挥不同格式图片的优点，从<strong>兼容性</strong>、<strong>空间占用</strong>、<strong>展示效果</strong>三方面考量选取最佳格式。</p>
-<p>关于图片格式的选择，苹果的<a href="https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/image-size-and-resolution/">Human Interface Guidelines</a>有以下说法：</p>
-<blockquote>
-<p>一般情况下，使用PNG图片，因为PNG支持透明性，而且是无损的，压缩工件不会模糊重要的细节或改变颜色。对于需要阴影、纹理和高光效果的复杂艺术品来说，这是一个不错的选择。<strong>使用8位的PNG图形</strong>，不需要完全24位的颜色。8位PNG可以在不降低图像质量的情况下减小文件大小。精致的应用图标最好使用png。</p>
-<p>对于照片应该使用JPEG格式，它的压缩算法<strong>通常</strong>比无损格式产生更小的尺寸，而且很难在照片中辨别出来。<strong>应该尝试优化JPEG文件，在大小和质量之间找到平衡</strong>。大多数JPEG文件可以被压缩而不会导致图像明显的退化。即使是少量的压缩也可以节省大量的磁盘空间。</p>
-<p>使用PDF处理字形和其他需要高分辨率缩放的平面矢量图形。</p>
-</blockquote>
-<p>最终可以做以下总结。</p>
-<table>
-<thead>
-<tr>
-<th>图片格式</th>
-<th>适用范围</th>
-<th>注意事项</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>png</td>
-<td>应用icon，界面icon，卡通风格的背景图</td>
-<td>导入项目前可以使用ImageOptim进行压缩</td>
-</tr>
-<tr>
-<td>jpeg</td>
-<td>尺寸较大的风景图，照片</td>
-<td>不支持透明度；因为可以调节压缩比，可以在大小和质量之间寻找最佳平衡。</td>
-</tr>
-<tr>
-<td>webp</td>
-<td>支持有损、无损压缩、透明度、动图等特性，因为苹果本身不支持一般只应用于服务端返回来的图片</td>
-<td>无法在xcode预览，不建议内置该类型图片</td>
-</tr>
-<tr>
-<td>pdf</td>
-<td>字形，高分辨率的矢量图</td>
-<td>存在展开尺寸较大，光效失真的情况</td>
-</tr>
-<tr>
-<td>svg（sf symbol）</td>
-<td>指示性icon</td>
-<td>仅支持iOS13及以上，系统sf符号是有版权的，使用时要注意应用范围和苹果要求</td>
-</tr>
-</tbody></table>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="http://blog.leichunfeng.com/blog/2017/02/20/talking-about-the-decompression-of-the-image-in-ios/">谈谈 iOS 中图片的解压缩</a></p>
-<p><a href="https://zhaox.github.io/multimedia/2016/01/13/introducing-image-types">图片格式那么多，哪种更适合你</a></p>
-<p><a href="https://github.com/wangzz/Blog/blob/master/iOS/iOS%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F%E9%80%89%E6%8B%A9.md">iOS图片格式选择</a></p>
-<p><a href="https://bjango.com/articles/idontusepdfs/">Why I don’t use PDFs for iOS assets</a></p>
-<p><a href="https://www.avanderlee.com/swift/sf-symbols-guide/">SF Symbols: The benefits and how to use them guide</a></p>
-<p><a href="https://www.upyun.com/tech/article/252/1.html?utm_source=zhihu&utm_medium=referral&utm_campaign=260228870&utm_term=webp">WebP 的前世今生</a></p>
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/04/05/ios_photo_format_compare/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -506,7 +371,7 @@ system Button显示出蓝色其实是tintColor的效果，关于tintColor的说�
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            59
+                            60
                         </p>
                     </a>
                 </div>
@@ -530,7 +395,7 @@ system Button显示出蓝色其实是tintColor的效果，关于tintColor的说�
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            29
+                            31
                         </p>
                     </a>
                 </div>
@@ -622,7 +487,7 @@ system Button显示出蓝色其实是tintColor的效果，关于tintColor的说�
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/ANCS/" style="font-size: 10px;">ANCS</a> <a href="/tags/AVPlayer/" style="font-size: 11.67px;">AVPlayer</a> <a href="/tags/Cocoapods/" style="font-size: 10px;">Cocoapods</a> <a href="/tags/DFU/" style="font-size: 10px;">DFU</a> <a href="/tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="/tags/Hybrid/" style="font-size: 10px;">Hybrid</a> <a href="/tags/Notification/" style="font-size: 10px;">Notification</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/git/" style="font-size: 11.67px;">git</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 13.33px;">博客</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 10px;">工作</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%8B%9B%E8%81%98/" style="font-size: 10px;">招聘</a> <a href="/tags/%E6%9C%88%E6%8A%A5/" style="font-size: 18.33px;">月报</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E5%8C%96/" style="font-size: 10px;">本地化</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 16.67px;">生活</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" style="font-size: 10px;">程序员</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%93%9D%E7%89%99/" style="font-size: 15px;">蓝牙</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 11.67px;">设计模式</a> <a href="/tags/%E9%98%85%E8%AF%BB/" style="font-size: 10px;">阅读</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 11.67px;">面试</a> <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">黑苹果</a>
+        <a href="/tags/ANCS/" style="font-size: 10px;">ANCS</a> <a href="/tags/AVPlayer/" style="font-size: 11.67px;">AVPlayer</a> <a href="/tags/Cocoapods/" style="font-size: 10px;">Cocoapods</a> <a href="/tags/DFU/" style="font-size: 10px;">DFU</a> <a href="/tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="/tags/Hybrid/" style="font-size: 10px;">Hybrid</a> <a href="/tags/Notification/" style="font-size: 10px;">Notification</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/git/" style="font-size: 11.67px;">git</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 13.33px;">博客</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 10px;">工作</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%8B%9B%E8%81%98/" style="font-size: 10px;">招聘</a> <a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" style="font-size: 10px;">敏捷开发</a> <a href="/tags/%E6%9C%88%E6%8A%A5/" style="font-size: 18.33px;">月报</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E5%8C%96/" style="font-size: 10px;">本地化</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 16.67px;">生活</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" style="font-size: 10px;">程序员</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%93%9D%E7%89%99/" style="font-size: 15px;">蓝牙</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 11.67px;">设计模式</a> <a href="/tags/%E9%98%85%E8%AF%BB/" style="font-size: 10px;">阅读</a> <a href="/tags/%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90/" style="font-size: 10px;">静态分析</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 11.67px;">面试</a> <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">黑苹果</a>
     </div>
 </div>
     
@@ -631,6 +496,25 @@ system Button显示出蓝色其实是tintColor的效果，关于tintColor的说�
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/05/22/ios_code_checker/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="如何通过静态分析提高iOS代码质量">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-22T03:28:09.000Z">2020-05-22</time></div>
+                    <a href="/2020/05/22/ios_code_checker/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何通过静态分析提高iOS代码质量</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -708,25 +592,6 @@ system Button显示出蓝色其实是tintColor的效果，关于tintColor的说�
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/01/vscode_python/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCode配置Python版本">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-01T03:28:09.000Z">2020-02-01</time></div>
-                    <a href="/2020/02/01/vscode_python/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCode配置Python版本</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -744,7 +609,7 @@ system Button显示出蓝色其实是tintColor的效果，关于tintColor的说�
                     <span class="level-item">五月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1143,7 +1008,7 @@ system Button显示出蓝色其实是tintColor的效果，关于tintColor的说�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/iOS/">
                         <span class="tag">iOS</span>
-                        <span class="tag is-grey">15</span>
+                        <span class="tag is-grey">16</span>
                     </a>
                 </div>
                 
@@ -1185,6 +1050,13 @@ system Button显示出蓝色其实是tintColor的效果，关于tintColor的说�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%8B%9B%E8%81%98/">
                         <span class="tag">招聘</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">
+                        <span class="tag">敏捷开发</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1255,6 +1127,13 @@ system Button显示出蓝色其实是tintColor的效果，关于tintColor的说�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%98%85%E8%AF%BB/">
                         <span class="tag">阅读</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90/">
+                        <span class="tag">静态分析</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
