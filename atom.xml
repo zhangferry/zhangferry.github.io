@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2020-05-22T14:29:29.294Z</updated>
+  <updated>2020-05-23T23:20:45.539Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://zhangferry.github.io/2020/05/22/ios_code_checker/"/>
     <id>http://zhangferry.github.io/2020/05/22/ios_code_checker/</id>
     <published>2020-05-22T03:28:09.000Z</published>
-    <updated>2020-05-22T14:29:29.294Z</updated>
+    <updated>2020-05-23T23:20:45.539Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;p&gt;&lt;img src=&quot;https://user-gold-cdn.xitu.io/2020/5/21/17235171e5857002?w=1021&amp;h=529&amp;f=png&amp;s=724734&quot;
+          &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/17235171e5857002-20200524072010074.png&quot;
         
       
     
@@ -71,11 +71,11 @@
     <link href="http://zhangferry.github.io/2020/04/05/ios_photo_format_compare/"/>
     <id>http://zhangferry.github.io/2020/04/05/ios_photo_format_compare/</id>
     <published>2020-04-05T14:39:34.000Z</published>
-    <updated>2020-05-22T14:32:17.655Z</updated>
+    <updated>2020-05-23T22:57:55.402Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;https://user-gold-cdn.xitu.io/2020/4/6/1714d8ba5edf9f51?w=1022&amp;h=512&amp;f=png&amp;s=436048&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1714d8ba5edf9f51.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;图片是如何显示的&quot;&gt;&lt;a href=&quot;#图片是如何显示的&quot; class=&quot;headerlink&quot; title=&quot;图片是如何显示的&quot;&gt;&lt;/a&gt;图片是如何显示的&lt;/h2&gt;&lt;p&gt;在讲解如何选择图片格式之前，我感觉有必要先了解下，图片是如何展示的。如果我们要展示一张图片，一般步骤是这样的：&lt;/p&gt;
 &lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/// Assets.xcassets中的图片，不需要后缀&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; image = &lt;span class=&quot;type&quot;&gt;UIImage&lt;/span&gt;(named: &lt;span class=&quot;string&quot;&gt;&quot;icon&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; imageView = &lt;span class=&quot;type&quot;&gt;UIImageView&lt;/span&gt;(frame: rect)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;imageView.image = image&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;view.addSubview(imageView)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
@@ -96,7 +96,7 @@
     <link href="http://zhangferry.github.io/2020/03/28/interview_kuaishou/"/>
     <id>http://zhangferry.github.io/2020/03/28/interview_kuaishou/</id>
     <published>2020-03-28T05:11:27.000Z</published>
-    <updated>2020-05-22T14:33:32.935Z</updated>
+    <updated>2020-05-23T23:22:29.165Z</updated>
     
     <summary type="html">
     
@@ -423,7 +423,7 @@
     <link href="http://zhangferry.github.io/2019/08/20/builder_design_pattern_swift/"/>
     <id>http://zhangferry.github.io/2019/08/20/builder_design_pattern_swift/</id>
     <published>2019-08-20T02:25:34.000Z</published>
-    <updated>2020-03-07T05:38:43.086Z</updated>
+    <updated>2020-05-23T23:02:09.485Z</updated>
     
     <summary type="html">
     

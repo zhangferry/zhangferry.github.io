@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
 <meta property="article:published_time" content="2016-12-12T08:07:54.000Z">
-<meta property="article:modified_time" content="2019-05-17T15:23:26.414Z">
+<meta property="article:modified_time" content="2020-05-23T23:01:00.697Z">
 <meta property="article:author" content="zhangferry">
 <meta property="article:tag" content="蓝牙">
 <meta name="twitter:card" content="summary">
@@ -146,7 +146,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2016-12-12T08:07:54.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2016-12-12</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-17T15:23:26.414Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-17</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T23:01:00.697Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-24</time>
                                 
                 
                 <div class="level-item">
@@ -158,7 +158,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1271 个字)
+                    8 分钟 读完 (大约 1261 个字)
                 </span>
                 
                 
@@ -176,7 +176,7 @@
             
         </h1> -->
         <div class="content">
-            <p><img src="http://upload-images.jianshu.io/upload_images/1059465-e8b76e6d8dcb9416.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Bluetooth4.0.jpg"><br>最近在忙一个蓝牙项目，在处理蓝牙数据的时候，经常遇到进制之间的转换，蓝牙处理的是16进制（NSData），而我们习惯的计数方式是10进制，为了节省空间，蓝牙也会把16进制（NSData）拆成2进制记录。这里我们研究下如何在他们之间进行转换。</p>
+            <p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1240-20200524070045730.jpeg" alt="Bluetooth4.0.jpg"><br>最近在忙一个蓝牙项目，在处理蓝牙数据的时候，经常遇到进制之间的转换，蓝牙处理的是16进制（NSData），而我们习惯的计数方式是10进制，为了节省空间，蓝牙也会把16进制（NSData）拆成2进制记录。这里我们研究下如何在他们之间进行转换。</p>
 <a id="more"></a>
 <p><strong>假设我们要向蓝牙发送0x1B9901这条数据</strong></p>
 <h2 id="Byte转NSData"><a href="#Byte转NSData" class="headerlink" title="Byte转NSData"></a>Byte转NSData</h2><pre><code>Byte value[3]={0};

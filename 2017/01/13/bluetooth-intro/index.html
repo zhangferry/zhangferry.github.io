@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
 <meta property="article:published_time" content="2017-01-13T14:36:41.000Z">
-<meta property="article:modified_time" content="2019-05-17T15:23:26.379Z">
+<meta property="article:modified_time" content="2020-05-23T23:00:42.063Z">
 <meta property="article:author" content="zhangferry">
 <meta property="article:tag" content="蓝牙">
 <meta name="twitter:card" content="summary">
@@ -146,7 +146,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2017-01-13T14:36:41.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2017-01-13</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-17T15:23:26.379Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-17</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T23:00:42.063Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-24</time>
                                 
                 
                 <div class="level-item">
@@ -158,7 +158,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    20 分钟 读完 (大约 3066 个字)
+                    20 分钟 读完 (大约 3020 个字)
                 </span>
                 
                 
@@ -182,14 +182,14 @@
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><blockquote>
 <p><a href="#thought">0、思维导图</a><br><a href="#1">1、苹果对蓝牙设备有什么要求</a><br><a href="#2">2、操作蓝牙设备使用什么库</a><br><a href="#3">3、如何扫描</a><br><a href="#4">4、如何连接</a><br><a href="#5">5、如何发送数据和接收数据</a><br><a href="#6">6、如何解析数据</a><br><a href="#7">7、扩展</a></p>
 </blockquote>
-<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1059465-46a0e68cfd9c4c9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="思维导图"><br>第一次做图，大家凑合着看哈。这张是我总结的蓝牙知识的结构图，下面的内容将围绕这些东西展开进行。<br><img src="http://upload-images.jianshu.io/upload_images/1059465-18ebcb6eb1790121.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="连接设备流程"><br>这张是蓝牙连接发送数据的流程图，下文进入coding阶段的讲解顺序，大家先有个大概印象，等阅读完本文再回来看这张图将理解的更深一些。</p>
+<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1240-20200524065943661.png" alt="思维导图"><br>第一次做图，大家凑合着看哈。这张是我总结的蓝牙知识的结构图，下面的内容将围绕这些东西展开进行。<br><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1240-20200524065954498.png" alt="连接设备流程"><br>这张是蓝牙连接发送数据的流程图，下文进入coding阶段的讲解顺序，大家先有个大概印象，等阅读完本文再回来看这张图将理解的更深一些。</p>
 <h2 id="苹果对蓝牙设备有什么要求"><a href="#苹果对蓝牙设备有什么要求" class="headerlink" title="苹果对蓝牙设备有什么要求"></a>苹果对蓝牙设备有什么要求</h2><p>BLE：bluetouch low energy，蓝牙4.0设备因为低功耗，所有也叫作BLE。苹果在iphone4s及之后的手机型号开始支持蓝牙4.0，这也是最常见的蓝牙设备。低于蓝牙4.0协议的设备需要进行MFI认证，关于MFI认证的申请工作可以看这里：<a href="http://www.jianshu.com/p/b90b0c45398d">关于MFI认证你所必须要知道的事情</a></p>
 <p>在进行操作蓝牙设备前，我们先下载一个蓝牙工具<code>LightBlue</code>，它可以辅助我们的开发，在进行蓝牙开发之前建议先熟悉一下<a href="https://itunes.apple.com/us/app/lightblue-explorer-bluetooth/id557428110?mt=8">LightBlue</a>这个工具。</p>
 <h2 id="操作蓝牙设备使用什么库"><a href="#操作蓝牙设备使用什么库" class="headerlink" title="操作蓝牙设备使用什么库"></a>操作蓝牙设备使用什么库</h2><p>苹果自身有一个操作蓝牙的库<code>CoreBluetooth.framework</code>，这个是大多数人员进行蓝牙开发的首选框架，除此之外目前github还有一个比较流行的对原生框架进行封装的三方库<a href="https://github.com/coolnameismy/BabyBluetooth">BabyBluetooth</a>，它的机制是将CoreBluetooth中众多的delegate写成了block方法，有兴趣的同学可以了解下。下面主要介绍的是原生蓝牙库的知识。</p>
-<h3 id="中心和外围设备"><a href="#中心和外围设备" class="headerlink" title="中心和外围设备"></a>中心和外围设备</h3><p><img src="http://upload-images.jianshu.io/upload_images/1059465-d4c7cabd9f2ca98a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="central-peripheral"></p>
+<h3 id="中心和外围设备"><a href="#中心和外围设备" class="headerlink" title="中心和外围设备"></a>中心和外围设备</h3><p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1240-20200524070005382.png" alt="central-peripheral"></p>
 <p>如图所示，电脑、Pad、手机作为中心，心跳监听器作为外设，这种中心外设模式是最常见的。简单理解就是，发起连接的是中心设备（Central），被连接的是外围设备（Peripheral），对应传统的客户机-服务器体系结构。Central能够扫描侦听到，正在播放广告包的外设。</p>
 <h3 id="服务与特征"><a href="#服务与特征" class="headerlink" title="服务与特征"></a>服务与特征</h3><p>外设可以包含一个或多个服务（CBService），服务是用于实现装置的功能或特征数据相关联的行为集合。<br>而每个服务又对应多个特征（CBCharacteristic）,特征提供外设服务进一步的细节，外设，服务，特征对应的数据结构如下所示</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1059465-bbcf073456d1f3be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CBService-CBCharacteristic"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1240-20200524070017777.png" alt="CBService-CBCharacteristic"></p>
 <h2 id="如何扫描蓝牙"><a href="#如何扫描蓝牙" class="headerlink" title="如何扫描蓝牙"></a>如何扫描蓝牙</h2><p>在进行扫描之前我们需要，首先新建一个类作为蓝牙类，例如<code>FYBleManager</code>，写成单例，作为处理蓝牙操作的管理类。引入头文件<code>#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</code><br><code>CBCentralManager</code>是蓝牙中心的管理类，控制着蓝牙的扫描，连接，蓝牙状态的改变。</p>
 <h3 id="1、初始化"><a href="#1、初始化" class="headerlink" title="1、初始化"></a>1、初始化</h3><pre><code>dispatch_queue_t centralQueue = dispatch_queue_create(“centralQueue&quot;,DISPATCH_QUEUE_SERIAL);
     NSDictionary *dic = @{CBCentralManagerOptionShowPowerAlertKey : YES,
@@ -237,7 +237,7 @@ NSDictionary *option = @{CBCentralManagerScanOptionAllowDuplicatesKey : [NSNumbe
 <pre><code>- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral;</code></pre><p>连接失败的回调</p>
 <pre><code>- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error;</code></pre><p>连接断开的回调</p>
 <pre><code>- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error;</code></pre><p>连接成功之后并没有结束，还记得<code>CBPeripheral</code>中的<code>CBService</code>和<code>CBService</code>中的<code>CBCharacteristic</code>吗，对数据的读写是由<code>CBCharacteristic</code>控制的。我们先用lightblue连接小米手环为例，来看一下，手环内部的数据是不是我们说的那样。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1059465-1ab902ebe252094e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="lightblue"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1240-20200524070029628.png" alt="lightblue"></p>
 <p>其中<code>ADVERTISEMENT DATA</code>显示的就是广播信息。</p>
 <blockquote>
 <p><strong>iOS蓝牙无法直接获取设备蓝牙MAC地址，可以将MAC地址放到这里广播出来</strong></p>

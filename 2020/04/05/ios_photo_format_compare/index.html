@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
 <meta property="article:published_time" content="2020-04-05T14:39:34.000Z">
-<meta property="article:modified_time" content="2020-05-22T14:32:17.655Z">
+<meta property="article:modified_time" content="2020-05-23T22:57:55.402Z">
 <meta property="article:author" content="zhangferry">
 <meta property="article:tag" content="iOS">
 <meta property="article:tag" content="UI">
@@ -147,14 +147,14 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-04-05T14:39:34.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-05</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-22T14:32:17.655Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-22</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T22:57:55.402Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-24</time>
                                 
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    34 分钟 读完 (大约 5036 个字)
+                    33 分钟 读完 (大约 5018 个字)
                 </span>
                 
                 
@@ -172,7 +172,7 @@
             
         </h1> -->
         <div class="content">
-            <p><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8ba5edf9f51?w=1022&h=512&f=png&s=436048" alt=""></p>
+            <p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1714d8ba5edf9f51.png" alt=""></p>
 <h2 id="图片是如何显示的"><a href="#图片是如何显示的" class="headerlink" title="图片是如何显示的"></a>图片是如何显示的</h2><p>在讲解如何选择图片格式之前，我感觉有必要先了解下，图片是如何展示的。如果我们要展示一张图片，一般步骤是这样的：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// Assets.xcassets中的图片，不需要后缀</span></span><br><span class="line"><span class="keyword">let</span> image = <span class="type">UIImage</span>(named: <span class="string">"icon"</span>)</span><br><span class="line"><span class="keyword">let</span> imageView = <span class="type">UIImageView</span>(frame: rect)</span><br><span class="line">imageView.image = image</span><br><span class="line">view.addSubview(imageView)</span><br></pre></td></tr></table></figure>
 
@@ -205,7 +205,7 @@
 <li><p>从帧缓存区中渲染到屏幕上；</p>
 </li>
 </ul>
-<p><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8aa5ffda915?w=1564&h=734&f=png&s=227216" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1714d8aa5ffda915-20200524065609593.png" alt=""></p>
 <p>这其中有个关键步骤是图片解码。那为什么要解码呢，这是因为我们平常使用的图片一般为了节约空间都会经过一些压缩算法进行封装，而使用时屏幕要精确的渲染到每个像素点，这就需要把压缩的图片解码展开，便于系统处理。</p>
 <h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><h3 id="有损vs无损"><a href="#有损vs无损" class="headerlink" title="有损vs无损"></a>有损vs无损</h3><p><strong>有损压缩</strong>：指在压缩文件大小的过程中，损失了一部分图片的信息，也即降低了图片的质量，并且这种损失是不可逆的，我们不可能从有一个有损压缩过的图片中恢复出全来的图片。常见的有损压缩手段，是按照一定的算法将临近的像素点进行合并。</p>
 <p><strong>无损压缩</strong>：只在压缩文件大小的过程中，图片的质量没有任何损耗。我们任何时候都可以从无损压缩过的图片中恢复出原来的信息。</p>
@@ -227,7 +227,7 @@
 <h3 id="JPEG"><a href="#JPEG" class="headerlink" title="JPEG"></a>JPEG</h3><p>JPEG是有损的、采用直接色的、点阵图压缩方式。<br>JEPG目标是在不影响人类可分辨的图片质量的前提下，尽可能的压缩文件大小。一般都是用于相机图片的格式。但因为有损，会导致图片失真。iOS可以通过以下方式压缩图片：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 压缩比范围从0到1</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">jpegData</span><span class="params">(compressionQuality: CGFloat)</span></span> -&gt; <span class="type">Data</span>?</span><br></pre></td></tr></table></figure>
 
-<p><strong>题外话</strong><br>一般来说，相同的图片采用JPEG的压缩方式会比png得到更小的尺寸，但也有例外。<br><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8a009a4b6af?w=1052&h=520&f=png&s=132763" alt=""><br><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8ba5f6bc8e5?w=1036&h=884&f=png&s=598026" alt=""></p>
+<p><strong>题外话</strong><br>一般来说，相同的图片采用JPEG的压缩方式会比png得到更小的尺寸，但也有例外。<br><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1714d8a009a4b6af.png" alt=""><br><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8ba5f6bc8e5?w=1036&h=884&f=png&s=598026" alt=""></p>
 <p>在网上查了资料说是JEPG更适合处理带有很多杂色的风景图，而对于使用数位板等<strong>电子绘制</strong>的纯色卡通系风格图片，JEPG的压缩方式会适得其反，导致体积更大。</p>
 <h3 id="HEIC"><a href="#HEIC" class="headerlink" title="HEIC"></a>HEIC</h3><p>HEIC是HEIF（High Efficiency Image Format 高效率图像文件格式）的一种。它并非苹果开发，而是由运动图像专家组（MPEG）开发。它同时支持有损压缩、无损压缩、透明度等特性。HEIF规范的完成是在2015年，是这几种图片格式中最新的一种了，目前除了苹果，还没有哪家大厂去拥抱这种格式。</p>
 <p>在iOS 11更新后，iPhone 7及其后硬件，在拍摄照片时的默认图像存储格式。与JPG相比，它占用的空间更小，画质更加无损。HEIC的目的就是作为JPEG的继任者，以后或许会成为一种趋势。目前可以想到的在开发中的应用是，对于一些需要下载的大图可以转成HEIC格式，供客户端使用。但是当前却很少应用，大概率是考虑到图片兼容问题吧。</p>
@@ -240,13 +240,13 @@
 <p>Live图片的实质是：一张heic格式封面图 + mov格式视频。</p>
 <p>对于Live Photo的展示，在原生应用中可以使用<a href="https://developer.apple.com/documentation/photokit/phlivephoto">PHLivePhotoView</a>，在Web应用中可以使用<a href="https://developer.apple.com/documentation/livephotoskitjs">LivePhotosKit JS</a>。</p>
 <h3 id="WebP"><a href="#WebP" class="headerlink" title="WebP"></a>WebP</h3><p>WebP最初由Google发布于2010年，图片格式派生自VP8视频编码，也同时支持有损压缩、无损压缩、透明度等特性。2013年低，推出了Animated WebP，还可以支持动图。</p>
-<p>WebP 集合了多种图片文件格式的特点。它像 JPEG 一样适合压缩照片和其他细节丰富的图片，像 GIF 一样可以显示动态图片，像 PNG 一样支持透明图像。根据 Google 的测试，WebP 无损压缩图片比 PNG 图片少了 45％ 的文件体积，即使这些 PNG 图片在使用 <code>pngcrush</code> 和 <code>PNGOUT</code> 处理后，WebP 依旧可以减少 28％ 的文件体积。可以在<a href="https://www.upyun.com/webp?utm_source=zhihu&utm_medium=referral&utm_campaign=260228870&utm_term=webp">点击</a>这里查看WebP对其它格式转换的效果。<br><img src="https://user-gold-cdn.xitu.io/2020/4/8/17158f8ce93ba11c?w=1168&h=679&f=png&s=749382" alt=""></p>
+<p>WebP 集合了多种图片文件格式的特点。它像 JPEG 一样适合压缩照片和其他细节丰富的图片，像 GIF 一样可以显示动态图片，像 PNG 一样支持透明图像。根据 Google 的测试，WebP 无损压缩图片比 PNG 图片少了 45％ 的文件体积，即使这些 PNG 图片在使用 <code>pngcrush</code> 和 <code>PNGOUT</code> 处理后，WebP 依旧可以减少 28％ 的文件体积。可以在<a href="https://www.upyun.com/webp?utm_source=zhihu&utm_medium=referral&utm_campaign=260228870&utm_term=webp">点击</a>这里查看WebP对其它格式转换的效果。<br><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/17158f8ce93ba11c.png" alt=""></p>
 <p>小是WebP的最大优点，小意味着更少的流量，这也是各大流量入口在意的地方。目前Google、Facebook、阿里等大厂已经在广泛使用WebP格式，国内的一些图床服务（七牛、又拍云）也支持将图片自动转成WebP格式。</p>
 <p>诚然WebP非常优秀，独自完成了图片格式”大一统”的任务。但苹果对WebP的支持却很少，只Safari目前还不支持WebP显示就阻断了很多人应用WebP的决心。</p>
 <p>如果我们需要在项目中显示WebP格式图片就不得不导入Google的<code>libwebp</code>解码库。当然WebP的解码任务在iOS端有些库已经封装好了，OC端可以用<a href="https://github.com/SDWebImage/SDWebImageWebPCoder">SDWebImageWebPCoder</a>，Swift端可以用<a href="https://github.com/Yeatse/KingfisherWebP">KingfisherWebP</a>。以下是使用Kingfisher展示WebP图像的事例：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局配置对WebP图片的解码（仅针对WebP格式）</span></span><br><span class="line"><span class="type">KingfisherManager</span>.shared.defaultOptions += [</span><br><span class="line">    .processor(<span class="type">WebPProcessor</span>.<span class="keyword">default</span>),</span><br><span class="line">    .cacheSerializer(<span class="type">WebPSerializer</span>.<span class="keyword">default</span>)</span><br><span class="line">]</span><br><span class="line"><span class="comment">// 本地webp图片解码</span></span><br><span class="line"><span class="keyword">let</span> localUrl = <span class="type">Bundle</span>.main.url(forResource: <span class="string">"sunset"</span>, withExtension: <span class="string">"webp"</span>)</span><br><span class="line"><span class="keyword">let</span> dataProvider = <span class="type">LocalFileImageDataProvider</span>.<span class="keyword">init</span>(fileURL: localUrl!)</span><br><span class="line">imageView.kf.setImage(with: dataProvider)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 远程webp图片解码。一些图像服务器可能期望“Accept”标头包含“image/webp”，我们还需要加上</span></span><br><span class="line"><span class="keyword">let</span> modifier = <span class="type">AnyModifier</span> &#123; request <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">var</span> req = request</span><br><span class="line">    req.addValue(<span class="string">"image/webp */*"</span>, forHTTPHeaderField: <span class="string">"Accept"</span>)</span><br><span class="line">    <span class="keyword">return</span> req</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">KingfisherManager</span>.shared.defaultOptions += [</span><br><span class="line">    .requestModifier(modifier),</span><br><span class="line">    <span class="comment">// ... other options</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-<h3 id="PDF"><a href="#PDF" class="headerlink" title="PDF"></a>PDF</h3><p>pdf图片通常是矢量的，它的导入方式有些特殊。我们需要在<code>Assets.xcassets</code>文件，创建一个<code>New Image Set</code>，然后将该文件的<code>Scales</code>设置为<code>Single Scale</code>，拖入1x尺寸的pdf文件即可：<br><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8a0099633fa?w=1174&h=652&f=png&s=184826" alt=""></p>
+<h3 id="PDF"><a href="#PDF" class="headerlink" title="PDF"></a>PDF</h3><p>pdf图片通常是矢量的，它的导入方式有些特殊。我们需要在<code>Assets.xcassets</code>文件，创建一个<code>New Image Set</code>，然后将该文件的<code>Scales</code>设置为<code>Single Scale</code>，拖入1x尺寸的pdf文件即可：<br><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1714d8a0099633fa.png" alt=""></p>
 <p>使用时我们可以把它当做普通图片对待：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> image = <span class="type">UIImage</span>(named: <span class="string">"sunset"</span>)</span><br></pre></td></tr></table></figure>
 
@@ -254,14 +254,14 @@
 <p>这种处理方式有一个好处就是，当苹果以后发布一款4x屏幕的手机时，使用pdf处理的图片会自适应生成对应的4x资源，不需要再手动导入。但相比优点，pdf作为图片资源的缺点更多。</p>
 <p>首先是尺寸上，因为是自动生成对应的png，并没有任何优化和压缩，而且我们也并不能在这中间做什么。对比相同尺寸经过<a href="https://imageoptim.com/mac">ImageOptim</a>压缩过的png，在大小上后者会是前者的1/2，甚至1/4。</p>
 <p>另外pdf对阴影和渐变的处理会存在失真的情况：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d99db8700cfb?w=747&h=535&f=png&s=245741" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1714d99db8700cfb.png" alt=""></p>
 <p>左边是png，右边是pdf。在一些渐变和光影的图像部分可以看出明显的失真。</p>
 <p>更多关于pdf和png的差别，可以看这篇：Why I don’t use PDFs for iOS assets: <a href="https://bjango.com/articles/idontusepdfs/">https://bjango.com/articles/idontusepdfs/</a></p>
 <h3 id="SVG-SF-Symbol"><a href="#SVG-SF-Symbol" class="headerlink" title="SVG/SF Symbol"></a>SVG/SF Symbol</h3><p>SVG是一种无损的矢量图，是众多矢量图中的一种，它的特点是使用XML来描述图片。使用XML的优点是，任何时候你都可以把它当做一个文本文件来对待，也就是说，你可以非常方便的修改SVG图片，你所需要的只需要一个文本编辑器。</p>
 <p>在iOS13之前应用中直接使用SVG的场景非常少，但从iOS13开始，苹果推出了<a href="https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/">SF Symbol</a>，一种svg格式的矢量符号集。而且苹果还提供了多于1500多种icon模板，我们可以在这里<a href="https://developer.apple.com/design/downloads/SF-Symbols.dmg">下载</a>查看。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8a018369cdc?w=2244&h=1310&f=png&s=682672" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1714d8a018369cdc.png" alt=""></p>
 <p>我们可以从中选择适合自己的icon，选中之后，从File &gt; Export Custom Symbol Templete中导出svg格式图片集，然后拖到Xcode的<code>Assets.xcassets</code>。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8c1b3fc268b?w=1362&h=516&f=png&s=115284" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1714d8c1b3fc268b.png" alt=""></p>
 <p>SF Symbol有9种粗细的调节——从ultralight到black——每一种都相当于<code>San Francisco</code>系统字体的重量（weight）。(SF Symbol中的SF是<code>San Francisco</code>（旧金山）的缩写)。这种对应使您能够在符号和相邻文本之间实现精确的权重匹配，同时支持不同大小和上下文的灵活性。</p>
 <p>当然如果这些图标都不能满足需求，我们还可以自定义SF图标，然后通过SF Symbol App进行验证和导出。操作细节可以看这里：<a href="https://developer.apple.com/documentation/uikit/uiimage/creating_custom_symbol_images_for_your_app">Creating Custom Symbol Images for Your App</a>。</p>
 <p>SF Symbol使用起来也很简单：</p>
@@ -271,7 +271,7 @@
 <p>当看到SF Symbol仅支持iOS13+，watchOS6+，我又不得不退回到现实，png也挺好的。</p>
 <p><strong>题外话</strong></p>
 <p>我在测试SF Symbol图标时，从生成的应用包中查看图片，会得到这样的结果：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714d8c263b2fb72?w=322&h=292&f=png&s=43659" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1714d8c263b2fb72.png" alt=""></p>
 <p>代码中的我将图片设置为100x100，仅有这一处地方使用。跟pdf类似我们找不到svg源文件，这好理解，svg只是中间状态，我们最终使用的还是png，但为什么会有多个小尺寸的png图像呢？</p>
 <h2 id="如何选择图片格式"><a href="#如何选择图片格式" class="headerlink" title="如何选择图片格式"></a>如何选择图片格式</h2><p>我们平常开发时，使用最多的就是png了，甚至可能是不加考虑的全部使用png。其实这样是不好的，我们应该充分发挥不同格式图片的优点，从<strong>兼容性</strong>、<strong>空间占用</strong>、<strong>展示效果</strong>三方面考量选取最佳格式。</p>
 <p>关于图片格式的选择，苹果的<a href="https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/image-size-and-resolution/">Human Interface Guidelines</a>有以下说法：</p>
