@@ -10,16 +10,16 @@
 <title>Swift进阶黄金之路 - zhangferry</title>
 
 
-    <meta name="description" content="这篇是对一文鉴定是Swift的王者，还是青铜文章中问题的解答。这些问题仅仅是表层概念，属于知识点，在我看来即使都很清楚也并不能代表上了王者，如果非要用段位类比的话，黄金还是合理的😄。 Swift是一门上手容易，但是精通较难的语言。即使下面这些内容都不清楚也不妨碍你开发业务需求，但是了解之后它能够帮助我们写出更加Swifty的代码。">
+    <meta name="description" content="Swift进阶黄金之路（二） 这篇是对一文鉴定是Swift的王者，还是青铜文章中问题的解答。这些问题仅仅是表层概念，属于知识点，在我看来即使都很清楚也并不能代表上了王者，如果非要用段位类比的话，黄金还是合理的😄。 Swift是一门上手容易，但是精通较难的语言。即使下面这些内容都不清楚也不妨碍你开发业务需求，但是了解之后它能够帮助我们写出更加Swifty的代码。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift进阶黄金之路">
-<meta property="og:url" content="http://zhangferry.github.io/2020/05/10/swifter_question/index.html">
+<meta property="og:url" content="http://zhangferry.github.io/2020/05/10/swift_advance_1/index.html">
 <meta property="og:site_name" content="zhangferry">
-<meta property="og:description" content="这篇是对一文鉴定是Swift的王者，还是青铜文章中问题的解答。这些问题仅仅是表层概念，属于知识点，在我看来即使都很清楚也并不能代表上了王者，如果非要用段位类比的话，黄金还是合理的😄。 Swift是一门上手容易，但是精通较难的语言。即使下面这些内容都不清楚也不妨碍你开发业务需求，但是了解之后它能够帮助我们写出更加Swifty的代码。">
+<meta property="og:description" content="Swift进阶黄金之路（二） 这篇是对一文鉴定是Swift的王者，还是青铜文章中问题的解答。这些问题仅仅是表层概念，属于知识点，在我看来即使都很清楚也并不能代表上了王者，如果非要用段位类比的话，黄金还是合理的😄。 Swift是一门上手容易，但是精通较难的语言。即使下面这些内容都不清楚也不妨碍你开发业务需求，但是了解之后它能够帮助我们写出更加Swifty的代码。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://zhangferry.github.io/images/og_image.png">
 <meta property="article:published_time" content="2020-05-09T16:00:34.000Z">
-<meta property="article:modified_time" content="2020-05-22T14:31:51.519Z">
+<meta property="article:modified_time" content="2020-05-31T14:07:49.740Z">
 <meta property="article:author" content="zhangferry">
 <meta property="article:tag" content="Swift">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-bright.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/vs2015.css">
 
 
     
@@ -146,14 +146,14 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-05-09T16:00:34.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-10</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-22T14:31:51.519Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-22</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-31T14:07:49.740Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-31</time>
                                 
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    40 分钟 读完 (大约 6049 个字)
+                    41 分钟 读完 (大约 6075 个字)
                 </span>
                 
                 
@@ -172,6 +172,7 @@
         </h1> -->
         <div class="content">
             <p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/image-20200511230812677.png" alt="image-20200511230812677"></p>
+<p><a href="https://zhangferry.com/2020/05/31/swift_advance_2/">Swift进阶黄金之路（二）</a></p>
 <p>这篇是对<a href="https://juejin.im/post/5e96f898e51d4546c27bcf81">一文鉴定是Swift的王者，还是青铜</a>文章中问题的解答。这些问题仅仅是表层概念，属于知识点，在我看来即使都很清楚也并不能代表上了王者，如果非要用段位类比的话，黄金还是合理的😄。</p>
 <p>Swift是一门上手容易，但是精通较难的语言。即使下面这些内容都不清楚也不妨碍你开发业务需求，但是了解之后它能够帮助我们写出更加Swifty的代码。</p>
 <a id="more"></a>
@@ -368,6 +369,7 @@
 <p>当我们直接写<code>let divideResult = theNumbers.map(divideTenBy(x:))</code>时，编译器会报错：<code>Call can throw but is not marked with &#39;try&#39;</code>。这样就实现了根据情况去决定是否需要用<code>try-catch</code>去捕获map里的异常了。</p>
 <p>参考：<a href="https://swifter.tips/error-handle/">错误和异常处理</a></p>
 <h3 id="break-return-continue-fallthough-在语句中的含义（switch、while、for）"><a href="#break-return-continue-fallthough-在语句中的含义（switch、while、for）" class="headerlink" title="break return continue fallthough 在语句中的含义（switch、while、for）"></a>break return continue fallthough 在语句中的含义（switch、while、for）</h3><p>这个比较简单，只说相对特别的示例吧，在Swift的switch语句，会在每个case结束的时候自动退出该switch判断，如果我们想不退出，继续进行下一个case的判断，可以加上<code>fallthough</code>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/IMG_2555.jpg" alt="IMG_2555"></p>
 
         </div>
         
@@ -451,8 +453,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'http://zhangferry.github.io/2020/05/10/swifter_question/';
-        this.page.identifier = '2020/05/10/swifter_question/';
+        this.page.url = 'http://zhangferry.github.io/2020/05/10/swift_advance_1/';
+        this.page.identifier = '2020/05/10/swift_advance_1/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -513,7 +515,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            60
+                            61
                         </p>
                     </a>
                 </div>

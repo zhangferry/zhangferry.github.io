@@ -7,13 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>归档: 2018/8 - zhangferry</title>
+<title>zhangferry</title>
 
 
     <meta name="description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="zhangferry">
-<meta property="og:url" content="http://zhangferry.github.io/archives/2018/08/index.html">
+<meta property="og:url" content="http://zhangferry.github.io/page/7/index.html">
 <meta property="og:site_name" content="zhangferry">
 <meta property="og:description" content="只有频率相同的人，才能看见彼此内心深处不为人知的优雅。">
 <meta property="og:locale" content="zh_CN">
@@ -126,79 +126,97 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        八月 2018
-        </h3>
-        <div class="timeline">
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2016/03/10/bluetooth-ota-upgrade/"><i class="fas fa-angle-double-right"></i>蓝牙固件升级</a>
+            
+        </h1>
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2016-03-10T02:36:59.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2016-03-10</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-08-30T06:47:34.000Z">2018-08-30</time>
-                        <a href="/2018/08/30/private-Cocoapods/" class="title has-link-black-ter is-size-6 has-text-weight-normal">使用Cocoapods管理私有库组件</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T23:01:23.645Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-24</time>
                                 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-08-09T06:47:34.000Z">2018-08-09</time>
-                        <a href="/2018/08/09/skill-map/" class="title has-link-black-ter is-size-6 has-text-weight-normal">iOS技能图谱</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E8%93%9D%E7%89%99%E6%80%BB%E7%BB%93/">蓝牙总结</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-08-06T03:28:09.000Z">2018-08-06</time>
-                        <a href="/2018/08/06/201807-summary/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2018年七月</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-08-02T06:22:32.000Z">2018-08-02</time>
-                        <a href="/2018/08/02/monthly_1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">iOS开发月报#1|201807</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 644 个字)
+                </span>
+                
+                
+            </div>
         </div>
+        
+        <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2016/03/10/bluetooth-ota-upgrade/">蓝牙固件升级</a>
+            
+        </h1> -->
+        <div class="content">
+            <p><img src="https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1240-20200524070104681.png" alt="Bluetooth.png"><br>###升级介绍</p>
+<blockquote>
+<p>蓝牙固件升级是使用手机给固件进行更新，以达到修复bug，完善功能的作用。升级的大概流程是：首先，当手环的固件需要升级时，由嵌入式开发人员提供新的固件，由服务器管理人员将固件放到服务器上，此时，用户打开手机APP的时候会检测到服务器有更新，请求更新手环固件，确认更新后，手机会从服务器下载固件。下载完毕后，APP会读取固件内容，并根据升级协议将内容传到手环里，完成升级。  </p>
+</blockquote>
+<ul>
+<li>DFU =  Device Firmware Update （设备固件更新）</li>
+<li>OTA = Over The Air （空中升级）
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2016/03/10/bluetooth-ota-upgrade/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
     </div>
 </div>
 
 
+
+
+
+
+
+
+
+    
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/page/6/">上一页</a>
+        </div>
+        <div class="pagination-next is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/page/8/">下一页</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
+            
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/6/">6</a></li>
+            
+            <li><a class="pagination-link is-current" href="/page/7/">7</a></li>
+            
+        </ul>
+    </nav>
+</div>
 </div>
                 
 

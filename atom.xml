@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2020-05-23T23:20:45.539Z</updated>
+  <updated>2020-05-31T14:07:20.923Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Swift进阶黄金之路（二）</title>
+    <link href="http://zhangferry.github.io/2020/05/31/swift_advance_2/"/>
+    <id>http://zhangferry.github.io/2020/05/31/swift_advance_2/</id>
+    <published>2020-05-31T14:00:34.000Z</published>
+    <updated>2020-05-31T14:07:20.923Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1726adc6747571fc.png&quot; alt=&quot;image-20200511230812677&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Swift" scheme="http://zhangferry.github.io/tags/Swift/"/>
+    
+  </entry>
   
   <entry>
     <title>如何通过静态分析提高iOS代码质量</title>
@@ -47,14 +73,15 @@
   
   <entry>
     <title>Swift进阶黄金之路</title>
-    <link href="http://zhangferry.github.io/2020/05/10/swifter_question/"/>
-    <id>http://zhangferry.github.io/2020/05/10/swifter_question/</id>
+    <link href="http://zhangferry.github.io/2020/05/10/swift_advance_1/"/>
+    <id>http://zhangferry.github.io/2020/05/10/swift_advance_1/</id>
     <published>2020-05-09T16:00:34.000Z</published>
-    <updated>2020-05-22T14:31:51.519Z</updated>
+    <updated>2020-05-31T14:07:49.740Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/image-20200511230812677.png&quot; alt=&quot;image-20200511230812677&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhangferry.com/2020/05/31/swift_advance_2/&quot;&gt;Swift进阶黄金之路（二）&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;这篇是对&lt;a href=&quot;https://juejin.im/post/5e96f898e51d4546c27bcf81&quot;&gt;一文鉴定是Swift的王者，还是青铜&lt;/a&gt;文章中问题的解答。这些问题仅仅是表层概念，属于知识点，在我看来即使都很清楚也并不能代表上了王者，如果非要用段位类比的话，黄金还是合理的😄。&lt;/p&gt;
 &lt;p&gt;Swift是一门上手容易，但是精通较难的语言。即使下面这些内容都不清楚也不妨碍你开发业务需求，但是了解之后它能够帮助我们写出更加Swifty的代码。&lt;/p&gt;
     
@@ -437,28 +464,6 @@
     
     
       <category term="设计模式" scheme="http://zhangferry.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS国际化及本地化（一）不同语言的差异处理及测试</title>
-    <link href="http://zhangferry.github.io/2019/08/19/localization_guide/"/>
-    <id>http://zhangferry.github.io/2019/08/19/localization_guide/</id>
-    <published>2019-08-19T02:54:57.000Z</published>
-    <updated>2020-03-07T05:40:01.663Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190819180049.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;国际化及本地化概念&quot;&gt;&lt;a href=&quot;#国际化及本地化概念&quot; class=&quot;headerlink&quot; title=&quot;国际化及本地化概念&quot;&gt;&lt;/a&gt;国际化及本地化概念&lt;/h2&gt;&lt;p&gt;将标题取名为国际化及本地化（internationalization and localization），是因为这两个概念是有差异的，而这个差异常常被我们忽略，以下是维基百科的解释：&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
-    
-      <category term="本地化" scheme="http://zhangferry.github.io/tags/%E6%9C%AC%E5%9C%B0%E5%8C%96/"/>
     
   </entry>
   
