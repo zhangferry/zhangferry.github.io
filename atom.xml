@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2020-05-31T14:12:16.789Z</updated>
+  <updated>2020-07-20T00:08:39.162Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS面试篇-多线程</title>
+    <link href="http://zhangferry.github.io/2020/07/19/interview-multithreading/"/>
+    <id>http://zhangferry.github.io/2020/07/19/interview-multithreading/</id>
+    <published>2020-07-19T09:32:57.000Z</published>
+    <updated>2020-07-20T00:08:39.162Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://gitee.com/zhangferry/Images/raw/master/gitee/20200719183858.png&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+    
+      <category term="面试" scheme="http://zhangferry.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS面试篇</title>
+    <link href="http://zhangferry.github.io/2020/06/30/interview-network/"/>
+    <id>http://zhangferry.github.io/2020/06/30/interview-network/</id>
+    <published>2020-06-30T03:28:09.000Z</published>
+    <updated>2020-07-20T00:10:25.518Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://gitee.com/zhangferry/Images/raw/master/gitee/20200630104145.png&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+    
+      <category term="面试" scheme="http://zhangferry.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Swift进阶黄金之路（二）</title>
@@ -418,52 +472,6 @@
     
     
       <category term="计算机网络" scheme="http://zhangferry.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【译】Swift World：设计模式--中介者模式</title>
-    <link href="http://zhangferry.github.io/2019/08/28/design_pattern_mediator/"/>
-    <id>http://zhangferry.github.io/2019/08/28/design_pattern_mediator/</id>
-    <published>2019-08-28T00:27:57.000Z</published>
-    <updated>2019-11-09T12:31:23.051Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;原文：&lt;a href=&quot;https://medium.com/swiftworld/swift-world-design-patterns-mediator-e6b3c35d68b0&quot;&gt;https://medium.com/swiftworld/swift-world-design-patterns-mediator-e6b3c35d68b0&lt;/a&gt;&lt;br&gt;作者：Peng&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;今天我们讨论一下中介者模式(Mediator)。这次不从抽象定义开始，而是用现实世界中的一个场景来解释它。在一个团队里，有产品经理，开发工程师，质量工程师。当开发完成了某些功能，将代码提交到仓库。相关环节人员，像质量工程师和产品经理需要被通知。&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
-    
-      <category term="设计模式" scheme="http://zhangferry.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【译】设计模式引导--OOP的能力</title>
-    <link href="http://zhangferry.github.io/2019/08/20/builder_design_pattern_swift/"/>
-    <id>http://zhangferry.github.io/2019/08/20/builder_design_pattern_swift/</id>
-    <published>2019-08-20T02:25:34.000Z</published>
-    <updated>2020-05-23T23:02:09.485Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://medium.com/swift-india/design-patterns-by-tutorials-the-power-of-oop-2e871b551cbe&quot;&gt;原文链接&lt;/a&gt;&lt;br&gt;作者：Hitendra Solanki&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhangferry/Images/master/blog/20190819211318.jpeg&quot; alt=&quot;&quot;&gt;&lt;br&gt;导读–本博客系列要求具有面向对象编程的中级专业知识。您应该对类、对象、构造函数、继承、值和引用类型有基本的了解。通过仔细地从头到尾阅读本系列文章，不管是中级还是高级开发，您都将有所收获。&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="设计模式" scheme="http://zhangferry.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
