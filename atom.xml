@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangferry.github.io/"/>
-  <updated>2020-07-20T00:19:17.537Z</updated>
+  <updated>2020-07-25T09:13:02.120Z</updated>
   <id>http://zhangferry.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS面试总结（2020年6月）</title>
+    <link href="http://zhangferry.github.io/2020/07/24/interview_summary_202006/"/>
+    <id>http://zhangferry.github.io/2020/07/24/interview_summary_202006/</id>
+    <published>2020-07-24T00:11:27.000Z</published>
+    <updated>2020-07-25T09:13:02.120Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://gitee.com/zhangferry/Images/raw/master/gitee/headway-5QgIuuBxKwM-unsplash.jpg&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+    
+      <category term="面试" scheme="http://zhangferry.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS面试篇-多线程</title>
@@ -453,25 +480,6 @@
     
     
       <category term="mac" scheme="http://zhangferry.github.io/tags/mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《图解TCP/IP》总结</title>
-    <link href="http://zhangferry.github.io/2019/08/31/diagram_tcpip_concepts/"/>
-    <id>http://zhangferry.github.io/2019/08/31/diagram_tcpip_concepts/</id>
-    <published>2019-08-31T12:00:34.000Z</published>
-    <updated>2020-03-07T05:39:07.851Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近刚把《图解TCP/IP》翻了一遍，是有很多收获，但是还有很多东西不是太懂。又因为计算机网络涉及的内容多且杂，所以有了这篇记录性质的文章。&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="计算机网络" scheme="http://zhangferry.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   

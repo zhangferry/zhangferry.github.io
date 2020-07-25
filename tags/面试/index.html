@@ -142,6 +142,165 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
+                <a class="has-link-black-ter" href="/2020/07/24/interview_summary_202006/"><i class="fas fa-angle-double-right"></i>iOS面试总结（2020年6月）</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-07-24T00:11:27.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-07-24</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-07-25T09:13:02.120Z"><i class="far fa-calendar-check">&nbsp;</i>2020-07-25</time>
+                                
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    28 分钟 读完 (大约 4211 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/07/24/interview_summary_202006/">iOS面试总结（2020年6月）</a>
+            
+        </h1> -->
+        <div class="content">
+            <p><img src="https://gitee.com/zhangferry/Images/raw/master/gitee/headway-5QgIuuBxKwM-unsplash.jpg" alt=""></p>
+<p><del>都说今年互联网行情很差，作为被大家喊了好几年“iOS开发没人要了”的iOS行情更差。那真实情况是什么样的呢，以我的经历给大家分析下</del>。应某个朋友建议，去掉这一句啊，目前iOS岗位还是挺多的，你可以这么想只要苹果爸爸不倒，iOS开发就不会没人要。但另一方面，招聘方对iOS开发的要求是在不断提高的，我们不能固步自封，满足现状，只有不断学习，不断进步，才能保持自身竞争力。</p>
+<p>我的面试的阶段基本都在6月份，准备的阶段则要再往前推个半个月吧。期间约到了不少一二线互联网公司面试机会，前期由于准备不足也错失了一些机会，在之后的面试中不断总结经验，越来越有信心了，最终选择了爱奇艺。整体来看求职情况还算可以，不是很好但也不是很差，其中会带有一定运气成分，所以要换工作的话一定不要裸辞。</p>
+<p>这里总结下这段时间的面试经历和一些心得，后面会附上期间遇到的面试题，大家可以尝试作答一下。</p>
+<h2 id="求职准备"><a href="#求职准备" class="headerlink" title="求职准备"></a>求职准备</h2><p>如果确定了想要换工作就应该为求职做准备了。</p>
+<h3 id="知识准备"><a href="#知识准备" class="headerlink" title="知识准备"></a>知识准备</h3><p>在确定了换工作的想法之后，我们就应该为面试做准备了。在回顾知识点的时候我建议分类去梳理：OC语法，Runtime，Runloop，多线程，性能优化等，这些是优先级高的内容，其次是网络知识，数据结构与算法等计算机通识知识。</p>
+<p>有一本书非常推荐：《Objective-C高级编程》，建议精读。</p>
+<p>开源库的话看<a href="https://github.com/RetVal/objc-runtime">Runtime(最新为可编译799.1版本)</a>吧，把类的定义，Runloop，weak，Autoreleasepool相关的代码都看下。</p>
+<p>网络的知识点可以参考我的那篇：<a href="https://juejin.im/post/5efaa708e51d4534640e9aa0">iOS面试备战-网络篇</a>。数据结构与算法，按照类别刷个几十题应该能应付大多数情况了，iOS面试一般不会有太难的算法题。</p>
+<h3 id="简历"><a href="#简历" class="headerlink" title="简历"></a>简历</h3><p>简历是求职的第一步，也是你能否获得面试机会的敲门砖，我们一定要好好打磨下。下面是我在脉脉上看到的HR在筛选简历时主要关注的点：</p>
+<p><img src="https://gitee.com/zhangferry/Images/raw/master/gitee/20200719215109.png" alt=""></p>
+<p>我在今年3月份的时候尝试投过几次简历，并没有太好的结果，后来进行了一些调整优化。6月份再投的时候相对好了些，陆续收到了些回应。本人之前并没有大厂经历，不是一流本科，但也能收到不少大厂的面试机会，所以我感觉自己的简历内容还是起到了一定的作用的。如果想参考我简历的话，可以关注公众号：「iOS成长之路」，回复：简历，进行下载。</p>
+<p>上面有提到“高光时刻”，可以理解成亮点。怎么让自己的简历跟同能力水平的求职者不同，那就是找到属于我们的亮点。有一个建议，我们在写简历时，可以刻意夸大自己的能力，或者写我们想成为的样子，再之后我们就对着简历让这些内容一一实现，让它们变成自己的亮点。一定要注意不能只吹牛，不落实，因为被发现“造假”可是很严重的。</p>
+<h3 id="简历投递"><a href="#简历投递" class="headerlink" title="简历投递"></a>简历投递</h3><p>以我的经历来说，相对靠谱的简历投递方式有：Boss直聘、脉脉、内推。</p>
+<p>需要注意的是，Boss直聘和脉脉只有别人联系你，你再投递，反馈率才会高一些。如果是你主动联系的招聘方，那大概率是不会收到回应的。推测很多企业并没有很多的招聘岗位也会把招聘信息挂在上面，这种时候HR是不会关注投递的简历的。这也是为什么能看到很多人晒出投递上百个简历确一个回应的都没有的情况，不要气馁，这不一定代表你能力不行。</p>
+<p>等招聘者联系是相对被动的，主动出击会更有效。那就是寻找内推，一般公司内推都有奖励的，所以公司内部人员都乐意去发布职位获取内推人选。脉脉，掘金，V2EX，一些知名公众号都能发现不少内推岗位，我们可以自己去挖掘。</p>
+<h3 id="面试流程"><a href="#面试流程" class="headerlink" title="面试流程"></a>面试流程</h3><p>目前互联网公司大部分是2轮技术面+1轮HR，或三轮技术面+1轮HR。目前的面试形式多为视频面试，也有些是电话面试。视频面试的话，如果是通过Zoom，企业微信，钉钉等一般是不考察手写代码的。如果是通过牛客网，一般是会考察手写代码的。对于手写代码，仅有算法题会要求准确性，可运行，对于设计类题目，我们写出伪代码即可。</p>
+<p>如果到了HR轮基本说明我们已经通过了面试，如果确定入职，接下来就是背调，薪资证明，学历证明，入职体检等一系列操作。</p>
+<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>以下是我面试过程中遇到的面试题，其中<a href="https://zhangferry.com/2020/06/30/interview-network/">网络</a>和<a href="https://zhangferry.com/2020/07/19/interview-multithreading/">多线程</a>问题已经分成两篇单独讲解了，这里就去除了这两部分。</p>
+<h4 id="Swift"><a href="#Swift" class="headerlink" title="Swift"></a>Swift</h4><p>因为我最近两年多一直在用Swift，面试开始的自我介绍环节，我也会着重提这一点。但是很不幸，我得到的答案基本都是：面试主要考察OC。这也说明了大部分公司对Swift态度还是非常保守的，所以除非招聘信息里写了要求Swift技能，否则我们是没有必要专门准备Swift相关面试的。</p>
+<p>当然面试过程中也遇到了几个Swift问题：</p>
+<p>1、Swift中struct和class有什么区别？</p>
+<p>2、Swift中的方法调用有哪些形式？</p>
+<p>3、Swift和OC有什么区别？</p>
+<p>4、从OC向Swift迁移的时候遇到过什么问题？</p>
+<p>5、怎么理解面向协议编程？</p>
+<h4 id="OC语法"><a href="#OC语法" class="headerlink" title="OC语法"></a>OC语法</h4><p>1、Block是如何实现的？Block对应的数据结构是什么样子的？__block的作用是什么？它对应的数据结构又是什么样子的？</p>
+<p>2、GCD中的Block是在堆上还是栈上？</p>
+<p>3、NSCoding协议是干什么用的？</p>
+<p>4、KVO的实现原理</p>
+<p>5、NSOperation有哪些特性比着GCD有哪些优点，它有哪些API？</p>
+<p>6、NSNotificaiton是同步还是异步的，如果发通知时在子线程，接收在哪个线程？</p>
+<h4 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h4><p>1、事件响应链是如何传递的？</p>
+<p>2、什么是异步渲染？</p>
+<p>3、layoutsubviews是在什么时机调用的？</p>
+<p>4、一张图片的展示经历了哪些步骤？</p>
+<p>5、什么是离屏渲染，什么情况会导致离屏渲染？</p>
+<p>6、CoreAnimation这个框架的作用什么，它跟UIKit的关系是什么？</p>
+<h4 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h4><p>1、ARC方案的原理是什么？它是在什么时候做的隐式添加release操作？</p>
+<p>2、循环引用有哪些场景，如何避免？</p>
+<p>3、为什么当我们在使用block时外面是weak 声明一个weakSelf，还要在block内部使用strong再持有一下？</p>
+<p>4、Autoreleasepool是实现机制是什么？它是什么时候释放内部的对象的？它内部的数据结构是什么样的？当我提到哨兵对象时，会继续问哨兵对象的作用是什么，为什么要设计它？</p>
+<p>5、哪些对象会放入到Autoreleasepool中？</p>
+<p>6、weak的实现原理是什么？当引用对象销毁是它是如何管理内部的Hash表的？（这里要参阅weak源码）</p>
+<h4 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h4><p>1、消息发送的流程是怎样的？</p>
+<p>2、关联对象时什么情况下会导致内存泄露？</p>
+<p>3、消息转发的流程是什么？</p>
+<p>4、category能否添加属性，为什么？能否添加实例变量，为什么？</p>
+<p>5、元类的作用是什么？</p>
+<p>6、类方法是存储到什么地方的？类属性呢？</p>
+<p>7、讲几个runtime的应用场景</p>
+<h4 id="Runloop"><a href="#Runloop" class="headerlink" title="Runloop"></a>Runloop</h4><p>1、讲一下对Runloop的理解？</p>
+<p>2、可以用Runloop实现什么功能？</p>
+<h4 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h4><p>1、对TableView进行性能优化有哪些方式？</p>
+<p>2、Xcode的Instruments都有哪些调试的工具？</p>
+<p>3、讲一下你做过的性能优化的事情。</p>
+<p>4、如何检测卡顿，都有哪些方法？</p>
+<p>5、缩小包体积有哪些方案？</p>
+<h4 id="计算机相关"><a href="#计算机相关" class="headerlink" title="计算机相关"></a>计算机相关</h4><p>1、项目编译的流程是什么？手机上的应用程序自点击图标开始到首屏内容展示都经历了哪些步骤？</p>
+<p>2、对于基本数据类型，一般是存储到栈中的，它有没有可能存在堆上，什么情况下会存储到堆上？</p>
+<p>3、数据库中的事务是什么意思？</p>
+<p>4、使用过什么数据库（我回答的Sqlite，Realm），Realm在使用时有哪些注意事项，如何实现批量操作？</p>
+<p>5、LRU算法是否了解，如何实现一套LRU算法？</p>
+<p>6、知道哪些设计模式，怎么理解设计模式的作用？</p>
+<p>7、如果有1000万个Int类型的数字，如何对他们排序？</p>
+<p>8、设计一套数据库方案，实现类似微信的搜索关键词能快速检索出包含该字符串的聊天信息，并展示对应数量（聊天记录的数据量较大）。</p>
+<h4 id="简历相关问题"><a href="#简历相关问题" class="headerlink" title="简历相关问题"></a>简历相关问题</h4><p>1、Lottie实现动画效果的原理是什么？</p>
+<p>2、OClint实现静态分析的原理是什么，它是如何做到的？</p>
+<p>3、MVVM和MVC有什么区别？</p>
+<p>4、静态库和动态库的区别是什么？</p>
+<p>5、了解Flutter吗？它有没有使用UIKit？它是如何渲染UI的？</p>
+<p>6、二进制重排的核心依据是什么？</p>
+<p>7、如何设计一套切换主题的方案？</p>
+<p>8、AVPlayer和IJKPlayer有什么区别？用IJKPlayer如何实现一个缓存视频列表每条视频前1s的内容？</p>
+<p>9、类似微博的短视频列表，滑动停留播放，如何实现？</p>
+<p>10、使用python做过哪些事？如何理解脚本语言？</p>
+<h4 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h4><p>1、什么是Hash表，什么是Hash碰撞，解决Hash碰撞有什么方法？</p>
+<p>2、如何遍历二叉树？</p>
+<p>3、简述下快速排序的过程，时间复杂度是多少？</p>
+<p>4、有一个整数数组，如何只遍历一遍就实现让该数组奇数都在前面，偶数都在后面？</p>
+<p>5、假设你正在爬楼梯。需要 n 阶你才能到达楼顶。每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<p>6、给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。<a href="https://leetcode-cn.com/problems/reverse-integer/">leetcode 7</a></p>
+<p>7、有红、黄、蓝三种颜色的气球。在牛客王国，1个红气球+1个黄气球+1个蓝气球可以兑换一张彩票。</p>
+<p>2个红气球+1个黄气球可以兑换1个蓝气球。</p>
+<p>2个黄气球+1个蓝气球可以兑换1个红气球。</p>
+<p>2个蓝气球+1个红气球可以兑换1个黄气球。</p>
+<p>现在牛牛有a个红气球，b个黄气球， c个蓝气球，牛牛想知道自己最多可以兑换多少张彩票。</p>
+<h4 id="软技能"><a href="#软技能" class="headerlink" title="软技能"></a>软技能</h4><p>1、做过哪些工作职责之外的事情？</p>
+<p>2、经历过最难的一次业务开发是什么样的，最终怎么解决的？</p>
+<p>3、最近有学习什么新技术吗？有何收获？</p>
+<p>4、你最擅长iOS哪方面的知识？怎么体现出来的？</p>
+<p>5、常用哪些开源库，有没有研究过他们的原理？</p>
+<p>6、如何保持个人成长？</p>
+<h4 id="流程型问题"><a href="#流程型问题" class="headerlink" title="流程型问题"></a>流程型问题</h4><p>流程性问题基本都会包含下面四个，最好提前准备好</p>
+<p>1、请做下自我介绍。</p>
+<p>2、你有什么问题要问我的吗？</p>
+<p>3、为什么离职？</p>
+<p>4、对下份工作的期望是什么样的？</p>
+<p>这些问题看似不起眼，但其实还挺重要的，很有可能面试官就是通过这几个问题决定了要不要你通过面试。</p>
+<p>自我介绍就不说了，简明扼要介绍自己近几年的经历和成绩就行，控制在一分钟以内。</p>
+<p>第二个，最好不要直接说没有问题了，提问面试官是我们整个面试过程中少有的掌握主动权的时刻，它可以体现我们自主思考的能力。最好提前了解下公司和招聘需求，准备几个问题，或者面试过程中提出我们产生的一些疑问。</p>
+<p>离职原因，这个如实回答即可，只要不说是因为钱或者跟领导同事不和基本都没有问题。</p>
+<p>下份工作的期望，这个就看各自的需求吧。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过这些面试题，我们可以看出一些端倪。</p>
+<p>1、面试官更喜欢“刨根问底”，对着一个概念不断的往深处延展，不断深入的问。这类问题会有很大的区分度，第一问第二问第三问难度逐次提高，用于筛选不同的面试者。这也提醒我们某些知识点不光要知道原理，还要知道为什么这么设计，这么设计的好处是什么。</p>
+<p>2、问题范围更全面化，特别是二面时，问题不再局限于iOS端，而是更通用的计算机方向问题，这个需要我们平常多积累；还有就是开始重视个人软技能，学习能力和上进心。</p>
+<p>3、围绕简历，还记得上面说过写简历时要吹牛逼吗。在面试的时候一定要把他们成为自己真正掌握的知识。</p>
+<p>4、注重软技能，这个比前面几条作用稍微小些，但是如果被问到了，而我们也有很好的贴合点，那绝对就是加分项。我的一次经历是，当我向面试官说自己有写博客的习惯，他问我是否知道medium，我说知道，还翻译过几篇里面的文章，接着说了些我理解的国内外博客平台的现状分析。这种情况就属于加分项了。</p>
+<p>另外面试是一次考察自己知识掌握程度的考核，考的好能提升自己自信心，考的不好可以帮助我们定位自身问题，不管怎么说都是不亏的。面试还可以帮助我们了解市场行情，薪资待遇，自身竞争力，流行技术栈等一系列情况。所以真的建议即使不考虑换工作，每年固定时间也可以出去面试几次。</p>
+<p><img src="https://gitee.com/zhangferry/Images/raw/master/gitee/20200719185749.png" alt=""></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
                 <a class="has-link-black-ter" href="/2020/07/19/interview-multithreading/"><i class="fas fa-angle-double-right"></i>iOS面试篇-多线程</a>
             
         </h1>
@@ -706,7 +865,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            63
+                            64
                         </p>
                     </a>
                 </div>
@@ -822,7 +981,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/ANCS/" style="font-size: 10px;">ANCS</a> <a href="/tags/AVPlayer/" style="font-size: 11.43px;">AVPlayer</a> <a href="/tags/Cocoapods/" style="font-size: 10px;">Cocoapods</a> <a href="/tags/DFU/" style="font-size: 10px;">DFU</a> <a href="/tags/Hexo/" style="font-size: 11.43px;">Hexo</a> <a href="/tags/Hybrid/" style="font-size: 10px;">Hybrid</a> <a href="/tags/Notification/" style="font-size: 10px;">Notification</a> <a href="/tags/Swift/" style="font-size: 11.43px;">Swift</a> <a href="/tags/UI/" style="font-size: 12.86px;">UI</a> <a href="/tags/git/" style="font-size: 11.43px;">git</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 12.86px;">博客</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 10px;">工作</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%8B%9B%E8%81%98/" style="font-size: 10px;">招聘</a> <a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" style="font-size: 10px;">敏捷开发</a> <a href="/tags/%E6%9C%88%E6%8A%A5/" style="font-size: 18.57px;">月报</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E5%8C%96/" style="font-size: 10px;">本地化</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 17.14px;">生活</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" style="font-size: 10px;">程序员</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%93%9D%E7%89%99/" style="font-size: 15.71px;">蓝牙</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 11.43px;">设计模式</a> <a href="/tags/%E9%98%85%E8%AF%BB/" style="font-size: 10px;">阅读</a> <a href="/tags/%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90/" style="font-size: 10px;">静态分析</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 14.29px;">面试</a> <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">黑苹果</a>
+        <a href="/tags/ANCS/" style="font-size: 10px;">ANCS</a> <a href="/tags/AVPlayer/" style="font-size: 11.67px;">AVPlayer</a> <a href="/tags/Cocoapods/" style="font-size: 10px;">Cocoapods</a> <a href="/tags/DFU/" style="font-size: 10px;">DFU</a> <a href="/tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="/tags/Hybrid/" style="font-size: 10px;">Hybrid</a> <a href="/tags/Notification/" style="font-size: 10px;">Notification</a> <a href="/tags/Swift/" style="font-size: 11.67px;">Swift</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/git/" style="font-size: 11.67px;">git</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 13.33px;">博客</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 10px;">工作</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%8B%9B%E8%81%98/" style="font-size: 10px;">招聘</a> <a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" style="font-size: 10px;">敏捷开发</a> <a href="/tags/%E6%9C%88%E6%8A%A5/" style="font-size: 18.33px;">月报</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E5%8C%96/" style="font-size: 10px;">本地化</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 16.67px;">生活</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" style="font-size: 10px;">程序员</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a> <a href="/tags/%E8%93%9D%E7%89%99/" style="font-size: 15px;">蓝牙</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 11.67px;">设计模式</a> <a href="/tags/%E9%98%85%E8%AF%BB/" style="font-size: 10px;">阅读</a> <a href="/tags/%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90/" style="font-size: 10px;">静态分析</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a> <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">黑苹果</a>
     </div>
 </div>
     
@@ -831,6 +990,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/24/interview_summary_202006/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="iOS面试总结（2020年6月）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-24T00:11:27.000Z">2020-07-24</time></div>
+                    <a href="/2020/07/24/interview_summary_202006/" class="title has-link-black-ter is-size-6 has-text-weight-normal">iOS面试总结（2020年6月）</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -908,25 +1086,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/05/10/swift_advance_1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Swift进阶黄金之路">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-09T16:00:34.000Z">2020-05-10</time></div>
-                    <a href="/2020/05/10/swift_advance_1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Swift进阶黄金之路</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -944,7 +1103,7 @@
                     <span class="level-item">七月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1365,7 +1524,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/iOS/">
                         <span class="tag">iOS</span>
-                        <span class="tag is-grey">18</span>
+                        <span class="tag is-grey">19</span>
                     </a>
                 </div>
                 
@@ -1498,7 +1657,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%9D%A2%E8%AF%95/">
                         <span class="tag">面试</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
