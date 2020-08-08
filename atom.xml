@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>zhangferry</title>
-  <icon>http://zhangferry.github.io/icon.png</icon>
+  <icon>https://zhangferry.gitee.io/icon.png</icon>
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://zhangferry.github.io/"/>
+  <link href="https://zhangferry.gitee.io/"/>
   <updated>2020-08-08T02:38:03.923Z</updated>
-  <id>http://zhangferry.github.io/</id>
+  <id>https://zhangferry.gitee.io/</id>
   
   <author>
     <name>zhangferry</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>iOS面试总结（2020年6月）</title>
-    <link href="http://zhangferry.github.io/2020/07/24/interview_summary_202006/"/>
-    <id>http://zhangferry.github.io/2020/07/24/interview_summary_202006/</id>
+    <link href="https://zhangferry.gitee.io/2020/07/24/interview_summary_202006/"/>
+    <id>https://zhangferry.gitee.io/2020/07/24/interview_summary_202006/</id>
     <published>2020-07-24T00:11:27.000Z</published>
     <updated>2020-08-08T02:38:03.923Z</updated>
     
@@ -37,127 +37,116 @@
     
     
     
-      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="https://zhangferry.gitee.io/tags/iOS/"/>
     
-      <category term="面试" scheme="http://zhangferry.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="https://zhangferry.gitee.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
   <entry>
-    <title>iOS面试篇-多线程</title>
-    <link href="http://zhangferry.github.io/2020/07/19/interview-multithreading/"/>
-    <id>http://zhangferry.github.io/2020/07/19/interview-multithreading/</id>
+    <title>iOS面试备战-多线程</title>
+    <link href="https://zhangferry.gitee.io/2020/07/19/interview-multithreading/"/>
+    <id>https://zhangferry.gitee.io/2020/07/19/interview-multithreading/</id>
     <published>2020-07-19T09:32:57.000Z</published>
-    <updated>2020-07-20T00:19:17.537Z</updated>
+    <updated>2020-08-08T02:46:39.371Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;https://gitee.com/zhangferry/Images/raw/master/gitee/20200719183858.png&quot;
-        
-      
+      &lt;p&gt;&lt;img src=&quot;https://gitee.com/zhangferry/Images/raw/master/gitee/20200719183858.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;iOS面试中多线程绝对是最重要的知识点之一，它在日常开发中会被广泛使用，而且多线程是有很多区分度很高的题目可供考察的。这篇文章会梳理下多线程和GCD相关的概念和几个典型问题。因为GCD相关的API用OC看着更直管一些，所以这期实例就都用OC语言书写。&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="https://zhangferry.gitee.io/tags/iOS/"/>
     
-      <category term="面试" scheme="http://zhangferry.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="https://zhangferry.gitee.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
   <entry>
-    <title>iOS面试篇</title>
-    <link href="http://zhangferry.github.io/2020/06/30/interview-network/"/>
-    <id>http://zhangferry.github.io/2020/06/30/interview-network/</id>
+    <title>iOS面试备战-网络</title>
+    <link href="https://zhangferry.gitee.io/2020/06/30/interview-network/"/>
+    <id>https://zhangferry.gitee.io/2020/06/30/interview-network/</id>
     <published>2020-06-30T03:28:09.000Z</published>
-    <updated>2020-07-20T00:19:19.906Z</updated>
+    <updated>2020-08-08T02:46:27.793Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;https://gitee.com/zhangferry/Images/raw/master/gitee/20200630104145.png&quot;
-        
-      
+      &lt;p&gt;&lt;img src=&quot;https://gitee.com/zhangferry/Images/raw/master/gitee/20200630104145.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;计算机网络是计算机科学与技术专业的必修课，也是移动端，前端，后端都会涉及到的知识点，同时它也是iOS面试中大概率会出现的问题。所以准备面试的话，网络相关的知识点一定不能错过。这里总结了一些我认为有用的和最近面试遇到的网络相关知识点。&lt;/p&gt;
+&lt;p&gt;去年写过一篇&lt;a href=&quot;https://zhangferry.com/2019/08/31/diagram_tcpip_concepts/&quot;&gt;《图解TCP/IP》总结&lt;/a&gt;的文章，也可以对着看下。&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="https://zhangferry.gitee.io/tags/iOS/"/>
     
-      <category term="面试" scheme="http://zhangferry.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="https://zhangferry.gitee.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>Swift进阶黄金之路（二）</title>
-    <link href="http://zhangferry.github.io/2020/05/31/swift_advance_2/"/>
-    <id>http://zhangferry.github.io/2020/05/31/swift_advance_2/</id>
+    <link href="https://zhangferry.gitee.io/2020/05/31/swift_advance_2/"/>
+    <id>https://zhangferry.gitee.io/2020/05/31/swift_advance_2/</id>
     <published>2020-05-31T14:00:34.000Z</published>
-    <updated>2020-05-31T14:12:16.789Z</updated>
+    <updated>2020-08-08T02:42:40.988Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1726adc6747571fc.png&quot; alt=&quot;image-20200511230812677&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-        
-      
+      &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/1726adc6747571fc.png&quot; alt=&quot;image-20200511230812677&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhangferry.com/2020/05/10/swift_advance_1/&quot;&gt;Swift进阶黄金之路（一）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;上期遗留一个问题：为什么 &lt;code&gt;rethrows&lt;/code&gt; 一般用在参数中含有可以 &lt;code&gt;throws&lt;/code&gt; 的方法的高阶函数中。&lt;/p&gt;
+&lt;p&gt;我们可以结合Swift的官方文档对&lt;code&gt;rethrows&lt;/code&gt;再做一遍回顾：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A function or method can be declared with the &lt;code&gt;rethrows&lt;/code&gt; keyword to indicate that it throws an error only if one of its function parameters throws an error. These functions and methods are known as &lt;em&gt;rethrowing functions&lt;/em&gt; and &lt;em&gt;rethrowing methods&lt;/em&gt;. Rethrowing functions and methods must have at least one throwing function parameter.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;返回&lt;code&gt;rethrows&lt;/code&gt;的函数要求至少有一个可抛出异常的函数式参数，而有以函数作为参数的函数就叫做高阶函数。&lt;/p&gt;
+&lt;p&gt;这期分两方面介绍Swift：特性修饰词和一些重要的Swift概念。&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="Swift" scheme="http://zhangferry.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="https://zhangferry.gitee.io/tags/Swift/"/>
     
   </entry>
   
   <entry>
     <title>如何通过静态分析提高iOS代码质量</title>
-    <link href="http://zhangferry.github.io/2020/05/22/ios_code_checker/"/>
-    <id>http://zhangferry.github.io/2020/05/22/ios_code_checker/</id>
+    <link href="https://zhangferry.gitee.io/2020/05/22/ios_code_checker/"/>
+    <id>https://zhangferry.gitee.io/2020/05/22/ios_code_checker/</id>
     <published>2020-05-22T03:28:09.000Z</published>
-    <updated>2020-05-23T23:20:45.539Z</updated>
+    <updated>2020-08-08T02:44:43.669Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/17235171e5857002-20200524072010074.png&quot;
-        
-      
+      &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/zhangferry/Images/blog/17235171e5857002-20200524072010074.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;随着项目的扩大，依靠人工codereview来保证项目的质量，越来越不现实，这时就有必要借助于一种自动化的代码审查工具：&lt;strong&gt;程序静态分析&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;程序静态分析（Program Static Analysis）是指在不运行代码的方式下，通过词法分析、语法分析、控制流、数据流分析等技术对程序代码进行扫描，验证代码是否满足规范性、安全性、可靠性、可维护性等指标的一种代码分析技术。（来自百度百科）&lt;/p&gt;
+&lt;p&gt;词法分析，语法分析等工作是由编译器进行的，所以对iOS项目为了完成静态分析，我们需要借助于编译器。对于OC语言的静态分析可以完全通过&lt;a href=&quot;http://clang.llvm.org/&quot;&gt;Clang&lt;/a&gt;，对于Swift的静态分析除了Clange还需要借助于&lt;a href=&quot;http://www.jpsim.com/uncovering-sourcekit&quot;&gt;SourceKit&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;Swift语言对应的静态分析工具是SwiftLint，OC语言对应的静态分析工具有Infer和OCLitn。以下会是对各个静态分析工具的安装和使用做一个介绍。&lt;/p&gt;
     
     </summary>
     
     
     
-      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="https://zhangferry.gitee.io/tags/iOS/"/>
     
-      <category term="静态分析" scheme="http://zhangferry.github.io/tags/%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90/"/>
+      <category term="静态分析" scheme="https://zhangferry.gitee.io/tags/%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90/"/>
     
-      <category term="敏捷开发" scheme="http://zhangferry.github.io/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
+      <category term="敏捷开发" scheme="https://zhangferry.gitee.io/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>Swift进阶黄金之路</title>
-    <link href="http://zhangferry.github.io/2020/05/10/swift_advance_1/"/>
-    <id>http://zhangferry.github.io/2020/05/10/swift_advance_1/</id>
+    <link href="https://zhangferry.gitee.io/2020/05/10/swift_advance_1/"/>
+    <id>https://zhangferry.gitee.io/2020/05/10/swift_advance_1/</id>
     <published>2020-05-09T16:00:34.000Z</published>
-    <updated>2020-05-31T14:07:49.740Z</updated>
+    <updated>2020-08-08T02:42:49.270Z</updated>
     
     <summary type="html">
     
@@ -170,14 +159,14 @@
     
     
     
-      <category term="Swift" scheme="http://zhangferry.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="https://zhangferry.gitee.io/tags/Swift/"/>
     
   </entry>
   
   <entry>
     <title>iOS开发图片格式选择</title>
-    <link href="http://zhangferry.github.io/2020/04/05/ios_photo_format_compare/"/>
-    <id>http://zhangferry.github.io/2020/04/05/ios_photo_format_compare/</id>
+    <link href="https://zhangferry.gitee.io/2020/04/05/ios_photo_format_compare/"/>
+    <id>https://zhangferry.gitee.io/2020/04/05/ios_photo_format_compare/</id>
     <published>2020-04-05T14:39:34.000Z</published>
     <updated>2020-05-23T22:57:55.402Z</updated>
     
@@ -193,16 +182,16 @@
     
     
     
-      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="https://zhangferry.gitee.io/tags/iOS/"/>
     
-      <category term="UI" scheme="http://zhangferry.github.io/tags/UI/"/>
+      <category term="UI" scheme="https://zhangferry.gitee.io/tags/UI/"/>
     
   </entry>
   
   <entry>
     <title>快手iOS面经</title>
-    <link href="http://zhangferry.github.io/2020/03/28/interview_kuaishou/"/>
-    <id>http://zhangferry.github.io/2020/03/28/interview_kuaishou/</id>
+    <link href="https://zhangferry.gitee.io/2020/03/28/interview_kuaishou/"/>
+    <id>https://zhangferry.gitee.io/2020/03/28/interview_kuaishou/</id>
     <published>2020-03-28T05:11:27.000Z</published>
     <updated>2020-05-23T23:22:29.165Z</updated>
     
@@ -214,17 +203,17 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://zhangferry.github.io/categories/iOS/"/>
+      <category term="iOS" scheme="https://zhangferry.gitee.io/categories/iOS/"/>
     
     
-      <category term="面试" scheme="http://zhangferry.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="https://zhangferry.gitee.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>Runtime内存模型探究</title>
-    <link href="http://zhangferry.github.io/2020/02/23/runtime_objc_class/"/>
-    <id>http://zhangferry.github.io/2020/02/23/runtime_objc_class/</id>
+    <link href="https://zhangferry.gitee.io/2020/02/23/runtime_objc_class/"/>
+    <id>https://zhangferry.gitee.io/2020/02/23/runtime_objc_class/</id>
     <published>2020-02-23T05:28:09.000Z</published>
     <updated>2020-04-11T02:38:53.306Z</updated>
     
@@ -240,14 +229,14 @@
     
     
     
-      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="https://zhangferry.gitee.io/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>VSCode配置Python版本</title>
-    <link href="http://zhangferry.github.io/2020/02/01/vscode_python/"/>
-    <id>http://zhangferry.github.io/2020/02/01/vscode_python/</id>
+    <link href="https://zhangferry.gitee.io/2020/02/01/vscode_python/"/>
+    <id>https://zhangferry.gitee.io/2020/02/01/vscode_python/</id>
     <published>2020-02-01T03:28:09.000Z</published>
     <updated>2020-03-08T12:38:19.739Z</updated>
     
@@ -262,14 +251,14 @@
     
     
     
-      <category term="python" scheme="http://zhangferry.github.io/tags/python/"/>
+      <category term="python" scheme="https://zhangferry.gitee.io/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>2019年总结</title>
-    <link href="http://zhangferry.github.io/2020/01/01/2019-year-summary/"/>
-    <id>http://zhangferry.github.io/2020/01/01/2019-year-summary/</id>
+    <link href="https://zhangferry.gitee.io/2020/01/01/2019-year-summary/"/>
+    <id>https://zhangferry.gitee.io/2020/01/01/2019-year-summary/</id>
     <published>2020-01-01T12:10:25.000Z</published>
     <updated>2020-03-08T12:38:41.828Z</updated>
     
@@ -287,14 +276,14 @@
     
     
     
-      <category term="生活" scheme="http://zhangferry.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="https://zhangferry.gitee.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
   <entry>
     <title>OC项目转Swift指南</title>
-    <link href="http://zhangferry.github.io/2019/12/07/transfom_oc_to_swift/"/>
-    <id>http://zhangferry.github.io/2019/12/07/transfom_oc_to_swift/</id>
+    <link href="https://zhangferry.gitee.io/2019/12/07/transfom_oc_to_swift/"/>
+    <id>https://zhangferry.gitee.io/2019/12/07/transfom_oc_to_swift/</id>
     <published>2019-12-07T10:28:09.000Z</published>
     <updated>2020-03-08T12:38:31.328Z</updated>
     
@@ -312,14 +301,14 @@
     
     
     
-      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="https://zhangferry.gitee.io/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>【译】iOS 架构模式--浅析MVC, MVP, MVVM 和 VIPER</title>
-    <link href="http://zhangferry.github.io/2019/11/22/ios_architecture_patterns/"/>
-    <id>http://zhangferry.github.io/2019/11/22/ios_architecture_patterns/</id>
+    <link href="https://zhangferry.gitee.io/2019/11/22/ios_architecture_patterns/"/>
+    <id>https://zhangferry.gitee.io/2019/11/22/ios_architecture_patterns/</id>
     <published>2019-11-22T06:39:34.000Z</published>
     <updated>2020-03-08T12:39:27.146Z</updated>
     
@@ -337,16 +326,16 @@
     
     
     
-      <category term="iOS" scheme="http://zhangferry.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="https://zhangferry.gitee.io/tags/iOS/"/>
     
-      <category term="UI" scheme="http://zhangferry.github.io/tags/UI/"/>
+      <category term="UI" scheme="https://zhangferry.gitee.io/tags/UI/"/>
     
   </entry>
   
   <entry>
     <title>感谢大家的帮助</title>
-    <link href="http://zhangferry.github.io/2019/11/09/thanks_letter/"/>
-    <id>http://zhangferry.github.io/2019/11/09/thanks_letter/</id>
+    <link href="https://zhangferry.gitee.io/2019/11/09/thanks_letter/"/>
+    <id>https://zhangferry.gitee.io/2019/11/09/thanks_letter/</id>
     <published>2019-11-09T05:58:34.000Z</published>
     <updated>2019-11-09T12:29:39.375Z</updated>
     
@@ -359,14 +348,14 @@
     
     
     
-      <category term="生活" scheme="http://zhangferry.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="https://zhangferry.gitee.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
   <entry>
     <title>关于水滴筹</title>
-    <link href="http://zhangferry.github.io/2019/11/08/shuidi/"/>
-    <id>http://zhangferry.github.io/2019/11/08/shuidi/</id>
+    <link href="https://zhangferry.gitee.io/2019/11/08/shuidi/"/>
+    <id>https://zhangferry.gitee.io/2019/11/08/shuidi/</id>
     <published>2019-11-07T23:08:34.000Z</published>
     <updated>2019-11-09T12:29:39.315Z</updated>
     
@@ -378,14 +367,14 @@
     
     
     
-      <category term="生活" scheme="http://zhangferry.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="https://zhangferry.gitee.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
   <entry>
     <title>为什么会得尿毒症</title>
-    <link href="http://zhangferry.github.io/2019/11/07/2019_11_7/"/>
-    <id>http://zhangferry.github.io/2019/11/07/2019_11_7/</id>
+    <link href="https://zhangferry.gitee.io/2019/11/07/2019_11_7/"/>
+    <id>https://zhangferry.gitee.io/2019/11/07/2019_11_7/</id>
     <published>2019-11-07T12:58:34.000Z</published>
     <updated>2019-12-03T15:19:00.157Z</updated>
     
@@ -401,14 +390,14 @@
     
     
     
-      <category term="生活" scheme="http://zhangferry.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="https://zhangferry.gitee.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
   <entry>
     <title>七院第三天（11月5号）</title>
-    <link href="http://zhangferry.github.io/2019/11/05/2019_11_5/"/>
-    <id>http://zhangferry.github.io/2019/11/05/2019_11_5/</id>
+    <link href="https://zhangferry.gitee.io/2019/11/05/2019_11_5/"/>
+    <id>https://zhangferry.gitee.io/2019/11/05/2019_11_5/</id>
     <published>2019-11-05T12:58:34.000Z</published>
     <updated>2019-11-09T12:29:39.337Z</updated>
     
@@ -420,14 +409,14 @@
     
     
     
-      <category term="生活" scheme="http://zhangferry.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="https://zhangferry.gitee.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
   <entry>
     <title>七院第二天（11月4号）</title>
-    <link href="http://zhangferry.github.io/2019/11/04/2019_11_4/"/>
-    <id>http://zhangferry.github.io/2019/11/04/2019_11_4/</id>
+    <link href="https://zhangferry.gitee.io/2019/11/04/2019_11_4/"/>
+    <id>https://zhangferry.gitee.io/2019/11/04/2019_11_4/</id>
     <published>2019-11-04T12:58:34.000Z</published>
     <updated>2019-11-09T12:29:39.350Z</updated>
     
@@ -439,14 +428,14 @@
     
     
     
-      <category term="生活" scheme="http://zhangferry.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="https://zhangferry.gitee.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
   <entry>
     <title>七院第一天（11月3号）</title>
-    <link href="http://zhangferry.github.io/2019/11/03/2019_11_3/"/>
-    <id>http://zhangferry.github.io/2019/11/03/2019_11_3/</id>
+    <link href="https://zhangferry.gitee.io/2019/11/03/2019_11_3/"/>
+    <id>https://zhangferry.gitee.io/2019/11/03/2019_11_3/</id>
     <published>2019-11-03T05:58:34.000Z</published>
     <updated>2019-11-09T12:29:39.365Z</updated>
     
@@ -459,14 +448,14 @@
     
     
     
-      <category term="生活" scheme="http://zhangferry.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="https://zhangferry.gitee.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
   <entry>
     <title>如何提升Mac下生产效率</title>
-    <link href="http://zhangferry.github.io/2019/11/02/mac_efficiency_promotion/"/>
-    <id>http://zhangferry.github.io/2019/11/02/mac_efficiency_promotion/</id>
+    <link href="https://zhangferry.gitee.io/2019/11/02/mac_efficiency_promotion/"/>
+    <id>https://zhangferry.gitee.io/2019/11/02/mac_efficiency_promotion/</id>
     <published>2019-11-02T10:40:57.000Z</published>
     <updated>2020-03-07T05:40:17.464Z</updated>
     
@@ -479,7 +468,7 @@
     
     
     
-      <category term="mac" scheme="http://zhangferry.github.io/tags/mac/"/>
+      <category term="mac" scheme="https://zhangferry.gitee.io/tags/mac/"/>
     
   </entry>
   
