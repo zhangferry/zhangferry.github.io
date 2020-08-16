@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zhangferry.gitee.io/"/>
-  <updated>2020-08-09T03:00:32.514Z</updated>
+  <updated>2020-08-16T13:29:58.263Z</updated>
   <id>https://zhangferry.gitee.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面试问题解答</title>
+    <link href="https://zhangferry.gitee.io/2020/08/15/%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94/"/>
+    <id>https://zhangferry.gitee.io/2020/08/15/%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94/</id>
+    <published>2020-08-15T03:04:42.069Z</published>
+    <updated>2020-08-16T13:29:58.263Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;iOS面试指南（2020年6月）参考答案&quot;&gt;&lt;a href=&quot;#iOS面试指南（2020年6月）参考答案&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>iOS面试总结（2020年6月）</title>
@@ -446,26 +469,6 @@
     
     
       <category term="生活" scheme="https://zhangferry.gitee.io/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何提升Mac下生产效率</title>
-    <link href="https://zhangferry.gitee.io/2019/11/02/mac_efficiency_promotion/"/>
-    <id>https://zhangferry.gitee.io/2019/11/02/mac_efficiency_promotion/</id>
-    <published>2019-11-02T10:40:57.000Z</published>
-    <updated>2020-03-07T05:40:17.464Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;工具篇&quot;&gt;&lt;a href=&quot;#工具篇&quot; class=&quot;headerlink&quot; title=&quot;工具篇&quot;&gt;&lt;/a&gt;工具篇&lt;/h2&gt;&lt;h3 id=&quot;效率神器Alfred&quot;&gt;&lt;a href=&quot;#效率神器Alfred&quot; class=&quot;headerlink&quot; title=&quot;效率神器Alfred&quot;&gt;&lt;/a&gt;效率神器Alfred&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhangferry/Images/master/blog/20191102170129.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;可以从Alfred官网下载，免费版没有workflow功能，付费购买Powerpack可以使用。建议大家购买正版，如果想找破解版，网上也有很多，自行搜索。&lt;/p&gt;
-&lt;p&gt;这有一篇比较详细的Alfred的使用&lt;a href=&quot;http://louiszhai.github.io/2018/05/31/alfred/&quot;&gt;教程&lt;/a&gt;，大部分都被涵盖进去了。这里主要介绍几种对开发帮助比较大的workflow插件，官方workflows地址在&lt;a href=&quot;https://www.alfredapp.com/workflows/&quot;&gt;这里&lt;/a&gt;，可以根据需要选择自己喜欢的插件使用。&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="mac" scheme="https://zhangferry.gitee.io/tags/mac/"/>
     
   </entry>
   
